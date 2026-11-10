@@ -25,6 +25,7 @@ Future<void> showCustomerProfileSheet(
   final initial = ((height - 96) / height).clamp(0.55, 0.98).toDouble();
   return showModalBottomSheet<void>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     useSafeArea: false,
     backgroundColor: Colors.transparent,

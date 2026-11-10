@@ -47,7 +47,7 @@ class _FirstResponseBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                avg == null ? '—' : MetricFormat.duration(avg, hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short),
+                avg == null ? '—' : MetricFormat.duration(avg, hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short, dayUnit: l.dash_days_short),
                 style: t.metricValue.copyWith(fontSize: 36),
               ),
               const SizedBox(width: AppSpacing.sm),

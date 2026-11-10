@@ -2225,7 +2225,7 @@
   "dash_open": "Open conversations",
   "dash_awaiting_me": "Awaiting your reply",
   "dash_awaiting_team": "Awaiting reply",
-  "dash_oldest": "Oldest {m}m",
+  "dash_oldest": "Oldest {m}",
   "@dash_oldest": {
     "placeholders": {
       "m": {
@@ -2366,6 +2366,7 @@
   "dash_frt_gt15": "Over 15 min",
   "dash_frt_note": "Based on conversations answered by an agent",
   "dash_frt_empty": "No replies yet in this period",
+  "dash_days_short": "d",
   "dash_hours_short": "h",
   "dash_minutes_short": "m",
   "dash_thousand": "k",

@@ -144,10 +144,19 @@ class AccountScreen extends ConsumerWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
-                          const SizedBox(height: 6),
-                          AppFilterChip.tonal(label: me.role.label(l)),
                         ],
                       ),
+                    ),
+                    const SizedBox(width: AppSpacing.sm),
+                    // Role pill at the row's end, beside name + email (mockup).
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: c.surface,
+                        borderRadius: BorderRadius.circular(AppRadius.full),
+                        border: Border.all(color: c.border),
+                      ),
+                      child: Text(me.role.label(l), style: t.tagLabel.copyWith(color: c.textSecondary)),
                     ),
                   ],
                 ),

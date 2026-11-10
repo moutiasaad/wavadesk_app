@@ -56,7 +56,7 @@ class MetricGrid extends ConsumerWidget {
     // 2 · awaiting
     final awaitingLabel = me ? l.dash_awaiting_me : l.dash_awaiting_team;
     final oldest = m.oldestWaitSeconds == null ? null : m.oldestWaitSeconds! + now.difference(s.generatedAt).inSeconds.clamp(0, 1 << 30);
-    final awaitingAside = m.awaiting == 0 ? l.dash_none_waiting : (oldest == null ? null : l.dash_oldest('${MetricFormat.minutes(oldest)}'));
+    final awaitingAside = m.awaiting == 0 ? l.dash_none_waiting : (oldest == null ? null : l.dash_oldest(MetricFormat.span(oldest, hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short, dayUnit: l.dash_days_short)));
     final awaiting = DashboardMetricCard(
       label: awaitingLabel,
       value: m.awaiting,
@@ -75,7 +75,7 @@ class MetricGrid extends ConsumerWidget {
 
     // 3 · first response
     final frt = m.avgFirstResponseSeconds;
-    String dur(num v) => MetricFormat.duration(v.toInt(), hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short);
+    String dur(num v) => MetricFormat.duration(v.toInt(), hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short, dayUnit: l.dash_days_short);
     final frtDelta = MetricFormat.durationDelta(m.firstResponseDeltaSeconds);
     final frtAside = [if (frt != null && frt < 3600) l.dash_minute, ?frtDelta].join(' ');
     final faster = (m.firstResponseDeltaSeconds ?? 0) < 0;

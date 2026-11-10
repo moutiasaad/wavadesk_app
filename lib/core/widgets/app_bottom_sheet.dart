@@ -20,6 +20,9 @@ abstract final class AppBottomSheet {
   }) {
     return showModalBottomSheet<T>(
       context: context,
+      // Above the tab bar: from a tab page the nested navigator put the sheet
+      // under the AppTabBar (extendBody), hiding its rows.
+      useRootNavigator: true,
       isScrollControlled: true,
       useSafeArea: true,
       showDragHandle: false,
@@ -55,6 +58,7 @@ abstract final class AppBottomSheet {
   }) {
     return showModalBottomSheet<T>(
       context: context,
+      useRootNavigator: true,
       isScrollControlled: true,
       useSafeArea: true,
       backgroundColor: Colors.transparent,

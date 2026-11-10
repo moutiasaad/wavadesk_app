@@ -26,13 +26,23 @@ abstract final class MetricFormat {
   /// 0.64 → "64%".
   static String percent(double share) => '${(share * 100).round()}%';
 
-  /// < 1 h → `m:ss`; ≥ 1 h → `{h} س {m} د` ([hourUnit] / [minuteUnit]).
-  static String duration(int seconds, {String hourUnit = 'س', String minuteUnit = 'د'}) {
+  /// < 1 h → `m:ss`; ≥ 1 h → `{h} س {m} د`; ≥ 1 day → `{d} ي {h} س`.
+  static String duration(int seconds, {String hourUnit = 'س', String minuteUnit = 'د', String dayUnit = 'ي'}) {
     final s = seconds < 0 ? 0 : seconds;
     if (s < 3600) return '${s ~/ 60}:${(s % 60).toString().padLeft(2, '0')}';
-    final h = s ~/ 3600;
+    return span(s, hourUnit: hourUnit, minuteUnit: minuteUnit, dayUnit: dayUnit);
+  }
+
+  /// Human wait length, never a raw minute total: `{m} د` under an hour,
+  /// `{h} س {m} د` under a day, `{d} ي {h} س` beyond (zero parts dropped).
+  static String span(int seconds, {String hourUnit = 'س', String minuteUnit = 'د', String dayUnit = 'ي'}) {
+    final s = seconds < 0 ? 0 : seconds;
+    final d = s ~/ 86400;
+    final h = (s % 86400) ~/ 3600;
     final m = (s % 3600) ~/ 60;
-    return m == 0 ? '$h $hourUnit' : '$h $hourUnit $m $minuteUnit';
+    if (d > 0) return h == 0 ? '$d $dayUnit' : '$d $dayUnit $h $hourUnit';
+    if (h > 0) return m == 0 ? '$h $hourUnit' : '$h $hourUnit $m $minuteUnit';
+    return '${m < 1 ? 1 : m} $minuteUnit';
   }
 
   /// +3 / −2 / null when there is no delta (or it's zero → "0").

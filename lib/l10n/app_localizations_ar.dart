@@ -3673,7 +3673,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String dash_oldest(String m) {
-    return 'أقدمها $m د';
+    return 'أقدمها $m';
   }
 
   @override
@@ -3828,6 +3828,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dash_frt_empty => 'لا ردود بعد في هذه الفترة';
+
+  @override
+  String get dash_days_short => 'ي';
 
   @override
   String get dash_hours_short => 'س';

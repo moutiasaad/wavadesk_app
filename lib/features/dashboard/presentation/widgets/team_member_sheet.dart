@@ -74,7 +74,7 @@ Future<void> showTeamMemberSheet(BuildContext context, WidgetRef ref, TeamMember
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenH),
                 child: Text(
-                  l.dash_agent_frt(MetricFormat.duration(m.avgFirstResponseToday!, hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short)),
+                  l.dash_agent_frt(MetricFormat.duration(m.avgFirstResponseToday!, hourUnit: l.dash_hours_short, minuteUnit: l.dash_minutes_short, dayUnit: l.dash_days_short)),
                   style: t.bodyMedium.copyWith(color: c.textSecondary),
                 ),
               ),

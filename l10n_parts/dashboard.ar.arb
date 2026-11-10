@@ -49,7 +49,7 @@
   "dash_open": "محادثات مفتوحة",
   "dash_awaiting_me": "بانتظار ردّك",
   "dash_awaiting_team": "بانتظار الرد",
-  "dash_oldest": "أقدمها {m} د",
+  "dash_oldest": "أقدمها {m}",
   "@dash_oldest": {
     "placeholders": {
       "m": {
@@ -190,6 +190,7 @@
   "dash_frt_gt15": "أكثر من 15 د",
   "dash_frt_note": "محسوب على المحادثات التي ردّ عليها موظف",
   "dash_frt_empty": "لا ردود بعد في هذه الفترة",
+  "dash_days_short": "ي",
   "dash_hours_short": "س",
   "dash_minutes_short": "د",
   "dash_thousand": "ألف",

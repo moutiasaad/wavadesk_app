@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart' show DeviceGestureSettings, kTouchSlop;
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
@@ -101,8 +102,20 @@ class ConversationTile extends ConsumerWidget {
       excludeSemantics: true,
       child: Material(
         color: selected ? c.primaryContainer : Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
+        child: Builder(
+          builder: (inner) => InkWell(
+          // A tap on a row whose actions are showing just closes it — it must
+          // not open the chat by accident.
+          onTap: onTap == null
+              ? null
+              : () {
+                  final slide = Slidable.of(inner);
+                  if (slide != null && slide.ratio != 0) {
+                    slide.close();
+                    return;
+                  }
+                  onTap!();
+                },
           onLongPress: onLongPress == null
               ? null
               : () {
@@ -151,6 +164,7 @@ class ConversationTile extends ConsumerWidget {
             ),
           ),
         ),
+        ),
       ),
     );
 
@@ -178,7 +192,12 @@ class ConversationTile extends ConsumerWidget {
       ),
     );
 
-    return Slidable(
+    // A swipe needs a deliberate horizontal move (2× the default slop), so a
+    // slightly diagonal scroll or a short touch never opens the row.
+    final media = MediaQuery.of(context);
+    return MediaQuery(
+      data: media.copyWith(gestureSettings: const DeviceGestureSettings(touchSlop: kTouchSlop * 2)),
+      child: Slidable(
       key: ValueKey('slide-${s.id}'),
       groupTag: 'inbox',
       // Swipe toward the end edge reveals Resolve on the start side.
@@ -187,8 +206,10 @@ class ConversationTile extends ConsumerWidget {
           : ActionPane(
               motion: const DrawerMotion(),
               extentRatio: ratio(1),
+              openThreshold: 0.5,
+              closeThreshold: 0.5,
               dismissible: DismissiblePane(
-                dismissThreshold: 0.6,
+                dismissThreshold: 0.8,
                 resizeDuration: AppMotion.normal,
                 onDismissed: () => onResolve!(fullSwipe: true),
               ),
@@ -200,8 +221,10 @@ class ConversationTile extends ConsumerWidget {
           : ActionPane(
               motion: const DrawerMotion(),
               extentRatio: ratio(2),
+              openThreshold: 0.5,
+              closeThreshold: 0.5,
               dismissible: DismissiblePane(
-                dismissThreshold: 0.6,
+                dismissThreshold: 0.8,
                 resizeDuration: AppMotion.normal,
                 onDismissed: () => onSnooze!(fullSwipe: true),
               ),
@@ -214,6 +237,7 @@ class ConversationTile extends ConsumerWidget {
               ],
             ),
       child: tile,
+      ),
     );
   }
 

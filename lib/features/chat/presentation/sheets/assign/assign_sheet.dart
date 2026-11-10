@@ -38,6 +38,7 @@ Future<AssignResult?> showAssignSheet(
   final keepAlive = ref.listenManual(assignControllerProvider(args), (_, _) {});
   final out = await showModalBottomSheet<Object>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     useSafeArea: true,
     backgroundColor: Colors.transparent,

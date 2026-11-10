@@ -41,6 +41,7 @@ Future<RewriteOutcome?> showAiRewriteSheet(
   );
   return showModalBottomSheet<RewriteOutcome>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     useSafeArea: true,
     backgroundColor: Colors.transparent,
@@ -79,6 +80,7 @@ Future<RewriteOutcome?> showKbAnswerRewriteSheet(
   );
   return showModalBottomSheet<RewriteOutcome>(
     context: context,
+    useRootNavigator: true,
     isScrollControlled: true,
     useSafeArea: true,
     backgroundColor: Colors.transparent,

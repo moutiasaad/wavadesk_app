@@ -6377,7 +6377,7 @@ abstract class AppLocalizations {
   /// No description provided for @dash_oldest.
   ///
   /// In ar, this message translates to:
-  /// **'أقدمها {m} د'**
+  /// **'أقدمها {m}'**
   String dash_oldest(String m);
 
   /// No description provided for @dash_none_waiting.
@@ -6637,6 +6637,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'لا ردود بعد في هذه الفترة'**
   String get dash_frt_empty;
+
+  /// No description provided for @dash_days_short.
+  ///
+  /// In ar, this message translates to:
+  /// **'ي'**
+  String get dash_days_short;
 
   /// No description provided for @dash_hours_short.
   ///

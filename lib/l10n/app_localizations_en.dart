@@ -3660,7 +3660,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String dash_oldest(String m) {
-    return 'Oldest ${m}m';
+    return 'Oldest $m';
   }
 
   @override
@@ -3815,6 +3815,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dash_frt_empty => 'No replies yet in this period';
+
+  @override
+  String get dash_days_short => 'd';
 
   @override
   String get dash_hours_short => 'h';
