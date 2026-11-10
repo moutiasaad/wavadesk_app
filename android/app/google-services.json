@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897933119046",
+    "project_id": "wavadesk",
+    "storage_bucket": "wavadesk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897933119046:android:bb7ced9c9339a814308447",
+        "android_client_info": {
+          "package_name": "com.wavadesk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNEoLN28FZzClOJzgn-s2eGEp9owf1FIw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

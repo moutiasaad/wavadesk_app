@@ -1,0 +1,104 @@
+{
+  "conversations_segment_mine": "Mine",
+  "conversations_segment_unassigned": "Unassigned",
+  "conversations_segment_all": "All",
+  "conversations_filter_all": "All",
+  "conversations_filter_unread": "Unread",
+  "conversations_filter_awaiting": "Awaiting reply",
+  "conversations_filter_ai": "AI replied",
+  "conversations_filter_closed": "Closed",
+  "conversations_filter_more": "Filters",
+  "conversations_channel_any": "All channels",
+  "conversations_priority_any": "All priorities",
+  "conversations_notifications": "Notifications",
+  "conversations_new_message": "New message",
+  "conversations_exit_selection": "Exit selection",
+  "conversations_selected_count": "{count, plural, =1{1 selected} other{{count} selected}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "Assign selected",
+  "conversations_bulk_resolve": "Resolve selected",
+  "conversations_bulk_resolved": "{count, plural, =1{1 conversation resolved} other{{count} conversations resolved}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "Conversation resolved",
+  "conversations_empty_mine_title": "No conversations assigned to you",
+  "conversations_empty_mine_body": "Claim one from Unassigned to start replying.",
+  "conversations_empty_mine_action": "Show unassigned",
+  "conversations_empty_filters_title": "No conversations match the filters",
+  "conversations_empty_filters_body": "Try changing or clearing the filters to see everything.",
+  "conversations_empty_filters_action": "Clear filters",
+  "conversations_empty_done_title": "You're all caught up",
+  "conversations_empty_done_body": "Nothing needs you right now. We'll let you know when a new message arrives.",
+  "tile_you_prefix": "You: ",
+  "tile_ai_reply": "AI reply",
+  "tile_ai_ready": "Suggestion ready",
+  "tile_typing": "Typing…",
+  "tile_snoozed_until": "Snoozed until {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "Resolve",
+  "tile_swipe_snooze": "Snooze",
+  "tile_swipe_assign": "Assign",
+  "filters_title": "Filters",
+  "filters_channel": "Channel",
+  "filters_status": "Status",
+  "filters_priority": "Priority",
+  "filters_assignee": "Assignee",
+  "filters_assignee_all": "Everyone",
+  "filters_assignee_me": "Me",
+  "filters_assignee_colleague": "A colleague",
+  "filters_assignee_ai": "AI",
+  "filters_assignee_unassigned": "Unassigned",
+  "filters_date": "Date",
+  "filters_date_any": "Any time",
+  "filters_date_today": "Today",
+  "filters_date_7": "7 days",
+  "filters_date_30": "30 days",
+  "filters_date_custom": "Custom",
+  "filters_tags": "Tags",
+  "filters_show": "{count, plural, =0{No conversations} =1{Show 1 conversation} other{Show {count} conversations}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "New message",
+  "newmsg_subtitle": "Start a WhatsApp conversation with an approved template",
+  "newmsg_name": "Customer name",
+  "newmsg_name_hint": "Optional",
+  "newmsg_phone": "Mobile number",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "Enter a valid mobile number with country code",
+  "newmsg_template": "Template",
+  "newmsg_template_error": "Choose an approved template to send",
+  "newmsg_send": "Send template"
+}

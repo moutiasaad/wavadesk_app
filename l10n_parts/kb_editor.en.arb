@@ -1,0 +1,236 @@
+{
+  "@@locale": "en",
+  "kbe_new": "New question",
+  "kbe_edit": "Edit answer",
+  "kbe_review": "Review suggestion",
+  "kbe_save": "Save",
+  "kbe_send": "Send",
+  "kbe_src_unanswered": "Asked {n} times with no AI answer",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "From a chat with {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "Suggested by {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "Suggested from a resolved chat",
+  "kbe_view_convs": "View conversations",
+  "kbe_open": "Open",
+  "kbe_open_it": "Open it",
+  "kbe_question": "Question",
+  "kbe_question_ph": "e.g. Can I return after 30 days?",
+  "kbe_alts": "Other ways customers ask",
+  "kbe_optional": "(optional)",
+  "kbe_add_alt": "+ Add phrasing",
+  "kbe_alt_exists": "This phrasing already exists",
+  "kbe_alt_limit": "Up to 15 phrasings, 120 characters each",
+  "kbe_answer": "Answer",
+  "kbe_answer_ph": "Write the answer as AI should say it…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "AI draft — review before saving",
+  "kbe_tag": "Tag",
+  "kbe_tags_title": "Answer tags",
+  "kbe_tags_search": "Search or create a tag",
+  "kbe_tags_create": "Create “{name}”",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "Primary tag",
+  "kbe_done": "Done",
+  "kbe_improve": "Improve wording",
+  "kbe_add_link": "Add link",
+  "kbe_link_url": "URL",
+  "kbe_link_label": "Link title (optional)",
+  "kbe_link_invalid": "Enter a valid https:// link",
+  "kbe_insert": "Insert",
+  "kbe_cancel": "Cancel",
+  "kbe_similar": "Similar question exists: “{t}”",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "Merge as phrasing",
+  "kbe_conflict": "May conflict with “{t}”: {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "View",
+  "kbe_preview": "Preview: how AI will reply",
+  "kbe_ai_label": "AI",
+  "kbe_writing": "Writing…",
+  "kbe_tone": "Tone: {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "High confidence",
+  "kbe_conf_med": "Medium confidence",
+  "kbe_conf_low": "Low confidence",
+  "kbe_low_hint": "Add phrasings or clarify to raise confidence",
+  "kbe_try_another": "Try another question",
+  "kbe_test_hint": "Type a question to test",
+  "kbe_preview_err": "Preview failed",
+  "kbe_preview_offline": "Preview needs a connection",
+  "kbe_preview_empty": "Complete the question and answer to see a preview",
+  "kbe_preview_regen": "Refresh preview",
+  "kbe_advanced": "Advanced options",
+  "kbe_enabled": "Available to AI",
+  "kbe_channels": "Channels",
+  "kbe_channels_all": "All channels",
+  "kbe_expires": "Valid until",
+  "kbe_expires_none": "No end date",
+  "kbe_expires_clear": "Remove date",
+  "kbe_verbatim": "Send verbatim",
+  "kbe_verbatim_sub": "AI sends exactly this text",
+  "kbe_handoff_after": "Hand off after answering",
+  "kbe_internal_notes": "Internal notes",
+  "kbe_internal_notes_ph": "Not used by AI",
+  "kbe_meta": "Edited by {n} · {t} · used {u} times",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "Delete answer",
+  "kbe_delete_title": "Delete “{title}”?",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "AI will no longer use it.",
+  "kbe_deleted": "Deleted",
+  "kbe_history": "Version history",
+  "kbe_restore": "Restore this version",
+  "kbe_version_n": "Version {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "Current",
+  "kbe_versions_empty": "No earlier versions",
+  "kbe_restored": "Version restored",
+  "kbe_restore_failed": "Couldn't restore",
+  "kbe_err_q": "Enter the question (min 5 chars)",
+  "kbe_err_a": "Enter the answer (min 10 chars)",
+  "kbe_err_a_long": "Answer exceeds 2000 characters",
+  "kbe_err_date": "Pick a future date",
+  "kbe_saved_new": "Answer added · AI will use it now",
+  "kbe_saved_edit": "Changes saved",
+  "kbe_saved_unanswered": "Added · {n} chats were waiting for this",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "Added to knowledge base",
+  "kbe_proposed": "Sent for review",
+  "kbe_approve": "Approve & publish",
+  "kbe_approved": "Answer approved and published",
+  "kbe_reject": "Reject",
+  "kbe_rejected": "Suggestion rejected",
+  "kbe_save_err": "Couldn't save",
+  "kbe_save_forbidden": "You can't save — send it for review",
+  "kbe_save_offline": "Saving needs a connection",
+  "kbe_retry": "Retry",
+  "kbe_load_error": "Couldn't load the answer",
+  "kbe_conflict_title": "{name} just edited this answer",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "View theirs",
+  "kbe_overwrite": "Save mine over it",
+  "kbe_restore_draft": "Unsaved draft — restore it?",
+  "kbe_restore_btn": "Restore",
+  "kbe_restore_ignore": "Ignore",
+  "kbe_discard_title": "Discard changes?",
+  "kbe_discard_body": "The answer won't be saved.",
+  "kbe_discard": "Discard",
+  "kbe_keep": "Keep editing",
+  "kbe_deleted_elsewhere": "This answer was deleted",
+  "kbe_close": "Close",
+  "kbe_a11y_alt": "Phrasing: {text}, double tap to edit",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "Delete",
+  "kbe_a11y_ghost": "AI-suggested phrasing: {text}, tap to add",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "Complete the question and answer",
+  "kbe_a11y_dismiss": "Dismiss warning"
+}

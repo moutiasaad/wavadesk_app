@@ -1,0 +1,236 @@
+{
+  "@@locale": "ar",
+  "kbe_new": "سؤال جديد",
+  "kbe_edit": "تعديل الإجابة",
+  "kbe_review": "مراجعة مقترح",
+  "kbe_save": "حفظ",
+  "kbe_send": "إرسال",
+  "kbe_src_unanswered": "سُئل هذا السؤال {n} مرات ولم يجد الذكاء إجابة",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "من محادثة مع {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "اقترحها {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "مقترحة من محادثة محلولة",
+  "kbe_view_convs": "عرض المحادثات",
+  "kbe_open": "فتح",
+  "kbe_open_it": "فتحه",
+  "kbe_question": "السؤال",
+  "kbe_question_ph": "مثال: هل يمكن الاسترجاع بعد 30 يومًا؟",
+  "kbe_alts": "صيغ أخرى يسأل بها العملاء",
+  "kbe_optional": "(اختياري)",
+  "kbe_add_alt": "+ أضف صيغة",
+  "kbe_alt_exists": "هذه الصيغة موجودة",
+  "kbe_alt_limit": "الحد الأقصى 15 صيغة، 120 حرفًا لكل صيغة",
+  "kbe_answer": "الإجابة",
+  "kbe_answer_ph": "اكتب الإجابة كما تريد أن يقولها الذكاء للعميل…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "مسودة من الذكاء — راجعها قبل الحفظ",
+  "kbe_tag": "وسم",
+  "kbe_tags_title": "وسوم الإجابة",
+  "kbe_tags_search": "ابحث أو أنشئ وسمًا",
+  "kbe_tags_create": "إنشاء «{name}»",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "الوسم الرئيسي",
+  "kbe_done": "تم",
+  "kbe_improve": "حسّن الصياغة",
+  "kbe_add_link": "أضف رابطًا",
+  "kbe_link_url": "الرابط",
+  "kbe_link_label": "عنوان الرابط (اختياري)",
+  "kbe_link_invalid": "أدخل رابطًا صحيحًا يبدأ بـ https://",
+  "kbe_insert": "إدراج",
+  "kbe_cancel": "إلغاء",
+  "kbe_similar": "يوجد سؤال مشابه: «{t}»",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "دمج كصيغة أخرى",
+  "kbe_conflict": "قد تتعارض مع «{t}»: {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "عرض",
+  "kbe_preview": "معاينة: كيف سيردّ الذكاء",
+  "kbe_ai_label": "الذكاء الاصطناعي",
+  "kbe_writing": "يكتب…",
+  "kbe_tone": "بنبرة: {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "ثقة عالية",
+  "kbe_conf_med": "ثقة متوسطة",
+  "kbe_conf_low": "ثقة منخفضة",
+  "kbe_low_hint": "أضف صيغًا أخرى أو وضّح الإجابة لرفع الثقة",
+  "kbe_try_another": "جرّب سؤالًا آخر",
+  "kbe_test_hint": "اكتب سؤالًا لتجربته",
+  "kbe_preview_err": "تعذّرت المعاينة",
+  "kbe_preview_offline": "المعاينة تحتاج اتصالًا",
+  "kbe_preview_empty": "أكمل السؤال والإجابة لتظهر المعاينة",
+  "kbe_preview_regen": "تحديث المعاينة",
+  "kbe_advanced": "خيارات متقدمة",
+  "kbe_enabled": "متاح للذكاء الاصطناعي",
+  "kbe_channels": "القنوات",
+  "kbe_channels_all": "كل القنوات",
+  "kbe_expires": "صالحة حتى",
+  "kbe_expires_none": "بدون تاريخ انتهاء",
+  "kbe_expires_clear": "إزالة التاريخ",
+  "kbe_verbatim": "رد حرفي",
+  "kbe_verbatim_sub": "يرسل الذكاء الإجابة كما هي دون إعادة صياغة",
+  "kbe_handoff_after": "تحويل لموظف بعد الإجابة",
+  "kbe_internal_notes": "ملاحظات داخلية",
+  "kbe_internal_notes_ph": "لا يستخدمها الذكاء",
+  "kbe_meta": "آخر تعديل {n} · {t} · استُخدم {u} مرة",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "حذف الإجابة",
+  "kbe_delete_title": "حذف «{title}»؟",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "لن يستخدمها الذكاء بعد الآن.",
+  "kbe_deleted": "تم الحذف",
+  "kbe_history": "سجل التغييرات",
+  "kbe_restore": "استعادة هذه النسخة",
+  "kbe_version_n": "النسخة {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "الحالية",
+  "kbe_versions_empty": "لا توجد نسخ سابقة",
+  "kbe_restored": "تمت استعادة النسخة",
+  "kbe_restore_failed": "تعذّرت الاستعادة",
+  "kbe_err_q": "اكتب السؤال (5 أحرف على الأقل)",
+  "kbe_err_a": "اكتب الإجابة (10 أحرف على الأقل)",
+  "kbe_err_a_long": "الإجابة أطول من 2000 حرف",
+  "kbe_err_date": "اختر تاريخًا في المستقبل",
+  "kbe_saved_new": "تمت إضافة الإجابة · سيستخدمها الذكاء فورًا",
+  "kbe_saved_edit": "تم حفظ التعديلات",
+  "kbe_saved_unanswered": "تمت الإضافة · {n} محادثات كانت تنتظر هذه الإجابة",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "أُضيفت لقاعدة المعرفة",
+  "kbe_proposed": "أُرسلت للمراجعة",
+  "kbe_approve": "اعتماد ونشر",
+  "kbe_approved": "تم اعتماد الإجابة ونشرها",
+  "kbe_reject": "رفض",
+  "kbe_rejected": "تم رفض المقترح",
+  "kbe_save_err": "تعذّر الحفظ",
+  "kbe_save_forbidden": "لا تملك صلاحية الحفظ — أرسلها للمراجعة",
+  "kbe_save_offline": "الحفظ يتطلب اتصالًا بالإنترنت",
+  "kbe_retry": "إعادة المحاولة",
+  "kbe_load_error": "تعذّر تحميل الإجابة",
+  "kbe_conflict_title": "عدّل {name} هذه الإجابة للتو",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "عرض نسختهم",
+  "kbe_overwrite": "حفظ نسختي فوقها",
+  "kbe_restore_draft": "لديك مسودة غير محفوظة — استعادتها؟",
+  "kbe_restore_btn": "استعادة",
+  "kbe_restore_ignore": "تجاهل",
+  "kbe_discard_title": "تجاهل التغييرات؟",
+  "kbe_discard_body": "لن تُحفظ الإجابة.",
+  "kbe_discard": "تجاهل",
+  "kbe_keep": "متابعة التعديل",
+  "kbe_deleted_elsewhere": "تم حذف هذه الإجابة",
+  "kbe_close": "إغلاق",
+  "kbe_a11y_alt": "صيغة: {text}، اضغط مرتين للتعديل",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "حذف",
+  "kbe_a11y_ghost": "صيغة مقترحة من الذكاء: {text}، اضغط للإضافة",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "أكمل السؤال والإجابة",
+  "kbe_a11y_dismiss": "إغلاق التنبيه"
+}

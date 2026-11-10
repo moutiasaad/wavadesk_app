@@ -1,0 +1,356 @@
+{
+  "@@locale": "ar",
+  "kb_title": "المعرفة",
+  "kb_search": "ابحث في {n} مدخلًا",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "سؤال وجواب",
+  "kb_files": "ملفات",
+  "kb_links": "روابط",
+  "kb_processing": "جارٍ المعالجة",
+  "kb_unanswered_title": "{n} أسئلة بلا إجابة",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "سألها العملاء ولم يجد الذكاء جوابًا",
+  "kb_review": "راجعها",
+  "kb_sort_usage": "الأكثر استخدامًا",
+  "kb_sort_recent": "المحدّثة مؤخرًا",
+  "kb_sort_stale": "الأقدم تحديثًا",
+  "kb_sort_alpha": "أبجديًا",
+  "kb_sort_least": "الأقل استخدامًا",
+  "kb_tags": "الوسوم",
+  "kb_used_n": "استُخدم {n} مرة",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "محدّث منذ {t}",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} صفحة",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "مسودة",
+  "kb_badge_disabled": "معطّل",
+  "kb_badge_stale": "قديم",
+  "kb_badge_failed": "فشلت المعالجة",
+  "kb_disable": "تعطيل للذكاء",
+  "kb_enable": "تفعيل",
+  "kb_edit": "تعديل",
+  "kb_copy_answer": "نسخ الإجابة",
+  "kb_delete": "حذف",
+  "kb_delete_title": "حذف «{title}»؟",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "لن يستخدمها الذكاء بعد الآن.",
+  "kb_deleted": "تم الحذف",
+  "kb_drafts": "مقترحات بانتظار المراجعة · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "اقترحها {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "مقترحة من محادثة محلولة",
+  "kb_approve": "اعتماد",
+  "kb_reject": "رفض",
+  "kb_add_title": "إضافة إلى قاعدة المعرفة",
+  "kb_add_qa_sub": "الأسرع والأدق للذكاء",
+  "kb_add_file": "رفع ملف",
+  "kb_add_file_sub": "PDF أو Word أو TXT حتى 10 ميجابايت",
+  "kb_add_link": "إضافة رابط",
+  "kb_add_link_sub": "صفحة من موقعك، يقرأها الذكاء تلقائيًا",
+  "kb_alt_phrasings": "صيغ أخرى",
+  "kb_answer": "الإجابة",
+  "kb_usage_month": "استُخدم {n} مرة هذا الشهر",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "تقييم إيجابي {p}%",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "آخر استخدام {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "آخر الاستخدامات",
+  "kb_meta": "أنشأها {a} · {d} · آخر تعديل {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "متاح للذكاء الاصطناعي",
+  "kb_file_type_err": "نوع الملف غير مدعوم",
+  "kb_file_size_err": "الملف أكبر من 10 ميجابايت",
+  "kb_uploading": "جارٍ الرفع {p}%",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "جارٍ المعالجة… قد يستغرق دقيقة",
+  "kb_file_ready": "أصبح «{f}» جاهزًا · استخرجنا {n} معلومة",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "ما استخرجه الذكاء",
+  "kb_replace": "استبدال الملف",
+  "kb_download": "تحميل",
+  "kb_file_failed": "تعذّرت قراءة الملف",
+  "kb_fail_encrypted": "الملف محمي بكلمة مرور",
+  "kb_fail_images": "الملف صور فقط بدون نص",
+  "kb_fail_corrupt": "الملف تالف",
+  "kb_link_url": "رابط الصفحة",
+  "kb_link_subpages": "تضمين الصفحات الفرعية",
+  "kb_add": "إضافة",
+  "kb_last_crawl": "آخر قراءة {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "تحديث الآن",
+  "kb_auto_refresh": "التحديث التلقائي",
+  "kb_weekly": "أسبوعيًا",
+  "kb_monthly": "شهريًا",
+  "kb_manual": "يدويًا",
+  "kb_unanswered": "أسئلة بلا إجابة",
+  "kb_unanswered_info": "أسئلة سألها العملاء ولم يجد لها الذكاء إجابة. أضف إجابة ليردّ تلقائيًا في المرة القادمة.",
+  "kb_sort_frequency": "الأكثر تكرارًا",
+  "kb_sort_newest": "الأحدث",
+  "kb_asked_n": "سُئل {n} مرات · آخرها {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} صيغ مشابهة",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "مسودة مقترحة",
+  "kb_add_answer": "أضف إجابة",
+  "kb_link_existing": "ربط بإجابة موجودة",
+  "kb_ignore": "تجاهل",
+  "kb_view_convs": "عرض المحادثات",
+  "kb_suggest_answer": "اقترح إجابة",
+  "kb_none_unanswered": "لا توجد أسئلة بلا إجابة",
+  "kb_none_unanswered_body": "الذكاء يجد إجابات لكل ما يُسأل حاليًا.",
+  "kb_empty_title": "ابدأ بتعليم الذكاء عن عملك",
+  "kb_empty_body": "أضف أهم الأسئلة التي يسألها عملاؤك وإجاباتها.",
+  "kb_empty_cta": "أضف أول سؤال",
+  "kb_empty_tip": "ننصح بـ 10 أسئلة على الأقل",
+  "kb_filter_empty": "لا توجد مدخلات من هذا النوع",
+  "kb_show_all": "عرض الكل",
+  "kb_error": "تعذّر تحميل قاعدة المعرفة",
+  "kb_retry": "إعادة المحاولة",
+  "kb_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "kb_span_now": "لحظات",
+  "kb_span_minutes": "{n, plural, =1{دقيقة} =2{دقيقتين} few{{n} دقائق} other{{n} دقيقة}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{ساعة} =2{ساعتين} few{{n} ساعات} other{{n} ساعة}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{يوم} =2{يومين} few{{n} أيام} other{{n} يومًا}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{شهر} =2{شهرين} few{{n} أشهر} other{{n} شهرًا}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{سنة} =2{سنتين} few{{n} سنوات} other{{n} سنة}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "هذه الميزة متاحة من لوحة الويب حاليًا",
+  "kb_menu_ai_settings": "إعدادات الذكاء الاصطناعي",
+  "kb_menu_tags": "إدارة الوسوم",
+  "kb_menu_import": "استيراد من الويب",
+  "kb_sort_by": "ترتيب حسب",
+  "kb_tags_all": "كل الوسوم",
+  "kb_tags_apply": "تطبيق",
+  "kb_tags_none": "لا توجد وسوم بعد",
+  "kb_disabled_done": "تم التعطيل · لن يستخدمها الذكاء",
+  "kb_enabled_done": "تم التفعيل",
+  "kb_copied": "تم نسخ الإجابة",
+  "kb_approved": "تم الاعتماد والنشر",
+  "kb_rejected": "تم رفض المقترح",
+  "kb_ignored": "تم التجاهل",
+  "kb_linked": "أُضيفت كصيغة أخرى لـ«{t}»",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "اختر إجابة",
+  "kb_pick_search": "ابحث في الإجابات",
+  "kb_uploaded_by": "رفعه {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} ميجابايت",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} كيلوبايت",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "يمكنك إغلاق هذه النافذة، ستستمر المعالجة في الخلفية",
+  "kb_url_invalid": "أدخل رابطًا صحيحًا يبدأ بـ https://",
+  "kb_link_added": "أُضيف الرابط · جارٍ قراءته",
+  "kb_link_pages": "الصفحات",
+  "kb_never_crawled": "لم تتم القراءة بعد",
+  "kb_recrawl_started": "بدأت إعادة القراءة",
+  "kb_filter_a11y": "{label}، {n}، تصفية",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} أسئلة بلا إجابة. راجعها",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "الاستخدام خلال 30 يومًا",
+  "kb_not_used_yet": "لم يُستخدم بعد",
+  "kb_show_less": "عرض أقل",
+  "kb_proposed": "أُرسل اقتراحك للمراجعة",
+  "kb_save_err": "تعذّر الحفظ",
+  "kb_none_found": "لا توجد نتائج"
+}

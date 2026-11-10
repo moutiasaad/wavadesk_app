@@ -1,0 +1,210 @@
+{
+  "search_placeholder": "ابحث عن عميل، رسالة، أو رقم طلب",
+  "search_cancel": "إلغاء",
+  "search_scope_all": "الكل",
+  "search_scope_contacts": "العملاء",
+  "search_scope_messages": "الرسائل",
+  "search_scope_kb": "المعرفة",
+  "search_scope_conversations": "المحادثات",
+  "search_filters": "فلاتر",
+  "search_section_contacts": "العملاء",
+  "search_section_messages": "الرسائل",
+  "search_section_kb": "قاعدة المعرفة",
+  "search_section_conversations": "المحادثات",
+  "search_see_all": "عرض الكل ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "أفضل نتيجة",
+  "search_open_chat": "فتح المحادثة",
+  "search_profile": "الملف",
+  "search_open_badge": "مفتوحة",
+  "search_more_in_conv": "+{n} نتائج أخرى في هذه المحادثة",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "استخدمه الذكاء {n} مرة هذا الشهر",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "إدراج في الرد",
+  "search_you": "أنت:",
+  "search_note": "ملاحظة:",
+  "search_order": "طلب {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "وسم: {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "عمليات البحث الأخيرة",
+  "search_clear": "مسح",
+  "search_suggestions": "اقتراحات",
+  "search_recent_contacts": "آخر من تواصلت معهم",
+  "search_tip": "ابحث بالاسم، رقم الجوال، رقم الطلب، أو أي كلمة في المحادثة",
+  "search_no_results": "لا نتائج لـ «{q}»",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "جرّب كلمة أخرى أو تحقّق من الإملاء",
+  "search_clear_filters": "مسح الفلاتر",
+  "search_in_all": "البحث في الكل",
+  "search_did_you_mean": "هل تقصد: {s}؟",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "تعذّر البحث",
+  "search_retry": "إعادة المحاولة",
+  "search_offline": "غير متصل — نتائج من البيانات المحفوظة فقط",
+  "search_local": "(محليًا)",
+  "search_filter_sender": "المرسل",
+  "search_filter_contains": "يحتوي على",
+  "search_filter_attachments": "مرفقات",
+  "search_filter_images": "صور",
+  "search_filter_voice": "رسائل صوتية",
+  "search_show_results": "عرض النتائج ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "بحث",
+  "search_filters_n": "فلاتر · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "القناة",
+  "search_filter_date": "التاريخ",
+  "search_filter_status": "حالة المحادثة",
+  "search_filter_assignee": "المسؤول",
+  "search_date_any": "أي وقت",
+  "search_date_today": "اليوم",
+  "search_date_7": "7 أيام",
+  "search_date_30": "30 يومًا",
+  "search_date_custom": "مخصص",
+  "search_sender_all": "الكل",
+  "search_sender_contact": "العميل",
+  "search_sender_me": "أنا",
+  "search_sender_colleagues": "الزملاء",
+  "search_sender_ai": "الذكاء الاصطناعي",
+  "search_sender_notes": "ملاحظات داخلية",
+  "search_status_all": "الكل",
+  "search_status_open": "مفتوحة",
+  "search_status_resolved": "محلولة",
+  "search_assignee_all": "الكل",
+  "search_assignee_me": "أنا",
+  "search_assignee_colleague": "زميل",
+  "search_sugg_unread": "غير مقروءة",
+  "search_sugg_awaiting": "بانتظار الرد",
+  "search_sugg_vip": "وسم: VIP",
+  "search_sugg_orders_today": "طلبات اليوم",
+  "search_recent_remove": "حذف {q} من السجل",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "تم مسح سجل البحث",
+  "search_results_announce": "{n} نتائج: {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} عميل",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} رسائل",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} مقال",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} محادثات",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "رسالة من {name}، {time}: {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "فتح المحادثة الأخيرة",
+  "search_new_chat": "محادثة جديدة",
+  "search_copy_number": "نسخ الرقم",
+  "search_copied": "تم نسخ الرقم",
+  "search_call": "اتصال",
+  "search_section_teammates": "الزملاء",
+  "search_no_chat_yet": "لا توجد محادثة سابقة مع هذا العميل",
+  "search_inserted": "تم إدراج الإجابة في الرد"
+}

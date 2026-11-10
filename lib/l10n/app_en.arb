@@ -1,0 +1,4544 @@
+{
+  "@@locale": "en",
+  "dashboard_greeting": "Hi, {name} 👋",
+  "@dashboard_greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_open": "Open conversations",
+  "dashboard_waiting_sla": "Waiting over SLA",
+  "dashboard_view_queue": "View queue",
+  "dashboard_first_response": "Avg. first response",
+  "dashboard_resolved_today": "Resolved today",
+  "dashboard_ai_rate": "Resolved by AI",
+  "dashboard_csat": "Customer satisfaction",
+  "dashboard_csat_scale": "out of 5",
+  "dashboard_vs_yesterday": "{delta} vs yesterday",
+  "@dashboard_vs_yesterday": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_volume_title": "Conversations today",
+  "dashboard_volume_a11y": "{total} conversations today, peak of {peak} at {hour}",
+  "@dashboard_volume_a11y": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "peak": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_channels_title": "By channel",
+  "dashboard_ai_usage_title": "AI usage",
+  "dashboard_ai_manage": "Manage",
+  "dashboard_ai_usage_value": "{used} of {quota} replies this month",
+  "@dashboard_ai_usage_value": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboard_team_title": "Team right now",
+  "dashboard_team_open": "{count, plural, =0{No chats} =1{1 chat} other{{count} chats}}",
+  "@dashboard_team_open": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notifications_title": "Notifications",
+  "notifications_mark_all": "Mark all as read",
+  "notifications_earlier": "Earlier",
+  "notifications_empty_title": "No notifications yet",
+  "notifications_empty_body": "We'll let you know when a chat is assigned to you or you're mentioned in a note.",
+  "knowledge_search": "Search knowledge",
+  "knowledge_search_hint": "Search answers…",
+  "knowledge_add": "Add answer",
+  "knowledge_filter_all": "All",
+  "knowledge_type_faq": "FAQs",
+  "knowledge_type_policy": "Policies",
+  "knowledge_type_product": "Products",
+  "knowledge_type_snippet": "Snippets",
+  "knowledge_type_website": "Website",
+  "knowledge_coverage_title": "What the AI knows",
+  "knowledge_coverage_body": "{total, plural, =1{1 answer} other{{total} answers}}, {enabled} enabled",
+  "@knowledge_coverage_body": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "enabled": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_coverage_top": "Most used: {title}",
+  "@knowledge_coverage_top": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_used": "{count, plural, =0{Not used yet} =1{Used once} other{Used {count} times}}",
+  "@knowledge_used": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_updated": "Updated {time}",
+  "@knowledge_updated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_disabled": "Off",
+  "knowledge_enabled_a11y": "Enable “{title}”",
+  "@knowledge_enabled_a11y": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_empty_title": "Your knowledge base is empty",
+  "knowledge_empty_body": "Add answers and policies so the AI can draft replies from them.",
+  "knowledge_empty_filtered": "No answers of this type",
+  "knowledge_no_results": "No results for “{query}”",
+  "@knowledge_no_results": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_edit_title_add": "Add answer",
+  "knowledge_edit_title_edit": "Edit answer",
+  "knowledge_edit_type": "Type",
+  "knowledge_edit_question": "Question",
+  "knowledge_edit_title_label": "Title",
+  "knowledge_edit_title_hint": "e.g. How long does delivery take?",
+  "knowledge_edit_body_label": "Answer",
+  "knowledge_edit_body_hint": "Write the answer the way you want the AI to say it…",
+  "knowledge_edit_counter": "{count} / {max}",
+  "@knowledge_edit_counter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_edit_keywords": "Keywords",
+  "knowledge_edit_keywords_hint": "Type a keyword and press enter",
+  "knowledge_edit_keyword_add": "Add keyword",
+  "knowledge_edit_enabled": "Available to the AI",
+  "knowledge_edit_enabled_sub": "When off, it won't be used in suggestions",
+  "knowledge_edit_preview_title": "How the AI will use it",
+  "knowledge_edit_preview_q": "The customer's question shows here",
+  "knowledge_edit_preview_a": "And the suggested reply based on your answer",
+  "knowledge_edit_error_title": "Title is required",
+  "knowledge_edit_error_body": "Write an answer of at least 10 characters",
+  "knowledge_edit_saved": "Answer saved",
+  "knowledge_edit_delete": "Delete answer",
+  "knowledge_edit_delete_title": "Delete this answer?",
+  "knowledge_edit_delete_body": "The AI will no longer use it to suggest replies.",
+  "knowledge_edit_deleted": "Answer deleted",
+  "knowledge_edit_discard_title": "Discard changes?",
+  "knowledge_edit_discard_body": "You have unsaved edits that will be lost if you leave now.",
+  "knowledge_edit_discard_confirm": "Discard and leave",
+  "account_section_admin": "Management",
+  "account_section_app": "App",
+  "account_whatsapp": "Your WhatsApp",
+  "account_whatsapp_connected": "Connected",
+  "account_whatsapp_disconnected": "Disconnected",
+  "account_channels": "Channels",
+  "account_ai_agent": "AI agent",
+  "account_team": "Team & users",
+  "account_subscription": "Subscription",
+  "account_notifications": "Notifications",
+  "account_language": "Language",
+  "account_appearance": "Appearance",
+  "account_theme_light": "Light",
+  "account_theme_dark": "Dark",
+  "account_theme_system": "Automatic",
+  "account_theme_system_sub": "Follows your device setting",
+  "account_help": "Help & guides",
+  "account_logout": "Log out",
+  "account_logout_title": "Log out?",
+  "account_logout_body": "You won't get conversation notifications on this device until you sign in again.",
+  "account_version": "Wavadesk {version}",
+  "@account_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "account_network_online": "Online",
+  "account_network_demo": "Demo connection state: {state}",
+  "@account_network_demo": {
+    "placeholders": {
+      "state": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_settings_title": "AI agent",
+  "ai_settings_enable": "Enable AI agent",
+  "ai_settings_status_on": "Active and suggesting replies",
+  "ai_settings_status_off": "Off",
+  "ai_settings_usage": "{used} of {quota} replies this month",
+  "@ai_settings_usage": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_settings_section_behavior": "Behavior",
+  "ai_settings_suggest": "Suggest replies",
+  "ai_settings_suggest_sub": "A draft is ready before you open the chat",
+  "ai_settings_auto": "Auto-reply",
+  "ai_settings_auto_sub": "Replies to unassigned chats without waiting",
+  "ai_settings_claimed": "Reply after claim",
+  "ai_settings_claimed_sub": "Keeps replying after an agent claims the chat",
+  "ai_settings_handoff": "Hand off on frustration",
+  "ai_settings_handoff_sub": "Passes the chat to the team if the customer seems upset",
+  "ai_settings_section_tone": "Reply tone",
+  "ai_settings_tone_friendly": "Friendly",
+  "ai_settings_tone_friendly_sub": "Warm and approachable",
+  "ai_settings_tone_formal": "Formal",
+  "ai_settings_tone_formal_sub": "Polite and professional",
+  "ai_settings_tone_concise": "Concise",
+  "ai_settings_tone_concise_sub": "Short, direct sentences",
+  "ai_settings_section_knowledge": "Knowledge source",
+  "ai_settings_knowledge": "Enabled answers",
+  "ai_settings_knowledge_footer": "The AI only uses your knowledge base and never makes things up.",
+  "whatsapp_title": "Your WhatsApp",
+  "whatsapp_status_connected": "Connected",
+  "whatsapp_status_disconnected": "Disconnected",
+  "whatsapp_since": "Connected since",
+  "whatsapp_messages_today": "Messages today",
+  "whatsapp_connected_tip": "Keep your phone online. If you log out of WhatsApp on the phone you'll need to scan the code again.",
+  "whatsapp_disconnect": "Disconnect",
+  "whatsapp_disconnect_title": "Disconnect WhatsApp?",
+  "whatsapp_disconnect_body": "Customer messages will stop reaching your inbox until you link the number again.",
+  "whatsapp_qr_a11y": "QR code to link WhatsApp",
+  "whatsapp_qr_expires": "The code expires in one minute",
+  "whatsapp_waiting_scan": "Waiting for your phone to scan…",
+  "whatsapp_steps_title": "How to link",
+  "whatsapp_step1": "Open WhatsApp on the business phone",
+  "whatsapp_step2": "Tap ⋮ then “Linked devices”",
+  "whatsapp_step3": "Choose “Link a device”",
+  "whatsapp_step4": "Point the camera at this code",
+  "whatsapp_simulate_scan": "Scan code (demo)",
+  "whatsapp_new_code": "Generate new code",
+  "whatsapp_connected_toast": "WhatsApp linked successfully",
+  "channels_title": "Channels",
+  "channels_section_connected": "Connected",
+  "channels_section_available": "Available",
+  "channels_connected": "Connected and receiving messages",
+  "channels_not_connected": "Not linked",
+  "channels_manage_on_web": "This channel is managed from the web dashboard",
+  "channels_footer": "Messages from every linked channel land in one inbox.",
+  "team_title": "Team & users",
+  "team_invite": "Invite a colleague",
+  "team_invite_sent": "Invite link sent",
+  "team_section_members": "{count, plural, =1{1 member} other{{count} members}}",
+  "@team_section_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "team_section_teams": "Teams",
+  "team_you": "{name} (you)",
+  "@team_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "team_members": "{count, plural, =1{1 member} other{{count} members}}",
+  "@team_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "subscription_title": "Subscription",
+  "subscription_current": "Current plan",
+  "subscription_plan_name": "Professional",
+  "subscription_price": "SAR 199 / month",
+  "subscription_renews": "Renews on {date}",
+  "@subscription_renews": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_section_usage": "Usage this month",
+  "subscription_ai_replies": "AI replies",
+  "subscription_agents": "Users",
+  "subscription_channels": "Channels",
+  "subscription_usage": "{used} / {total}",
+  "@subscription_usage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_upgrade": "Upgrade plan",
+  "subscription_invoices": "Invoices",
+  "subscription_upgrade_web": "We'll open the billing page on the web",
+  "notif_settings_title": "Notifications",
+  "notif_settings_section_push": "Notify me when",
+  "notif_settings_assigned": "A chat is assigned to me",
+  "notif_settings_assigned_sub": "By a colleague or a routing rule",
+  "notif_settings_mentions": "I'm mentioned in a note",
+  "notif_settings_mentions_sub": "When a colleague types @your-name",
+  "notif_settings_waiting": "Waiting time exceeded",
+  "notif_settings_waiting_sub": "A customer waits longer than the target",
+  "notif_settings_section_sound": "Sound",
+  "notif_settings_sound": "Notification sound",
+  "notif_settings_sound_sub": "Play a sound when a new message arrives",
+  "notif_settings_footer": "You won't get notifications while your status is “Away”.",
+  "help_title": "Help & guides",
+  "help_section_guides": "Guides",
+  "help_topic_claim": "Claiming and assigning chats",
+  "help_topic_ai": "How AI suggestions work",
+  "help_topic_whatsapp": "Linking a WhatsApp number",
+  "help_topic_knowledge": "Building your knowledge base",
+  "help_topic_snooze": "Snoozing and resolving",
+  "help_section_contact": "Contact us",
+  "help_contact_chat": "Chat with support",
+  "help_contact_chat_sub": "We usually reply within minutes",
+  "help_contact_email": "Email",
+  "help_opening": "Opening…",
+  "account_load_error": "Couldn't load",
+  "subscription_ends": "Ends on {date}",
+  "@subscription_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial_ends": "Trial ends on {date}",
+  "@subscription_trial_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial": "Trial",
+  "subscription_unlimited": "Unlimited",
+  "subscription_no_plan": "No plan",
+  "subscription_per_month": "{price} / month",
+  "@subscription_per_month": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_title": "AI agent",
+  "ai_master_switch": "Turn on AI",
+  "ai_state_on": "On",
+  "ai_state_off": "Off",
+  "ai_readonly": "Only admins can edit AI settings",
+  "ai_hero_answered": "{n} questions",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "answered this week · saved ~{h} hours",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "AI is off",
+  "ai_hero_off_body": "Turn it on to answer from your knowledge base",
+  "ai_hero_ready": "Ready to work",
+  "ai_hero_ready_body": "Hasn't answered yet — try it first",
+  "ai_hero_a11y": "{n} questions answered this week, view performance",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "Used {p}% of this month's replies",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "Before going live",
+  "ai_ready_kb": "Knowledge base has at least 10 answers ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "Working hours set",
+  "ai_ready_handoff": "Handoff rule enabled",
+  "ai_ready_tested": "Agent tested",
+  "ai_ready_done": "Done",
+  "ai_ready_missing": "Not done",
+  "ai_mode": "How it works",
+  "ai_mode_suggest": "Suggest only",
+  "ai_mode_suggest_sub": "Drafts replies; agents review and send",
+  "ai_mode_auto": "Auto-reply",
+  "ai_mode_auto_sub": "Replies instantly, hands off when needed",
+  "ai_mode_after": "After hours only",
+  "ai_mode_after_sub": "Auto-replies outside working hours",
+  "ai_mode_after_sub2": "and suggests during hours",
+  "ai_mode_needs_hours": "Set working hours first",
+  "ai_mode_needs_ready": "Finish the readiness checklist first",
+  "ai_recommended": "Recommended",
+  "ai_mode_changed": "Changed to \"{mode}\"",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "Undo",
+  "ai_tone": "Tone",
+  "ai_tone_friendly": "Friendly",
+  "ai_tone_formal": "Formal",
+  "ai_tone_concise": "Concise",
+  "ai_tone_sample_friendly": "Hi Noura! Delivery to Dammam is 25 SAR, free over 300. It arrives in 2–3 days!",
+  "ai_tone_sample_formal": "Welcome. Delivery to Dammam costs 25 SAR and is free for orders over 300 SAR, within 2–3 business days.",
+  "ai_tone_sample_concise": "Dammam delivery 25 SAR (free over 300) · 2–3 days.",
+  "ai_use_name": "Use the customer's name",
+  "ai_rules": "Rules",
+  "ai_hours": "Working hours",
+  "ai_hours_24": "24 hours",
+  "ai_hours_unset": "Not set",
+  "ai_handoff": "Handoff to agent",
+  "ai_handoff_sub": "On human request, complaint, or payment",
+  "ai_language": "Reply language",
+  "ai_lang_customer": "Customer's language",
+  "ai_lang_customer_sub": "Detected per message",
+  "ai_lang_ar": "Always Arabic",
+  "ai_lang_en": "Always English",
+  "ai_lang_style": "Style",
+  "ai_lang_msa": "Simple MSA",
+  "ai_lang_saudi": "Neutral Saudi dialect",
+  "ai_handoff_msg": "Handoff message",
+  "ai_handoff_msg_default": "I'll connect you with a colleague now, one moment please.",
+  "ai_var_customer": "Customer name",
+  "ai_var_return": "Return time",
+  "ai_save": "Save",
+  "ai_delay": "Auto-reply delay",
+  "ai_delay_instant": "Instant",
+  "ai_delay_30s": "After 30s",
+  "ai_delay_1m": "After 1 min",
+  "ai_delay_2m": "After 2 min",
+  "ai_delay_note": "The delay lets agents answer first in auto-reply",
+  "ai_perf": "Performance",
+  "ai_perf_resolution": "Answered without handoff",
+  "ai_perf_rating": "Positive rating",
+  "ai_perf_unanswered": "Unanswered questions",
+  "ai_perf_detail": "View detailed performance",
+  "ai_perf_week": "This week",
+  "ai_perf_answered": "Answered",
+  "ai_perf_handoffs": "Handoffs",
+  "ai_perf_reasons": "Top handoff reasons",
+  "ai_perf_sources": "Most used sources",
+  "ai_perf_none": "No data yet",
+  "ai_reason_human_request": "Asked for a human",
+  "ai_reason_complaint": "Complaint",
+  "ai_reason_payment": "Payment or refund",
+  "ai_reason_no_answer": "No answer found",
+  "ai_reason_low_confidence": "Low confidence",
+  "ai_reason_after_replies": "Replies without resolution",
+  "ai_reason_keyword": "Keyword: {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "Other",
+  "ai_advanced": "Advanced",
+  "ai_channels": "Enabled channels",
+  "ai_channels_none": "No channels",
+  "ai_channel_whatsapp": "WhatsApp",
+  "ai_channel_web": "Website",
+  "ai_channel_messenger": "Messenger",
+  "ai_instructions": "Extra instructions",
+  "ai_instructions_ph": "e.g. Don't mention wholesale prices; always ask for the order number before shipping questions",
+  "ai_instructions_empty": "None",
+  "ai_outside_kb": "Answer outside the knowledge base",
+  "ai_outside_kb_sub": "Not recommended — may give inaccurate info",
+  "ai_confidence": "Auto-send confidence threshold",
+  "ai_conf_low": "Low",
+  "ai_conf_med": "Medium",
+  "ai_conf_high": "High",
+  "ai_conf_low_sub": "Sends most replies automatically",
+  "ai_conf_med_sub": "Balance of speed and accuracy",
+  "ai_conf_high_sub": "Only sends sure replies; the rest are suggested or handed off",
+  "ai_team_styles": "Team rewrite styles",
+  "ai_style_add": "Add style",
+  "ai_style_name": "Style name",
+  "ai_style_instruction": "Instruction",
+  "ai_style_delete": "Delete",
+  "ai_styles_empty": "No styles yet",
+  "ai_audit": "Change log",
+  "ai_audit_row": "Changed {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "No changes yet",
+  "ai_test": "Test the agent in a sample chat",
+  "ai_test_title": "Test chat",
+  "ai_test_sub": "Won't be sent to any customer",
+  "ai_test_info": "You're the customer. Try real customer questions.",
+  "ai_test_why": "Why this reply?",
+  "ai_test_handoff": "In a real chat this would go to the team: {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "Restart",
+  "ai_test_channel": "Change channel",
+  "ai_test_p1": "How much is delivery?",
+  "ai_test_p2": "I want to return my order",
+  "ai_test_p3": "When are you open?",
+  "ai_test_p4": "I want to talk to someone",
+  "ai_test_hint": "Type your question as a customer…",
+  "ai_test_label": "AI",
+  "ai_test_error": "Couldn't get a reply. Try again.",
+  "ai_test_unsaved": "You have unsaved working-hours edits",
+  "ai_why_sources": "Sources",
+  "ai_why_no_sources": "No knowledge base sources used",
+  "ai_why_confidence": "Confidence",
+  "ai_why_rule": "Rule",
+  "ai_why_tone": "Tone",
+  "ai_off_title": "Turn off AI?",
+  "ai_off_body": "It will stop replying and suggesting. Chats it's handling will go to the team.",
+  "ai_off_handling": "Handling {n} chats now",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "Turn off",
+  "ai_cancel": "Cancel",
+  "ai_kb_first_title": "Add your knowledge base first",
+  "ai_kb_first_body": "AI only answers from your info. Add at least 10 answers.",
+  "ai_kb_add": "Add answers",
+  "ai_enable_suggest": "Enable in suggest-only mode",
+  "ai_auto_title": "AI will reply to customers directly",
+  "ai_auto_b1": "Answers only from your knowledge base",
+  "ai_auto_b2": "Hands off by your rules",
+  "ai_auto_b3": "You can turn it off anytime",
+  "ai_auto_tested": "I tested the agent",
+  "ai_auto_try": "Try now",
+  "ai_auto_confirm": "Enable auto-reply",
+  "ai_outside_title": "Allow answers outside the knowledge base?",
+  "ai_outside_body": "AI may give incorrect info about your products or prices.",
+  "ai_allow": "Allow",
+  "ai_plan_off": "AI isn't available on your plan",
+  "ai_view_plans": "View plans",
+  "ai_quota_out": "Monthly replies used — suggest-only until {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "Couldn't save change",
+  "ai_retry": "Retry",
+  "ai_conflict": "{name} just changed the settings",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "Someone else just changed the settings",
+  "ai_offline": "Editing requires internet",
+  "ai_load_error": "Couldn't load AI settings",
+  "ai_saved": "Saved",
+  "ai_hours_247": "Open 24/7",
+  "ai_hours_closed": "Closed",
+  "ai_hours_add_range": "+ Shift",
+  "ai_hours_copy_all": "Copy to all days",
+  "ai_hours_timezone": "Time zone",
+  "ai_hours_holidays": "Public holidays",
+  "ai_hours_err_order": "End must be after start",
+  "ai_hours_err_overlap": "Shifts overlap",
+  "ai_hours_err_max": "At most 2 shifts",
+  "ai_hours_start": "From",
+  "ai_hours_end": "To",
+  "ai_hours_discard": "Discard changes?",
+  "ai_hours_discard_body": "You haven't saved the working hours.",
+  "ai_hours_discard_confirm": "Discard",
+  "ai_day_sat": "Saturday",
+  "ai_day_sun": "Sunday",
+  "ai_day_mon": "Monday",
+  "ai_day_tue": "Tuesday",
+  "ai_day_wed": "Wednesday",
+  "ai_day_thu": "Thursday",
+  "ai_day_fri": "Friday",
+  "ai_ho_intro": "The AI hands the chat to the team automatically when:",
+  "ai_ho_human": "The customer asks for a person",
+  "ai_ho_always": "Always on",
+  "ai_ho_complaint": "Complaint or upset customer",
+  "ai_ho_payment": "Payment or refund topic",
+  "ai_ho_no_answer": "No answer in the knowledge base",
+  "ai_ho_low_conf": "Low confidence in the answer",
+  "ai_ho_after_n": "After {n} replies without resolution",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "Specific words",
+  "ai_ho_keyword_add": "Add a word…",
+  "ai_ho_target": "Hand off to?",
+  "ai_ho_target_unassigned": "Unassigned (first to claim)",
+  "ai_ho_target_team": "A specific team",
+  "ai_ho_target_last": "Last agent who helped the customer",
+  "ai_ho_after_hours": "Outside working hours",
+  "ai_ho_tell_return": "Tell the customer when you're back",
+  "ai_ho_notify": "Hand off and notify the team",
+  "rw_title": "Improve reply",
+  "rw_subtitle": "Pick a style and AI will rewrite it",
+  "rw_original": "Your original",
+  "rw_edit": "Edit",
+  "rw_more": "More",
+  "rw_selection_hint": "Only the selected part will be replaced",
+  "rw_style_professional": "More professional",
+  "rw_style_shorter": "Shorter",
+  "rw_style_friendlier": "Friendlier",
+  "rw_style_apology": "Apology",
+  "rw_style_fix": "Fix spelling",
+  "rw_style_to_en": "Translate to English",
+  "rw_style_to_ar": "Translate to Arabic",
+  "rw_style_more": "More",
+  "rw_style_formal": "Very formal",
+  "rw_style_saudi": "Saudi dialect",
+  "rw_style_msa": "Modern Standard Arabic",
+  "rw_style_greeting": "Add greeting & sign-off",
+  "rw_style_bullets": "Make bullet points",
+  "rw_style_sales": "More persuasive",
+  "rw_style_simple": "Simpler & clearer",
+  "rw_team_styles": "Your team's styles",
+  "rw_customer_prefers": "Customer prefers {language}",
+  "@rw_customer_prefers": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_result": "Suggested wording",
+  "rw_writing": "Rewriting…",
+  "rw_streaming": "Writing…",
+  "rw_edited": "Edited manually",
+  "rw_name_added": "Customer name added",
+  "rw_fact_warning": "Check: AI added info not in your reply",
+  "rw_chars": "{n} chars ({delta})",
+  "@rw_chars": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_over_limit": "Longer than the channel allows",
+  "rw_show_diff": "Show changes",
+  "rw_hide_diff": "Hide changes",
+  "rw_use": "Use this reply",
+  "rw_use_as_is": "Use as is",
+  "rw_rerun": "Rewrite again",
+  "rw_regenerate": "Another version",
+  "rw_max_versions": "Maximum attempts reached",
+  "rw_no_change": "Your reply is fine — no changes",
+  "rw_error": "Couldn't rewrite",
+  "rw_retry": "Retry",
+  "rw_rate_limited": "Usage limit reached, try again in {n}s",
+  "@rw_rate_limited": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_plan_limit": "Rewrite isn't available on your plan",
+  "rw_view_plans": "View plans",
+  "rw_blocked": "This text can't be rewritten",
+  "rw_offline": "Internet connection required",
+  "rw_too_long": "Text too long to rewrite (2,000 max)",
+  "rw_empty_hint": "Write a reply first or use the AI suggestion",
+  "rw_toolbar": "Improve with AI",
+  "rw_lang_ar": "Arabic",
+  "rw_lang_en": "English",
+  "rw_copy": "Copy",
+  "rw_copied": "Copied",
+  "rw_a11y_ready": "Suggested wording ready: {text}",
+  "@rw_a11y_ready": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_a11y_cached": "Generated",
+  "rw_a11y_version": "Version {i} of {n}",
+  "@rw_a11y_version": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_a11y_prev": "Previous",
+  "rw_a11y_next": "Next",
+  "rw_a11y_edit_result": "Tap to edit the wording, long-press to copy",
+  "as_title": "Assign conversation",
+  "as_title_bulk": "Assign {n} conversations",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "Current: {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "Search a teammate or team",
+  "as_no_results": "No results for \"{q}\"",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "All",
+  "as_filter_available": "Available ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "My team",
+  "as_suggested": "Suggested",
+  "as_teammates": "Teammates",
+  "as_teams": "Teams",
+  "as_ai_section": "AI",
+  "as_me": "Me",
+  "as_badge_current": "Current",
+  "as_badge_capacity": "At limit",
+  "as_online_m": "Available",
+  "as_online_f": "Available",
+  "as_busy_m": "Busy",
+  "as_busy_f": "Busy",
+  "as_away": "Away",
+  "as_last_seen": "Last seen {t} ago",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} open conversations",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} members",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} available",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "Goes to least busy member",
+  "as_routing_rr": "Round-robin",
+  "as_routing_manual": "Stays in team queue",
+  "as_team_none_available": "No one available — it will wait in the team queue",
+  "as_ai_name": "AI agent",
+  "as_ai_sub": "Replies automatically and hands off when needed",
+  "as_ai_unavailable": "Knowledge base is too small",
+  "as_reason_handled": "Handled this customer before",
+  "as_reason_handled_f": "Handled this customer before",
+  "as_reason_skill": "{skill} expert",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "{skill} expert",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "Least busy",
+  "as_note": "Note for teammate (optional)",
+  "as_note_q1": "Customer needs a fast reply",
+  "as_note_q2": "Payment issue",
+  "as_note_q3": "Follow up tomorrow",
+  "as_pick": "Pick a teammate or team",
+  "as_assign_to": "Assign to {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "Claim conversation",
+  "as_assign_ai": "Assign to AI",
+  "as_assign_bulk_to": "Assign {n} to {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "Unassign (back to unassigned)",
+  "as_busy_hint": "Busy — reply may be delayed",
+  "as_busy_hint_f": "Busy — reply may be delayed",
+  "as_away_hint": "Away — they'll be notified",
+  "as_away_hint_f": "Away — they'll be notified",
+  "as_capacity_reached": "At maximum ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "Not assignable",
+  "as_taken_live": "{name} just took it",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "Reassign to {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "Assigning requires internet",
+  "as_none_available": "No teammates available",
+  "as_show_all": "Show all",
+  "as_done": "Assigned to {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "Assigned {ok} of {n}",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "View errors",
+  "as_undo": "Undo",
+  "as_forbidden": "You can't assign to this teammate",
+  "as_error": "Couldn't assign. Try again.",
+  "as_retry": "Retry",
+  "as_event_assigned": "You assigned this to {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "{actor} undid the assignment",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "The conversation was resolved",
+  "as_queued_team": "Waiting in the {team} queue",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "Conversation is now unassigned",
+  "as_errors_title": "{n} couldn't be assigned",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "Already assigned to them",
+  "as_err_resolved": "Conversation is resolved",
+  "as_err_state": "Owner changed",
+  "as_err_generic": "Unexpected error",
+  "as_expand_team": "Show {team} members",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "selected",
+  "as_load_error": "Couldn't load teammates",
+  "login_title": "Welcome back",
+  "login_subtitle": "Sign in to follow your customer conversations from anywhere.",
+  "login_identifier_label": "Email or phone",
+  "login_identifier_hint": "name@company.com",
+  "login_password_label": "Password",
+  "login_password_show": "Show password",
+  "login_password_hide": "Hide password",
+  "login_forgot": "Forgot password?",
+  "login_submit": "Sign in",
+  "login_or": "or",
+  "login_biometric_face": "Sign in with Face ID",
+  "login_biometric_finger": "Sign in with fingerprint",
+  "login_biometric_reason": "Sign in to Wavadesk",
+  "login_biometric_locked": "Biometrics are temporarily locked. Use your password.",
+  "login_no_account": "Don't have an account?",
+  "login_start_trial": "Start a free 7-day trial",
+  "login_offline": "No internet connection",
+  "login_err_invalid": "Incorrect email or password.",
+  "login_err_disabled": "This account is disabled. Contact your workspace admin.",
+  "login_err_suspended": "Workspace subscription is suspended.",
+  "login_manage_subscription": "Manage subscription",
+  "login_err_locked": "Too many attempts. Try again in {time}.",
+  "@login_err_locked": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "login_err_network": "Couldn't connect. Check your internet and try again.",
+  "login_err_server": "Something went wrong on our side. Try again shortly.",
+  "login_retry": "Retry",
+  "login_val_identifier_required": "Enter your email or phone",
+  "login_val_email_invalid": "Invalid email format",
+  "login_val_phone_invalid": "Invalid phone number",
+  "login_val_password_required": "Enter your password",
+  "login_val_password_short": "At least 8 characters",
+  "login_bio_sheet_title": "Sign in faster next time",
+  "login_bio_sheet_body": "Use Face ID instead of your password.",
+  "login_bio_sheet_body_finger": "Use your fingerprint instead of your password.",
+  "login_bio_sheet_enable": "Enable Face ID",
+  "login_bio_sheet_enable_finger": "Enable fingerprint",
+  "login_bio_sheet_later": "Not now",
+  "auth_coming_soon_title": "Coming soon",
+  "auth_forgot_placeholder": "Password recovery is coming in a future update.",
+  "auth_forgot_placeholder_for": "Password recovery for {identifier} is coming in a future update.",
+  "@auth_forgot_placeholder_for": {
+    "placeholders": {
+      "identifier": {
+        "type": "String"
+      }
+    }
+  },
+  "auth_2fa_title": "Verification code",
+  "auth_2fa_placeholder": "Two-factor code entry is coming in a future update.",
+  "auth_workspace_title": "Choose a workspace",
+  "auth_workspace_placeholder": "Your account belongs to more than one workspace. Picking one is coming in a future update.",
+  "chat_ai_suggestion": "AI suggestion",
+  "chat_ai_source": "From: {title}",
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ai_send": "Send",
+  "chat_ai_edit": "Edit",
+  "chat_ai_more": "More",
+  "chat_ai_low_conf": "Review before sending",
+  "chat_ai_writing": "Writing suggestion…",
+  "chat_ai_no_answer": "AI found no answer in the knowledge base",
+  "chat_ai_add_answer": "Add answer",
+  "chat_ai_ready_pill": "Suggestion ready",
+  "chat_placeholder": "Write a reply…",
+  "chat_note_placeholder": "Note for your team — customer won't see it",
+  "chat_mode_reply": "Reply",
+  "chat_mode_note": "Internal note",
+  "chat_attach_media": "Photo/Video",
+  "chat_attach_camera": "Camera",
+  "chat_attach_file": "File",
+  "chat_attach_location": "Location",
+  "chat_attach_quick": "Quick replies",
+  "chat_attach_template": "WhatsApp template",
+  "chat_attach_product": "Product",
+  "chat_record_cancel_hint": "Slide to cancel",
+  "chat_claim": "Claim conversation",
+  "chat_assign_colleague": "Assign to a colleague",
+  "chat_viewing_now": "{name} is viewing this now",
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_waiting_claim": "Waiting to be claimed",
+  "chat_claimed_before": "{name} claimed it first",
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_colleague": "Assigned to {name}",
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_request": "Request transfer",
+  "chat_ro_resolved": "Conversation resolved",
+  "chat_reopen": "Reopen",
+  "chat_ro_ai": "AI is handling this conversation",
+  "chat_take_over": "Take over",
+  "chat_ro_blocked": "This contact is blocked",
+  "chat_unblock": "Unblock",
+  "chat_ro_past": "Past conversation — read only",
+  "chat_banner_offline": "Offline — messages will send when you reconnect",
+  "chat_banner_window_closed": "24-hour window closed — only approved templates",
+  "chat_choose_template": "Choose template",
+  "chat_banner_window_soon": "Reply window closes in {t}",
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_banner_channel_down": "WhatsApp disconnected — messages won't deliver",
+  "chat_reconnect": "Reconnect",
+  "chat_snoozed_until": "Snoozed until {t}",
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unsnooze": "Unsnooze",
+  "composer_attach": "Attach",
+  "composer_send": "Send",
+  "composer_send_note": "Send note",
+  "composer_record": "Hold to record a voice message",
+  "composer_recording": "Recording",
+  "composer_record_stop": "Stop",
+  "composer_record_send": "Send recording",
+  "composer_record_cancelled": "Recording cancelled",
+  "composer_record_locked": "Recording hands-free",
+  "composer_record_slide_up": "Slide up to lock",
+  "composer_ai_rewrite": "Improve reply with AI",
+  "composer_field_label": "Write a reply",
+  "composer_note_field_label": "Write an internal note",
+  "composer_template": "Template",
+  "composer_template_only": "Window closed — send an approved template",
+  "composer_colleague_typing_note": "{name} is writing a note…",
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_colleague_viewing": "{name} is also viewing",
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_quick_title": "Quick replies",
+  "composer_quick_empty": "No matching quick replies",
+  "composer_mention_title": "Mention a teammate",
+  "composer_reply_to": "Replying to {name}",
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_cancel_reply": "Cancel reply",
+  "composer_remove_attachment": "Remove attachment",
+  "composer_uploading": "Uploading {percent}%",
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "composer_customer": "Customer",
+  "composer_location_sample": "Al Malqa, Riyadh",
+  "aicard_close": "Collapse suggestion",
+  "aicard_regenerate": "Regenerate suggestion",
+  "aicard_less": "Less",
+  "aicard_open_pill": "Show AI suggestion",
+  "claimbar_waiting_minutes": "{n}m",
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claimbar_viewers_more": "{name} and {count, plural, =1{1 other} other{{count} others}} are viewing",
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "readonly_take_instead": "Take over instead",
+  "readonly_add_note": "Add internal note",
+  "banner_connecting": "Connecting…",
+  "sys_called": "{actor} called the customer",
+  "@sys_called": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_called_me": "You called the customer",
+  "snooze_title": "Snooze conversation",
+  "snooze_one_hour": "In 1 hour",
+  "snooze_three_hours": "In 3 hours",
+  "snooze_tomorrow": "Tomorrow 9 AM",
+  "snooze_next_week": "Next week",
+  "snooze_custom": "Custom",
+  "sys_claimed": "{actor} claimed the conversation",
+  "@sys_claimed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_claimed_me": "You claimed the conversation",
+  "sys_assigned": "{actor} assigned the conversation to {target}",
+  "@sys_assigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_assigned_me": "You assigned the conversation to {target}",
+  "@sys_assigned_me": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned": "{actor} released the conversation",
+  "@sys_unassigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned_me": "You released the conversation",
+  "sys_ai_handoff": "AI handed the conversation to the team: {reason}",
+  "@sys_ai_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused": "{actor} paused AI for this conversation",
+  "@sys_ai_paused": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused_me": "You paused AI for this conversation",
+  "sys_ai_resumed": "{actor} turned AI back on for this conversation",
+  "@sys_ai_resumed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_resumed_me": "You turned AI back on for this conversation",
+  "sys_resolved": "{actor} resolved the conversation",
+  "@sys_resolved": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_resolved_me": "You resolved the conversation",
+  "sys_reopened": "The conversation was reopened",
+  "sys_snoozed": "{actor} snoozed the conversation until {time}",
+  "@sys_snoozed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_snoozed_me": "You snoozed the conversation until {time}",
+  "@sys_snoozed_me": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority": "{actor} changed the priority to {value}",
+  "@sys_priority": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority_me": "You changed the priority to {value}",
+  "@sys_priority_me": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added": "{actor} added the tag “{tag}”",
+  "@sys_tag_added": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added_me": "You added the tag “{tag}”",
+  "@sys_tag_added_me": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_window_closed": "The 24-hour reply window closed",
+  "sys_blocked": "{actor} blocked this contact",
+  "@sys_blocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_blocked_me": "You blocked this contact",
+  "sys_unblocked": "{actor} unblocked this contact",
+  "@sys_unblocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unblocked_me": "You unblocked this contact",
+  "sys_started": "Conversation started on {channel}",
+  "@sys_started": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "msgaction_add_to_profile": "Add to customer profile",
+  "msgaction_added_to_profile": "Note added to the customer profile",
+  "chat_new_messages": "{n, plural, =1{1 new message} other{{n} new messages}}",
+  "@chat_new_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chat_ai_reply_label": "AI reply",
+  "chat_note_label": "Internal note · {name}",
+  "@chat_note_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_failed": "Not sent",
+  "chat_retry": "Retry",
+  "chat_delete": "Delete",
+  "chat_edited": "edited",
+  "chat_deleted": "This message was deleted",
+  "chat_unsupported": "Unsupported message — open in WhatsApp",
+  "chat_transcribe": "Transcribe",
+  "bubble_template_label": "Template: {name}",
+  "@bubble_template_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_show_all": "Show all",
+  "bubble_show_less": "Show less",
+  "bubble_save_contact": "Save",
+  "bubble_contact_saved": "Contact saved",
+  "bubble_play": "Play voice message",
+  "bubble_pause": "Pause voice message",
+  "bubble_speed": "Playback speed {speed}",
+  "@bubble_speed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_voice_summary": "{n, plural, =1{Voice message, 1 second} other{Voice message, {n} seconds}}",
+  "@bubble_voice_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_image_from": "Photo from {name}",
+  "@bubble_image_from": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_album_summary": "{n, plural, =1{1 photo} other{{n} photos}}",
+  "@bubble_album_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_video_summary": "Video {duration}",
+  "@bubble_video_summary": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_play_video": "Play video",
+  "bubble_video_unavailable": "Video preview isn't available in sample data",
+  "bubble_download": "Download file",
+  "bubble_downloaded": "File downloaded",
+  "bubble_open_maps": "Open location in maps",
+  "bubble_transcribing": "Transcribing…",
+  "bubble_transcript": "Transcript",
+  "bubble_delivery_sending": "Sending",
+  "bubble_delivery_sent": "Sent",
+  "bubble_delivery_delivered": "Delivered",
+  "bubble_delivery_read": "Read",
+  "bubble_reply_to": "Reply to {name}",
+  "@bubble_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_viewer_share": "Share",
+  "bubble_viewer_save": "Save",
+  "bubble_viewer_sample": "This is a sample image and can't be shared or saved",
+  "bubble_reactions": "Reactions: {emojis}",
+  "@bubble_reactions": {
+    "placeholders": {
+      "emojis": {
+        "type": "String"
+      }
+    }
+  },
+  "chatlist_jump_latest": "Jump to the latest message",
+  "chatlist_loading_older": "Loading older messages",
+  "chatlist_typing": "typing…",
+  "msgaction_reply": "Reply",
+  "msgaction_copy": "Copy",
+  "msgaction_copied": "Message copied",
+  "msgaction_forward": "Forward",
+  "msgaction_forward_soon": "Forwarding is coming soon",
+  "msgaction_save_kb": "Save to knowledge base",
+  "msgaction_info": "Info",
+  "msgaction_info_title": "Message info",
+  "msgaction_info_sent": "Sent at",
+  "msgaction_info_status": "Status",
+  "msgaction_info_channel": "Channel",
+  "msgaction_info_via": "Sent via",
+  "msgaction_via_manual": "Typed manually",
+  "msgaction_via_ai_suggestion": "AI suggestion",
+  "msgaction_via_ai_edited": "Edited AI suggestion",
+  "msgaction_via_quick_reply": "Quick reply",
+  "msgaction_via_template": "Approved template",
+  "msgaction_delete_title": "Delete message?",
+  "msgaction_delete_body": "The message will be deleted for everyone where the channel allows it. This can't be undone.",
+  "msgaction_rate": "Rate reply",
+  "msgaction_rate_up": "Helpful reply",
+  "msgaction_rate_down": "Unhelpful reply",
+  "msgaction_rated": "Thanks — the AI will learn from your rating",
+  "msgaction_more_reactions": "More reactions",
+  "msgaction_pick_reaction": "Pick a reaction",
+  "msgaction_react": "React {emoji}",
+  "@msgaction_react": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_load_failed": "Couldn't load this conversation",
+  "chatscreen_not_found": "We couldn't find this conversation",
+  "chatscreen_action_failed": "Couldn't complete that. Try again.",
+  "chatscreen_taken_from_me": "The conversation was assigned to {name}",
+  "@chatscreen_taken_from_me": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_claimed_by": "Claimed by {name}",
+  "@chatscreen_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_note": "@{name} Could you transfer this conversation to me so I can follow up?",
+  "@chatscreen_transfer_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_sent": "Transfer request sent to {name}",
+  "@chatscreen_transfer_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_title": "Take over from a teammate?",
+  "chatscreen_takeover_body": "The conversation will be assigned to you instead of {name}, and they'll be notified.",
+  "@chatscreen_takeover_body": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_confirm": "Take over",
+  "chat_online": "Online",
+  "chat_last_seen": "Last seen {time}",
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_typing": "typing…",
+  "chat_assigned_you": "Assigned to you",
+  "chat_assigned_to": "Assigned to {name}",
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unassigned": "Unassigned",
+  "chat_ai_handling": "AI is handling",
+  "chat_resolve": "Resolve conversation",
+  "chat_resolved_toast": "Conversation resolved",
+  "chat_undo": "Undo",
+  "chatbar_browsing": "Browsing: {page}",
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_back_unread": "{n, plural, =1{Back, 1 other unread conversation} other{Back, {n} other unread conversations}}",
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chatbar_open_profile": "Open {name}'s profile",
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_call": "Call",
+  "chatbar_more": "Conversation actions",
+  "chatbar_call_phone": "Phone call",
+  "chatbar_call_whatsapp": "WhatsApp call",
+  "chatbar_call_failed": "Couldn't start a call on this device",
+  "strip_snoozed_until": "Snoozed until {t}",
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_order": "Order {ref}",
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_no_store_integration": "No store integration yet",
+  "strip_add_tag": "Tag",
+  "snoozepick_subtitle": "The conversation comes back to your list at that time",
+  "templates_title": "Approved templates",
+  "templates_subtitle": "WhatsApp templates approved by Meta",
+  "templates_empty": "No approved templates yet",
+  "templates_sent": "Template sent",
+  "actions_assign": "Assign",
+  "actions_change_owner": "Assign / change owner",
+  "actions_unassign": "Release conversation",
+  "actions_unassigned_toast": "Moved back to Unassigned",
+  "actions_snooze": "Snooze",
+  "actions_snoozed_toast": "Conversation snoozed",
+  "actions_priority": "Priority",
+  "actions_tag": "Add tag",
+  "actions_tag_subtitle": "Pick tags or add a new one",
+  "actions_tag_new_hint": "New tag",
+  "actions_tag_add": "Add tag",
+  "actions_ai_pause": "Pause AI for this conversation",
+  "actions_ai_resume": "Turn AI on for this conversation",
+  "actions_ai_paused_toast": "AI paused for this conversation",
+  "actions_ai_resumed_toast": "AI turned on for this conversation",
+  "actions_mark_unread": "Mark as unread",
+  "actions_export": "Export conversation",
+  "actions_export_note": "Internal note",
+  "actions_exported_toast": "Conversation text copied — paste it anywhere",
+  "actions_block": "Block contact",
+  "actions_unblock": "Unblock contact",
+  "actions_block_title": "Block {name}?",
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_block_body": "You won't receive messages from this contact and the conversation will close. You can unblock later.",
+  "actions_blocked_toast": "Contact blocked",
+  "actions_unblocked_toast": "Contact unblocked",
+  "claim_button": "Claim conversation",
+  "claim_button_hint": "It will be assigned to you and you can reply",
+  "claim_region": "Claim conversation",
+  "claim_assign_colleague": "Assign to a colleague",
+  "claim_ai_takeover": "Let AI handle it",
+  "claim_ai_takeover_done": "The conversation was handed to the AI agent",
+  "claim_waiting": "Waiting to be claimed",
+  "claim_viewer_one_f": "{name} is viewing this now",
+  "@claim_viewer_one_f": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_one_m": "{name} is viewing this now",
+  "@claim_viewer_one_m": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_two": "{a} and {b} are viewing",
+  "@claim_viewer_two": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_many": "{n, plural, =1{{a} and 1 other are viewing} other{{a} and {n} others are viewing}}",
+  "@claim_viewer_many": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_sec": "{n}s ago",
+  "@claim_viewing_since_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_min": "{n}m ago",
+  "@claim_viewing_since_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_sec": "{n}s",
+  "@claim_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_min": "{n}m",
+  "@claim_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_hm": "{h}h {m}m",
+  "@claim_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_sec": "{n, plural, =1{Waiting for 1 second} other{Waiting for {n} seconds}}",
+  "@claim_a11y_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_min": "{n, plural, =1{Waiting for 1 minute} other{Waiting for {n} minutes}}",
+  "@claim_a11y_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_hm": "Waiting for {h} hours {m} minutes",
+  "@claim_a11y_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_success_event": "You claimed the conversation",
+  "claim_conflict": "{name} claimed it first",
+  "@claim_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_taken_live": "{name} claimed this conversation",
+  "@claim_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_assigned_to_you": "{name} assigned this to you",
+  "@claim_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_resolved_live": "{name} resolved the conversation",
+  "@claim_resolved_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_network_error": "Couldn't claim. Check your connection and try again.",
+  "claim_retry": "Retry",
+  "claim_forbidden": "You don't have permission to claim this",
+  "claim_team_only": "This conversation belongs to {team}",
+  "@claim_team_only": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_offline_hint": "Claiming requires an internet connection",
+  "claim_capacity_hint": "You have {n} open conversations (limit {max})",
+  "@claim_capacity_hint": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_reached": "You've reached your conversation limit",
+  "claim_away_title": "Your status: Away",
+  "claim_away_body": "Claiming will set your status to Available.",
+  "claim_away_confirm": "Claim and set me Available",
+  "claim_capacity_title": "You have {n} open conversations",
+  "@claim_capacity_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_body": "Claim one more?",
+  "claim_capacity_confirm": "Claim anyway",
+  "claim_cancel": "Cancel",
+  "claim_assigned_toast": "Assigned to {name}",
+  "@claim_assigned_toast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_undo": "Undo",
+  "claim_reply_placeholder": "Type to claim and reply…",
+  "claim_short": "Claim",
+  "claim_handoff_event": "AI handed this to the team: {reason}",
+  "@claim_handoff_event": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_reason_payment": "Payment issue",
+  "claim_reason_human": "Asked for a human",
+  "claim_reason_complaint": "Complaint",
+  "claim_reason_no_answer": "Unanswered question",
+  "claim_reason_refund": "Refund request",
+  "claim_reason_other": "Other",
+  "claim_push_title": "New conversation waiting",
+  "claim_push_action": "Claim",
+  "claim_push_success": "You claimed the chat with {customer}",
+  "@claim_push_success": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_add_note": "Add internal note",
+  "conversations_segment_mine": "Mine",
+  "conversations_segment_unassigned": "Unassigned",
+  "conversations_segment_all": "All",
+  "conversations_filter_all": "All",
+  "conversations_filter_unread": "Unread",
+  "conversations_filter_awaiting": "Awaiting reply",
+  "conversations_filter_ai": "AI replied",
+  "conversations_filter_closed": "Closed",
+  "conversations_filter_more": "Filters",
+  "conversations_channel_any": "All channels",
+  "conversations_priority_any": "All priorities",
+  "conversations_notifications": "Notifications",
+  "conversations_new_message": "New message",
+  "conversations_exit_selection": "Exit selection",
+  "conversations_selected_count": "{count, plural, =1{1 selected} other{{count} selected}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "Assign selected",
+  "conversations_bulk_resolve": "Resolve selected",
+  "conversations_bulk_resolved": "{count, plural, =1{1 conversation resolved} other{{count} conversations resolved}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "Conversation resolved",
+  "conversations_empty_mine_title": "No conversations assigned to you",
+  "conversations_empty_mine_body": "Claim one from Unassigned to start replying.",
+  "conversations_empty_mine_action": "Show unassigned",
+  "conversations_empty_filters_title": "No conversations match the filters",
+  "conversations_empty_filters_body": "Try changing or clearing the filters to see everything.",
+  "conversations_empty_filters_action": "Clear filters",
+  "conversations_empty_done_title": "You're all caught up",
+  "conversations_empty_done_body": "Nothing needs you right now. We'll let you know when a new message arrives.",
+  "tile_you_prefix": "You: ",
+  "tile_ai_reply": "AI reply",
+  "tile_ai_ready": "Suggestion ready",
+  "tile_typing": "Typing…",
+  "tile_snoozed_until": "Snoozed until {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "Resolve",
+  "tile_swipe_snooze": "Snooze",
+  "tile_swipe_assign": "Assign",
+  "filters_title": "Filters",
+  "filters_channel": "Channel",
+  "filters_status": "Status",
+  "filters_priority": "Priority",
+  "filters_assignee": "Assignee",
+  "filters_assignee_all": "Everyone",
+  "filters_assignee_me": "Me",
+  "filters_assignee_colleague": "A colleague",
+  "filters_assignee_ai": "AI",
+  "filters_assignee_unassigned": "Unassigned",
+  "filters_date": "Date",
+  "filters_date_any": "Any time",
+  "filters_date_today": "Today",
+  "filters_date_7": "7 days",
+  "filters_date_30": "30 days",
+  "filters_date_custom": "Custom",
+  "filters_tags": "Tags",
+  "filters_show": "{count, plural, =0{No conversations} =1{Show 1 conversation} other{Show {count} conversations}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "New message",
+  "newmsg_subtitle": "Start a WhatsApp conversation with an approved template",
+  "newmsg_name": "Customer name",
+  "newmsg_name_hint": "Optional",
+  "newmsg_phone": "Mobile number",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "Enter a valid mobile number with country code",
+  "newmsg_template": "Template",
+  "newmsg_template_error": "Choose an approved template to send",
+  "newmsg_send": "Send template",
+  "app_name": "Wavadesk",
+  "tab_conversations": "Conversations",
+  "tab_dashboard": "Dashboard",
+  "tab_knowledge": "Knowledge",
+  "tab_account": "Account",
+  "channel_whatsapp": "WhatsApp",
+  "channel_web": "Website chat",
+  "channel_messenger": "Messenger",
+  "channel_instagram": "Instagram",
+  "channel_email": "Email",
+  "channel_telegram": "Telegram",
+  "channel_sms": "SMS",
+  "channel_other": "Other channel",
+  "status_open": "Open",
+  "status_pending": "Pending",
+  "status_waiting": "Waiting",
+  "status_snoozed": "Snoozed",
+  "status_resolved": "Resolved",
+  "status_closed": "Closed",
+  "status_ai": "Handled by AI",
+  "priority_urgent": "Urgent",
+  "priority_high": "High",
+  "priority_medium": "Medium",
+  "priority_low": "Low",
+  "presence_online": "Available",
+  "presence_busy": "Busy",
+  "presence_away": "Away",
+  "role_admin": "Admin",
+  "role_supervisor": "Supervisor",
+  "role_agent": "Support agent",
+  "ownership_mine": "Assigned to you",
+  "ownership_unassigned": "Unassigned",
+  "ownership_colleague": "Assigned to {name}",
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ownership_ai": "Handled by AI",
+  "media_image": "Photo",
+  "media_voice": "Voice message",
+  "media_file": "File",
+  "media_location": "Location",
+  "media_album": "Photo album",
+  "media_video": "Video",
+  "media_contact": "Contact",
+  "media_sticker": "Sticker",
+  "media_template": "Template",
+  "media_email": "Email",
+  "media_deleted": "Deleted message",
+  "media_unsupported": "Unsupported message",
+  "common_cancel": "Cancel",
+  "common_save": "Save",
+  "common_undo": "Undo",
+  "common_retry": "Retry",
+  "common_close": "Close",
+  "common_back": "Back",
+  "common_clear": "Clear",
+  "common_done": "Done",
+  "common_search": "Search",
+  "common_clear_search": "Clear search",
+  "common_more": "More",
+  "common_edit": "Edit",
+  "common_delete": "Delete",
+  "common_confirm": "Confirm",
+  "common_you": "You",
+  "common_loading": "Loading…",
+  "common_selected": "Selected",
+  "time_now": "Now",
+  "time_today": "Today",
+  "time_yesterday": "Yesterday",
+  "time_minutes_ago": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_hours_ago": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_days_ago": "{count, plural, =1{1 day ago} other{{count} days ago}}",
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_minutes_short": "{count}m",
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_hours_short": "{count}h",
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_days_short": "{count}d",
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "waiting_for": "Waiting {duration}",
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "network_connecting": "Connecting…",
+  "network_offline": "Offline",
+  "empty_offline_title": "You're offline",
+  "empty_offline_body": "Check your connection and try again. Your messages will send once you're back online.",
+  "a11y_unread_messages": "{count, plural, =0{No unread messages} =1{1 unread message} other{{count} unread messages}}",
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "a11y_notifications_unread": "Notifications, new items",
+  "a11y_ai_avatar": "AI",
+  "a11y_team_avatar": "Team",
+  "a11y_selected": "Selected",
+  "a11y_priority": "Priority: {label}",
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_title": "Dashboard",
+  "dash_morning": "Good morning, {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "Good evening, {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "Available",
+  "dash_presence_online_f": "Available",
+  "dash_presence_busy_m": "Busy",
+  "dash_presence_busy_f": "Busy",
+  "dash_presence_away": "Away",
+  "dash_presence_title": "Your status",
+  "dash_presence_until": "Until…",
+  "dash_presence_30m": "30 minutes",
+  "dash_presence_1h": "1 hour",
+  "dash_presence_eod": "End of day",
+  "dash_presence_auto": "You'll be set Away after 15 min of inactivity",
+  "dash_presence_until_time": "Until {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "Couldn't change your status",
+  "dash_scope_me": "Me",
+  "dash_scope_team": "My team",
+  "dash_scope_all": "Everyone",
+  "dash_team_picker": "Choose a team",
+  "dash_range_today": "Today",
+  "dash_range_yesterday": "Yesterday",
+  "dash_range_7d": "Last 7 days",
+  "dash_range_30d": "Last 30 days",
+  "dash_range_title": "Period",
+  "dash_open": "Open conversations",
+  "dash_awaiting_me": "Awaiting your reply",
+  "dash_awaiting_team": "Awaiting reply",
+  "dash_oldest": "Oldest {m}m",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "No one waiting",
+  "dash_first_response": "Avg first response",
+  "dash_minute": "min",
+  "dash_ai_reply": "AI replied",
+  "dash_of_questions": "of questions",
+  "dash_resolved": "Resolved",
+  "dash_volume_today": "Conversations today",
+  "dash_volume_range": "Conversations · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} conversations",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour}: {n} · {ai} by AI",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "All",
+  "dash_legend_ai": "AI",
+  "dash_no_volume": "No conversations yet today",
+  "dash_no_volume_range": "No conversations in this period",
+  "dash_team_now": "Team now",
+  "dash_see_all": "See all",
+  "dash_ai_name": "AI",
+  "dash_agent_open": "{n} open",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "Avg first response today {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "View their conversations",
+  "dash_redistribute": "Redistribute",
+  "dash_redistribute_none": "No open conversations to redistribute",
+  "dash_solo": "You're the only one on the team",
+  "dash_invite": "Invite a teammate",
+  "dash_ai_impact": "{n} questions answered by AI",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "Saved about {h} hours of team time",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "{n} handoffs",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "{p}% positive",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "AI is handling {n} now",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "By channel",
+  "dash_web_reports": "Detailed reports on web",
+  "dash_last_updated": "Last updated {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "Couldn't load dashboard",
+  "dash_card_error": "Couldn't load",
+  "dash_retry": "Retry",
+  "dash_frt_title": "First response speed",
+  "dash_frt_target": "Target: {m}m",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "Under 1 min",
+  "dash_frt_1_5": "1–5 min",
+  "dash_frt_5_15": "5–15 min",
+  "dash_frt_gt15": "Over 15 min",
+  "dash_frt_note": "Based on conversations answered by an agent",
+  "dash_frt_empty": "No replies yet in this period",
+  "dash_hours_short": "h",
+  "dash_minutes_short": "m",
+  "dash_thousand": "k",
+  "dash_onb_title": "Start receiving conversations",
+  "dash_onb_wa": "Connect WhatsApp",
+  "dash_onb_kb": "Add knowledge base",
+  "dash_onb_ai": "Turn on AI",
+  "dash_onb_cta": "Finish setup",
+  "dash_alert_wa_title": "WhatsApp is disconnected",
+  "dash_alert_wa_body": "Messages won't arrive until you reconnect",
+  "dash_alert_wa_action": "Reconnect",
+  "dash_alert_sla_title": "{n} customers waiting over {sla}m",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "Reply now",
+  "dash_alert_unassigned_title": "{n} conversations waiting to be claimed",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "View",
+  "dash_alert_kb_title": "{n} unanswered questions",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "Add them so the AI answers automatically",
+  "dash_alert_kb_action": "Review",
+  "dash_alert_trial_title": "Your trial ends in {n} days",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "See plans",
+  "dash_alert_dismiss": "Dismiss",
+  "dash_a11y_metric": "{label}: {value} {aside}. Tap to view conversations",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title}: {total}. Peak {peak} with {n} conversations.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}, {presence}, {n} open conversations",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "Your status: {status}. Tap to change",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_title": "Conversations",
+  "inbox_seg_mine": "Mine",
+  "inbox_seg_unassigned": "Unassigned",
+  "inbox_seg_all": "All",
+  "inbox_chip_all": "All",
+  "inbox_chip_unread": "Unread",
+  "inbox_chip_awaiting": "Awaiting reply",
+  "inbox_chip_ai": "AI replied",
+  "inbox_chip_snoozed": "Snoozed",
+  "inbox_chip_closed": "Closed",
+  "inbox_chip_filters": "Filters",
+  "inbox_needs_reply": "Needs your reply",
+  "inbox_rest": "Other conversations",
+  "inbox_see_all": "See all",
+  "inbox_show_less": "Show less",
+  "inbox_you_prefix": "You:",
+  "inbox_draft_prefix": "Draft:",
+  "inbox_note_prefix": "Note:",
+  "inbox_typing": "typing…",
+  "inbox_image": "Photo",
+  "inbox_voice": "Voice message · {d}",
+  "@inbox_voice": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_location": "Location",
+  "inbox_sticker": "Sticker",
+  "inbox_deleted": "This message was deleted",
+  "inbox_tag_waiting": "{n, plural, =1{Waiting 1 min} other{Waiting {n} min}}",
+  "@inbox_tag_waiting": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_tag_ai_ready": "Suggestion ready",
+  "inbox_tag_ai_replied": "AI replied",
+  "inbox_tag_snoozed": "Snoozed until {t}",
+  "@inbox_tag_snoozed": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_window": "Window closes in {h}h",
+  "@inbox_tag_window": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_now": "now",
+  "inbox_min": "{n}m",
+  "@inbox_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_hour": "{n}h",
+  "@inbox_hour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_yesterday": "Yesterday",
+  "inbox_am": "AM",
+  "inbox_pm": "PM",
+  "inbox_swipe_resolve": "Resolve",
+  "inbox_swipe_snooze": "Snooze",
+  "inbox_swipe_assign": "Assign",
+  "inbox_swipe_claim": "Claim",
+  "inbox_resolved": "Conversation resolved",
+  "inbox_resolved_n": "{n, plural, =1{1 conversation resolved} other{{n} conversations resolved}}",
+  "@inbox_resolved_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_snoozed_1h": "Snoozed for 1 hour",
+  "inbox_snoozed_n": "{n, plural, =1{Conversation snoozed} other{{n} conversations snoozed}}",
+  "@inbox_snoozed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_undo": "Undo",
+  "inbox_assigned_to_you": "{name} assigned you a conversation",
+  "@inbox_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_open": "Open",
+  "inbox_claimed_by": "Claimed by {name}",
+  "@inbox_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_new_pill": "{n, plural, =1{1 new conversation} other{{n} new conversations}}",
+  "@inbox_new_pill": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_selected": "{n} selected",
+  "@inbox_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_select_all": "Select all",
+  "inbox_exit_selection": "Exit selection",
+  "inbox_mark_read": "Mark read",
+  "inbox_mark_unread": "Mark unread",
+  "inbox_marked_read_n": "{n, plural, =1{1 conversation marked read} other{{n} conversations marked read}}",
+  "@inbox_marked_read_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_marked_unread_n": "{n, plural, =1{1 conversation marked unread} other{{n} conversations marked unread}}",
+  "@inbox_marked_unread_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_conversation": "New conversation",
+  "inbox_load_error": "Couldn't load · Retry",
+  "inbox_end": "No more conversations",
+  "inbox_exit_hint": "Press again to exit",
+  "inbox_offline_cached": "Offline — showing the last saved copy",
+  "inbox_action_failed": "Couldn't complete that. Try again.",
+  "inbox_tag": "Tag",
+  "inbox_tag_added": "Tag “{tag}” added",
+  "@inbox_tag_added": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_priority": "Priority",
+  "inbox_priority_set": "Priority set to {label}",
+  "@inbox_priority_set": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_archive": "Archive",
+  "inbox_archived_n": "{n, plural, =1{Conversation archived} other{{n} conversations archived}}",
+  "@inbox_archived_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_clear_all": "Clear all",
+  "inbox_a11y_unread": "{n, plural, =1{1 unread message} other{{n} unread messages}}",
+  "@inbox_a11y_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_a11y_open_hint": "Double tap to open the conversation",
+  "inbox_a11y_notifications": "Notifications, {n} unread",
+  "@inbox_a11y_notifications": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_empty_mine_title": "No conversations assigned to you",
+  "inbox_empty_mine_body": "Conversations you claim or that are assigned to you will show up here.",
+  "inbox_empty_mine_action": "View unassigned",
+  "inbox_empty_done_title": "You're all caught up",
+  "inbox_empty_done_body": "Nobody is waiting for your reply right now.",
+  "inbox_empty_unassigned_title": "No conversations waiting to be claimed",
+  "inbox_empty_unassigned_body": "AI and your team have everything covered.",
+  "inbox_empty_new_title": "No conversations yet",
+  "inbox_empty_new_body": "Connect WhatsApp to start receiving your customers' messages.",
+  "inbox_empty_new_action": "Connect WhatsApp",
+  "inbox_empty_filters_title": "No conversations match these filters",
+  "inbox_empty_filters_action": "Clear filters",
+  "inbox_empty_error_title": "Couldn't load conversations",
+  "inbox_empty_error_body": "Check your connection and try again.",
+  "inbox_filters_title": "Filters",
+  "inbox_filters_clear": "Clear",
+  "inbox_filters_apply": "Show conversations",
+  "inbox_filters_show": "{n, plural, =0{No conversations} =1{Show 1 conversation} other{Show {n} conversations}}",
+  "@inbox_filters_show": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_filters_channel": "Channel",
+  "inbox_filters_priority": "Priority",
+  "inbox_filters_assignee": "Assignee",
+  "inbox_filters_assignee_all": "All",
+  "inbox_filters_assignee_me": "Me",
+  "inbox_filters_assignee_colleague": "Specific teammate ▸",
+  "inbox_filters_assignee_ai": "AI",
+  "inbox_filters_assignee_unassigned": "Unassigned",
+  "inbox_filters_pick_colleague": "Choose a teammate",
+  "inbox_filters_team": "Team",
+  "inbox_filters_tags": "Tags",
+  "inbox_filters_tags_search": "Search tags",
+  "inbox_filters_date": "Date",
+  "inbox_filters_date_today": "Today",
+  "inbox_filters_date_7d": "7 days",
+  "inbox_filters_date_30d": "30 days",
+  "inbox_filters_date_custom": "Custom ▸",
+  "inbox_filters_sort": "Sort",
+  "inbox_filters_sort_smart": "Smart (default)",
+  "inbox_filters_sort_newest": "Newest",
+  "inbox_filters_sort_oldest": "Oldest",
+  "inbox_filters_sort_waiting": "Longest waiting",
+  "kbe_new": "New question",
+  "kbe_edit": "Edit answer",
+  "kbe_review": "Review suggestion",
+  "kbe_save": "Save",
+  "kbe_send": "Send",
+  "kbe_src_unanswered": "Asked {n} times with no AI answer",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "From a chat with {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "Suggested by {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "Suggested from a resolved chat",
+  "kbe_view_convs": "View conversations",
+  "kbe_open": "Open",
+  "kbe_open_it": "Open it",
+  "kbe_question": "Question",
+  "kbe_question_ph": "e.g. Can I return after 30 days?",
+  "kbe_alts": "Other ways customers ask",
+  "kbe_optional": "(optional)",
+  "kbe_add_alt": "+ Add phrasing",
+  "kbe_alt_exists": "This phrasing already exists",
+  "kbe_alt_limit": "Up to 15 phrasings, 120 characters each",
+  "kbe_answer": "Answer",
+  "kbe_answer_ph": "Write the answer as AI should say it…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "AI draft — review before saving",
+  "kbe_tag": "Tag",
+  "kbe_tags_title": "Answer tags",
+  "kbe_tags_search": "Search or create a tag",
+  "kbe_tags_create": "Create “{name}”",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "Primary tag",
+  "kbe_done": "Done",
+  "kbe_improve": "Improve wording",
+  "kbe_add_link": "Add link",
+  "kbe_link_url": "URL",
+  "kbe_link_label": "Link title (optional)",
+  "kbe_link_invalid": "Enter a valid https:// link",
+  "kbe_insert": "Insert",
+  "kbe_cancel": "Cancel",
+  "kbe_similar": "Similar question exists: “{t}”",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "Merge as phrasing",
+  "kbe_conflict": "May conflict with “{t}”: {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "View",
+  "kbe_preview": "Preview: how AI will reply",
+  "kbe_ai_label": "AI",
+  "kbe_writing": "Writing…",
+  "kbe_tone": "Tone: {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "High confidence",
+  "kbe_conf_med": "Medium confidence",
+  "kbe_conf_low": "Low confidence",
+  "kbe_low_hint": "Add phrasings or clarify to raise confidence",
+  "kbe_try_another": "Try another question",
+  "kbe_test_hint": "Type a question to test",
+  "kbe_preview_err": "Preview failed",
+  "kbe_preview_offline": "Preview needs a connection",
+  "kbe_preview_empty": "Complete the question and answer to see a preview",
+  "kbe_preview_regen": "Refresh preview",
+  "kbe_advanced": "Advanced options",
+  "kbe_enabled": "Available to AI",
+  "kbe_channels": "Channels",
+  "kbe_channels_all": "All channels",
+  "kbe_expires": "Valid until",
+  "kbe_expires_none": "No end date",
+  "kbe_expires_clear": "Remove date",
+  "kbe_verbatim": "Send verbatim",
+  "kbe_verbatim_sub": "AI sends exactly this text",
+  "kbe_handoff_after": "Hand off after answering",
+  "kbe_internal_notes": "Internal notes",
+  "kbe_internal_notes_ph": "Not used by AI",
+  "kbe_meta": "Edited by {n} · {t} · used {u} times",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "Delete answer",
+  "kbe_delete_title": "Delete “{title}”?",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "AI will no longer use it.",
+  "kbe_deleted": "Deleted",
+  "kbe_history": "Version history",
+  "kbe_restore": "Restore this version",
+  "kbe_version_n": "Version {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "Current",
+  "kbe_versions_empty": "No earlier versions",
+  "kbe_restored": "Version restored",
+  "kbe_restore_failed": "Couldn't restore",
+  "kbe_err_q": "Enter the question (min 5 chars)",
+  "kbe_err_a": "Enter the answer (min 10 chars)",
+  "kbe_err_a_long": "Answer exceeds 2000 characters",
+  "kbe_err_date": "Pick a future date",
+  "kbe_saved_new": "Answer added · AI will use it now",
+  "kbe_saved_edit": "Changes saved",
+  "kbe_saved_unanswered": "Added · {n} chats were waiting for this",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "Added to knowledge base",
+  "kbe_proposed": "Sent for review",
+  "kbe_approve": "Approve & publish",
+  "kbe_approved": "Answer approved and published",
+  "kbe_reject": "Reject",
+  "kbe_rejected": "Suggestion rejected",
+  "kbe_save_err": "Couldn't save",
+  "kbe_save_forbidden": "You can't save — send it for review",
+  "kbe_save_offline": "Saving needs a connection",
+  "kbe_retry": "Retry",
+  "kbe_load_error": "Couldn't load the answer",
+  "kbe_conflict_title": "{name} just edited this answer",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "View theirs",
+  "kbe_overwrite": "Save mine over it",
+  "kbe_restore_draft": "Unsaved draft — restore it?",
+  "kbe_restore_btn": "Restore",
+  "kbe_restore_ignore": "Ignore",
+  "kbe_discard_title": "Discard changes?",
+  "kbe_discard_body": "The answer won't be saved.",
+  "kbe_discard": "Discard",
+  "kbe_keep": "Keep editing",
+  "kbe_deleted_elsewhere": "This answer was deleted",
+  "kbe_close": "Close",
+  "kbe_a11y_alt": "Phrasing: {text}, double tap to edit",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "Delete",
+  "kbe_a11y_ghost": "AI-suggested phrasing: {text}, tap to add",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "Complete the question and answer",
+  "kbe_a11y_dismiss": "Dismiss warning",
+  "kb_title": "Knowledge",
+  "kb_search": "Search {n} entries",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "Q&A",
+  "kb_files": "Files",
+  "kb_links": "Links",
+  "kb_processing": "Processing",
+  "kb_unanswered_title": "{n} unanswered questions",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "Customers asked and AI had no answer",
+  "kb_review": "Review",
+  "kb_sort_usage": "Most used",
+  "kb_sort_recent": "Recently updated",
+  "kb_sort_stale": "Least recently updated",
+  "kb_sort_alpha": "Alphabetical",
+  "kb_sort_least": "Least used",
+  "kb_tags": "Tags",
+  "kb_used_n": "Used {n} times",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "Updated {t} ago",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} pages",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "Draft",
+  "kb_badge_disabled": "Disabled",
+  "kb_badge_stale": "Stale",
+  "kb_badge_failed": "Processing failed",
+  "kb_disable": "Disable for AI",
+  "kb_enable": "Enable",
+  "kb_edit": "Edit",
+  "kb_copy_answer": "Copy answer",
+  "kb_delete": "Delete",
+  "kb_delete_title": "Delete \"{title}\"?",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "AI will no longer use it.",
+  "kb_deleted": "Deleted",
+  "kb_drafts": "Suggestions to review · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "Suggested by {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "Suggested from a resolved chat",
+  "kb_approve": "Approve",
+  "kb_reject": "Reject",
+  "kb_add_title": "Add to knowledge base",
+  "kb_add_qa_sub": "Fastest and most accurate for AI",
+  "kb_add_file": "Upload file",
+  "kb_add_file_sub": "PDF, Word or TXT up to 10 MB",
+  "kb_add_link": "Add link",
+  "kb_add_link_sub": "A page from your site, read by AI",
+  "kb_alt_phrasings": "Other phrasings",
+  "kb_answer": "Answer",
+  "kb_usage_month": "Used {n} times this month",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "{p}% positive",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "Last used {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "Recent uses",
+  "kb_meta": "Created by {a} · {d} · Edited by {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "Available to AI",
+  "kb_file_type_err": "Unsupported file type",
+  "kb_file_size_err": "File larger than 10 MB",
+  "kb_uploading": "Uploading {p}%",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "Processing… may take a minute",
+  "kb_file_ready": "\"{f}\" is ready · {n} facts extracted",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "What AI extracted",
+  "kb_replace": "Replace file",
+  "kb_download": "Download",
+  "kb_file_failed": "Couldn't read the file",
+  "kb_fail_encrypted": "File is password-protected",
+  "kb_fail_images": "File contains only images",
+  "kb_fail_corrupt": "File is corrupted",
+  "kb_link_url": "Page URL",
+  "kb_link_subpages": "Include subpages",
+  "kb_add": "Add",
+  "kb_last_crawl": "Last read {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "Refresh now",
+  "kb_auto_refresh": "Auto refresh",
+  "kb_weekly": "Weekly",
+  "kb_monthly": "Monthly",
+  "kb_manual": "Manual",
+  "kb_unanswered": "Unanswered questions",
+  "kb_unanswered_info": "Questions AI couldn't answer. Add an answer so it replies next time.",
+  "kb_sort_frequency": "Most frequent",
+  "kb_sort_newest": "Newest",
+  "kb_asked_n": "Asked {n} times · last {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} similar wordings",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "Suggested draft",
+  "kb_add_answer": "Add answer",
+  "kb_link_existing": "Link to existing answer",
+  "kb_ignore": "Ignore",
+  "kb_view_convs": "View conversations",
+  "kb_suggest_answer": "Suggest an answer",
+  "kb_none_unanswered": "No unanswered questions",
+  "kb_none_unanswered_body": "AI is finding answers for everything asked.",
+  "kb_empty_title": "Start teaching AI about your business",
+  "kb_empty_body": "Add the top questions your customers ask, with answers.",
+  "kb_empty_cta": "Add first question",
+  "kb_empty_tip": "We recommend at least 10 questions",
+  "kb_filter_empty": "No entries of this type",
+  "kb_show_all": "Show all",
+  "kb_error": "Couldn't load knowledge base",
+  "kb_retry": "Retry",
+  "kb_offline": "Editing requires internet",
+  "kb_span_now": "moments",
+  "kb_span_minutes": "{n, plural, =1{1 minute} other{{n} minutes}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{1 hour} other{{n} hours}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{1 day} other{{n} days}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{1 month} other{{n} months}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{1 year} other{{n} years}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "This is available on the web dashboard for now",
+  "kb_menu_ai_settings": "AI settings",
+  "kb_menu_tags": "Manage tags",
+  "kb_menu_import": "Import from web",
+  "kb_sort_by": "Sort by",
+  "kb_tags_all": "All tags",
+  "kb_tags_apply": "Apply",
+  "kb_tags_none": "No tags yet",
+  "kb_disabled_done": "Disabled · AI won't use it",
+  "kb_enabled_done": "Enabled",
+  "kb_copied": "Answer copied",
+  "kb_approved": "Approved and published",
+  "kb_rejected": "Suggestion rejected",
+  "kb_ignored": "Ignored",
+  "kb_linked": "Added as a phrasing of \"{t}\"",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "Choose an answer",
+  "kb_pick_search": "Search answers",
+  "kb_uploaded_by": "Uploaded by {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} MB",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} KB",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "You can close this; processing continues in the background",
+  "kb_url_invalid": "Enter a valid https:// link",
+  "kb_link_added": "Link added · reading it now",
+  "kb_link_pages": "Pages",
+  "kb_never_crawled": "Not read yet",
+  "kb_recrawl_started": "Refresh started",
+  "kb_filter_a11y": "{label}, {n}, filter",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} unanswered questions. Review",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "Usage over 30 days",
+  "kb_not_used_yet": "Not used yet",
+  "kb_show_less": "Show less",
+  "kb_proposed": "Your suggestion was sent for review",
+  "kb_save_err": "Couldn't save",
+  "kb_none_found": "No results",
+  "ntf_title": "Notifications",
+  "ntf_read_all": "Mark all read",
+  "ntf_read_all_done": "All marked as read",
+  "ntf_undo": "Undo",
+  "ntf_settings": "Notification settings",
+  "ntf_delete_read": "Delete read",
+  "ntf_filter_all": "All",
+  "ntf_filter_unread": "Unread",
+  "ntf_filter_mentions": "Mentions",
+  "ntf_filter_assignments": "Assignments",
+  "ntf_filter_ai": "AI",
+  "ntf_filter_system": "System",
+  "ntf_today": "Today",
+  "ntf_yesterday": "Yesterday",
+  "ntf_this_week": "This week",
+  "ntf_older": "Older",
+  "ntf_push_off_title": "Push notifications are off",
+  "ntf_push_off_body": "Turn them on so you never miss an assigned chat",
+  "ntf_enable": "Enable",
+  "ntf_mark_read": "Mark as read",
+  "ntf_mark_unread": "Mark as unread",
+  "ntf_mute_type": "Mute this type",
+  "ntf_delete": "Delete",
+  "ntf_deleted": "Notification deleted",
+  "ntf_empty_title": "No notifications",
+  "ntf_empty_body": "We'll let you know when a chat is assigned to you or your team needs you.",
+  "ntf_empty_filter": "No notifications in \"{f}\"",
+  "@ntf_empty_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_show_all": "Show all",
+  "ntf_error": "Couldn't load notifications",
+  "ntf_retry": "Retry",
+  "ntf_end": "No more notifications",
+  "ntf_retention": "Notifications are deleted after 90 days",
+  "ntf_target_gone": "This conversation is no longer available",
+  "ntf_claimed_you": "You claimed it",
+  "ntf_claimed_by": "Claimed by {name}",
+  "@ntf_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_approved": "Approved",
+  "ntf_rejected": "Rejected",
+  "ntf_grouped": "{n} new messages from {name}",
+  "@ntf_grouped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_push_private": "You have a new conversation",
+  "ntf_t_assigned": "A new conversation was assigned to you",
+  "ntf_t_claim_needed": "{n} conversations waiting to be claimed",
+  "@ntf_t_claim_needed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_sla_breach": "{customer} has been waiting {m}m for your reply",
+  "@ntf_t_sla_breach": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_transfer_request": "{agent} asks to take over a conversation",
+  "@ntf_t_transfer_request": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_mention": "{agent} mentioned you in a note",
+  "@ntf_t_mention": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_ai_no_answer": "The AI couldn't find an answer",
+  "ntf_t_ai_handoff": "The AI handed a conversation to the team",
+  "ntf_t_ai_low_confidence": "The AI replied with low confidence",
+  "ntf_t_kb_suggestion": "{n} frequent questions without an answer",
+  "@ntf_t_kb_suggestion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_channel_disconnected": "WhatsApp disconnected",
+  "ntf_t_channel_reconnected": "WhatsApp disconnected and came back",
+  "ntf_t_channel_quality_low": "WhatsApp number quality is low",
+  "ntf_t_team_joined": "{name} joined the team",
+  "@ntf_t_team_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_team_role_changed": "Your role changed to {role}",
+  "@ntf_t_team_role_changed": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_trial_ending": "Your trial ends in {n} days",
+  "@ntf_t_trial_ending": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_payment_failed": "Subscription payment failed",
+  "ntf_t_plan_limit": "You're close to your AI reply limit",
+  "ntf_t_app_update": "A new version is available",
+  "ntf_b_claim_needed": "Oldest waiting {m}m",
+  "@ntf_b_claim_needed": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_ai_no_answer": "A question about {topic}. Add the answer so it replies automatically next time.",
+  "@ntf_b_ai_no_answer": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_low_confidence": "{customer} · Review the reply",
+  "@ntf_b_ai_low_confidence": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_kb_suggestion": "Add them to the knowledge base to improve replies",
+  "ntf_b_channel_disconnected": "Messages won't arrive until you reconnect",
+  "ntf_b_channel_reconnected": "Down for {m} minutes · no messages lost",
+  "@ntf_b_channel_reconnected": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_channel_quality_low": "Send fewer bulk messages to avoid restrictions",
+  "ntf_b_team_joined": "Role: {role}",
+  "@ntf_b_team_joined": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_team_role_changed": "By {actor}",
+  "@ntf_b_team_role_changed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_trial_ending": "Choose a plan to keep your conversations and AI.",
+  "ntf_b_payment_failed": "Update your payment method to avoid a service stop",
+  "ntf_b_plan_limit": "You've used {p}% this month",
+  "@ntf_b_plan_limit": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_app_update": "{version} · Improvements and fixes",
+  "@ntf_b_app_update": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_a_view": "View",
+  "ntf_a_reply": "Reply now",
+  "ntf_a_approve": "Approve",
+  "ntf_a_reject": "Reject",
+  "ntf_a_add_answer": "Add answer",
+  "ntf_a_claim": "Claim",
+  "ntf_a_review": "Review",
+  "ntf_a_reconnect": "Reconnect",
+  "ntf_a_plans": "View plans",
+  "ntf_a_update": "Update",
+  "ntf_a_open": "Open",
+  "ntf_more": "More",
+  "ntf_dismiss": "Dismiss",
+  "ntf_a11y_unread": "Unread",
+  "ntf_a11y_filter": "{f}, {n} unread",
+  "@ntf_a11y_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_muted": "You won't get this type of notification",
+  "ntf_push_unavailable": "Turn notifications on in your device settings",
+  "ntf_offline_action": "This action needs an internet connection",
+  "ntf_action_failed": "Couldn't complete the action. Try again.",
+  "ntf_billing_agent_title": "Billing is managed by an admin",
+  "ntf_billing_agent_body": "Ask your workspace admin to manage the subscription on the Wavadesk website.",
+  "profile_title": "Customer profile",
+  "profile_add_tag": "+ Tag",
+  "profile_vip": "VIP",
+  "profile_blocked": "Blocked",
+  "profile_local_time": "{time} their time",
+  "@profile_local_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_copied": "Copied",
+  "profile_call": "Call",
+  "profile_whatsapp": "WhatsApp",
+  "profile_note": "Note",
+  "profile_block": "Block",
+  "profile_unblock": "Unblock",
+  "profile_stat_conversations": "Conversations",
+  "profile_stat_orders": "Orders",
+  "profile_stat_rating": "Rating",
+  "profile_stat_first": "First contact",
+  "profile_ai_summary": "AI summary",
+  "profile_ai_disclaimer": "Summary may contain mistakes",
+  "profile_more": "More",
+  "profile_notes": "Team notes",
+  "profile_add": "Add",
+  "profile_all_notes": "View all notes ({n})",
+  "@profile_all_notes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_no_notes": "No notes yet",
+  "profile_first_note": "Add the first note",
+  "profile_pin": "Pin",
+  "profile_edit": "Edit",
+  "profile_delete": "Delete",
+  "profile_info": "Details",
+  "profile_phone": "Phone",
+  "profile_email": "Email",
+  "profile_city": "City",
+  "profile_language": "Preferred language",
+  "profile_timezone": "Time zone",
+  "profile_added_by": "Added by",
+  "profile_not_set": "Not set",
+  "profile_all_info": "View all details",
+  "profile_channels": "Channels",
+  "profile_channel_count": "{n, plural, =0{No conversations} =1{1 conversation} other{{n} conversations}}",
+  "@profile_channel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_unlink": "Unlink identity",
+  "profile_merge": "Merge with another contact",
+  "profile_orders": "Orders",
+  "profile_total_spent": "Total spent: {sum} SAR",
+  "@profile_total_spent": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_previous": "Previous conversations",
+  "profile_all_channels": "All channels",
+  "profile_closed_by": "{date} · Closed by {name}",
+  "@profile_closed_by": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_ai_replied": "{date} · AI replied",
+  "@profile_ai_replied": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_open_now": "{date} · Open now",
+  "@profile_open_now": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_load_more": "Load more",
+  "profile_first_conv": "This is the first conversation",
+  "profile_block_cta": "Block customer",
+  "profile_block_hint": "You won't receive messages from this customer.",
+  "profile_erase": "Delete customer data",
+  "profile_visitor": "Visitor #{id}",
+  "@profile_visitor": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_add_details": "Add customer details",
+  "profile_offline": "Showing last saved version",
+  "profile_load_error": "Couldn't load profile",
+  "profile_section_error": "Couldn't load {section}",
+  "@profile_section_error": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_retry": "Retry",
+  "profile_open_page": "Open as page",
+  "profile_dialog_label": "Customer profile, {name}",
+  "@profile_dialog_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_unpin": "Unpin",
+  "profile_regenerate": "Regenerate summary",
+  "profile_note_a11y": "Note from {author}, {date}: {text}",
+  "@profile_note_a11y": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_delete_note_title": "Delete note?",
+  "profile_delete_note_body": "This note will be deleted for the whole team.",
+  "profile_action_call_a11y": "Call {name}",
+  "@profile_action_call_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_whatsapp_a11y": "WhatsApp {name}",
+  "@profile_action_whatsapp_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_note_a11y": "Add a note about {name}",
+  "@profile_action_note_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_block_a11y": "Block {name}",
+  "@profile_action_block_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_unblock_a11y": "Unblock {name}",
+  "@profile_action_unblock_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_disabled_no_phone": "Unavailable, no number",
+  "profile_stats_a11y": "{conversations} conversations, {orders} {ordersLabel}, first contact {first}",
+  "@profile_stats_a11y": {
+    "placeholders": {
+      "conversations": {
+        "type": "int"
+      },
+      "orders": {
+        "type": "String"
+      },
+      "ordersLabel": {
+        "type": "String"
+      },
+      "first": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_items": "{date} · {n, plural, =1{1 item} other{{n} items}}",
+  "@profile_order_items": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_amount": "{amount} SAR",
+  "@profile_amount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_processing": "Processing",
+  "profile_order_shipped": "Shipped",
+  "profile_order_delivered": "Delivered",
+  "profile_order_cancelled": "Cancelled",
+  "profile_view_all": "See all",
+  "profile_no_order_link": "No link for this order",
+  "profile_lang_ar": "العربية",
+  "profile_lang_en": "English",
+  "profile_tz_value": "{tz} · {time}",
+  "@profile_tz_value": {
+    "placeholders": {
+      "tz": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_attr_yes": "Yes",
+  "profile_attr_no": "No",
+  "profile_unlinked": "Identity unlinked",
+  "profile_filter_channel": "Filter by channel",
+  "profile_merged": "This contact was merged",
+  "profile_more_actions": "More actions",
+  "profile_edit_contact": "Edit customer",
+  "edit_title": "Edit customer",
+  "edit_save": "Save",
+  "edit_saved": "Changes saved",
+  "edit_failed": "Couldn't save changes. Try again.",
+  "edit_discard_title": "Discard changes?",
+  "edit_discard_body": "Your edits aren't saved yet. Leaving now will lose them.",
+  "edit_discard": "Discard",
+  "edit_keep": "Keep editing",
+  "edit_name": "Name",
+  "edit_phone": "Phone",
+  "edit_email": "Email",
+  "edit_city": "City",
+  "edit_language": "Preferred language",
+  "edit_not_set": "Not set",
+  "edit_phone_invalid": "Invalid phone number",
+  "edit_email_invalid": "Invalid email format",
+  "tags_title": "Tags",
+  "tags_search": "Search or create a tag",
+  "tags_create": "Create \"{q}\"",
+  "@tags_create": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "tags_done": "Done",
+  "tags_failed": "Couldn't save tags. Try again.",
+  "tags_remove": "Remove tag",
+  "note_new": "New note",
+  "note_edit_title": "Edit note",
+  "note_placeholder": "What should your team know about this customer…",
+  "note_pin": "Pin note",
+  "note_save": "Save",
+  "note_cancel": "Cancel",
+  "note_saved": "Note added",
+  "note_updated": "Note updated",
+  "note_failed": "Couldn't save the note. Try again.",
+  "call_phone": "Phone call",
+  "call_whatsapp": "WhatsApp call",
+  "call_copy": "Copy number",
+  "call_cancel": "Cancel",
+  "call_copied": "Copied",
+  "call_failed": "Couldn't open the calling app",
+  "block_title": "Block {name}?",
+  "@block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "block_body": "You won't receive their messages on any channel and open chats will close. You can unblock later.",
+  "block_reason_label": "Reason (optional)",
+  "block_reason_spam": "Spam",
+  "block_reason_fraud": "Fraud",
+  "block_reason_abuse": "Abusive",
+  "block_reason_other": "Other",
+  "block_confirm": "Block",
+  "block_cancel": "Cancel",
+  "block_done": "Customer blocked",
+  "block_failed": "Couldn't block the customer. Try again.",
+  "block_unnamed": "this customer",
+  "undo": "Undo",
+  "merge_title": "Merge with another contact",
+  "merge_search": "Search by name, phone or email",
+  "merge_no_results": "No matching contacts",
+  "merge_unnamed": "Unnamed contact",
+  "merge_into_label": "Merging into",
+  "merge_change": "Change",
+  "merge_no_conflicts": "No conflicting values — all conversations and notes move to the selected contact.",
+  "merge_choose_values": "Choose which values to keep",
+  "merge_field_name": "Name",
+  "merge_field_phone": "Phone",
+  "merge_field_email": "Email",
+  "merge_field_city": "City",
+  "merge_this_contact": "This contact",
+  "merge_other_contact": "Other contact",
+  "merge_action": "Merge",
+  "merge_confirm_title": "Merging can't be undone",
+  "merge_confirm_body": "Conversations and notes move to the selected contact and this profile is removed.",
+  "merge_done": "Contacts merged",
+  "merge_failed": "Couldn't merge. Try again.",
+  "erase_title": "Permanently delete customer data?",
+  "erase_body": "All of this customer's conversations, notes and details will be deleted and can't be recovered.",
+  "erase_type_digits": "Type the last 4 digits of the customer's phone to confirm",
+  "erase_type_word": "Type \"{word}\" to confirm",
+  "@erase_type_word": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "erase_word": "delete",
+  "erase_confirm": "Delete permanently",
+  "erase_cancel": "Cancel",
+  "erase_done": "Customer data deleted",
+  "erase_failed": "Couldn't delete the data. Try again.",
+  "search_placeholder": "Search customers, messages, or order #",
+  "search_cancel": "Cancel",
+  "search_scope_all": "All",
+  "search_scope_contacts": "Customers",
+  "search_scope_messages": "Messages",
+  "search_scope_kb": "Knowledge",
+  "search_scope_conversations": "Conversations",
+  "search_filters": "Filters",
+  "search_section_contacts": "Customers",
+  "search_section_messages": "Messages",
+  "search_section_kb": "Knowledge base",
+  "search_section_conversations": "Conversations",
+  "search_see_all": "See all ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "Best match",
+  "search_open_chat": "Open chat",
+  "search_profile": "Profile",
+  "search_open_badge": "Open",
+  "search_more_in_conv": "+{n} more in this conversation",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "Used by AI {n} times this month",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "Insert into reply",
+  "search_you": "You:",
+  "search_note": "Note:",
+  "search_order": "Order {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "Tag: {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "Recent searches",
+  "search_clear": "Clear",
+  "search_suggestions": "Suggestions",
+  "search_recent_contacts": "Recently contacted",
+  "search_tip": "Search by name, phone, order #, or any word",
+  "search_no_results": "No results for \"{q}\"",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "Try another word or check spelling",
+  "search_clear_filters": "Clear filters",
+  "search_in_all": "Search everything",
+  "search_did_you_mean": "Did you mean: {s}?",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "Search failed",
+  "search_retry": "Retry",
+  "search_offline": "Offline — showing saved data only",
+  "search_local": "(local)",
+  "search_filter_sender": "Sender",
+  "search_filter_contains": "Contains",
+  "search_filter_attachments": "Attachments",
+  "search_filter_images": "Images",
+  "search_filter_voice": "Voice messages",
+  "search_show_results": "Show results ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "Search",
+  "search_filters_n": "Filters · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "Channel",
+  "search_filter_date": "Date",
+  "search_filter_status": "Conversation status",
+  "search_filter_assignee": "Assignee",
+  "search_date_any": "Any time",
+  "search_date_today": "Today",
+  "search_date_7": "7 days",
+  "search_date_30": "30 days",
+  "search_date_custom": "Custom",
+  "search_sender_all": "All",
+  "search_sender_contact": "Customer",
+  "search_sender_me": "Me",
+  "search_sender_colleagues": "Teammates",
+  "search_sender_ai": "AI",
+  "search_sender_notes": "Internal notes",
+  "search_status_all": "All",
+  "search_status_open": "Open",
+  "search_status_resolved": "Resolved",
+  "search_assignee_all": "All",
+  "search_assignee_me": "Me",
+  "search_assignee_colleague": "Teammate",
+  "search_sugg_unread": "Unread",
+  "search_sugg_awaiting": "Awaiting reply",
+  "search_sugg_vip": "Tag: VIP",
+  "search_sugg_orders_today": "Today's orders",
+  "search_recent_remove": "Remove {q} from history",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "Search history cleared",
+  "search_results_announce": "{n} results: {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} customers",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} messages",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} articles",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} conversations",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "Message from {name}, {time}: {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "Open last conversation",
+  "search_new_chat": "New conversation",
+  "search_copy_number": "Copy number",
+  "search_copied": "Number copied",
+  "search_call": "Call",
+  "search_section_teammates": "Teammates",
+  "search_no_chat_yet": "No previous conversation with this customer",
+  "search_inserted": "Answer inserted into the reply",
+  "search_in_conv_placeholder": "Search this conversation",
+  "search_in_conv_count": "{i} of {n}",
+  "@search_in_conv_count": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_in_conv_action": "Search in conversation",
+  "search_in_conv_prev": "Previous match",
+  "search_in_conv_next": "Next match",
+  "search_in_conv_close": "Close search",
+  "wa_title": "Your WhatsApp",
+  "wa_refresh": "Refresh status",
+  "wa_log": "Connection log",
+  "wa_help": "Help",
+  "wa_connected": "Connected",
+  "wa_connecting": "Connecting",
+  "wa_syncing": "Syncing",
+  "wa_phone_offline": "Phone offline",
+  "wa_disconnected": "Disconnected",
+  "wa_restricted": "Restricted",
+  "wa_pending": "Not linked",
+  "wa_msgs_today": "messages today",
+  "wa_quality": "Number quality",
+  "wa_q_high": "High",
+  "wa_q_med": "Medium",
+  "wa_q_low": "Low",
+  "wa_stable": "Stable",
+  "wa_unstable": "Unstable",
+  "wa_linked_since": "Linked for",
+  "wa_days": "{n} days",
+  "@wa_days": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_title": "Disconnected {t} ago",
+  "@wa_alert_disc_title": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_body": "Customer messages won't arrive until you reconnect",
+  "wa_reconnect": "Reconnect",
+  "wa_alert_phone_title": "Your phone is offline",
+  "wa_alert_phone_body": "Make sure WhatsApp is running on the linked phone",
+  "wa_check_again": "Check again",
+  "wa_alert_quality": "Number quality is low",
+  "wa_alert_quality_body": "Reduce bulk messages and repetitive content",
+  "wa_details": "Details",
+  "wa_alert_limit": "Near daily conversation limit ({u}/{l})",
+  "@wa_alert_limit": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_update": "Update WhatsApp on your phone",
+  "wa_alert_pending": "WhatsApp isn't linked yet",
+  "wa_alert_pending_body": "Link your number to start receiving messages",
+  "wa_connect": "Connect WhatsApp",
+  "wa_auto": "Automatic messages",
+  "wa_welcome": "Welcome message",
+  "wa_away": "Away message",
+  "wa_away_ai": "Handled by AI right now",
+  "wa_quick": "Quick replies",
+  "wa_welcome_delay": "Welcome delay",
+  "wa_now": "Immediately",
+  "wa_welcome_off": "Welcome message turned off",
+  "wa_undo": "Undo",
+  "wa_templates": "Approved templates",
+  "wa_tpl_marketing": "Marketing",
+  "wa_tpl_utility": "Utility",
+  "wa_tpl_auth": "Auth",
+  "wa_tpl_approved": "Approved",
+  "wa_tpl_pending": "In review",
+  "wa_tpl_rejected": "Rejected",
+  "wa_tpl_manage_web": "Manage templates on web",
+  "wa_numbers": "Numbers",
+  "wa_add_second": "Add a second number",
+  "wa_business_only": "Available on Business plan",
+  "wa_upgrade": "Upgrade",
+  "wa_add_number": "Add number",
+  "wa_watch": "Watch: how to connect WhatsApp",
+  "wa_watch_sub": "Video guide · {d}",
+  "@wa_watch_sub": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_advanced": "Advanced",
+  "wa_read_receipts": "Read receipts to customer",
+  "wa_mark_read_open": "Mark read when opened",
+  "wa_auto_transcribe": "Auto-transcribe voice messages",
+  "wa_ignore_groups": "Ignore group messages",
+  "wa_blocked": "Blocked numbers",
+  "wa_hours": "Working hours",
+  "wa_disconnect": "Disconnect number",
+  "wa_disc_title": "Disconnect WhatsApp number?",
+  "wa_disc_body": "Messages won't reach Wavadesk and AI will stop replying. Past chats are kept.",
+  "wa_disc_open": "{n} open chats will stop",
+  "@wa_disc_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_disc_confirm_label": "Type the last 4 digits to confirm",
+  "wa_disc_done": "Number disconnected",
+  "wa_connect_title": "Connect WhatsApp",
+  "wa_step": "Step {i} of {n}",
+  "@wa_step": {
+    "placeholders": {
+      "i": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_by_phone": "Phone number",
+  "wa_by_qr": "QR code",
+  "wa_get_code": "Get code",
+  "wa_copy": "Copy",
+  "wa_expires_in": "Expires in {t}",
+  "@wa_expires_in": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_steps_pair": "Open WhatsApp → Settings → Linked devices → Link a device → Link with phone number → Enter code",
+  "wa_open_app": "Open WhatsApp",
+  "wa_linked_ok": "WhatsApp connected",
+  "wa_syncing_recent": "Syncing recent chats…",
+  "wa_back": "Back",
+  "wa_back_online": "Back online · no messages lost",
+  "wa_code_expired": "Code expired",
+  "wa_new_code": "New code",
+  "wa_number_taken": "This number is linked to another workspace",
+  "wa_watch_video": "Watch the video",
+  "wa_welcome_when": "When to send?",
+  "wa_trigger_first": "First message from a new customer",
+  "wa_trigger_new": "Every new conversation",
+  "wa_trigger_24h": "After 24h of silence",
+  "wa_buttons": "Quick buttons",
+  "wa_ai_after_welcome": "AI will reply right after the welcome",
+  "wa_away_outside": "Outside working hours",
+  "wa_away_team": "When the whole team is away",
+  "wa_away_cooldown": "Once every {n}h per customer",
+  "@wa_away_cooldown": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_away_ai_banner": "AI replies after hours — change it in AI settings",
+  "wa_qr_team": "Team",
+  "wa_qr_mine": "Mine",
+  "wa_qr_title_f": "Title",
+  "wa_qr_shortcut": "Shortcut",
+  "wa_qr_text": "Text",
+  "wa_qr_shared": "Shared with team",
+  "wa_notify_admin": "Notify admin",
+  "wa_load_error": "Couldn't load WhatsApp status",
+  "wa_enable_after": "Enable after linking",
+  "wa_more": "More",
+  "wa_last_updated": "Last updated {t}",
+  "@wa_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_copied": "Copied",
+  "wa_details_title": "Connection details",
+  "wa_d_type": "Connection type",
+  "wa_d_type_linked": "Linked device",
+  "wa_d_type_cloud": "Official WhatsApp API",
+  "wa_d_device": "Device",
+  "wa_d_wa_business": "WhatsApp Business {v}",
+  "@wa_d_wa_business": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_wa_personal": "WhatsApp {v}",
+  "@wa_d_wa_personal": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_last_activity": "Last activity",
+  "wa_d_sync": "Sync status",
+  "wa_d_synced": "In sync",
+  "wa_d_number_id": "Phone number ID",
+  "wa_d_daily_limit": "Daily conversation limit",
+  "wa_d_limit_value": "{u} of {l}",
+  "@wa_d_limit_value": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_unknown": "Unknown",
+  "wa_qs_explain": "Quality reflects how customers reacted to your messages over the last 7 days. Blocks, reports and low engagement lower it.",
+  "wa_qs_tier": "Messaging tier",
+  "wa_qs_tier_value": "{tier} conversations / day",
+  "@wa_qs_tier_value": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qs_trend": "Last 7 days",
+  "wa_qs_tips": "Tips to raise quality",
+  "wa_qs_tip1": "Only message customers who opted in",
+  "wa_qs_tip2": "Personalise messages, avoid repeated text",
+  "wa_qs_tip3": "Make it easy to opt out",
+  "wa_qs_help": "WhatsApp Help Center",
+  "wa_log_connected": "Connected",
+  "wa_log_connected_by": "Connected by {name}",
+  "@wa_log_connected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_disconnected": "Disconnected · {d}",
+  "@wa_log_disconnected": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_reconnected": "Reconnected",
+  "wa_log_reconnected_by": "Reconnected by {name}",
+  "@wa_log_reconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_recovered": "{n} messages recovered",
+  "@wa_log_recovered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_reason_phone_offline": "Phone offline",
+  "wa_reason_logged_out": "Logged out",
+  "wa_reason_update": "Update",
+  "wa_log_empty": "No events in the last 30 days",
+  "wa_cancel": "Cancel",
+  "wa_disc_mismatch": "Digits don't match",
+  "wa_disc_failed": "Couldn't disconnect",
+  "wa_notify_sent": "Admin notified",
+  "wa_save_failed": "Couldn't save the change",
+  "wa_retry": "Retry",
+  "wa_offline": "Editing requires internet",
+  "wa_saved": "Saved",
+  "wa_welcome_on": "Welcome message turned on",
+  "wa_away_on": "Away message turned on",
+  "wa_away_off": "Away message turned off",
+  "wa_delay_30s": "After 30 seconds",
+  "wa_delay_1m": "After 1 minute",
+  "wa_delay_2m": "After 2 minutes",
+  "wa_delay_5m": "After 5 minutes",
+  "wa_save": "Save",
+  "wa_welcome_enable": "Turn on welcome message",
+  "wa_away_enable": "Turn on away message",
+  "wa_message": "Message",
+  "wa_message_hint": "Write the message…",
+  "wa_send_when": "Send",
+  "wa_buttons_hint": "Up to 3 buttons, 20 characters each",
+  "wa_button_add": "+ Add button",
+  "wa_button_hint": "Button label",
+  "wa_preview": "Preview",
+  "wa_err_text": "Write the message (1–1024 characters)",
+  "wa_err_button": "Button label longer than 20 characters",
+  "wa_go_ai": "AI settings",
+  "wa_discard_title": "Discard changes?",
+  "wa_discard_body": "Your edits won't be saved.",
+  "wa_discard": "Discard",
+  "wa_keep": "Keep editing",
+  "wa_qr_new": "New quick reply",
+  "wa_qr_edit": "Edit quick reply",
+  "wa_qr_search": "Search replies",
+  "wa_qr_empty": "No quick replies yet",
+  "wa_qr_empty_body": "Create one and use it by typing / in a chat",
+  "wa_qr_no_results": "No results",
+  "wa_qr_add": "Add reply",
+  "wa_qr_used": "Used {n} times",
+  "@wa_qr_used": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_title": "Delete \"{title}\"?",
+  "@wa_qr_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_body": "It won't appear in the / list anymore.",
+  "wa_delete": "Delete",
+  "wa_qr_deleted": "Reply deleted",
+  "wa_qr_delete_failed": "Couldn't delete the reply",
+  "wa_qr_attach": "Attach image or file",
+  "wa_qr_attach_hint": "Optional · up to 5 MB",
+  "wa_qr_attach_too_big": "File larger than 5 MB",
+  "wa_qr_attach_remove": "Remove attachment",
+  "wa_qr_err_title": "Enter a title",
+  "wa_qr_err_text": "Enter the text",
+  "wa_qr_err_shortcut_empty": "Enter a shortcut",
+  "wa_qr_err_shortcut_invalid": "Use a–z, 0–9, _ and - only",
+  "wa_qr_err_shortcut_taken": "This shortcut is taken",
+  "wa_qr_err_shortcut_long": "Shortcut is too long",
+  "wa_qr_saved": "Reply saved",
+  "wa_qr_save_failed": "Couldn't save the reply",
+  "wa_qr_reorder_failed": "Couldn't save the order",
+  "wa_qr_shared_sub": "Visible to the whole team",
+  "wa_qr_readonly": "Only admins edit team replies",
+  "wa_tpl_empty": "No approved templates yet",
+  "wa_tpl_preview": "Template preview",
+  "wa_phone_hint": "5X XXX XXXX",
+  "wa_err_phone": "Enter a valid number",
+  "wa_rate_limited": "Too many attempts, try again shortly",
+  "wa_multi_device": "This account doesn't support linked devices; update WhatsApp and retry",
+  "wa_connect_failed": "Couldn't connect, try again",
+  "wa_network_error": "No internet connection",
+  "wa_qr_steps": "On the other phone open WhatsApp → Settings → Linked devices → Link a device → Scan the code",
+  "wa_qr_refresh_in": "Refreshes in {s}s",
+  "@wa_qr_refresh_in": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_alt": "QR code to link WhatsApp, refreshes every 20 seconds",
+  "wa_waiting_link": "Waiting for the code on your phone…",
+  "wa_change_number": "Change number",
+  "wa_phone_tip": "Linking by phone number is easiest on this device — a QR code can't be scanned by the same phone.",
+  "wa_plan_title": "WhatsApp isn't in your plan",
+  "wa_plan_body": "Upgrade to link a WhatsApp number and receive customer messages",
+  "wa_view_plans": "View plans",
+  "wa_upgrade_info": "Ask the workspace owner to upgrade",
+  "wa_blocked_empty": "No blocked numbers",
+  "wa_unblock": "Unblock",
+  "wa_unblocked": "Unblocked",
+  "wa_card_a11y": "{name}, {phone}, {status}. {n} messages today, number quality {q}, linked for {d} days",
+  "@wa_card_a11y": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      },
+      "q": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_save_disabled": "Complete the required fields",
+  "wa_log_disconnected_by": "Disconnected by {name}",
+  "@wa_log_disconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_connect_started": "Connection started",
+  "wa_log_connect_started_by": "{name} started connecting",
+  "@wa_log_connect_started_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_already_linked": "Already linked",
+  "wa_banned": "WhatsApp banned this number",
+  "wa_demo_state": "Demo state"
+}

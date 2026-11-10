@@ -1,0 +1,294 @@
+{
+  "@@locale": "en",
+  "ai_title": "AI agent",
+  "ai_master_switch": "Turn on AI",
+  "ai_state_on": "On",
+  "ai_state_off": "Off",
+  "ai_readonly": "Only admins can edit AI settings",
+  "ai_hero_answered": "{n} questions",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "answered this week · saved ~{h} hours",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "AI is off",
+  "ai_hero_off_body": "Turn it on to answer from your knowledge base",
+  "ai_hero_ready": "Ready to work",
+  "ai_hero_ready_body": "Hasn't answered yet — try it first",
+  "ai_hero_a11y": "{n} questions answered this week, view performance",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "Used {p}% of this month's replies",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "Before going live",
+  "ai_ready_kb": "Knowledge base has at least 10 answers ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "Working hours set",
+  "ai_ready_handoff": "Handoff rule enabled",
+  "ai_ready_tested": "Agent tested",
+  "ai_ready_done": "Done",
+  "ai_ready_missing": "Not done",
+  "ai_mode": "How it works",
+  "ai_mode_suggest": "Suggest only",
+  "ai_mode_suggest_sub": "Drafts replies; agents review and send",
+  "ai_mode_auto": "Auto-reply",
+  "ai_mode_auto_sub": "Replies instantly, hands off when needed",
+  "ai_mode_after": "After hours only",
+  "ai_mode_after_sub": "Auto-replies outside working hours",
+  "ai_mode_after_sub2": "and suggests during hours",
+  "ai_mode_needs_hours": "Set working hours first",
+  "ai_mode_needs_ready": "Finish the readiness checklist first",
+  "ai_recommended": "Recommended",
+  "ai_mode_changed": "Changed to \"{mode}\"",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "Undo",
+  "ai_tone": "Tone",
+  "ai_tone_friendly": "Friendly",
+  "ai_tone_formal": "Formal",
+  "ai_tone_concise": "Concise",
+  "ai_tone_sample_friendly": "Hi Noura! Delivery to Dammam is 25 SAR, free over 300. It arrives in 2–3 days!",
+  "ai_tone_sample_formal": "Welcome. Delivery to Dammam costs 25 SAR and is free for orders over 300 SAR, within 2–3 business days.",
+  "ai_tone_sample_concise": "Dammam delivery 25 SAR (free over 300) · 2–3 days.",
+  "ai_use_name": "Use the customer's name",
+  "ai_rules": "Rules",
+  "ai_hours": "Working hours",
+  "ai_hours_24": "24 hours",
+  "ai_hours_unset": "Not set",
+  "ai_handoff": "Handoff to agent",
+  "ai_handoff_sub": "On human request, complaint, or payment",
+  "ai_language": "Reply language",
+  "ai_lang_customer": "Customer's language",
+  "ai_lang_customer_sub": "Detected per message",
+  "ai_lang_ar": "Always Arabic",
+  "ai_lang_en": "Always English",
+  "ai_lang_style": "Style",
+  "ai_lang_msa": "Simple MSA",
+  "ai_lang_saudi": "Neutral Saudi dialect",
+  "ai_handoff_msg": "Handoff message",
+  "ai_handoff_msg_default": "I'll connect you with a colleague now, one moment please.",
+  "ai_var_customer": "Customer name",
+  "ai_var_return": "Return time",
+  "ai_save": "Save",
+  "ai_delay": "Auto-reply delay",
+  "ai_delay_instant": "Instant",
+  "ai_delay_30s": "After 30s",
+  "ai_delay_1m": "After 1 min",
+  "ai_delay_2m": "After 2 min",
+  "ai_delay_note": "The delay lets agents answer first in auto-reply",
+  "ai_perf": "Performance",
+  "ai_perf_resolution": "Answered without handoff",
+  "ai_perf_rating": "Positive rating",
+  "ai_perf_unanswered": "Unanswered questions",
+  "ai_perf_detail": "View detailed performance",
+  "ai_perf_week": "This week",
+  "ai_perf_answered": "Answered",
+  "ai_perf_handoffs": "Handoffs",
+  "ai_perf_reasons": "Top handoff reasons",
+  "ai_perf_sources": "Most used sources",
+  "ai_perf_none": "No data yet",
+  "ai_reason_human_request": "Asked for a human",
+  "ai_reason_complaint": "Complaint",
+  "ai_reason_payment": "Payment or refund",
+  "ai_reason_no_answer": "No answer found",
+  "ai_reason_low_confidence": "Low confidence",
+  "ai_reason_after_replies": "Replies without resolution",
+  "ai_reason_keyword": "Keyword: {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "Other",
+  "ai_advanced": "Advanced",
+  "ai_channels": "Enabled channels",
+  "ai_channels_none": "No channels",
+  "ai_channel_whatsapp": "WhatsApp",
+  "ai_channel_web": "Website",
+  "ai_channel_messenger": "Messenger",
+  "ai_instructions": "Extra instructions",
+  "ai_instructions_ph": "e.g. Don't mention wholesale prices; always ask for the order number before shipping questions",
+  "ai_instructions_empty": "None",
+  "ai_outside_kb": "Answer outside the knowledge base",
+  "ai_outside_kb_sub": "Not recommended — may give inaccurate info",
+  "ai_confidence": "Auto-send confidence threshold",
+  "ai_conf_low": "Low",
+  "ai_conf_med": "Medium",
+  "ai_conf_high": "High",
+  "ai_conf_low_sub": "Sends most replies automatically",
+  "ai_conf_med_sub": "Balance of speed and accuracy",
+  "ai_conf_high_sub": "Only sends sure replies; the rest are suggested or handed off",
+  "ai_team_styles": "Team rewrite styles",
+  "ai_style_add": "Add style",
+  "ai_style_name": "Style name",
+  "ai_style_instruction": "Instruction",
+  "ai_style_delete": "Delete",
+  "ai_styles_empty": "No styles yet",
+  "ai_audit": "Change log",
+  "ai_audit_row": "Changed {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "No changes yet",
+  "ai_test": "Test the agent in a sample chat",
+  "ai_test_title": "Test chat",
+  "ai_test_sub": "Won't be sent to any customer",
+  "ai_test_info": "You're the customer. Try real customer questions.",
+  "ai_test_why": "Why this reply?",
+  "ai_test_handoff": "In a real chat this would go to the team: {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "Restart",
+  "ai_test_channel": "Change channel",
+  "ai_test_p1": "How much is delivery?",
+  "ai_test_p2": "I want to return my order",
+  "ai_test_p3": "When are you open?",
+  "ai_test_p4": "I want to talk to someone",
+  "ai_test_hint": "Type your question as a customer…",
+  "ai_test_label": "AI",
+  "ai_test_error": "Couldn't get a reply. Try again.",
+  "ai_test_unsaved": "You have unsaved working-hours edits",
+  "ai_why_sources": "Sources",
+  "ai_why_no_sources": "No knowledge base sources used",
+  "ai_why_confidence": "Confidence",
+  "ai_why_rule": "Rule",
+  "ai_why_tone": "Tone",
+  "ai_off_title": "Turn off AI?",
+  "ai_off_body": "It will stop replying and suggesting. Chats it's handling will go to the team.",
+  "ai_off_handling": "Handling {n} chats now",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "Turn off",
+  "ai_cancel": "Cancel",
+  "ai_kb_first_title": "Add your knowledge base first",
+  "ai_kb_first_body": "AI only answers from your info. Add at least 10 answers.",
+  "ai_kb_add": "Add answers",
+  "ai_enable_suggest": "Enable in suggest-only mode",
+  "ai_auto_title": "AI will reply to customers directly",
+  "ai_auto_b1": "Answers only from your knowledge base",
+  "ai_auto_b2": "Hands off by your rules",
+  "ai_auto_b3": "You can turn it off anytime",
+  "ai_auto_tested": "I tested the agent",
+  "ai_auto_try": "Try now",
+  "ai_auto_confirm": "Enable auto-reply",
+  "ai_outside_title": "Allow answers outside the knowledge base?",
+  "ai_outside_body": "AI may give incorrect info about your products or prices.",
+  "ai_allow": "Allow",
+  "ai_plan_off": "AI isn't available on your plan",
+  "ai_view_plans": "View plans",
+  "ai_quota_out": "Monthly replies used — suggest-only until {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "Couldn't save change",
+  "ai_retry": "Retry",
+  "ai_conflict": "{name} just changed the settings",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "Someone else just changed the settings",
+  "ai_offline": "Editing requires internet",
+  "ai_load_error": "Couldn't load AI settings",
+  "ai_saved": "Saved",
+  "ai_hours_247": "Open 24/7",
+  "ai_hours_closed": "Closed",
+  "ai_hours_add_range": "+ Shift",
+  "ai_hours_copy_all": "Copy to all days",
+  "ai_hours_timezone": "Time zone",
+  "ai_hours_holidays": "Public holidays",
+  "ai_hours_err_order": "End must be after start",
+  "ai_hours_err_overlap": "Shifts overlap",
+  "ai_hours_err_max": "At most 2 shifts",
+  "ai_hours_start": "From",
+  "ai_hours_end": "To",
+  "ai_hours_discard": "Discard changes?",
+  "ai_hours_discard_body": "You haven't saved the working hours.",
+  "ai_hours_discard_confirm": "Discard",
+  "ai_day_sat": "Saturday",
+  "ai_day_sun": "Sunday",
+  "ai_day_mon": "Monday",
+  "ai_day_tue": "Tuesday",
+  "ai_day_wed": "Wednesday",
+  "ai_day_thu": "Thursday",
+  "ai_day_fri": "Friday",
+  "ai_ho_intro": "The AI hands the chat to the team automatically when:",
+  "ai_ho_human": "The customer asks for a person",
+  "ai_ho_always": "Always on",
+  "ai_ho_complaint": "Complaint or upset customer",
+  "ai_ho_payment": "Payment or refund topic",
+  "ai_ho_no_answer": "No answer in the knowledge base",
+  "ai_ho_low_conf": "Low confidence in the answer",
+  "ai_ho_after_n": "After {n} replies without resolution",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "Specific words",
+  "ai_ho_keyword_add": "Add a word…",
+  "ai_ho_target": "Hand off to?",
+  "ai_ho_target_unassigned": "Unassigned (first to claim)",
+  "ai_ho_target_team": "A specific team",
+  "ai_ho_target_last": "Last agent who helped the customer",
+  "ai_ho_after_hours": "Outside working hours",
+  "ai_ho_tell_return": "Tell the customer when you're back",
+  "ai_ho_notify": "Hand off and notify the team"
+}

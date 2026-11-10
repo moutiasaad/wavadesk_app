@@ -1,0 +1,298 @@
+{
+  "@@locale": "ar",
+  "dash_title": "لوحة التحكم",
+  "dash_morning": "صباح الخير، {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "مساء الخير، {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "متاح",
+  "dash_presence_online_f": "متاحة",
+  "dash_presence_busy_m": "مشغول",
+  "dash_presence_busy_f": "مشغولة",
+  "dash_presence_away": "غير متاح",
+  "dash_presence_title": "حالتك",
+  "dash_presence_until": "حتى…",
+  "dash_presence_30m": "30 دقيقة",
+  "dash_presence_1h": "ساعة",
+  "dash_presence_eod": "نهاية اليوم",
+  "dash_presence_auto": "تتحول تلقائيًا إلى «غير متاح» بعد 15 دقيقة من الخمول",
+  "dash_presence_until_time": "حتى {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "تعذّر تغيير حالتك",
+  "dash_scope_me": "أنا",
+  "dash_scope_team": "فريقي",
+  "dash_scope_all": "الكل",
+  "dash_team_picker": "اختر الفريق",
+  "dash_range_today": "اليوم",
+  "dash_range_yesterday": "أمس",
+  "dash_range_7d": "آخر 7 أيام",
+  "dash_range_30d": "آخر 30 يومًا",
+  "dash_range_title": "الفترة",
+  "dash_open": "محادثات مفتوحة",
+  "dash_awaiting_me": "بانتظار ردّك",
+  "dash_awaiting_team": "بانتظار الرد",
+  "dash_oldest": "أقدمها {m} د",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "لا أحد ينتظر",
+  "dash_first_response": "متوسط أول رد",
+  "dash_minute": "دقيقة",
+  "dash_ai_reply": "ردّ الذكاء",
+  "dash_of_questions": "من الأسئلة",
+  "dash_resolved": "المحادثات المحلولة",
+  "dash_volume_today": "المحادثات اليوم",
+  "dash_volume_range": "المحادثات · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} محادثة",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour}: {n} محادثة · {ai} بالذكاء",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "الكل",
+  "dash_legend_ai": "ردّ الذكاء",
+  "dash_no_volume": "لا محادثات بعد اليوم",
+  "dash_no_volume_range": "لا محادثات في هذه الفترة",
+  "dash_team_now": "الفريق الآن",
+  "dash_see_all": "عرض الكل",
+  "dash_ai_name": "الذكاء",
+  "dash_agent_open": "{n} محادثات مفتوحة",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "متوسط أول رد اليوم {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "عرض محادثاته",
+  "dash_redistribute": "إعادة توزيع",
+  "dash_redistribute_none": "لا محادثات مفتوحة لإعادة توزيعها",
+  "dash_solo": "أنت وحدك في الفريق",
+  "dash_invite": "دعوة زميل",
+  "dash_ai_impact": "{n} سؤالًا أجاب عنها الذكاء",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "وفّر نحو {h} ساعات من وقت الفريق",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "تحويلات للفريق {n}",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "تقييم إيجابي {p}%",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "يتولّى الذكاء {n} محادثة الآن",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "حسب القناة",
+  "dash_web_reports": "تقارير مفصّلة على الويب",
+  "dash_last_updated": "آخر تحديث {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "تعذّر تحميل لوحة التحكم",
+  "dash_card_error": "تعذّر التحميل",
+  "dash_retry": "إعادة المحاولة",
+  "dash_frt_title": "سرعة أول رد",
+  "dash_frt_target": "الهدف: {m} د",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "أقل من دقيقة",
+  "dash_frt_1_5": "1–5 د",
+  "dash_frt_5_15": "5–15 د",
+  "dash_frt_gt15": "أكثر من 15 د",
+  "dash_frt_note": "محسوب على المحادثات التي ردّ عليها موظف",
+  "dash_frt_empty": "لا ردود بعد في هذه الفترة",
+  "dash_hours_short": "س",
+  "dash_minutes_short": "د",
+  "dash_thousand": "ألف",
+  "dash_onb_title": "ابدأ باستقبال المحادثات",
+  "dash_onb_wa": "ربط واتساب",
+  "dash_onb_kb": "إضافة قاعدة المعرفة",
+  "dash_onb_ai": "تفعيل الذكاء الاصطناعي",
+  "dash_onb_cta": "أكمل الإعداد",
+  "dash_alert_wa_title": "واتساب غير متصل",
+  "dash_alert_wa_body": "لن تصل الرسائل حتى تعيد الربط",
+  "dash_alert_wa_action": "إعادة الربط",
+  "dash_alert_sla_title": "{n} عملاء ينتظرون أكثر من {sla} د",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "رد الآن",
+  "dash_alert_unassigned_title": "{n} محادثات بانتظار الاستلام",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "عرض",
+  "dash_alert_kb_title": "{n} أسئلة بلا إجابة",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "أضفها ليجيب الذكاء تلقائيًا",
+  "dash_alert_kb_action": "راجعها",
+  "dash_alert_trial_title": "تجربتك تنتهي بعد {n} أيام",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "عرض الخطط",
+  "dash_alert_dismiss": "إخفاء",
+  "dash_a11y_metric": "{label}: {value} {aside}. اضغط لعرض المحادثات",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title}: {total}. الذروة {peak} بـ {n} محادثة.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}، {presence}، {n} محادثات مفتوحة",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "حالتك: {status}. اضغط للتغيير",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  }
+}

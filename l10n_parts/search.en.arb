@@ -1,0 +1,210 @@
+{
+  "search_placeholder": "Search customers, messages, or order #",
+  "search_cancel": "Cancel",
+  "search_scope_all": "All",
+  "search_scope_contacts": "Customers",
+  "search_scope_messages": "Messages",
+  "search_scope_kb": "Knowledge",
+  "search_scope_conversations": "Conversations",
+  "search_filters": "Filters",
+  "search_section_contacts": "Customers",
+  "search_section_messages": "Messages",
+  "search_section_kb": "Knowledge base",
+  "search_section_conversations": "Conversations",
+  "search_see_all": "See all ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "Best match",
+  "search_open_chat": "Open chat",
+  "search_profile": "Profile",
+  "search_open_badge": "Open",
+  "search_more_in_conv": "+{n} more in this conversation",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "Used by AI {n} times this month",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "Insert into reply",
+  "search_you": "You:",
+  "search_note": "Note:",
+  "search_order": "Order {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "Tag: {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "Recent searches",
+  "search_clear": "Clear",
+  "search_suggestions": "Suggestions",
+  "search_recent_contacts": "Recently contacted",
+  "search_tip": "Search by name, phone, order #, or any word",
+  "search_no_results": "No results for \"{q}\"",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "Try another word or check spelling",
+  "search_clear_filters": "Clear filters",
+  "search_in_all": "Search everything",
+  "search_did_you_mean": "Did you mean: {s}?",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "Search failed",
+  "search_retry": "Retry",
+  "search_offline": "Offline — showing saved data only",
+  "search_local": "(local)",
+  "search_filter_sender": "Sender",
+  "search_filter_contains": "Contains",
+  "search_filter_attachments": "Attachments",
+  "search_filter_images": "Images",
+  "search_filter_voice": "Voice messages",
+  "search_show_results": "Show results ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "Search",
+  "search_filters_n": "Filters · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "Channel",
+  "search_filter_date": "Date",
+  "search_filter_status": "Conversation status",
+  "search_filter_assignee": "Assignee",
+  "search_date_any": "Any time",
+  "search_date_today": "Today",
+  "search_date_7": "7 days",
+  "search_date_30": "30 days",
+  "search_date_custom": "Custom",
+  "search_sender_all": "All",
+  "search_sender_contact": "Customer",
+  "search_sender_me": "Me",
+  "search_sender_colleagues": "Teammates",
+  "search_sender_ai": "AI",
+  "search_sender_notes": "Internal notes",
+  "search_status_all": "All",
+  "search_status_open": "Open",
+  "search_status_resolved": "Resolved",
+  "search_assignee_all": "All",
+  "search_assignee_me": "Me",
+  "search_assignee_colleague": "Teammate",
+  "search_sugg_unread": "Unread",
+  "search_sugg_awaiting": "Awaiting reply",
+  "search_sugg_vip": "Tag: VIP",
+  "search_sugg_orders_today": "Today's orders",
+  "search_recent_remove": "Remove {q} from history",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "Search history cleared",
+  "search_results_announce": "{n} results: {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} customers",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} messages",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} articles",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} conversations",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "Message from {name}, {time}: {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "Open last conversation",
+  "search_new_chat": "New conversation",
+  "search_copy_number": "Copy number",
+  "search_copied": "Number copied",
+  "search_call": "Call",
+  "search_section_teammates": "Teammates",
+  "search_no_chat_yet": "No previous conversation with this customer",
+  "search_inserted": "Answer inserted into the reply"
+}

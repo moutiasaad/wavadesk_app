@@ -1,0 +1,9 @@
+{
+  "search_in_conv_placeholder": "ابحث في هذه المحادثة",
+  "search_in_conv_count": "{i} من {n}",
+  "@search_in_conv_count": {"placeholders": {"i": {"type": "int"}, "n": {"type": "int"}}},
+  "search_in_conv_action": "بحث في المحادثة",
+  "search_in_conv_prev": "المطابقة السابقة",
+  "search_in_conv_next": "المطابقة التالية",
+  "search_in_conv_close": "إغلاق البحث"
+}

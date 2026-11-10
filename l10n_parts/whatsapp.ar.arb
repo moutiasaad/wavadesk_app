@@ -1,0 +1,420 @@
+{
+  "@@locale": "ar",
+  "wa_title": "واتساب الخاص بك",
+  "wa_refresh": "تحديث الحالة",
+  "wa_log": "سجل الاتصال",
+  "wa_help": "المساعدة",
+  "wa_connected": "متصل",
+  "wa_connecting": "جارٍ الاتصال",
+  "wa_syncing": "جارٍ المزامنة",
+  "wa_phone_offline": "الهاتف غير متصل",
+  "wa_disconnected": "غير متصل",
+  "wa_restricted": "مقيّد",
+  "wa_pending": "غير مربوط",
+  "wa_msgs_today": "رسالة اليوم",
+  "wa_quality": "جودة الرقم",
+  "wa_q_high": "عالية",
+  "wa_q_med": "متوسطة",
+  "wa_q_low": "منخفضة",
+  "wa_stable": "مستقرة",
+  "wa_unstable": "غير مستقرة",
+  "wa_linked_since": "مرتبط منذ",
+  "wa_days": "{n} يومًا",
+  "@wa_days": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_title": "انقطع الاتصال منذ {t}",
+  "@wa_alert_disc_title": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_body": "لن تصل رسائل العملاء حتى تعيد الربط",
+  "wa_reconnect": "إعادة الربط",
+  "wa_alert_phone_title": "هاتفك غير متصل بالإنترنت",
+  "wa_alert_phone_body": "تأكد أن واتساب يعمل على الهاتف المرتبط",
+  "wa_check_again": "تحقق مجددًا",
+  "wa_alert_quality": "جودة الرقم منخفضة",
+  "wa_alert_quality_body": "قلّل الرسائل الجماعية وتجنّب المحتوى المكرر",
+  "wa_details": "التفاصيل",
+  "wa_alert_limit": "اقتربت من حد المحادثات اليومي ({u}/{l})",
+  "@wa_alert_limit": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_update": "حدّث تطبيق واتساب على هاتفك",
+  "wa_alert_pending": "لم يتم ربط واتساب بعد",
+  "wa_alert_pending_body": "اربط رقمك لتبدأ باستقبال رسائل العملاء",
+  "wa_connect": "اربط واتساب",
+  "wa_auto": "الرسائل التلقائية",
+  "wa_welcome": "رسالة الترحيب",
+  "wa_away": "رسالة خارج الدوام",
+  "wa_away_ai": "يتولاها الذكاء الاصطناعي حاليًا",
+  "wa_quick": "الردود السريعة",
+  "wa_welcome_delay": "مهلة رسالة الترحيب",
+  "wa_now": "فورًا",
+  "wa_welcome_off": "تم إيقاف رسالة الترحيب",
+  "wa_undo": "تراجع",
+  "wa_templates": "القوالب المعتمدة",
+  "wa_tpl_marketing": "تسويق",
+  "wa_tpl_utility": "خدمة",
+  "wa_tpl_auth": "مصادقة",
+  "wa_tpl_approved": "معتمد",
+  "wa_tpl_pending": "قيد المراجعة",
+  "wa_tpl_rejected": "مرفوض",
+  "wa_tpl_manage_web": "إدارة القوالب على الويب",
+  "wa_numbers": "الأرقام",
+  "wa_add_second": "أضف رقمًا ثانيًا",
+  "wa_business_only": "متاح في خطة Business",
+  "wa_upgrade": "ترقية",
+  "wa_add_number": "أضف رقمًا",
+  "wa_watch": "شاهد: كيف تربط واتساب",
+  "wa_watch_sub": "شرح بالفيديو · {d}",
+  "@wa_watch_sub": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_advanced": "متقدم",
+  "wa_read_receipts": "إيصالات القراءة للعميل",
+  "wa_mark_read_open": "تمييز الرسائل كمقروءة عند الفتح",
+  "wa_auto_transcribe": "الرسائل الصوتية: تحويل لنص تلقائيًا",
+  "wa_ignore_groups": "تجاهل رسائل المجموعات",
+  "wa_blocked": "الأرقام المحظورة",
+  "wa_hours": "ساعات العمل",
+  "wa_disconnect": "فصل الرقم",
+  "wa_disc_title": "فصل رقم واتساب؟",
+  "wa_disc_body": "لن تصل رسائل العملاء إلى Wavadesk، وسيتوقف الذكاء الاصطناعي عن الرد. ستبقى المحادثات السابقة محفوظة.",
+  "wa_disc_open": "{n} محادثات مفتوحة ستتوقف",
+  "@wa_disc_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_disc_confirm_label": "اكتب آخر 4 أرقام من الرقم للتأكيد",
+  "wa_disc_done": "تم فصل الرقم",
+  "wa_connect_title": "ربط واتساب",
+  "wa_step": "الخطوة {i} من {n}",
+  "@wa_step": {
+    "placeholders": {
+      "i": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_by_phone": "رقم الهاتف",
+  "wa_by_qr": "رمز QR",
+  "wa_get_code": "احصل على الرمز",
+  "wa_copy": "نسخ",
+  "wa_expires_in": "ينتهي خلال {t}",
+  "@wa_expires_in": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_steps_pair": "افتح واتساب ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز ← الربط برقم الهاتف بدلًا من ذلك ← أدخل الرمز",
+  "wa_open_app": "فتح واتساب",
+  "wa_linked_ok": "تم ربط واتساب بنجاح",
+  "wa_syncing_recent": "جارٍ مزامنة المحادثات الأخيرة…",
+  "wa_back": "العودة",
+  "wa_back_online": "عاد الاتصال · لم تُفقد أي رسالة",
+  "wa_code_expired": "انتهت صلاحية الرمز",
+  "wa_new_code": "رمز جديد",
+  "wa_number_taken": "هذا الرقم مرتبط بمساحة عمل أخرى",
+  "wa_watch_video": "شاهد الشرح بالفيديو",
+  "wa_welcome_when": "متى تُرسل؟",
+  "wa_trigger_first": "أول رسالة من عميل جديد",
+  "wa_trigger_new": "كل محادثة جديدة",
+  "wa_trigger_24h": "بعد غياب 24 ساعة",
+  "wa_buttons": "أزرار سريعة",
+  "wa_ai_after_welcome": "سيرد الذكاء الاصطناعي بعد رسالة الترحيب مباشرة",
+  "wa_away_outside": "خارج ساعات العمل",
+  "wa_away_team": "عندما يكون كل الفريق غير متاح",
+  "wa_away_cooldown": "مرة كل {n} ساعات لنفس العميل",
+  "@wa_away_cooldown": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_away_ai_banner": "الذكاء الاصطناعي يرد خارج الدوام — عدّل ذلك من إعدادات الذكاء",
+  "wa_qr_team": "للفريق",
+  "wa_qr_mine": "الخاصة بي",
+  "wa_qr_title_f": "العنوان",
+  "wa_qr_shortcut": "الاختصار",
+  "wa_qr_text": "النص",
+  "wa_qr_shared": "مشترك مع الفريق",
+  "wa_notify_admin": "أبلغ المسؤول",
+  "wa_load_error": "تعذّر تحميل حالة واتساب",
+  "wa_enable_after": "فعّلها بعد ربط الرقم",
+  "wa_more": "المزيد",
+  "wa_last_updated": "آخر تحديث {t}",
+  "@wa_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_copied": "تم النسخ",
+  "wa_details_title": "تفاصيل الاتصال",
+  "wa_d_type": "نوع الربط",
+  "wa_d_type_linked": "جهاز مرتبط",
+  "wa_d_type_cloud": "واجهة واتساب الرسمية",
+  "wa_d_device": "الجهاز",
+  "wa_d_wa_business": "واتساب أعمال {v}",
+  "@wa_d_wa_business": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_wa_personal": "واتساب {v}",
+  "@wa_d_wa_personal": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_last_activity": "آخر نشاط",
+  "wa_d_sync": "حالة المزامنة",
+  "wa_d_synced": "متزامنة",
+  "wa_d_number_id": "معرّف الرقم",
+  "wa_d_daily_limit": "حد المحادثات اليومي",
+  "wa_d_limit_value": "{u} من {l}",
+  "@wa_d_limit_value": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_unknown": "غير معروف",
+  "wa_qs_explain": "تعتمد جودة الرقم على تفاعل العملاء مع رسائلك خلال آخر 7 أيام. الحظر والبلاغات وانخفاض التفاعل تخفضها.",
+  "wa_qs_tier": "فئة المراسلة",
+  "wa_qs_tier_value": "{tier} محادثة يوميًا",
+  "@wa_qs_tier_value": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qs_trend": "آخر 7 أيام",
+  "wa_qs_tips": "نصائح لرفع الجودة",
+  "wa_qs_tip1": "راسل فقط العملاء الذين طلبوا التواصل",
+  "wa_qs_tip2": "خصّص الرسائل وتجنّب النصوص المكررة",
+  "wa_qs_tip3": "اجعل إيقاف الرسائل سهلًا للعميل",
+  "wa_qs_help": "مركز مساعدة واتساب",
+  "wa_log_connected": "تم الربط",
+  "wa_log_connected_by": "ربطه {name}",
+  "@wa_log_connected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_disconnected": "انقطع الاتصال · {d}",
+  "@wa_log_disconnected": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_reconnected": "أُعيد الربط",
+  "wa_log_reconnected_by": "أعاد {name} الربط",
+  "@wa_log_reconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_recovered": "استُعيدت {n} رسالة",
+  "@wa_log_recovered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_reason_phone_offline": "الهاتف غير متصل",
+  "wa_reason_logged_out": "تسجيل خروج",
+  "wa_reason_update": "تحديث",
+  "wa_log_empty": "لا توجد أحداث خلال آخر 30 يومًا",
+  "wa_cancel": "إلغاء",
+  "wa_disc_mismatch": "الأرقام غير مطابقة",
+  "wa_disc_failed": "تعذّر فصل الرقم",
+  "wa_notify_sent": "تم إبلاغ المسؤول",
+  "wa_save_failed": "تعذّر حفظ التغيير",
+  "wa_retry": "إعادة المحاولة",
+  "wa_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "wa_saved": "تم الحفظ",
+  "wa_welcome_on": "تم تفعيل رسالة الترحيب",
+  "wa_away_on": "تم تفعيل رسالة خارج الدوام",
+  "wa_away_off": "تم إيقاف رسالة خارج الدوام",
+  "wa_delay_30s": "بعد 30 ثانية",
+  "wa_delay_1m": "بعد دقيقة",
+  "wa_delay_2m": "بعد دقيقتين",
+  "wa_delay_5m": "بعد 5 دقائق",
+  "wa_save": "حفظ",
+  "wa_welcome_enable": "تفعيل رسالة الترحيب",
+  "wa_away_enable": "تفعيل رسالة خارج الدوام",
+  "wa_message": "الرسالة",
+  "wa_message_hint": "اكتب الرسالة…",
+  "wa_send_when": "الإرسال",
+  "wa_buttons_hint": "حتى 3 أزرار، 20 حرفًا لكل زر",
+  "wa_button_add": "+ أضف زرًا",
+  "wa_button_hint": "نص الزر",
+  "wa_preview": "معاينة",
+  "wa_err_text": "اكتب الرسالة (1–1024 حرفًا)",
+  "wa_err_button": "نص الزر أطول من 20 حرفًا",
+  "wa_go_ai": "إعدادات الذكاء",
+  "wa_discard_title": "تجاهل التغييرات؟",
+  "wa_discard_body": "لن تُحفظ تعديلاتك.",
+  "wa_discard": "تجاهل",
+  "wa_keep": "متابعة التعديل",
+  "wa_qr_new": "رد سريع جديد",
+  "wa_qr_edit": "تعديل الرد السريع",
+  "wa_qr_search": "ابحث في الردود",
+  "wa_qr_empty": "لا توجد ردود سريعة بعد",
+  "wa_qr_empty_body": "أنشئ ردًا واستخدمه بكتابة / في المحادثة",
+  "wa_qr_no_results": "لا نتائج",
+  "wa_qr_add": "أضف ردًا",
+  "wa_qr_used": "استُخدم {n} مرة",
+  "@wa_qr_used": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_title": "حذف «{title}»؟",
+  "@wa_qr_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_body": "لن يظهر في قائمة / بعد الآن.",
+  "wa_delete": "حذف",
+  "wa_qr_deleted": "تم حذف الرد",
+  "wa_qr_delete_failed": "تعذّر حذف الرد",
+  "wa_qr_attach": "إرفاق صورة أو ملف",
+  "wa_qr_attach_hint": "اختياري · حتى 5 ميجابايت",
+  "wa_qr_attach_too_big": "الملف أكبر من 5 ميجابايت",
+  "wa_qr_attach_remove": "إزالة المرفق",
+  "wa_qr_err_title": "اكتب العنوان",
+  "wa_qr_err_text": "اكتب النص",
+  "wa_qr_err_shortcut_empty": "اكتب الاختصار",
+  "wa_qr_err_shortcut_invalid": "استخدم a–z و0–9 و_ و- فقط",
+  "wa_qr_err_shortcut_taken": "هذا الاختصار مستخدم",
+  "wa_qr_err_shortcut_long": "الاختصار طويل جدًا",
+  "wa_qr_saved": "تم حفظ الرد",
+  "wa_qr_save_failed": "تعذّر حفظ الرد",
+  "wa_qr_reorder_failed": "تعذّر حفظ الترتيب",
+  "wa_qr_shared_sub": "يظهر لكل أعضاء الفريق",
+  "wa_qr_readonly": "ردود الفريق يعدّلها المسؤول فقط",
+  "wa_tpl_empty": "لا توجد قوالب معتمدة بعد",
+  "wa_tpl_preview": "معاينة القالب",
+  "wa_phone_hint": "5X XXX XXXX",
+  "wa_err_phone": "أدخل رقمًا صحيحًا",
+  "wa_rate_limited": "محاولات كثيرة، حاول بعد قليل",
+  "wa_multi_device": "هذا الحساب لا يدعم الأجهزة المرتبطة؛ حدّث واتساب ثم حاول مجددًا",
+  "wa_connect_failed": "تعذّر الربط، حاول مجددًا",
+  "wa_network_error": "لا يوجد اتصال بالإنترنت",
+  "wa_qr_steps": "افتح واتساب على الهاتف الآخر ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز ← امسح الرمز",
+  "wa_qr_refresh_in": "يتجدد خلال {s} ث",
+  "@wa_qr_refresh_in": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_alt": "رمز QR لربط واتساب، يتجدد كل 20 ثانية",
+  "wa_waiting_link": "بانتظار إدخال الرمز على هاتفك…",
+  "wa_change_number": "تغيير الرقم",
+  "wa_phone_tip": "الربط برقم الهاتف أسهل عند استخدام نفس الجهاز، ولا يمكن مسح رمز QR بنفس الهاتف.",
+  "wa_plan_title": "واتساب غير متاح في خطتك",
+  "wa_plan_body": "رقِّ خطتك لربط رقم واتساب واستقبال رسائل العملاء",
+  "wa_view_plans": "عرض الخطط",
+  "wa_upgrade_info": "تواصل مع مالك مساحة العمل للترقية",
+  "wa_blocked_empty": "لا توجد أرقام محظورة",
+  "wa_unblock": "إلغاء الحظر",
+  "wa_unblocked": "تم إلغاء الحظر",
+  "wa_card_a11y": "{name}، {phone}، {status}. {n} رسالة اليوم، جودة الرقم {q}، مرتبط منذ {d} يومًا",
+  "@wa_card_a11y": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      },
+      "q": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_save_disabled": "أكمل الحقول المطلوبة",
+  "wa_log_disconnected_by": "فصله {name}",
+  "@wa_log_disconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_connect_started": "بدأت محاولة ربط",
+  "wa_log_connect_started_by": "بدأ {name} محاولة ربط",
+  "@wa_log_connect_started_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_already_linked": "الرقم مرتبط بالفعل",
+  "wa_banned": "حظر واتساب هذا الرقم",
+  "wa_demo_state": "حالة تجريبية"
+}

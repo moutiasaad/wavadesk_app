@@ -1,0 +1,17 @@
+{
+  "chatscreen_load_failed": "تعذّر تحميل المحادثة",
+  "chatscreen_not_found": "لم نعثر على هذه المحادثة",
+  "chatscreen_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",
+  "chatscreen_taken_from_me": "أُسندت المحادثة إلى {name}",
+  "@chatscreen_taken_from_me": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_claimed_by": "استلمها {name}",
+  "@chatscreen_claimed_by": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_transfer_note": "@{name} أرجو تحويل هذه المحادثة إليّ لأتابعها.",
+  "@chatscreen_transfer_note": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_transfer_sent": "أُرسل طلب التحويل إلى {name}",
+  "@chatscreen_transfer_sent": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_takeover_title": "استلام المحادثة من زميل؟",
+  "chatscreen_takeover_body": "ستُسند المحادثة إليك بدلًا من {name} وسيصله إشعار بذلك.",
+  "@chatscreen_takeover_body": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_takeover_confirm": "استلم بدلًا عنه"
+}

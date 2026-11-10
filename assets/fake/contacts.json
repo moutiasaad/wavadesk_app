@@ -1,0 +1,68 @@
+{
+  "_comment": "Customer-profile extras keyed by contact id (the base name/phone/email/city/tags come from conversations.json). Times are relative (*_ago_minutes). attribute.type: text | number | date | bool | url | select. order.status: processing | shipped | delivered | cancelled. Set integrations.store to null to hide the Orders section everywhere.",
+  "integrations": {"store": "salla"},
+  "contacts": {
+    "cu1": {
+      "language": "ar",
+      "timezone": "Asia/Riyadh",
+      "is_vip": true,
+      "csat": 4.8,
+      "created_via": {"channel": "whatsapp", "agent_name": "سارة", "ago_minutes": 864000},
+      "ai_summary": {
+        "text": "عميلة متكررة من الدمام، تطلب عادةً الملابس النسائية وتهتم بسرعة الشحن. اشتكت مرة من تأخر طلب في سبتمبر وتم تعويضها بكوبون. تفضّل التواصل عبر واتساب مساءً، وتسأل كثيرًا عن رسوم التوصيل والمقاسات المتوفرة.",
+        "ago_minutes": 120
+      },
+      "tags": [
+        {"id": "vip", "name": "VIP", "color": "#D97706", "system": true},
+        {"id": "returning", "name": "عميلة متكررة", "color": "#0F7E7A"}
+      ],
+      "attributes": [
+        {"key": "membership", "label": "رقم العضوية", "type": "text", "value": "GOLD-2291"},
+        {"key": "birthday", "label": "تاريخ الميلاد", "type": "date", "value": "1994-05-12"},
+        {"key": "newsletter", "label": "مشتركة في النشرة", "type": "bool", "value": true},
+        {"key": "points", "label": "نقاط الولاء", "type": "number", "value": 1240},
+        {"key": "instagram", "label": "حسابها", "type": "url", "value": "https://instagram.com/noura.q"}
+      ],
+      "notes": [
+        {"id": "nt1", "text": "تفضّل التوصيل مساءً بعد الساعة 6. لا تتصل قبل ذلك.", "author_id": "a2", "author_name": "سارة", "pinned": true, "ago_minutes": 8640},
+        {"id": "nt2", "text": "@أحمد أعطيناها كوبون TAKE10 بعد تأخر طلب سبتمبر.", "author_id": "a3", "author_name": "خالد", "mentions": ["أحمد"], "ago_minutes": 20160},
+        {"id": "nt3", "text": "مقاسها M في الفساتين و38 في الأحذية.", "author_id": "a1", "author_name": "أحمد السالم", "ago_minutes": 43200}
+      ],
+      "channels": [
+        {"channel": "whatsapp", "identifier": "+966 55 123 4567"},
+        {"channel": "web", "identifier": "visitor #8812"},
+        {"channel": "email", "identifier": "noura.q@gmail.com"}
+      ],
+      "orders": [
+        {"id": "o1", "number": "#2841", "ago_minutes": 1560, "items_count": 3, "total": 485, "status": "processing", "url": "https://wavadesk-store.com/orders/2841"},
+        {"id": "o2", "number": "#2790", "ago_minutes": 20160, "items_count": 1, "total": 220, "status": "delivered", "url": "https://wavadesk-store.com/orders/2790"},
+        {"id": "o3", "number": "#2702", "ago_minutes": 64800, "items_count": 2, "total": 310, "status": "cancelled"}
+      ],
+      "orders_total_spent": 2140
+    },
+    "cu2": {
+      "language": "ar",
+      "timezone": "Asia/Riyadh",
+      "created_via": {"channel": "web", "ago_minutes": 141120},
+      "notes": [],
+      "channels": [{"channel": "web", "identifier": "m.otaibi@outlook.com"}]
+    },
+    "cu3": {
+      "language": "en",
+      "timezone": "Europe/Paris",
+      "created_via": {"channel": "instagram", "ago_minutes": 30},
+      "channels": [{"channel": "instagram", "identifier": "@laura.martin"}]
+    },
+    "cu6": {
+      "language": "ar",
+      "timezone": "Asia/Dubai",
+      "attributes": [
+        {"key": "membership", "label": "رقم العضوية", "type": "text", "value": null}
+      ]
+    },
+    "cu16": {
+      "visitor": {"browser": "Safari · iPhone", "page": "/products/blue-dress"},
+      "channels": [{"channel": "web", "identifier": "visitor #4471"}]
+    }
+  }
+}

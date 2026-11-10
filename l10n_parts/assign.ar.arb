@@ -1,0 +1,239 @@
+{
+  "as_title": "إسناد المحادثة",
+  "as_title_bulk": "إسناد {n} محادثات",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "المسؤول الحالي: {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "ابحث عن زميل أو فريق",
+  "as_no_results": "لا نتائج لـ «{q}»",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "الكل",
+  "as_filter_available": "متاحون ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "فريقي",
+  "as_suggested": "مقترح",
+  "as_teammates": "الزملاء",
+  "as_teams": "الفرق",
+  "as_ai_section": "الذكاء الاصطناعي",
+  "as_me": "أنا",
+  "as_badge_current": "الحالي",
+  "as_badge_capacity": "عند الحد",
+  "as_online_m": "متاح",
+  "as_online_f": "متاحة",
+  "as_busy_m": "مشغول",
+  "as_busy_f": "مشغولة",
+  "as_away": "غير متاح",
+  "as_last_seen": "آخر ظهور منذ {t}",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} محادثات مفتوحة",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} أعضاء",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} متاحون",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "يُسند لأقل زميل انشغالًا",
+  "as_routing_rr": "يُسند بالتناوب",
+  "as_routing_manual": "يبقى في قائمة الفريق",
+  "as_team_none_available": "لا يوجد أحد متاح الآن — ستنتظر في قائمة الفريق",
+  "as_ai_name": "وكيل الذكاء الاصطناعي",
+  "as_ai_sub": "يرد تلقائيًا ويحوّل للفريق عند الحاجة",
+  "as_ai_unavailable": "لا توجد قاعدة معرفة كافية",
+  "as_reason_handled": "تعامل مع العميل سابقًا",
+  "as_reason_handled_f": "تعاملت مع العميل سابقًا",
+  "as_reason_skill": "خبير {skill}",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "خبيرة {skill}",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "الأقل انشغالًا",
+  "as_note": "ملاحظة للزميل (اختياري)",
+  "as_note_q1": "العميل ينتظر ردًا عاجلًا",
+  "as_note_q2": "موضوع دفع",
+  "as_note_q3": "يحتاج متابعة غدًا",
+  "as_pick": "اختر زميلًا أو فريقًا",
+  "as_assign_to": "إسناد إلى {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "استلم المحادثة",
+  "as_assign_ai": "إسناد للذكاء الاصطناعي",
+  "as_assign_bulk_to": "إسناد {n} محادثات إلى {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "إلغاء الإسناد (إرجاعها لغير المُسندة)",
+  "as_busy_hint": "مشغول الآن — قد يتأخر الرد",
+  "as_busy_hint_f": "مشغولة الآن — قد يتأخر الرد",
+  "as_away_hint": "غير متاح — سيصله إشعار",
+  "as_away_hint_f": "غير متاحة — سيصلها إشعار",
+  "as_capacity_reached": "وصل للحد الأقصى ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "غير متاح للإسناد",
+  "as_taken_live": "استلمها {name} للتو",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "إعادة الإسناد إلى {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "الإسناد يتطلب اتصالًا بالإنترنت",
+  "as_none_available": "لا يوجد زملاء متاحون الآن",
+  "as_show_all": "عرض الكل",
+  "as_done": "تم الإسناد إلى {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "تم إسناد {ok} من {n}",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "عرض الأخطاء",
+  "as_undo": "تراجع",
+  "as_forbidden": "لا تملك صلاحية الإسناد لهذا الزميل",
+  "as_error": "تعذّر الإسناد. حاول مجددًا.",
+  "as_retry": "إعادة المحاولة",
+  "as_event_assigned": "أسندت المحادثة إلى {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "ألغى {actor} الإسناد",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "تم حلّ المحادثة",
+  "as_queued_team": "في قائمة {team} بانتظار الاستلام",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "أصبحت المحادثة غير مُسندة",
+  "as_errors_title": "تعذّر إسناد {n}",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "مُسندة له بالفعل",
+  "as_err_resolved": "المحادثة محلولة",
+  "as_err_state": "تغيّر المسؤول",
+  "as_err_generic": "خطأ غير متوقع",
+  "as_expand_team": "عرض أعضاء {team}",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "محدد",
+  "as_load_error": "تعذّر تحميل الزملاء"
+}

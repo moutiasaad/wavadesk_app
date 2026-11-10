@@ -1,0 +1,356 @@
+{
+  "@@locale": "en",
+  "kb_title": "Knowledge",
+  "kb_search": "Search {n} entries",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "Q&A",
+  "kb_files": "Files",
+  "kb_links": "Links",
+  "kb_processing": "Processing",
+  "kb_unanswered_title": "{n} unanswered questions",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "Customers asked and AI had no answer",
+  "kb_review": "Review",
+  "kb_sort_usage": "Most used",
+  "kb_sort_recent": "Recently updated",
+  "kb_sort_stale": "Least recently updated",
+  "kb_sort_alpha": "Alphabetical",
+  "kb_sort_least": "Least used",
+  "kb_tags": "Tags",
+  "kb_used_n": "Used {n} times",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "Updated {t} ago",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} pages",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "Draft",
+  "kb_badge_disabled": "Disabled",
+  "kb_badge_stale": "Stale",
+  "kb_badge_failed": "Processing failed",
+  "kb_disable": "Disable for AI",
+  "kb_enable": "Enable",
+  "kb_edit": "Edit",
+  "kb_copy_answer": "Copy answer",
+  "kb_delete": "Delete",
+  "kb_delete_title": "Delete \"{title}\"?",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "AI will no longer use it.",
+  "kb_deleted": "Deleted",
+  "kb_drafts": "Suggestions to review · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "Suggested by {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "Suggested from a resolved chat",
+  "kb_approve": "Approve",
+  "kb_reject": "Reject",
+  "kb_add_title": "Add to knowledge base",
+  "kb_add_qa_sub": "Fastest and most accurate for AI",
+  "kb_add_file": "Upload file",
+  "kb_add_file_sub": "PDF, Word or TXT up to 10 MB",
+  "kb_add_link": "Add link",
+  "kb_add_link_sub": "A page from your site, read by AI",
+  "kb_alt_phrasings": "Other phrasings",
+  "kb_answer": "Answer",
+  "kb_usage_month": "Used {n} times this month",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "{p}% positive",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "Last used {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "Recent uses",
+  "kb_meta": "Created by {a} · {d} · Edited by {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "Available to AI",
+  "kb_file_type_err": "Unsupported file type",
+  "kb_file_size_err": "File larger than 10 MB",
+  "kb_uploading": "Uploading {p}%",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "Processing… may take a minute",
+  "kb_file_ready": "\"{f}\" is ready · {n} facts extracted",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "What AI extracted",
+  "kb_replace": "Replace file",
+  "kb_download": "Download",
+  "kb_file_failed": "Couldn't read the file",
+  "kb_fail_encrypted": "File is password-protected",
+  "kb_fail_images": "File contains only images",
+  "kb_fail_corrupt": "File is corrupted",
+  "kb_link_url": "Page URL",
+  "kb_link_subpages": "Include subpages",
+  "kb_add": "Add",
+  "kb_last_crawl": "Last read {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "Refresh now",
+  "kb_auto_refresh": "Auto refresh",
+  "kb_weekly": "Weekly",
+  "kb_monthly": "Monthly",
+  "kb_manual": "Manual",
+  "kb_unanswered": "Unanswered questions",
+  "kb_unanswered_info": "Questions AI couldn't answer. Add an answer so it replies next time.",
+  "kb_sort_frequency": "Most frequent",
+  "kb_sort_newest": "Newest",
+  "kb_asked_n": "Asked {n} times · last {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} similar wordings",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "Suggested draft",
+  "kb_add_answer": "Add answer",
+  "kb_link_existing": "Link to existing answer",
+  "kb_ignore": "Ignore",
+  "kb_view_convs": "View conversations",
+  "kb_suggest_answer": "Suggest an answer",
+  "kb_none_unanswered": "No unanswered questions",
+  "kb_none_unanswered_body": "AI is finding answers for everything asked.",
+  "kb_empty_title": "Start teaching AI about your business",
+  "kb_empty_body": "Add the top questions your customers ask, with answers.",
+  "kb_empty_cta": "Add first question",
+  "kb_empty_tip": "We recommend at least 10 questions",
+  "kb_filter_empty": "No entries of this type",
+  "kb_show_all": "Show all",
+  "kb_error": "Couldn't load knowledge base",
+  "kb_retry": "Retry",
+  "kb_offline": "Editing requires internet",
+  "kb_span_now": "moments",
+  "kb_span_minutes": "{n, plural, =1{1 minute} other{{n} minutes}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{1 hour} other{{n} hours}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{1 day} other{{n} days}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{1 month} other{{n} months}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{1 year} other{{n} years}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "This is available on the web dashboard for now",
+  "kb_menu_ai_settings": "AI settings",
+  "kb_menu_tags": "Manage tags",
+  "kb_menu_import": "Import from web",
+  "kb_sort_by": "Sort by",
+  "kb_tags_all": "All tags",
+  "kb_tags_apply": "Apply",
+  "kb_tags_none": "No tags yet",
+  "kb_disabled_done": "Disabled · AI won't use it",
+  "kb_enabled_done": "Enabled",
+  "kb_copied": "Answer copied",
+  "kb_approved": "Approved and published",
+  "kb_rejected": "Suggestion rejected",
+  "kb_ignored": "Ignored",
+  "kb_linked": "Added as a phrasing of \"{t}\"",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "Choose an answer",
+  "kb_pick_search": "Search answers",
+  "kb_uploaded_by": "Uploaded by {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} MB",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} KB",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "You can close this; processing continues in the background",
+  "kb_url_invalid": "Enter a valid https:// link",
+  "kb_link_added": "Link added · reading it now",
+  "kb_link_pages": "Pages",
+  "kb_never_crawled": "Not read yet",
+  "kb_recrawl_started": "Refresh started",
+  "kb_filter_a11y": "{label}, {n}, filter",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} unanswered questions. Review",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "Usage over 30 days",
+  "kb_not_used_yet": "Not used yet",
+  "kb_show_less": "Show less",
+  "kb_proposed": "Your suggestion was sent for review",
+  "kb_save_err": "Couldn't save",
+  "kb_none_found": "No results"
+}

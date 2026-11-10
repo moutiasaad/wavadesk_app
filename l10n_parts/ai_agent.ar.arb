@@ -1,0 +1,294 @@
+{
+  "@@locale": "ar",
+  "ai_title": "وكيل الذكاء الاصطناعي",
+  "ai_master_switch": "تشغيل الذكاء الاصطناعي",
+  "ai_state_on": "مفعّل",
+  "ai_state_off": "متوقف",
+  "ai_readonly": "يمكن للمسؤول فقط تعديل إعدادات الذكاء الاصطناعي",
+  "ai_hero_answered": "{n} سؤالًا",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "أجاب عنها هذا الأسبوع · وفّر نحو {h} ساعات",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "الذكاء الاصطناعي متوقف",
+  "ai_hero_off_body": "فعّله ليجيب عن أسئلة عملائك من قاعدة المعرفة",
+  "ai_hero_ready": "جاهز للعمل",
+  "ai_hero_ready_body": "لم يجب عن أي سؤال بعد — جرّبه أولًا",
+  "ai_hero_a11y": "{n} سؤالًا أجاب عنها هذا الأسبوع، عرض الأداء",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "استخدمت {p}% من ردود هذا الشهر",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "قبل التفعيل الكامل",
+  "ai_ready_kb": "قاعدة المعرفة تحتوي 10 إجابات على الأقل ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "ساعات العمل محددة",
+  "ai_ready_handoff": "قاعدة تحويل للموظفين مفعّلة",
+  "ai_ready_tested": "تمت تجربة الوكيل",
+  "ai_ready_done": "مكتمل",
+  "ai_ready_missing": "غير مكتمل",
+  "ai_mode": "طريقة العمل",
+  "ai_mode_suggest": "اقتراح فقط",
+  "ai_mode_suggest_sub": "يكتب الرد والموظف يراجعه ويرسله",
+  "ai_mode_auto": "رد تلقائي",
+  "ai_mode_auto_sub": "يرد فورًا ويحوّل للفريق عند الحاجة",
+  "ai_mode_after": "خارج الدوام فقط",
+  "ai_mode_after_sub": "يرد تلقائيًا بعد ساعات العمل",
+  "ai_mode_after_sub2": "واقتراحات خلال الدوام",
+  "ai_mode_needs_hours": "حدّد ساعات العمل أولًا",
+  "ai_mode_needs_ready": "أكمل قائمة الجاهزية أولًا",
+  "ai_recommended": "موصى به",
+  "ai_mode_changed": "تم التغيير إلى «{mode}»",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "تراجع",
+  "ai_tone": "نبرة الرد",
+  "ai_tone_friendly": "ودود",
+  "ai_tone_formal": "رسمي",
+  "ai_tone_concise": "مختصر",
+  "ai_tone_sample_friendly": "أهلًا نورة، التوصيل للدمام 25 ريال، ومجاني فوق 300. يوصلك خلال 2–3 أيام!",
+  "ai_tone_sample_formal": "مرحبًا بك. رسوم التوصيل إلى الدمام 25 ريالًا، ويكون مجانيًا للطلبات التي تتجاوز 300 ريال، خلال 2–3 أيام عمل.",
+  "ai_tone_sample_concise": "التوصيل للدمام 25 ريال (مجاني فوق 300) · 2–3 أيام.",
+  "ai_use_name": "استخدم اسم العميل في الرد",
+  "ai_rules": "القواعد",
+  "ai_hours": "ساعات العمل",
+  "ai_hours_24": "24 ساعة",
+  "ai_hours_unset": "غير محددة",
+  "ai_handoff": "التحويل لموظف",
+  "ai_handoff_sub": "عند طلب إنسان، شكوى، أو دفع",
+  "ai_language": "لغة الرد",
+  "ai_lang_customer": "لغة العميل",
+  "ai_lang_customer_sub": "يكتشف اللغة في كل رسالة",
+  "ai_lang_ar": "العربية دائمًا",
+  "ai_lang_en": "الإنجليزية دائمًا",
+  "ai_lang_style": "الأسلوب",
+  "ai_lang_msa": "فصحى مبسطة",
+  "ai_lang_saudi": "لهجة سعودية بيضاء",
+  "ai_handoff_msg": "رسالة التحويل",
+  "ai_handoff_msg_default": "سأحوّلك الآن لأحد زملائي ليساعدك، لحظات من فضلك.",
+  "ai_var_customer": "اسم العميل",
+  "ai_var_return": "وقت العودة",
+  "ai_save": "حفظ",
+  "ai_delay": "مهلة الرد التلقائي",
+  "ai_delay_instant": "فوري",
+  "ai_delay_30s": "بعد 30 ث",
+  "ai_delay_1m": "بعد دقيقة",
+  "ai_delay_2m": "بعد دقيقتين",
+  "ai_delay_note": "المهلة تتيح للموظفين الرد أولًا في وضع الرد التلقائي",
+  "ai_perf": "الأداء",
+  "ai_perf_resolution": "معدل الإجابة دون تحويل",
+  "ai_perf_rating": "التقييم الإيجابي",
+  "ai_perf_unanswered": "أسئلة بلا إجابة",
+  "ai_perf_detail": "عرض الأداء التفصيلي",
+  "ai_perf_week": "هذا الأسبوع",
+  "ai_perf_answered": "أجاب",
+  "ai_perf_handoffs": "تحويلات",
+  "ai_perf_reasons": "أكثر أسباب التحويل",
+  "ai_perf_sources": "أكثر المصادر استخدامًا",
+  "ai_perf_none": "لا بيانات بعد",
+  "ai_reason_human_request": "طلب موظف",
+  "ai_reason_complaint": "شكوى",
+  "ai_reason_payment": "دفع أو استرجاع",
+  "ai_reason_no_answer": "لا توجد إجابة",
+  "ai_reason_low_confidence": "ثقة منخفضة",
+  "ai_reason_after_replies": "ردود دون حل",
+  "ai_reason_keyword": "كلمة محددة: {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "سبب آخر",
+  "ai_advanced": "متقدم",
+  "ai_channels": "القنوات المفعّلة",
+  "ai_channels_none": "لا قنوات",
+  "ai_channel_whatsapp": "واتساب",
+  "ai_channel_web": "الموقع",
+  "ai_channel_messenger": "ماسنجر",
+  "ai_instructions": "تعليمات إضافية",
+  "ai_instructions_ph": "مثال: لا تذكر أسعار الجملة، واطلب رقم الطلب دائمًا قبل الإجابة عن الشحن",
+  "ai_instructions_empty": "بدون",
+  "ai_outside_kb": "الإجابة من خارج قاعدة المعرفة",
+  "ai_outside_kb_sub": "غير مستحسن — قد يجيب بمعلومات غير دقيقة",
+  "ai_confidence": "حد الثقة للإرسال التلقائي",
+  "ai_conf_low": "منخفض",
+  "ai_conf_med": "متوسط",
+  "ai_conf_high": "مرتفع",
+  "ai_conf_low_sub": "يرسل أغلب الردود تلقائيًا",
+  "ai_conf_med_sub": "توازن بين السرعة والدقة",
+  "ai_conf_high_sub": "يرسل فقط الردود المؤكدة، والباقي اقتراح أو تحويل",
+  "ai_team_styles": "أساليب إعادة الصياغة للفريق",
+  "ai_style_add": "إضافة أسلوب",
+  "ai_style_name": "اسم الأسلوب",
+  "ai_style_instruction": "التعليمات",
+  "ai_style_delete": "حذف",
+  "ai_styles_empty": "لا أساليب بعد",
+  "ai_audit": "سجل التغييرات",
+  "ai_audit_row": "غيّر {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "لا تغييرات بعد",
+  "ai_test": "اختبر الوكيل بمحادثة تجريبية",
+  "ai_test_title": "محادثة تجريبية",
+  "ai_test_sub": "لن تُرسل لأي عميل",
+  "ai_test_info": "أنت تتحدث كعميل. جرّب أسئلة عملائك الحقيقية.",
+  "ai_test_why": "لماذا هذا الرد؟",
+  "ai_test_handoff": "في المحادثة الحقيقية سيتحوّل هنا للفريق: {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "إعادة البدء",
+  "ai_test_channel": "تغيير القناة",
+  "ai_test_p1": "كم سعر التوصيل؟",
+  "ai_test_p2": "أبي أرجّع طلبي",
+  "ai_test_p3": "متى تفتحون؟",
+  "ai_test_p4": "أبي أكلم موظف",
+  "ai_test_hint": "اكتب سؤالك كعميل…",
+  "ai_test_label": "الذكاء",
+  "ai_test_error": "تعذّر الحصول على رد. حاول مرة أخرى.",
+  "ai_test_unsaved": "لديك تعديلات غير محفوظة على ساعات العمل",
+  "ai_why_sources": "المصادر",
+  "ai_why_no_sources": "لم يستخدم مصادر من قاعدة المعرفة",
+  "ai_why_confidence": "الثقة",
+  "ai_why_rule": "القاعدة",
+  "ai_why_tone": "النبرة",
+  "ai_off_title": "إيقاف الذكاء الاصطناعي؟",
+  "ai_off_body": "سيتوقف عن الرد والاقتراح في كل المحادثات. المحادثات التي يتولاها الآن ستتحوّل للفريق.",
+  "ai_off_handling": "{n} محادثات يتولاها الآن",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "إيقاف",
+  "ai_cancel": "إلغاء",
+  "ai_kb_first_title": "أضف قاعدة المعرفة أولًا",
+  "ai_kb_first_body": "يجيب الذكاء فقط من معلوماتك. أضف 10 إجابات على الأقل ليبدأ.",
+  "ai_kb_add": "إضافة إجابات",
+  "ai_enable_suggest": "فعّله لوضع الاقتراح فقط",
+  "ai_auto_title": "سيرد الذكاء على عملائك مباشرة",
+  "ai_auto_b1": "يجيب فقط من قاعدة المعرفة",
+  "ai_auto_b2": "يحوّل للفريق حسب قواعد التحويل",
+  "ai_auto_b3": "يمكنك إيقافه في أي وقت",
+  "ai_auto_tested": "جرّبت الوكيل بمحادثة تجريبية",
+  "ai_auto_try": "جرّب الآن",
+  "ai_auto_confirm": "تفعيل الرد التلقائي",
+  "ai_outside_title": "السماح بالإجابة من خارج قاعدة المعرفة؟",
+  "ai_outside_body": "قد يقدّم الذكاء معلومات غير صحيحة عن منتجاتك أو أسعارك.",
+  "ai_allow": "سماح",
+  "ai_plan_off": "ميزة الذكاء الاصطناعي غير متاحة في خطتك",
+  "ai_view_plans": "عرض الخطط",
+  "ai_quota_out": "انتهت ردود هذا الشهر — يعمل كاقتراح فقط حتى {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "تعذّر حفظ التغيير",
+  "ai_retry": "إعادة المحاولة",
+  "ai_conflict": "عدّل {name} الإعدادات للتو",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "عدّل شخص آخر الإعدادات للتو",
+  "ai_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "ai_load_error": "تعذّر تحميل إعدادات الذكاء الاصطناعي",
+  "ai_saved": "تم الحفظ",
+  "ai_hours_247": "العمل على مدار الساعة",
+  "ai_hours_closed": "مغلق",
+  "ai_hours_add_range": "+ فترة",
+  "ai_hours_copy_all": "نسخ إلى كل الأيام",
+  "ai_hours_timezone": "المنطقة الزمنية",
+  "ai_hours_holidays": "العطل الرسمية",
+  "ai_hours_err_order": "يجب أن يكون وقت الانتهاء بعد البداية",
+  "ai_hours_err_overlap": "الفترات متداخلة",
+  "ai_hours_err_max": "فترتان كحد أقصى",
+  "ai_hours_start": "من",
+  "ai_hours_end": "إلى",
+  "ai_hours_discard": "تجاهل التعديلات؟",
+  "ai_hours_discard_body": "لم تحفظ ساعات العمل بعد.",
+  "ai_hours_discard_confirm": "تجاهل",
+  "ai_day_sat": "السبت",
+  "ai_day_sun": "الأحد",
+  "ai_day_mon": "الاثنين",
+  "ai_day_tue": "الثلاثاء",
+  "ai_day_wed": "الأربعاء",
+  "ai_day_thu": "الخميس",
+  "ai_day_fri": "الجمعة",
+  "ai_ho_intro": "يحوّل الذكاء المحادثة للفريق تلقائيًا في هذه الحالات:",
+  "ai_ho_human": "العميل يطلب التحدث مع موظف",
+  "ai_ho_always": "دائمًا مفعّلة",
+  "ai_ho_complaint": "شكوى أو عميل غاضب",
+  "ai_ho_payment": "موضوع دفع أو استرجاع مبالغ",
+  "ai_ho_no_answer": "لم يجد إجابة في قاعدة المعرفة",
+  "ai_ho_low_conf": "ثقة منخفضة في الإجابة",
+  "ai_ho_after_n": "بعد {n} ردود دون حل",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "كلمات محددة",
+  "ai_ho_keyword_add": "أضف كلمة…",
+  "ai_ho_target": "إلى من يُحوّل؟",
+  "ai_ho_target_unassigned": "غير مُسندة (أول من يستلم)",
+  "ai_ho_target_team": "فريق محدد",
+  "ai_ho_target_last": "آخر موظف تعامل مع العميل",
+  "ai_ho_after_hours": "خارج الدوام",
+  "ai_ho_tell_return": "يخبر العميل بموعد العودة",
+  "ai_ho_notify": "يحوّل ويرسل إشعارًا للفريق"
+}

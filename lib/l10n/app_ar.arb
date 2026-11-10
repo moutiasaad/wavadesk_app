@@ -1,0 +1,4544 @@
+{
+  "@@locale": "ar",
+  "dashboard_greeting": "مرحبًا، {name} 👋",
+  "@dashboard_greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_open": "محادثات مفتوحة",
+  "dashboard_waiting_sla": "تجاوزت وقت الانتظار",
+  "dashboard_view_queue": "عرض قائمة الانتظار",
+  "dashboard_first_response": "متوسط أول رد",
+  "dashboard_resolved_today": "محلولة اليوم",
+  "dashboard_ai_rate": "حلّها الذكاء الاصطناعي",
+  "dashboard_csat": "رضا العملاء",
+  "dashboard_csat_scale": "من 5",
+  "dashboard_vs_yesterday": "{delta} عن أمس",
+  "@dashboard_vs_yesterday": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_volume_title": "حجم المحادثات اليوم",
+  "dashboard_volume_a11y": "{total} محادثة اليوم، الذروة {peak} عند الساعة {hour}",
+  "@dashboard_volume_a11y": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "peak": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_channels_title": "حسب القناة",
+  "dashboard_ai_usage_title": "استخدام الذكاء الاصطناعي",
+  "dashboard_ai_manage": "إدارة",
+  "dashboard_ai_usage_value": "{used} من {quota} ردًّا هذا الشهر",
+  "@dashboard_ai_usage_value": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboard_team_title": "الفريق الآن",
+  "dashboard_team_open": "{count, plural, =0{لا محادثات} =1{محادثة واحدة} =2{محادثتان} few{{count} محادثات} other{{count} محادثة}}",
+  "@dashboard_team_open": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notifications_title": "الإشعارات",
+  "notifications_mark_all": "تحديد الكل كمقروء",
+  "notifications_earlier": "سابقًا",
+  "notifications_empty_title": "لا إشعارات بعد",
+  "notifications_empty_body": "سنخبرك عند إسناد محادثة إليك أو ذكرك في ملاحظة.",
+  "knowledge_search": "بحث في المعرفة",
+  "knowledge_search_hint": "ابحث في الإجابات…",
+  "knowledge_add": "إضافة إجابة",
+  "knowledge_filter_all": "الكل",
+  "knowledge_type_faq": "أسئلة شائعة",
+  "knowledge_type_policy": "سياسات",
+  "knowledge_type_product": "منتجات",
+  "knowledge_type_snippet": "ردود جاهزة",
+  "knowledge_type_website": "الموقع",
+  "knowledge_coverage_title": "ما يعرفه الذكاء الاصطناعي",
+  "knowledge_coverage_body": "{total, plural, =1{إجابة واحدة} =2{إجابتان} few{{total} إجابات} other{{total} إجابة}}، منها {enabled} مفعّلة",
+  "@knowledge_coverage_body": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "enabled": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_coverage_top": "الأكثر استخدامًا: {title}",
+  "@knowledge_coverage_top": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_used": "{count, plural, =0{لم تُستخدم بعد} =1{استُخدمت مرة} =2{استُخدمت مرتين} few{استُخدمت {count} مرات} other{استُخدمت {count} مرة}}",
+  "@knowledge_used": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_updated": "حُدّثت {time}",
+  "@knowledge_updated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_disabled": "متوقفة",
+  "knowledge_enabled_a11y": "تفعيل «{title}»",
+  "@knowledge_enabled_a11y": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_empty_title": "قاعدة المعرفة فارغة",
+  "knowledge_empty_body": "أضف إجابات وسياسات ليستخدمها الذكاء الاصطناعي في اقتراح الردود.",
+  "knowledge_empty_filtered": "لا إجابات من هذا النوع",
+  "knowledge_no_results": "لا نتائج لـ «{query}»",
+  "@knowledge_no_results": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_edit_title_add": "إضافة إجابة",
+  "knowledge_edit_title_edit": "تعديل الإجابة",
+  "knowledge_edit_type": "النوع",
+  "knowledge_edit_question": "السؤال",
+  "knowledge_edit_title_label": "العنوان",
+  "knowledge_edit_title_hint": "مثال: كم مدة التوصيل؟",
+  "knowledge_edit_body_label": "الإجابة",
+  "knowledge_edit_body_hint": "اكتب الإجابة كما تريد أن يقولها الذكاء الاصطناعي…",
+  "knowledge_edit_counter": "{count} / {max}",
+  "@knowledge_edit_counter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_edit_keywords": "كلمات مفتاحية",
+  "knowledge_edit_keywords_hint": "أضف كلمة واضغط إدخال",
+  "knowledge_edit_keyword_add": "إضافة كلمة مفتاحية",
+  "knowledge_edit_enabled": "متاحة للذكاء الاصطناعي",
+  "knowledge_edit_enabled_sub": "عند الإيقاف لن تُستخدم في الاقتراحات",
+  "knowledge_edit_preview_title": "كيف سيستخدمها الذكاء الاصطناعي",
+  "knowledge_edit_preview_q": "سؤال العميل يظهر هنا",
+  "knowledge_edit_preview_a": "وهنا الرد المقترح بناءً على إجابتك",
+  "knowledge_edit_error_title": "العنوان مطلوب",
+  "knowledge_edit_error_body": "اكتب إجابة من 10 أحرف على الأقل",
+  "knowledge_edit_saved": "تم حفظ الإجابة",
+  "knowledge_edit_delete": "حذف الإجابة",
+  "knowledge_edit_delete_title": "حذف هذه الإجابة؟",
+  "knowledge_edit_delete_body": "لن يستخدمها الذكاء الاصطناعي بعد الآن في اقتراح الردود.",
+  "knowledge_edit_deleted": "تم حذف الإجابة",
+  "knowledge_edit_discard_title": "تجاهل التغييرات؟",
+  "knowledge_edit_discard_body": "لديك تعديلات غير محفوظة ستضيع إذا خرجت الآن.",
+  "knowledge_edit_discard_confirm": "تجاهل والخروج",
+  "account_section_admin": "الإدارة",
+  "account_section_app": "التطبيق",
+  "account_whatsapp": "واتساب الخاص بك",
+  "account_whatsapp_connected": "متصل",
+  "account_whatsapp_disconnected": "غير متصل",
+  "account_channels": "القنوات",
+  "account_ai_agent": "وكيل الذكاء الاصطناعي",
+  "account_team": "الفريق والمستخدمون",
+  "account_subscription": "الاشتراك",
+  "account_notifications": "الإشعارات",
+  "account_language": "اللغة",
+  "account_appearance": "المظهر",
+  "account_theme_light": "فاتح",
+  "account_theme_dark": "داكن",
+  "account_theme_system": "تلقائي",
+  "account_theme_system_sub": "يتبع إعدادات الجهاز",
+  "account_help": "المساعدة والشروحات",
+  "account_logout": "تسجيل الخروج",
+  "account_logout_title": "تسجيل الخروج؟",
+  "account_logout_body": "لن تصلك إشعارات المحادثات على هذا الجهاز حتى تسجّل الدخول مجددًا.",
+  "account_version": "Wavadesk {version}",
+  "@account_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "account_network_online": "متصل",
+  "account_network_demo": "وضع الاتصال التجريبي: {state}",
+  "@account_network_demo": {
+    "placeholders": {
+      "state": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_settings_title": "وكيل الذكاء الاصطناعي",
+  "ai_settings_enable": "تفعيل وكيل الذكاء الاصطناعي",
+  "ai_settings_status_on": "يعمل ويقترح الردود",
+  "ai_settings_status_off": "متوقف",
+  "ai_settings_usage": "{used} من {quota} ردًّا هذا الشهر",
+  "@ai_settings_usage": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_settings_section_behavior": "السلوك",
+  "ai_settings_suggest": "اقتراح الردود",
+  "ai_settings_suggest_sub": "مسودة جاهزة قبل أن تفتح المحادثة",
+  "ai_settings_auto": "الرد التلقائي",
+  "ai_settings_auto_sub": "يرد على المحادثات غير المُسندة دون انتظار",
+  "ai_settings_claimed": "الرد حتى بعد الاستلام",
+  "ai_settings_claimed_sub": "يستمر في الرد بعد أن يستلم موظف المحادثة",
+  "ai_settings_handoff": "التحويل عند الاستياء",
+  "ai_settings_handoff_sub": "يحوّل المحادثة للفريق إذا بدا العميل منزعجًا",
+  "ai_settings_section_tone": "أسلوب الرد",
+  "ai_settings_tone_friendly": "ودّي",
+  "ai_settings_tone_friendly_sub": "دافئ وقريب من العميل",
+  "ai_settings_tone_formal": "رسمي",
+  "ai_settings_tone_formal_sub": "مهذب ومهني",
+  "ai_settings_tone_concise": "مختصر",
+  "ai_settings_tone_concise_sub": "جمل قصيرة ومباشرة",
+  "ai_settings_section_knowledge": "مصدر المعرفة",
+  "ai_settings_knowledge": "الإجابات المفعّلة",
+  "ai_settings_knowledge_footer": "يعتمد الذكاء الاصطناعي على قاعدة المعرفة فقط ولا يخترع معلومات.",
+  "whatsapp_title": "واتساب الخاص بك",
+  "whatsapp_status_connected": "متصل",
+  "whatsapp_status_disconnected": "غير متصل",
+  "whatsapp_since": "متصل منذ",
+  "whatsapp_messages_today": "رسائل اليوم",
+  "whatsapp_connected_tip": "أبقِ هاتفك متصلًا بالإنترنت. إذا سجّلت الخروج من واتساب على الهاتف ستحتاج لمسح الرمز من جديد.",
+  "whatsapp_disconnect": "قطع الاتصال",
+  "whatsapp_disconnect_title": "قطع اتصال واتساب؟",
+  "whatsapp_disconnect_body": "ستتوقف رسائل العملاء عن الوصول إلى المحادثات حتى تعيد ربط الرقم.",
+  "whatsapp_qr_a11y": "رمز QR لربط واتساب",
+  "whatsapp_qr_expires": "ينتهي الرمز خلال دقيقة",
+  "whatsapp_waiting_scan": "بانتظار المسح من هاتفك…",
+  "whatsapp_steps_title": "طريقة الربط",
+  "whatsapp_step1": "افتح واتساب على هاتف العمل",
+  "whatsapp_step2": "اضغط ⋮ ثم «الأجهزة المرتبطة»",
+  "whatsapp_step3": "اختر «ربط جهاز»",
+  "whatsapp_step4": "وجّه الكاميرا نحو هذا الرمز",
+  "whatsapp_simulate_scan": "مسح الرمز (تجريبي)",
+  "whatsapp_new_code": "إنشاء رمز جديد",
+  "whatsapp_connected_toast": "تم ربط واتساب بنجاح",
+  "channels_title": "القنوات",
+  "channels_section_connected": "متصلة",
+  "channels_section_available": "متاحة للربط",
+  "channels_connected": "متصلة وتستقبل الرسائل",
+  "channels_not_connected": "غير مربوطة",
+  "channels_manage_on_web": "إدارة هذه القناة متاحة من لوحة الويب",
+  "channels_footer": "تصل رسائل كل القنوات المربوطة إلى صندوق واحد.",
+  "team_title": "الفريق والمستخدمون",
+  "team_invite": "دعوة زميل",
+  "team_invite_sent": "أرسلنا رابط الدعوة",
+  "team_section_members": "{count, plural, =1{عضو واحد} =2{عضوان} few{{count} أعضاء} other{{count} عضوًا}}",
+  "@team_section_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "team_section_teams": "الفرق",
+  "team_you": "{name} (أنت)",
+  "@team_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "team_members": "{count, plural, =1{عضو واحد} =2{عضوان} few{{count} أعضاء} other{{count} عضوًا}}",
+  "@team_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "subscription_title": "الاشتراك",
+  "subscription_current": "باقتك الحالية",
+  "subscription_plan_name": "الاحترافية",
+  "subscription_price": "199 ر.س / شهريًا",
+  "subscription_renews": "تتجدد في {date}",
+  "@subscription_renews": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_section_usage": "الاستخدام هذا الشهر",
+  "subscription_ai_replies": "ردود الذكاء الاصطناعي",
+  "subscription_agents": "المستخدمون",
+  "subscription_channels": "القنوات",
+  "subscription_usage": "{used} / {total}",
+  "@subscription_usage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_upgrade": "ترقية الباقة",
+  "subscription_invoices": "الفواتير",
+  "subscription_upgrade_web": "سنفتح صفحة الفوترة على الويب",
+  "notif_settings_title": "الإشعارات",
+  "notif_settings_section_push": "أبلغني عند",
+  "notif_settings_assigned": "إسناد محادثة إليّ",
+  "notif_settings_assigned_sub": "عندما يسندها زميل أو قاعدة توزيع",
+  "notif_settings_mentions": "ذكري في ملاحظة",
+  "notif_settings_mentions_sub": "عندما يكتب زميل ‎@اسمك",
+  "notif_settings_waiting": "تجاوز وقت الانتظار",
+  "notif_settings_waiting_sub": "عميل ينتظر أكثر من الوقت المستهدف",
+  "notif_settings_section_sound": "الصوت",
+  "notif_settings_sound": "صوت الإشعار",
+  "notif_settings_sound_sub": "تشغيل صوت عند وصول رسالة جديدة",
+  "notif_settings_footer": "لا تصلك إشعارات عندما تكون حالتك «غير متاح».",
+  "help_title": "المساعدة والشروحات",
+  "help_section_guides": "الشروحات",
+  "help_topic_claim": "استلام المحادثات وإسنادها",
+  "help_topic_ai": "كيف تعمل اقتراحات الذكاء الاصطناعي",
+  "help_topic_whatsapp": "ربط رقم واتساب",
+  "help_topic_knowledge": "بناء قاعدة المعرفة",
+  "help_topic_snooze": "التأجيل والإغلاق",
+  "help_section_contact": "تواصل معنا",
+  "help_contact_chat": "محادثة مع الدعم",
+  "help_contact_chat_sub": "نرد عادة خلال دقائق",
+  "help_contact_email": "البريد الإلكتروني",
+  "help_opening": "جارٍ الفتح…",
+  "account_load_error": "تعذّر التحميل",
+  "subscription_ends": "تنتهي في {date}",
+  "@subscription_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial_ends": "تنتهي الفترة التجريبية في {date}",
+  "@subscription_trial_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial": "فترة تجريبية",
+  "subscription_unlimited": "غير محدود",
+  "subscription_no_plan": "لا توجد باقة",
+  "subscription_per_month": "{price} / شهريًا",
+  "@subscription_per_month": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_title": "وكيل الذكاء الاصطناعي",
+  "ai_master_switch": "تشغيل الذكاء الاصطناعي",
+  "ai_state_on": "مفعّل",
+  "ai_state_off": "متوقف",
+  "ai_readonly": "يمكن للمسؤول فقط تعديل إعدادات الذكاء الاصطناعي",
+  "ai_hero_answered": "{n} سؤالًا",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "أجاب عنها هذا الأسبوع · وفّر نحو {h} ساعات",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "الذكاء الاصطناعي متوقف",
+  "ai_hero_off_body": "فعّله ليجيب عن أسئلة عملائك من قاعدة المعرفة",
+  "ai_hero_ready": "جاهز للعمل",
+  "ai_hero_ready_body": "لم يجب عن أي سؤال بعد — جرّبه أولًا",
+  "ai_hero_a11y": "{n} سؤالًا أجاب عنها هذا الأسبوع، عرض الأداء",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "استخدمت {p}% من ردود هذا الشهر",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "قبل التفعيل الكامل",
+  "ai_ready_kb": "قاعدة المعرفة تحتوي 10 إجابات على الأقل ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "ساعات العمل محددة",
+  "ai_ready_handoff": "قاعدة تحويل للموظفين مفعّلة",
+  "ai_ready_tested": "تمت تجربة الوكيل",
+  "ai_ready_done": "مكتمل",
+  "ai_ready_missing": "غير مكتمل",
+  "ai_mode": "طريقة العمل",
+  "ai_mode_suggest": "اقتراح فقط",
+  "ai_mode_suggest_sub": "يكتب الرد والموظف يراجعه ويرسله",
+  "ai_mode_auto": "رد تلقائي",
+  "ai_mode_auto_sub": "يرد فورًا ويحوّل للفريق عند الحاجة",
+  "ai_mode_after": "خارج الدوام فقط",
+  "ai_mode_after_sub": "يرد تلقائيًا بعد ساعات العمل",
+  "ai_mode_after_sub2": "واقتراحات خلال الدوام",
+  "ai_mode_needs_hours": "حدّد ساعات العمل أولًا",
+  "ai_mode_needs_ready": "أكمل قائمة الجاهزية أولًا",
+  "ai_recommended": "موصى به",
+  "ai_mode_changed": "تم التغيير إلى «{mode}»",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "تراجع",
+  "ai_tone": "نبرة الرد",
+  "ai_tone_friendly": "ودود",
+  "ai_tone_formal": "رسمي",
+  "ai_tone_concise": "مختصر",
+  "ai_tone_sample_friendly": "أهلًا نورة، التوصيل للدمام 25 ريال، ومجاني فوق 300. يوصلك خلال 2–3 أيام!",
+  "ai_tone_sample_formal": "مرحبًا بك. رسوم التوصيل إلى الدمام 25 ريالًا، ويكون مجانيًا للطلبات التي تتجاوز 300 ريال، خلال 2–3 أيام عمل.",
+  "ai_tone_sample_concise": "التوصيل للدمام 25 ريال (مجاني فوق 300) · 2–3 أيام.",
+  "ai_use_name": "استخدم اسم العميل في الرد",
+  "ai_rules": "القواعد",
+  "ai_hours": "ساعات العمل",
+  "ai_hours_24": "24 ساعة",
+  "ai_hours_unset": "غير محددة",
+  "ai_handoff": "التحويل لموظف",
+  "ai_handoff_sub": "عند طلب إنسان، شكوى، أو دفع",
+  "ai_language": "لغة الرد",
+  "ai_lang_customer": "لغة العميل",
+  "ai_lang_customer_sub": "يكتشف اللغة في كل رسالة",
+  "ai_lang_ar": "العربية دائمًا",
+  "ai_lang_en": "الإنجليزية دائمًا",
+  "ai_lang_style": "الأسلوب",
+  "ai_lang_msa": "فصحى مبسطة",
+  "ai_lang_saudi": "لهجة سعودية بيضاء",
+  "ai_handoff_msg": "رسالة التحويل",
+  "ai_handoff_msg_default": "سأحوّلك الآن لأحد زملائي ليساعدك، لحظات من فضلك.",
+  "ai_var_customer": "اسم العميل",
+  "ai_var_return": "وقت العودة",
+  "ai_save": "حفظ",
+  "ai_delay": "مهلة الرد التلقائي",
+  "ai_delay_instant": "فوري",
+  "ai_delay_30s": "بعد 30 ث",
+  "ai_delay_1m": "بعد دقيقة",
+  "ai_delay_2m": "بعد دقيقتين",
+  "ai_delay_note": "المهلة تتيح للموظفين الرد أولًا في وضع الرد التلقائي",
+  "ai_perf": "الأداء",
+  "ai_perf_resolution": "معدل الإجابة دون تحويل",
+  "ai_perf_rating": "التقييم الإيجابي",
+  "ai_perf_unanswered": "أسئلة بلا إجابة",
+  "ai_perf_detail": "عرض الأداء التفصيلي",
+  "ai_perf_week": "هذا الأسبوع",
+  "ai_perf_answered": "أجاب",
+  "ai_perf_handoffs": "تحويلات",
+  "ai_perf_reasons": "أكثر أسباب التحويل",
+  "ai_perf_sources": "أكثر المصادر استخدامًا",
+  "ai_perf_none": "لا بيانات بعد",
+  "ai_reason_human_request": "طلب موظف",
+  "ai_reason_complaint": "شكوى",
+  "ai_reason_payment": "دفع أو استرجاع",
+  "ai_reason_no_answer": "لا توجد إجابة",
+  "ai_reason_low_confidence": "ثقة منخفضة",
+  "ai_reason_after_replies": "ردود دون حل",
+  "ai_reason_keyword": "كلمة محددة: {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "سبب آخر",
+  "ai_advanced": "متقدم",
+  "ai_channels": "القنوات المفعّلة",
+  "ai_channels_none": "لا قنوات",
+  "ai_channel_whatsapp": "واتساب",
+  "ai_channel_web": "الموقع",
+  "ai_channel_messenger": "ماسنجر",
+  "ai_instructions": "تعليمات إضافية",
+  "ai_instructions_ph": "مثال: لا تذكر أسعار الجملة، واطلب رقم الطلب دائمًا قبل الإجابة عن الشحن",
+  "ai_instructions_empty": "بدون",
+  "ai_outside_kb": "الإجابة من خارج قاعدة المعرفة",
+  "ai_outside_kb_sub": "غير مستحسن — قد يجيب بمعلومات غير دقيقة",
+  "ai_confidence": "حد الثقة للإرسال التلقائي",
+  "ai_conf_low": "منخفض",
+  "ai_conf_med": "متوسط",
+  "ai_conf_high": "مرتفع",
+  "ai_conf_low_sub": "يرسل أغلب الردود تلقائيًا",
+  "ai_conf_med_sub": "توازن بين السرعة والدقة",
+  "ai_conf_high_sub": "يرسل فقط الردود المؤكدة، والباقي اقتراح أو تحويل",
+  "ai_team_styles": "أساليب إعادة الصياغة للفريق",
+  "ai_style_add": "إضافة أسلوب",
+  "ai_style_name": "اسم الأسلوب",
+  "ai_style_instruction": "التعليمات",
+  "ai_style_delete": "حذف",
+  "ai_styles_empty": "لا أساليب بعد",
+  "ai_audit": "سجل التغييرات",
+  "ai_audit_row": "غيّر {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "لا تغييرات بعد",
+  "ai_test": "اختبر الوكيل بمحادثة تجريبية",
+  "ai_test_title": "محادثة تجريبية",
+  "ai_test_sub": "لن تُرسل لأي عميل",
+  "ai_test_info": "أنت تتحدث كعميل. جرّب أسئلة عملائك الحقيقية.",
+  "ai_test_why": "لماذا هذا الرد؟",
+  "ai_test_handoff": "في المحادثة الحقيقية سيتحوّل هنا للفريق: {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "إعادة البدء",
+  "ai_test_channel": "تغيير القناة",
+  "ai_test_p1": "كم سعر التوصيل؟",
+  "ai_test_p2": "أبي أرجّع طلبي",
+  "ai_test_p3": "متى تفتحون؟",
+  "ai_test_p4": "أبي أكلم موظف",
+  "ai_test_hint": "اكتب سؤالك كعميل…",
+  "ai_test_label": "الذكاء",
+  "ai_test_error": "تعذّر الحصول على رد. حاول مرة أخرى.",
+  "ai_test_unsaved": "لديك تعديلات غير محفوظة على ساعات العمل",
+  "ai_why_sources": "المصادر",
+  "ai_why_no_sources": "لم يستخدم مصادر من قاعدة المعرفة",
+  "ai_why_confidence": "الثقة",
+  "ai_why_rule": "القاعدة",
+  "ai_why_tone": "النبرة",
+  "ai_off_title": "إيقاف الذكاء الاصطناعي؟",
+  "ai_off_body": "سيتوقف عن الرد والاقتراح في كل المحادثات. المحادثات التي يتولاها الآن ستتحوّل للفريق.",
+  "ai_off_handling": "{n} محادثات يتولاها الآن",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "إيقاف",
+  "ai_cancel": "إلغاء",
+  "ai_kb_first_title": "أضف قاعدة المعرفة أولًا",
+  "ai_kb_first_body": "يجيب الذكاء فقط من معلوماتك. أضف 10 إجابات على الأقل ليبدأ.",
+  "ai_kb_add": "إضافة إجابات",
+  "ai_enable_suggest": "فعّله لوضع الاقتراح فقط",
+  "ai_auto_title": "سيرد الذكاء على عملائك مباشرة",
+  "ai_auto_b1": "يجيب فقط من قاعدة المعرفة",
+  "ai_auto_b2": "يحوّل للفريق حسب قواعد التحويل",
+  "ai_auto_b3": "يمكنك إيقافه في أي وقت",
+  "ai_auto_tested": "جرّبت الوكيل بمحادثة تجريبية",
+  "ai_auto_try": "جرّب الآن",
+  "ai_auto_confirm": "تفعيل الرد التلقائي",
+  "ai_outside_title": "السماح بالإجابة من خارج قاعدة المعرفة؟",
+  "ai_outside_body": "قد يقدّم الذكاء معلومات غير صحيحة عن منتجاتك أو أسعارك.",
+  "ai_allow": "سماح",
+  "ai_plan_off": "ميزة الذكاء الاصطناعي غير متاحة في خطتك",
+  "ai_view_plans": "عرض الخطط",
+  "ai_quota_out": "انتهت ردود هذا الشهر — يعمل كاقتراح فقط حتى {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "تعذّر حفظ التغيير",
+  "ai_retry": "إعادة المحاولة",
+  "ai_conflict": "عدّل {name} الإعدادات للتو",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "عدّل شخص آخر الإعدادات للتو",
+  "ai_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "ai_load_error": "تعذّر تحميل إعدادات الذكاء الاصطناعي",
+  "ai_saved": "تم الحفظ",
+  "ai_hours_247": "العمل على مدار الساعة",
+  "ai_hours_closed": "مغلق",
+  "ai_hours_add_range": "+ فترة",
+  "ai_hours_copy_all": "نسخ إلى كل الأيام",
+  "ai_hours_timezone": "المنطقة الزمنية",
+  "ai_hours_holidays": "العطل الرسمية",
+  "ai_hours_err_order": "يجب أن يكون وقت الانتهاء بعد البداية",
+  "ai_hours_err_overlap": "الفترات متداخلة",
+  "ai_hours_err_max": "فترتان كحد أقصى",
+  "ai_hours_start": "من",
+  "ai_hours_end": "إلى",
+  "ai_hours_discard": "تجاهل التعديلات؟",
+  "ai_hours_discard_body": "لم تحفظ ساعات العمل بعد.",
+  "ai_hours_discard_confirm": "تجاهل",
+  "ai_day_sat": "السبت",
+  "ai_day_sun": "الأحد",
+  "ai_day_mon": "الاثنين",
+  "ai_day_tue": "الثلاثاء",
+  "ai_day_wed": "الأربعاء",
+  "ai_day_thu": "الخميس",
+  "ai_day_fri": "الجمعة",
+  "ai_ho_intro": "يحوّل الذكاء المحادثة للفريق تلقائيًا في هذه الحالات:",
+  "ai_ho_human": "العميل يطلب التحدث مع موظف",
+  "ai_ho_always": "دائمًا مفعّلة",
+  "ai_ho_complaint": "شكوى أو عميل غاضب",
+  "ai_ho_payment": "موضوع دفع أو استرجاع مبالغ",
+  "ai_ho_no_answer": "لم يجد إجابة في قاعدة المعرفة",
+  "ai_ho_low_conf": "ثقة منخفضة في الإجابة",
+  "ai_ho_after_n": "بعد {n} ردود دون حل",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "كلمات محددة",
+  "ai_ho_keyword_add": "أضف كلمة…",
+  "ai_ho_target": "إلى من يُحوّل؟",
+  "ai_ho_target_unassigned": "غير مُسندة (أول من يستلم)",
+  "ai_ho_target_team": "فريق محدد",
+  "ai_ho_target_last": "آخر موظف تعامل مع العميل",
+  "ai_ho_after_hours": "خارج الدوام",
+  "ai_ho_tell_return": "يخبر العميل بموعد العودة",
+  "ai_ho_notify": "يحوّل ويرسل إشعارًا للفريق",
+  "rw_title": "حسّن الرد",
+  "rw_subtitle": "اختر الأسلوب وسيعيد الذكاء الصياغة",
+  "rw_original": "ردّك الأصلي",
+  "rw_edit": "تعديل",
+  "rw_more": "المزيد",
+  "rw_selection_hint": "سيتم استبدال الجزء المحدد فقط",
+  "rw_style_professional": "أكثر احترافية",
+  "rw_style_shorter": "أقصر",
+  "rw_style_friendlier": "أكثر ودًّا",
+  "rw_style_apology": "اعتذار",
+  "rw_style_fix": "صحّح الإملاء",
+  "rw_style_to_en": "ترجم للإنجليزية",
+  "rw_style_to_ar": "ترجم للعربية",
+  "rw_style_more": "المزيد",
+  "rw_style_formal": "رسمي جدًا",
+  "rw_style_saudi": "بلهجة سعودية",
+  "rw_style_msa": "بالفصحى",
+  "rw_style_greeting": "أضف تحية وخاتمة",
+  "rw_style_bullets": "حوّلها لنقاط",
+  "rw_style_sales": "أكثر إقناعًا للبيع",
+  "rw_style_simple": "أبسط وأوضح",
+  "rw_team_styles": "أساليب فريقك",
+  "rw_customer_prefers": "العميل يفضّل {language}",
+  "@rw_customer_prefers": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_result": "الصياغة المقترحة",
+  "rw_writing": "يعيد الصياغة…",
+  "rw_streaming": "يكتب…",
+  "rw_edited": "معدّلة يدويًا",
+  "rw_name_added": "أُضيف اسم العميل",
+  "rw_fact_warning": "تحقق: أضاف الذكاء معلومة غير موجودة في ردّك",
+  "rw_chars": "{n} حرف ({delta})",
+  "@rw_chars": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_over_limit": "أطول من الحد المسموح للقناة",
+  "rw_show_diff": "إظهار التغييرات",
+  "rw_hide_diff": "إخفاء التغييرات",
+  "rw_use": "استخدم هذا الرد",
+  "rw_use_as_is": "استخدم الرد كما هو",
+  "rw_rerun": "أعد الصياغة",
+  "rw_regenerate": "صياغة أخرى",
+  "rw_max_versions": "وصلت للحد الأقصى من المحاولات",
+  "rw_no_change": "ردّك سليم، لا توجد تعديلات",
+  "rw_error": "تعذّرت إعادة الصياغة",
+  "rw_retry": "إعادة المحاولة",
+  "rw_rate_limited": "وصلت لحد الاستخدام مؤقتًا، حاول بعد {n} ث",
+  "@rw_rate_limited": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_plan_limit": "ميزة إعادة الصياغة غير متاحة في خطتك",
+  "rw_view_plans": "عرض الخطط",
+  "rw_blocked": "لا يمكن إعادة صياغة هذا النص",
+  "rw_offline": "تحتاج اتصالًا بالإنترنت",
+  "rw_too_long": "النص طويل جدًا لإعادة الصياغة (الحد 2,000 حرف)",
+  "rw_empty_hint": "اكتب ردًّا أولًا أو استخدم اقتراح الذكاء",
+  "rw_toolbar": "حسّن بالذكاء",
+  "rw_lang_ar": "العربية",
+  "rw_lang_en": "الإنجليزية",
+  "rw_copy": "نسخ",
+  "rw_copied": "تم النسخ",
+  "rw_a11y_ready": "الصياغة المقترحة جاهزة: {text}",
+  "@rw_a11y_ready": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_a11y_cached": "تم إنشاؤها",
+  "rw_a11y_version": "الإصدار {i} من {n}",
+  "@rw_a11y_version": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_a11y_prev": "السابق",
+  "rw_a11y_next": "التالي",
+  "rw_a11y_edit_result": "اضغط لتعديل الصياغة، واضغط مطولًا للنسخ",
+  "as_title": "إسناد المحادثة",
+  "as_title_bulk": "إسناد {n} محادثات",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "المسؤول الحالي: {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "ابحث عن زميل أو فريق",
+  "as_no_results": "لا نتائج لـ «{q}»",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "الكل",
+  "as_filter_available": "متاحون ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "فريقي",
+  "as_suggested": "مقترح",
+  "as_teammates": "الزملاء",
+  "as_teams": "الفرق",
+  "as_ai_section": "الذكاء الاصطناعي",
+  "as_me": "أنا",
+  "as_badge_current": "الحالي",
+  "as_badge_capacity": "عند الحد",
+  "as_online_m": "متاح",
+  "as_online_f": "متاحة",
+  "as_busy_m": "مشغول",
+  "as_busy_f": "مشغولة",
+  "as_away": "غير متاح",
+  "as_last_seen": "آخر ظهور منذ {t}",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} محادثات مفتوحة",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} أعضاء",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} متاحون",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "يُسند لأقل زميل انشغالًا",
+  "as_routing_rr": "يُسند بالتناوب",
+  "as_routing_manual": "يبقى في قائمة الفريق",
+  "as_team_none_available": "لا يوجد أحد متاح الآن — ستنتظر في قائمة الفريق",
+  "as_ai_name": "وكيل الذكاء الاصطناعي",
+  "as_ai_sub": "يرد تلقائيًا ويحوّل للفريق عند الحاجة",
+  "as_ai_unavailable": "لا توجد قاعدة معرفة كافية",
+  "as_reason_handled": "تعامل مع العميل سابقًا",
+  "as_reason_handled_f": "تعاملت مع العميل سابقًا",
+  "as_reason_skill": "خبير {skill}",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "خبيرة {skill}",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "الأقل انشغالًا",
+  "as_note": "ملاحظة للزميل (اختياري)",
+  "as_note_q1": "العميل ينتظر ردًا عاجلًا",
+  "as_note_q2": "موضوع دفع",
+  "as_note_q3": "يحتاج متابعة غدًا",
+  "as_pick": "اختر زميلًا أو فريقًا",
+  "as_assign_to": "إسناد إلى {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "استلم المحادثة",
+  "as_assign_ai": "إسناد للذكاء الاصطناعي",
+  "as_assign_bulk_to": "إسناد {n} محادثات إلى {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "إلغاء الإسناد (إرجاعها لغير المُسندة)",
+  "as_busy_hint": "مشغول الآن — قد يتأخر الرد",
+  "as_busy_hint_f": "مشغولة الآن — قد يتأخر الرد",
+  "as_away_hint": "غير متاح — سيصله إشعار",
+  "as_away_hint_f": "غير متاحة — سيصلها إشعار",
+  "as_capacity_reached": "وصل للحد الأقصى ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "غير متاح للإسناد",
+  "as_taken_live": "استلمها {name} للتو",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "إعادة الإسناد إلى {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "الإسناد يتطلب اتصالًا بالإنترنت",
+  "as_none_available": "لا يوجد زملاء متاحون الآن",
+  "as_show_all": "عرض الكل",
+  "as_done": "تم الإسناد إلى {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "تم إسناد {ok} من {n}",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "عرض الأخطاء",
+  "as_undo": "تراجع",
+  "as_forbidden": "لا تملك صلاحية الإسناد لهذا الزميل",
+  "as_error": "تعذّر الإسناد. حاول مجددًا.",
+  "as_retry": "إعادة المحاولة",
+  "as_event_assigned": "أسندت المحادثة إلى {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "ألغى {actor} الإسناد",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "تم حلّ المحادثة",
+  "as_queued_team": "في قائمة {team} بانتظار الاستلام",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "أصبحت المحادثة غير مُسندة",
+  "as_errors_title": "تعذّر إسناد {n}",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "مُسندة له بالفعل",
+  "as_err_resolved": "المحادثة محلولة",
+  "as_err_state": "تغيّر المسؤول",
+  "as_err_generic": "خطأ غير متوقع",
+  "as_expand_team": "عرض أعضاء {team}",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "محدد",
+  "as_load_error": "تعذّر تحميل الزملاء",
+  "login_title": "أهلًا بعودتك",
+  "login_subtitle": "سجّل دخولك لمتابعة محادثات عملائك من أي مكان.",
+  "login_identifier_label": "البريد الإلكتروني أو الجوال",
+  "login_identifier_hint": "name@company.com",
+  "login_password_label": "كلمة المرور",
+  "login_password_show": "إظهار كلمة المرور",
+  "login_password_hide": "إخفاء كلمة المرور",
+  "login_forgot": "نسيت كلمة المرور؟",
+  "login_submit": "تسجيل الدخول",
+  "login_or": "أو",
+  "login_biometric_face": "الدخول ببصمة الوجه",
+  "login_biometric_finger": "الدخول بالبصمة",
+  "login_biometric_reason": "سجّل الدخول إلى Wavadesk",
+  "login_biometric_locked": "تم إيقاف البصمة مؤقتًا، استخدم كلمة المرور",
+  "login_no_account": "ليس لديك حساب؟",
+  "login_start_trial": "ابدأ تجربة 7 أيام مجانًا",
+  "login_offline": "غير متصل بالإنترنت",
+  "login_err_invalid": "البريد أو كلمة المرور غير صحيحة.",
+  "login_err_disabled": "تم إيقاف هذا الحساب. تواصل مع مدير مساحة العمل.",
+  "login_err_suspended": "اشتراك مساحة العمل متوقف.",
+  "login_manage_subscription": "إدارة الاشتراك",
+  "login_err_locked": "محاولات كثيرة. حاول بعد {time}.",
+  "@login_err_locked": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "login_err_network": "تعذّر الاتصال. تحقّق من الإنترنت وحاول مجددًا.",
+  "login_err_server": "حدث خطأ من جهتنا. حاول مجددًا بعد قليل.",
+  "login_retry": "إعادة المحاولة",
+  "login_val_identifier_required": "أدخل بريدك الإلكتروني أو رقم جوالك",
+  "login_val_email_invalid": "صيغة البريد غير صحيحة",
+  "login_val_phone_invalid": "رقم الجوال غير صحيح",
+  "login_val_password_required": "أدخل كلمة المرور",
+  "login_val_password_short": "كلمة المرور 8 أحرف على الأقل",
+  "login_bio_sheet_title": "سجّل دخولك أسرع في المرة القادمة",
+  "login_bio_sheet_body": "استخدم بصمة الوجه بدل كلمة المرور.",
+  "login_bio_sheet_body_finger": "استخدم بصمة الإصبع بدل كلمة المرور.",
+  "login_bio_sheet_enable": "تفعيل بصمة الوجه",
+  "login_bio_sheet_enable_finger": "تفعيل البصمة",
+  "login_bio_sheet_later": "ليس الآن",
+  "auth_coming_soon_title": "قريبًا",
+  "auth_forgot_placeholder": "استعادة كلمة المرور ستتوفر في تحديث قادم.",
+  "auth_forgot_placeholder_for": "استعادة كلمة المرور لـ {identifier} ستتوفر في تحديث قادم.",
+  "@auth_forgot_placeholder_for": {
+    "placeholders": {
+      "identifier": {
+        "type": "String"
+      }
+    }
+  },
+  "auth_2fa_title": "رمز التحقق",
+  "auth_2fa_placeholder": "إدخال رمز التحقق الثنائي سيتوفر في تحديث قادم.",
+  "auth_workspace_title": "اختر مساحة العمل",
+  "auth_workspace_placeholder": "حسابك مرتبط بأكثر من مساحة عمل. اختيار المساحة سيتوفر في تحديث قادم.",
+  "chat_ai_suggestion": "اقتراح الذكاء الاصطناعي",
+  "chat_ai_source": "من: {title}",
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ai_send": "إرسال",
+  "chat_ai_edit": "تعديل",
+  "chat_ai_more": "المزيد",
+  "chat_ai_low_conf": "تأكد من الرد قبل الإرسال",
+  "chat_ai_writing": "يكتب الاقتراح…",
+  "chat_ai_no_answer": "لم يجد الذكاء إجابة في قاعدة المعرفة",
+  "chat_ai_add_answer": "أضف إجابة",
+  "chat_ai_ready_pill": "اقتراح جاهز",
+  "chat_placeholder": "اكتب ردًّا…",
+  "chat_note_placeholder": "اكتب ملاحظة لفريقك — لن يراها العميل",
+  "chat_mode_reply": "رد",
+  "chat_mode_note": "ملاحظة داخلية",
+  "chat_attach_media": "صورة/فيديو",
+  "chat_attach_camera": "كاميرا",
+  "chat_attach_file": "ملف",
+  "chat_attach_location": "موقع",
+  "chat_attach_quick": "ردود سريعة",
+  "chat_attach_template": "قالب واتساب",
+  "chat_attach_product": "منتج",
+  "chat_record_cancel_hint": "اسحب للإلغاء",
+  "chat_claim": "استلم المحادثة",
+  "chat_assign_colleague": "إسناد لزميل",
+  "chat_viewing_now": "{name} تشاهد هذه المحادثة الآن",
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_waiting_claim": "بانتظار الاستلام",
+  "chat_claimed_before": "استلمها {name} قبلك",
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_colleague": "مُسندة إلى {name}",
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_request": "اطلب التحويل",
+  "chat_ro_resolved": "المحادثة محلولة",
+  "chat_reopen": "إعادة الفتح",
+  "chat_ro_ai": "الذكاء الاصطناعي يتولى هذه المحادثة",
+  "chat_take_over": "تولَّ المحادثة",
+  "chat_ro_blocked": "هذا العميل محظور",
+  "chat_unblock": "إلغاء الحظر",
+  "chat_ro_past": "محادثة سابقة — للقراءة فقط",
+  "chat_banner_offline": "غير متصل — ستُرسل رسائلك عند عودة الاتصال",
+  "chat_banner_window_closed": "انتهت نافذة 24 ساعة — يمكنك إرسال قالب معتمد فقط",
+  "chat_choose_template": "اختر قالبًا",
+  "chat_banner_window_soon": "تنتهي نافذة الرد خلال {t}",
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_banner_channel_down": "واتساب غير متصل — لن تصل الرسائل",
+  "chat_reconnect": "إعادة الربط",
+  "chat_snoozed_until": "مؤجلة حتى {t}",
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unsnooze": "إلغاء التأجيل",
+  "composer_attach": "إرفاق",
+  "composer_send": "إرسال",
+  "composer_send_note": "إرسال الملاحظة",
+  "composer_record": "اضغط مطولًا لتسجيل رسالة صوتية",
+  "composer_recording": "جارٍ التسجيل",
+  "composer_record_stop": "إيقاف",
+  "composer_record_send": "إرسال التسجيل",
+  "composer_record_cancelled": "أُلغي التسجيل",
+  "composer_record_locked": "التسجيل مستمر بدون ضغط",
+  "composer_record_slide_up": "اسحب للأعلى للتثبيت",
+  "composer_ai_rewrite": "حسّن الرد بالذكاء الاصطناعي",
+  "composer_field_label": "اكتب ردًّا",
+  "composer_note_field_label": "اكتب ملاحظة داخلية",
+  "composer_template": "قالب",
+  "composer_template_only": "النافذة مغلقة — أرسل قالبًا معتمدًا",
+  "composer_colleague_typing_note": "{name} يكتب ملاحظة…",
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_colleague_viewing": "{name} يشاهد أيضًا",
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_quick_title": "ردود سريعة",
+  "composer_quick_empty": "لا توجد ردود سريعة مطابقة",
+  "composer_mention_title": "اذكر زميلًا",
+  "composer_reply_to": "رد على {name}",
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_cancel_reply": "إلغاء الرد",
+  "composer_remove_attachment": "إزالة المرفق",
+  "composer_uploading": "جارٍ الرفع {percent}٪",
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "composer_customer": "العميل",
+  "composer_location_sample": "حي الملقا، الرياض",
+  "aicard_close": "طي الاقتراح",
+  "aicard_regenerate": "إعادة إنشاء الاقتراح",
+  "aicard_less": "أقل",
+  "aicard_open_pill": "عرض اقتراح الذكاء الاصطناعي",
+  "claimbar_waiting_minutes": "{n} د",
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claimbar_viewers_more": "{name} و{count, plural, =1{زميل آخر} =2{زميلان آخران} few{{count} زملاء آخرين} other{{count} زميلًا آخر}} يشاهدون المحادثة",
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "readonly_take_instead": "استلم بدلًا عنه",
+  "readonly_add_note": "إضافة ملاحظة داخلية",
+  "banner_connecting": "جارٍ الاتصال…",
+  "sys_called": "اتصل {actor} بالعميل",
+  "@sys_called": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_called_me": "اتصلت بالعميل",
+  "snooze_title": "تأجيل المحادثة",
+  "snooze_one_hour": "بعد ساعة",
+  "snooze_three_hours": "بعد 3 ساعات",
+  "snooze_tomorrow": "غدًا 9 ص",
+  "snooze_next_week": "الأسبوع القادم",
+  "snooze_custom": "مخصص",
+  "sys_claimed": "استلم {actor} المحادثة",
+  "@sys_claimed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_claimed_me": "استلمت المحادثة",
+  "sys_assigned": "أسند {actor} المحادثة إلى {target}",
+  "@sys_assigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_assigned_me": "أسندت المحادثة إلى {target}",
+  "@sys_assigned_me": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned": "حرّر {actor} المحادثة",
+  "@sys_unassigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned_me": "حرّرت المحادثة",
+  "sys_ai_handoff": "حوّل الذكاء الاصطناعي المحادثة للفريق: {reason}",
+  "@sys_ai_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused": "أوقف {actor} الذكاء الاصطناعي لهذه المحادثة",
+  "@sys_ai_paused": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused_me": "أوقفت الذكاء الاصطناعي لهذه المحادثة",
+  "sys_ai_resumed": "فعّل {actor} الذكاء الاصطناعي لهذه المحادثة",
+  "@sys_ai_resumed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_resumed_me": "فعّلت الذكاء الاصطناعي لهذه المحادثة",
+  "sys_resolved": "حلّ {actor} المحادثة",
+  "@sys_resolved": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_resolved_me": "حللت المحادثة",
+  "sys_reopened": "أُعيد فتح المحادثة",
+  "sys_snoozed": "أجّل {actor} المحادثة حتى {time}",
+  "@sys_snoozed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_snoozed_me": "أجّلت المحادثة حتى {time}",
+  "@sys_snoozed_me": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority": "غيّر {actor} الأولوية إلى {value}",
+  "@sys_priority": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority_me": "غيّرت الأولوية إلى {value}",
+  "@sys_priority_me": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added": "أضاف {actor} وسم «{tag}»",
+  "@sys_tag_added": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added_me": "أضفت وسم «{tag}»",
+  "@sys_tag_added_me": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_window_closed": "انتهت نافذة الرد 24 ساعة",
+  "sys_blocked": "حظر {actor} هذا العميل",
+  "@sys_blocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_blocked_me": "حظرت هذا العميل",
+  "sys_unblocked": "ألغى {actor} حظر هذا العميل",
+  "@sys_unblocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unblocked_me": "ألغيت حظر هذا العميل",
+  "sys_started": "بدأت المحادثة عبر {channel}",
+  "@sys_started": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "msgaction_add_to_profile": "إضافة لملف العميل",
+  "msgaction_added_to_profile": "أُضيفت الملاحظة إلى ملف العميل",
+  "chat_new_messages": "{n, plural, =1{رسالة جديدة} =2{رسالتان جديدتان} few{{n} رسائل جديدة} other{{n} رسالة جديدة}}",
+  "@chat_new_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chat_ai_reply_label": "ردّ الذكاء الاصطناعي",
+  "chat_note_label": "ملاحظة داخلية · {name}",
+  "@chat_note_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_failed": "لم تُرسل",
+  "chat_retry": "إعادة المحاولة",
+  "chat_delete": "حذف",
+  "chat_edited": "معدّلة",
+  "chat_deleted": "تم حذف هذه الرسالة",
+  "chat_unsupported": "نوع رسالة غير مدعوم — افتحها في واتساب",
+  "chat_transcribe": "تحويل لنص",
+  "bubble_template_label": "قالب: {name}",
+  "@bubble_template_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_show_all": "عرض الكل",
+  "bubble_show_less": "عرض أقل",
+  "bubble_save_contact": "حفظ",
+  "bubble_contact_saved": "تم حفظ جهة الاتصال",
+  "bubble_play": "تشغيل الرسالة الصوتية",
+  "bubble_pause": "إيقاف الرسالة الصوتية مؤقتًا",
+  "bubble_speed": "سرعة التشغيل {speed}",
+  "@bubble_speed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_voice_summary": "{n, plural, =1{رسالة صوتية ثانية واحدة} =2{رسالة صوتية ثانيتان} few{رسالة صوتية {n} ثوانٍ} other{رسالة صوتية {n} ثانية}}",
+  "@bubble_voice_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_image_from": "صورة من {name}",
+  "@bubble_image_from": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_album_summary": "{n, plural, =2{صورتان} few{{n} صور} other{{n} صورة}}",
+  "@bubble_album_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_video_summary": "فيديو {duration}",
+  "@bubble_video_summary": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_play_video": "تشغيل الفيديو",
+  "bubble_video_unavailable": "معاينة الفيديو غير متاحة في البيانات التجريبية",
+  "bubble_download": "تنزيل الملف",
+  "bubble_downloaded": "تم تنزيل الملف",
+  "bubble_open_maps": "فتح الموقع في الخرائط",
+  "bubble_transcribing": "جارٍ التحويل إلى نص…",
+  "bubble_transcript": "النص",
+  "bubble_delivery_sending": "قيد الإرسال",
+  "bubble_delivery_sent": "أُرسلت",
+  "bubble_delivery_delivered": "تم التسليم",
+  "bubble_delivery_read": "تمت القراءة",
+  "bubble_reply_to": "رد على {name}",
+  "@bubble_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_viewer_share": "مشاركة",
+  "bubble_viewer_save": "حفظ",
+  "bubble_viewer_sample": "هذه صورة تجريبية ولا يمكن مشاركتها أو حفظها",
+  "bubble_reactions": "التفاعلات: {emojis}",
+  "@bubble_reactions": {
+    "placeholders": {
+      "emojis": {
+        "type": "String"
+      }
+    }
+  },
+  "chatlist_jump_latest": "الانتقال إلى أحدث رسالة",
+  "chatlist_loading_older": "جارٍ تحميل الرسائل الأقدم",
+  "chatlist_typing": "يكتب الآن…",
+  "msgaction_reply": "رد",
+  "msgaction_copy": "نسخ",
+  "msgaction_copied": "تم نسخ الرسالة",
+  "msgaction_forward": "إعادة توجيه",
+  "msgaction_forward_soon": "إعادة التوجيه ستتوفر قريبًا",
+  "msgaction_save_kb": "حفظ في قاعدة المعرفة",
+  "msgaction_info": "معلومات",
+  "msgaction_info_title": "معلومات الرسالة",
+  "msgaction_info_sent": "وقت الإرسال",
+  "msgaction_info_status": "الحالة",
+  "msgaction_info_channel": "القناة",
+  "msgaction_info_via": "طريقة الإرسال",
+  "msgaction_via_manual": "كتابة يدوية",
+  "msgaction_via_ai_suggestion": "اقتراح الذكاء الاصطناعي",
+  "msgaction_via_ai_edited": "اقتراح معدّل",
+  "msgaction_via_quick_reply": "رد سريع",
+  "msgaction_via_template": "قالب معتمد",
+  "msgaction_delete_title": "حذف الرسالة؟",
+  "msgaction_delete_body": "ستُحذف الرسالة لدى الجميع إن كانت القناة تسمح بذلك. لا يمكن التراجع.",
+  "msgaction_rate": "تقييم الرد",
+  "msgaction_rate_up": "رد مفيد",
+  "msgaction_rate_down": "رد غير مفيد",
+  "msgaction_rated": "شكرًا، سيتعلم الذكاء الاصطناعي من تقييمك",
+  "msgaction_more_reactions": "المزيد من التفاعلات",
+  "msgaction_pick_reaction": "اختر تفاعلًا",
+  "msgaction_react": "تفاعل {emoji}",
+  "@msgaction_react": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_load_failed": "تعذّر تحميل المحادثة",
+  "chatscreen_not_found": "لم نعثر على هذه المحادثة",
+  "chatscreen_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",
+  "chatscreen_taken_from_me": "أُسندت المحادثة إلى {name}",
+  "@chatscreen_taken_from_me": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_claimed_by": "استلمها {name}",
+  "@chatscreen_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_note": "@{name} أرجو تحويل هذه المحادثة إليّ لأتابعها.",
+  "@chatscreen_transfer_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_sent": "أُرسل طلب التحويل إلى {name}",
+  "@chatscreen_transfer_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_title": "استلام المحادثة من زميل؟",
+  "chatscreen_takeover_body": "ستُسند المحادثة إليك بدلًا من {name} وسيصله إشعار بذلك.",
+  "@chatscreen_takeover_body": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_confirm": "استلم بدلًا عنه",
+  "chat_online": "متصل الآن",
+  "chat_last_seen": "آخر ظهور {time}",
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_typing": "يكتب الآن…",
+  "chat_assigned_you": "مُسندة لك",
+  "chat_assigned_to": "مُسندة لـ{name}",
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unassigned": "غير مُسندة",
+  "chat_ai_handling": "يتولاها الذكاء الاصطناعي",
+  "chat_resolve": "حلّ المحادثة",
+  "chat_resolved_toast": "تم حلّ المحادثة",
+  "chat_undo": "تراجع",
+  "chatbar_browsing": "يتصفح: {page}",
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_back_unread": "{n, plural, =1{رجوع، محادثة أخرى غير مقروءة} =2{رجوع، محادثتان أخريان غير مقروءتين} few{رجوع، {n} محادثات أخرى غير مقروءة} other{رجوع، {n} محادثة أخرى غير مقروءة}}",
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chatbar_open_profile": "فتح ملف {name}",
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_call": "اتصال",
+  "chatbar_more": "إجراءات المحادثة",
+  "chatbar_call_phone": "اتصال هاتفي",
+  "chatbar_call_whatsapp": "اتصال واتساب",
+  "chatbar_call_failed": "تعذّر بدء الاتصال على هذا الجهاز",
+  "strip_snoozed_until": "مؤجلة حتى {t}",
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_order": "طلب {ref}",
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_no_store_integration": "لا يوجد تكامل مع المتجر بعد",
+  "strip_add_tag": "وسم",
+  "snoozepick_subtitle": "ستعود المحادثة إلى قائمتك في الوقت المحدد",
+  "templates_title": "القوالب المعتمدة",
+  "templates_subtitle": "قوالب واتساب الموافق عليها من Meta",
+  "templates_empty": "لا توجد قوالب معتمدة بعد",
+  "templates_sent": "تم إرسال القالب",
+  "actions_assign": "إسناد",
+  "actions_change_owner": "إسناد / تغيير المسؤول",
+  "actions_unassign": "تحرير من المسؤولية",
+  "actions_unassigned_toast": "أُعيدت المحادثة إلى غير المُسندة",
+  "actions_snooze": "تأجيل",
+  "actions_snoozed_toast": "أُجّلت المحادثة",
+  "actions_priority": "الأولوية",
+  "actions_tag": "إضافة وسم",
+  "actions_tag_subtitle": "اختر الوسوم أو أضف وسمًا جديدًا",
+  "actions_tag_new_hint": "وسم جديد",
+  "actions_tag_add": "إضافة الوسم",
+  "actions_ai_pause": "إيقاف الذكاء الاصطناعي لهذه المحادثة",
+  "actions_ai_resume": "تفعيل الذكاء الاصطناعي لهذه المحادثة",
+  "actions_ai_paused_toast": "أُوقف الذكاء الاصطناعي لهذه المحادثة",
+  "actions_ai_resumed_toast": "فُعّل الذكاء الاصطناعي لهذه المحادثة",
+  "actions_mark_unread": "وضع علامة غير مقروءة",
+  "actions_export": "تصدير المحادثة",
+  "actions_export_note": "ملاحظة داخلية",
+  "actions_exported_toast": "نُسخ نص المحادثة، الصقه حيث تريد",
+  "actions_block": "حظر العميل",
+  "actions_unblock": "إلغاء حظر العميل",
+  "actions_block_title": "حظر {name}؟",
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_block_body": "لن تصلك رسائل هذا العميل وستُغلق المحادثة. يمكنك إلغاء الحظر لاحقًا.",
+  "actions_blocked_toast": "تم حظر العميل",
+  "actions_unblocked_toast": "تم إلغاء الحظر",
+  "claim_button": "استلم المحادثة",
+  "claim_button_hint": "ستُسند إليك ويمكنك الرد",
+  "claim_region": "استلام المحادثة",
+  "claim_assign_colleague": "إسناد لزميل",
+  "claim_ai_takeover": "تولَّ الذكاء الاصطناعي الرد",
+  "claim_ai_takeover_done": "أُسندت المحادثة إلى الذكاء الاصطناعي",
+  "claim_waiting": "بانتظار الاستلام",
+  "claim_viewer_one_f": "{name} تشاهد هذه المحادثة الآن",
+  "@claim_viewer_one_f": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_one_m": "{name} يشاهد هذه المحادثة الآن",
+  "@claim_viewer_one_m": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_two": "{a} و{b} يشاهدان المحادثة",
+  "@claim_viewer_two": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_many": "{n, plural, =2{{a} وآخران يشاهدون المحادثة} few{{a} و{n} آخرون يشاهدون المحادثة} other{{a} و{n} آخرون يشاهدون المحادثة}}",
+  "@claim_viewer_many": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_sec": "منذ {n} ث",
+  "@claim_viewing_since_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_min": "منذ {n} د",
+  "@claim_viewing_since_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_sec": "{n} ث",
+  "@claim_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_min": "{n} د",
+  "@claim_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_hm": "{h} س {m} د",
+  "@claim_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_sec": "{n, plural, =1{ينتظر منذ ثانية} =2{ينتظر منذ ثانيتين} few{ينتظر منذ {n} ثوانٍ} other{ينتظر منذ {n} ثانية}}",
+  "@claim_a11y_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_min": "{n, plural, =1{ينتظر منذ دقيقة} =2{ينتظر منذ دقيقتين} few{ينتظر منذ {n} دقائق} other{ينتظر منذ {n} دقيقة}}",
+  "@claim_a11y_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_hm": "ينتظر منذ {h} ساعة و{m} دقيقة",
+  "@claim_a11y_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_success_event": "استلمت المحادثة",
+  "claim_conflict": "استلمها {name} قبلك",
+  "@claim_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_taken_live": "استلم {name} هذه المحادثة",
+  "@claim_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_assigned_to_you": "أسند {name} المحادثة إليك",
+  "@claim_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_resolved_live": "حلّ {name} المحادثة",
+  "@claim_resolved_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_network_error": "تعذّر الاستلام. تحقّق من الاتصال وحاول مجددًا.",
+  "claim_retry": "إعادة المحاولة",
+  "claim_forbidden": "لا تملك صلاحية استلام هذه المحادثة",
+  "claim_team_only": "هذه المحادثة لفريق {team}",
+  "@claim_team_only": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_offline_hint": "الاستلام يتطلب اتصالًا بالإنترنت",
+  "claim_capacity_hint": "لديك {n} محادثات مفتوحة (الحد {max})",
+  "@claim_capacity_hint": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_reached": "وصلت للحد الأقصى من المحادثات",
+  "claim_away_title": "حالتك الآن: غير متاح",
+  "claim_away_body": "استلام المحادثة سيغيّر حالتك إلى «متاح».",
+  "claim_away_confirm": "استلم وغيّر حالتي إلى متاح",
+  "claim_capacity_title": "لديك {n} محادثات مفتوحة",
+  "@claim_capacity_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_body": "هل تريد استلام محادثة إضافية؟",
+  "claim_capacity_confirm": "استلم على أي حال",
+  "claim_cancel": "إلغاء",
+  "claim_assigned_toast": "تم الإسناد إلى {name}",
+  "@claim_assigned_toast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_undo": "تراجع",
+  "claim_reply_placeholder": "اكتب للاستلام والرد…",
+  "claim_short": "استلم",
+  "claim_handoff_event": "حوّل الذكاء الاصطناعي المحادثة للفريق: {reason}",
+  "@claim_handoff_event": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_reason_payment": "موضوع دفع",
+  "claim_reason_human": "طلب التحدث مع موظف",
+  "claim_reason_complaint": "شكوى",
+  "claim_reason_no_answer": "سؤال بلا إجابة",
+  "claim_reason_refund": "طلب استرجاع",
+  "claim_reason_other": "أخرى",
+  "claim_push_title": "محادثة جديدة بانتظار الاستلام",
+  "claim_push_action": "استلم",
+  "claim_push_success": "استلمت المحادثة مع {customer}",
+  "@claim_push_success": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_add_note": "إضافة ملاحظة داخلية",
+  "conversations_segment_mine": "لي",
+  "conversations_segment_unassigned": "غير مُسندة",
+  "conversations_segment_all": "الكل",
+  "conversations_filter_all": "الكل",
+  "conversations_filter_unread": "غير مقروءة",
+  "conversations_filter_awaiting": "بانتظار الرد",
+  "conversations_filter_ai": "ردّ الذكاء",
+  "conversations_filter_closed": "مغلقة",
+  "conversations_filter_more": "فلاتر",
+  "conversations_channel_any": "كل القنوات",
+  "conversations_priority_any": "كل الأولويات",
+  "conversations_notifications": "الإشعارات",
+  "conversations_new_message": "رسالة جديدة",
+  "conversations_exit_selection": "إلغاء التحديد",
+  "conversations_selected_count": "{count, plural, =1{محادثة واحدة محددة} =2{محادثتان محددتان} few{{count} محادثات محددة} other{{count} محادثة محددة}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "إسناد المحدد",
+  "conversations_bulk_resolve": "حلّ المحدد",
+  "conversations_bulk_resolved": "{count, plural, =1{تم حلّ محادثة واحدة} =2{تم حلّ محادثتين} few{تم حلّ {count} محادثات} other{تم حلّ {count} محادثة}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "تم حلّ المحادثة",
+  "conversations_empty_mine_title": "لا توجد محادثات مُسندة لك",
+  "conversations_empty_mine_body": "استلم محادثة من غير المُسندة لتبدأ الرد.",
+  "conversations_empty_mine_action": "عرض غير المُسندة",
+  "conversations_empty_filters_title": "لا محادثات تطابق الفلاتر",
+  "conversations_empty_filters_body": "جرّب تغيير الفلاتر أو مسحها لعرض كل المحادثات.",
+  "conversations_empty_filters_action": "مسح الفلاتر",
+  "conversations_empty_done_title": "أنهيت كل المحادثات",
+  "conversations_empty_done_body": "لا يوجد ما ينتظرك الآن. سنُعلمك عند وصول رسالة جديدة.",
+  "tile_you_prefix": "أنت: ",
+  "tile_ai_reply": "ردّ الذكاء الاصطناعي",
+  "tile_ai_ready": "اقتراح جاهز",
+  "tile_typing": "يكتب…",
+  "tile_snoozed_until": "مؤجلة حتى {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "حلّ",
+  "tile_swipe_snooze": "تأجيل",
+  "tile_swipe_assign": "إسناد",
+  "filters_title": "الفلاتر",
+  "filters_channel": "القناة",
+  "filters_status": "الحالة",
+  "filters_priority": "الأولوية",
+  "filters_assignee": "المُسند إليه",
+  "filters_assignee_all": "الكل",
+  "filters_assignee_me": "أنا",
+  "filters_assignee_colleague": "زميل",
+  "filters_assignee_ai": "الذكاء الاصطناعي",
+  "filters_assignee_unassigned": "غير مُسندة",
+  "filters_date": "التاريخ",
+  "filters_date_any": "أي وقت",
+  "filters_date_today": "اليوم",
+  "filters_date_7": "7 أيام",
+  "filters_date_30": "30 يومًا",
+  "filters_date_custom": "مخصص",
+  "filters_tags": "الوسوم",
+  "filters_show": "{count, plural, =0{لا توجد محادثات} =1{عرض محادثة واحدة} =2{عرض محادثتين} few{عرض {count} محادثات} other{عرض {count} محادثة}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "رسالة جديدة",
+  "newmsg_subtitle": "ابدأ محادثة واتساب بقالب معتمد",
+  "newmsg_name": "اسم العميل",
+  "newmsg_name_hint": "اختياري",
+  "newmsg_phone": "رقم الجوال",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "أدخل رقم جوال صحيح مع رمز الدولة",
+  "newmsg_template": "القالب",
+  "newmsg_template_error": "اختر قالبًا معتمدًا للإرسال",
+  "newmsg_send": "إرسال القالب",
+  "app_name": "Wavadesk",
+  "tab_conversations": "المحادثات",
+  "tab_dashboard": "لوحة التحكم",
+  "tab_knowledge": "المعرفة",
+  "tab_account": "الحساب",
+  "channel_whatsapp": "واتساب",
+  "channel_web": "دردشة الموقع",
+  "channel_messenger": "ماسنجر",
+  "channel_instagram": "إنستغرام",
+  "channel_email": "البريد الإلكتروني",
+  "channel_telegram": "تيليغرام",
+  "channel_sms": "رسائل SMS",
+  "channel_other": "قناة أخرى",
+  "status_open": "مفتوحة",
+  "status_pending": "بانتظار العميل",
+  "status_waiting": "بانتظار الرد",
+  "status_snoozed": "مؤجلة",
+  "status_resolved": "محلولة",
+  "status_closed": "مغلقة",
+  "status_ai": "يتولاها الذكاء",
+  "priority_urgent": "عاجل",
+  "priority_high": "عالية",
+  "priority_medium": "متوسطة",
+  "priority_low": "منخفضة",
+  "presence_online": "متاح",
+  "presence_busy": "مشغول",
+  "presence_away": "غير متاح",
+  "role_admin": "مدير",
+  "role_supervisor": "مشرف",
+  "role_agent": "موظف دعم",
+  "ownership_mine": "مُسندة لك",
+  "ownership_unassigned": "غير مُسندة",
+  "ownership_colleague": "مُسندة لـ{name}",
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ownership_ai": "يتولاها الذكاء الاصطناعي",
+  "media_image": "صورة",
+  "media_voice": "رسالة صوتية",
+  "media_file": "ملف",
+  "media_location": "موقع",
+  "media_album": "ألبوم صور",
+  "media_video": "فيديو",
+  "media_contact": "جهة اتصال",
+  "media_sticker": "ملصق",
+  "media_template": "قالب",
+  "media_email": "بريد إلكتروني",
+  "media_deleted": "رسالة محذوفة",
+  "media_unsupported": "رسالة غير مدعومة",
+  "common_cancel": "إلغاء",
+  "common_save": "حفظ",
+  "common_undo": "تراجع",
+  "common_retry": "إعادة المحاولة",
+  "common_close": "إغلاق",
+  "common_back": "رجوع",
+  "common_clear": "مسح",
+  "common_done": "تم",
+  "common_search": "بحث",
+  "common_clear_search": "مسح البحث",
+  "common_more": "المزيد",
+  "common_edit": "تعديل",
+  "common_delete": "حذف",
+  "common_confirm": "تأكيد",
+  "common_you": "أنت",
+  "common_loading": "جارٍ التحميل…",
+  "common_selected": "محدد",
+  "time_now": "الآن",
+  "time_today": "اليوم",
+  "time_yesterday": "أمس",
+  "time_minutes_ago": "{count, plural, =1{قبل دقيقة} =2{قبل دقيقتين} few{قبل {count} دقائق} other{قبل {count} دقيقة}}",
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_hours_ago": "{count, plural, =1{قبل ساعة} =2{قبل ساعتين} few{قبل {count} ساعات} other{قبل {count} ساعة}}",
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_days_ago": "{count, plural, =1{قبل يوم} =2{قبل يومين} few{قبل {count} أيام} other{قبل {count} يومًا}}",
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_minutes_short": "{count} د",
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_hours_short": "{count} س",
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_days_short": "{count} ي",
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "waiting_for": "ينتظر منذ {duration}",
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "network_connecting": "جارٍ الاتصال…",
+  "network_offline": "غير متصل",
+  "empty_offline_title": "أنت غير متصل بالإنترنت",
+  "empty_offline_body": "تحقق من اتصالك ثم أعد المحاولة. ستُرسل رسائلك عند عودة الاتصال.",
+  "a11y_unread_messages": "{count, plural, =0{لا رسائل غير مقروءة} =1{رسالة غير مقروءة} =2{رسالتان غير مقروءتين} few{{count} رسائل غير مقروءة} other{{count} رسالة غير مقروءة}}",
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "a11y_notifications_unread": "الإشعارات، يوجد جديد",
+  "a11y_ai_avatar": "الذكاء الاصطناعي",
+  "a11y_team_avatar": "فريق",
+  "a11y_selected": "محدد",
+  "a11y_priority": "الأولوية: {label}",
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_title": "لوحة التحكم",
+  "dash_morning": "صباح الخير، {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "مساء الخير، {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "متاح",
+  "dash_presence_online_f": "متاحة",
+  "dash_presence_busy_m": "مشغول",
+  "dash_presence_busy_f": "مشغولة",
+  "dash_presence_away": "غير متاح",
+  "dash_presence_title": "حالتك",
+  "dash_presence_until": "حتى…",
+  "dash_presence_30m": "30 دقيقة",
+  "dash_presence_1h": "ساعة",
+  "dash_presence_eod": "نهاية اليوم",
+  "dash_presence_auto": "تتحول تلقائيًا إلى «غير متاح» بعد 15 دقيقة من الخمول",
+  "dash_presence_until_time": "حتى {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "تعذّر تغيير حالتك",
+  "dash_scope_me": "أنا",
+  "dash_scope_team": "فريقي",
+  "dash_scope_all": "الكل",
+  "dash_team_picker": "اختر الفريق",
+  "dash_range_today": "اليوم",
+  "dash_range_yesterday": "أمس",
+  "dash_range_7d": "آخر 7 أيام",
+  "dash_range_30d": "آخر 30 يومًا",
+  "dash_range_title": "الفترة",
+  "dash_open": "محادثات مفتوحة",
+  "dash_awaiting_me": "بانتظار ردّك",
+  "dash_awaiting_team": "بانتظار الرد",
+  "dash_oldest": "أقدمها {m} د",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "لا أحد ينتظر",
+  "dash_first_response": "متوسط أول رد",
+  "dash_minute": "دقيقة",
+  "dash_ai_reply": "ردّ الذكاء",
+  "dash_of_questions": "من الأسئلة",
+  "dash_resolved": "المحادثات المحلولة",
+  "dash_volume_today": "المحادثات اليوم",
+  "dash_volume_range": "المحادثات · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} محادثة",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour}: {n} محادثة · {ai} بالذكاء",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "الكل",
+  "dash_legend_ai": "ردّ الذكاء",
+  "dash_no_volume": "لا محادثات بعد اليوم",
+  "dash_no_volume_range": "لا محادثات في هذه الفترة",
+  "dash_team_now": "الفريق الآن",
+  "dash_see_all": "عرض الكل",
+  "dash_ai_name": "الذكاء",
+  "dash_agent_open": "{n} محادثات مفتوحة",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "متوسط أول رد اليوم {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "عرض محادثاته",
+  "dash_redistribute": "إعادة توزيع",
+  "dash_redistribute_none": "لا محادثات مفتوحة لإعادة توزيعها",
+  "dash_solo": "أنت وحدك في الفريق",
+  "dash_invite": "دعوة زميل",
+  "dash_ai_impact": "{n} سؤالًا أجاب عنها الذكاء",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "وفّر نحو {h} ساعات من وقت الفريق",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "تحويلات للفريق {n}",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "تقييم إيجابي {p}%",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "يتولّى الذكاء {n} محادثة الآن",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "حسب القناة",
+  "dash_web_reports": "تقارير مفصّلة على الويب",
+  "dash_last_updated": "آخر تحديث {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "تعذّر تحميل لوحة التحكم",
+  "dash_card_error": "تعذّر التحميل",
+  "dash_retry": "إعادة المحاولة",
+  "dash_frt_title": "سرعة أول رد",
+  "dash_frt_target": "الهدف: {m} د",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "أقل من دقيقة",
+  "dash_frt_1_5": "1–5 د",
+  "dash_frt_5_15": "5–15 د",
+  "dash_frt_gt15": "أكثر من 15 د",
+  "dash_frt_note": "محسوب على المحادثات التي ردّ عليها موظف",
+  "dash_frt_empty": "لا ردود بعد في هذه الفترة",
+  "dash_hours_short": "س",
+  "dash_minutes_short": "د",
+  "dash_thousand": "ألف",
+  "dash_onb_title": "ابدأ باستقبال المحادثات",
+  "dash_onb_wa": "ربط واتساب",
+  "dash_onb_kb": "إضافة قاعدة المعرفة",
+  "dash_onb_ai": "تفعيل الذكاء الاصطناعي",
+  "dash_onb_cta": "أكمل الإعداد",
+  "dash_alert_wa_title": "واتساب غير متصل",
+  "dash_alert_wa_body": "لن تصل الرسائل حتى تعيد الربط",
+  "dash_alert_wa_action": "إعادة الربط",
+  "dash_alert_sla_title": "{n} عملاء ينتظرون أكثر من {sla} د",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "رد الآن",
+  "dash_alert_unassigned_title": "{n} محادثات بانتظار الاستلام",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "عرض",
+  "dash_alert_kb_title": "{n} أسئلة بلا إجابة",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "أضفها ليجيب الذكاء تلقائيًا",
+  "dash_alert_kb_action": "راجعها",
+  "dash_alert_trial_title": "تجربتك تنتهي بعد {n} أيام",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "عرض الخطط",
+  "dash_alert_dismiss": "إخفاء",
+  "dash_a11y_metric": "{label}: {value} {aside}. اضغط لعرض المحادثات",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title}: {total}. الذروة {peak} بـ {n} محادثة.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}، {presence}، {n} محادثات مفتوحة",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "حالتك: {status}. اضغط للتغيير",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_title": "المحادثات",
+  "inbox_seg_mine": "لي",
+  "inbox_seg_unassigned": "غير مُسندة",
+  "inbox_seg_all": "الكل",
+  "inbox_chip_all": "الكل",
+  "inbox_chip_unread": "غير مقروءة",
+  "inbox_chip_awaiting": "بانتظار الرد",
+  "inbox_chip_ai": "ردّ الذكاء",
+  "inbox_chip_snoozed": "مؤجلة",
+  "inbox_chip_closed": "مغلقة",
+  "inbox_chip_filters": "فلاتر",
+  "inbox_needs_reply": "تحتاج ردّك الآن",
+  "inbox_rest": "باقي المحادثات",
+  "inbox_see_all": "عرض الكل",
+  "inbox_show_less": "عرض أقل",
+  "inbox_you_prefix": "أنت:",
+  "inbox_draft_prefix": "مسودة:",
+  "inbox_note_prefix": "ملاحظة:",
+  "inbox_typing": "يكتب الآن…",
+  "inbox_image": "صورة",
+  "inbox_voice": "رسالة صوتية · {d}",
+  "@inbox_voice": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_location": "موقع",
+  "inbox_sticker": "ملصق",
+  "inbox_deleted": "تم حذف هذه الرسالة",
+  "inbox_tag_waiting": "{n, plural, =1{ينتظر دقيقة} =2{ينتظر دقيقتين} few{ينتظر {n} دقائق} other{ينتظر {n} دقيقة}}",
+  "@inbox_tag_waiting": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_tag_ai_ready": "اقتراح جاهز",
+  "inbox_tag_ai_replied": "ردّ الذكاء الاصطناعي",
+  "inbox_tag_snoozed": "مؤجلة حتى {t}",
+  "@inbox_tag_snoozed": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_window": "تنتهي النافذة خلال {h} س",
+  "@inbox_tag_window": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_now": "الآن",
+  "inbox_min": "{n} د",
+  "@inbox_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_hour": "{n} س",
+  "@inbox_hour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_yesterday": "أمس",
+  "inbox_am": "ص",
+  "inbox_pm": "م",
+  "inbox_swipe_resolve": "حلّ",
+  "inbox_swipe_snooze": "تأجيل",
+  "inbox_swipe_assign": "إسناد",
+  "inbox_swipe_claim": "استلام",
+  "inbox_resolved": "تم حلّ المحادثة",
+  "inbox_resolved_n": "{n, plural, =1{تم حلّ محادثة} =2{تم حلّ محادثتين} few{تم حلّ {n} محادثات} other{تم حلّ {n} محادثة}}",
+  "@inbox_resolved_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_snoozed_1h": "أُجّلت لمدة ساعة",
+  "inbox_snoozed_n": "{n, plural, =1{أُجّلت المحادثة} =2{أُجّلت محادثتان} few{أُجّلت {n} محادثات} other{أُجّلت {n} محادثة}}",
+  "@inbox_snoozed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_undo": "تراجع",
+  "inbox_assigned_to_you": "أُسندت إليك محادثة من {name}",
+  "@inbox_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_open": "فتح",
+  "inbox_claimed_by": "استلمها {name}",
+  "@inbox_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_new_pill": "{n, plural, =1{محادثة جديدة} =2{محادثتان جديدتان} few{{n} محادثات جديدة} other{{n} محادثة جديدة}}",
+  "@inbox_new_pill": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_selected": "{n} محدد",
+  "@inbox_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_select_all": "تحديد الكل",
+  "inbox_exit_selection": "إنهاء التحديد",
+  "inbox_mark_read": "مقروء",
+  "inbox_mark_unread": "غير مقروء",
+  "inbox_marked_read_n": "{n, plural, =1{تم تعليم محادثة كمقروءة} few{تم تعليم {n} محادثات كمقروءة} other{تم تعليم {n} محادثة كمقروءة}}",
+  "@inbox_marked_read_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_marked_unread_n": "{n, plural, =1{تم تعليم محادثة كغير مقروءة} few{تم تعليم {n} محادثات كغير مقروءة} other{تم تعليم {n} محادثة كغير مقروءة}}",
+  "@inbox_marked_unread_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_conversation": "محادثة جديدة",
+  "inbox_load_error": "تعذّر التحميل · إعادة المحاولة",
+  "inbox_end": "لا مزيد من المحادثات",
+  "inbox_exit_hint": "اضغط مرة أخرى للخروج",
+  "inbox_offline_cached": "غير متصل — تُعرض آخر نسخة محفوظة",
+  "inbox_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",
+  "inbox_tag": "وسم",
+  "inbox_tag_added": "أُضيف الوسم «{tag}»",
+  "@inbox_tag_added": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_priority": "أولوية",
+  "inbox_priority_set": "الأولوية الآن: {label}",
+  "@inbox_priority_set": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_archive": "أرشفة",
+  "inbox_archived_n": "{n, plural, =1{أُرشفت المحادثة} few{أُرشفت {n} محادثات} other{أُرشفت {n} محادثة}}",
+  "@inbox_archived_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_clear_all": "مسح الكل",
+  "inbox_a11y_unread": "{n, plural, =1{رسالة غير مقروءة} =2{رسالتان غير مقروءتين} few{{n} رسائل غير مقروءة} other{{n} رسالة غير مقروءة}}",
+  "@inbox_a11y_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_a11y_open_hint": "اضغط مرتين لفتح المحادثة",
+  "inbox_a11y_notifications": "الإشعارات، {n} غير مقروءة",
+  "@inbox_a11y_notifications": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_empty_mine_title": "لا توجد محادثات مُسندة لك",
+  "inbox_empty_mine_body": "ستظهر هنا المحادثات التي تستلمها أو تُسند إليك.",
+  "inbox_empty_mine_action": "عرض غير المُسندة",
+  "inbox_empty_done_title": "أنهيت كل المحادثات",
+  "inbox_empty_done_body": "لا أحد ينتظر ردّك الآن.",
+  "inbox_empty_unassigned_title": "لا توجد محادثات بانتظار الاستلام",
+  "inbox_empty_unassigned_body": "الذكاء الاصطناعي والفريق يغطّون كل شيء.",
+  "inbox_empty_new_title": "لم تصل أي محادثة بعد",
+  "inbox_empty_new_body": "اربط واتساب لتبدأ باستقبال رسائل عملائك.",
+  "inbox_empty_new_action": "اربط واتساب",
+  "inbox_empty_filters_title": "لا محادثات تطابق الفلاتر",
+  "inbox_empty_filters_action": "مسح الفلاتر",
+  "inbox_empty_error_title": "تعذّر تحميل المحادثات",
+  "inbox_empty_error_body": "تحقّق من اتصالك ثم حاول مجددًا.",
+  "inbox_filters_title": "الفلاتر",
+  "inbox_filters_clear": "مسح",
+  "inbox_filters_apply": "عرض المحادثات",
+  "inbox_filters_show": "{n, plural, =0{لا توجد محادثات} =1{عرض محادثة واحدة} =2{عرض محادثتين} few{عرض {n} محادثات} other{عرض {n} محادثة}}",
+  "@inbox_filters_show": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_filters_channel": "القناة",
+  "inbox_filters_priority": "الأولوية",
+  "inbox_filters_assignee": "المُسند إليه",
+  "inbox_filters_assignee_all": "الكل",
+  "inbox_filters_assignee_me": "أنا",
+  "inbox_filters_assignee_colleague": "زميل محدد ▸",
+  "inbox_filters_assignee_ai": "الذكاء الاصطناعي",
+  "inbox_filters_assignee_unassigned": "غير مُسندة",
+  "inbox_filters_pick_colleague": "اختر زميلًا",
+  "inbox_filters_team": "الفريق",
+  "inbox_filters_tags": "الوسوم",
+  "inbox_filters_tags_search": "ابحث في الوسوم",
+  "inbox_filters_date": "التاريخ",
+  "inbox_filters_date_today": "اليوم",
+  "inbox_filters_date_7d": "7 أيام",
+  "inbox_filters_date_30d": "30 يومًا",
+  "inbox_filters_date_custom": "مخصص ▸",
+  "inbox_filters_sort": "الترتيب",
+  "inbox_filters_sort_smart": "ذكي (افتراضي)",
+  "inbox_filters_sort_newest": "الأحدث",
+  "inbox_filters_sort_oldest": "الأقدم",
+  "inbox_filters_sort_waiting": "الأطول انتظارًا",
+  "kbe_new": "سؤال جديد",
+  "kbe_edit": "تعديل الإجابة",
+  "kbe_review": "مراجعة مقترح",
+  "kbe_save": "حفظ",
+  "kbe_send": "إرسال",
+  "kbe_src_unanswered": "سُئل هذا السؤال {n} مرات ولم يجد الذكاء إجابة",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "من محادثة مع {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "اقترحها {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "مقترحة من محادثة محلولة",
+  "kbe_view_convs": "عرض المحادثات",
+  "kbe_open": "فتح",
+  "kbe_open_it": "فتحه",
+  "kbe_question": "السؤال",
+  "kbe_question_ph": "مثال: هل يمكن الاسترجاع بعد 30 يومًا؟",
+  "kbe_alts": "صيغ أخرى يسأل بها العملاء",
+  "kbe_optional": "(اختياري)",
+  "kbe_add_alt": "+ أضف صيغة",
+  "kbe_alt_exists": "هذه الصيغة موجودة",
+  "kbe_alt_limit": "الحد الأقصى 15 صيغة، 120 حرفًا لكل صيغة",
+  "kbe_answer": "الإجابة",
+  "kbe_answer_ph": "اكتب الإجابة كما تريد أن يقولها الذكاء للعميل…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "مسودة من الذكاء — راجعها قبل الحفظ",
+  "kbe_tag": "وسم",
+  "kbe_tags_title": "وسوم الإجابة",
+  "kbe_tags_search": "ابحث أو أنشئ وسمًا",
+  "kbe_tags_create": "إنشاء «{name}»",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "الوسم الرئيسي",
+  "kbe_done": "تم",
+  "kbe_improve": "حسّن الصياغة",
+  "kbe_add_link": "أضف رابطًا",
+  "kbe_link_url": "الرابط",
+  "kbe_link_label": "عنوان الرابط (اختياري)",
+  "kbe_link_invalid": "أدخل رابطًا صحيحًا يبدأ بـ https://",
+  "kbe_insert": "إدراج",
+  "kbe_cancel": "إلغاء",
+  "kbe_similar": "يوجد سؤال مشابه: «{t}»",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "دمج كصيغة أخرى",
+  "kbe_conflict": "قد تتعارض مع «{t}»: {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "عرض",
+  "kbe_preview": "معاينة: كيف سيردّ الذكاء",
+  "kbe_ai_label": "الذكاء الاصطناعي",
+  "kbe_writing": "يكتب…",
+  "kbe_tone": "بنبرة: {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "ثقة عالية",
+  "kbe_conf_med": "ثقة متوسطة",
+  "kbe_conf_low": "ثقة منخفضة",
+  "kbe_low_hint": "أضف صيغًا أخرى أو وضّح الإجابة لرفع الثقة",
+  "kbe_try_another": "جرّب سؤالًا آخر",
+  "kbe_test_hint": "اكتب سؤالًا لتجربته",
+  "kbe_preview_err": "تعذّرت المعاينة",
+  "kbe_preview_offline": "المعاينة تحتاج اتصالًا",
+  "kbe_preview_empty": "أكمل السؤال والإجابة لتظهر المعاينة",
+  "kbe_preview_regen": "تحديث المعاينة",
+  "kbe_advanced": "خيارات متقدمة",
+  "kbe_enabled": "متاح للذكاء الاصطناعي",
+  "kbe_channels": "القنوات",
+  "kbe_channels_all": "كل القنوات",
+  "kbe_expires": "صالحة حتى",
+  "kbe_expires_none": "بدون تاريخ انتهاء",
+  "kbe_expires_clear": "إزالة التاريخ",
+  "kbe_verbatim": "رد حرفي",
+  "kbe_verbatim_sub": "يرسل الذكاء الإجابة كما هي دون إعادة صياغة",
+  "kbe_handoff_after": "تحويل لموظف بعد الإجابة",
+  "kbe_internal_notes": "ملاحظات داخلية",
+  "kbe_internal_notes_ph": "لا يستخدمها الذكاء",
+  "kbe_meta": "آخر تعديل {n} · {t} · استُخدم {u} مرة",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "حذف الإجابة",
+  "kbe_delete_title": "حذف «{title}»؟",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "لن يستخدمها الذكاء بعد الآن.",
+  "kbe_deleted": "تم الحذف",
+  "kbe_history": "سجل التغييرات",
+  "kbe_restore": "استعادة هذه النسخة",
+  "kbe_version_n": "النسخة {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "الحالية",
+  "kbe_versions_empty": "لا توجد نسخ سابقة",
+  "kbe_restored": "تمت استعادة النسخة",
+  "kbe_restore_failed": "تعذّرت الاستعادة",
+  "kbe_err_q": "اكتب السؤال (5 أحرف على الأقل)",
+  "kbe_err_a": "اكتب الإجابة (10 أحرف على الأقل)",
+  "kbe_err_a_long": "الإجابة أطول من 2000 حرف",
+  "kbe_err_date": "اختر تاريخًا في المستقبل",
+  "kbe_saved_new": "تمت إضافة الإجابة · سيستخدمها الذكاء فورًا",
+  "kbe_saved_edit": "تم حفظ التعديلات",
+  "kbe_saved_unanswered": "تمت الإضافة · {n} محادثات كانت تنتظر هذه الإجابة",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "أُضيفت لقاعدة المعرفة",
+  "kbe_proposed": "أُرسلت للمراجعة",
+  "kbe_approve": "اعتماد ونشر",
+  "kbe_approved": "تم اعتماد الإجابة ونشرها",
+  "kbe_reject": "رفض",
+  "kbe_rejected": "تم رفض المقترح",
+  "kbe_save_err": "تعذّر الحفظ",
+  "kbe_save_forbidden": "لا تملك صلاحية الحفظ — أرسلها للمراجعة",
+  "kbe_save_offline": "الحفظ يتطلب اتصالًا بالإنترنت",
+  "kbe_retry": "إعادة المحاولة",
+  "kbe_load_error": "تعذّر تحميل الإجابة",
+  "kbe_conflict_title": "عدّل {name} هذه الإجابة للتو",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "عرض نسختهم",
+  "kbe_overwrite": "حفظ نسختي فوقها",
+  "kbe_restore_draft": "لديك مسودة غير محفوظة — استعادتها؟",
+  "kbe_restore_btn": "استعادة",
+  "kbe_restore_ignore": "تجاهل",
+  "kbe_discard_title": "تجاهل التغييرات؟",
+  "kbe_discard_body": "لن تُحفظ الإجابة.",
+  "kbe_discard": "تجاهل",
+  "kbe_keep": "متابعة التعديل",
+  "kbe_deleted_elsewhere": "تم حذف هذه الإجابة",
+  "kbe_close": "إغلاق",
+  "kbe_a11y_alt": "صيغة: {text}، اضغط مرتين للتعديل",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "حذف",
+  "kbe_a11y_ghost": "صيغة مقترحة من الذكاء: {text}، اضغط للإضافة",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "أكمل السؤال والإجابة",
+  "kbe_a11y_dismiss": "إغلاق التنبيه",
+  "kb_title": "المعرفة",
+  "kb_search": "ابحث في {n} مدخلًا",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "سؤال وجواب",
+  "kb_files": "ملفات",
+  "kb_links": "روابط",
+  "kb_processing": "جارٍ المعالجة",
+  "kb_unanswered_title": "{n} أسئلة بلا إجابة",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "سألها العملاء ولم يجد الذكاء جوابًا",
+  "kb_review": "راجعها",
+  "kb_sort_usage": "الأكثر استخدامًا",
+  "kb_sort_recent": "المحدّثة مؤخرًا",
+  "kb_sort_stale": "الأقدم تحديثًا",
+  "kb_sort_alpha": "أبجديًا",
+  "kb_sort_least": "الأقل استخدامًا",
+  "kb_tags": "الوسوم",
+  "kb_used_n": "استُخدم {n} مرة",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "محدّث منذ {t}",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} صفحة",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "مسودة",
+  "kb_badge_disabled": "معطّل",
+  "kb_badge_stale": "قديم",
+  "kb_badge_failed": "فشلت المعالجة",
+  "kb_disable": "تعطيل للذكاء",
+  "kb_enable": "تفعيل",
+  "kb_edit": "تعديل",
+  "kb_copy_answer": "نسخ الإجابة",
+  "kb_delete": "حذف",
+  "kb_delete_title": "حذف «{title}»؟",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "لن يستخدمها الذكاء بعد الآن.",
+  "kb_deleted": "تم الحذف",
+  "kb_drafts": "مقترحات بانتظار المراجعة · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "اقترحها {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "مقترحة من محادثة محلولة",
+  "kb_approve": "اعتماد",
+  "kb_reject": "رفض",
+  "kb_add_title": "إضافة إلى قاعدة المعرفة",
+  "kb_add_qa_sub": "الأسرع والأدق للذكاء",
+  "kb_add_file": "رفع ملف",
+  "kb_add_file_sub": "PDF أو Word أو TXT حتى 10 ميجابايت",
+  "kb_add_link": "إضافة رابط",
+  "kb_add_link_sub": "صفحة من موقعك، يقرأها الذكاء تلقائيًا",
+  "kb_alt_phrasings": "صيغ أخرى",
+  "kb_answer": "الإجابة",
+  "kb_usage_month": "استُخدم {n} مرة هذا الشهر",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "تقييم إيجابي {p}%",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "آخر استخدام {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "آخر الاستخدامات",
+  "kb_meta": "أنشأها {a} · {d} · آخر تعديل {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "متاح للذكاء الاصطناعي",
+  "kb_file_type_err": "نوع الملف غير مدعوم",
+  "kb_file_size_err": "الملف أكبر من 10 ميجابايت",
+  "kb_uploading": "جارٍ الرفع {p}%",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "جارٍ المعالجة… قد يستغرق دقيقة",
+  "kb_file_ready": "أصبح «{f}» جاهزًا · استخرجنا {n} معلومة",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "ما استخرجه الذكاء",
+  "kb_replace": "استبدال الملف",
+  "kb_download": "تحميل",
+  "kb_file_failed": "تعذّرت قراءة الملف",
+  "kb_fail_encrypted": "الملف محمي بكلمة مرور",
+  "kb_fail_images": "الملف صور فقط بدون نص",
+  "kb_fail_corrupt": "الملف تالف",
+  "kb_link_url": "رابط الصفحة",
+  "kb_link_subpages": "تضمين الصفحات الفرعية",
+  "kb_add": "إضافة",
+  "kb_last_crawl": "آخر قراءة {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "تحديث الآن",
+  "kb_auto_refresh": "التحديث التلقائي",
+  "kb_weekly": "أسبوعيًا",
+  "kb_monthly": "شهريًا",
+  "kb_manual": "يدويًا",
+  "kb_unanswered": "أسئلة بلا إجابة",
+  "kb_unanswered_info": "أسئلة سألها العملاء ولم يجد لها الذكاء إجابة. أضف إجابة ليردّ تلقائيًا في المرة القادمة.",
+  "kb_sort_frequency": "الأكثر تكرارًا",
+  "kb_sort_newest": "الأحدث",
+  "kb_asked_n": "سُئل {n} مرات · آخرها {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} صيغ مشابهة",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "مسودة مقترحة",
+  "kb_add_answer": "أضف إجابة",
+  "kb_link_existing": "ربط بإجابة موجودة",
+  "kb_ignore": "تجاهل",
+  "kb_view_convs": "عرض المحادثات",
+  "kb_suggest_answer": "اقترح إجابة",
+  "kb_none_unanswered": "لا توجد أسئلة بلا إجابة",
+  "kb_none_unanswered_body": "الذكاء يجد إجابات لكل ما يُسأل حاليًا.",
+  "kb_empty_title": "ابدأ بتعليم الذكاء عن عملك",
+  "kb_empty_body": "أضف أهم الأسئلة التي يسألها عملاؤك وإجاباتها.",
+  "kb_empty_cta": "أضف أول سؤال",
+  "kb_empty_tip": "ننصح بـ 10 أسئلة على الأقل",
+  "kb_filter_empty": "لا توجد مدخلات من هذا النوع",
+  "kb_show_all": "عرض الكل",
+  "kb_error": "تعذّر تحميل قاعدة المعرفة",
+  "kb_retry": "إعادة المحاولة",
+  "kb_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "kb_span_now": "لحظات",
+  "kb_span_minutes": "{n, plural, =1{دقيقة} =2{دقيقتين} few{{n} دقائق} other{{n} دقيقة}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{ساعة} =2{ساعتين} few{{n} ساعات} other{{n} ساعة}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{يوم} =2{يومين} few{{n} أيام} other{{n} يومًا}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{شهر} =2{شهرين} few{{n} أشهر} other{{n} شهرًا}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{سنة} =2{سنتين} few{{n} سنوات} other{{n} سنة}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "هذه الميزة متاحة من لوحة الويب حاليًا",
+  "kb_menu_ai_settings": "إعدادات الذكاء الاصطناعي",
+  "kb_menu_tags": "إدارة الوسوم",
+  "kb_menu_import": "استيراد من الويب",
+  "kb_sort_by": "ترتيب حسب",
+  "kb_tags_all": "كل الوسوم",
+  "kb_tags_apply": "تطبيق",
+  "kb_tags_none": "لا توجد وسوم بعد",
+  "kb_disabled_done": "تم التعطيل · لن يستخدمها الذكاء",
+  "kb_enabled_done": "تم التفعيل",
+  "kb_copied": "تم نسخ الإجابة",
+  "kb_approved": "تم الاعتماد والنشر",
+  "kb_rejected": "تم رفض المقترح",
+  "kb_ignored": "تم التجاهل",
+  "kb_linked": "أُضيفت كصيغة أخرى لـ«{t}»",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "اختر إجابة",
+  "kb_pick_search": "ابحث في الإجابات",
+  "kb_uploaded_by": "رفعه {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} ميجابايت",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} كيلوبايت",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "يمكنك إغلاق هذه النافذة، ستستمر المعالجة في الخلفية",
+  "kb_url_invalid": "أدخل رابطًا صحيحًا يبدأ بـ https://",
+  "kb_link_added": "أُضيف الرابط · جارٍ قراءته",
+  "kb_link_pages": "الصفحات",
+  "kb_never_crawled": "لم تتم القراءة بعد",
+  "kb_recrawl_started": "بدأت إعادة القراءة",
+  "kb_filter_a11y": "{label}، {n}، تصفية",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} أسئلة بلا إجابة. راجعها",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "الاستخدام خلال 30 يومًا",
+  "kb_not_used_yet": "لم يُستخدم بعد",
+  "kb_show_less": "عرض أقل",
+  "kb_proposed": "أُرسل اقتراحك للمراجعة",
+  "kb_save_err": "تعذّر الحفظ",
+  "kb_none_found": "لا توجد نتائج",
+  "ntf_title": "الإشعارات",
+  "ntf_read_all": "قراءة الكل",
+  "ntf_read_all_done": "تم تعليم الكل كمقروء",
+  "ntf_undo": "تراجع",
+  "ntf_settings": "إعدادات الإشعارات",
+  "ntf_delete_read": "حذف المقروءة",
+  "ntf_filter_all": "الكل",
+  "ntf_filter_unread": "غير مقروءة",
+  "ntf_filter_mentions": "الإشارات",
+  "ntf_filter_assignments": "الإسناد",
+  "ntf_filter_ai": "الذكاء",
+  "ntf_filter_system": "النظام",
+  "ntf_today": "اليوم",
+  "ntf_yesterday": "أمس",
+  "ntf_this_week": "هذا الأسبوع",
+  "ntf_older": "أقدم",
+  "ntf_push_off_title": "الإشعارات الفورية متوقفة",
+  "ntf_push_off_body": "فعّلها حتى لا تفوتك محادثة مُسندة إليك",
+  "ntf_enable": "تفعيل",
+  "ntf_mark_read": "تعليم كمقروء",
+  "ntf_mark_unread": "تعليم كغير مقروء",
+  "ntf_mute_type": "كتم هذا النوع",
+  "ntf_delete": "حذف",
+  "ntf_deleted": "تم حذف الإشعار",
+  "ntf_empty_title": "لا توجد إشعارات",
+  "ntf_empty_body": "سنخبرك هنا عند إسناد محادثة إليك أو عند حاجة الفريق لك.",
+  "ntf_empty_filter": "لا إشعارات في «{f}»",
+  "@ntf_empty_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_show_all": "عرض الكل",
+  "ntf_error": "تعذّر تحميل الإشعارات",
+  "ntf_retry": "إعادة المحاولة",
+  "ntf_end": "لا مزيد من الإشعارات",
+  "ntf_retention": "تُحذف الإشعارات بعد 90 يومًا",
+  "ntf_target_gone": "لم تعد هذه المحادثة متاحة",
+  "ntf_claimed_you": "استلمتها",
+  "ntf_claimed_by": "استلمها {name}",
+  "@ntf_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_approved": "وافقت",
+  "ntf_rejected": "رفضت",
+  "ntf_grouped": "{n} رسائل جديدة من {name}",
+  "@ntf_grouped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_push_private": "لديك محادثة جديدة",
+  "ntf_t_assigned": "أُسندت إليك محادثة جديدة",
+  "ntf_t_claim_needed": "{n} محادثات بانتظار الاستلام",
+  "@ntf_t_claim_needed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m} د",
+  "@ntf_t_sla_breach": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_transfer_request": "{agent} يطلب تحويل محادثة إليه",
+  "@ntf_t_transfer_request": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_mention": "{agent} أشار إليك في ملاحظة",
+  "@ntf_t_mention": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_ai_no_answer": "الذكاء الاصطناعي لم يجد إجابة",
+  "ntf_t_ai_handoff": "حوّل الذكاء محادثة للفريق",
+  "ntf_t_ai_low_confidence": "ردّ الذكاء بثقة منخفضة",
+  "ntf_t_kb_suggestion": "{n} أسئلة متكررة بلا إجابة",
+  "@ntf_t_kb_suggestion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_channel_disconnected": "انقطع اتصال واتساب",
+  "ntf_t_channel_reconnected": "انقطع اتصال واتساب ثم عاد",
+  "ntf_t_channel_quality_low": "جودة رقم واتساب منخفضة",
+  "ntf_t_team_joined": "انضم {name} إلى الفريق",
+  "@ntf_t_team_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_team_role_changed": "تغيّر دورك إلى {role}",
+  "@ntf_t_team_role_changed": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_trial_ending": "تجربتك تنتهي بعد {n} أيام",
+  "@ntf_t_trial_ending": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_payment_failed": "فشل تحصيل الاشتراك",
+  "ntf_t_plan_limit": "اقتربت من حد ردود الذكاء",
+  "ntf_t_app_update": "يتوفر إصدار جديد",
+  "ntf_b_claim_needed": "أقدمها منذ {m} د",
+  "@ntf_b_claim_needed": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_ai_no_answer": "سؤال عن {topic}. أضف الإجابة ليردّ تلقائيًا في المرة القادمة.",
+  "@ntf_b_ai_no_answer": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_low_confidence": "{customer} · راجع الرد",
+  "@ntf_b_ai_low_confidence": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_kb_suggestion": "أضفها لقاعدة المعرفة لتحسين الردود",
+  "ntf_b_channel_disconnected": "لن تصل الرسائل حتى تعيد الربط",
+  "ntf_b_channel_reconnected": "توقف {m} دقائق · لم تُفقد أي رسالة",
+  "@ntf_b_channel_reconnected": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_channel_quality_low": "قلّل الرسائل الجماعية لتجنب التقييد",
+  "ntf_b_team_joined": "دور: {role}",
+  "@ntf_b_team_joined": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_team_role_changed": "بواسطة {actor}",
+  "@ntf_b_team_role_changed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_trial_ending": "اختر خطة للحفاظ على محادثاتك والذكاء الاصطناعي.",
+  "ntf_b_payment_failed": "حدّث وسيلة الدفع لتجنب إيقاف الخدمة",
+  "ntf_b_plan_limit": "استخدمت {p}% هذا الشهر",
+  "@ntf_b_plan_limit": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_app_update": "{version} · تحسينات وإصلاحات",
+  "@ntf_b_app_update": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_a_view": "عرض",
+  "ntf_a_reply": "رد الآن",
+  "ntf_a_approve": "موافقة",
+  "ntf_a_reject": "رفض",
+  "ntf_a_add_answer": "أضف إجابة",
+  "ntf_a_claim": "استلم",
+  "ntf_a_review": "راجعها",
+  "ntf_a_reconnect": "إعادة الربط",
+  "ntf_a_plans": "عرض الخطط",
+  "ntf_a_update": "تحديث",
+  "ntf_a_open": "فتح",
+  "ntf_more": "المزيد",
+  "ntf_dismiss": "إخفاء",
+  "ntf_a11y_unread": "غير مقروء",
+  "ntf_a11y_filter": "{f}، {n} غير مقروءة",
+  "@ntf_a11y_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_muted": "لن تصلك إشعارات من هذا النوع",
+  "ntf_push_unavailable": "فعّل الإشعارات من إعدادات الجهاز",
+  "ntf_offline_action": "هذا الإجراء يتطلب اتصالًا بالإنترنت",
+  "ntf_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",
+  "ntf_billing_agent_title": "الاشتراك يديره المسؤول",
+  "ntf_billing_agent_body": "اطلب من مسؤول مساحة العمل إدارة الاشتراك من موقع Wavadesk.",
+  "profile_title": "ملف العميل",
+  "profile_add_tag": "+ وسم",
+  "profile_vip": "عميل مميز",
+  "profile_blocked": "محظور",
+  "profile_local_time": "{time} بتوقيته",
+  "@profile_local_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_copied": "تم النسخ",
+  "profile_call": "اتصال",
+  "profile_whatsapp": "واتساب",
+  "profile_note": "ملاحظة",
+  "profile_block": "حظر",
+  "profile_unblock": "إلغاء الحظر",
+  "profile_stat_conversations": "محادثات",
+  "profile_stat_orders": "طلبات",
+  "profile_stat_rating": "التقييم",
+  "profile_stat_first": "أول تواصل",
+  "profile_ai_summary": "ملخص الذكاء الاصطناعي",
+  "profile_ai_disclaimer": "قد يحتوي الملخص على أخطاء",
+  "profile_more": "المزيد",
+  "profile_notes": "ملاحظات الفريق",
+  "profile_add": "إضافة",
+  "profile_all_notes": "عرض كل الملاحظات ({n})",
+  "@profile_all_notes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_no_notes": "لا توجد ملاحظات بعد",
+  "profile_first_note": "أضف أول ملاحظة",
+  "profile_pin": "تثبيت",
+  "profile_edit": "تعديل",
+  "profile_delete": "حذف",
+  "profile_info": "معلومات",
+  "profile_phone": "الجوال",
+  "profile_email": "البريد",
+  "profile_city": "المدينة",
+  "profile_language": "اللغة المفضلة",
+  "profile_timezone": "المنطقة الزمنية",
+  "profile_added_by": "أُضيف بواسطة",
+  "profile_not_set": "غير محدد",
+  "profile_all_info": "عرض كل المعلومات",
+  "profile_channels": "القنوات",
+  "profile_channel_count": "{n, plural, =0{لا محادثات} =1{محادثة واحدة} =2{محادثتان} few{{n} محادثات} other{{n} محادثة}}",
+  "@profile_channel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_unlink": "فصل هذه الهوية",
+  "profile_merge": "دمج مع عميل آخر",
+  "profile_orders": "الطلبات",
+  "profile_total_spent": "إجمالي المشتريات: {sum} ر.س",
+  "@profile_total_spent": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_previous": "المحادثات السابقة",
+  "profile_all_channels": "كل القنوات",
+  "profile_closed_by": "{date} · أغلقها {name}",
+  "@profile_closed_by": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_ai_replied": "{date} · ردّ الذكاء الاصطناعي",
+  "@profile_ai_replied": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_open_now": "{date} · مفتوحة الآن",
+  "@profile_open_now": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_load_more": "عرض المزيد",
+  "profile_first_conv": "هذه أول محادثة مع العميل",
+  "profile_block_cta": "حظر العميل",
+  "profile_block_hint": "لن تصلك رسائل هذا العميل بعد الحظر.",
+  "profile_erase": "حذف بيانات العميل",
+  "profile_visitor": "زائر #{id}",
+  "@profile_visitor": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_add_details": "أضف بيانات العميل",
+  "profile_offline": "تعرض آخر نسخة محفوظة",
+  "profile_load_error": "تعذّر تحميل ملف العميل",
+  "profile_section_error": "تعذّر تحميل {section}",
+  "@profile_section_error": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_retry": "إعادة المحاولة",
+  "profile_open_page": "فتح كصفحة",
+  "profile_dialog_label": "ملف العميل، {name}",
+  "@profile_dialog_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_unpin": "إلغاء التثبيت",
+  "profile_regenerate": "إعادة إنشاء الملخص",
+  "profile_note_a11y": "ملاحظة من {author}، {date}: {text}",
+  "@profile_note_a11y": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_delete_note_title": "حذف الملاحظة؟",
+  "profile_delete_note_body": "ستُحذف هذه الملاحظة لجميع أعضاء الفريق.",
+  "profile_action_call_a11y": "اتصال بـ{name}",
+  "@profile_action_call_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_whatsapp_a11y": "واتساب {name}",
+  "@profile_action_whatsapp_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_note_a11y": "إضافة ملاحظة عن {name}",
+  "@profile_action_note_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_block_a11y": "حظر {name}",
+  "@profile_action_block_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_unblock_a11y": "إلغاء حظر {name}",
+  "@profile_action_unblock_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_disabled_no_phone": "غير متاح، لا يوجد رقم",
+  "profile_stats_a11y": "{conversations} محادثات، {orders} {ordersLabel}، أول تواصل {first}",
+  "@profile_stats_a11y": {
+    "placeholders": {
+      "conversations": {
+        "type": "int"
+      },
+      "orders": {
+        "type": "String"
+      },
+      "ordersLabel": {
+        "type": "String"
+      },
+      "first": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_items": "{date} · {n, plural, =1{منتج واحد} =2{منتجان} few{{n} منتجات} other{{n} منتجًا}}",
+  "@profile_order_items": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_amount": "{amount} ر.س",
+  "@profile_amount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_processing": "قيد التجهيز",
+  "profile_order_shipped": "تم الشحن",
+  "profile_order_delivered": "تم التوصيل",
+  "profile_order_cancelled": "ملغي",
+  "profile_view_all": "عرض الكل",
+  "profile_no_order_link": "لا يوجد رابط لهذا الطلب",
+  "profile_lang_ar": "العربية",
+  "profile_lang_en": "English",
+  "profile_tz_value": "{tz} · {time}",
+  "@profile_tz_value": {
+    "placeholders": {
+      "tz": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_attr_yes": "نعم",
+  "profile_attr_no": "لا",
+  "profile_unlinked": "تم فصل الهوية",
+  "profile_filter_channel": "تصفية حسب القناة",
+  "profile_merged": "تم دمج هذا العميل",
+  "profile_more_actions": "خيارات أخرى",
+  "profile_edit_contact": "تعديل بيانات العميل",
+  "edit_title": "تعديل بيانات العميل",
+  "edit_save": "حفظ",
+  "edit_saved": "تم حفظ التغييرات",
+  "edit_failed": "تعذّر حفظ التغييرات. حاول مجددًا.",
+  "edit_discard_title": "تجاهل التغييرات؟",
+  "edit_discard_body": "لم تُحفظ تعديلاتك بعد. إذا خرجت الآن ستفقدها.",
+  "edit_discard": "تجاهل",
+  "edit_keep": "متابعة التعديل",
+  "edit_name": "الاسم",
+  "edit_phone": "الجوال",
+  "edit_email": "البريد",
+  "edit_city": "المدينة",
+  "edit_language": "اللغة المفضلة",
+  "edit_not_set": "غير محدد",
+  "edit_phone_invalid": "رقم الجوال غير صحيح",
+  "edit_email_invalid": "صيغة البريد غير صحيحة",
+  "tags_title": "الوسوم",
+  "tags_search": "ابحث أو أنشئ وسمًا",
+  "tags_create": "إنشاء «{q}»",
+  "@tags_create": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "tags_done": "تم",
+  "tags_failed": "تعذّر حفظ الوسوم. حاول مجددًا.",
+  "tags_remove": "إزالة الوسم",
+  "note_new": "ملاحظة جديدة",
+  "note_edit_title": "تعديل الملاحظة",
+  "note_placeholder": "اكتب ما يجب أن يعرفه فريقك عن هذا العميل…",
+  "note_pin": "تثبيت الملاحظة",
+  "note_save": "حفظ",
+  "note_cancel": "إلغاء",
+  "note_saved": "أُضيفت الملاحظة",
+  "note_updated": "تم تحديث الملاحظة",
+  "note_failed": "تعذّر حفظ الملاحظة. حاول مجددًا.",
+  "call_phone": "اتصال هاتفي",
+  "call_whatsapp": "اتصال واتساب",
+  "call_copy": "نسخ الرقم",
+  "call_cancel": "إلغاء",
+  "call_copied": "تم النسخ",
+  "call_failed": "تعذّر فتح تطبيق الاتصال",
+  "block_title": "حظر {name}؟",
+  "@block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "block_body": "لن تصلك رسائله على أي قناة، وستُغلق محادثاته المفتوحة. يمكنك إلغاء الحظر لاحقًا.",
+  "block_reason_label": "سبب الحظر (اختياري)",
+  "block_reason_spam": "إزعاج",
+  "block_reason_fraud": "احتيال",
+  "block_reason_abuse": "لغة مسيئة",
+  "block_reason_other": "أخرى",
+  "block_confirm": "حظر",
+  "block_cancel": "إلغاء",
+  "block_done": "تم حظر العميل",
+  "block_failed": "تعذّر حظر العميل. حاول مجددًا.",
+  "block_unnamed": "هذا العميل",
+  "undo": "تراجع",
+  "merge_title": "دمج مع عميل آخر",
+  "merge_search": "ابحث بالاسم أو الجوال أو البريد",
+  "merge_no_results": "لا يوجد عملاء مطابقون",
+  "merge_unnamed": "عميل بلا اسم",
+  "merge_into_label": "سيُدمج في",
+  "merge_change": "تغيير",
+  "merge_no_conflicts": "لا توجد قيم متعارضة — ستُنقل كل المحادثات والملاحظات إلى العميل المختار.",
+  "merge_choose_values": "اختر القيم التي تبقى",
+  "merge_field_name": "الاسم",
+  "merge_field_phone": "الجوال",
+  "merge_field_email": "البريد",
+  "merge_field_city": "المدينة",
+  "merge_this_contact": "هذا العميل",
+  "merge_other_contact": "العميل الآخر",
+  "merge_action": "دمج",
+  "merge_confirm_title": "لا يمكن التراجع عن الدمج",
+  "merge_confirm_body": "ستُنقل المحادثات والملاحظات إلى العميل المختار ويُحذف هذا الملف.",
+  "merge_done": "تم دمج العميل",
+  "merge_failed": "تعذّر الدمج. حاول مجددًا.",
+  "erase_title": "حذف بيانات العميل نهائيًا؟",
+  "erase_body": "ستُحذف كل محادثات العميل وملاحظاته وبياناته ولا يمكن استرجاعها.",
+  "erase_type_digits": "اكتب آخر 4 أرقام من جوال العميل للتأكيد",
+  "erase_type_word": "اكتب «{word}» للتأكيد",
+  "@erase_type_word": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "erase_word": "حذف",
+  "erase_confirm": "حذف نهائي",
+  "erase_cancel": "إلغاء",
+  "erase_done": "تم حذف بيانات العميل",
+  "erase_failed": "تعذّر حذف البيانات. حاول مجددًا.",
+  "search_placeholder": "ابحث عن عميل، رسالة، أو رقم طلب",
+  "search_cancel": "إلغاء",
+  "search_scope_all": "الكل",
+  "search_scope_contacts": "العملاء",
+  "search_scope_messages": "الرسائل",
+  "search_scope_kb": "المعرفة",
+  "search_scope_conversations": "المحادثات",
+  "search_filters": "فلاتر",
+  "search_section_contacts": "العملاء",
+  "search_section_messages": "الرسائل",
+  "search_section_kb": "قاعدة المعرفة",
+  "search_section_conversations": "المحادثات",
+  "search_see_all": "عرض الكل ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "أفضل نتيجة",
+  "search_open_chat": "فتح المحادثة",
+  "search_profile": "الملف",
+  "search_open_badge": "مفتوحة",
+  "search_more_in_conv": "+{n} نتائج أخرى في هذه المحادثة",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "استخدمه الذكاء {n} مرة هذا الشهر",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "إدراج في الرد",
+  "search_you": "أنت:",
+  "search_note": "ملاحظة:",
+  "search_order": "طلب {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "وسم: {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "عمليات البحث الأخيرة",
+  "search_clear": "مسح",
+  "search_suggestions": "اقتراحات",
+  "search_recent_contacts": "آخر من تواصلت معهم",
+  "search_tip": "ابحث بالاسم، رقم الجوال، رقم الطلب، أو أي كلمة في المحادثة",
+  "search_no_results": "لا نتائج لـ «{q}»",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "جرّب كلمة أخرى أو تحقّق من الإملاء",
+  "search_clear_filters": "مسح الفلاتر",
+  "search_in_all": "البحث في الكل",
+  "search_did_you_mean": "هل تقصد: {s}؟",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "تعذّر البحث",
+  "search_retry": "إعادة المحاولة",
+  "search_offline": "غير متصل — نتائج من البيانات المحفوظة فقط",
+  "search_local": "(محليًا)",
+  "search_filter_sender": "المرسل",
+  "search_filter_contains": "يحتوي على",
+  "search_filter_attachments": "مرفقات",
+  "search_filter_images": "صور",
+  "search_filter_voice": "رسائل صوتية",
+  "search_show_results": "عرض النتائج ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "بحث",
+  "search_filters_n": "فلاتر · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "القناة",
+  "search_filter_date": "التاريخ",
+  "search_filter_status": "حالة المحادثة",
+  "search_filter_assignee": "المسؤول",
+  "search_date_any": "أي وقت",
+  "search_date_today": "اليوم",
+  "search_date_7": "7 أيام",
+  "search_date_30": "30 يومًا",
+  "search_date_custom": "مخصص",
+  "search_sender_all": "الكل",
+  "search_sender_contact": "العميل",
+  "search_sender_me": "أنا",
+  "search_sender_colleagues": "الزملاء",
+  "search_sender_ai": "الذكاء الاصطناعي",
+  "search_sender_notes": "ملاحظات داخلية",
+  "search_status_all": "الكل",
+  "search_status_open": "مفتوحة",
+  "search_status_resolved": "محلولة",
+  "search_assignee_all": "الكل",
+  "search_assignee_me": "أنا",
+  "search_assignee_colleague": "زميل",
+  "search_sugg_unread": "غير مقروءة",
+  "search_sugg_awaiting": "بانتظار الرد",
+  "search_sugg_vip": "وسم: VIP",
+  "search_sugg_orders_today": "طلبات اليوم",
+  "search_recent_remove": "حذف {q} من السجل",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "تم مسح سجل البحث",
+  "search_results_announce": "{n} نتائج: {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} عميل",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} رسائل",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} مقال",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} محادثات",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "رسالة من {name}، {time}: {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "فتح المحادثة الأخيرة",
+  "search_new_chat": "محادثة جديدة",
+  "search_copy_number": "نسخ الرقم",
+  "search_copied": "تم نسخ الرقم",
+  "search_call": "اتصال",
+  "search_section_teammates": "الزملاء",
+  "search_no_chat_yet": "لا توجد محادثة سابقة مع هذا العميل",
+  "search_inserted": "تم إدراج الإجابة في الرد",
+  "search_in_conv_placeholder": "ابحث في هذه المحادثة",
+  "search_in_conv_count": "{i} من {n}",
+  "@search_in_conv_count": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_in_conv_action": "بحث في المحادثة",
+  "search_in_conv_prev": "المطابقة السابقة",
+  "search_in_conv_next": "المطابقة التالية",
+  "search_in_conv_close": "إغلاق البحث",
+  "wa_title": "واتساب الخاص بك",
+  "wa_refresh": "تحديث الحالة",
+  "wa_log": "سجل الاتصال",
+  "wa_help": "المساعدة",
+  "wa_connected": "متصل",
+  "wa_connecting": "جارٍ الاتصال",
+  "wa_syncing": "جارٍ المزامنة",
+  "wa_phone_offline": "الهاتف غير متصل",
+  "wa_disconnected": "غير متصل",
+  "wa_restricted": "مقيّد",
+  "wa_pending": "غير مربوط",
+  "wa_msgs_today": "رسالة اليوم",
+  "wa_quality": "جودة الرقم",
+  "wa_q_high": "عالية",
+  "wa_q_med": "متوسطة",
+  "wa_q_low": "منخفضة",
+  "wa_stable": "مستقرة",
+  "wa_unstable": "غير مستقرة",
+  "wa_linked_since": "مرتبط منذ",
+  "wa_days": "{n} يومًا",
+  "@wa_days": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_title": "انقطع الاتصال منذ {t}",
+  "@wa_alert_disc_title": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_body": "لن تصل رسائل العملاء حتى تعيد الربط",
+  "wa_reconnect": "إعادة الربط",
+  "wa_alert_phone_title": "هاتفك غير متصل بالإنترنت",
+  "wa_alert_phone_body": "تأكد أن واتساب يعمل على الهاتف المرتبط",
+  "wa_check_again": "تحقق مجددًا",
+  "wa_alert_quality": "جودة الرقم منخفضة",
+  "wa_alert_quality_body": "قلّل الرسائل الجماعية وتجنّب المحتوى المكرر",
+  "wa_details": "التفاصيل",
+  "wa_alert_limit": "اقتربت من حد المحادثات اليومي ({u}/{l})",
+  "@wa_alert_limit": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_update": "حدّث تطبيق واتساب على هاتفك",
+  "wa_alert_pending": "لم يتم ربط واتساب بعد",
+  "wa_alert_pending_body": "اربط رقمك لتبدأ باستقبال رسائل العملاء",
+  "wa_connect": "اربط واتساب",
+  "wa_auto": "الرسائل التلقائية",
+  "wa_welcome": "رسالة الترحيب",
+  "wa_away": "رسالة خارج الدوام",
+  "wa_away_ai": "يتولاها الذكاء الاصطناعي حاليًا",
+  "wa_quick": "الردود السريعة",
+  "wa_welcome_delay": "مهلة رسالة الترحيب",
+  "wa_now": "فورًا",
+  "wa_welcome_off": "تم إيقاف رسالة الترحيب",
+  "wa_undo": "تراجع",
+  "wa_templates": "القوالب المعتمدة",
+  "wa_tpl_marketing": "تسويق",
+  "wa_tpl_utility": "خدمة",
+  "wa_tpl_auth": "مصادقة",
+  "wa_tpl_approved": "معتمد",
+  "wa_tpl_pending": "قيد المراجعة",
+  "wa_tpl_rejected": "مرفوض",
+  "wa_tpl_manage_web": "إدارة القوالب على الويب",
+  "wa_numbers": "الأرقام",
+  "wa_add_second": "أضف رقمًا ثانيًا",
+  "wa_business_only": "متاح في خطة Business",
+  "wa_upgrade": "ترقية",
+  "wa_add_number": "أضف رقمًا",
+  "wa_watch": "شاهد: كيف تربط واتساب",
+  "wa_watch_sub": "شرح بالفيديو · {d}",
+  "@wa_watch_sub": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_advanced": "متقدم",
+  "wa_read_receipts": "إيصالات القراءة للعميل",
+  "wa_mark_read_open": "تمييز الرسائل كمقروءة عند الفتح",
+  "wa_auto_transcribe": "الرسائل الصوتية: تحويل لنص تلقائيًا",
+  "wa_ignore_groups": "تجاهل رسائل المجموعات",
+  "wa_blocked": "الأرقام المحظورة",
+  "wa_hours": "ساعات العمل",
+  "wa_disconnect": "فصل الرقم",
+  "wa_disc_title": "فصل رقم واتساب؟",
+  "wa_disc_body": "لن تصل رسائل العملاء إلى Wavadesk، وسيتوقف الذكاء الاصطناعي عن الرد. ستبقى المحادثات السابقة محفوظة.",
+  "wa_disc_open": "{n} محادثات مفتوحة ستتوقف",
+  "@wa_disc_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_disc_confirm_label": "اكتب آخر 4 أرقام من الرقم للتأكيد",
+  "wa_disc_done": "تم فصل الرقم",
+  "wa_connect_title": "ربط واتساب",
+  "wa_step": "الخطوة {i} من {n}",
+  "@wa_step": {
+    "placeholders": {
+      "i": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_by_phone": "رقم الهاتف",
+  "wa_by_qr": "رمز QR",
+  "wa_get_code": "احصل على الرمز",
+  "wa_copy": "نسخ",
+  "wa_expires_in": "ينتهي خلال {t}",
+  "@wa_expires_in": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_steps_pair": "افتح واتساب ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز ← الربط برقم الهاتف بدلًا من ذلك ← أدخل الرمز",
+  "wa_open_app": "فتح واتساب",
+  "wa_linked_ok": "تم ربط واتساب بنجاح",
+  "wa_syncing_recent": "جارٍ مزامنة المحادثات الأخيرة…",
+  "wa_back": "العودة",
+  "wa_back_online": "عاد الاتصال · لم تُفقد أي رسالة",
+  "wa_code_expired": "انتهت صلاحية الرمز",
+  "wa_new_code": "رمز جديد",
+  "wa_number_taken": "هذا الرقم مرتبط بمساحة عمل أخرى",
+  "wa_watch_video": "شاهد الشرح بالفيديو",
+  "wa_welcome_when": "متى تُرسل؟",
+  "wa_trigger_first": "أول رسالة من عميل جديد",
+  "wa_trigger_new": "كل محادثة جديدة",
+  "wa_trigger_24h": "بعد غياب 24 ساعة",
+  "wa_buttons": "أزرار سريعة",
+  "wa_ai_after_welcome": "سيرد الذكاء الاصطناعي بعد رسالة الترحيب مباشرة",
+  "wa_away_outside": "خارج ساعات العمل",
+  "wa_away_team": "عندما يكون كل الفريق غير متاح",
+  "wa_away_cooldown": "مرة كل {n} ساعات لنفس العميل",
+  "@wa_away_cooldown": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_away_ai_banner": "الذكاء الاصطناعي يرد خارج الدوام — عدّل ذلك من إعدادات الذكاء",
+  "wa_qr_team": "للفريق",
+  "wa_qr_mine": "الخاصة بي",
+  "wa_qr_title_f": "العنوان",
+  "wa_qr_shortcut": "الاختصار",
+  "wa_qr_text": "النص",
+  "wa_qr_shared": "مشترك مع الفريق",
+  "wa_notify_admin": "أبلغ المسؤول",
+  "wa_load_error": "تعذّر تحميل حالة واتساب",
+  "wa_enable_after": "فعّلها بعد ربط الرقم",
+  "wa_more": "المزيد",
+  "wa_last_updated": "آخر تحديث {t}",
+  "@wa_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_copied": "تم النسخ",
+  "wa_details_title": "تفاصيل الاتصال",
+  "wa_d_type": "نوع الربط",
+  "wa_d_type_linked": "جهاز مرتبط",
+  "wa_d_type_cloud": "واجهة واتساب الرسمية",
+  "wa_d_device": "الجهاز",
+  "wa_d_wa_business": "واتساب أعمال {v}",
+  "@wa_d_wa_business": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_wa_personal": "واتساب {v}",
+  "@wa_d_wa_personal": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_last_activity": "آخر نشاط",
+  "wa_d_sync": "حالة المزامنة",
+  "wa_d_synced": "متزامنة",
+  "wa_d_number_id": "معرّف الرقم",
+  "wa_d_daily_limit": "حد المحادثات اليومي",
+  "wa_d_limit_value": "{u} من {l}",
+  "@wa_d_limit_value": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_unknown": "غير معروف",
+  "wa_qs_explain": "تعتمد جودة الرقم على تفاعل العملاء مع رسائلك خلال آخر 7 أيام. الحظر والبلاغات وانخفاض التفاعل تخفضها.",
+  "wa_qs_tier": "فئة المراسلة",
+  "wa_qs_tier_value": "{tier} محادثة يوميًا",
+  "@wa_qs_tier_value": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qs_trend": "آخر 7 أيام",
+  "wa_qs_tips": "نصائح لرفع الجودة",
+  "wa_qs_tip1": "راسل فقط العملاء الذين طلبوا التواصل",
+  "wa_qs_tip2": "خصّص الرسائل وتجنّب النصوص المكررة",
+  "wa_qs_tip3": "اجعل إيقاف الرسائل سهلًا للعميل",
+  "wa_qs_help": "مركز مساعدة واتساب",
+  "wa_log_connected": "تم الربط",
+  "wa_log_connected_by": "ربطه {name}",
+  "@wa_log_connected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_disconnected": "انقطع الاتصال · {d}",
+  "@wa_log_disconnected": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_reconnected": "أُعيد الربط",
+  "wa_log_reconnected_by": "أعاد {name} الربط",
+  "@wa_log_reconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_recovered": "استُعيدت {n} رسالة",
+  "@wa_log_recovered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_reason_phone_offline": "الهاتف غير متصل",
+  "wa_reason_logged_out": "تسجيل خروج",
+  "wa_reason_update": "تحديث",
+  "wa_log_empty": "لا توجد أحداث خلال آخر 30 يومًا",
+  "wa_cancel": "إلغاء",
+  "wa_disc_mismatch": "الأرقام غير مطابقة",
+  "wa_disc_failed": "تعذّر فصل الرقم",
+  "wa_notify_sent": "تم إبلاغ المسؤول",
+  "wa_save_failed": "تعذّر حفظ التغيير",
+  "wa_retry": "إعادة المحاولة",
+  "wa_offline": "التعديل يتطلب اتصالًا بالإنترنت",
+  "wa_saved": "تم الحفظ",
+  "wa_welcome_on": "تم تفعيل رسالة الترحيب",
+  "wa_away_on": "تم تفعيل رسالة خارج الدوام",
+  "wa_away_off": "تم إيقاف رسالة خارج الدوام",
+  "wa_delay_30s": "بعد 30 ثانية",
+  "wa_delay_1m": "بعد دقيقة",
+  "wa_delay_2m": "بعد دقيقتين",
+  "wa_delay_5m": "بعد 5 دقائق",
+  "wa_save": "حفظ",
+  "wa_welcome_enable": "تفعيل رسالة الترحيب",
+  "wa_away_enable": "تفعيل رسالة خارج الدوام",
+  "wa_message": "الرسالة",
+  "wa_message_hint": "اكتب الرسالة…",
+  "wa_send_when": "الإرسال",
+  "wa_buttons_hint": "حتى 3 أزرار، 20 حرفًا لكل زر",
+  "wa_button_add": "+ أضف زرًا",
+  "wa_button_hint": "نص الزر",
+  "wa_preview": "معاينة",
+  "wa_err_text": "اكتب الرسالة (1–1024 حرفًا)",
+  "wa_err_button": "نص الزر أطول من 20 حرفًا",
+  "wa_go_ai": "إعدادات الذكاء",
+  "wa_discard_title": "تجاهل التغييرات؟",
+  "wa_discard_body": "لن تُحفظ تعديلاتك.",
+  "wa_discard": "تجاهل",
+  "wa_keep": "متابعة التعديل",
+  "wa_qr_new": "رد سريع جديد",
+  "wa_qr_edit": "تعديل الرد السريع",
+  "wa_qr_search": "ابحث في الردود",
+  "wa_qr_empty": "لا توجد ردود سريعة بعد",
+  "wa_qr_empty_body": "أنشئ ردًا واستخدمه بكتابة / في المحادثة",
+  "wa_qr_no_results": "لا نتائج",
+  "wa_qr_add": "أضف ردًا",
+  "wa_qr_used": "استُخدم {n} مرة",
+  "@wa_qr_used": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_title": "حذف «{title}»؟",
+  "@wa_qr_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_body": "لن يظهر في قائمة / بعد الآن.",
+  "wa_delete": "حذف",
+  "wa_qr_deleted": "تم حذف الرد",
+  "wa_qr_delete_failed": "تعذّر حذف الرد",
+  "wa_qr_attach": "إرفاق صورة أو ملف",
+  "wa_qr_attach_hint": "اختياري · حتى 5 ميجابايت",
+  "wa_qr_attach_too_big": "الملف أكبر من 5 ميجابايت",
+  "wa_qr_attach_remove": "إزالة المرفق",
+  "wa_qr_err_title": "اكتب العنوان",
+  "wa_qr_err_text": "اكتب النص",
+  "wa_qr_err_shortcut_empty": "اكتب الاختصار",
+  "wa_qr_err_shortcut_invalid": "استخدم a–z و0–9 و_ و- فقط",
+  "wa_qr_err_shortcut_taken": "هذا الاختصار مستخدم",
+  "wa_qr_err_shortcut_long": "الاختصار طويل جدًا",
+  "wa_qr_saved": "تم حفظ الرد",
+  "wa_qr_save_failed": "تعذّر حفظ الرد",
+  "wa_qr_reorder_failed": "تعذّر حفظ الترتيب",
+  "wa_qr_shared_sub": "يظهر لكل أعضاء الفريق",
+  "wa_qr_readonly": "ردود الفريق يعدّلها المسؤول فقط",
+  "wa_tpl_empty": "لا توجد قوالب معتمدة بعد",
+  "wa_tpl_preview": "معاينة القالب",
+  "wa_phone_hint": "5X XXX XXXX",
+  "wa_err_phone": "أدخل رقمًا صحيحًا",
+  "wa_rate_limited": "محاولات كثيرة، حاول بعد قليل",
+  "wa_multi_device": "هذا الحساب لا يدعم الأجهزة المرتبطة؛ حدّث واتساب ثم حاول مجددًا",
+  "wa_connect_failed": "تعذّر الربط، حاول مجددًا",
+  "wa_network_error": "لا يوجد اتصال بالإنترنت",
+  "wa_qr_steps": "افتح واتساب على الهاتف الآخر ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز ← امسح الرمز",
+  "wa_qr_refresh_in": "يتجدد خلال {s} ث",
+  "@wa_qr_refresh_in": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_alt": "رمز QR لربط واتساب، يتجدد كل 20 ثانية",
+  "wa_waiting_link": "بانتظار إدخال الرمز على هاتفك…",
+  "wa_change_number": "تغيير الرقم",
+  "wa_phone_tip": "الربط برقم الهاتف أسهل عند استخدام نفس الجهاز، ولا يمكن مسح رمز QR بنفس الهاتف.",
+  "wa_plan_title": "واتساب غير متاح في خطتك",
+  "wa_plan_body": "رقِّ خطتك لربط رقم واتساب واستقبال رسائل العملاء",
+  "wa_view_plans": "عرض الخطط",
+  "wa_upgrade_info": "تواصل مع مالك مساحة العمل للترقية",
+  "wa_blocked_empty": "لا توجد أرقام محظورة",
+  "wa_unblock": "إلغاء الحظر",
+  "wa_unblocked": "تم إلغاء الحظر",
+  "wa_card_a11y": "{name}، {phone}، {status}. {n} رسالة اليوم، جودة الرقم {q}، مرتبط منذ {d} يومًا",
+  "@wa_card_a11y": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      },
+      "q": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_save_disabled": "أكمل الحقول المطلوبة",
+  "wa_log_disconnected_by": "فصله {name}",
+  "@wa_log_disconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_connect_started": "بدأت محاولة ربط",
+  "wa_log_connect_started_by": "بدأ {name} محاولة ربط",
+  "@wa_log_connect_started_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_already_linked": "الرقم مرتبط بالفعل",
+  "wa_banned": "حظر واتساب هذا الرقم",
+  "wa_demo_state": "حالة تجريبية"
+}

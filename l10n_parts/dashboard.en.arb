@@ -1,0 +1,298 @@
+{
+  "@@locale": "en",
+  "dash_title": "Dashboard",
+  "dash_morning": "Good morning, {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "Good evening, {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "Available",
+  "dash_presence_online_f": "Available",
+  "dash_presence_busy_m": "Busy",
+  "dash_presence_busy_f": "Busy",
+  "dash_presence_away": "Away",
+  "dash_presence_title": "Your status",
+  "dash_presence_until": "Until…",
+  "dash_presence_30m": "30 minutes",
+  "dash_presence_1h": "1 hour",
+  "dash_presence_eod": "End of day",
+  "dash_presence_auto": "You'll be set Away after 15 min of inactivity",
+  "dash_presence_until_time": "Until {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "Couldn't change your status",
+  "dash_scope_me": "Me",
+  "dash_scope_team": "My team",
+  "dash_scope_all": "Everyone",
+  "dash_team_picker": "Choose a team",
+  "dash_range_today": "Today",
+  "dash_range_yesterday": "Yesterday",
+  "dash_range_7d": "Last 7 days",
+  "dash_range_30d": "Last 30 days",
+  "dash_range_title": "Period",
+  "dash_open": "Open conversations",
+  "dash_awaiting_me": "Awaiting your reply",
+  "dash_awaiting_team": "Awaiting reply",
+  "dash_oldest": "Oldest {m}m",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "No one waiting",
+  "dash_first_response": "Avg first response",
+  "dash_minute": "min",
+  "dash_ai_reply": "AI replied",
+  "dash_of_questions": "of questions",
+  "dash_resolved": "Resolved",
+  "dash_volume_today": "Conversations today",
+  "dash_volume_range": "Conversations · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} conversations",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour}: {n} · {ai} by AI",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "All",
+  "dash_legend_ai": "AI",
+  "dash_no_volume": "No conversations yet today",
+  "dash_no_volume_range": "No conversations in this period",
+  "dash_team_now": "Team now",
+  "dash_see_all": "See all",
+  "dash_ai_name": "AI",
+  "dash_agent_open": "{n} open",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "Avg first response today {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "View their conversations",
+  "dash_redistribute": "Redistribute",
+  "dash_redistribute_none": "No open conversations to redistribute",
+  "dash_solo": "You're the only one on the team",
+  "dash_invite": "Invite a teammate",
+  "dash_ai_impact": "{n} questions answered by AI",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "Saved about {h} hours of team time",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "{n} handoffs",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "{p}% positive",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "AI is handling {n} now",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "By channel",
+  "dash_web_reports": "Detailed reports on web",
+  "dash_last_updated": "Last updated {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "Couldn't load dashboard",
+  "dash_card_error": "Couldn't load",
+  "dash_retry": "Retry",
+  "dash_frt_title": "First response speed",
+  "dash_frt_target": "Target: {m}m",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "Under 1 min",
+  "dash_frt_1_5": "1–5 min",
+  "dash_frt_5_15": "5–15 min",
+  "dash_frt_gt15": "Over 15 min",
+  "dash_frt_note": "Based on conversations answered by an agent",
+  "dash_frt_empty": "No replies yet in this period",
+  "dash_hours_short": "h",
+  "dash_minutes_short": "m",
+  "dash_thousand": "k",
+  "dash_onb_title": "Start receiving conversations",
+  "dash_onb_wa": "Connect WhatsApp",
+  "dash_onb_kb": "Add knowledge base",
+  "dash_onb_ai": "Turn on AI",
+  "dash_onb_cta": "Finish setup",
+  "dash_alert_wa_title": "WhatsApp is disconnected",
+  "dash_alert_wa_body": "Messages won't arrive until you reconnect",
+  "dash_alert_wa_action": "Reconnect",
+  "dash_alert_sla_title": "{n} customers waiting over {sla}m",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "Reply now",
+  "dash_alert_unassigned_title": "{n} conversations waiting to be claimed",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "View",
+  "dash_alert_kb_title": "{n} unanswered questions",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "Add them so the AI answers automatically",
+  "dash_alert_kb_action": "Review",
+  "dash_alert_trial_title": "Your trial ends in {n} days",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "See plans",
+  "dash_alert_dismiss": "Dismiss",
+  "dash_a11y_metric": "{label}: {value} {aside}. Tap to view conversations",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title}: {total}. Peak {peak} with {n} conversations.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}, {presence}, {n} open conversations",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "Your status: {status}. Tap to change",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  }
+}

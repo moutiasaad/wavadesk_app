@@ -1,0 +1,243 @@
+{
+  "@@locale": "ar",
+  "ntf_title": "الإشعارات",
+  "ntf_read_all": "قراءة الكل",
+  "ntf_read_all_done": "تم تعليم الكل كمقروء",
+  "ntf_undo": "تراجع",
+  "ntf_settings": "إعدادات الإشعارات",
+  "ntf_delete_read": "حذف المقروءة",
+  "ntf_filter_all": "الكل",
+  "ntf_filter_unread": "غير مقروءة",
+  "ntf_filter_mentions": "الإشارات",
+  "ntf_filter_assignments": "الإسناد",
+  "ntf_filter_ai": "الذكاء",
+  "ntf_filter_system": "النظام",
+  "ntf_today": "اليوم",
+  "ntf_yesterday": "أمس",
+  "ntf_this_week": "هذا الأسبوع",
+  "ntf_older": "أقدم",
+  "ntf_push_off_title": "الإشعارات الفورية متوقفة",
+  "ntf_push_off_body": "فعّلها حتى لا تفوتك محادثة مُسندة إليك",
+  "ntf_enable": "تفعيل",
+  "ntf_mark_read": "تعليم كمقروء",
+  "ntf_mark_unread": "تعليم كغير مقروء",
+  "ntf_mute_type": "كتم هذا النوع",
+  "ntf_delete": "حذف",
+  "ntf_deleted": "تم حذف الإشعار",
+  "ntf_empty_title": "لا توجد إشعارات",
+  "ntf_empty_body": "سنخبرك هنا عند إسناد محادثة إليك أو عند حاجة الفريق لك.",
+  "ntf_empty_filter": "لا إشعارات في «{f}»",
+  "@ntf_empty_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_show_all": "عرض الكل",
+  "ntf_error": "تعذّر تحميل الإشعارات",
+  "ntf_retry": "إعادة المحاولة",
+  "ntf_end": "لا مزيد من الإشعارات",
+  "ntf_retention": "تُحذف الإشعارات بعد 90 يومًا",
+  "ntf_target_gone": "لم تعد هذه المحادثة متاحة",
+  "ntf_claimed_you": "استلمتها",
+  "ntf_claimed_by": "استلمها {name}",
+  "@ntf_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_approved": "وافقت",
+  "ntf_rejected": "رفضت",
+  "ntf_grouped": "{n} رسائل جديدة من {name}",
+  "@ntf_grouped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_push_private": "لديك محادثة جديدة",
+  "ntf_t_assigned": "أُسندت إليك محادثة جديدة",
+  "ntf_t_claim_needed": "{n} محادثات بانتظار الاستلام",
+  "@ntf_t_claim_needed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m} د",
+  "@ntf_t_sla_breach": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_transfer_request": "{agent} يطلب تحويل محادثة إليه",
+  "@ntf_t_transfer_request": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_mention": "{agent} أشار إليك في ملاحظة",
+  "@ntf_t_mention": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_ai_no_answer": "الذكاء الاصطناعي لم يجد إجابة",
+  "ntf_t_ai_handoff": "حوّل الذكاء محادثة للفريق",
+  "ntf_t_ai_low_confidence": "ردّ الذكاء بثقة منخفضة",
+  "ntf_t_kb_suggestion": "{n} أسئلة متكررة بلا إجابة",
+  "@ntf_t_kb_suggestion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_channel_disconnected": "انقطع اتصال واتساب",
+  "ntf_t_channel_reconnected": "انقطع اتصال واتساب ثم عاد",
+  "ntf_t_channel_quality_low": "جودة رقم واتساب منخفضة",
+  "ntf_t_team_joined": "انضم {name} إلى الفريق",
+  "@ntf_t_team_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_team_role_changed": "تغيّر دورك إلى {role}",
+  "@ntf_t_team_role_changed": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_trial_ending": "تجربتك تنتهي بعد {n} أيام",
+  "@ntf_t_trial_ending": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_payment_failed": "فشل تحصيل الاشتراك",
+  "ntf_t_plan_limit": "اقتربت من حد ردود الذكاء",
+  "ntf_t_app_update": "يتوفر إصدار جديد",
+  "ntf_b_claim_needed": "أقدمها منذ {m} د",
+  "@ntf_b_claim_needed": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_ai_no_answer": "سؤال عن {topic}. أضف الإجابة ليردّ تلقائيًا في المرة القادمة.",
+  "@ntf_b_ai_no_answer": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_low_confidence": "{customer} · راجع الرد",
+  "@ntf_b_ai_low_confidence": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_kb_suggestion": "أضفها لقاعدة المعرفة لتحسين الردود",
+  "ntf_b_channel_disconnected": "لن تصل الرسائل حتى تعيد الربط",
+  "ntf_b_channel_reconnected": "توقف {m} دقائق · لم تُفقد أي رسالة",
+  "@ntf_b_channel_reconnected": {
+    "placeholders": {
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_channel_quality_low": "قلّل الرسائل الجماعية لتجنب التقييد",
+  "ntf_b_team_joined": "دور: {role}",
+  "@ntf_b_team_joined": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_team_role_changed": "بواسطة {actor}",
+  "@ntf_b_team_role_changed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_trial_ending": "اختر خطة للحفاظ على محادثاتك والذكاء الاصطناعي.",
+  "ntf_b_payment_failed": "حدّث وسيلة الدفع لتجنب إيقاف الخدمة",
+  "ntf_b_plan_limit": "استخدمت {p}% هذا الشهر",
+  "@ntf_b_plan_limit": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_app_update": "{version} · تحسينات وإصلاحات",
+  "@ntf_b_app_update": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_a_view": "عرض",
+  "ntf_a_reply": "رد الآن",
+  "ntf_a_approve": "موافقة",
+  "ntf_a_reject": "رفض",
+  "ntf_a_add_answer": "أضف إجابة",
+  "ntf_a_claim": "استلم",
+  "ntf_a_review": "راجعها",
+  "ntf_a_reconnect": "إعادة الربط",
+  "ntf_a_plans": "عرض الخطط",
+  "ntf_a_update": "تحديث",
+  "ntf_a_open": "فتح",
+  "ntf_more": "المزيد",
+  "ntf_dismiss": "إخفاء",
+  "ntf_a11y_unread": "غير مقروء",
+  "ntf_a11y_filter": "{f}، {n} غير مقروءة",
+  "@ntf_a11y_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_muted": "لن تصلك إشعارات من هذا النوع",
+  "ntf_push_unavailable": "فعّل الإشعارات من إعدادات الجهاز",
+  "ntf_offline_action": "هذا الإجراء يتطلب اتصالًا بالإنترنت",
+  "ntf_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",
+  "ntf_billing_agent_title": "الاشتراك يديره المسؤول",
+  "ntf_billing_agent_body": "اطلب من مسؤول مساحة العمل إدارة الاشتراك من موقع Wavadesk."
+}

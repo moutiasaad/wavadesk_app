@@ -1,0 +1,239 @@
+{
+  "as_title": "Assign conversation",
+  "as_title_bulk": "Assign {n} conversations",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "Current: {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "Search a teammate or team",
+  "as_no_results": "No results for \"{q}\"",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "All",
+  "as_filter_available": "Available ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "My team",
+  "as_suggested": "Suggested",
+  "as_teammates": "Teammates",
+  "as_teams": "Teams",
+  "as_ai_section": "AI",
+  "as_me": "Me",
+  "as_badge_current": "Current",
+  "as_badge_capacity": "At limit",
+  "as_online_m": "Available",
+  "as_online_f": "Available",
+  "as_busy_m": "Busy",
+  "as_busy_f": "Busy",
+  "as_away": "Away",
+  "as_last_seen": "Last seen {t} ago",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} open conversations",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} members",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} available",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "Goes to least busy member",
+  "as_routing_rr": "Round-robin",
+  "as_routing_manual": "Stays in team queue",
+  "as_team_none_available": "No one available — it will wait in the team queue",
+  "as_ai_name": "AI agent",
+  "as_ai_sub": "Replies automatically and hands off when needed",
+  "as_ai_unavailable": "Knowledge base is too small",
+  "as_reason_handled": "Handled this customer before",
+  "as_reason_handled_f": "Handled this customer before",
+  "as_reason_skill": "{skill} expert",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "{skill} expert",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "Least busy",
+  "as_note": "Note for teammate (optional)",
+  "as_note_q1": "Customer needs a fast reply",
+  "as_note_q2": "Payment issue",
+  "as_note_q3": "Follow up tomorrow",
+  "as_pick": "Pick a teammate or team",
+  "as_assign_to": "Assign to {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "Claim conversation",
+  "as_assign_ai": "Assign to AI",
+  "as_assign_bulk_to": "Assign {n} to {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "Unassign (back to unassigned)",
+  "as_busy_hint": "Busy — reply may be delayed",
+  "as_busy_hint_f": "Busy — reply may be delayed",
+  "as_away_hint": "Away — they'll be notified",
+  "as_away_hint_f": "Away — they'll be notified",
+  "as_capacity_reached": "At maximum ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "Not assignable",
+  "as_taken_live": "{name} just took it",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "Reassign to {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "Assigning requires internet",
+  "as_none_available": "No teammates available",
+  "as_show_all": "Show all",
+  "as_done": "Assigned to {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "Assigned {ok} of {n}",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "View errors",
+  "as_undo": "Undo",
+  "as_forbidden": "You can't assign to this teammate",
+  "as_error": "Couldn't assign. Try again.",
+  "as_retry": "Retry",
+  "as_event_assigned": "You assigned this to {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "{actor} undid the assignment",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "The conversation was resolved",
+  "as_queued_team": "Waiting in the {team} queue",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "Conversation is now unassigned",
+  "as_errors_title": "{n} couldn't be assigned",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "Already assigned to them",
+  "as_err_resolved": "Conversation is resolved",
+  "as_err_state": "Owner changed",
+  "as_err_generic": "Unexpected error",
+  "as_expand_team": "Show {team} members",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "selected",
+  "as_load_error": "Couldn't load teammates"
+}

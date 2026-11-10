@@ -1,0 +1,104 @@
+{
+  "conversations_segment_mine": "لي",
+  "conversations_segment_unassigned": "غير مُسندة",
+  "conversations_segment_all": "الكل",
+  "conversations_filter_all": "الكل",
+  "conversations_filter_unread": "غير مقروءة",
+  "conversations_filter_awaiting": "بانتظار الرد",
+  "conversations_filter_ai": "ردّ الذكاء",
+  "conversations_filter_closed": "مغلقة",
+  "conversations_filter_more": "فلاتر",
+  "conversations_channel_any": "كل القنوات",
+  "conversations_priority_any": "كل الأولويات",
+  "conversations_notifications": "الإشعارات",
+  "conversations_new_message": "رسالة جديدة",
+  "conversations_exit_selection": "إلغاء التحديد",
+  "conversations_selected_count": "{count, plural, =1{محادثة واحدة محددة} =2{محادثتان محددتان} few{{count} محادثات محددة} other{{count} محادثة محددة}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "إسناد المحدد",
+  "conversations_bulk_resolve": "حلّ المحدد",
+  "conversations_bulk_resolved": "{count, plural, =1{تم حلّ محادثة واحدة} =2{تم حلّ محادثتين} few{تم حلّ {count} محادثات} other{تم حلّ {count} محادثة}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "تم حلّ المحادثة",
+  "conversations_empty_mine_title": "لا توجد محادثات مُسندة لك",
+  "conversations_empty_mine_body": "استلم محادثة من غير المُسندة لتبدأ الرد.",
+  "conversations_empty_mine_action": "عرض غير المُسندة",
+  "conversations_empty_filters_title": "لا محادثات تطابق الفلاتر",
+  "conversations_empty_filters_body": "جرّب تغيير الفلاتر أو مسحها لعرض كل المحادثات.",
+  "conversations_empty_filters_action": "مسح الفلاتر",
+  "conversations_empty_done_title": "أنهيت كل المحادثات",
+  "conversations_empty_done_body": "لا يوجد ما ينتظرك الآن. سنُعلمك عند وصول رسالة جديدة.",
+  "tile_you_prefix": "أنت: ",
+  "tile_ai_reply": "ردّ الذكاء الاصطناعي",
+  "tile_ai_ready": "اقتراح جاهز",
+  "tile_typing": "يكتب…",
+  "tile_snoozed_until": "مؤجلة حتى {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "حلّ",
+  "tile_swipe_snooze": "تأجيل",
+  "tile_swipe_assign": "إسناد",
+  "filters_title": "الفلاتر",
+  "filters_channel": "القناة",
+  "filters_status": "الحالة",
+  "filters_priority": "الأولوية",
+  "filters_assignee": "المُسند إليه",
+  "filters_assignee_all": "الكل",
+  "filters_assignee_me": "أنا",
+  "filters_assignee_colleague": "زميل",
+  "filters_assignee_ai": "الذكاء الاصطناعي",
+  "filters_assignee_unassigned": "غير مُسندة",
+  "filters_date": "التاريخ",
+  "filters_date_any": "أي وقت",
+  "filters_date_today": "اليوم",
+  "filters_date_7": "7 أيام",
+  "filters_date_30": "30 يومًا",
+  "filters_date_custom": "مخصص",
+  "filters_tags": "الوسوم",
+  "filters_show": "{count, plural, =0{لا توجد محادثات} =1{عرض محادثة واحدة} =2{عرض محادثتين} few{عرض {count} محادثات} other{عرض {count} محادثة}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "رسالة جديدة",
+  "newmsg_subtitle": "ابدأ محادثة واتساب بقالب معتمد",
+  "newmsg_name": "اسم العميل",
+  "newmsg_name_hint": "اختياري",
+  "newmsg_phone": "رقم الجوال",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "أدخل رقم جوال صحيح مع رمز الدولة",
+  "newmsg_template": "القالب",
+  "newmsg_template_error": "اختر قالبًا معتمدًا للإرسال",
+  "newmsg_send": "إرسال القالب"
+}
