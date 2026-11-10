@@ -4,7 +4,6 @@
   "tab_dashboard": "Dashboard",
   "tab_knowledge": "Knowledge",
   "tab_account": "Account",
-
   "channel_whatsapp": "WhatsApp",
   "channel_web": "Website chat",
   "channel_messenger": "Messenger",
@@ -13,7 +12,6 @@
   "channel_telegram": "Telegram",
   "channel_sms": "SMS",
   "channel_other": "Other channel",
-
   "status_open": "Open",
   "status_pending": "Pending",
   "status_waiting": "Waiting",
@@ -21,26 +19,27 @@
   "status_resolved": "Resolved",
   "status_closed": "Closed",
   "status_ai": "Handled by AI",
-
   "priority_urgent": "Urgent",
   "priority_high": "High",
   "priority_medium": "Medium",
   "priority_low": "Low",
-
   "presence_online": "Available",
   "presence_busy": "Busy",
   "presence_away": "Away",
-
   "role_admin": "Admin",
   "role_supervisor": "Supervisor",
   "role_agent": "Support agent",
-
   "ownership_mine": "Assigned to you",
   "ownership_unassigned": "Unassigned",
   "ownership_colleague": "Assigned to {name}",
-  "@ownership_colleague": {"placeholders": {"name": {"type": "String"}}},
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "ownership_ai": "Handled by AI",
-
   "media_image": "Photo",
   "media_voice": "Voice message",
   "media_file": "File",
@@ -53,7 +52,6 @@
   "media_email": "Email",
   "media_deleted": "Deleted message",
   "media_unsupported": "Unsupported message",
-
   "common_cancel": "Cancel",
   "common_save": "Save",
   "common_undo": "Undo",
@@ -71,36 +69,92 @@
   "common_you": "You",
   "common_loading": "Loading…",
   "common_selected": "Selected",
-
   "time_now": "Now",
   "time_today": "Today",
   "time_yesterday": "Yesterday",
   "time_minutes_ago": "{count, plural, =1{1 minute ago} other{{count} minutes ago}}",
-  "@time_minutes_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "time_hours_ago": "{count, plural, =1{1 hour ago} other{{count} hours ago}}",
-  "@time_hours_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "time_days_ago": "{count, plural, =1{1 day ago} other{{count} days ago}}",
-  "@time_days_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_minutes_short": "{count}m",
-  "@duration_minutes_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_hours_short": "{count}h",
-  "@duration_hours_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_days_short": "{count}d",
-  "@duration_days_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "waiting_for": "Waiting {duration}",
-  "@waiting_for": {"placeholders": {"duration": {"type": "String"}}},
-
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "network_connecting": "Connecting…",
   "network_offline": "Offline",
   "empty_offline_title": "You're offline",
   "empty_offline_body": "Check your connection and try again. Your messages will send once you're back online.",
-
   "a11y_unread_messages": "{count, plural, =0{No unread messages} =1{1 unread message} other{{count} unread messages}}",
-  "@a11y_unread_messages": {"placeholders": {"count": {"type": "int"}}},
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "a11y_notifications_unread": "Notifications, new items",
   "a11y_ai_avatar": "AI",
   "a11y_team_avatar": "Team",
   "a11y_selected": "Selected",
   "a11y_priority": "Priority: {label}",
-  "@a11y_priority": {"placeholders": {"label": {"type": "String"}}}
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "time_unit_day": "d",
+  "time_unit_hour": "h",
+  "time_unit_min": "m",
+  "common_increase": "Increase",
+  "common_decrease": "Decrease"
 }

@@ -24,7 +24,7 @@ class EditorSourceBanner extends StatelessWidget {
       decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(AppRadius.lg)),
       child: Row(
         children: [
-          Icon(icon, size: 16, color: iconColor ?? c.textSecondary),
+          AppIcon(icon, size: AppIconSize.sm, color: iconColor ?? c.textSecondary),
           const SizedBox(width: 10),
           Expanded(child: Text(text, style: t.bodySmall.copyWith(color: c.textPrimary))),
           if (linkLabel != null && onLink != null)
@@ -66,7 +66,7 @@ class EditorRestoreDraftBanner extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(AppIcons.history, size: 16, color: c.textInfo),
+            AppIcon(AppIcons.history, size: AppIconSize.sm, color: c.textInfo),
             const SizedBox(width: 10),
             Expanded(child: Text(l.kbe_restore_draft, style: t.bodySmall.copyWith(color: c.textPrimary))),
             TextButton(onPressed: onIgnore, child: Text(l.kbe_restore_ignore, style: t.bodySmall.copyWith(color: c.textSecondary))),

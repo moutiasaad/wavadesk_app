@@ -34,7 +34,7 @@ class KbSearchEntry extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 10),
                 child: Row(
                   children: [
-                    Icon(AppIcons.search, size: 16, color: c.textTertiary),
+                    AppIcon(AppIcons.search, size: AppIconSize.sm, color: c.textTertiary),
                     const SizedBox(width: AppSpacing.sm),
                     Expanded(
                       child: Text(hint, style: context.text.bodyMedium.copyWith(color: c.textTertiary), maxLines: 1, overflow: TextOverflow.ellipsis),

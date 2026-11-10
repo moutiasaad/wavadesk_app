@@ -291,7 +291,7 @@ class _Chip extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (icon != null) ...[
-          Icon(icon, size: 12, color: fg),
+          AppIcon(icon, size: AppIconSize.xs, color: fg),
           const SizedBox(width: 4),
         ],
         Text(

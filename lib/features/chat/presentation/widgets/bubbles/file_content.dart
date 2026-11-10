@@ -65,7 +65,7 @@ class _FileContentState extends State<FileContent> {
             width: 40,
             height: 40,
             decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(AppRadius.md)),
-            child: Icon(AppIcons.file, size: 20, color: c.primary),
+            child: AppIcon(AppIcons.file, color: c.primary),
           ),
           const SizedBox(width: 10),
           Flexible(
@@ -108,7 +108,7 @@ class _FileContentState extends State<FileContent> {
                             backgroundColor: widget.foreground.withValues(alpha: 0.2),
                           ),
                         )
-                      : Icon(_done ? AppIcons.check : AppIcons.download, size: 20, color: widget.foreground),
+                      : AppIcon(_done ? AppIcons.check : AppIcons.download, color: widget.foreground),
                 ),
               ),
             ),

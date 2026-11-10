@@ -51,7 +51,7 @@ class WaStatusAlert extends ConsumerWidget {
     final (tone, icon, title, body, action) = switch (kind) {
       WaAlertKind.disconnected => (
           WaPillTone.error,
-          AppIcons.wifiOff,
+          AppIcons.disconnected,
           since == null ? l.wa_disconnected : l.wa_alert_disc_title(AppFormat.shortDuration(context, since)),
           l.wa_alert_disc_body,
           admin
@@ -60,7 +60,7 @@ class WaStatusAlert extends ConsumerWidget {
         ),
       WaAlertKind.phoneOffline => (
           WaPillTone.warning,
-          AppIcons.smartphone,
+          AppIcons.device,
           l.wa_alert_phone_title,
           l.wa_alert_phone_body,
           admin
@@ -75,7 +75,7 @@ class WaStatusAlert extends ConsumerWidget {
         ),
       WaAlertKind.qualityLow => (
           WaPillTone.warning,
-          AppIcons.alertTriangle,
+          AppIcons.warning,
           l.wa_alert_quality,
           l.wa_alert_quality_body,
           AppButton(
@@ -87,12 +87,12 @@ class WaStatusAlert extends ConsumerWidget {
         ),
       WaAlertKind.limitNear => (
           WaPillTone.warning,
-          AppIcons.chart,
+          AppIcons.stats,
           l.wa_alert_limit('${channel.quality.dailyUsed}', '${channel.quality.dailyLimit}'),
           null,
           null,
         ),
-      WaAlertKind.appOutdated => (WaPillTone.warning, AppIcons.smartphone, l.wa_alert_update, null, null),
+      WaAlertKind.appOutdated => (WaPillTone.warning, AppIcons.device, l.wa_alert_update, null, null),
       WaAlertKind.pending => (
           WaPillTone.info,
           AppIcons.whatsapp,
@@ -121,7 +121,7 @@ class WaStatusAlert extends ConsumerWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(color: c.surface.withValues(alpha: 0.7), shape: BoxShape.circle),
-              child: Icon(icon, size: 18, color: fg),
+              child: AppIcon(icon, dp: 18, color: fg),
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(

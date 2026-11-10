@@ -77,7 +77,7 @@ class AiStatusHero extends StatelessWidget {
                           shape: BoxShape.circle,
                           color: on ? Colors.white.withValues(alpha: 0.16) : c.surface,
                         ),
-                        child: Icon(AppIcons.sparkle, size: 24, color: on ? Colors.white : c.textTertiary),
+                        child: AppIcon(AppIcons.ai, size: AppIconSize.lg, color: on ? Colors.white : c.textTertiary),
                       ),
                       const SizedBox(width: AppSpacing.md),
                       Expanded(

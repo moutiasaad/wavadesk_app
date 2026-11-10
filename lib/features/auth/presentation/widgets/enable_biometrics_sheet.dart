@@ -41,7 +41,7 @@ class _EnableBiometricsContent extends StatelessWidget {
               width: 56,
               height: 56,
               decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-              child: Icon(face ? AppIcons.scanFace : AppIcons.fingerprint, size: 28, color: c.primary),
+              child: AppIcon(face ? AppIcons.faceId : AppIcons.fingerprint, size: AppIconSize.xl, color: c.primary),
             ),
             const SizedBox(height: AppSpacing.lg),
             Semantics(
@@ -57,7 +57,7 @@ class _EnableBiometricsContent extends StatelessWidget {
             const SizedBox(height: AppSpacing.xxl),
             AppButton(
               label: face ? l.login_bio_sheet_enable : l.login_bio_sheet_enable_finger,
-              icon: face ? AppIcons.scanFace : AppIcons.fingerprint,
+              icon: face ? AppIcons.faceId : AppIcons.fingerprint,
               size: AppButtonSize.large,
               expand: true,
               onPressed: () => Navigator.of(context).pop(true),

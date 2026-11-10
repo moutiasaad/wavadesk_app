@@ -83,7 +83,7 @@ class _ClaimWaitingTagState extends State<ClaimWaitingTag> {
           children: [
             AnimatedSwitcher(
               duration: AppMotion.slow,
-              child: Icon(AppIcons.clock, key: ValueKey(over), size: 13, color: fg),
+              child: AppIcon(AppIcons.waiting, size: AppIconSize.xs, color: fg, key: ValueKey(over)),
             ),
             const SizedBox(width: AppSpacing.xs),
             AnimatedDefaultTextStyle(

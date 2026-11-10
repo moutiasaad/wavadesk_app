@@ -38,7 +38,7 @@ class NewMessagesPill extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(AppIcons.arrowUp, size: 16, color: c.onSecondary),
+                AppIcon(AppIcons.arrowUp, size: AppIconSize.sm, color: c.onSecondary),
                 const SizedBox(width: 6),
                 Text(
                   context.l10n.inbox_new_pill(count),

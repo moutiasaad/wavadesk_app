@@ -80,7 +80,7 @@ class _AppSearchFieldState extends State<AppSearchField> {
       padding: const EdgeInsetsDirectional.only(start: AppSpacing.md, end: AppSpacing.xs),
       child: Row(
         children: [
-          Icon(AppIcons.search, size: 16, color: c.textTertiary),
+          AppIcon(AppIcons.search, size: AppIconSize.sm, color: c.textTertiary),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: TextField(
@@ -121,7 +121,7 @@ class _AppSearchFieldState extends State<AppSearchField> {
                       width: 22,
                       height: 22,
                       decoration: BoxDecoration(color: c.borderStrong, shape: BoxShape.circle),
-                      child: const Icon(AppIcons.close, size: 13, color: Colors.white),
+                      child: const AppIcon(AppIcons.close, size: AppIconSize.xs, color: Colors.white),
                     ),
                   ),
                 ),

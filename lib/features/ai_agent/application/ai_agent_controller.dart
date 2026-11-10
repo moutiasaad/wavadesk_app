@@ -4,16 +4,11 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
-import '../../../core/data/data.dart';
 import '../data/ai_agent_api.dart';
 import '../domain/ai_agent_config.dart';
 
-final aiAgentApiProvider = Provider<AiAgentApi>((ref) {
-  if (useRealApi) return HttpAiAgentApi(ref.watch(wdApiRequiredProvider));
-  return SampleAiAgentApi(canEdit: ref.read(currentAgentProvider).isAdmin);
-});
+final aiAgentApiProvider = Provider<AiAgentApi>((ref) => HttpAiAgentApi(ref.watch(wdApiRequiredProvider)));
 
 /// Outcome of one auto-saved change (the UI picks the snackbar).
 enum AiSaveResult { saved, failed, conflict, offline, forbidden }

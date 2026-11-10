@@ -101,7 +101,7 @@ class DashboardMetricCard extends StatelessWidget {
                 Row(
                   children: [
                     if (labelIcon != null) ...[
-                      Icon(labelIcon, size: 13, color: labelFg),
+                      AppIcon(labelIcon, size: AppIconSize.xs, color: labelFg),
                       const SizedBox(width: AppSpacing.xs),
                     ],
                     Expanded(
@@ -135,7 +135,7 @@ class DashboardMetricCard extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             if (asideIcon != null) ...[
-                              Icon(asideIcon, size: 12, color: asideFg),
+                              AppIcon(asideIcon, size: AppIconSize.xs, color: asideFg),
                               const SizedBox(width: 2),
                             ],
                             Text(aside!, style: t.caption.copyWith(fontSize: 12, color: asideFg)),

@@ -62,7 +62,7 @@ class _Thumb extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(a.kind.icon, size: 22, color: isImage ? c.primary : c.textSecondary),
+                  AppIcon(a.kind.icon, color: isImage ? c.primary : c.textSecondary),
                   if (!isImage)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
@@ -118,7 +118,7 @@ class _Thumb extends StatelessWidget {
                           shape: BoxShape.circle,
                           border: Border.all(color: c.background, width: 2),
                         ),
-                        child: Icon(AppIcons.close, size: 11, color: c.onSecondary),
+                        child: AppIcon(AppIcons.close, dp: 11, color: c.onSecondary),
                       ),
                     ),
                   ),

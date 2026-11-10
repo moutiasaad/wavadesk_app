@@ -109,7 +109,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       builder: (ctx) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SheetActionRow(icon: AppIcons.conversations, label: l.search_last_chat, onTap: () => Navigator.pop(ctx, 0)),
+          SheetActionRow(icon: AppIcons.conversation, label: l.search_last_chat, onTap: () => Navigator.pop(ctx, 0)),
           SheetActionRow(icon: AppIcons.compose, label: l.search_new_chat, onTap: () => Navigator.pop(ctx, 1)),
           if ((h.phone ?? '').isNotEmpty)
             SheetActionRow(icon: AppIcons.copy, label: l.search_copy_number, onTap: () => Navigator.pop(ctx, 2)),
@@ -267,7 +267,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     } else if (s.status == SearchStatus.error) {
       body = Center(
         child: EmptyState(
-          icon: AppIcons.wifiOff,
+          icon: AppIcons.offline,
           title: l.search_error,
           actionLabel: l.search_retry,
           onAction: _ctrl.retry,
@@ -347,7 +347,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       decoration: BoxDecoration(color: c.warningContainer, borderRadius: BorderRadius.circular(AppRadius.sm)),
       child: Row(
         children: [
-          Icon(AppIcons.wifiOff, size: 14, color: c.textWarning),
+          AppIcon(AppIcons.offline, size: AppIconSize.sm, color: c.textWarning),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(

@@ -249,7 +249,7 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
                     width: 32,
                     height: 32,
                     decoration: BoxDecoration(color: c.surfaceVariant, shape: BoxShape.circle),
-                    child: Icon(AppIcons.reply, size: 16, color: c.primary),
+                    child: AppIcon(AppIcons.reply, size: AppIconSize.sm, color: c.primary),
                   ),
                 ),
               ),

@@ -30,7 +30,7 @@ class ContextStrip extends ConsumerWidget {
         fg: c.onPrimaryContainer,
         bg: c.primaryContainer,
         border: c.primaryContainerBorder,
-        leading: Icon(AppIcons.check, size: 14, color: c.onPrimaryContainer),
+        leading: AppIcon(AppIcons.check, size: AppIconSize.sm, color: c.onPrimaryContainer),
       ),
       Ownership.colleague => _StripChip(
         label: l.chat_assigned_to(conv.assignee?.name ?? ''),
@@ -45,7 +45,7 @@ class ContextStrip extends ConsumerWidget {
         label: l.chat_ai_handling,
         fg: c.statusAi,
         bg: c.statusAiContainer,
-        leading: Icon(AppIcons.sparkle, size: 14, color: c.statusAi),
+        leading: AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.statusAi),
       ),
     };
 
@@ -58,13 +58,13 @@ class ContextStrip extends ConsumerWidget {
               ),
         fg: c.statusSnoozed,
         bg: c.statusSnoozedContainer,
-        leading: Icon(AppIcons.moon, size: 13, color: c.statusSnoozed),
+        leading: AppIcon(AppIcons.snooze, size: AppIconSize.xs, color: c.statusSnoozed),
       ),
       ConversationStatus.resolved || ConversationStatus.closed => _StripChip(
         label: conv.status.label(l),
         fg: conv.status.foreground(c),
         bg: conv.status.container(c),
-        leading: Icon(conv.status.icon, size: 13, color: conv.status.foreground(c)),
+        leading: AppIcon(conv.status.icon, size: AppIconSize.xs, color: conv.status.foreground(c)),
       ),
       _ => null,
     };
@@ -94,7 +94,7 @@ class ContextStrip extends ConsumerWidget {
             fg: conv.priority.color(c),
             bg: conv.priority.color(c).withValues(alpha: c.isDark ? 0.18 : 0.10),
             leading: conv.priority == Priority.urgent
-                ? Icon(AppIcons.flag, size: 13, color: conv.priority.color(c))
+                ? AppIcon(AppIcons.priority, size: AppIconSize.xs, color: conv.priority.color(c))
                 : Container(
                     width: 6,
                     height: 6,
@@ -216,7 +216,7 @@ class DashedChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(AppIcons.plus, size: 13, color: c.textSecondary),
+            AppIcon(AppIcons.add, size: AppIconSize.xs, color: c.textSecondary),
             const SizedBox(width: 4),
             Text(label, style: context.text.chipLabel.copyWith(color: c.textSecondary)),
           ],

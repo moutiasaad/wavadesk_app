@@ -8,12 +8,11 @@ import '../../../../../core/models/models.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/utils/l10n.dart';
 import '../../../../../core/widgets/widgets.dart';
+import '../../../data/messages_repository.dart';
 
-/// API mode: approved templates from the server (never the sample list);
-/// sample mode: [templatesProvider].
+/// Approved templates from the server.
 final _sheetTemplatesProvider = FutureProvider.autoDispose<List<MessageTemplate>>((ref) async {
-  final api = ref.watch(wdApiProvider);
-  if (api == null) return ref.watch(templatesProvider);
+  final api = ref.watch(wdApiRequiredProvider);
   final r = await api.get('whatsapp/templates');
   return [
     for (final m in r.list)
@@ -55,14 +54,14 @@ class _TemplatesList extends ConsumerWidget {
     final conv = ref.watch(conversationProvider(conversationId));
     String fill(MessageTemplate tp) => tp.body
         .replaceAll('{{1}}', conv?.customer.name.split(' ').first ?? '')
-        .replaceAll('{{2}}', conv?.orderRef ?? '#2841');
+        .replaceAll('{{2}}', conv?.orderRef ?? '');
 
     // Skeleton until the list arrives; "no templates" only after a real answer.
     final templates = async.valueOrNull;
     if (templates == null) {
       if (async.hasError) {
         return EmptyState(
-          icon: AppIcons.wifiOff,
+          icon: AppIcons.offline,
           title: l.chatscreen_load_failed,
           actionLabel: l.common_retry,
           onAction: () => ref.invalidate(_sheetTemplatesProvider),
@@ -71,7 +70,7 @@ class _TemplatesList extends ConsumerWidget {
       return ListView(controller: controller, children: [AppSkeleton.list(rows: 4)]);
     }
     if (templates.isEmpty) {
-      return EmptyState(icon: AppIcons.template, title: l.templates_empty);
+      return EmptyState(icon: AppIcons.templates, title: l.templates_empty);
     }
 
     return ListView.separated(
@@ -95,7 +94,10 @@ class _TemplatesList extends ConsumerWidget {
             child: InkWell(
               onTap: () {
                 HapticFeedback.lightImpact();
-                ref.read(inboxProvider.notifier).sendTemplate(conversationId, tp);
+                ref.read(messagesRepositoryProvider).send(
+                  conversationId,
+                  OutgoingMessage(text: fill(tp), kind: MessageKind.template, templateName: tp.name, sentVia: 'template'),
+                );
                 Navigator.of(context).pop();
                 AppSnackbar.show(context, message: l.templates_sent, kind: SnackKind.success);
               },
@@ -106,7 +108,7 @@ class _TemplatesList extends ConsumerWidget {
                   children: [
                     Row(
                       children: [
-                        Icon(AppIcons.template, size: 16, color: c.primary),
+                        AppIcon(AppIcons.templates, size: AppIconSize.sm, color: c.primary),
                         const SizedBox(width: 6),
                         Expanded(
                           child: Text(tp.category, style: t.caption.copyWith(color: c.textSecondary)),

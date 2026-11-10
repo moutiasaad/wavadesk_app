@@ -16,7 +16,7 @@ class AiTestButton extends StatelessWidget {
         padding: const EdgeInsets.all(AppSpacing.lg),
         child: AppButton(
           label: context.l10n.ai_test,
-          icon: AppIcons.conversations,
+          icon: AppIcons.conversation,
           variant: AppButtonVariant.dark,
           size: AppButtonSize.large,
           expand: true,

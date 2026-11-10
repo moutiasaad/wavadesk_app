@@ -86,11 +86,7 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
               width: 32,
               height: 32,
               decoration: BoxDecoration(color: widget.onPrimary ? Colors.white : c.primary, shape: BoxShape.circle),
-              child: Icon(
-                playing ? AppIcons.pause : AppIcons.play,
-                size: 16,
-                color: widget.onPrimary ? c.primary : c.onPrimary,
-              ),
+              child: AppIcon(playing ? AppIcons.pause : AppIcons.play, size: AppIconSize.sm, color: widget.onPrimary ? c.primary : c.onPrimary,),
             ),
           ),
         ),

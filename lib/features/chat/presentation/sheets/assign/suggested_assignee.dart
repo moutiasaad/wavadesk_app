@@ -54,7 +54,7 @@ class SuggestedAssigneeRow extends StatelessWidget {
                   style: context.text.caption.copyWith(fontWeight: FontWeight.w700, color: c.textSecondary),
                 ),
                 const SizedBox(width: AppSpacing.xs),
-                ExcludeSemantics(child: Icon(AppIcons.sparkle, size: 12, color: c.primary)),
+                ExcludeSemantics(child: AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary)),
               ],
             ),
           ),

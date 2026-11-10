@@ -61,7 +61,7 @@ class ConversationPreviewText extends StatelessWidget {
       alignment: PlaceholderAlignment.middle,
       child: Padding(
         padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
-        child: Icon(data, size: 13, color: color ?? c.textSecondary),
+        child: AppIcon(data, size: AppIconSize.xs, color: color ?? c.textSecondary),
       ),
     );
 
@@ -104,7 +104,7 @@ class ConversationPreviewText extends StatelessWidget {
         spans.add(TextSpan(text: '${preview.senderFirstName}: '));
         body(preview.text);
       case PreviewKind.ai:
-        spans.add(icon(AppIcons.sparkle, color: c.primary));
+        spans.add(icon(AppIcons.ai, color: c.primary));
         body(preview.text);
       case PreviewKind.image:
         spans.add(icon(AppIcons.image));
@@ -178,13 +178,13 @@ class DeliveryTicks extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final (IconData icon, Color color) = switch (state) {
-      DeliveryState.sending => (AppIcons.clock, c.textTertiary),
+      DeliveryState.sending => (AppIcons.pending, c.textTertiary),
       DeliveryState.sent => (AppIcons.check, c.textTertiary),
-      DeliveryState.delivered => (AppIcons.checkDouble, c.textTertiary),
-      DeliveryState.read => (AppIcons.checkDouble, c.accent),
-      DeliveryState.failed => (AppIcons.alert, c.error),
+      DeliveryState.delivered => (AppIcons.read, c.textTertiary),
+      DeliveryState.read => (AppIcons.read, c.accent),
+      DeliveryState.failed => (AppIcons.error, c.error),
     };
-    return Icon(icon, size: size, color: color);
+    return AppIcon(icon, dp: size, color: color);
   }
 }
 

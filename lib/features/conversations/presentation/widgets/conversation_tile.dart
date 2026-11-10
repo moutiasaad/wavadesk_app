@@ -185,7 +185,7 @@ class ConversationTile extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 20, color: onAction),
+          AppIcon(icon, color: onAction),
           const SizedBox(height: AppSpacing.xs),
           Text(text, style: context.text.caption.copyWith(color: onAction), maxLines: 1),
         ],
@@ -206,8 +206,10 @@ class ConversationTile extends ConsumerWidget {
           : ActionPane(
               motion: const DrawerMotion(),
               extentRatio: ratio(1),
-              openThreshold: 0.5,
-              closeThreshold: 0.5,
+              // Thresholds are fractions of the ROW width (not of the pane):
+              // open after 60% of the buttons are revealed, close under 40%.
+              openThreshold: ratio(1) * 0.6,
+              closeThreshold: ratio(1) * 0.4,
               dismissible: DismissiblePane(
                 dismissThreshold: 0.8,
                 resizeDuration: AppMotion.normal,
@@ -221,15 +223,17 @@ class ConversationTile extends ConsumerWidget {
           : ActionPane(
               motion: const DrawerMotion(),
               extentRatio: ratio(2),
-              openThreshold: 0.5,
-              closeThreshold: 0.5,
+              // Thresholds are fractions of the ROW width (not of the pane):
+              // open after 60% of the buttons are revealed, close under 40%.
+              openThreshold: ratio(2) * 0.6,
+              closeThreshold: ratio(2) * 0.4,
               dismissible: DismissiblePane(
                 dismissThreshold: 0.8,
                 resizeDuration: AppMotion.normal,
                 onDismissed: () => onSnooze!(fullSwipe: true),
               ),
               children: [
-                action(AppIcons.moon, l.inbox_swipe_snooze, c.statusSnoozed, () => onSnooze!(fullSwipe: false)),
+                action(AppIcons.snooze, l.inbox_swipe_snooze, c.statusSnoozed, () => onSnooze!(fullSwipe: false)),
                 if (claimable && onClaim != null)
                   action(AppIcons.claim, l.inbox_swipe_claim, c.primary, () => onClaim!(fullSwipe: false))
                 else if (onAssign != null)
@@ -264,7 +268,7 @@ class _Leading extends StatelessWidget {
             width: 24,
             height: 24,
             decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
-            child: Icon(AppIcons.check, size: 16, color: c.onPrimary),
+            child: AppIcon(AppIcons.check, size: AppIconSize.sm, color: c.onPrimary),
           ),
         ),
       );

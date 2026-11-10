@@ -71,7 +71,7 @@ class RecentSearches extends StatelessWidget {
                         padding: const EdgeInsetsDirectional.only(start: AppSpacing.screenH, end: AppSpacing.xs),
                         child: Row(
                           children: [
-                            Icon(AppIcons.history, size: 16, color: c.textTertiary),
+                            AppIcon(AppIcons.history, size: AppIconSize.sm, color: c.textTertiary),
                             const SizedBox(width: AppSpacing.md),
                             Expanded(
                               child: Text(

@@ -77,7 +77,7 @@ class _TemplateRow extends StatelessWidget {
             const SizedBox(width: AppSpacing.sm),
             waTemplateStatusBadge(context, tpl.status),
             const SizedBox(width: AppSpacing.xs),
-            Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+            AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
           ],
         ),
       ),

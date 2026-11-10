@@ -7,6 +7,7 @@ import '../../../../core/widgets/widgets.dart';
 import '../../application/presence_controller.dart';
 import '../../domain/viewer_text_formatter.dart';
 import 'claim_waiting_tag.dart';
+import '../../../../core/utils/span_format.dart';
 
 /// Viewing row (Claim spec §4.2): viewer avatars (sm, max 3, overlap −8,
 /// `+n`) + text (first name bold) · waiting tag at the end. Tap → popover
@@ -156,7 +157,7 @@ class ClaimViewingRow extends ConsumerWidget {
   static String _since(BuildContext context, DateTime since) {
     final s = DateTime.now().difference(since).inSeconds;
     final l = context.l10n;
-    return s < 60 ? l.claim_viewing_since_sec(s) : l.claim_viewing_since_min(s ~/ 60);
+    return s < 60 ? l.claim_viewing_since_sec(s) : l.claim_viewing_since_min(SpanFormat.compact(s, l));
   }
 }
 

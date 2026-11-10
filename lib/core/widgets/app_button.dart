@@ -96,7 +96,7 @@ class _AppButtonState extends State<AppButton> {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (widget.icon != null) ...[Icon(widget.icon, size: m.icon, color: p.fg), const SizedBox(width: 7)],
+        if (widget.icon != null) ...[AppIcon(widget.icon, dp: m.icon, color: p.fg), const SizedBox(width: 7)],
         Flexible(
           child: Text(
             widget.label,

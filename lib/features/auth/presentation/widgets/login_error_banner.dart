@@ -33,7 +33,7 @@ class LoginErrorBanner extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 1),
-              child: Icon(AppIcons.alertTriangle, size: 18, color: c.error),
+              child: AppIcon(AppIcons.warning, dp: 18, color: c.error),
             ),
             const SizedBox(width: 10),
             Expanded(

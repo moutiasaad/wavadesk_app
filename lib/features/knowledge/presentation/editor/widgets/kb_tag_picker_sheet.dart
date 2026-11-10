@@ -114,7 +114,7 @@ class _KbTagPickerState extends State<_KbTagPicker> {
                                   style: t.chipLabel.copyWith(color: i == 0 ? c.onPrimary : c.onPrimaryContainer),
                                 ),
                                 const SizedBox(width: AppSpacing.xs),
-                                Icon(AppIcons.close, size: 14, color: i == 0 ? c.onPrimary : c.onPrimaryContainer),
+                                AppIcon(AppIcons.close, size: AppIconSize.sm, color: i == 0 ? c.onPrimary : c.onPrimaryContainer),
                               ],
                             ),
                           ),
@@ -128,7 +128,7 @@ class _KbTagPickerState extends State<_KbTagPicker> {
                 ),
               ],
               const SizedBox(height: AppSpacing.sm),
-              if (q.isNotEmpty && !exact) SheetActionRow(icon: AppIcons.plus, label: l.kbe_tags_create(_query.trim()), onTap: _create),
+              if (q.isNotEmpty && !exact) SheetActionRow(icon: AppIcons.add, label: l.kbe_tags_create(_query.trim()), onTap: _create),
               if (_loading)
                 const Padding(padding: EdgeInsets.all(AppSpacing.xl), child: Center(child: AppSpinner()))
               else
@@ -145,7 +145,7 @@ class _KbTagPickerState extends State<_KbTagPicker> {
                           children: [
                             AppCheckbox(value: _isSelected(tag)),
                             const SizedBox(width: AppSpacing.md),
-                            Icon(AppIcons.tag, size: 14, color: c.textTertiary),
+                            AppIcon(AppIcons.tag, size: AppIconSize.sm, color: c.textTertiary),
                             const SizedBox(width: 10),
                             Expanded(child: Text(tag.name, style: t.bodyLarge.copyWith(fontWeight: FontWeight.w600))),
                             if (tag.count > 0) Text('${tag.count}', style: t.caption.copyWith(color: c.textTertiary)),

@@ -131,7 +131,7 @@ class _AppTextFieldState extends State<AppTextField> {
               if (widget.prefixIcon != null) ...[
                 Padding(
                   padding: EdgeInsets.only(top: widget.maxLines > 1 ? 15 : 0),
-                  child: Icon(widget.prefixIcon, size: 18, color: c.textTertiary),
+                  child: AppIcon(widget.prefixIcon, dp: 18, color: c.textTertiary),
                 ),
                 const SizedBox(width: 10),
               ],

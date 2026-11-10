@@ -63,7 +63,7 @@ class _VersionsState extends State<_Versions> {
         }
         if (snap.hasError) {
           return EmptyState(
-            icon: AppIcons.alert,
+            icon: AppIcons.error,
             title: l.kbe_load_error,
             actionLabel: l.kbe_retry,
             onAction: () => setState(() => _future = widget.load()),

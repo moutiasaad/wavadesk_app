@@ -23,8 +23,8 @@ abstract final class AppSnackbar {
     final messenger = ScaffoldMessenger.of(context);
     final icon = switch (kind) {
       SnackKind.info => null,
-      SnackKind.success => Icon(AppIcons.resolve, size: 18, color: c.snackbarIconSuccess),
-      SnackKind.error => Icon(AppIcons.alert, size: 18, color: c.snackbarIconError),
+      SnackKind.success => AppIcon(AppIcons.resolve, dp: 18, color: c.snackbarIconSuccess),
+      SnackKind.error => AppIcon(AppIcons.error, dp: 18, color: c.snackbarIconError),
     };
     final hasAction = actionLabel != null && onAction != null;
 
@@ -72,7 +72,7 @@ abstract final class AppSnackbar {
               if (persistent && !hasAction)
                 IconButton(
                   tooltip: context.l10n.common_close,
-                  icon: Icon(AppIcons.close, size: 18, color: c.snackbarForeground),
+                  icon: AppIcon(AppIcons.close, dp: 18, color: c.snackbarForeground),
                   onPressed: messenger.hideCurrentSnackBar,
                 ),
             ],

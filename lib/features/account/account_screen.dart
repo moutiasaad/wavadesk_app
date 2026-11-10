@@ -85,18 +85,6 @@ class AccountScreen extends ConsumerWidget {
     if (ok) ref.read(authProvider.notifier).signOut();
   }
 
-  void _cycleNetwork(BuildContext context, WidgetRef ref) {
-    final l = context.l10n;
-    ref.read(inboxProvider.notifier).cycleNetwork();
-    final state = ref.read(inboxProvider).network;
-    final label = switch (state) {
-      NetworkState.online => l.account_network_online,
-      NetworkState.connecting => l.network_connecting,
-      NetworkState.offline => l.network_offline,
-    };
-    AppSnackbar.show(context, message: l.account_network_demo(label), bottomOffset: AppTabBar.height);
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
@@ -194,12 +182,12 @@ class AccountScreen extends ConsumerWidget {
                   onTap: () => context.push(Routes.channels),
                 ),
                 SettingsTile(
-                  icon: AppIcons.sparkle,
+                  icon: AppIcons.ai,
                   title: l.account_ai_agent,
                   onTap: () => context.push(Routes.aiAgent),
                 ),
                 SettingsTile(
-                  icon: AppIcons.users,
+                  icon: AppIcons.team,
                   iconColor: c.statusSnoozed,
                   iconBackground: c.statusSnoozedContainer,
                   title: l.account_team,
@@ -207,7 +195,7 @@ class AccountScreen extends ConsumerWidget {
                 ),
                 if (me.isAdmin)
                   SettingsTile(
-                    icon: AppIcons.subscription,
+                    icon: AppIcons.billing,
                     iconColor: c.textWarning,
                     iconBackground: c.warningContainer,
                     title: l.account_subscription,
@@ -219,7 +207,7 @@ class AccountScreen extends ConsumerWidget {
             title: l.account_section_app,
             children: [
               SettingsTile(
-                icon: AppIcons.notifications,
+                icon: AppIcons.bell,
                 title: l.account_notifications,
                 onTap: () => context.push(Routes.notificationSettings),
               ),
@@ -230,7 +218,7 @@ class AccountScreen extends ConsumerWidget {
                 onTap: () => _pickLanguage(context, ref),
               ),
               SettingsTile(
-                icon: AppIcons.appearance,
+                icon: AppIcons.theme,
                 title: l.account_appearance,
                 value: _themeLabel(l, settings.themeMode),
                 onTap: () => _pickTheme(context, ref),
@@ -254,14 +242,11 @@ class AccountScreen extends ConsumerWidget {
             ),
           ),
           Center(
-            child: GestureDetector(
-              onLongPress: () => _cycleNetwork(context, ref),
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.sm),
-                child: Text(
-                  l.account_version(version),
-                  style: t.caption.copyWith(color: c.textTertiary),
-                ),
+            child: Padding(
+              padding: const EdgeInsets.all(AppSpacing.sm),
+              child: Text(
+                l.account_version(version),
+                style: t.caption.copyWith(color: c.textTertiary),
               ),
             ),
           ),

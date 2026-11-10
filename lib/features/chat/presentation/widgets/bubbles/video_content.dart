@@ -40,7 +40,7 @@ class VideoContent extends StatelessWidget {
                       onTap: () => AppSnackbar.show(context, message: l.bubble_video_unavailable),
                       child: const SizedBox.square(
                         dimension: 44,
-                        child: Icon(AppIcons.play, size: 22, color: Colors.white),
+                        child: AppIcon(AppIcons.play, color: Colors.white),
                       ),
                     ),
                   ),

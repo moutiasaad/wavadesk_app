@@ -109,7 +109,7 @@ class _AnswerFieldState extends State<AnswerField> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(AppIcons.sparkle, size: 11, color: c.primary),
+                  AppIcon(AppIcons.ai, dp: 11, color: c.primary),
                   const SizedBox(width: AppSpacing.xs),
                   Text(l.kbe_ai_draft_tag, style: t.caption.copyWith(color: c.onPrimaryContainer, fontWeight: FontWeight.w700)),
                 ],

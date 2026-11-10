@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/api/wd_api.dart' show useRealApi;
 import '../../../../core/api/wd_api_provider.dart';
 import '../../../../core/data/data.dart';
 import '../../../../core/models/models.dart';
@@ -10,10 +9,7 @@ import '../data/whatsapp_api.dart';
 import '../domain/wa_channel.dart';
 import '../domain/wa_status.dart';
 
-final whatsAppApiProvider = Provider<WhatsAppApi>((ref) {
-  if (useRealApi) return HttpWhatsAppApi(ref.watch(wdApiRequiredProvider));
-  return SampleWhatsAppApi(isAdmin: ref.read(currentAgentProvider).isAdmin);
-});
+final whatsAppApiProvider = Provider<WhatsAppApi>((ref) => HttpWhatsAppApi(ref.watch(wdApiRequiredProvider)));
 
 enum WaSaveResult { saved, failed, forbidden, offline, handledByAi }
 
@@ -179,14 +175,5 @@ class WhatsAppChannelController extends Notifier<WaChannelState> {
   void setQuickRepliesCount(int n) {
     final c = state.channel;
     if (c != null && c.quickRepliesCount != n) state = state.copyWith(channel: c.copyWith(quickRepliesCount: n));
-  }
-
-  /// Sample mode only: switch the demo state (⋮ → Demo state).
-  Future<void> setDemoScenario(WaDemoScenario s) async {
-    final api = _api;
-    if (api is SampleWhatsAppApi) {
-      api.setScenario(s);
-      await load(silent: true);
-    }
   }
 }

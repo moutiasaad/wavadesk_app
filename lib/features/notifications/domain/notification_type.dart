@@ -1,5 +1,6 @@
 import '../../../l10n/app_localizations.dart';
 import 'notification.dart';
+import '../../../core/utils/span_format.dart';
 
 /// Notification types (Notifications spec §5). [NotificationType.unknown]
 /// renders as a generic row with the server title/body (§5 last bullet).
@@ -122,7 +123,7 @@ abstract final class NotificationTemplates {
     return switch (n.type) {
       NotificationType.assigned => l.ntf_t_assigned,
       NotificationType.claimNeeded => l.ntf_t_claim_needed(_i(n, 'n')),
-      NotificationType.slaBreach => l.ntf_t_sla_breach(_p(n, 'customer'), _i(n, 'm')),
+      NotificationType.slaBreach => l.ntf_t_sla_breach(_p(n, 'customer'), SpanFormat.minutes(_i(n, 'm'), l)),
       NotificationType.transferRequest => l.ntf_t_transfer_request(actor),
       NotificationType.mention => l.ntf_t_mention(actor),
       NotificationType.aiNoAnswer => l.ntf_t_ai_no_answer,
@@ -148,7 +149,7 @@ abstract final class NotificationTemplates {
     final customer = _p(n, 'customer');
     return switch (n.type) {
       NotificationType.assigned => [customer, _p(n, 'topic')].where((s) => s.isNotEmpty).join(' · '),
-      NotificationType.claimNeeded => l.ntf_b_claim_needed(_i(n, 'm')),
+      NotificationType.claimNeeded => l.ntf_b_claim_needed(SpanFormat.minutes(_i(n, 'm'), l)),
       NotificationType.slaBreach => _p(n, 'channel'),
       NotificationType.transferRequest => customer,
       NotificationType.mention => '«${_p(n, 'excerpt')}»',
@@ -157,7 +158,7 @@ abstract final class NotificationTemplates {
       NotificationType.aiLowConfidence => l.ntf_b_ai_low_confidence(customer),
       NotificationType.kbSuggestion => l.ntf_b_kb_suggestion,
       NotificationType.channelDisconnected => l.ntf_b_channel_disconnected,
-      NotificationType.channelReconnected => l.ntf_b_channel_reconnected(_i(n, 'm')),
+      NotificationType.channelReconnected => l.ntf_b_channel_reconnected(SpanFormat.minutes(_i(n, 'm'), l)),
       NotificationType.channelQualityLow => l.ntf_b_channel_quality_low,
       NotificationType.teamJoined => l.ntf_b_team_joined(_p(n, 'role')),
       NotificationType.teamRoleChanged => l.ntf_b_team_role_changed(n.actor?.name ?? _p(n, 'actor')),

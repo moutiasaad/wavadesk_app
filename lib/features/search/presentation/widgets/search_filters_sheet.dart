@@ -120,7 +120,7 @@ class _Body extends ConsumerWidget {
               for (final ch in Channel.values.where((x) => x != Channel.other))
                 AppFilterChip(
                   label: ch.label(l),
-                  leading: Icon(ch.glyph, size: 13, color: f.channels.contains(ch) ? c.onSecondary : ch.brand(c)),
+                  leading: AppIcon(ch.glyph, size: AppIconSize.xs, color: f.channels.contains(ch) ? c.onSecondary : ch.brand(c)),
                   selected: f.channels.contains(ch),
                   onTap: () {
                     final next = {...f.channels};
@@ -206,7 +206,7 @@ class _Body extends ConsumerWidget {
                   children: [
                     for (final a in colleagues)
                       SheetActionRow(
-                        icon: AppIcons.user,
+                        icon: AppIcons.customer,
                         label: a.name,
                         selected: a.id == f.colleagueId,
                         onTap: () => Navigator.of(ctx).pop(a),

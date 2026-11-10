@@ -73,7 +73,7 @@ class _KbUnansweredCardState extends State<KbUnansweredCard> {
                 height: 32,
                 child: PopupMenuButton<_More>(
                   padding: EdgeInsets.zero,
-                  icon: Icon(AppIcons.more, size: 18, color: c.textSecondary),
+                  icon: AppIcon(AppIcons.more, dp: 18, color: c.textSecondary),
                   tooltip: l.common_more,
                   onSelected: (m) => m == _More.ignore ? widget.onIgnore() : widget.onViewConversations(),
                   itemBuilder: (_) => [
@@ -111,7 +111,7 @@ class _KbUnansweredCardState extends State<KbUnansweredCard> {
                     AnimatedRotation(
                       turns: _expanded ? 0.5 : 0,
                       duration: AppMotion.fast,
-                      child: Icon(AppIcons.chevronDown, size: 12, color: c.primary),
+                      child: AppIcon(AppIcons.chevronDown, size: AppIconSize.xs, color: c.primary),
                     ),
                   ],
                 ),
@@ -152,7 +152,7 @@ class _KbUnansweredCardState extends State<KbUnansweredCard> {
                 children: [
                   Row(
                     children: [
-                      Icon(AppIcons.sparkle, size: 12, color: c.primary),
+                      AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary),
                       const SizedBox(width: 4),
                       Text(l.kb_ai_draft, style: t.caption.copyWith(color: c.onPrimaryContainer, fontWeight: FontWeight.w800)),
                     ],
@@ -171,7 +171,7 @@ class _KbUnansweredCardState extends State<KbUnansweredCard> {
               AppButton(
                 label: widget.canEdit ? l.kb_add_answer : l.kb_suggest_answer,
                 size: AppButtonSize.small,
-                icon: AppIcons.plus,
+                icon: AppIcons.add,
                 onPressed: widget.onAdd,
               ),
               if (widget.canEdit)
@@ -212,7 +212,7 @@ class _KbUnansweredCardState extends State<KbUnansweredCard> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(AppIcons.archive, size: 20, color: onAction),
+                  AppIcon(AppIcons.archive, color: onAction),
                   const SizedBox(height: 4),
                   Text(l.kb_ignore, style: t.caption.copyWith(color: onAction)),
                 ],

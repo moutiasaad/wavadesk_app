@@ -142,7 +142,7 @@ abstract final class InboxActions {
           for (final (icon, label, d) in [
             (AppIcons.clock, l.snooze_one_hour, const Duration(hours: 1)),
             (AppIcons.clock, l.snooze_three_hours, const Duration(hours: 3)),
-            (AppIcons.moon, l.snooze_tomorrow, tomorrow9.difference(now)),
+            (AppIcons.away, l.snooze_tomorrow, tomorrow9.difference(now)),
             (AppIcons.history, l.snooze_next_week, nextWeek.difference(now)),
           ])
             SheetActionRow(icon: icon, label: label, onTap: () => Navigator.pop(ctx, d)),
@@ -162,7 +162,7 @@ abstract final class InboxActions {
         children: [
           for (final p in Priority.values)
             SheetActionRow(
-              icon: AppIcons.flag,
+              icon: AppIcons.priority,
               label: p.label(ctx.l10n),
               trailing: PriorityIndicator(priority: p),
               onTap: () => Navigator.pop(ctx, p),

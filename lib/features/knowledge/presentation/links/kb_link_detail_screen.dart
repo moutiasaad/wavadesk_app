@@ -146,7 +146,7 @@ class _KbLinkDetailScreenState extends ConsumerState<KbLinkDetailScreen> {
     if (link == null && _error != null) {
       final e = _error;
       final ns = e is KbApiException && e.isNotSupported;
-      body = EmptyState(icon: ns ? AppIcons.globe : AppIcons.alert, title: ns ? l.kb_web_only : l.kb_error, actionLabel: ns ? null : l.kb_retry, onAction: ns ? null : _load);
+      body = EmptyState(icon: ns ? AppIcons.globe : AppIcons.error, title: ns ? l.kb_web_only : l.kb_error, actionLabel: ns ? null : l.kb_retry, onAction: ns ? null : _load);
     } else if (link == null) {
       body = const Center(child: AppSpinner());
     } else {
@@ -162,7 +162,7 @@ class _KbLinkDetailScreenState extends ConsumerState<KbLinkDetailScreen> {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(color: v.background, borderRadius: BorderRadius.circular(AppRadius.md)),
-                  child: Icon(v.icon, size: 24, color: v.foreground),
+                  child: AppIcon(v.icon, size: AppIconSize.lg, color: v.foreground),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(

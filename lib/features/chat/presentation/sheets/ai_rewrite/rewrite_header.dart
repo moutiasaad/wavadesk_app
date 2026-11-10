@@ -23,7 +23,7 @@ class RewriteHeader extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-            child: Icon(AppIcons.sparkle, size: 20, color: c.primary),
+            child: AppIcon(AppIcons.ai, color: c.primary),
           ),
         ),
         const SizedBox(width: AppSpacing.sm),

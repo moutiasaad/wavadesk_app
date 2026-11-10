@@ -114,7 +114,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SheetActionRow(
-            icon: n.isRead ? AppIcons.mailOpen : AppIcons.checkDouble,
+            icon: n.isRead ? AppIcons.mailOpen : AppIcons.read,
             label: n.isRead ? l.ntf_mark_unread : l.ntf_mark_read,
             onTap: () {
               Navigator.of(ctx).pop();
@@ -122,7 +122,7 @@ class _NotificationsScreenState extends ConsumerState<NotificationsScreen> {
             },
           ),
           SheetActionRow(
-            icon: AppIcons.notificationsOff,
+            icon: AppIcons.mute,
             label: l.ntf_mute_type,
             onTap: () {
               Navigator.of(ctx).pop();

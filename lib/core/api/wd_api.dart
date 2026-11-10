@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart' show MediaType;
 import 'package:uuid/uuid.dart';
@@ -12,13 +13,29 @@ import 'package:uuid/uuid.dart';
 /// whatsapp-saas/docs/mobile/FLUTTER_CLIENT_NOTES.md §1.
 ///
 /// `WAVADESK_API_URL` is the origin only (e.g. `http://10.0.2.2:8000`);
-/// `/mobile/v1` is appended per call. Empty → the app runs on sample data.
-const apiBaseUrl = String.fromEnvironment('WAVADESK_API_URL');
-const apiKey = String.fromEnvironment('WAVADESK_API_KEY');
-const bootstrapSecret = String.fromEnvironment('WAVADESK_BOOTSTRAP_SECRET');
+/// `/mobile/v1` is appended per call. A `--dart-define` wins; otherwise
+/// [loadApiConfig] reads the bundled `assets/config/api.json`, so the app
+/// works whichever IDE run configuration launched it.
+String apiBaseUrl = const String.fromEnvironment('WAVADESK_API_URL');
+String apiKey = const String.fromEnvironment('WAVADESK_API_KEY');
+String bootstrapSecret = const String.fromEnvironment('WAVADESK_BOOTSTRAP_SECRET');
 
-/// True when the app talks to the real Laravel `/mobile/v1` API.
-bool get useRealApi => apiBaseUrl.isNotEmpty;
+/// Fills the API settings from `assets/config/api.json` (same keys as
+/// `dart_defines/*.json`) when they were not passed at build time.
+Future<void> loadApiConfig() async {
+  if (apiBaseUrl.isNotEmpty && apiKey.isNotEmpty) return;
+  try {
+    final raw = jsonDecode(await rootBundle.loadString('assets/config/api.json'));
+    if (raw is! Map) return;
+    String pick(String key, String current) => current.isNotEmpty ? current : '${raw[key] ?? ''}'.trim();
+    apiBaseUrl = pick('WAVADESK_API_URL', apiBaseUrl).replaceFirst(RegExp(r'/+$'), '');
+    apiKey = pick('WAVADESK_API_KEY', apiKey);
+    bootstrapSecret = pick('WAVADESK_BOOTSTRAP_SECRET', bootstrapSecret);
+  } catch (_) {
+    // No bundled config: main() shows the "API not configured" screen.
+  }
+}
+
 
 /// Error answer from `/mobile/v1` (`{"error": {code, message, details, request_id}}`)
 /// or a transport failure (`status == 0`, `code == 'network'`).

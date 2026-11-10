@@ -18,7 +18,7 @@ Future<DateTime?> showSnoozePicker(BuildContext context) async {
   final options = <(IconData, String, DateTime?)>[
     (AppIcons.clock, l.snooze_one_hour, now.add(const Duration(hours: 1))),
     (AppIcons.clock, l.snooze_three_hours, now.add(const Duration(hours: 3))),
-    (AppIcons.moon, l.snooze_tomorrow, tomorrow9),
+    (AppIcons.away, l.snooze_tomorrow, tomorrow9),
     (AppIcons.history, l.snooze_next_week, nextWeek),
     (AppIcons.edit, l.snooze_custom, null),
   ];
@@ -36,7 +36,7 @@ Future<DateTime?> showSnoozePicker(BuildContext context) async {
             icon: icon,
             label: label,
             trailing: time == null
-                ? Icon(AppIcons.chevronEnd, size: 16, color: ctx.colors.borderStrong)
+                ? AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: ctx.colors.borderStrong)
                 : Text(
                     fmt(time),
                     textDirection: TextDirection.ltr,

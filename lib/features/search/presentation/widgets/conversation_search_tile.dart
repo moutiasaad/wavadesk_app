@@ -33,7 +33,7 @@ class ConversationSearchTile extends StatelessWidget {
             alignment: AlignmentDirectional.centerStart,
             child: AppFilterChip.tonal(
               label: label,
-              leading: Icon(AppIcons.tag, size: 12, color: context.colors.onPrimaryContainer),
+              leading: AppIcon(AppIcons.tag, size: AppIconSize.xs, color: context.colors.onPrimaryContainer),
             ),
           ),
         ),

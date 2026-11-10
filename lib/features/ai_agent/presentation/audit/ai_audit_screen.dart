@@ -154,7 +154,7 @@ class _AiAuditScreenState extends ConsumerState<AiAuditScreen> {
         ),
       );
     } else if (_error != null) {
-      body = EmptyState(icon: AppIcons.wifiOff, title: l.ai_load_error, actionLabel: l.ai_retry, onAction: _load);
+      body = EmptyState(icon: AppIcons.offline, title: l.ai_load_error, actionLabel: l.ai_retry, onAction: _load);
     } else if (_rows.isEmpty) {
       body = EmptyState(icon: AppIcons.history, title: l.ai_audit_empty);
     } else {

@@ -37,7 +37,7 @@ class StatusBadge extends StatelessWidget {
       label: p.label(context.l10n),
       foreground: color,
       background: color.withValues(alpha: c.isDark ? 0.18 : 0.10),
-      icon: p == Priority.urgent ? AppIcons.flag : null,
+      icon: p == Priority.urgent ? AppIcons.priority : null,
     );
   }
 
@@ -55,7 +55,7 @@ class StatusBadge extends StatelessWidget {
     final lead =
         leading ??
         (icon != null
-            ? Icon(icon, size: 13, color: foreground)
+            ? AppIcon(icon, size: AppIconSize.xs, color: foreground)
             : Container(
                 width: 6,
                 height: 6,

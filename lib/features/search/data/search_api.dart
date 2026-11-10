@@ -31,7 +31,7 @@ abstract interface class SearchApi {
   Future<int> count(SearchQuery query);
 }
 
-/// Offline / sample index over what's on the device right now.
+/// Offline index over the real data already on the device.
 final searchLocalIndexProvider = Provider.autoDispose<SearchLocalIndex>((ref) {
   final inbox = ref.watch(inboxProvider);
   final contacts = ref.read(contactsRepositoryProvider);
@@ -46,10 +46,9 @@ final searchLocalIndexProvider = Provider.autoDispose<SearchLocalIndex>((ref) {
   }
   return SearchLocalIndex(
     conversations: inbox.conversations,
-    // Real API: the offline fallback indexes the real KB list (titles only),
-    // never the sample data (core/state/load_state.dart rule 5).
-    knowledge: useRealApi ? _realKb(ref) : ref.watch(knowledgeProvider),
-    agents: [ref.read(currentAgentProvider), if (!useRealApi) ...ref.read(colleaguesProvider)],
+    // The real KB list (titles only) — never sample data.
+    knowledge: _realKb(ref),
+    agents: [ref.read(currentAgentProvider)],
     meId: ref.read(currentAgentProvider).id,
     contactPhones: phones,
   );
@@ -70,51 +69,11 @@ List<KnowledgeEntry> _realKb(Ref ref) => [
     ];
 
 final searchApiProvider = Provider.autoDispose<SearchApi>((ref) {
-  if (!useRealApi) return SampleSearchApi(() => ref.read(searchLocalIndexProvider));
   return HttpSearchApi(
     ref.read(wdApiRequiredProvider),
     conversationLookup: (id) => ref.read(inboxProvider.notifier).byId(id),
   );
 });
-
-// ---- Sample --------------------------------------------------------------------------
-
-/// Demo triggers in the query: `#err` → error, `#slow` → 2s (slow bar).
-class SampleSearchApi implements SearchApi {
-  SampleSearchApi(this._index);
-
-  final SearchLocalIndex Function() _index;
-
-  SearchQuery _clean(SearchQuery q) =>
-      SearchQuery(text: q.text.replaceAll(RegExp(r'#(err|slow)'), '').trim(), scope: q.scope, filters: q.filters);
-
-  @override
-  Future<SearchResults> search(SearchQuery query, {String? cursor}) async {
-    await Future<void>.delayed(Duration(milliseconds: query.text.contains('#slow') ? 2000 : 220));
-    if (query.text.contains('#err')) throw const SearchApiException('error', statusCode: 500);
-    final r = _index().search(_clean(query), cursor: cursor);
-    return SearchResults(
-      query: query,
-      normalized: r.normalized,
-      intent: r.intent,
-      suggestion: r.suggestion,
-      bestMatch: r.bestMatch,
-      totals: r.totals,
-      contacts: r.contacts,
-      messages: r.messages,
-      kb: r.kb,
-      conversations: r.conversations,
-      agents: r.agents,
-      nextCursor: r.nextCursor,
-    );
-  }
-
-  @override
-  Future<int> count(SearchQuery query) async {
-    await Future<void>.delayed(const Duration(milliseconds: 120));
-    return _index().search(_clean(query)).totals.of(query.scope);
-  }
-}
 
 // ---- HTTP (/mobile/v1) ---------------------------------------------------------------
 

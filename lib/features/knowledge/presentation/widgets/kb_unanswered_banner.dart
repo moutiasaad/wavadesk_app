@@ -39,7 +39,7 @@ class KbUnansweredBanner extends StatelessWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
-              child: Icon(AppIcons.sparkle, size: 20, color: c.textWarning),
+              child: AppIcon(AppIcons.ai, color: c.textWarning),
             ),
             const SizedBox(width: 12),
             Expanded(

@@ -20,23 +20,59 @@
   "inbox_typing": "typing…",
   "inbox_image": "Photo",
   "inbox_voice": "Voice message · {d}",
-  "@inbox_voice": {"placeholders": {"d": {"type": "String"}}},
+  "@inbox_voice": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_location": "Location",
   "inbox_sticker": "Sticker",
   "inbox_deleted": "This message was deleted",
-  "inbox_tag_waiting": "{n, plural, =1{Waiting 1 min} other{Waiting {n} min}}",
-  "@inbox_tag_waiting": {"placeholders": {"n": {"type": "int"}}},
+  "inbox_tag_waiting": "Waiting {t}",
+  "@inbox_tag_waiting": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_tag_ai_ready": "Suggestion ready",
   "inbox_tag_ai_replied": "AI replied",
   "inbox_tag_snoozed": "Snoozed until {t}",
-  "@inbox_tag_snoozed": {"placeholders": {"t": {"type": "String"}}},
+  "@inbox_tag_snoozed": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_tag_window": "Window closes in {h}h",
-  "@inbox_tag_window": {"placeholders": {"h": {"type": "int"}}},
+  "@inbox_tag_window": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_now": "now",
   "inbox_min": "{n}m",
-  "@inbox_min": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_hour": "{n}h",
-  "@inbox_hour": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_hour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_yesterday": "Yesterday",
   "inbox_am": "AM",
   "inbox_pm": "PM",
@@ -46,28 +82,76 @@
   "inbox_swipe_claim": "Claim",
   "inbox_resolved": "Conversation resolved",
   "inbox_resolved_n": "{n, plural, =1{1 conversation resolved} other{{n} conversations resolved}}",
-  "@inbox_resolved_n": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_resolved_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_snoozed_1h": "Snoozed for 1 hour",
   "inbox_snoozed_n": "{n, plural, =1{Conversation snoozed} other{{n} conversations snoozed}}",
-  "@inbox_snoozed_n": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_snoozed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_undo": "Undo",
   "inbox_assigned_to_you": "{name} assigned you a conversation",
-  "@inbox_assigned_to_you": {"placeholders": {"name": {"type": "String"}}},
+  "@inbox_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_open": "Open",
   "inbox_claimed_by": "Claimed by {name}",
-  "@inbox_claimed_by": {"placeholders": {"name": {"type": "String"}}},
+  "@inbox_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_new_pill": "{n, plural, =1{1 new conversation} other{{n} new conversations}}",
-  "@inbox_new_pill": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_new_pill": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_selected": "{n} selected",
-  "@inbox_selected": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_select_all": "Select all",
   "inbox_exit_selection": "Exit selection",
   "inbox_mark_read": "Mark read",
   "inbox_mark_unread": "Mark unread",
   "inbox_marked_read_n": "{n, plural, =1{1 conversation marked read} other{{n} conversations marked read}}",
-  "@inbox_marked_read_n": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_marked_read_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_marked_unread_n": "{n, plural, =1{1 conversation marked unread} other{{n} conversations marked unread}}",
-  "@inbox_marked_unread_n": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_marked_unread_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_new_conversation": "New conversation",
   "inbox_load_error": "Couldn't load · Retry",
   "inbox_end": "No more conversations",
@@ -76,21 +160,49 @@
   "inbox_action_failed": "Couldn't complete that. Try again.",
   "inbox_tag": "Tag",
   "inbox_tag_added": "Tag “{tag}” added",
-  "@inbox_tag_added": {"placeholders": {"tag": {"type": "String"}}},
+  "@inbox_tag_added": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_priority": "Priority",
   "inbox_priority_set": "Priority set to {label}",
-  "@inbox_priority_set": {"placeholders": {"label": {"type": "String"}}},
+  "@inbox_priority_set": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_archive": "Archive",
   "inbox_archived_n": "{n, plural, =1{Conversation archived} other{{n} conversations archived}}",
-  "@inbox_archived_n": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_archived_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_clear_all": "Clear all",
-
   "inbox_a11y_unread": "{n, plural, =1{1 unread message} other{{n} unread messages}}",
-  "@inbox_a11y_unread": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_a11y_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_a11y_open_hint": "Double tap to open the conversation",
   "inbox_a11y_notifications": "Notifications, {n} unread",
-  "@inbox_a11y_notifications": {"placeholders": {"n": {"type": "int"}}},
-
+  "@inbox_a11y_notifications": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_empty_mine_title": "No conversations assigned to you",
   "inbox_empty_mine_body": "Conversations you claim or that are assigned to you will show up here.",
   "inbox_empty_mine_action": "View unassigned",
@@ -105,12 +217,17 @@
   "inbox_empty_filters_action": "Clear filters",
   "inbox_empty_error_title": "Couldn't load conversations",
   "inbox_empty_error_body": "Check your connection and try again.",
-
   "inbox_filters_title": "Filters",
   "inbox_filters_clear": "Clear",
   "inbox_filters_apply": "Show conversations",
   "inbox_filters_show": "{n, plural, =0{No conversations} =1{Show 1 conversation} other{Show {n} conversations}}",
-  "@inbox_filters_show": {"placeholders": {"n": {"type": "int"}}},
+  "@inbox_filters_show": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "inbox_filters_channel": "Channel",
   "inbox_filters_priority": "Priority",
   "inbox_filters_assignee": "Assignee",

@@ -166,7 +166,7 @@ class InboxQuery {
 }
 
 /// Local filtering + sorting, mirroring the server rules (§4.2, §4.3, §4.7).
-/// Used for sample data and to place real-time updates without a refetch.
+/// Used to place real-time updates without a refetch.
 abstract final class InboxRules {
   /// Ownership part of a segment (§4.2).
   static bool inSegment(InboxSegment s, ConversationSummary c, String meId) => switch (s) {

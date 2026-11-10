@@ -72,14 +72,14 @@
       }
     }
   },
-  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m} د",
+  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m}",
   "@ntf_t_sla_breach": {
     "placeholders": {
       "customer": {
         "type": "String"
       },
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -140,11 +140,11 @@
   "ntf_t_payment_failed": "فشل تحصيل الاشتراك",
   "ntf_t_plan_limit": "اقتربت من حد ردود الذكاء",
   "ntf_t_app_update": "يتوفر إصدار جديد",
-  "ntf_b_claim_needed": "أقدمها منذ {m} د",
+  "ntf_b_claim_needed": "أقدمها منذ {m}",
   "@ntf_b_claim_needed": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -166,11 +166,11 @@
   },
   "ntf_b_kb_suggestion": "أضفها لقاعدة المعرفة لتحسين الردود",
   "ntf_b_channel_disconnected": "لن تصل الرسائل حتى تعيد الربط",
-  "ntf_b_channel_reconnected": "توقف {m} دقائق · لم تُفقد أي رسالة",
+  "ntf_b_channel_reconnected": "توقف {m} · لم تُفقد أي رسالة",
   "@ntf_b_channel_reconnected": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

@@ -8,11 +8,9 @@ import '../api/wd_api.dart';
 import '../api/wd_api_provider.dart';
 import '../models/models.dart';
 import '../state/load_state.dart';
-import 'mock_data.dart';
 
-/// Workspace members + teams (`GET /mobile/v1/team`). Feeds the Team screen
-/// and, with the real API, `colleaguesProvider` / `teamsProvider` — so
-/// filters, mentions and pickers list the real people, never sample ones.
+/// Workspace members + teams (`GET /mobile/v1/team`). Feeds the Team screen,
+/// `colleaguesProvider` and `teamsProvider` (filters, mentions, pickers).
 @immutable
 class TeamDirectoryState {
   const TeamDirectoryState({
@@ -54,14 +52,6 @@ class TeamDirectoryController extends Notifier<TeamDirectoryState> {
 
   @override
   TeamDirectoryState build() {
-    if (!useRealApi) {
-      return TeamDirectoryState(
-        members: [MockData.me, ...MockData.colleagues],
-        teams: MockData.teams,
-        meId: MockData.me.id,
-        phase: LoadPhase.ready,
-      );
-    }
     // A new sign-in starts over (the cache is cleared on sign-out).
     ref.watch(authProvider);
     scheduleMicrotask(refresh);
@@ -70,7 +60,7 @@ class TeamDirectoryController extends Notifier<TeamDirectoryState> {
 
   /// Silent when data is already on screen; a failure then keeps it.
   Future<void> refresh() async {
-    if (!useRealApi || _inFlight) return;
+    if (_inFlight) return;
     final api = ref.read(wdApiProvider);
     if (api == null) return;
     _inFlight = true;

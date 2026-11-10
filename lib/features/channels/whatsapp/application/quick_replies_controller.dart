@@ -2,18 +2,13 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/api/wd_api.dart' show useRealApi;
 import '../../../../core/api/wd_api_provider.dart';
-import '../../../../core/data/mock_data.dart';
 import '../../../../core/utils/analytics.dart';
 import '../data/quick_replies_api.dart';
 import '../data/whatsapp_api.dart' show WaApiException;
 import 'whatsapp_channel_controller.dart';
 
-final quickRepliesApiProvider = Provider<QuickRepliesApi>((ref) {
-  if (useRealApi) return HttpQuickRepliesApi(ref.watch(wdApiRequiredProvider));
-  return SampleQuickRepliesApi(seed: MockData.quickReplies);
-});
+final quickRepliesApiProvider = Provider<QuickRepliesApi>((ref) => HttpQuickRepliesApi(ref.watch(wdApiRequiredProvider)));
 
 class QuickRepliesState {
   const QuickRepliesState({this.items = const [], this.loading = false, this.loaded = false, this.error});

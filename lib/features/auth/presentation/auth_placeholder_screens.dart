@@ -45,7 +45,7 @@ class TwoFactorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _AuthPlaceholder(
         title: context.l10n.auth_2fa_title,
-        icon: AppIcons.shield,
+        icon: AppIcons.security,
         body: context.l10n.auth_2fa_placeholder,
       );
 }
@@ -56,7 +56,7 @@ class WorkspacePickerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => _AuthPlaceholder(
         title: context.l10n.auth_workspace_title,
-        icon: AppIcons.users,
+        icon: AppIcons.team,
         body: context.l10n.auth_workspace_placeholder,
       );
 }

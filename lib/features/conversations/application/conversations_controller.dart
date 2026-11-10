@@ -7,7 +7,6 @@ import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
 import '../../../core/state/load_state.dart';
 import '../../../core/utils/analytics.dart';
-import '../../../core/api/wd_api.dart' show useRealApi;
 import '../data/conversations_api.dart';
 import '../data/conversations_repository.dart';
 import '../data/conversations_socket.dart';
@@ -120,6 +119,7 @@ class ConversationsController extends Notifier<ConversationsState> {
       }),
     ];
     ref.onDispose(() {
+      _retryTimer?.cancel();
       for (final s in subs) {
         s.cancel();
       }
@@ -157,7 +157,10 @@ class ConversationsController extends Notifier<ConversationsState> {
         fromCache: false,
         pageError: false,
         inserted: const {},
+        // A request just succeeded: clear an earlier "no connection" banner.
+        network: NetworkState.online,
       );
+      _retryDelay = Duration.zero;
       MemoryCache.put(_memoryKey(state.query), page);
       if (state.query.chip == QuickChip.all && !state.query.advanced.hasActive) {
         unawaited(_repo.saveCache(state.query.segment, page));
@@ -173,10 +176,25 @@ class ConversationsController extends Notifier<ConversationsState> {
         phase: state.items.isEmpty ? InboxLoadPhase.error : InboxLoadPhase.ready,
         network: e.isNetwork ? NetworkState.offline : state.network,
       );
+      if (e.isNetwork) _scheduleRetry(generation);
     } catch (_) {
       if (generation != _generation) return;
       state = state.copyWith(phase: state.items.isEmpty ? InboxLoadPhase.error : InboxLoadPhase.ready);
     }
+  }
+
+  Timer? _retryTimer;
+  Duration _retryDelay = Duration.zero;
+
+  /// Network failure (server busy / slow on start, Wi-Fi blip): try again by
+  /// itself — 2 s, 4 s, 8 s … up to 30 s — instead of waiting for a pull.
+  void _scheduleRetry(int generation) {
+    _retryTimer?.cancel();
+    final next = _retryDelay == Duration.zero ? const Duration(seconds: 2) : _retryDelay * 2;
+    _retryDelay = next > const Duration(seconds: 30) ? const Duration(seconds: 30) : next;
+    _retryTimer = Timer(_retryDelay, () {
+      if (generation == _generation) _load(generation);
+    });
   }
 
   /// Re-reads the loaded window after a real-time change, keeping the
@@ -197,6 +215,7 @@ class ConversationsController extends Notifier<ConversationsState> {
         counts: page.counts,
         phase: InboxLoadPhase.ready,
         fromCache: false,
+        network: NetworkState.online,
         inserted: {
           for (final i in page.items)
             if (!before.contains(i.id)) i.id,
@@ -373,10 +392,9 @@ class ConversationsController extends Notifier<ConversationsState> {
   void clearSelection() => ref.read(inboxProvider.notifier).clearSelection();
 }
 
-/// Tab-bar badge: unread conversations in "لي" (DS §8.2). Sample data reads
-/// the live inbox; the API provides `counts.mine_unread`.
+/// Tab-bar badge: unread conversations in "لي" (DS §8.2), from the API's
+/// `counts.mine_unread`.
 final inboxTabBadgeProvider = Provider<int>((ref) {
-  if (!useRealApi) return ref.watch(mineUnreadProvider);
   final counts = ref.watch(conversationsControllerProvider.select((s) => s.counts));
   return counts['mine_unread'] ?? 0;
 });

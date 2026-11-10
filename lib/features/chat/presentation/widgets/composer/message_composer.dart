@@ -280,7 +280,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
         padding: const EdgeInsetsDirectional.only(start: AppSpacing.xs),
         child: AppButton(
           label: l.composer_template,
-          icon: AppIcons.template,
+          icon: AppIcons.templates,
           size: AppButtonSize.small,
           variant: AppButtonVariant.tonal,
           onPressed: widget.onOpenTemplates,
@@ -305,7 +305,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
-                  child: Icon(note ? AppIcons.note : AppIcons.send, size: 20, color: Colors.white),
+                  child: AppIcon(note ? AppIcons.note : AppIcons.send, color: Colors.white),
                 ),
               ),
             ),
@@ -339,7 +339,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                     triggerMode: TooltipTriggerMode.manual,
                     showDuration: const Duration(seconds: 2),
                     child: AppIconButton(
-                      icon: AppIcons.sparkle,
+                      icon: AppIcons.ai,
                       size: 32,
                       iconSize: 22,
                       iconColor: text.trim().isEmpty ? c.primary.withValues(alpha: 0.4) : c.primary,
@@ -418,7 +418,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   AppIconButton(
-                    icon: AppIcons.plus,
+                    icon: AppIcons.add,
                     size: 44,
                     iconSize: 24,
                     semanticLabel: l.composer_attach,

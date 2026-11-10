@@ -13,9 +13,9 @@ class HelpScreen extends StatelessWidget {
     final l = context.l10n;
     final topics = [
       (AppIcons.claim, l.help_topic_claim),
-      (AppIcons.sparkle, l.help_topic_ai),
+      (AppIcons.ai, l.help_topic_ai),
       (AppIcons.whatsapp, l.help_topic_whatsapp),
-      (AppIcons.knowledge, l.help_topic_knowledge),
+      (AppIcons.kb, l.help_topic_knowledge),
       (AppIcons.snooze, l.help_topic_snooze),
     ];
     void soon() => AppSnackbar.show(context, message: l.help_opening);
@@ -41,7 +41,7 @@ class HelpScreen extends StatelessWidget {
                   onTap: soon,
                 ),
                 SettingsTile(
-                  icon: AppIcons.mail,
+                  icon: AppIcons.email,
                   title: l.help_contact_email,
                   value: 'support@wavadesk.com',
                   valueDirection: TextDirection.ltr,

@@ -62,7 +62,7 @@ Future<void> showConversationActionsSheet(
             onTap: () => Navigator.pop(ctx, _Action.snooze),
           ),
         SheetActionRow(
-          icon: AppIcons.flag,
+          icon: AppIcons.priority,
           label: l.actions_priority,
           trailing: Text(
             detail.conversation.priority.label(l),
@@ -81,12 +81,12 @@ Future<void> showConversationActionsSheet(
           SheetActionRow(icon: AppIcons.note, label: l.actions_add_note, onTap: () => Navigator.pop(ctx, _Action.note)),
         if (detail.aiEnabledInWorkspace)
           SheetActionRow(
-            icon: aiPaused ? AppIcons.bot : AppIcons.aiOff,
+            icon: aiPaused ? AppIcons.aiAgent : AppIcons.aiOff,
             label: aiPaused ? l.actions_ai_resume : l.actions_ai_pause,
             onTap: () => Navigator.pop(ctx, _Action.toggleAi),
           ),
         SheetActionRow(
-          icon: AppIcons.mail,
+          icon: AppIcons.email,
           label: l.actions_mark_unread,
           onTap: () => Navigator.pop(ctx, _Action.unread),
         ),
@@ -175,7 +175,7 @@ class _ResolveRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
           child: Row(
             children: [
-              Icon(AppIcons.resolve, size: 20, color: c.textSuccess),
+              AppIcon(AppIcons.resolve, color: c.textSuccess),
               const SizedBox(width: 14),
               Expanded(
                 child: Text(
@@ -332,7 +332,7 @@ class _TagEditorState extends ConsumerState<_TagEditor> {
             hint: l.actions_tag_new_hint,
             textInputAction: TextInputAction.done,
             onSubmitted: (_) => _add(),
-            suffix: AppIconButton(icon: AppIcons.plus, semanticLabel: l.actions_tag_add, onPressed: _add),
+            suffix: AppIconButton(icon: AppIcons.add, semanticLabel: l.actions_tag_add, onPressed: _add),
           ),
         ],
       ),

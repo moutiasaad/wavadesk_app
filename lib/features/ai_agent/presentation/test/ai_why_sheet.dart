@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/data/data.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
@@ -49,7 +48,6 @@ class _WhyBody extends ConsumerWidget {
     final c = context.colors;
     final t = context.text;
     final l = context.l10n;
-    final kb = ref.read(knowledgeProvider.notifier);
 
     Widget section(String title) => Padding(
           padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xs),
@@ -80,22 +78,17 @@ class _WhyBody extends ConsumerWidget {
             )
           else
             for (final (id, title) in reply.sources)
-              () {
-                // Only entries the app knows locally can be opened.
-                final local = kb.byId(id) ?? kb.byId(id.replaceFirst('kb_', ''));
-                return ListTile(
-                  dense: true,
-                  leading: Icon(AppIcons.knowledge, size: 18, color: c.primary),
-                  title: Text(title, style: t.bodyMedium),
-                  trailing: local == null ? null : Icon(AppIcons.chevronEnd, size: 16, color: c.textTertiary),
-                  onTap: local == null
-                      ? null
-                      : () {
-                          Navigator.of(context).pop();
-                          context.push(Routes.editKnowledge(local.id));
-                        },
-                );
-              }(),
+              // Sources carry the server's kb_ ids: open the entry directly.
+              ListTile(
+                dense: true,
+                leading: AppIcon(AppIcons.kb, dp: 18, color: c.primary),
+                title: Text(title, style: t.bodyMedium),
+                trailing: AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.textTertiary),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  context.push(Routes.editKnowledge(id));
+                },
+              ),
           const Divider(height: AppSpacing.xl),
           row(l.ai_why_confidence, conf == null ? '—' : '${(conf * 100).round()}%'),
           row(l.ai_why_rule, reply.ruleTriggered == null ? '—' : aiReasonLabel(l, reply.ruleTriggered)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/models/models.dart' show Channel;
 import '../../../../../core/router/app_router.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/utils/l10n.dart';
@@ -30,7 +31,7 @@ class WaGlyphTile extends StatelessWidget {
         color: dark ? const Color(0x2625D366) : const Color(0xFFE8F9EF),
         shape: BoxShape.circle,
       ),
-      child: Icon(AppIcons.whatsapp, size: iconSize, color: dark ? const Color(0xFF4ADE80) : const Color(0xFF15803D)),
+      child: ChannelIcon(Channel.whatsapp, dp: iconSize),
     );
   }
 }

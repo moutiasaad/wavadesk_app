@@ -72,14 +72,14 @@
       }
     }
   },
-  "ntf_t_sla_breach": "{customer} has been waiting {m}m for your reply",
+  "ntf_t_sla_breach": "{customer} has been waiting {m} for your reply",
   "@ntf_t_sla_breach": {
     "placeholders": {
       "customer": {
         "type": "String"
       },
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -140,11 +140,11 @@
   "ntf_t_payment_failed": "Subscription payment failed",
   "ntf_t_plan_limit": "You're close to your AI reply limit",
   "ntf_t_app_update": "A new version is available",
-  "ntf_b_claim_needed": "Oldest waiting {m}m",
+  "ntf_b_claim_needed": "Oldest waiting {m}",
   "@ntf_b_claim_needed": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -166,11 +166,11 @@
   },
   "ntf_b_kb_suggestion": "Add them to the knowledge base to improve replies",
   "ntf_b_channel_disconnected": "Messages won't arrive until you reconnect",
-  "ntf_b_channel_reconnected": "Down for {m} minutes · no messages lost",
+  "ntf_b_channel_reconnected": "Down for {m} · no messages lost",
   "@ntf_b_channel_reconnected": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

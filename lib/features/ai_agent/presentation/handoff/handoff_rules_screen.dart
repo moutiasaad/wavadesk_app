@@ -41,7 +41,7 @@ class HandoffRulesScreen extends ConsumerWidget {
             for (final team in teams)
               ListTile(
                 title: Text(team.name, style: ctx.text.listTitle),
-                trailing: team.id == h.teamId ? Icon(AppIcons.check, color: ctx.colors.primary) : null,
+                trailing: team.id == h.teamId ? AppIcon(AppIcons.check, color: ctx.colors.primary) : null,
                 onTap: () => Navigator.of(ctx).pop(team.id),
               ),
           ],
@@ -146,7 +146,7 @@ class HandoffRulesScreen extends ConsumerWidget {
                         HandoffTargetType.team,
                         l.ai_ho_target_team,
                         subtitle: h.target == HandoffTargetType.team ? teamName : null,
-                        trailing: Icon(AppIcons.chevronEnd, size: 18, color: c.textTertiary),
+                        trailing: AppIcon(AppIcons.chevronForward, dp: 18, color: c.textTertiary),
                       ),
                       radio(HandoffTargetType.lastAgent, l.ai_ho_target_last),
                     ],
@@ -258,7 +258,8 @@ class _Stepper extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           IconButton(
-            icon: Icon(AppIcons.minus, size: 18, color: c.textPrimary),
+            tooltip: context.l10n.common_decrease,
+            icon: AppIcon(AppIcons.minus, dp: 18, color: c.textPrimary),
             onPressed: enabled && value > min ? () => onChanged(value - 1) : null,
           ),
           Semantics(
@@ -266,7 +267,8 @@ class _Stepper extends StatelessWidget {
             child: Text('$value', style: t.listTitle.copyWith(fontFeatures: const [FontFeature.tabularFigures()])),
           ),
           IconButton(
-            icon: Icon(AppIcons.plus, size: 18, color: c.textPrimary),
+            tooltip: context.l10n.common_increase,
+            icon: AppIcon(AppIcons.add, dp: 18, color: c.textPrimary),
             onPressed: enabled && value < max ? () => onChanged(value + 1) : null,
           ),
         ],
@@ -332,7 +334,7 @@ class _KeywordsEditorState extends State<_KeywordsEditor> {
               textInputAction: TextInputAction.done,
               maxLength: 50,
               onSubmitted: (_) => _add(),
-              suffix: IconButton(icon: Icon(AppIcons.plus, size: 18, color: context.colors.primary), onPressed: _add),
+              suffix: IconButton(tooltip: l.ai_ho_keyword_add, icon: AppIcon(AppIcons.add, dp: 18, color: context.colors.primary), onPressed: _add),
             ),
           ],
         ],

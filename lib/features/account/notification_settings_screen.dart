@@ -33,7 +33,7 @@ class NotificationSettingsScreen extends ConsumerWidget {
             SettingsGroup(
               title: l.notif_settings_section_push,
               children: [
-                row(AppIcons.userCheck, l.notif_settings_assigned, l.notif_settings_assigned_sub, s.notifyNewAssigned,
+                row(AppIcons.mine, l.notif_settings_assigned, l.notif_settings_assigned_sub, s.notifyNewAssigned,
                     (v) => ctl.setNotification(newAssigned: v)),
                 row(AppIcons.note, l.notif_settings_mentions, l.notif_settings_mentions_sub, s.notifyMentions,
                     (v) => ctl.setNotification(mentions: v)),
@@ -45,7 +45,7 @@ class NotificationSettingsScreen extends ConsumerWidget {
               title: l.notif_settings_section_sound,
               footer: l.notif_settings_footer,
               children: [
-                row(AppIcons.notifications, l.notif_settings_sound, l.notif_settings_sound_sub, s.notifySound,
+                row(AppIcons.bell, l.notif_settings_sound, l.notif_settings_sound_sub, s.notifySound,
                     (v) => ctl.setNotification(sound: v)),
               ],
             ),

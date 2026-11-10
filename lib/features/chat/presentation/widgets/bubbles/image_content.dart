@@ -36,7 +36,7 @@ class MediaPlaceholder extends StatelessWidget {
       child: icon == null
           ? null
           : Center(
-              child: Icon(icon, size: iconSize, color: Colors.white.withValues(alpha: 0.85)),
+              child: AppIcon(icon, dp: iconSize, color: Colors.white.withValues(alpha: 0.85)),
             ),
     );
   }

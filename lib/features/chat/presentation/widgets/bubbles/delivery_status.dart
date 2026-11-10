@@ -28,15 +28,15 @@ class DeliveryStatus extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final (IconData icon, Color color) = switch (state) {
-      DeliveryState.sending => (AppIcons.clock, foreground.withValues(alpha: 0.65)),
+      DeliveryState.sending => (AppIcons.pending, foreground.withValues(alpha: 0.65)),
       DeliveryState.sent => (AppIcons.check, foreground.withValues(alpha: 0.65)),
-      DeliveryState.delivered => (AppIcons.checkDouble, foreground.withValues(alpha: 0.65)),
-      DeliveryState.read => (AppIcons.checkDouble, onPrimary ? c.readTickOnPrimary : c.accent),
-      DeliveryState.failed => (AppIcons.alert, c.error),
+      DeliveryState.delivered => (AppIcons.read, foreground.withValues(alpha: 0.65)),
+      DeliveryState.read => (AppIcons.read, onPrimary ? c.readTickOnPrimary : c.accent),
+      DeliveryState.failed => (AppIcons.error, c.error),
     };
     return AnimatedSwitcher(
       duration: AppMotion.fast,
-      child: Icon(icon, key: ValueKey(state), size: 14, color: color),
+      child: AppIcon(icon, size: AppIconSize.sm, color: color, key: ValueKey(state)),
     );
   }
 }

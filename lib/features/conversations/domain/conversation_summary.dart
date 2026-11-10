@@ -3,8 +3,7 @@ import 'package:flutter/foundation.dart';
 import '../../../core/models/models.dart';
 
 /// Inbox row data — the `ConversationSummary` contract (Inbox spec §6).
-/// Built from the API JSON, or adapted from the local [Conversation] model
-/// while the app runs on sample data.
+/// Built from the API JSON, or from a loaded [Conversation] (offline search).
 
 enum MessageDirection { incoming, outgoing }
 

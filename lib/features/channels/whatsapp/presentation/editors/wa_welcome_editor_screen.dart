@@ -251,7 +251,7 @@ class _WaWelcomeEditorScreenState extends ConsumerState<WaWelcomeEditorScreen> {
                   decoration: BoxDecoration(color: c.infoContainer, borderRadius: BorderRadius.circular(AppRadius.lg)),
                   child: Row(
                     children: [
-                      Icon(AppIcons.sparkle, size: 16, color: c.textInfo),
+                      AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.textInfo),
                       const SizedBox(width: AppSpacing.sm),
                       Expanded(child: Text(l.wa_ai_after_welcome, style: t.bodySmall)),
                     ],

@@ -55,7 +55,7 @@ class _Option extends StatelessWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(color: v.background, borderRadius: BorderRadius.circular(AppRadius.md)),
-                child: Icon(v.icon, size: 22, color: v.foreground),
+                child: AppIcon(v.icon, color: v.foreground),
               ),
               const SizedBox(width: 14),
               Expanded(
@@ -67,7 +67,7 @@ class _Option extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+              AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
             ],
           ),
         ),

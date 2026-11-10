@@ -177,7 +177,7 @@ class AssigneeTile extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-          child: Icon(AppIcons.sparkle, size: 20, color: c.primary),
+          child: AppIcon(AppIcons.ai, color: c.primary),
         );
         name = l.as_ai_name;
         subtitle = l.as_ai_sub;
@@ -369,7 +369,7 @@ class _Radio extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
                 alignment: Alignment.center,
-                child: Icon(AppIcons.check, size: 13, color: c.onPrimary, weight: 900),
+                child: AppIcon(AppIcons.check, size: AppIconSize.xs, color: c.onPrimary),
               ),
             ),
           ),
@@ -446,7 +446,7 @@ class _TeamAvatar extends StatelessWidget {
       width: 40,
       height: 40,
       decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(12)),
-      child: Icon(AppIcons.users, size: 20, color: fg),
+      child: AppIcon(AppIcons.team, color: fg),
     );
   }
 }
@@ -476,7 +476,7 @@ class _ExpandButton extends StatelessWidget {
             // Points to the end side; rotates 90° to point down when open.
             turns: expanded ? (rtl ? -0.25 : 0.25) : 0,
             duration: AppMotion.reduced(context) ? Duration.zero : AppMotion.normal,
-            child: Icon(AppIcons.chevronEnd, size: 16, color: c.textTertiary),
+            child: AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.textTertiary),
           ),
         ),
       ),

@@ -17,7 +17,7 @@ class WaLoadingBody extends ConsumerWidget {
     if (s.error != null && !s.loading) {
       final l = context.l10n;
       return EmptyState(
-        icon: s.offline ? AppIcons.wifiOff : AppIcons.alert,
+        icon: s.offline ? AppIcons.offline : AppIcons.error,
         title: l.wa_load_error,
         actionLabel: l.wa_retry,
         onAction: ref.read(whatsAppChannelControllerProvider.notifier).load,

@@ -82,7 +82,7 @@ class _NewMessageBodyState extends ConsumerState<_NewMessageBody> {
                 label: l.newmsg_name,
                 hint: l.newmsg_name_hint,
                 controller: _name,
-                prefixIcon: AppIcons.user,
+                prefixIcon: AppIcons.customer,
                 textInputAction: TextInputAction.next,
               ),
               const SizedBox(height: AppSpacing.lg),

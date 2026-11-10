@@ -14,7 +14,9 @@ class AppTabItem {
 }
 
 /// §8.2. 4 tabs, height 56 + safe area, `background` @ 96% + blur 20, top
-/// 1dp `divider`. Active `primary`, inactive `textTertiary`. Labels always
+/// 1dp `divider`. Icon Library §4: inactive = outline `textTertiary` 24;
+/// active = same outline icon in `primary` on a `primaryContainer` pill,
+/// label `primary` weight 700 (Lucide has no filled variants). Labels always
 /// visible, no shifting — except above 160% text scale where they hide and
 /// icons keep tooltips (§11).
 class AppTabBar extends StatelessWidget {
@@ -74,13 +76,22 @@ class _TabButton extends StatelessWidget {
     final color = selected ? c.primary : c.textTertiary;
     final label = item.badge > 0 ? '${item.label}, ${item.badge}' : item.label;
 
-    Widget icon = Icon(item.icon, size: 24, color: color);
+    final reduced = AppMotion.reduced(context);
+    Widget icon = AnimatedContainer(
+      duration: reduced ? Duration.zero : AppMotion.fast,
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 2),
+      decoration: BoxDecoration(
+        color: selected ? c.primaryContainer : c.primaryContainer.withValues(alpha: 0),
+        borderRadius: BorderRadius.circular(AppRadius.full),
+      ),
+      child: AppIcon(item.icon, size: AppIconSize.lg, color: color),
+    );
     if (item.badge > 0) {
       icon = Stack(
         clipBehavior: Clip.none,
         children: [
           icon,
-          PositionedDirectional(top: -6, end: -12, child: CountBadge.tab(count: item.badge)),
+          PositionedDirectional(top: -4, end: 2, child: CountBadge.tab(count: item.badge)),
         ],
       );
     }
@@ -109,7 +120,10 @@ class _TabButton extends StatelessWidget {
                   const SizedBox(height: 3),
                   Text(
                     item.label,
-                    style: context.text.overline.copyWith(color: color),
+                    style: context.text.overline.copyWith(
+                      color: color,
+                      fontWeight: selected ? FontWeight.w700 : FontWeight.w600,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

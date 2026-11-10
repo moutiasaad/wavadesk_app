@@ -1,4 +1,5 @@
 import '../../../l10n/app_localizations.dart';
+import '../../../core/utils/span_format.dart';
 
 enum WaitingLevel { underSla, overSla }
 
@@ -29,14 +30,18 @@ abstract final class WaitingDurationFormatter {
       label = l.claim_wait_sec(secs);
     } else if (secs < 3600) {
       label = l.claim_wait_min(secs ~/ 60);
-    } else {
+    } else if (secs < 86400) {
       label = l.claim_wait_hm(secs ~/ 3600, (secs % 3600) ~/ 60);
+    } else {
+      label = SpanFormat.compact(secs, l);
     }
     final String a11y = secs < 60
         ? l.claim_a11y_wait_sec(secs)
         : secs < 3600
         ? l.claim_a11y_wait_min(secs ~/ 60)
-        : l.claim_a11y_wait_hm(secs ~/ 3600, (secs % 3600) ~/ 60);
+        : secs < 86400
+        ? l.claim_a11y_wait_hm(secs ~/ 3600, (secs % 3600) ~/ 60)
+        : l.claim_a11y_wait_span(SpanFormat.compact(secs, l));
     return WaitingInfo(
       label: label,
       a11yLabel: a11y,

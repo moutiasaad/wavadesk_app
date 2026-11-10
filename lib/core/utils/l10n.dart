@@ -26,38 +26,11 @@ extension ChannelLabel on Channel {
     Channel.other => l.channel_other,
   };
 
-  IconData get glyph => switch (this) {
-    Channel.whatsapp => AppIcons.whatsapp,
-    Channel.web => AppIcons.webChat,
-    Channel.messenger => AppIcons.messenger,
-    Channel.instagram => AppIcons.instagram,
-    Channel.email => AppIcons.email,
-    Channel.telegram => AppIcons.telegram,
-    Channel.sms => AppIcons.sms,
-    Channel.other => AppIcons.otherChannel,
-  };
+  IconData get glyph => ChannelIcon.glyphOf(this);
 
-  Color brand(AppColors c) => switch (this) {
-    Channel.whatsapp => c.channelWhatsapp,
-    Channel.web => c.channelWeb,
-    Channel.messenger => c.channelMessenger,
-    Channel.instagram => c.channelInstagram,
-    Channel.email => c.channelEmail,
-    Channel.telegram => c.channelTelegram,
-    Channel.sms => c.channelSms,
-    Channel.other => c.channelOther,
-  };
+  Color brand(AppColors c) => ChannelIcon.brandOf(this, c);
 
-  Color container(AppColors c) => switch (this) {
-    Channel.whatsapp => c.channelWhatsappContainer,
-    Channel.web => c.channelWebContainer,
-    Channel.messenger => c.channelMessengerContainer,
-    Channel.instagram => c.channelInstagramContainer,
-    Channel.email => c.channelEmailContainer,
-    Channel.telegram => c.channelTelegramContainer,
-    Channel.sms => c.channelSmsContainer,
-    Channel.other => c.channelOtherContainer,
-  };
+  Color container(AppColors c) => ChannelIcon.tileOf(this, c);
 }
 
 extension StatusLabel on ConversationStatus {
@@ -93,12 +66,12 @@ extension StatusLabel on ConversationStatus {
 
   IconData get icon => switch (this) {
     ConversationStatus.open => AppIcons.inbox,
-    ConversationStatus.pending => AppIcons.hourglass,
+    ConversationStatus.pending => AppIcons.waiting,
     ConversationStatus.waiting => AppIcons.clock,
     ConversationStatus.snoozed => AppIcons.snooze,
     ConversationStatus.resolved => AppIcons.resolve,
     ConversationStatus.closed => AppIcons.lock,
-    ConversationStatus.ai => AppIcons.sparkle,
+    ConversationStatus.ai => AppIcons.ai,
   };
 }
 
@@ -165,7 +138,7 @@ extension MediaLabel on MessageKind {
   };
 
   IconData get icon => switch (this) {
-    MessageKind.text => AppIcons.webChat,
+    MessageKind.text => AppIcons.conversation,
     MessageKind.image => AppIcons.image,
     MessageKind.album => AppIcons.album,
     MessageKind.video => AppIcons.video,
@@ -174,10 +147,10 @@ extension MediaLabel on MessageKind {
     MessageKind.location => AppIcons.location,
     MessageKind.contact => AppIcons.contactCard,
     MessageKind.sticker => AppIcons.sticker,
-    MessageKind.template => AppIcons.template,
-    MessageKind.email => AppIcons.mail,
+    MessageKind.template => AppIcons.templates,
+    MessageKind.email => AppIcons.email,
     MessageKind.deleted => AppIcons.block,
-    MessageKind.unsupported => AppIcons.alert,
+    MessageKind.unsupported => AppIcons.error,
   };
 }
 

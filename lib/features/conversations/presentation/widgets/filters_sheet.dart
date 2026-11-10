@@ -217,7 +217,7 @@ class _FiltersBodyState extends ConsumerState<_FiltersBody> {
                 AppFilterChip(
                   label: ch.label(l),
                   selected: f.channels.contains(ch),
-                  leading: Icon(ch.glyph, size: 14, color: f.channels.contains(ch) ? c.onSecondary : ch.brand(c)),
+                  leading: AppIcon(ch.glyph, size: AppIconSize.sm, color: f.channels.contains(ch) ? c.onSecondary : ch.brand(c)),
                   onTap: () => _f = f.copyWith(channels: _toggle(f.channels, ch)),
                 ),
             ]),
@@ -280,7 +280,7 @@ class _FiltersBodyState extends ConsumerState<_FiltersBody> {
               AppFilterChip(
                 label: f.date == DateRangeFilter.custom ? dateLabel(context, f) : l.inbox_filters_date_custom,
                 selected: f.date == DateRangeFilter.custom,
-                trailingIcon: AppIcons.chevronEnd,
+                trailingIcon: AppIcons.chevronForward,
                 onTap: _pickRange,
               ),
             ]),

@@ -79,7 +79,7 @@ class BestMatchCard extends StatelessWidget {
                     AppButton(
                       label: l.search_open_chat,
                       size: AppButtonSize.small,
-                      icon: AppIcons.conversations,
+                      icon: AppIcons.conversation,
                       onPressed: onOpenChat,
                     ),
                     const SizedBox(width: AppSpacing.sm),

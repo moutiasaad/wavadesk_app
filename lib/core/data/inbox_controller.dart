@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../api/wd_api.dart' show useRealApi;
 import '../models/models.dart';
 import 'app_controllers.dart' show currentAgentProvider;
-import 'mock_data.dart';
 import 'settings_controller.dart';
 
 /// Advanced filters from the Filters sheet (§9.4).
@@ -162,84 +160,23 @@ class NewConversationEvent extends InboxEvent {
 
 final inboxProvider = NotifierProvider<InboxController, InboxState>(InboxController.new);
 
-/// Owns the conversation list and every action on it. Backed by [MockData];
-/// network latency and real-time events are simulated with timers.
+/// Conversations loaded from the API (via [upsertFromApi]) and the
+/// optimistic local mirror of every action on them.
 class InboxController extends Notifier<InboxState> {
   final _events = StreamController<InboxEvent>.broadcast();
-  final _timers = <Timer>[];
-  final _autoReplied = <String>{};
   int _seq = 0;
 
   Stream<InboxEvent> get events => _events.stream;
 
   @override
   InboxState build() {
-    ref.onDispose(() {
-      for (final t in _timers) {
-        t.cancel();
-      }
-      _events.close();
-    });
-    // Real API: conversations arrive via upsertFromApi; no sample rows and no
-    // simulated colleague events.
-    if (useRealApi) {
-      return InboxState(conversations: const [], segment: ref.read(settingsProvider).lastSegment, loading: false);
-    }
-    _later(const Duration(milliseconds: 900), () => state = state.copyWith(loading: false));
-    _scheduleDemoEvents();
-    return InboxState(
-      conversations: [...MockData.conversations(), ...MockData.history()],
-      segment: ref.read(settingsProvider).lastSegment,
-    );
+    ref.onDispose(_events.close);
+    // Conversations arrive via upsertFromApi.
+    return InboxState(conversations: const [], segment: ref.read(settingsProvider).lastSegment, loading: false);
   }
 
-  void _later(Duration d, void Function() fn) => _timers.add(Timer(d, fn));
-
-  /// The signed-in agent (the API user in real mode, the sample agent otherwise).
+  /// The signed-in agent (the API user).
   Agent get _me => ref.read(currentAgentProvider);
-
-  void _emit(InboxEvent e) {
-    if (!_events.isClosed) _events.add(e);
-  }
-
-  /// Simulated real-time traffic so the inbox's live behaviour can be seen
-  /// without a backend: an assignment to me, a brand-new conversation, and
-  /// a colleague claiming an unassigned one.
-  void _scheduleDemoEvents() {
-    _later(const Duration(seconds: 30), () {
-      final c = byId('c6');
-      if (c == null || c.ownership != Ownership.unassigned) return;
-      assign('c6', MockData.me, by: MockData.sara);
-      _emit(AssignedToMeEvent('c6', MockData.sara.name));
-    });
-    _later(const Duration(seconds: 45), () {
-      final id = _id();
-      final conv = Conversation(
-        id: id,
-        customer: Customer(id: 'cu-$id', name: 'رنا الحربي', channel: Channel.whatsapp, phone: '+966 55 765 4321'),
-        status: ConversationStatus.open,
-        ownership: Ownership.unassigned,
-        unreadCount: 1,
-        waitingSince: DateTime.now(),
-        messages: [
-          Message(
-            id: _id(),
-            type: MessageBubbleType.incoming,
-            text: 'مرحبا، أبغى أستفسر عن العرض',
-            sentAt: DateTime.now(),
-          ),
-        ],
-      );
-      state = state.copyWith(conversations: [conv, ...state.conversations]);
-      _emit(NewConversationEvent(id));
-    });
-    _later(const Duration(seconds: 60), () {
-      final c = byId('c7');
-      if (c == null || c.ownership != Ownership.unassigned) return;
-      assign('c7', MockData.khaled, by: MockData.khaled);
-      _emit(ColleagueClaimedEvent('c7', MockData.khaled));
-    });
-  }
 
   String _id() => 'local-${DateTime.now().microsecondsSinceEpoch}-${_seq++}';
 
@@ -286,12 +223,6 @@ class InboxController extends Notifier<InboxState> {
     setNetwork(next);
   }
 
-  Future<void> refresh() async {
-    await Future<void>.delayed(const Duration(milliseconds: 800));
-    if (state.network == NetworkState.offline) return;
-    state = state.copyWith(loading: false);
-  }
-
   void toggleSelected(String id) {
     final s = {...state.selected};
     s.contains(id) ? s.remove(id) : s.add(id);
@@ -305,16 +236,6 @@ class InboxController extends Notifier<InboxState> {
   void markRead(String id) => _update(id, (c) => c.copyWith(unreadCount: 0));
 
   void markUnread(String id) => _update(id, (c) => c.copyWith(unreadCount: 1));
-
-  /// Claim with the server's race check: returns the colleague's name when
-  /// somebody else already holds it (API: 409), otherwise claims and
-  /// returns null.
-  String? claimChecked(String id) {
-    final c = byId(id);
-    if (c != null && c.ownership == Ownership.colleague) return c.assignee?.name ?? '';
-    claim(id);
-    return null;
-  }
 
   Conversation? archive(String id) {
     final before = byId(id);
@@ -586,9 +507,8 @@ class InboxController extends Notifier<InboxState> {
 
   // ---- Messaging ----------------------------------------------------------
 
-  /// Optimistic send (Chat spec §4.7.6): the bubble appears at once as
-  /// `sending`; delivery then progresses, or the offline queue retries.
-  /// Returns the new message id.
+  /// Local optimistic bubble (`sending`) for [startConversation]. Real
+  /// messages go through the messages repository. Returns the new id.
   String sendMessage(
     String id,
     String text, {
@@ -634,64 +554,7 @@ class InboxController extends Notifier<InboxState> {
       ),
       toTop: true,
     );
-    _progressDelivery(id, msgId);
-    _simulateCustomerReply(id);
     return msgId;
-  }
-
-  void _setDelivery(String convId, String msgId, DeliveryState s, {int? retries}) => _update(
-    convId,
-    (c) => c.copyWith(
-      messages: [for (final m in c.messages) m.id == msgId ? m.copyWith(delivery: s, retries: retries) : m],
-    ),
-  );
-
-  /// Online: sent → delivered → read. Offline: retry with exponential
-  /// backoff (2s, 4s, 8s…); after 3 failed tries the bubble turns failed.
-  void _progressDelivery(String convId, String msgId, {int attempt = 0}) {
-    if (state.network != NetworkState.online) {
-      if (attempt >= 3) {
-        _setDelivery(convId, msgId, DeliveryState.failed, retries: attempt);
-        return;
-      }
-      final wait = Duration(seconds: (2 << attempt).clamp(2, 60));
-      _later(wait, () => _progressDelivery(convId, msgId, attempt: attempt + 1));
-      return;
-    }
-    _later(const Duration(milliseconds: 600), () => _setDelivery(convId, msgId, DeliveryState.sent));
-    _later(const Duration(milliseconds: 1500), () => _setDelivery(convId, msgId, DeliveryState.delivered));
-    _later(const Duration(milliseconds: 3200), () => _setDelivery(convId, msgId, DeliveryState.read));
-  }
-
-  void _simulateCustomerReply(String id) {
-    if (_autoReplied.contains(id) || state.network == NetworkState.offline) return;
-    _autoReplied.add(id);
-    _later(const Duration(milliseconds: 3400), () => _update(id, (c) => c.copyWith(customerTyping: true)));
-    _later(const Duration(milliseconds: 5800), () {
-      _update(
-        id,
-        (c) => c.copyWith(
-          customerTyping: false,
-          unreadCount: c.unreadCount + 1,
-          waitingSince: DateTime.now(),
-          messages: [
-            ...c.messages,
-            Message(id: _id(), type: MessageBubbleType.incoming, text: '👍', sentAt: DateTime.now()),
-          ],
-        ),
-        toTop: true,
-      );
-      final c = byId(id);
-      if (c == null) return;
-      _emit(NewMessageEvent(id, assignedToMe: c.ownership == Ownership.mine));
-      // A new customer message triggers a fresh AI suggestion (§4.6).
-      if (c.ownership == Ownership.mine) regenerateSuggestion(id);
-    });
-  }
-
-  void retryMessage(String convId, String msgId) {
-    _setDelivery(convId, msgId, DeliveryState.sending, retries: 0);
-    _progressDelivery(convId, msgId);
   }
 
   void deleteMessage(String convId, String msgId) => _update(
@@ -737,20 +600,6 @@ class InboxController extends Notifier<InboxState> {
     (c) => c.copyWith(messages: [for (final m in c.messages) m.id == msgId ? m.copyWith(aiFeedback: rating) : m]),
   );
 
-  /// Voice → text (AI). Simulated latency.
-  Future<void> transcribe(String convId, String msgId) async {
-    await Future<void>.delayed(const Duration(milliseconds: 1400));
-    _update(
-      convId,
-      (c) => c.copyWith(
-        messages: [
-          for (final m in c.messages)
-            m.id == msgId ? m.copyWith(transcript: 'السلام عليكم، أبغى أعرف وين وصل طلبي؟ صار له يومين ما تحرك.') : m,
-        ],
-      ),
-    );
-  }
-
   void addNote(String id, String text, {List<String> mentions = const []}) => _update(
     id,
     (c) => c.copyWith(
@@ -769,74 +618,11 @@ class InboxController extends Notifier<InboxState> {
     ),
   );
 
-  void sendTemplate(String id, MessageTemplate t) {
-    final c = byId(id);
-    sendMessage(
-      id,
-      t.body.replaceAll('{{1}}', c?.customer.name ?? '').replaceAll('{{2}}', c?.orderRef ?? '#2841'),
-      kind: MessageKind.template,
-      templateName: t.name,
-      templateButtons: const ['تتبع الطلب', 'تواصل معنا'],
-      sentVia: 'template',
-    );
-    _update(id, (c) => c.copyWith(serviceWindowOpen: true));
-  }
-
-  // ---- AI suggestion ------------------------------------------------------
-
-  void sendSuggestion(String id, {String sentVia = 'ai_suggestion'}) {
-    final s = byId(id)?.aiSuggestion;
-    if (s == null) return;
-    _update(id, (c) => c.copyWith(clearSuggestion: true));
-    sendMessage(id, s.text, sentVia: sentVia);
-  }
-
-  void dismissSuggestion(String id) => _update(id, (c) => c.copyWith(aiSuggestionDismissed: true));
-
-  void restoreSuggestion(String id) => _update(id, (c) => c.copyWith(aiSuggestionDismissed: false));
-
-  void clearSuggestion(String id) => _update(id, (c) => c.copyWith(clearSuggestion: true));
-
-  Future<void> regenerateSuggestion(String id) async {
-    state = state.copyWith(suggestionLoading: {...state.suggestionLoading, id});
-    _update(id, (c) => c.copyWith(aiSuggestionDismissed: false));
-    await Future<void>.delayed(const Duration(milliseconds: 1600));
-    final c = byId(id);
-    if (c == null) return;
-    final alt = AiSuggestion(
-      text:
-          'شكرًا لتواصلك يا ${c.customer.name.split(' ').first}! '
-          'رسوم التوصيل 25 ريالًا، وتصبح مجانية للطلبات فوق 200 ريال. يصل طلبك خلال 2–3 أيام عمل.',
-      source: c.aiSuggestion?.source ?? 'سياسة التوصيل',
-      confidence: 0.86,
-    );
-    _update(id, (c) => c.copyWith(aiSuggestion: alt));
-    state = state.copyWith(suggestionLoading: {...state.suggestionLoading}..remove(id));
-  }
-
   // ---- Presence / real-time ----------------------------------------------
 
-  /// Called when a chat opens. Demo presence: on "هيا المطيري" (c7) Khaled
-  /// claims it after 9s; on "نورة" (c1) Sara joins as a viewer and types a
-  /// note for a few seconds.
+  /// Called when a chat opens.
   void startViewing(String id) {
     markRead(id);
-    final c = byId(id);
-    if (c == null || useRealApi) return;
-    if (id == 'c7' && c.ownership == Ownership.unassigned) {
-      _later(const Duration(seconds: 9), () {
-        final now = byId(id);
-        if (now == null || now.ownership != Ownership.unassigned) return;
-        assign(id, MockData.khaled, by: MockData.khaled);
-        _emit(ColleagueClaimedEvent(id, MockData.khaled));
-      });
-    }
-    if (id == 'c1') {
-      _later(const Duration(seconds: 5), () => _update(id, (c) => c.copyWith(viewers: [MockData.sara])));
-      _later(const Duration(seconds: 7), () => _update(id, (c) => c.copyWith(colleagueTypingNote: MockData.sara.name)));
-      _later(const Duration(seconds: 11), () => _update(id, (c) => c.copyWith(clearColleagueTyping: true)));
-      _later(const Duration(seconds: 13), () => _update(id, (c) => c.copyWith(viewers: const [])));
-    }
   }
 
   /// "اطلب التحويل": an @mention note to the owner (push is server-side).
@@ -863,6 +649,8 @@ class InboxController extends Notifier<InboxState> {
   // ---- Outbound ------------------------------------------------------------
 
   /// FAB → new outbound message from an approved template.
+  /// No `/mobile/v1` endpoint starts an outbound conversation yet, so this
+  /// stays local (the server lists no sendable templates today).
   String startConversation({required String name, required String phone, required MessageTemplate template}) {
     final id = _id();
     final customer = Customer(id: 'cu-$id', name: name.isEmpty ? phone : name, channel: Channel.whatsapp, phone: phone);

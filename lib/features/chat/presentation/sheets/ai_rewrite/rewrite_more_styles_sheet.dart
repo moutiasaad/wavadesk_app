@@ -74,7 +74,7 @@ class _Row extends StatelessWidget {
                   style: context.text.bodyLarge.copyWith(color: c.textPrimary, fontWeight: FontWeight.w600),
                 ),
               ),
-              if (selected) Icon(AppIcons.check, size: 18, color: c.primary),
+              if (selected) AppIcon(AppIcons.check, dp: 18, color: c.primary),
             ],
           ),
         ),

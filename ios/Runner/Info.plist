@@ -11,6 +11,8 @@
 	</array>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Wavadesk uses Face ID to sign you in without typing your password.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Wavadesk uses your photos to attach images to knowledge base answers.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Wavadesk</string>
 	<key>CFBundleExecutable</key>

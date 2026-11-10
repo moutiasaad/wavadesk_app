@@ -7,7 +7,6 @@ import 'package:uuid/uuid.dart';
 
 import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
-import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
 import '../../../core/utils/analytics.dart';
 
@@ -38,8 +37,6 @@ final aiSuggestionControllerProvider = NotifierProvider.autoDispose
 class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState, String> {
   bool _expanded = false;
 
-  InboxController get _inbox => ref.read(inboxProvider.notifier);
-
   // ---- real-API state ----
   AiSuggestion? _remote;
   bool _remoteLoading = false;
@@ -50,25 +47,12 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
 
   @override
   AiSuggestionState build(String id) {
-    if (useRealApi) {
-      ref.onDispose(() => _poll?.cancel());
-      if (!_started) {
-        _started = true;
-        Future.microtask(_fetch);
-      }
-      return _remoteState();
+    ref.onDispose(() => _poll?.cancel());
+    if (!_started) {
+      _started = true;
+      Future.microtask(_fetch);
     }
-    final c = ref.watch(conversationProvider(id));
-    final loading = ref.watch(inboxProvider.select((s) => s.suggestionLoading.contains(id)));
-    final s = c?.aiSuggestion;
-    final view = loading
-        ? AiCardView.loading
-        : s == null
-        ? AiCardView.hidden
-        : s.noAnswer
-        ? AiCardView.noAnswer
-        : (c!.aiSuggestionDismissed ? AiCardView.collapsed : AiCardView.card);
-    return AiSuggestionState(suggestion: s, view: view, expanded: _expanded);
+    return _remoteState();
   }
 
   AiSuggestionState _remoteState() {
@@ -132,10 +116,6 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
     if (s == null) return;
     HapticFeedback.lightImpact();
     _log('send');
-    if (!useRealApi) {
-      _inbox.sendSuggestion(arg);
-      return;
-    }
     _remote = null;
     _emit();
     unawaited(
@@ -158,18 +138,13 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
     final s = state.suggestion;
     if (s == null) return null;
     _log('edit');
-    if (useRealApi) {
-      _remoteDismissed = true;
-      _emit();
-    } else {
-      _inbox.dismissSuggestion(arg);
-    }
+    _remoteDismissed = true;
+    _emit();
     return s.text;
   }
 
   Future<void> regenerate() {
     _log('regenerate');
-    if (!useRealApi) return _inbox.regenerateSuggestion(arg);
     _remoteLoading = true;
     _remoteDismissed = false;
     _pollsLeft = 0;
@@ -181,21 +156,13 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
   void collapse({bool byUser = true}) {
     if (state.view != AiCardView.card) return;
     if (byUser) _log('dismiss');
-    if (useRealApi) {
-      _remoteDismissed = true;
-      _emit();
-    } else {
-      _inbox.dismissSuggestion(arg);
-    }
+    _remoteDismissed = true;
+    _emit();
   }
 
   void expandFromPill() {
-    if (useRealApi) {
-      _remoteDismissed = false;
-      _emit();
-    } else {
-      _inbox.restoreSuggestion(arg);
-    }
+    _remoteDismissed = false;
+    _emit();
   }
 
   void toggleBody() {

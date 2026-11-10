@@ -108,7 +108,7 @@ class _StatCard extends StatelessWidget {
                     width: 36,
                     height: 36,
                     decoration: BoxDecoration(color: v.background, shape: BoxShape.circle),
-                    child: Icon(v.icon, size: 18, color: v.foreground),
+                    child: AppIcon(v.icon, dp: 18, color: v.foreground),
                   ),
                   const SizedBox(height: 6),
                   Row(

@@ -2,9 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
-import '../../auth/data/auth_api.dart' show apiBaseUrl;
 
 /// Per-conversation real-time events (Chat spec §7). Channels
 /// `conversation.{id}` + `presence-conversation.{id}`.
@@ -36,47 +34,10 @@ abstract interface class ChatSocket {
 }
 
 final chatSocketProvider = Provider<ChatSocket>((ref) {
-  final s = apiBaseUrl.isEmpty ? SampleChatSocket(ref) : PollingChatSocket();
+  final s = PollingChatSocket();
   ref.onDispose(s.dispose);
   return s;
 });
-
-/// Bridges the sample [InboxController] events.
-class SampleChatSocket implements ChatSocket {
-  SampleChatSocket(this._ref) {
-    _current = _ref.read(inboxProvider).network;
-    _ref.listen(inboxProvider.select((s) => s.network), (_, n) {
-      _current = n;
-      _status.add(n);
-    });
-  }
-
-  final Ref _ref;
-  final _status = StreamController<NetworkState>.broadcast();
-  late NetworkState _current;
-
-  @override
-  Stream<ChatSocketEvent> events(String conversationId) => _ref
-      .read(inboxProvider.notifier)
-      .events
-      .where((e) => e.conversationId == conversationId)
-      .map(
-        (e) => switch (e) {
-          NewMessageEvent() => const ChatInboundMessage(),
-          ColleagueClaimedEvent(:final agent) => ChatTakenFromMe(agent.name),
-          AssignedToMeEvent() || NewConversationEvent() => const ChatRefreshNeeded(),
-        },
-      );
-
-  @override
-  Stream<NetworkState> get status => _status.stream;
-
-  @override
-  NetworkState get currentStatus => _current;
-
-  @override
-  void dispose() => _status.close();
-}
 
 /// Fallback while no WebSocket client is wired: refresh every 15s (§7).
 class PollingChatSocket implements ChatSocket {

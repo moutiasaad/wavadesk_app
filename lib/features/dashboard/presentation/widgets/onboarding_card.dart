@@ -53,7 +53,7 @@ class OnboardingCard extends StatelessWidget {
                         color: done ? c.success : Colors.transparent,
                         border: done ? null : Border.all(color: c.borderStrong, width: 1.5),
                       ),
-                      child: done ? Icon(AppIcons.check, size: 14, color: c.onPrimary) : null,
+                      child: done ? AppIcon(AppIcons.check, size: AppIconSize.sm, color: c.onPrimary) : null,
                     ),
                     const SizedBox(width: AppSpacing.md),
                     Expanded(
@@ -65,7 +65,7 @@ class OnboardingCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (!done) Icon(AppIcons.chevronEnd, size: 16, color: c.textTertiary),
+                    if (!done) AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.textTertiary),
                   ],
                 ),
               ),

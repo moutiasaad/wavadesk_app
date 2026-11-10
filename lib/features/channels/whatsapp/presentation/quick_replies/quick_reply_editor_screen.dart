@@ -166,14 +166,14 @@ class _QuickReplyEditorScreenState extends ConsumerState<QuickReplyEditorScreen>
         // Not found only once the list has loaded; before that spinner / error.
         body: !state.loaded && state.error != null && !state.loading
             ? EmptyState(
-                icon: AppIcons.wifiOff,
+                icon: AppIcons.offline,
                 title: l.wa_load_error,
                 actionLabel: l.wa_retry,
                 onAction: ref.read(quickRepliesControllerProvider.notifier).load,
               )
             : !state.loaded
                 ? const Center(child: AppSpinner())
-                : EmptyState(icon: AppIcons.alert, title: l.wa_qr_no_results),
+                : EmptyState(icon: AppIcons.error, title: l.wa_qr_no_results),
       );
     }
     _seed(existing, canTeam);

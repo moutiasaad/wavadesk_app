@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/api/wd_api.dart' show useRealApi;
 import '../../../../core/data/data.dart';
 import '../../../../core/models/models.dart';
 import '../../../../core/theme/app_theme.dart';
@@ -9,7 +8,6 @@ import '../../../../core/utils/analytics.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../application/whatsapp_channel_controller.dart';
-import '../data/whatsapp_api.dart' show WaDemoScenario;
 import '../domain/wa_channel.dart';
 import '../domain/wa_status.dart';
 import 'sheets/wa_connection_log_sheet.dart';
@@ -30,7 +28,7 @@ class WhatsAppChannelScreen extends ConsumerStatefulWidget {
   ConsumerState<WhatsAppChannelScreen> createState() => _WhatsAppChannelScreenState();
 }
 
-enum _Menu { refresh, log, help, demo }
+enum _Menu { refresh, log, help }
 
 class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
   late final WhatsAppChannelController _ctrl;
@@ -53,21 +51,6 @@ class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
     super.dispose();
   }
 
-  Future<void> _demo() async {
-    final picked = await AppBottomSheet.show<WaDemoScenario>(
-      context,
-      title: context.l10n.wa_demo_state,
-      builder: (ctx) => Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          for (final s in WaDemoScenario.values)
-            AppRadioRow(label: s.name, selected: false, onTap: () => Navigator.of(ctx).pop(s)),
-        ],
-      ),
-    );
-    if (picked != null) await _ctrl.setDemoScenario(picked);
-  }
-
   void _onMenu(_Menu m) {
     switch (m) {
       case _Menu.refresh:
@@ -76,8 +59,6 @@ class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
         showWaConnectionLogSheet(context);
       case _Menu.help:
         WaLinks.help();
-      case _Menu.demo:
-        _demo();
     }
   }
 
@@ -99,7 +80,7 @@ class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
     Widget body;
     if (ch == null && state.error != null) {
       body = EmptyState(
-        icon: state.offline ? AppIcons.wifiOff : AppIcons.alert,
+        icon: state.offline ? AppIcons.offline : AppIcons.error,
         title: l.wa_load_error,
         actionLabel: l.wa_retry,
         onAction: _ctrl.load,
@@ -133,16 +114,15 @@ class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
         title: l.wa_title,
         background: c.backgroundMuted,
         actions: [
-          if (admin || !useRealApi)
+          if (admin)
             PopupMenuButton<_Menu>(
-              icon: Icon(AppIcons.more, color: c.textPrimary),
+              icon: AppIcon(AppIcons.more, color: c.textPrimary),
               tooltip: l.wa_more,
               onSelected: _onMenu,
               itemBuilder: (_) => [
                 if (admin) PopupMenuItem(value: _Menu.refresh, child: Text(l.wa_refresh)),
                 if (admin) PopupMenuItem(value: _Menu.log, child: Text(l.wa_log)),
                 PopupMenuItem(value: _Menu.help, child: Text(l.wa_help)),
-                if (!useRealApi) PopupMenuItem(value: _Menu.demo, child: Text(l.wa_demo_state)),
               ],
             ),
         ],

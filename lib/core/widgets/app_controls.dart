@@ -160,7 +160,7 @@ class AppCheckbox extends StatelessWidget {
         borderRadius: circle ? null : BorderRadius.circular(AppRadius.xs),
         border: Border.all(color: value ? c.primary : c.borderStrong, width: 1.5),
       ),
-      child: value ? Icon(AppIcons.check, size: size * 0.7, color: c.onPrimary) : null,
+      child: value ? AppIcon(AppIcons.check, dp: size * 0.7, color: c.onPrimary) : null,
     );
     if (onChanged == null) return Semantics(checked: value, child: box);
     return Semantics(

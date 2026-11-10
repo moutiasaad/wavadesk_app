@@ -69,7 +69,7 @@ class NotificationsAppBar extends StatelessWidget {
               isLabelVisible: filter != NotificationFilter.all,
               smallSize: 7,
               backgroundColor: c.primary,
-              child: Icon(AppIcons.filter, size: 20, color: c.textSecondary),
+              child: AppIcon(AppIcons.filter, color: c.textSecondary),
             ),
             color: c.surfaceElevated,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),

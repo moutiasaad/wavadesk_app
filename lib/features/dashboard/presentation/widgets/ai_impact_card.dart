@@ -44,7 +44,7 @@ class AiImpactCard extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(color: c.surface, borderRadius: BorderRadius.circular(AppRadius.md)),
-                    child: Icon(AppIcons.sparkle, size: 20, color: c.primary),
+                    child: AppIcon(AppIcons.ai, color: c.primary),
                   ),
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
@@ -57,7 +57,7 @@ class AiImpactCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Icon(AppIcons.chevronEnd, size: 18, color: fg),
+                  AppIcon(AppIcons.chevronForward, dp: 18, color: fg),
                 ],
               ),
               const SizedBox(height: AppSpacing.sm),
@@ -71,7 +71,7 @@ class AiImpactCard extends StatelessWidget {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(AppIcons.thumbsUp, size: 12, color: fg),
+                        AppIcon(AppIcons.thumbsUp, size: AppIconSize.xs, color: fg),
                         const SizedBox(width: AppSpacing.xs),
                         Text(l.dash_ai_rating('${(ai.thumbsUpRate! * 100).round()}'), style: small),
                       ],

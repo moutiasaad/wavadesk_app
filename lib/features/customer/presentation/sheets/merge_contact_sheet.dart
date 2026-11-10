@@ -30,7 +30,7 @@ Future<void> showMergeContactSheet(BuildContext context, WidgetRef ref, {require
     title: l.merge_confirm_title,
     body: l.merge_confirm_body,
     confirmLabel: l.merge_action,
-    icon: AppIcons.alert,
+    icon: AppIcons.error,
   );
   if (!ok || !context.mounted) return;
 
@@ -131,7 +131,7 @@ class _MergeBodyState extends ConsumerState<_MergeBody> {
                         ],
                       ),
                     ),
-                    Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+                    AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
                   ],
                 ),
               ),

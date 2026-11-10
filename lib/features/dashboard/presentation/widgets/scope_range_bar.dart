@@ -77,7 +77,7 @@ class ScopeRangeBar extends ConsumerWidget {
           for (final t in teams)
             ListTile(
               title: Text(t.name, style: ctx.text.listTitle),
-              trailing: t.id == current ? Icon(AppIcons.check, color: ctx.colors.primary) : null,
+              trailing: t.id == current ? AppIcon(AppIcons.check, color: ctx.colors.primary) : null,
               onTap: () => Navigator.of(ctx).pop(t),
             ),
         ],
@@ -112,7 +112,7 @@ class _RangeChip extends StatelessWidget {
                 for (final r in DashboardRange.values)
                   ListTile(
                     title: Text(rangeLabel(l, r), style: ctx.text.listTitle),
-                    trailing: r == range ? Icon(AppIcons.check, color: ctx.colors.primary) : null,
+                    trailing: r == range ? AppIcon(AppIcons.check, color: ctx.colors.primary) : null,
                     onTap: () => Navigator.of(ctx).pop(r),
                   ),
               ],
@@ -129,7 +129,7 @@ class _RangeChip extends StatelessWidget {
               children: [
                 Text(rangeLabel(l, range), style: t.chipLabel),
                 const SizedBox(width: AppSpacing.xs),
-                Icon(AppIcons.chevronDown, size: 14, color: c.textSecondary),
+                AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: c.textSecondary),
               ],
             ),
           ),

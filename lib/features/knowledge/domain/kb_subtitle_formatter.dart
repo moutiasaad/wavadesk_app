@@ -28,6 +28,7 @@ abstract final class KbSubtitleFormatter {
     switch (e.type) {
       case KbType.qa:
         parts.add(l.kb_updated(span(l, e.updatedAt, now: now)));
+        if (e.mediaCount > 0) parts.add(l.kb_media_n(e.mediaCount));
       case KbType.file:
         if (e.file != null && e.file!.pages > 0) {
           parts.add(l.kb_pages(e.file!.pages));

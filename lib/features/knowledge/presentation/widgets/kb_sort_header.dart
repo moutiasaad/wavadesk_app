@@ -86,7 +86,7 @@ class KbSortHeader extends StatelessWidget {
                 children: [
                   Text(label, style: active ? style.copyWith(color: c.primary) : style),
                   const SizedBox(width: 2),
-                  Icon(AppIcons.chevronDown, size: 12, color: active ? c.primary : c.textSecondary),
+                  AppIcon(AppIcons.chevronDown, size: AppIconSize.xs, color: active ? c.primary : c.textSecondary),
                 ],
               ),
             ),

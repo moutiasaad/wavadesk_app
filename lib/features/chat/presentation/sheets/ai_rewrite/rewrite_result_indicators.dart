@@ -42,7 +42,7 @@ class RewriteResultIndicators extends StatelessWidget {
           if (icon != null) ...[
             Padding(
               padding: const EdgeInsets.only(top: 2),
-              child: Icon(icon, size: 12, color: color),
+              child: AppIcon(icon, size: AppIconSize.xs, color: color),
             ),
             const SizedBox(width: AppSpacing.xs),
           ],
@@ -55,11 +55,11 @@ class RewriteResultIndicators extends StatelessWidget {
 
     final rows = <Widget>[
       if (version.unchanged && !version.edited) row(AppIcons.resolve, l.rw_no_change, c.textSuccess),
-      if (version.insertedName) row(AppIcons.user, l.rw_name_added, c.textSecondary),
-      if (version.factWarning) row(AppIcons.alertTriangle, l.rw_fact_warning, c.textWarning),
+      if (version.insertedName) row(AppIcons.customer, l.rw_name_added, c.textSecondary),
+      if (version.factWarning) row(AppIcons.warning, l.rw_fact_warning, c.textWarning),
       if (!version.unchanged || version.edited)
         row(null, l.rw_chars(resultLength, deltaLabel(sourceLength, resultLength)), c.textTertiary),
-      if (overLimit) row(AppIcons.alert, l.rw_over_limit, c.textError),
+      if (overLimit) row(AppIcons.error, l.rw_over_limit, c.textError),
     ];
     if (rows.isEmpty) return const SizedBox.shrink();
     return Padding(

@@ -23,7 +23,7 @@ class PushDisabledBanner extends StatelessWidget {
       decoration: BoxDecoration(color: c.infoContainer, borderRadius: BorderRadius.circular(AppRadius.lg + 2)),
       child: Row(
         children: [
-          Icon(AppIcons.notificationsOff, size: 20, color: c.info),
+          AppIcon(AppIcons.mute, color: c.info),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Column(

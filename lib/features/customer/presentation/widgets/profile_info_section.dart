@@ -80,7 +80,7 @@ class _ProfileInfoSectionState extends State<ProfileInfoSection> {
         onTap: ct.phone == null ? widget.onEdit : widget.onCall,
       ),
       _InfoRow(
-        icon: AppIcons.mail,
+        icon: AppIcons.email,
         label: l.profile_email,
         value: ct.email,
         ltr: true,
@@ -121,7 +121,7 @@ class _ProfileInfoSectionState extends State<ProfileInfoSection> {
               ? () => launchUrl(Uri.parse('${a.value}'), mode: LaunchMode.externalApplication)
               : null,
         ),
-      _InfoRow(icon: AppIcons.user, label: l.profile_added_by, value: createdParts.join(' · ')),
+      _InfoRow(icon: AppIcons.customer, label: l.profile_added_by, value: createdParts.join(' · ')),
     ];
   }
 
@@ -196,7 +196,7 @@ class _ProfileInfoSectionState extends State<ProfileInfoSection> {
               width: 34,
               height: 34,
               decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(10)),
-              child: Icon(r.icon, size: 17, color: c.textSecondary),
+              child: AppIcon(r.icon, size: AppIconSize.sm, color: c.textSecondary),
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(

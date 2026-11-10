@@ -59,9 +59,9 @@ class _AiTestChatScreenState extends ConsumerState<AiTestChatScreen> {
             ('web', l.ai_channel_web, AppIcons.webChat),
           ])
             ListTile(
-              leading: Icon(icon, color: ctx.colors.textSecondary),
+              leading: AppIcon(icon, color: ctx.colors.textSecondary),
               title: Text(label, style: ctx.text.listTitle),
-              trailing: key == current ? Icon(AppIcons.check, color: ctx.colors.primary) : null,
+              trailing: key == current ? AppIcon(AppIcons.check, color: ctx.colors.primary) : null,
               onTap: () => Navigator.of(ctx).pop(key),
             ),
         ],
@@ -94,7 +94,8 @@ class _AiTestChatScreenState extends ConsumerState<AiTestChatScreen> {
         ),
         actions: [
           PopupMenuButton<String>(
-            icon: Icon(AppIcons.more, color: c.textPrimary),
+            tooltip: l.common_more,
+            icon: AppIcon(AppIcons.more, color: c.textPrimary),
             onSelected: (v) => v == 'reset' ? ctrl.reset() : _pickChannel(),
             itemBuilder: (_) => [
               PopupMenuItem(value: 'reset', child: Text(l.ai_test_reset)),
@@ -111,7 +112,7 @@ class _AiTestChatScreenState extends ConsumerState<AiTestChatScreen> {
             padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
             child: Row(
               children: [
-                Icon(AppIcons.info, size: 16, color: c.textInfo),
+                AppIcon(AppIcons.info, size: AppIconSize.sm, color: c.textInfo),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(child: Text(l.ai_test_info, style: t.bodySmall.copyWith(color: c.textInfo))),
               ],
@@ -240,7 +241,7 @@ class _AiBubble extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(AppIcons.sparkle, size: 13, color: c.primary),
+                      AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary),
                       const SizedBox(width: AppSpacing.xs),
                       Text(l.ai_test_label, style: t.chatSenderLabel.copyWith(color: c.primary)),
                     ],

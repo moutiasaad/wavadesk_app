@@ -90,7 +90,7 @@ class _EraseDialogState extends State<_EraseDialog> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(color: c.errorContainer, shape: BoxShape.circle),
-                child: Icon(AppIcons.delete, size: 22, color: c.textError),
+                child: AppIcon(AppIcons.delete, color: c.textError),
               ),
               const SizedBox(height: AppSpacing.lg),
               Semantics(header: true, child: Text(l.erase_title, style: t.h4, textAlign: TextAlign.center)),

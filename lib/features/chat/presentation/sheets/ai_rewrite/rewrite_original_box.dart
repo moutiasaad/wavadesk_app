@@ -91,7 +91,7 @@ class _RewriteOriginalBoxState extends State<RewriteOriginalBox> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(AppIcons.edit, size: 14, color: c.primary),
+                          AppIcon(AppIcons.edit, size: AppIconSize.sm, color: c.primary),
                           const SizedBox(width: AppSpacing.xs),
                           Text(l.rw_edit, style: t.buttonSmall.copyWith(color: c.primary)),
                         ],

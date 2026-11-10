@@ -30,7 +30,7 @@ class EditorMetaFooter extends StatelessWidget {
           TextButton.icon(
             onPressed: onHistory,
             style: TextButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs)),
-            icon: Icon(AppIcons.history, size: 14, color: c.textLink),
+            icon: AppIcon(AppIcons.history, size: AppIconSize.sm, color: c.textLink),
             label: Text(l.kbe_history, style: t.bodySmall.copyWith(color: c.textLink, fontWeight: FontWeight.w700)),
           ),
         ],

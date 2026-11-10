@@ -172,10 +172,10 @@ class _EditorAdvancedSectionState extends State<EditorAdvancedSection> {
                     onPressed: () => widget.onExpiresAt(null),
                     tooltip: l.kbe_expires_clear,
                     iconSize: 16,
-                    icon: Icon(AppIcons.close, color: c.textSecondary),
+                    icon: AppIcon(AppIcons.close, color: c.textSecondary),
                   )
                 else
-                  Icon(AppIcons.clock, size: 16, color: c.textTertiary),
+                  AppIcon(AppIcons.clock, size: AppIconSize.sm, color: c.textTertiary),
               ],
             ),
           ),
@@ -225,7 +225,7 @@ class _EditorAdvancedSectionState extends State<EditorAdvancedSection> {
                       AnimatedRotation(
                         turns: _open ? 0.5 : 0,
                         duration: reduced ? Duration.zero : AppMotion.normal,
-                        child: Icon(AppIcons.chevronDown, size: 16, color: c.textTertiary),
+                        child: AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: c.textTertiary),
                       ),
                     ],
                   ),

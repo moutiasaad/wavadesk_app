@@ -130,7 +130,7 @@ class _WaAwayEditorScreenState extends ConsumerState<WaAwayEditorScreen> {
                   decoration: BoxDecoration(color: c.infoContainer, borderRadius: BorderRadius.circular(AppRadius.lg)),
                   child: Row(
                     children: [
-                      Icon(AppIcons.sparkle, size: 16, color: c.textInfo),
+                      AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.textInfo),
                       const SizedBox(width: AppSpacing.sm),
                       Expanded(child: Text(l.wa_away_ai_banner, style: t.bodySmall)),
                       AppButton(
@@ -252,7 +252,7 @@ class _Stepper extends StatelessWidget {
             child: Text('$value', textAlign: TextAlign.center, style: context.text.buttonMedium, semanticsLabel: l.wa_away_cooldown('$value')),
           ),
           AppIconButton(
-            icon: AppIcons.plus,
+            icon: AppIcons.add,
             size: 36,
             iconSize: 16,
             semanticLabel: '+',

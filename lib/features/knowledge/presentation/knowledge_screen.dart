@@ -20,7 +20,7 @@ import '../application/kb_upload_controller.dart';
 import '../application/knowledge_controller.dart';
 import '../data/kb_api.dart';
 import '../domain/kb_entry.dart';
-import 'files/kb_file_upload_sheet.dart';
+import 'files/kb_import_sheet.dart';
 import 'links/kb_link_add_sheet.dart';
 import 'widgets/kb_add_sheet.dart';
 import 'widgets/kb_drafts_section.dart';
@@ -71,7 +71,8 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
       case KbType.qa:
         context.push('/knowledge/new');
       case KbType.file:
-        await startKbFileUpload(context, ref, snackOffset: _snackOffset);
+        // Same as the web panel: a JSON file of entries.
+        await startKbJsonImport(context, ref);
       case KbType.link:
         final id = await showKbLinkAddSheet(context);
         if (id != null && mounted) _snack(context.l10n.kb_link_added, kind: SnackKind.success);
@@ -134,7 +135,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
           if (isQa) SheetActionRow(icon: AppIcons.copy, label: l.kb_copy_answer, onTap: () => Navigator.of(ctx).pop(_RowAction.copy)),
           if (perms.canEdit)
             SheetActionRow(
-              icon: e.enabled ? AppIcons.eyeOff : AppIcons.eye,
+              icon: e.enabled ? AppIcons.hidePassword : AppIcons.preview,
               label: e.enabled ? l.kb_disable : l.kb_enable,
               onTap: () => Navigator.of(ctx).pop(_RowAction.toggle),
             ),
@@ -167,13 +168,13 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
     switch (o) {
       case _Overflow.aiSettings:
         context.push(Routes.aiAgent);
-      case _Overflow.tags:
       case _Overflow.import:
-        // Tag management and bulk import live on the web dashboard (spec §1).
-        if (useRealApi) {
-          final uri = Uri.parse('$apiBaseUrl/knowledge');
-          if (await launchUrl(uri, mode: LaunchMode.externalApplication)) return;
-        }
+        // JSON import works in the app now (same as the web panel).
+        await startKbJsonImport(context, ref);
+      case _Overflow.tags:
+        // Tag management lives on the web dashboard (spec §1).
+        final uri = Uri.parse('$apiBaseUrl/knowledge');
+        if (await launchUrl(uri, mode: LaunchMode.externalApplication)) return;
         if (mounted) _snack(context.l10n.kb_web_only);
     }
   }
@@ -212,7 +213,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
         actions: [
           if (perms.canEdit)
             AppIconButton(
-              icon: AppIcons.plus,
+              icon: AppIcons.add,
               variant: AppIconButtonVariant.primary,
               size: 40,
               iconSize: 20,
@@ -220,7 +221,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
               onPressed: _add,
             ),
           PopupMenuButton<_Overflow>(
-            icon: Icon(AppIcons.more, size: 20, color: c.textPrimary),
+            icon: AppIcon(AppIcons.more, color: c.textPrimary),
             tooltip: l.common_more,
             onSelected: _overflow,
             itemBuilder: (_) => [
@@ -245,7 +246,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
       slivers.add(SliverFillRemaining(
         hasScrollBody: false,
         child: EmptyState(
-          icon: e is KbApiException && e.isNetwork ? AppIcons.wifiOff : AppIcons.alert,
+          icon: e is KbApiException && e.isNetwork ? AppIcons.offline : AppIcons.error,
           title: l.kb_error,
           actionLabel: l.kb_retry,
           onAction: _ctrl.refresh,
@@ -262,7 +263,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
         child: KbEmptyState(
           canEdit: perms.canEdit,
           onAddQa: () => _guardOnline() ? context.push('/knowledge/new') : null,
-          onUpload: () => _guardOnline() ? startKbFileUpload(context, ref, snackOffset: _snackOffset) : null,
+          onUpload: () => _guardOnline() ? startKbJsonImport(context, ref) : null,
         ),
       ));
     } else {

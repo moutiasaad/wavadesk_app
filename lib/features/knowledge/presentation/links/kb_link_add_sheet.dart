@@ -118,7 +118,7 @@ class _KbLinkAddSheetState extends ConsumerState<KbLinkAddSheet> {
                     padding: const EdgeInsets.only(top: AppSpacing.sm),
                     child: Row(
                       children: [
-                        if (_previewing) AppSpinner(size: 14, color: c.textTertiary, delayed: false) else Icon(AppIcons.globe, size: 14, color: c.textSecondary),
+                        if (_previewing) AppSpinner(size: 14, color: c.textTertiary, delayed: false) else AppIcon(AppIcons.globe, size: AppIconSize.sm, color: c.textSecondary),
                         const SizedBox(width: AppSpacing.sm),
                         if (_title != null) Expanded(child: Text(_title!, style: t.bodySmall.copyWith(color: c.textSecondary), maxLines: 1, overflow: TextOverflow.ellipsis)),
                       ],

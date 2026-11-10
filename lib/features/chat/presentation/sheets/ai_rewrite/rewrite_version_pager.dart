@@ -44,7 +44,7 @@ class RewriteVersionPager extends StatelessWidget {
               width: 28,
               height: 28,
               alignment: Alignment.center,
-              child: Icon(icon, size: 16, color: onTap == null ? c.textDisabled : c.onPrimaryContainer),
+              child: AppIcon(icon, size: AppIconSize.sm, color: onTap == null ? c.textDisabled : c.onPrimaryContainer),
             ),
           ),
         ),

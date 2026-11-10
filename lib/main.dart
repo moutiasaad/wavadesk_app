@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'core/api/wd_api.dart';
 import 'core/api/wd_api_provider.dart';
-import 'core/data/data.dart';
+import 'core/data/settings_controller.dart' show sharedPrefsProvider;
 import 'core/notifications/push_service.dart';
 import 'features/auth/application/auth_session.dart';
 import 'features/auth/data/auth_api.dart';
@@ -34,23 +34,24 @@ Future<void> main() async {
     }
   }
 
-  final prefs = await SharedPreferences.getInstance();
-  // Sample data from assets/fake/*.json (edit those files to test scenarios).
-  await MockData.load();
-
-  // Real API when built with --dart-define=WAVADESK_API_URL=… (+ API key and
-  // bootstrap secret), otherwise the simulated one (see SimulatedAuthApi).
-  WdApi? api;
-  if (useRealApi) {
-    var version = '1.0.0';
-    try {
-      version = (await PackageInfo.fromPlatform()).version;
-    } catch (_) {}
-    api = WdApi(baseUrl: apiBaseUrl, apiKey: apiKey, bootstrapSecret: bootstrapSecret, appVersion: version);
+  // API only: without the build config there is nothing to talk to, so say
+  // so instead of starting on fake data. Run with
+  // --dart-define-from-file=dart_defines/<env>.json or ship assets/config/api.json.
+  await loadApiConfig();
+  if (apiBaseUrl.isEmpty || apiKey.isEmpty) {
+    runApp(const ApiNotConfiguredApp());
+    return;
   }
-  final auth = AuthRepository(api: api == null ? SimulatedAuthApi() : HttpAuthApi(api));
+
+  final prefs = await SharedPreferences.getInstance();
+  var version = '1.0.0';
+  try {
+    version = (await PackageInfo.fromPlatform()).version;
+  } catch (_) {}
+  final api = WdApi(baseUrl: apiBaseUrl, apiKey: apiKey, bootstrapSecret: bootstrapSecret, appVersion: version);
+  final auth = AuthRepository(api: HttpAuthApi(api));
   await auth.load();
-  api?.session = auth;
+  api.session = auth;
 
   runApp(
     ProviderScope(
@@ -62,4 +63,28 @@ Future<void> main() async {
       child: const WavadeskApp(),
     ),
   );
+}
+
+/// Shown when the app was built without WAVADESK_API_URL / WAVADESK_API_KEY.
+class ApiNotConfiguredApp extends StatelessWidget {
+  const ApiNotConfiguredApp({super.key});
+
+  @override
+  Widget build(BuildContext context) => const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: SafeArea(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: Text(
+                  'لم يتم إعداد الاتصال بالخادم.\nشغّل التطبيق مع dart_defines/<env>.json\n\n'
+                  'API is not configured.\nRun with --dart-define-from-file=dart_defines/<env>.json',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
 }

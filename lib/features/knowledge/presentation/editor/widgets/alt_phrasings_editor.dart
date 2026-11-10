@@ -243,7 +243,7 @@ class _AltChip extends StatelessWidget {
                     radius: 16,
                     child: Padding(
                       padding: const EdgeInsets.all(AppSpacing.xs),
-                      child: Icon(AppIcons.close, size: 12, color: c.textTertiary),
+                      child: AppIcon(AppIcons.close, size: AppIconSize.xs, color: c.textTertiary),
                     ),
                   ),
               ],
@@ -285,7 +285,7 @@ class _GhostChip extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(AppIcons.sparkle, size: 11, color: c.primary),
+                AppIcon(AppIcons.ai, dp: 11, color: c.primary),
                 const SizedBox(width: AppSpacing.xs),
                 Flexible(
                   child: Text(text, style: t.chipLabel.copyWith(color: c.onPrimaryContainer), maxLines: 1, overflow: TextOverflow.ellipsis),

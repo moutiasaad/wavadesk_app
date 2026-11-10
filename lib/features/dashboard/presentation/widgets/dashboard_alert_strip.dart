@@ -29,11 +29,11 @@ class DashboardAlertStrip extends ConsumerWidget {
     final n = '${alert.count}';
 
     final (icon, title, body, action, primary) = switch (alert.kind) {
-      DashboardAlertKind.whatsappDisconnected => (AppIcons.wifiOff, l.dash_alert_wa_title, l.dash_alert_wa_body, l.dash_alert_wa_action, true),
-      DashboardAlertKind.slaBreach => (AppIcons.clock, l.dash_alert_sla_title(n, '${alert.slaMinutes}'), null, l.dash_alert_sla_action, true),
+      DashboardAlertKind.whatsappDisconnected => (AppIcons.disconnected, l.dash_alert_wa_title, l.dash_alert_wa_body, l.dash_alert_wa_action, true),
+      DashboardAlertKind.slaBreach => (AppIcons.slaBreach, l.dash_alert_sla_title(n, '${alert.slaMinutes}'), null, l.dash_alert_sla_action, true),
       DashboardAlertKind.unassignedBacklog => (AppIcons.inbox, l.dash_alert_unassigned_title(n), null, l.dash_alert_view, false),
       DashboardAlertKind.kbUnanswered => (AppIcons.lightbulb, l.dash_alert_kb_title(n), l.dash_alert_kb_body, l.dash_alert_kb_action, false),
-      DashboardAlertKind.trialEnding => (AppIcons.hourglass, l.dash_alert_trial_title('${alert.daysLeft}'), null, l.dash_alert_trial_action, false),
+      DashboardAlertKind.trialEnding => (AppIcons.waiting, l.dash_alert_trial_title('${alert.daysLeft}'), null, l.dash_alert_trial_action, false),
     };
     final bg = urgent ? c.errorContainer : (alert.kind == DashboardAlertKind.kbUnanswered && !c.isDark ? const Color(0xFFFFFBEB) : c.warningContainer);
     final fg = urgent ? c.textError : c.textWarning;
@@ -71,7 +71,7 @@ class DashboardAlertStrip extends ConsumerWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(color: c.surface, borderRadius: BorderRadius.circular(AppRadius.md)),
-              child: Icon(icon, size: 18, color: fg),
+              child: AppIcon(icon, dp: 18, color: fg),
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(
@@ -95,7 +95,7 @@ class DashboardAlertStrip extends ConsumerWidget {
               IconButton(
                 tooltip: l.dash_alert_dismiss,
                 visualDensity: VisualDensity.compact,
-                icon: Icon(AppIcons.close, size: 18, color: c.textSecondary),
+                icon: AppIcon(AppIcons.close, dp: 18, color: c.textSecondary),
                 onPressed: () => ref.read(dashboardControllerProvider.notifier).dismissAlert(alert),
               ),
           ],

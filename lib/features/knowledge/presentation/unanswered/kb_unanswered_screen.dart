@@ -73,7 +73,7 @@ class _KbUnansweredScreenState extends ConsumerState<KbUnansweredScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           for (var i = 0; i < ids.length; i++)
-            SheetActionRow(icon: AppIcons.conversations, label: '${u.question} · ${i + 1}', onTap: () => Navigator.of(ctx).pop(ids[i])),
+            SheetActionRow(icon: AppIcons.conversation, label: '${u.question} · ${i + 1}', onTap: () => Navigator.of(ctx).pop(ids[i])),
           const SizedBox(height: AppSpacing.md),
         ],
       ),
@@ -98,7 +98,7 @@ class _KbUnansweredScreenState extends ConsumerState<KbUnansweredScreen> {
     if (!s.loaded && s.error != null) {
       final e = s.error;
       body = EmptyState(
-        icon: e is KbApiException && e.isNetwork ? AppIcons.wifiOff : AppIcons.alert,
+        icon: e is KbApiException && e.isNetwork ? AppIcons.offline : AppIcons.error,
         title: l.kb_error,
         actionLabel: l.kb_retry,
         onAction: _ctrl.refresh,

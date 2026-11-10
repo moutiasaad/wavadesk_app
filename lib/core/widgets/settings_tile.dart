@@ -60,7 +60,7 @@ class SettingsTile extends StatelessWidget {
                     color: iconBackground ?? c.primaryContainer,
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Icon(icon, size: 18, color: iconColor ?? c.primary),
+                  child: AppIcon(icon, dp: 18, color: iconColor ?? c.primary),
                 ),
                 const SizedBox(width: AppSpacing.md),
               ],
@@ -98,7 +98,7 @@ class SettingsTile extends StatelessWidget {
                   ),
                 if (showChevron && onTap != null) ...[
                   const SizedBox(width: AppSpacing.xs),
-                  Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+                  AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
                 ],
               ],
             ],

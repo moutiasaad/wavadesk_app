@@ -124,20 +124,16 @@ class _ClaimBarState extends ConsumerState<ClaimBar> with TickerProviderStateMix
   Future<void> _assignToAi() async {
     final l = context.l10n;
     final api = ref.read(chatApiProvider);
-    if (api == null) {
-      ref.read(inboxProvider.notifier).assignToAi(_id);
-    } else {
-      try {
-        final r = await api.action(_id, 'assign', {
-          'assignee': {'type': 'ai'},
-        }, WdApi.newIdempotencyKey());
-        ref.read(inboxProvider.notifier).upsertFromApi(r.conversation);
-        ref.read(remoteChatPermissionsProvider.notifier).put(r);
-      } on ChatApiException catch (e) {
-        if (!mounted) return;
-        AppSnackbar.show(context, message: e.message ?? l.chatscreen_action_failed, kind: SnackKind.error);
-        return;
-      }
+    try {
+      final r = await api.action(_id, 'assign', {
+        'assignee': {'type': 'ai'},
+      }, WdApi.newIdempotencyKey());
+      ref.read(inboxProvider.notifier).upsertFromApi(r.conversation);
+      ref.read(remoteChatPermissionsProvider.notifier).put(r);
+    } on ChatApiException catch (e) {
+      if (!mounted) return;
+      AppSnackbar.show(context, message: e.message ?? l.chatscreen_action_failed, kind: SnackKind.error);
+      return;
     }
     if (!mounted) return;
     Analytics.log('claim_assign_done', {'target_type': 'ai', 'undo': false});
@@ -234,7 +230,7 @@ class _ClaimBarState extends ConsumerState<ClaimBar> with TickerProviderStateMix
               opacity: claiming ? 0.4 : 1,
               child: AppButton(
                 label: l.claim_assign_colleague,
-                icon: AppIcons.users,
+                icon: AppIcons.team,
                 variant: AppButtonVariant.secondary,
                 size: AppButtonSize.large,
                 height: 46,

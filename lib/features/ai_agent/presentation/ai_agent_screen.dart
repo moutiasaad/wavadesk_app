@@ -94,7 +94,7 @@ class _AiAgentScreenState extends ConsumerState<AiAgentScreen> {
     Widget body;
     if (cfg == null && state.error != null) {
       body = EmptyState(
-        icon: state.offline ? AppIcons.wifiOff : AppIcons.alert,
+        icon: state.offline ? AppIcons.offline : AppIcons.error,
         title: l.ai_load_error,
         actionLabel: l.ai_retry,
         onAction: ref.read(aiAgentControllerProvider.notifier).load,
@@ -175,7 +175,7 @@ class _InfoBanner extends StatelessWidget {
       decoration: BoxDecoration(color: c.infoContainer, borderRadius: BorderRadius.circular(AppRadius.lg)),
       child: Row(
         children: [
-          Icon(icon, size: 18, color: c.textInfo),
+          AppIcon(icon, dp: 18, color: c.textInfo),
           const SizedBox(width: AppSpacing.sm),
           Expanded(child: Text(text, style: context.text.bodySmall.copyWith(color: c.textPrimary))),
         ],
@@ -199,7 +199,7 @@ class _PlanOffCard extends StatelessWidget {
       decoration: BoxDecoration(color: c.warningContainer, borderRadius: BorderRadius.circular(AppRadius.xl)),
       child: Row(
         children: [
-          Icon(AppIcons.alertTriangle, size: 18, color: c.textWarning),
+          AppIcon(AppIcons.warning, dp: 18, color: c.textWarning),
           const SizedBox(width: AppSpacing.sm),
           Expanded(child: Text(l.ai_plan_off, style: context.text.bodySmall.copyWith(fontWeight: FontWeight.w700))),
           if (isAdmin)

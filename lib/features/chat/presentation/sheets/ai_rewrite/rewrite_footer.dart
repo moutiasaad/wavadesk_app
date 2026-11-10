@@ -74,7 +74,7 @@ class _RegenerateButton extends StatelessWidget {
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: onPressed,
-              child: SizedBox.square(dimension: 52, child: Icon(AppIcons.redo, size: 20, color: c.textPrimary)),
+              child: SizedBox.square(dimension: 52, child: AppIcon(AppIcons.redo, color: c.textPrimary)),
             ),
           ),
         ),

@@ -97,7 +97,7 @@ class MetricGrid extends ConsumerWidget {
     final fourth = ai != null
         ? DashboardMetricCard(
             label: l.dash_ai_reply,
-            labelIcon: AppIcons.sparkle,
+            labelIcon: AppIcons.ai,
             value: (ai.rate * 100).round(),
             display: (v) => '${v.round()}%',
             aside: l.dash_of_questions,

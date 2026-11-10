@@ -21,7 +21,7 @@ class KbTypeVisual {
     final dark = c.isDark;
     if (draft) return KbTypeVisual(AppIcons.edit, c.surfaceVariant, c.textSecondary);
     return switch (type) {
-      KbType.qa => KbTypeVisual(AppIcons.knowledge, dark ? const Color(0xFF0F2E2D) : c.primaryContainer, dark ? const Color(0xFF2BB8AD) : c.primary),
+      KbType.qa => KbTypeVisual(AppIcons.kb, dark ? const Color(0xFF0F2E2D) : c.primaryContainer, dark ? const Color(0xFF2BB8AD) : c.primary),
       KbType.file => KbTypeVisual(AppIcons.file, dark ? const Color(0xFF13203A) : const Color(0xFFEFF4FF), dark ? const Color(0xFF60A5FA) : const Color(0xFF2563EB)),
       KbType.link => KbTypeVisual(AppIcons.link, dark ? const Color(0xFF2E2110) : const Color(0xFFFEF3E2), dark ? const Color(0xFFFBBF24) : const Color(0xFFB45309)),
     };
@@ -74,7 +74,7 @@ class KbEntryTile extends StatelessWidget {
           leading: AppSpinner(size: 11, color: c.textInfo, delayed: false),
         ),
       if (entry.status == KbStatus.failed)
-        StatusBadge(label: l.kb_badge_failed, foreground: c.textError, background: c.errorContainer, compact: true, icon: AppIcons.alert),
+        StatusBadge(label: l.kb_badge_failed, foreground: c.textError, background: c.errorContainer, compact: true, icon: AppIcons.error),
     ];
   }
 
@@ -110,7 +110,7 @@ class KbEntryTile extends StatelessWidget {
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(color: v.background, borderRadius: BorderRadius.circular(10)),
-                child: Icon(v.icon, size: 18, color: v.foreground),
+                child: AppIcon(v.icon, dp: 18, color: v.foreground),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(
@@ -144,7 +144,7 @@ class KbEntryTile extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: AppSpacing.xs),
-              Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+              AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
             ],
           ),
         ),
@@ -166,7 +166,7 @@ class KbEntryTile extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 20, color: onAction),
+              AppIcon(icon, color: onAction),
               const SizedBox(height: AppSpacing.xs),
               Text(text, style: t.caption.copyWith(color: onAction), maxLines: 1, overflow: TextOverflow.ellipsis),
             ],
@@ -183,7 +183,7 @@ class KbEntryTile extends StatelessWidget {
               motion: const DrawerMotion(),
               extentRatio: ratio,
               children: [
-                action(entry.enabled ? AppIcons.eyeOff : AppIcons.eye, entry.enabled ? l.kb_disable : l.kb_enable, c.textSecondary, onToggle!),
+                action(entry.enabled ? AppIcons.hidePassword : AppIcons.preview, entry.enabled ? l.kb_disable : l.kb_enable, c.textSecondary, onToggle!),
               ],
             ),
       // Swipe toward the start edge → حذف (error).

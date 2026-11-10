@@ -43,7 +43,7 @@ class LocationContent extends StatelessWidget {
                   width: 228,
                   child: Row(
                     children: [
-                      Icon(AppIcons.location, size: 14, color: foreground.withValues(alpha: 0.8)),
+                      AppIcon(AppIcons.location, size: AppIconSize.sm, color: foreground.withValues(alpha: 0.8)),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(

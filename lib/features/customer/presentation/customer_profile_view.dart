@@ -167,7 +167,7 @@ class _CustomerProfileViewState extends ConsumerState<CustomerProfileView> {
         key: const ValueKey('error'),
         padding: const EdgeInsets.only(top: AppSpacing.x4l),
         child: EmptyState(
-          icon: AppIcons.wifiOff,
+          icon: AppIcons.offline,
           title: l.profile_load_error,
           actionLabel: l.profile_retry,
           actionVariant: AppButtonVariant.primary,
@@ -196,7 +196,7 @@ class _CustomerProfileViewState extends ConsumerState<CustomerProfileView> {
             decoration: BoxDecoration(color: c.warningContainer, borderRadius: BorderRadius.circular(AppRadius.sm)),
             child: Row(
               children: [
-                Icon(AppIcons.wifiOff, size: 14, color: c.textWarning),
+                AppIcon(AppIcons.offline, size: AppIconSize.sm, color: c.textWarning),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
                   child: Text(l.profile_offline, style: t.caption.copyWith(color: c.textWarning)),

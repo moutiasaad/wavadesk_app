@@ -48,7 +48,7 @@ class AiTonePreview extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(AppIcons.sparkle, size: 12, color: c.primary),
+                  AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary),
                   const SizedBox(width: AppSpacing.xs),
                   Text(l.ai_test_label, style: t.caption.copyWith(color: c.primary, fontWeight: FontWeight.w700)),
                 ],

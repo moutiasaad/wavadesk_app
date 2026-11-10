@@ -97,7 +97,7 @@
   "kb_add_title": "إضافة إلى قاعدة المعرفة",
   "kb_add_qa_sub": "الأسرع والأدق للذكاء",
   "kb_add_file": "رفع ملف",
-  "kb_add_file_sub": "PDF أو Word أو TXT حتى 10 ميجابايت",
+  "kb_add_file_sub": "ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب",
   "kb_add_link": "إضافة رابط",
   "kb_add_link_sub": "صفحة من موقعك، يقرأها الذكاء تلقائيًا",
   "kb_alt_phrasings": "صيغ أخرى",
@@ -352,5 +352,50 @@
   "kb_show_less": "عرض أقل",
   "kb_proposed": "أُرسل اقتراحك للمراجعة",
   "kb_save_err": "تعذّر الحفظ",
-  "kb_none_found": "لا توجد نتائج"
+  "kb_none_found": "لا توجد نتائج",
+  "kb_import_title": "استيراد من ملف JSON",
+  "kb_import_hint": "ملف يحتوي قائمة entries، لكل مدخل type و title و body — بنفس صيغة لوحة الويب.",
+  "kb_import_pick": "اختيار ملف JSON",
+  "kb_import_template": "تنزيل القالب",
+  "kb_importing": "جارٍ الاستيراد…",
+  "kb_import_done": "تم استيراد {n} مدخلًا",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "تم تخطي {n}",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "السطر {row}: {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "تعذّر الاستيراد",
+  "kb_import_json_only": "اختر ملفًا بصيغة JSON",
+  "kb_template_saved": "تم حفظ القالب",
+  "kb_template_copied": "تم نسخ القالب إلى الحافظة",
+  "kb_media_title": "المرفقات",
+  "kb_media_n": "{n} مرفقات",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

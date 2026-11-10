@@ -344,11 +344,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get account_network_online => 'متصل';
 
   @override
-  String account_network_demo(String state) {
-    return 'وضع الاتصال التجريبي: $state';
-  }
-
-  @override
   String get ai_settings_title => 'وكيل الذكاء الاصطناعي';
 
   @override
@@ -2874,8 +2869,8 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String claim_viewing_since_min(int n) {
-    return 'منذ $n د';
+  String claim_viewing_since_min(String t) {
+    return 'منذ $t';
   }
 
   @override
@@ -3046,6 +3041,11 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get actions_add_note => 'إضافة ملاحظة داخلية';
+
+  @override
+  String claim_a11y_wait_span(String t) {
+    return 'ينتظر منذ $t';
+  }
 
   @override
   String get conversations_segment_mine => 'لي';
@@ -3581,6 +3581,21 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get time_unit_day => 'ي';
+
+  @override
+  String get time_unit_hour => 'س';
+
+  @override
+  String get time_unit_min => 'د';
+
+  @override
+  String get common_increase => 'زيادة';
+
+  @override
+  String get common_decrease => 'إنقاص';
+
+  @override
   String get dash_title => 'لوحة التحكم';
 
   @override
@@ -3998,16 +4013,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get inbox_deleted => 'تم حذف هذه الرسالة';
 
   @override
-  String inbox_tag_waiting(int n) {
-    String _temp0 = intl.Intl.pluralLogic(
-      n,
-      locale: localeName,
-      other: 'ينتظر $n دقيقة',
-      few: 'ينتظر $n دقائق',
-      two: 'ينتظر دقيقتين',
-      one: 'ينتظر دقيقة',
-    );
-    return '$_temp0';
+  String inbox_tag_waiting(String t) {
+    return 'ينتظر $t';
   }
 
   @override
@@ -4738,6 +4745,65 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kbe_a11y_dismiss => 'إغلاق التنبيه';
 
   @override
+  String get kbe_media => 'المرفقات';
+
+  @override
+  String get kbe_media_hint => 'يرسلها الذكاء مع الإجابة';
+
+  @override
+  String get kbe_media_add => 'إضافة صورة أو تسجيل صوتي';
+
+  @override
+  String get kbe_media_image => 'صورة';
+
+  @override
+  String get kbe_media_voice => 'تسجيل صوتي';
+
+  @override
+  String get kbe_media_with_text => 'مع النص';
+
+  @override
+  String get kbe_media_file_only => 'ملف فقط';
+
+  @override
+  String get kbe_media_remove => 'إزالة';
+
+  @override
+  String kbe_media_uploading(int p) {
+    return 'جارٍ الرفع $p%';
+  }
+
+  @override
+  String get kbe_media_failed => 'تعذّر رفع الملف';
+
+  @override
+  String get kbe_media_queued => 'يُرفع بعد الحفظ';
+
+  @override
+  String get kbe_media_too_big => 'الملف أكبر من 16 ميجابايت';
+
+  @override
+  String get kbe_media_image_too_big => 'الصورة أكبر من 5 ميجابايت';
+
+  @override
+  String get kbe_media_type_err => 'اختر صورة أو ملفًا صوتيًا';
+
+  @override
+  String get kbe_media_upgrade =>
+      'إرفاق الصور والتسجيلات متاح في الباقات المدفوعة';
+
+  @override
+  String get kbe_media_upgrade_cta => 'عرض الباقات';
+
+  @override
+  String kbe_media_some_failed(int n) {
+    return 'تم الحفظ، لكن تعذّر رفع $n من المرفقات';
+  }
+
+  @override
+  String get kbe_media_send_mode => 'طريقة الإرسال';
+
+  @override
   String get kb_title => 'المعرفة';
 
   @override
@@ -4868,7 +4934,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kb_add_file => 'رفع ملف';
 
   @override
-  String get kb_add_file_sub => 'PDF أو Word أو TXT حتى 10 ميجابايت';
+  String get kb_add_file_sub => 'ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب';
 
   @override
   String get kb_add_link => 'إضافة رابط';
@@ -5236,6 +5302,57 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kb_none_found => 'لا توجد نتائج';
 
   @override
+  String get kb_import_title => 'استيراد من ملف JSON';
+
+  @override
+  String get kb_import_hint =>
+      'ملف يحتوي قائمة entries، لكل مدخل type و title و body — بنفس صيغة لوحة الويب.';
+
+  @override
+  String get kb_import_pick => 'اختيار ملف JSON';
+
+  @override
+  String get kb_import_template => 'تنزيل القالب';
+
+  @override
+  String get kb_importing => 'جارٍ الاستيراد…';
+
+  @override
+  String kb_import_done(int n) {
+    return 'تم استيراد $n مدخلًا';
+  }
+
+  @override
+  String kb_import_skipped(int n) {
+    return 'تم تخطي $n';
+  }
+
+  @override
+  String kb_import_row_err(int row, String message) {
+    return 'السطر $row: $message';
+  }
+
+  @override
+  String get kb_import_failed => 'تعذّر الاستيراد';
+
+  @override
+  String get kb_import_json_only => 'اختر ملفًا بصيغة JSON';
+
+  @override
+  String get kb_template_saved => 'تم حفظ القالب';
+
+  @override
+  String get kb_template_copied => 'تم نسخ القالب إلى الحافظة';
+
+  @override
+  String get kb_media_title => 'المرفقات';
+
+  @override
+  String kb_media_n(int n) {
+    return '$n مرفقات';
+  }
+
+  @override
   String get ntf_title => 'الإشعارات';
 
   @override
@@ -5368,8 +5485,8 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String ntf_t_sla_breach(String customer, int m) {
-    return '$customer ينتظر ردّك منذ $m د';
+  String ntf_t_sla_breach(String customer, String m) {
+    return '$customer ينتظر ردّك منذ $m';
   }
 
   @override
@@ -5430,8 +5547,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ntf_t_app_update => 'يتوفر إصدار جديد';
 
   @override
-  String ntf_b_claim_needed(int m) {
-    return 'أقدمها منذ $m د';
+  String ntf_b_claim_needed(String m) {
+    return 'أقدمها منذ $m';
   }
 
   @override
@@ -5451,8 +5568,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ntf_b_channel_disconnected => 'لن تصل الرسائل حتى تعيد الربط';
 
   @override
-  String ntf_b_channel_reconnected(int m) {
-    return 'توقف $m دقائق · لم تُفقد أي رسالة';
+  String ntf_b_channel_reconnected(String m) {
+    return 'توقف $m · لم تُفقد أي رسالة';
   }
 
   @override

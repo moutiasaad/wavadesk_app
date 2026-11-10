@@ -28,11 +28,11 @@ class RewriteStyle {
   bool get isTranslate => id == translate.id;
 
   // Chips, in mockup order (§5.4).
-  static const professional = RewriteStyle._('professional', icon: AppIcons.briefcase);
-  static const shorter = RewriteStyle._('shorter', icon: AppIcons.minus, allowedInNote: true);
-  static const friendlier = RewriteStyle._('friendlier', icon: AppIcons.smile);
-  static const apology = RewriteStyle._('apology', icon: AppIcons.heartHandshake);
-  static const fix = RewriteStyle._('fix', icon: AppIcons.spellCheck, allowedInNote: true);
+  static const professional = RewriteStyle._('professional', icon: AppIcons.formal);
+  static const shorter = RewriteStyle._('shorter', icon: AppIcons.shorter, allowedInNote: true);
+  static const friendlier = RewriteStyle._('friendlier', icon: AppIcons.friendly);
+  static const apology = RewriteStyle._('apology', icon: AppIcons.friendly);
+  static const fix = RewriteStyle._('fix', icon: AppIcons.spellcheck, allowedInNote: true);
   static const translate = RewriteStyle._('translate', icon: AppIcons.language, allowedInNote: true);
 
   // "المزيد ▾" menu (§5.4.2).

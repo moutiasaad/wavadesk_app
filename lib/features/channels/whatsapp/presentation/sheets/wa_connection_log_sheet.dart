@@ -31,7 +31,7 @@ class _Log extends ConsumerWidget {
     final l = context.l10n;
     final async = ref.watch(_logProvider);
     if (async.hasError && !async.hasValue) {
-      return EmptyState(icon: AppIcons.alert, title: l.wa_load_error, actionLabel: l.wa_retry, onAction: () => ref.invalidate(_logProvider));
+      return EmptyState(icon: AppIcons.error, title: l.wa_load_error, actionLabel: l.wa_retry, onAction: () => ref.invalidate(_logProvider));
     }
     final rows = async.valueOrNull;
     if (rows == null) return const SizedBox(height: 140, child: Center(child: AppSpinner()));

@@ -12,6 +12,8 @@ import '../../../../core/widgets/widgets.dart';
 import '../../../chat/presentation/sheets/ai_rewrite/ai_rewrite_sheet.dart';
 import '../../../conversations/domain/relative_time_formatter.dart';
 import '../../application/kb_answer_editor_controller.dart';
+import '../../application/kb_media_controller.dart';
+import '../../application/knowledge_controller.dart';
 import '../../domain/kb_editor_validation.dart';
 import '../../domain/kb_entry.dart';
 import 'widgets/ai_preview_card.dart';
@@ -21,6 +23,7 @@ import 'widgets/duplicate_warning.dart';
 import 'widgets/editor_advanced_section.dart';
 import 'widgets/editor_app_bar.dart';
 import 'widgets/editor_conflict_sheet.dart';
+import 'widgets/editor_media_section.dart';
 import 'widgets/editor_meta_footer.dart';
 import 'widgets/editor_source_banner.dart';
 import 'widgets/editor_tools_row.dart';
@@ -76,6 +79,9 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
   int _syncedRevision = -1;
   bool _closing = false;
   bool _deletedShown = false;
+
+  /// Uploading attachments queued before the entry existed (create mode).
+  bool _flushing = false;
 
   KbeArgs get _args => widget.args;
   KbAnswerEditorController get _ctrl => ref.read(kbAnswerEditorControllerProvider(_args).notifier);
@@ -157,7 +163,18 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     switch (r) {
       case KbeOutcome o:
         HapticFeedback.mediumImpact();
-        _finish(o);
+        // Like the web form: files picked before the first save upload now
+        // that the entry exists, then the modal closes.
+        var mediaFailed = 0;
+        final media = ref.read(kbMediaControllerProvider(_args));
+        final id = o.entryId;
+        if (id != null && media.hasQueued && o.kind != KbeOutcomeKind.proposed) {
+          setState(() => _flushing = true);
+          mediaFailed = await ref.read(kbMediaControllerProvider(_args).notifier).flush(id);
+          if (!mounted) return;
+          setState(() => _flushing = false);
+        }
+        _finish(o, mediaFailed: mediaFailed);
       case KbeSaveFailure(:final conflict?, :final updatedBy):
         final choice = await showEditorConflictSheet(
           context,
@@ -189,7 +206,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
   }
 
   /// Close (slide down) and confirm on the screen underneath (§5).
-  void _finish(KbeOutcome o) {
+  void _finish(KbeOutcome o, {int mediaFailed = 0}) {
     final l = context.l10n;
     final host = Navigator.of(context, rootNavigator: true).context;
     final router = GoRouter.of(context);
@@ -209,8 +226,8 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     final id = o.entryId;
     AppSnackbar.show(
       host,
-      message: message,
-      kind: SnackKind.success,
+      message: mediaFailed > 0 ? l.kbe_media_some_failed(mediaFailed) : message,
+      kind: mediaFailed > 0 ? SnackKind.error : SnackKind.success,
       actionLabel: view && id != null ? l.kbe_view : null,
       onAction: view && id != null ? () => router.push(Routes.knowledgeDetail(id)) : null,
     );
@@ -334,7 +351,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
       case KbeMode.fromUnanswered when s.unanswered != null:
         final u = s.unanswered!;
         return EditorSourceBanner(
-          icon: AppIcons.sparkle,
+          icon: AppIcons.ai,
           iconColor: c.primary,
           text: l.kbe_src_unanswered('${u.count}'),
           linkLabel: u.conversationIds.isEmpty ? null : l.kbe_view_convs,
@@ -344,7 +361,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
         final m = s.messagePrefill!;
         final date = m.date == null ? '' : RelativeTimeFormatter.format(m.date!, now, l, context.localeName);
         return EditorSourceBanner(
-          icon: AppIcons.conversations,
+          icon: AppIcons.conversation,
           text: l.kbe_src_chat(m.customerName ?? '—', date),
           linkLabel: m.conversationId == null ? null : l.kbe_open,
           onLink: m.conversationId == null ? null : () => context.push(Routes.chat(m.conversationId!)),
@@ -392,14 +409,17 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
       _ => l.kbe_new,
     };
     final ready = s.phase == KbePhase.ready || s.phase == KbePhase.saving;
-    final editable = ready && !s.saving;
-    final canSubmit = ready && s.valid && !s.offline;
+    final editable = ready && !s.saving && !_flushing;
+    final canSubmit = ready && s.valid && !s.offline && !_flushing;
+    // Attachments: list meta when loaded, else edit rights; never in propose mode.
+    final list = ref.watch(knowledgeControllerProvider.select((x) => (x.loaded, x.permissions.canUploadMedia)));
+    final canUploadMedia = s.canEdit && (list.$1 ? list.$2 : s.canEdit);
 
     Widget body;
     if (s.phase == KbePhase.loading) {
       body = const _EditorSkeleton();
     } else if (s.phase == KbePhase.loadError) {
-      body = EmptyState(icon: AppIcons.alert, title: l.kbe_load_error, actionLabel: l.kbe_retry, onAction: _ctrl.load);
+      body = EmptyState(icon: AppIcons.error, title: l.kbe_load_error, actionLabel: l.kbe_retry, onAction: _ctrl.load);
     } else if (s.phase == KbePhase.deleted) {
       body = const SizedBox.shrink();
     } else {
@@ -477,6 +497,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
                     : const SizedBox(width: double.infinity),
               ),
             ),
+            EditorMediaSection(args: _args, enabled: editable, canUpload: canUploadMedia),
             AiPreviewCard(
               preview: s.preview,
               loading: s.previewLoading,
@@ -540,7 +561,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
                   titleFocus: _titleFocus,
                   onClose: _close,
                   saveLabel: saveLabel,
-                  saving: s.saving && !review,
+                  saving: (s.saving || _flushing) && !review,
                   onSave: canSubmit && !s.saving ? _save : null,
                 ),
                 ConnectionBanner(state: s.offline ? NetworkState.offline : NetworkState.online, offlineLabel: l.kbe_save_offline),
@@ -565,7 +586,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
                             label: l.kbe_approve,
                             size: AppButtonSize.large,
                             expand: true,
-                            loading: s.saving,
+                            loading: s.saving || _flushing,
                             onPressed: canSubmit && !s.saving ? _save : null,
                           ),
                         ),

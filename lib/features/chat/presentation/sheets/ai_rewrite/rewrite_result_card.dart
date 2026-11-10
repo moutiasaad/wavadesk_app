@@ -176,7 +176,7 @@ class _RewriteResultCardState extends State<RewriteResultCard> {
     RewriteStatus.success => _success(context),
     RewriteStatus.error => _message(
       context,
-      icon: AppIcons.alert,
+      icon: AppIcons.error,
       color: context.colors.textError,
       text: context.l10n.rw_error,
       action: AppButton(
@@ -210,19 +210,19 @@ class _RewriteResultCardState extends State<RewriteResultCard> {
     ),
     RewriteStatus.blocked => _message(
       context,
-      icon: AppIcons.alertTriangle,
+      icon: AppIcons.warning,
       color: context.colors.textWarning,
       text: context.l10n.rw_blocked,
     ),
     RewriteStatus.offline => _message(
       context,
-      icon: AppIcons.wifiOff,
+      icon: AppIcons.offline,
       color: context.colors.textSecondary,
       text: context.l10n.rw_offline,
     ),
     RewriteStatus.tooLong => _message(
       context,
-      icon: AppIcons.alertTriangle,
+      icon: AppIcons.warning,
       color: context.colors.textWarning,
       text: context.l10n.rw_too_long,
     ),
@@ -250,7 +250,7 @@ class _RewriteResultCardState extends State<RewriteResultCard> {
             header: true,
             child: Row(
               children: [
-                ExcludeSemantics(child: Icon(AppIcons.sparkle, size: 13, color: c.primary)),
+                ExcludeSemantics(child: AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary)),
                 const SizedBox(width: 6),
                 Flexible(
                   child: Text(
@@ -437,7 +437,7 @@ class _RewriteResultCardState extends State<RewriteResultCard> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 1),
-                child: Icon(icon, size: 18, color: color),
+                child: AppIcon(icon, dp: 18, color: color),
               ),
               const SizedBox(width: AppSpacing.sm),
               Expanded(

@@ -70,13 +70,12 @@ class ChatActions {
   InboxController get _inbox => _ref.read(inboxProvider.notifier);
   Conversation? get _c => _inbox.byId(id);
 
-  ChatApi? get _api => _ref.read(chatApiProvider);
+  ChatApi get _api => _ref.read(chatApiProvider);
 
   /// Fire-and-forget server call; the answer (new detail) replaces the
   /// optimistic local state. On error the server copy is reloaded.
   void _remote(String action, [Map<String, Object?> body = const {}]) {
     final api = _api;
-    if (api == null) return;
     unawaited(
       api
           .action(id, action, body, WdApi.newIdempotencyKey())
@@ -100,24 +99,17 @@ class ChatActions {
   /// Claim with the 409 race check (§4.9).
   Future<ClaimResult> claim() async {
     final wait = _waitSeconds();
-    final api = _api;
-    if (api != null) {
-      try {
-        _apply(await api.action(id, 'claim', const {}, WdApi.newIdempotencyKey()));
-        Analytics.log('chat_claim', {'wait_seconds': wait, 'result': 'ok'});
-        return const ClaimResult(ClaimOutcome.ok);
-      } on ChatApiException catch (e) {
-        if (e.statusCode == 409) {
-          Analytics.log('chat_claim', {'wait_seconds': wait, 'result': 'conflict'});
-          return ClaimResult(ClaimOutcome.conflict, claimedBy: e.claimedBy);
-        }
-        return const ClaimResult(ClaimOutcome.failed);
+    try {
+      _apply(await _api.action(id, 'claim', const {}, WdApi.newIdempotencyKey()));
+      Analytics.log('chat_claim', {'wait_seconds': wait, 'result': 'ok'});
+      return const ClaimResult(ClaimOutcome.ok);
+    } on ChatApiException catch (e) {
+      if (e.statusCode == 409) {
+        Analytics.log('chat_claim', {'wait_seconds': wait, 'result': 'conflict'});
+        return ClaimResult(ClaimOutcome.conflict, claimedBy: e.claimedBy);
       }
+      return const ClaimResult(ClaimOutcome.failed);
     }
-    await Future<void>.delayed(const Duration(milliseconds: 500)); // visible loading state
-    final by = _inbox.claimChecked(id);
-    Analytics.log('chat_claim', {'wait_seconds': wait, 'result': by == null ? 'ok' : 'conflict'});
-    return by == null ? const ClaimResult(ClaimOutcome.ok) : ClaimResult(ClaimOutcome.conflict, claimedBy: by);
   }
 
   void assignTo(Agent agent, {String? note}) {
@@ -203,7 +195,6 @@ class ChatActions {
   void takeOver() {
     _inbox.takeOver(id);
     final api = _api;
-    if (api == null) return;
     // Claim first, then pause the AI on the conversation we now hold.
     unawaited(
       api
@@ -235,7 +226,7 @@ class ChatActions {
     } else {
       final contactId = _c?.customer.id;
       final api = _api;
-      if (api != null && contactId != null && contactId.startsWith('ct_')) {
+      if (contactId != null && contactId.startsWith('ct_')) {
         unawaited(api.unblockContact(contactId).then((_) => api.detail(id)).then(_apply).catchError((Object _) {}));
       }
     }

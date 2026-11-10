@@ -44,7 +44,7 @@ class MultiSelectBar extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(icon, size: 22, color: c.textPrimary),
+                AppIcon(icon, color: c.textPrimary),
                 const SizedBox(height: 3),
                 Text(label, style: context.text.overline.copyWith(color: c.textPrimary), maxLines: 1),
               ],
@@ -73,12 +73,12 @@ class MultiSelectBar extends ConsumerWidget {
             () => bulk('assign', (s) => InboxActions.assign(context, ref, s)),
           ),
           item(
-            AppIcons.moon,
+            AppIcons.snooze,
             l.inbox_swipe_snooze,
             () => bulk('snooze', (s) => InboxActions.pickSnooze(context, ref, s)),
           ),
           item(
-            anyUnread ? AppIcons.mailOpen : AppIcons.mail,
+            anyUnread ? AppIcons.mailOpen : AppIcons.email,
             anyUnread ? l.inbox_mark_read : l.inbox_mark_unread,
             () => bulk('read', (s) => InboxActions.setRead(context, ref, s, read: anyUnread)),
           ),
@@ -102,7 +102,7 @@ class MultiSelectBar extends ConsumerWidget {
                             },
                           ),
                           SheetActionRow(
-                            icon: AppIcons.flag,
+                            icon: AppIcons.priority,
                             label: l.inbox_priority,
                             onTap: () {
                               Navigator.pop(ctx);

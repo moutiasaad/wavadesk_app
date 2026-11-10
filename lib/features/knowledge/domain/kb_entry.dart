@@ -128,6 +128,7 @@ class KbEntrySummary {
     this.draftedBy,
     this.draftSource,
     this.draftedAt,
+    this.mediaCount = 0,
   });
 
   factory KbEntrySummary.fromJson(Map<String, dynamic> j) => KbEntrySummary(
@@ -144,6 +145,7 @@ class KbEntrySummary {
         draftedBy: KbPerson.fromJson(j['drafted_by']),
         draftSource: KbDraftSource.parse(j['draft_source']),
         draftedAt: _date(j['drafted_at']),
+        mediaCount: _int(j['media_count']),
       );
 
   final String id;
@@ -160,9 +162,12 @@ class KbEntrySummary {
   final KbDraftSource? draftSource;
   final DateTime? draftedAt;
 
+  /// Images / voice notes attached to a Q&A (`media_count`).
+  final int mediaCount;
+
   bool get enabled => status != KbStatus.disabled;
 
-  KbEntrySummary copyWith({String? title, KbStatus? status, DateTime? updatedAt, List<KbTag>? tags, KbFileInfo? file, KbLinkInfo? link}) =>
+  KbEntrySummary copyWith({String? title, KbStatus? status, DateTime? updatedAt, List<KbTag>? tags, KbFileInfo? file, KbLinkInfo? link, int? mediaCount}) =>
       KbEntrySummary(
         id: id,
         type: type,
@@ -177,6 +182,7 @@ class KbEntrySummary {
         draftedBy: draftedBy,
         draftSource: draftSource,
         draftedAt: draftedAt,
+        mediaCount: mediaCount ?? this.mediaCount,
       );
 
   Map<String, Object?> toJson() => {
@@ -193,22 +199,28 @@ class KbEntrySummary {
         'drafted_by': draftedBy?.toJson(),
         'draft_source': draftSource?.wire,
         'drafted_at': draftedAt?.toUtc().toIso8601String(),
+        'media_count': mediaCount,
       };
 }
 
 @immutable
 class KbPermissions {
-  const KbPermissions({this.canEdit = false, this.canDelete = false, this.canReviewDrafts = false});
+  const KbPermissions({this.canEdit = false, this.canDelete = false, this.canReviewDrafts = false, this.canUploadMedia = false});
 
   factory KbPermissions.fromJson(Map<String, dynamic> m) => KbPermissions(
         canEdit: m['can_edit'] == true,
         canDelete: m['can_delete'] == true,
         canReviewDrafts: m['can_review_drafts'] == true,
+        // Older servers don't send it: follow edit rights (402 explains a plan gap).
+        canUploadMedia: m.containsKey('can_upload_media') ? m['can_upload_media'] == true : m['can_edit'] == true,
       );
 
   final bool canEdit;
   final bool canDelete;
   final bool canReviewDrafts;
+
+  /// Images / voice notes on answers (paid plans, like the web form).
+  final bool canUploadMedia;
 }
 
 @immutable
@@ -317,6 +329,7 @@ class KbQa {
     this.updatedAt,
     this.draftedBy,
     this.draftSource,
+    this.media = const [],
   });
 
   factory KbQa.fromJson(Map<String, dynamic> j) => KbQa(
@@ -341,6 +354,10 @@ class KbQa {
         updatedAt: _date(j['updated_at']),
         draftedBy: KbPerson.fromJson(j['drafted_by']),
         draftSource: KbDraftSource.parse(j['draft_source']),
+        media: [
+          for (final m in (j['media'] as List? ?? const []))
+            if (m is Map) KbMedia.fromJson(Map<String, dynamic>.from(m)),
+        ],
       );
 
   final String id;
@@ -367,6 +384,9 @@ class KbQa {
   final KbPerson? draftedBy;
   final KbDraftSource? draftSource;
 
+  /// Images / voice notes sent with the answer (web "المرفقات").
+  final List<KbMedia> media;
+
   bool get isDraft => status == KbStatus.draft;
 
   KbQa copyWith({
@@ -384,6 +404,7 @@ class KbQa {
     String? Function()? internalNotes,
     KbPerson? updatedBy,
     DateTime? updatedAt,
+    List<KbMedia>? media,
   }) =>
       KbQa(
         id: id,
@@ -407,6 +428,7 @@ class KbQa {
         updatedAt: updatedAt ?? this.updatedAt,
         draftedBy: draftedBy,
         draftSource: draftSource,
+        media: media ?? this.media,
       );
 
   /// The write body of `POST kb` / `PATCH kb/{id}` (Add Answer spec §8).
@@ -433,7 +455,98 @@ class KbQa {
         tags: tags,
         draftedBy: draftedBy,
         draftSource: draftSource,
+        mediaCount: media.length,
       );
+}
+
+enum KbMediaKind {
+  image,
+  voice;
+
+  static KbMediaKind parse(Object? v) => v == 'voice' ? voice : image;
+}
+
+/// How a media item goes out with the AI's reply (web `send_mode`).
+enum KbMediaSendMode {
+  /// Sent alongside the answer text.
+  withText('with_text'),
+
+  /// Sent on its own, without the text.
+  fileOnly('file_only');
+
+  const KbMediaSendMode(this.wire);
+  final String wire;
+
+  static KbMediaSendMode parse(Object? v) => v == 'file_only' ? fileOnly : withText;
+}
+
+/// An image or voice note attached to a Q&A (`POST kb/{id}/media`).
+@immutable
+class KbMedia {
+  const KbMedia({
+    required this.id,
+    required this.kind,
+    required this.title,
+    this.url,
+    this.mime = '',
+    this.sizeBytes = 0,
+    this.durationSeconds,
+    this.sendMode = KbMediaSendMode.withText,
+    this.isActive = true,
+  });
+
+  factory KbMedia.fromJson(Map<String, dynamic> j) => KbMedia(
+        id: '${j['id']}',
+        kind: KbMediaKind.parse(j['kind']),
+        title: '${j['title'] ?? ''}',
+        url: j['url'] as String?,
+        mime: '${j['mime'] ?? ''}',
+        sizeBytes: _int(j['size'] ?? j['size_bytes']),
+        durationSeconds: j['duration'] == null ? null : _int(j['duration']),
+        sendMode: KbMediaSendMode.parse(j['send_mode']),
+        isActive: j['is_active'] != false,
+      );
+
+  final String id;
+  final KbMediaKind kind;
+  final String title;
+  final String? url;
+  final String mime;
+  final int sizeBytes;
+  final int? durationSeconds;
+  final KbMediaSendMode sendMode;
+  final bool isActive;
+
+  KbMedia copyWith({String? title, KbMediaSendMode? sendMode, bool? isActive}) => KbMedia(
+        id: id,
+        kind: kind,
+        title: title ?? this.title,
+        url: url,
+        mime: mime,
+        sizeBytes: sizeBytes,
+        durationSeconds: durationSeconds,
+        sendMode: sendMode ?? this.sendMode,
+        isActive: isActive ?? this.isActive,
+      );
+}
+
+/// Result of `POST kb/import` (web JSON import).
+@immutable
+class KbImportResult {
+  const KbImportResult({this.imported = 0, this.skipped = 0, this.errors = const []});
+
+  factory KbImportResult.fromJson(Map<String, dynamic> j) => KbImportResult(
+        imported: _int(j['imported']),
+        skipped: _int(j['skipped']),
+        errors: [
+          for (final e in (j['errors'] as List? ?? const []))
+            if (e is Map) (row: _int(e['row']), message: '${e['message'] ?? ''}'),
+        ],
+      );
+
+  final int imported;
+  final int skipped;
+  final List<({int row, String message})> errors;
 }
 
 /// `GET kb/unanswered` row (grouped by similarity server-side).

@@ -42,7 +42,7 @@ class _ProfileAiSummaryCardState extends State<ProfileAiSummaryCard> {
         children: [
           Row(
             children: [
-              Icon(AppIcons.sparkle, size: 14, color: c.primary),
+              AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.primary),
               const SizedBox(width: 6),
               Expanded(
                 child: Semantics(

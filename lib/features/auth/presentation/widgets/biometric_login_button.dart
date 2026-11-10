@@ -20,7 +20,7 @@ class BiometricLoginButton extends StatelessWidget {
     final face = kind == BiometricKind.face;
     return AppButton(
       label: face ? l.login_biometric_face : l.login_biometric_finger,
-      icon: face ? AppIcons.scanFace : AppIcons.fingerprint,
+      icon: face ? AppIcons.faceId : AppIcons.fingerprint,
       variant: AppButtonVariant.secondary,
       size: AppButtonSize.large,
       expand: true,

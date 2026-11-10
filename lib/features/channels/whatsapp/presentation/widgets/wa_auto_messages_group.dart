@@ -99,7 +99,7 @@ class WaAutoMessagesGroup extends ConsumerWidget {
         title: l.wa_auto,
         children: [
           SettingsTile(
-            icon: AppIcons.conversations,
+            icon: AppIcons.conversation,
             title: l.wa_welcome,
             subtitle: welcomeSub,
             trailing: AppSwitch(
@@ -128,7 +128,7 @@ class WaAutoMessagesGroup extends ConsumerWidget {
           ),
           if (welcome.enabled && !pending)
             SettingsTile(
-              icon: AppIcons.hourglass,
+              icon: AppIcons.waiting,
               iconColor: c.textSecondary,
               iconBackground: c.surfaceVariant,
               title: l.wa_welcome_delay,

@@ -79,8 +79,7 @@ class ClaimController extends AutoDisposeFamilyNotifier<ClaimState, String> {
 
     ClaimState result;
     try {
-      final api = ref.read(chatApiProvider);
-      result = api == null ? await _sampleClaim() : await _apiClaim(api, requestId, setAvailable);
+      result = await _apiClaim(ref.read(chatApiProvider), requestId, setAvailable);
     } catch (_) {
       result = const ClaimState(phase: ClaimPhase.network);
     }
@@ -103,31 +102,6 @@ class ClaimController extends AutoDisposeFamilyNotifier<ClaimState, String> {
         ? result
         : ClaimState(phase: ClaimPhase.idle, claimedBy: result.claimedBy);
     return result;
-  }
-
-  /// Sample mode: same rules the server enforces (compare-and-set on
-  /// `assignee IS NULL`).
-  Future<ClaimState> _sampleClaim() async {
-    await Future<void>.delayed(const Duration(milliseconds: 500));
-    if (ref.read(inboxProvider).network != NetworkState.online) return const ClaimState(phase: ClaimPhase.network);
-    final inbox = ref.read(inboxProvider.notifier);
-    final c = inbox.byId(arg);
-    if (c == null) return const ClaimState(phase: ClaimPhase.network);
-    if (c.customer.blocked || c.isClosed) return const ClaimState(phase: ClaimPhase.locked);
-    if (MockData.hardCapacityLimit) {
-      final open = ref
-          .read(inboxProvider)
-          .conversations
-          .where((x) => x.ownership == Ownership.mine && !x.isClosed)
-          .length;
-      if (open >= MockData.maxConcurrent) {
-        return ClaimState(phase: ClaimPhase.forbidden, max: MockData.maxConcurrent);
-      }
-    }
-    final by = inbox.claimChecked(arg);
-    return by == null
-        ? const ClaimState(phase: ClaimPhase.success)
-        : ClaimState(phase: ClaimPhase.conflict, claimedBy: by);
   }
 
   /// `POST conversations/{id}/claim` → the new detail (mirrored into the
@@ -199,8 +173,8 @@ class ClaimLimits {
   bool get hardBlocked => atCapacity && hardLimit;
 }
 
-/// Real API: `sla_seconds` + `capacity` of the conversation detail.
-/// Sample mode: `assets/fake` workspace settings + the in-memory inbox.
+/// `sla_seconds` + `capacity` of the conversation detail (server values;
+/// the open count falls back to the locally loaded conversations).
 final claimLimitsProvider = Provider.autoDispose.family<ClaimLimits, String>((ref, id) {
   final localOpen = ref.watch(
     inboxProvider.select(
@@ -209,14 +183,6 @@ final claimLimitsProvider = Provider.autoDispose.family<ClaimLimits, String>((re
           .length,
     ),
   );
-  if (!useRealApi) {
-    return ClaimLimits(
-      slaSeconds: MockData.slaSeconds,
-      open: localOpen,
-      max: MockData.maxConcurrent,
-      hardLimit: MockData.hardCapacityLimit,
-    );
-  }
   final r = ref.watch(remoteChatPermissionsProvider.select((m) => m[id]));
   final cap = r?.capacity;
   return ClaimLimits(

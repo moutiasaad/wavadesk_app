@@ -3,21 +3,18 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
-import '../../../core/data/data.dart';
 import '../data/kb_api.dart';
 import '../data/kb_repository.dart';
 import '../domain/kb_entry.dart';
 import '../domain/stale_rule.dart';
 
 final kbApiProvider = Provider<KbApi>((ref) {
-  if (useRealApi) return HttpKbApi(ref.watch(wdApiRequiredProvider));
-  return SampleKbApi(isAdmin: ref.read(currentAgentProvider).isAdmin);
+  return HttpKbApi(ref.watch(wdApiRequiredProvider));
 });
 
 final kbRepositoryProvider = Provider<KbRepository>(
-  (ref) => KbRepository(ref.watch(kbApiProvider), cacheKey: 'kb_list_cache_v1_${useRealApi ? 'api' : 'sample'}'),
+  (ref) => KbRepository(ref.watch(kbApiProvider), cacheKey: 'kb_list_cache_v1_api'),
 );
 
 @immutable
@@ -236,6 +233,7 @@ class KbListController extends Notifier<KnowledgeState> {
       updatedAt: row.updatedAt,
       isStale: StaleRule.isStale(row.updatedAt),
       tags: row.tags,
+      mediaCount: row.mediaCount,
     );
     final c = state.counts;
     state = state.copyWith(
@@ -247,6 +245,12 @@ class KbListController extends Notifier<KnowledgeState> {
   }
 
   /// Drop a row locally (deleted in the editor).
+  /// Attachments added / removed in the editor (row subtitle shows them).
+  void setMediaCount(String id, int n) {
+    if (!state.items.any((e) => e.id == id)) return;
+    state = state.copyWith(items: [for (final e in state.items) e.id == id ? e.copyWith(mediaCount: n) : e]);
+  }
+
   void removeLocal(String id) {
     final row = state.items.where((e) => e.id == id).firstOrNull;
     final wasDraft = state.drafts.any((d) => d.id == id);

@@ -93,7 +93,7 @@ class _DisconnectDialogState extends ConsumerState<_DisconnectDialog> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(color: c.errorContainer, shape: BoxShape.circle),
-                child: Icon(AppIcons.alert, size: 24, color: c.textError),
+                child: AppIcon(AppIcons.error, size: AppIconSize.lg, color: c.textError),
               ),
             ),
             const SizedBox(height: AppSpacing.lg),

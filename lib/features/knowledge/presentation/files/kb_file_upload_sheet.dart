@@ -6,6 +6,7 @@ import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../application/kb_upload_controller.dart';
 import '../../data/kb_api.dart';
+import '../kb_file_picker.dart';
 import '../widgets/kb_entry_tile.dart';
 import '../../domain/kb_entry.dart';
 
@@ -15,32 +16,8 @@ String kbFileSize(AppLocalizations l, int bytes) {
   return l.kb_kb((bytes / 1024).ceil().toString());
 }
 
-/// No file-picker plugin in the app yet (same as chat attachments): a
-/// stand-in picker with demo files, incl. ones that hit each validation /
-/// processing error. Swap for `file_picker` (pdf, docx, txt, md).
-Future<KbPickedFile?> pickKbFile(BuildContext context) {
-  const demo = [
-    KbPickedFile(name: 'دليل المنتجات 2026.pdf', sizeBytes: 2400000, mime: 'application/pdf'),
-    KbPickedFile(name: 'سياسة الشحن.docx', sizeBytes: 340000, mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
-    KbPickedFile(name: 'ساعات العمل.txt', sizeBytes: 4200, mime: 'text/plain'),
-    KbPickedFile(name: 'عرض أسعار.xlsx', sizeBytes: 90000, mime: 'application/vnd.ms-excel'),
-    KbPickedFile(name: 'كتالوج كامل.pdf', sizeBytes: 14 * 1024 * 1024, mime: 'application/pdf'),
-    KbPickedFile(name: 'ملف تالف.pdf', sizeBytes: 800000, mime: 'application/pdf'),
-  ];
-  final l = context.l10n;
-  return AppBottomSheet.show<KbPickedFile>(
-    context,
-    title: l.kb_add_file,
-    subtitle: l.kb_add_file_sub,
-    builder: (ctx) => Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (final f in demo) SheetActionRow(icon: AppIcons.file, label: '${f.name} · ${kbFileSize(l, f.sizeBytes)}', onTap: () => Navigator.of(ctx).pop(f)),
-        const SizedBox(height: AppSpacing.md),
-      ],
-    ),
-  );
-}
+/// System picker for a document (pdf, docx, txt, md).
+Future<KbPickedFile?> pickKbFile(BuildContext context) => pickKbDocument();
 
 /// Pick → validate → background upload + progress sheet (spec §6.2).
 Future<void> startKbFileUpload(BuildContext context, WidgetRef ref, {String? replaceId, double snackOffset = 0}) async {
@@ -105,7 +82,7 @@ class KbFileUploadSheet extends ConsumerWidget {
                 width: 44,
                 height: 44,
                 decoration: BoxDecoration(color: v.background, borderRadius: BorderRadius.circular(AppRadius.md)),
-                child: Icon(v.icon, size: 22, color: v.foreground),
+                child: AppIcon(v.icon, color: v.foreground),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(

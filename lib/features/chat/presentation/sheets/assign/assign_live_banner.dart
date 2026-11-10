@@ -26,7 +26,7 @@ class AssignLiveBanner extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(AppIcons.alertTriangle, size: 16, color: c.textWarning),
+            AppIcon(AppIcons.warning, size: AppIconSize.sm, color: c.textWarning),
             const SizedBox(width: AppSpacing.sm),
             Expanded(
               child: Text(

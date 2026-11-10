@@ -143,7 +143,7 @@ class _WaPhonePairingViewState extends ConsumerState<WaPhonePairingView> {
                           Text(_dial.$1, style: const TextStyle(fontSize: 18)),
                           const SizedBox(width: 6),
                           Text('+${_dial.$2}', style: t.bodyLarge.copyWith(fontWeight: FontWeight.w700)),
-                          Icon(AppIcons.chevronDown, size: 14, color: c.textTertiary),
+                          AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: c.textTertiary),
                         ],
                       ),
                     ),

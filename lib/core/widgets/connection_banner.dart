@@ -37,7 +37,7 @@ class ConnectionBanner extends StatelessWidget {
                     if (state == NetworkState.connecting)
                       AppSpinner(size: 14, color: c.textWarning, delayed: false)
                     else
-                      Icon(AppIcons.wifiOff, size: 14, color: c.textError),
+                      AppIcon(AppIcons.offline, size: AppIconSize.sm, color: c.textError),
                     const SizedBox(width: AppSpacing.sm),
                     Text(
                       state == NetworkState.offline ? (offlineLabel ?? l.network_offline) : l.network_connecting,

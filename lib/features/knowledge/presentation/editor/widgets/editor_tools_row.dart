@@ -35,7 +35,7 @@ class EditorToolsRow extends StatelessWidget {
       children: [
         _ToolChip(icon: AppIcons.tag, label: tagLabel, onTap: enabled ? onTag : null),
         _ToolChip(
-          icon: AppIcons.sparkle,
+          icon: AppIcons.ai,
           label: l.kbe_improve,
           onTap: enabled ? onImprove : null,
           background: c.primaryContainer,
@@ -83,7 +83,7 @@ class _ToolChip extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(icon, size: 12, color: fg),
+                  AppIcon(icon, size: AppIconSize.xs, color: fg),
                   const SizedBox(width: AppSpacing.xs),
                   Text(label, style: t.chipLabel.copyWith(color: fg, fontSize: 12.5)),
                 ],

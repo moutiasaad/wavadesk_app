@@ -73,7 +73,7 @@ class _VolumeChartCardState extends State<VolumeChartCard> {
                 AppFilterChip(label: l.dash_legend_all, selected: !_showAi, onTap: () => setState(() => _showAi = false)),
                 AppFilterChip(
                   label: l.dash_legend_ai,
-                  leading: Icon(AppIcons.sparkle, size: 13, color: c.accent),
+                  leading: AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.accent),
                   selected: _showAi,
                   onTap: () => setState(() => _showAi = true),
                 ),

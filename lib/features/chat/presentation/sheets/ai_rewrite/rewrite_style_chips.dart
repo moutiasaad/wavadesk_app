@@ -100,7 +100,7 @@ class _StyleChip extends StatelessWidget {
             AppFilterChip(
               label: label,
               selected: selected,
-              leading: style.icon == null ? null : Icon(style.icon, size: 12, color: fg),
+              leading: style.icon == null ? null : AppIcon(style.icon, size: AppIconSize.xs, color: fg),
               onTap: onTap,
             ),
             if (dot)
@@ -142,7 +142,7 @@ class RewriteLanguageHint extends StatelessWidget {
       padding: const EdgeInsets.only(top: 6),
       child: Row(
         children: [
-          Icon(AppIcons.language, size: 12, color: c.textInfo),
+          AppIcon(AppIcons.language, size: AppIconSize.xs, color: c.textInfo),
           const SizedBox(width: AppSpacing.xs),
           Flexible(
             child: Text(l.rw_customer_prefers(name), style: context.text.caption.copyWith(color: c.textInfo)),

@@ -66,8 +66,8 @@ class AppFilterChip extends StatelessWidget {
             style: context.text.chipLabel.copyWith(color: fg),
             maxLines: 1,
           ),
-          if (trailingIcon != null) ...[const SizedBox(width: AppSpacing.xs), Icon(trailingIcon, size: 14, color: fg)],
-          if (onDeleted != null) ...[const SizedBox(width: AppSpacing.xs), Icon(AppIcons.close, size: 14, color: fg)],
+          if (trailingIcon != null) ...[const SizedBox(width: AppSpacing.xs), AppIcon(trailingIcon, size: AppIconSize.sm, color: fg)],
+          if (onDeleted != null) ...[const SizedBox(width: AppSpacing.xs), AppIcon(AppIcons.close, size: AppIconSize.sm, color: fg)],
         ],
       ),
     );

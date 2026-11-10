@@ -51,7 +51,7 @@ class _PickerState extends ConsumerState<_Picker> {
             builder: (context, snap) {
               if (snap.hasError) {
                 return EmptyState(
-                  icon: AppIcons.alert,
+                  icon: AppIcons.error,
                   title: l.kb_error,
                   actionLabel: l.kb_retry,
                   onAction: () => setState(() => _all = _fetch()),

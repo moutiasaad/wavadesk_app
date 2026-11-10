@@ -139,7 +139,7 @@ class ProfilePreviousConversations extends ConsumerWidget {
               width: 34,
               height: 34,
               decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(10)),
-              child: Icon(p.channel.glyph, size: 16, color: c.textSecondary),
+              child: ChannelIcon(p.channel),
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(
@@ -162,7 +162,7 @@ class ProfilePreviousConversations extends ConsumerWidget {
                 ],
               ),
             ),
-            Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+            AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
           ],
         ),
       ),

@@ -148,7 +148,7 @@ class _TagEditorState extends ConsumerState<_TagEditor> {
                               children: [
                                 Text(tag.name, style: t.chipLabel.copyWith(color: c.onPrimaryContainer)),
                                 const SizedBox(width: AppSpacing.xs),
-                                Icon(AppIcons.close, size: 14, color: c.onPrimaryContainer),
+                                AppIcon(AppIcons.close, size: AppIconSize.sm, color: c.onPrimaryContainer),
                               ],
                             ),
                           ),
@@ -160,7 +160,7 @@ class _TagEditorState extends ConsumerState<_TagEditor> {
               const SizedBox(height: AppSpacing.sm),
               if (q.isNotEmpty && !exact)
                 SheetActionRow(
-                  icon: AppIcons.plus,
+                  icon: AppIcons.add,
                   label: l.tags_create(q),
                   onTap: _create,
                 ),

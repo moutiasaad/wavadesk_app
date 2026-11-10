@@ -92,7 +92,7 @@ class _AiPreviewCardState extends State<AiPreviewCard> {
             tooltip: l.kbe_retry,
             iconSize: 16,
             visualDensity: VisualDensity.compact,
-            icon: Icon(AppIcons.regenerate, color: c.textSecondary),
+            icon: AppIcon(AppIcons.regenerate, color: c.textSecondary),
           ),
         ],
       );
@@ -135,7 +135,7 @@ class _AiPreviewCardState extends State<AiPreviewCard> {
         children: [
           Row(
             children: [
-              Icon(AppIcons.eye, size: 13, color: c.primary),
+              AppIcon(AppIcons.preview, size: AppIconSize.xs, color: c.primary),
               const SizedBox(width: 6),
               Expanded(
                 child: Text(l.kbe_preview, style: t.caption.copyWith(fontSize: 12, fontWeight: FontWeight.w800, color: c.textSecondary)),
@@ -146,7 +146,7 @@ class _AiPreviewCardState extends State<AiPreviewCard> {
                   tooltip: l.kbe_preview_regen,
                   iconSize: 16,
                   visualDensity: VisualDensity.compact,
-                  icon: Icon(AppIcons.regenerate, color: c.textSecondary),
+                  icon: AppIcon(AppIcons.regenerate, color: c.textSecondary),
                 ),
             ],
           ),
@@ -224,7 +224,7 @@ class _AiPreviewCardState extends State<AiPreviewCard> {
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(AppIcons.sparkle, size: 11, color: c.primary),
+                        AppIcon(AppIcons.ai, dp: 11, color: c.primary),
                         const SizedBox(width: AppSpacing.xs),
                         Text(l.kbe_ai_label, style: t.chatSenderLabel.copyWith(color: c.primary)),
                       ],

@@ -340,11 +340,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get account_network_online => 'Online';
 
   @override
-  String account_network_demo(String state) {
-    return 'Demo connection state: $state';
-  }
-
-  @override
   String get ai_settings_title => 'AI agent';
 
   @override
@@ -2874,8 +2869,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String claim_viewing_since_min(int n) {
-    return '${n}m ago';
+  String claim_viewing_since_min(String t) {
+    return '$t ago';
   }
 
   @override
@@ -3043,6 +3038,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get actions_add_note => 'Add internal note';
+
+  @override
+  String claim_a11y_wait_span(String t) {
+    return 'Waiting for $t';
+  }
 
   @override
   String get conversations_segment_mine => 'Mine';
@@ -3568,6 +3568,21 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get time_unit_day => 'd';
+
+  @override
+  String get time_unit_hour => 'h';
+
+  @override
+  String get time_unit_min => 'm';
+
+  @override
+  String get common_increase => 'Increase';
+
+  @override
+  String get common_decrease => 'Decrease';
+
+  @override
   String get dash_title => 'Dashboard';
 
   @override
@@ -3985,14 +4000,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get inbox_deleted => 'This message was deleted';
 
   @override
-  String inbox_tag_waiting(int n) {
-    String _temp0 = intl.Intl.pluralLogic(
-      n,
-      locale: localeName,
-      other: 'Waiting $n min',
-      one: 'Waiting 1 min',
-    );
-    return '$_temp0';
+  String inbox_tag_waiting(String t) {
+    return 'Waiting $t';
   }
 
   @override
@@ -4715,6 +4724,64 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kbe_a11y_dismiss => 'Dismiss warning';
 
   @override
+  String get kbe_media => 'Attachments';
+
+  @override
+  String get kbe_media_hint => 'AI sends them with the answer';
+
+  @override
+  String get kbe_media_add => 'Add image or voice note';
+
+  @override
+  String get kbe_media_image => 'Image';
+
+  @override
+  String get kbe_media_voice => 'Voice note';
+
+  @override
+  String get kbe_media_with_text => 'With text';
+
+  @override
+  String get kbe_media_file_only => 'File only';
+
+  @override
+  String get kbe_media_remove => 'Remove';
+
+  @override
+  String kbe_media_uploading(int p) {
+    return 'Uploading $p%';
+  }
+
+  @override
+  String get kbe_media_failed => 'Upload failed';
+
+  @override
+  String get kbe_media_queued => 'Uploads after saving';
+
+  @override
+  String get kbe_media_too_big => 'File larger than 16 MB';
+
+  @override
+  String get kbe_media_image_too_big => 'Image larger than 5 MB';
+
+  @override
+  String get kbe_media_type_err => 'Choose an image or an audio file';
+
+  @override
+  String get kbe_media_upgrade => 'Images and voice notes are on paid plans';
+
+  @override
+  String get kbe_media_upgrade_cta => 'View plans';
+
+  @override
+  String kbe_media_some_failed(int n) {
+    return 'Saved, but $n attachments failed to upload';
+  }
+
+  @override
+  String get kbe_media_send_mode => 'How it is sent';
+
+  @override
   String get kb_title => 'Knowledge';
 
   @override
@@ -4845,7 +4912,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kb_add_file => 'Upload file';
 
   @override
-  String get kb_add_file_sub => 'PDF, Word or TXT up to 10 MB';
+  String get kb_add_file_sub =>
+      'A JSON file with many Q&As — like the web panel';
 
   @override
   String get kb_add_link => 'Add link';
@@ -5204,6 +5272,57 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kb_none_found => 'No results';
 
   @override
+  String get kb_import_title => 'Import from JSON';
+
+  @override
+  String get kb_import_hint =>
+      'A file with an entries list, each with type, title and body — same format as the web panel.';
+
+  @override
+  String get kb_import_pick => 'Choose JSON file';
+
+  @override
+  String get kb_import_template => 'Download template';
+
+  @override
+  String get kb_importing => 'Importing…';
+
+  @override
+  String kb_import_done(int n) {
+    return 'Imported $n entries';
+  }
+
+  @override
+  String kb_import_skipped(int n) {
+    return '$n skipped';
+  }
+
+  @override
+  String kb_import_row_err(int row, String message) {
+    return 'Row $row: $message';
+  }
+
+  @override
+  String get kb_import_failed => 'Import failed';
+
+  @override
+  String get kb_import_json_only => 'Choose a .json file';
+
+  @override
+  String get kb_template_saved => 'Template saved';
+
+  @override
+  String get kb_template_copied => 'Template copied to clipboard';
+
+  @override
+  String get kb_media_title => 'Attachments';
+
+  @override
+  String kb_media_n(int n) {
+    return '$n attachments';
+  }
+
+  @override
   String get ntf_title => 'Notifications';
 
   @override
@@ -5337,8 +5456,8 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String ntf_t_sla_breach(String customer, int m) {
-    return '$customer has been waiting ${m}m for your reply';
+  String ntf_t_sla_breach(String customer, String m) {
+    return '$customer has been waiting $m for your reply';
   }
 
   @override
@@ -5399,8 +5518,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ntf_t_app_update => 'A new version is available';
 
   @override
-  String ntf_b_claim_needed(int m) {
-    return 'Oldest waiting ${m}m';
+  String ntf_b_claim_needed(String m) {
+    return 'Oldest waiting $m';
   }
 
   @override
@@ -5422,8 +5541,8 @@ class AppLocalizationsEn extends AppLocalizations {
       'Messages won\'t arrive until you reconnect';
 
   @override
-  String ntf_b_channel_reconnected(int m) {
-    return 'Down for $m minutes · no messages lost';
+  String ntf_b_channel_reconnected(String m) {
+    return 'Down for $m · no messages lost';
   }
 
   @override

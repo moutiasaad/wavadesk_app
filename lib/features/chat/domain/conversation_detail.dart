@@ -31,7 +31,7 @@ class ChatPermissions {
   final String? claimTeamName;
 
   /// Real API (`can_toggle_ai`): the admin "تولَّ الذكاء الاصطناعي الرد"
-  /// action is available. Null in sample mode (workspace AI setting decides).
+  /// action is available. Null when the server omits it (workspace AI setting decides).
   final bool? canHandToAi;
 }
 

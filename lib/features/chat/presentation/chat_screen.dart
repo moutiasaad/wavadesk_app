@@ -20,7 +20,7 @@ import '../application/claim_controller.dart';
 import '../application/presence_controller.dart';
 import '../application/composer_controller.dart';
 import '../application/messages_controller.dart';
-import '../data/chat_api.dart' show chatApiProvider, chatDetailLoadProvider, ChatDetailLoad, chatRemoteSyncProvider;
+import '../data/chat_api.dart' show chatDetailLoadProvider, ChatDetailLoad, chatRemoteSyncProvider;
 import '../data/chat_socket.dart';
 import '../domain/conversation_detail.dart';
 import '../domain/ownership.dart';
@@ -334,7 +334,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
       title: l.chatscreen_takeover_title,
       body: l.chatscreen_takeover_body(d.assignee?.name ?? ''),
       confirmLabel: l.chatscreen_takeover_confirm,
-      icon: AppIcons.userCheck,
+      icon: AppIcons.mine,
       severity: DialogSeverity.warning,
     );
     if (ok) _actions.takeOverFromColleague();
@@ -411,12 +411,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
     if (d == null) {
       // API mode: the conversation may simply not be loaded yet (deep link,
       // notification, search) — skeleton until the server has answered.
-      final remote = ref.watch(chatApiProvider) != null;
       final load = ref.watch(chatDetailLoadProvider.select((m) => m[_id]));
       final Widget body;
-      if (remote && load == ChatDetailLoad.error) {
+      if (load == ChatDetailLoad.error) {
         body = EmptyState(
-          icon: AppIcons.wifiOff,
+          icon: AppIcons.offline,
           title: l.chatscreen_load_failed,
           actionLabel: l.common_retry,
           onAction: () {
@@ -424,7 +423,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
             ref.invalidate(chatRemoteSyncProvider(_id));
           },
         );
-      } else if (remote && load != ChatDetailLoad.notFound) {
+      } else if (load != ChatDetailLoad.notFound) {
         body = Align(alignment: Alignment.bottomCenter, child: AppSkeleton.chat());
       } else {
         body = EmptyState(icon: AppIcons.inbox, title: l.chatscreen_not_found);

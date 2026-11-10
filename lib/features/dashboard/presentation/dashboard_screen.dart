@@ -80,7 +80,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       body = Padding(
         padding: const EdgeInsets.only(top: AppSpacing.x5l),
         child: EmptyState(
-          icon: AppIcons.wifiOff,
+          icon: AppIcons.offline,
           title: l.dash_load_error,
           actionLabel: l.dash_retry,
           onAction: ctrl.refresh,
@@ -132,7 +132,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                       Analytics.log('dash_web_reports');
                       DashboardLinks.webReports();
                     },
-                    icon: Icon(AppIcons.link, size: 14, color: c.textSecondary),
+                    icon: AppIcon(AppIcons.link, size: AppIconSize.sm, color: c.textSecondary),
                     label: Text(l.dash_web_reports, style: t.buttonSmall.copyWith(color: c.textSecondary)),
                   ),
                 ),

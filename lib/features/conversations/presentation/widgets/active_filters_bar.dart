@@ -96,7 +96,7 @@ class _RemovableTag extends StatelessWidget {
               children: [
                 Text(label, style: context.text.tagLabel.copyWith(color: c.onPrimaryContainer)),
                 const SizedBox(width: AppSpacing.xs),
-                Icon(AppIcons.close, size: 14, color: c.onPrimaryContainer),
+                AppIcon(AppIcons.close, size: AppIconSize.sm, color: c.onPrimaryContainer),
               ],
             ),
           ),

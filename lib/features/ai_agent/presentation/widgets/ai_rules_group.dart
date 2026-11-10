@@ -71,7 +71,7 @@ class AiRulesGroup extends ConsumerWidget {
           onTap: () => context.push(Routes.aiAgentHours),
         ),
         SettingsTile(
-          icon: AppIcons.users,
+          icon: AppIcons.team,
           title: l.ai_handoff,
           subtitle: l.ai_handoff_sub,
           onTap: () => context.push(Routes.aiAgentHandoff),
@@ -83,13 +83,13 @@ class AiRulesGroup extends ConsumerWidget {
           onTap: interactive ? () => showReplyLanguageSheet(context, ref) : null,
         ),
         SettingsTile(
-          icon: AppIcons.conversations,
+          icon: AppIcons.conversation,
           title: l.ai_handoff_msg,
           value: shortMsg,
           onTap: interactive ? () => showHandoffMessageSheet(context, ref) : null,
         ),
         SettingsTile(
-          icon: AppIcons.hourglass,
+          icon: AppIcons.waiting,
           title: l.ai_delay,
           value: aiDelayLabel(l, config.autoReplyDelaySeconds),
           onTap: interactive ? () => showReplyDelaySheet(context, ref) : null,

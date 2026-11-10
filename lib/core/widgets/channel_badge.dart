@@ -5,11 +5,11 @@ import '../theme/app_theme.dart';
 import '../utils/l10n.dart';
 
 /// §8.7. Two forms: a small circle on an avatar, or a chip with label.
-/// Brand colors are used only here — never for buttons or text (§3.8).
+/// Glyphs and brand colors come from [ChannelIcon] (Icon Library §7).
 class ChannelBadge extends StatelessWidget {
-  /// Circle on an avatar: 19 (avatar 50) / 16 (avatar 40), white glyph,
-  /// 2dp `background` ring.
-  const ChannelBadge.avatar({super.key, required this.channel, this.size = 19, this.ringColor}) : chip = false;
+  /// Circle on an avatar: 18dp brand fill, 11dp white glyph, 2dp ring
+  /// (Icon Library §7); 16 on 40dp avatars.
+  const ChannelBadge.avatar({super.key, required this.channel, this.size = 18, this.ringColor}) : chip = false;
 
   /// Chip: height 24, channel container bg, brand-colored glyph + label.
   const ChannelBadge.chip({super.key, required this.channel}) : chip = true, size = 24, ringColor = null;
@@ -35,7 +35,7 @@ class ChannelBadge extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(channel.glyph, size: 12, color: channel.brand(c)),
+              ChannelIcon(channel, size: AppIconSize.xs),
               const SizedBox(width: 5),
               Text(label, style: context.text.tagLabel),
             ],
@@ -44,16 +44,6 @@ class ChannelBadge extends StatelessWidget {
       );
     }
 
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        color: channel.brand(c),
-        shape: BoxShape.circle,
-        border: Border.all(color: ringColor ?? c.background, width: 2),
-      ),
-      alignment: Alignment.center,
-      child: Icon(channel.glyph, size: size <= 16 ? 8 : 10, color: Colors.white),
-    );
+    return ChannelIcon.badge(channel, dp: size, ringColor: ringColor ?? c.background);
   }
 }

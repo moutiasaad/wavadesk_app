@@ -113,10 +113,9 @@ class AiHandoff {
   final DateTime? at;
 }
 
-/// The signed client, or null in sample mode.
-final chatApiProvider = Provider<ChatApi?>((ref) {
-  final api = ref.watch(wdApiProvider);
-  if (api == null) return null;
+/// The signed `/mobile/v1` client.
+final chatApiProvider = Provider<ChatApi>((ref) {
+  final api = ref.watch(wdApiRequiredProvider);
   final auth = ref.read(authRepositoryProvider);
   return ChatApi(api, meId: () => '${auth.session?.user['id'] ?? ''}', role: () => '${auth.session?.user['role'] ?? ''}');
 });
@@ -152,7 +151,6 @@ class ChatDetailLoadStatus extends Notifier<Map<String, ChatDetailLoad>> {
 /// it fresh while the chat is open (polled; no WebSocket client yet).
 final chatRemoteSyncProvider = Provider.autoDispose.family<void, String>((ref, id) {
   final api = ref.watch(chatApiProvider);
-  if (api == null) return;
   var disposed = false;
   Future<void> load() async {
     // Presence heartbeat only while the app is visible (Claim spec §9).

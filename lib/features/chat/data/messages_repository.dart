@@ -92,106 +92,11 @@ abstract interface class MessagesRepository {
 
 final messagesRepositoryProvider = Provider<MessagesRepository>((ref) {
   final chat = ref.watch(chatApiProvider);
-  final wd = ref.watch(wdApiProvider);
-  if (chat == null || wd == null) return SampleMessagesRepository(ref);
+  final wd = ref.watch(wdApiRequiredProvider);
   final repo = HttpMessagesRepository(chat, HttpUploadsApi(wd), ref.read(sharedPrefsProvider));
   ref.onDispose(repo.dispose);
   return repo;
 });
-
-// ---- Sample data -------------------------------------------------------------------
-
-/// Reads/writes the in-memory [InboxController] so the inbox list and chat
-/// stay in sync. Everything is local, so there are never older pages.
-class SampleMessagesRepository implements MessagesRepository {
-  SampleMessagesRepository(this._ref);
-
-  final Ref _ref;
-  InboxController get _inbox => _ref.read(inboxProvider.notifier);
-
-  @override
-  final UploadsApi uploads = SimulatedUploadsApi();
-
-  @override
-  List<Message> current(String id) => _inbox.byId(id)?.messages ?? const [];
-
-  @override
-  Stream<void> changes(String id) {
-    final c = StreamController<void>();
-    final sub = _ref.listen(conversationProvider(id).select((c) => c?.messages), (_, _) => c.add(null));
-    c.onCancel = sub.close;
-    return c.stream;
-  }
-
-  @override
-  bool hasOlder(String id) => false;
-
-  @override
-  bool isLoading(String id) => false;
-
-  @override
-  bool loadFailed(String id) => false;
-
-  @override
-  void reload(String id) {}
-
-  @override
-  Future<bool> loadOlder(String id) async => false;
-
-  @override
-  Future<bool> loadAround(String id, String messageId) async => current(id).any((m) => m.id == messageId);
-
-  @override
-  String send(String id, OutgoingMessage m) {
-    if (m.isNote) {
-      _inbox.addNote(id, m.text, mentions: m.mentions);
-      return current(id).last.id;
-    }
-    if (m.kind == MessageKind.template && m.templateName != null) {
-      return _inbox.sendMessage(
-        id,
-        m.text,
-        kind: MessageKind.template,
-        templateName: m.templateName,
-        templateButtons: m.templateButtons,
-        sentVia: 'template',
-      );
-    }
-    return _inbox.sendMessage(
-      id,
-      m.text,
-      kind: m.kind,
-      quote: m.quote,
-      sentVia: m.sentVia,
-      fileName: m.fileName,
-      fileSize: m.fileSize,
-      mediaDuration: m.duration,
-      albumCount: m.albumCount,
-      locationLabel: m.locationLabel,
-    );
-  }
-
-  @override
-  void retry(String id, String messageId) => _inbox.retryMessage(id, messageId);
-
-  @override
-  void discard(String id, String messageId) => _inbox.discardMessage(id, messageId);
-
-  @override
-  void delete(String id, String messageId) => _inbox.deleteMessage(id, messageId);
-
-  @override
-  void react(String id, String messageId, String emoji) => _inbox.react(id, messageId, emoji);
-
-  @override
-  void feedback(String id, String messageId, String rating) => _inbox.setAiFeedback(id, messageId, rating);
-
-  @override
-  Future<void> transcribe(String id, String messageId) => _inbox.transcribe(id, messageId);
-
-  @override
-  Future<void> saveDraft(String id, String text) async {}
-}
 
 // ---- Real backend -----------------------------------------------------------------
 

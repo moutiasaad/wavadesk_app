@@ -115,7 +115,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
                 ),
               ),
               AppIconButton(
-                icon: AppIcons.notifications,
+                icon: AppIcons.bell,
                 variant: AppIconButtonVariant.filled,
                 semanticLabel: unreadNotifications > 0
                     ? l.inbox_a11y_notifications(unreadNotifications)

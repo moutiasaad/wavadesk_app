@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
-import '../../../core/api/wd_api.dart' show useRealApi;
 import '../../../core/api/wd_api_provider.dart';
 import '../../auth/application/auth_session.dart';
 import '../domain/conversation_filters.dart';
@@ -44,12 +43,6 @@ abstract interface class ConversationsRepository {
 }
 
 final conversationsRepositoryProvider = Provider<ConversationsRepository>((ref) {
-  if (!useRealApi) {
-    final repo = SampleConversationsRepository(ref);
-    ref.listen(inboxProvider.select((s) => s.conversations), (_, _) => repo.notifyChanged());
-    ref.onDispose(repo.dispose);
-    return repo;
-  }
   final auth = ref.read(authRepositoryProvider);
   final repo = HttpConversationsRepository(
     ConversationsApi(ref.read(wdApiRequiredProvider)),
@@ -59,140 +52,6 @@ final conversationsRepositoryProvider = Provider<ConversationsRepository>((ref) 
   ref.onDispose(repo.dispose);
   return repo;
 });
-
-// ---- Sample data (no backend) -----------------------------------------------------
-
-/// Serves rows from the in-memory [InboxController] so the list, chat and
-/// every other screen stay in sync. Mirrors server filtering/sorting via
-/// [InboxRules]; pagination uses an offset cursor.
-class SampleConversationsRepository implements ConversationsRepository {
-  SampleConversationsRepository(this._ref);
-
-  final Ref _ref;
-  final _changes = StreamController<void>.broadcast();
-  bool _firstLoad = true;
-
-  InboxController get _inbox => _ref.read(inboxProvider.notifier);
-  String get _meId => _ref.read(currentAgentProvider).id;
-
-  void notifyChanged() {
-    if (!_changes.isClosed) _changes.add(null);
-  }
-
-  void dispose() => _changes.close();
-
-  @override
-  Stream<void> get changes => _changes.stream;
-
-  List<String> _teamsFor(String customerId) {
-    final teams = MockData.teams;
-    var h = 0;
-    for (final u in customerId.codeUnits) {
-      h = (h * 31 + u) & 0x7fffffff;
-    }
-    return [teams[h % teams.length].id];
-  }
-
-  List<ConversationSummary> _all() => [
-    for (final c in _ref.read(inboxProvider).conversations)
-      ConversationSummary.fromConversation(c, meId: _meId, teamIds: _teamsFor(c.customer.id)),
-  ];
-
-  void _ensureOnline() {
-    if (_ref.read(inboxProvider).network == NetworkState.offline) {
-      throw const ConversationsApiException(0);
-    }
-  }
-
-  @override
-  Future<ConversationsPage> fetch(InboxQuery q, {String? cursor, int limit = 30}) async {
-    if (_firstLoad) {
-      _firstLoad = false;
-      await Future<void>.delayed(const Duration(milliseconds: 900)); // first-load skeleton
-    } else if (cursor != null) {
-      await Future<void>.delayed(const Duration(milliseconds: 600)); // page latency
-    }
-    _ensureOnline();
-    final now = DateTime.now();
-    final all = _all();
-    final matching = InboxRules.sort(
-      [
-        for (final c in all)
-          if (InboxRules.matches(q, c, _meId, now)) c,
-      ],
-      q,
-      now,
-    );
-    final offset = int.tryParse(cursor ?? '') ?? 0;
-    final end = (offset + limit).clamp(0, matching.length);
-    final open = all.where((c) => c.isActive);
-    return ConversationsPage(
-      items: matching.sublist(offset.clamp(0, matching.length), end),
-      nextCursor: end < matching.length ? '$end' : null,
-      counts: {
-        'mine': open.where((c) => c.isMine(_meId)).length,
-        'unassigned': open.where((c) => c.assignee == null).length,
-        'unread': all
-            .where(
-              (c) =>
-                  InboxRules.inSegment(q.segment, c, _meId) &&
-                  InboxRules.statusMatches(q.copyWith(chip: QuickChip.all), c, now) &&
-                  c.isUnread,
-            )
-            .length,
-      },
-    );
-  }
-
-  @override
-  Future<int> count(InboxQuery q) async {
-    final now = DateTime.now();
-    return _all().where((c) => InboxRules.matches(q, c, _meId, now)).length;
-  }
-
-  @override
-  ConversationsPage? cached(InboxSegment segment) => null; // data is already in memory
-
-  @override
-  Future<void> saveCache(InboxSegment segment, ConversationsPage page) async {}
-
-  @override
-  Future<void> setRead(String id, {required bool read}) async => read ? _inbox.markRead(id) : _inbox.markUnread(id);
-
-  @override
-  Future<String?> claim(String id) async {
-    _ensureOnline();
-    return _inbox.claimChecked(id);
-  }
-
-  Future<UndoAction> _bulk(List<ConversationSummary> items, void Function(String id) action) async {
-    final snapshots = _inbox.bulk({for (final i in items) i.id}, action);
-    return () async => _inbox.restoreAll(snapshots);
-  }
-
-  @override
-  Future<UndoAction> resolve(List<ConversationSummary> items) => _bulk(items, _inbox.resolve);
-
-  @override
-  Future<UndoAction> snooze(List<ConversationSummary> items, DateTime until) =>
-      _bulk(items, (id) => _inbox.snooze(id, until));
-
-  @override
-  Future<UndoAction> archive(List<ConversationSummary> items) => _bulk(items, _inbox.archive);
-
-  @override
-  Future<UndoAction> setReadBulk(List<ConversationSummary> items, {required bool read}) =>
-      _bulk(items, read ? _inbox.markRead : _inbox.markUnread);
-
-  @override
-  Future<UndoAction> setPriority(List<ConversationSummary> items, Priority priority) =>
-      _bulk(items, (id) => _inbox.setPriority(id, priority));
-
-  @override
-  Future<UndoAction> addTag(List<ConversationSummary> items, String tag) => _bulk(items, (id) {
-    if (!(_inbox.byId(id)?.tags.contains(tag) ?? true)) _inbox.toggleTag(id, tag);
-  });
-}
 
 // ---- Real backend ----------------------------------------------------------------
 

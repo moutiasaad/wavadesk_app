@@ -5,6 +5,7 @@ import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/relative_time_formatter.dart';
 import '../../domain/row_tag_resolver.dart';
+import '../../../../core/utils/span_format.dart';
 
 /// Row-3 tag (Inbox spec §4.5.3): compact `StatusBadge`, h20, radius 6.
 class ConversationRowTag extends StatelessWidget {
@@ -14,7 +15,7 @@ class ConversationRowTag extends StatelessWidget {
   final DateTime now;
 
   static String label(RowTag tag, DateTime now, AppLocalizations l, String locale) => switch (tag.kind) {
-    RowTagKind.waiting => l.inbox_tag_waiting(tag.minutes),
+    RowTagKind.waiting => l.inbox_tag_waiting(SpanFormat.minutes(tag.minutes, l)),
     RowTagKind.aiReady => l.inbox_tag_ai_ready,
     RowTagKind.aiReplied => l.inbox_tag_ai_replied,
     RowTagKind.colleague => tag.assignee?.firstName ?? '',
@@ -27,12 +28,12 @@ class ConversationRowTag extends StatelessWidget {
     final c = context.colors;
     final text = label(tag, now, context.l10n, context.localeName);
     final (Color fg, Color bg, IconData? icon) = switch (tag.kind) {
-      RowTagKind.waiting => (c.statusWaiting, c.statusWaitingContainer, AppIcons.clock),
-      RowTagKind.aiReady => (c.statusAi, c.statusAiContainer, AppIcons.sparkle),
-      RowTagKind.aiReplied => (c.statusClosed, c.statusClosedContainer, AppIcons.bot),
+      RowTagKind.waiting => (c.statusWaiting, c.statusWaitingContainer, AppIcons.waiting),
+      RowTagKind.aiReady => (c.statusAi, c.statusAiContainer, AppIcons.ai),
+      RowTagKind.aiReplied => (c.statusClosed, c.statusClosedContainer, AppIcons.aiAgent),
       RowTagKind.colleague => (c.statusClosed, c.statusClosedContainer, null),
-      RowTagKind.snoozed => (c.statusSnoozed, c.statusSnoozedContainer, AppIcons.moon),
-      RowTagKind.windowClosing => (c.statusPending, c.statusPendingContainer, AppIcons.hourglass),
+      RowTagKind.snoozed => (c.statusSnoozed, c.statusSnoozedContainer, AppIcons.snooze),
+      RowTagKind.windowClosing => (c.statusPending, c.statusPendingContainer, AppIcons.waiting),
     };
     final assignee = tag.assignee;
     return StatusBadge(

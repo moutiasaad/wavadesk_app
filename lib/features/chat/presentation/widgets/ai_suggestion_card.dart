@@ -137,7 +137,7 @@ class _Header extends StatelessWidget {
     final l = context.l10n;
     return Row(
       children: [
-        Icon(AppIcons.sparkle, size: 16, color: c.primary),
+        AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.primary),
         const SizedBox(width: 6),
         Flexible(
           child: Semantics(
@@ -250,7 +250,7 @@ class _CardBody extends StatelessWidget {
             const SizedBox(height: 6),
             Row(
               children: [
-                Icon(AppIcons.alertTriangle, size: 14, color: c.warning),
+                AppIcon(AppIcons.warning, size: AppIconSize.sm, color: c.warning),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(l.chat_ai_low_conf, style: t.caption.copyWith(color: c.textWarning)),
@@ -355,7 +355,7 @@ class _ReadyPill extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(AppIcons.sparkle, size: 14, color: c.primary),
+                    AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.primary),
                     const SizedBox(width: 6),
                     Text(l.chat_ai_ready_pill, style: context.text.buttonSmall.copyWith(color: c.onPrimaryContainer)),
                   ],
@@ -387,7 +387,7 @@ class _NoAnswerRow extends StatelessWidget {
       decoration: BoxDecoration(color: c.warningContainer, borderRadius: BorderRadius.circular(AppRadius.md)),
       child: Row(
         children: [
-          Icon(AppIcons.sparkle, size: 14, color: c.textWarning),
+          AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.textWarning),
           const SizedBox(width: AppSpacing.sm),
           Expanded(
             child: Text(l.chat_ai_no_answer, style: t.caption.copyWith(color: c.textWarning)),

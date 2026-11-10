@@ -109,7 +109,7 @@ class AppAvatar extends StatelessWidget {
           width: d,
           height: d,
           decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(AppRadius.md)),
-          child: Icon(AppIcons.users, size: d * 0.45, color: c.textSecondary),
+          child: AppIcon(AppIcons.team, dp: d * 0.45, color: c.textSecondary),
         );
         return Semantics(label: context.l10n.a11y_team_avatar, child: face);
       case _AvatarKind.ai:
@@ -117,7 +117,7 @@ class AppAvatar extends StatelessWidget {
           width: d,
           height: d,
           decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-          child: Icon(AppIcons.sparkle, size: d * 0.45, color: c.primary),
+          child: AppIcon(AppIcons.ai, dp: d * 0.45, color: c.primary),
         );
         return Semantics(label: context.l10n.a11y_ai_avatar, child: face);
       case _AvatarKind.person:
@@ -150,7 +150,7 @@ class AppAvatar extends StatelessWidget {
     final ring = ringColor ?? c.background;
     Widget? corner;
     if (channel != null) {
-      corner = ChannelBadge.avatar(channel: channel!, size: size.dp >= 50 ? 19 : 16, ringColor: ring);
+      corner = ChannelBadge.avatar(channel: channel!, size: size.dp >= 50 ? 18 : 16, ringColor: ring);
     } else if (presence != null) {
       final dot = size.presenceDot;
       corner = Container(

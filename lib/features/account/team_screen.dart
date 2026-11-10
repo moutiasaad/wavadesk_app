@@ -61,7 +61,7 @@ class _TeamScreenState extends ConsumerState<TeamScreen> {
           isEmpty: false,
           skeleton: (_) => AppSkeleton.list(rows: 6),
           error: (_) => EmptyState(
-            icon: AppIcons.wifiOff,
+            icon: AppIcons.offline,
             title: l.account_load_error,
             actionLabel: l.common_retry,
             onAction: ref.read(teamDirectoryProvider.notifier).refresh,

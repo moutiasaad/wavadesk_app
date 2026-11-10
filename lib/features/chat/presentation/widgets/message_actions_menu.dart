@@ -149,7 +149,7 @@ class _MenuOverlay extends ConsumerWidget {
       // (Profile spec §7.3).
       if (m.type == MessageBubbleType.internalNote && hasText && detail.hasProfile)
         (
-          AppIcons.user,
+          AppIcons.customer,
           l.msgaction_add_to_profile,
           () async {
             close();
@@ -340,7 +340,7 @@ class _MenuOverlay extends ConsumerWidget {
             ),
             if (m.isOutgoing)
               SettingsTile(
-                icon: AppIcons.checkDouble,
+                icon: AppIcons.read,
                 title: l.msgaction_info_status,
                 value: DeliveryStatus.label(l, m.delivery),
                 showChevron: false,
@@ -381,7 +381,7 @@ class _MenuRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: Row(
             children: [
-              Icon(icon, size: 20, color: destructive ? c.textError : c.textSecondary),
+              AppIcon(icon, color: destructive ? c.textError : c.textSecondary),
               const SizedBox(width: AppSpacing.md),
               Expanded(
                 child: Text(
@@ -519,7 +519,7 @@ class _RateRow extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          Icon(AppIcons.sparkle, size: 20, color: c.primary),
+          AppIcon(AppIcons.ai, color: c.primary),
           const SizedBox(width: AppSpacing.md),
           Expanded(
             child: Text(l.msgaction_rate, style: context.text.bodyLarge.copyWith(fontWeight: FontWeight.w600)),

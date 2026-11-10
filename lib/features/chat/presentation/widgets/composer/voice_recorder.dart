@@ -157,7 +157,7 @@ class VoiceRecordButton extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(color: color, shape: BoxShape.circle),
-              child: const Icon(AppIcons.mic, size: 20, color: Colors.white),
+              child: const AppIcon(AppIcons.mic, color: Colors.white),
             ),
           ),
         ),
@@ -214,7 +214,7 @@ class _RecordingFieldState extends State<RecordingField> with SingleTickerProvid
           ),
           child: Row(
             children: [
-              Icon(AppIcons.delete, size: 20, color: c.error),
+              AppIcon(AppIcons.delete, color: c.error),
               const SizedBox(width: AppSpacing.sm),
               Text(l.composer_record_cancelled, style: t.bodyMedium.copyWith(color: c.textSecondary)),
             ],
@@ -269,7 +269,7 @@ class _RecordingFieldState extends State<RecordingField> with SingleTickerProvid
                   minimumSize: const Size(48, 40),
                 ),
                 onPressed: rc.cancel,
-                icon: const Icon(AppIcons.stop, size: 18),
+                icon: AppIcon(AppIcons.stop, dp: 18, color: c.textError),
                 label: Text(l.composer_record_stop),
               ),
             ],

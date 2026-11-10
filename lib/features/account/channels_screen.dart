@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/api/wd_api.dart' show useRealApi;
 import '../../core/data/data.dart';
 import '../../core/models/models.dart';
 import '../../core/router/app_router.dart';
@@ -13,11 +12,6 @@ import '../../core/widgets/widgets.dart';
 class ChannelsScreen extends ConsumerWidget {
   const ChannelsScreen({super.key});
 
-  // Channels connected in the demo workspace (WhatsApp comes from its controller).
-  // The API has no status for the other channels yet, so with the real API
-  // they are not claimed as connected — they are managed on the web.
-  static const _demoConnected = {Channel.web, Channel.instagram, Channel.messenger, Channel.email};
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
@@ -26,7 +20,8 @@ class ChannelsScreen extends ConsumerWidget {
     final whatsapp = wa.connected;
 
     // WhatsApp: until its status is known it stays in the first group (no jump).
-    bool isOn(Channel ch) => ch == Channel.whatsapp ? (!wa.loaded || whatsapp) : (!useRealApi && _demoConnected.contains(ch));
+    bool isOn(Channel ch) => ch == Channel.whatsapp ? (!wa.loaded || whatsapp) : false;
+    // The API has no status for the other channels yet: they are managed on the web.
 
     Widget row(Channel ch) {
       final on = isOn(ch);
@@ -34,7 +29,7 @@ class ChannelsScreen extends ConsumerWidget {
       if (ch == Channel.whatsapp) {
         subtitle = !wa.loaded ? null : (on ? l.channels_connected : l.channels_not_connected);
       } else {
-        subtitle = useRealApi ? l.channels_manage_on_web : (on ? l.channels_connected : l.channels_not_connected);
+        subtitle = l.channels_manage_on_web;
       }
       return SettingsTile(
         title: ch.label(l),
@@ -44,7 +39,7 @@ class ChannelsScreen extends ConsumerWidget {
           children: [
             ChannelBadge.avatar(channel: ch, size: 28, ringColor: c.surface),
             const SizedBox(width: AppSpacing.sm),
-            Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+            AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
           ],
         ),
         onTap: () {

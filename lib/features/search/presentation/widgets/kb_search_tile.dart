@@ -39,7 +39,7 @@ class KbSearchTile extends StatelessWidget {
                 width: 34,
                 height: 34,
                 decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(10)),
-                child: Icon(icon, size: 17, color: fg),
+                child: AppIcon(icon, size: AppIconSize.sm, color: fg),
               ),
               const SizedBox(width: AppSpacing.md),
               Expanded(
@@ -61,9 +61,9 @@ class KbSearchTile extends StatelessWidget {
                 IconButton(
                   tooltip: l.search_insert_reply,
                   onPressed: onInsert,
-                  icon: Icon(AppIcons.reply, size: 18, color: c.primary),
+                  icon: AppIcon(AppIcons.reply, dp: 18, color: c.primary),
                 ),
-              Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+              AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
             ],
           ),
         ),

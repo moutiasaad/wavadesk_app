@@ -3,9 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
-import '../../../core/api/wd_api.dart' show useRealApi;
 
 /// Real-time events the inbox reacts to (Inbox spec §5).
 sealed class InboxSocketEvent {
@@ -40,8 +38,8 @@ class InboxInboundMessage extends InboxSocketEvent {
   final bool assignedToMe;
 }
 
-/// Channel `workspace.{id}.agent.{userId}`. Implementations: the sample-data
-/// bridge, or 30s polling while a WebSocket client isn't wired yet.
+/// Channel `workspace.{id}.agent.{userId}`. Implementation: 20s polling
+/// while a WebSocket client isn't wired yet.
 abstract interface class ConversationsSocket {
   Stream<InboxSocketEvent> get events;
 
@@ -52,56 +50,10 @@ abstract interface class ConversationsSocket {
 }
 
 final conversationsSocketProvider = Provider<ConversationsSocket>((ref) {
-  final socket = !useRealApi ? SampleConversationsSocket(ref) : PollingConversationsSocket();
+  final socket = PollingConversationsSocket();
   ref.onDispose(socket.dispose);
   return socket;
 });
-
-/// Bridges [InboxController]'s simulated events and network state.
-class SampleConversationsSocket implements ConversationsSocket {
-  SampleConversationsSocket(Ref ref) {
-    _sub = ref.read(inboxProvider.notifier).events.listen((e) {
-      _events.add(switch (e) {
-        AssignedToMeEvent(:final conversationId, :final byName) => InboxAssignedToMe(conversationId, byName),
-        ColleagueClaimedEvent(:final conversationId, :final agent) => InboxClaimedByColleague(
-          conversationId,
-          agent.name,
-        ),
-        NewConversationEvent(:final conversationId) => InboxNewConversation(conversationId),
-        NewMessageEvent(:final conversationId, :final assignedToMe) => InboxInboundMessage(
-          conversationId,
-          assignedToMe: assignedToMe,
-        ),
-      });
-    });
-    _current = ref.read(inboxProvider).network;
-    ref.listen(inboxProvider.select((s) => s.network), (_, next) {
-      _current = next;
-      _status.add(next);
-    });
-  }
-
-  final _events = StreamController<InboxSocketEvent>.broadcast();
-  final _status = StreamController<NetworkState>.broadcast();
-  late final StreamSubscription<InboxEvent> _sub;
-  late NetworkState _current;
-
-  @override
-  Stream<InboxSocketEvent> get events => _events.stream;
-
-  @override
-  Stream<NetworkState> get status => _status.stream;
-
-  @override
-  NetworkState get currentStatus => _current;
-
-  @override
-  void dispose() {
-    _sub.cancel();
-    _events.close();
-    _status.close();
-  }
-}
 
 /// Fallback transport (§5): asks for a refresh every 20s and maps device
 /// connectivity to the banner states.

@@ -119,7 +119,7 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
       final e = _error;
       final ns = e is KbApiException && e.isNotSupported;
       body = EmptyState(
-        icon: ns ? AppIcons.globe : AppIcons.alert,
+        icon: ns ? AppIcons.globe : AppIcons.error,
         title: ns ? l.kb_web_only : l.kb_error,
         actionLabel: ns ? null : l.kb_retry,
         onAction: ns ? null : _load,
@@ -139,7 +139,7 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(color: v.background, borderRadius: BorderRadius.circular(AppRadius.md)),
-                  child: Icon(v.icon, size: 24, color: v.foreground),
+                  child: AppIcon(v.icon, size: AppIconSize.lg, color: v.foreground),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
@@ -168,7 +168,7 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
               decoration: BoxDecoration(color: c.errorContainer, borderRadius: BorderRadius.circular(AppRadius.xl)),
               child: Row(
                 children: [
-                  Icon(AppIcons.alertTriangle, size: 18, color: c.textError),
+                  AppIcon(AppIcons.warning, dp: 18, color: c.textError),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(
                     child: Column(
@@ -298,7 +298,7 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
             AnimatedRotation(
               turns: open ? 0.5 : 0,
               duration: AppMotion.fast,
-              child: Icon(AppIcons.chevronDown, size: 16, color: c.textTertiary),
+              child: AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: c.textTertiary),
             ),
           ],
         ),

@@ -55,7 +55,7 @@ class MetricCard extends StatelessWidget {
                 Row(
                   children: [
                     if (icon != null) ...[
-                      Icon(icon, size: 14, color: alert ? c.textError : c.textSecondary),
+                      AppIcon(icon, size: AppIconSize.sm, color: alert ? c.textError : c.textSecondary),
                       const SizedBox(width: 6),
                     ],
                     Expanded(
@@ -73,11 +73,7 @@ class MetricCard extends StatelessWidget {
                   const SizedBox(height: 2),
                   Row(
                     children: [
-                      Icon(
-                        deltaPositive ? AppIcons.trendUp : AppIcons.trendDown,
-                        size: 14,
-                        color: deltaPositive ? c.textSuccess : c.textError,
-                      ),
+                      AppIcon(deltaPositive ? AppIcons.trendUp : AppIcons.trendDown, size: AppIconSize.sm, color: deltaPositive ? c.textSuccess : c.textError,),
                       const SizedBox(width: AppSpacing.xs),
                       Flexible(
                         child: Text(

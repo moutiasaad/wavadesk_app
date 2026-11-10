@@ -27,7 +27,7 @@ class ConversationsEmptyState extends StatelessWidget {
         onAction: onAction,
       ),
       InboxEmptyKind.mineDone => EmptyState(
-        icon: AppIcons.sparkle,
+        icon: AppIcons.ai,
         title: l.inbox_empty_done_title,
         body: l.inbox_empty_done_body,
       ),
@@ -51,7 +51,7 @@ class ConversationsEmptyState extends StatelessWidget {
         onAction: onAction,
       ),
       InboxEmptyKind.error => EmptyState(
-        icon: AppIcons.wifiOff,
+        icon: AppIcons.offline,
         title: l.inbox_empty_error_title,
         body: l.inbox_empty_error_body,
         actionLabel: l.common_retry,

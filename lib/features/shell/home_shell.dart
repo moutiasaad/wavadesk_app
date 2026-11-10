@@ -36,10 +36,10 @@ class HomeShell extends ConsumerWidget {
               currentIndex: shell.currentIndex,
               onTap: (i) => shell.goBranch(i, initialLocation: i == shell.currentIndex),
               items: [
-                AppTabItem(icon: AppIcons.conversations, label: l.tab_conversations, badge: mineUnread),
-                AppTabItem(icon: AppIcons.dashboard, label: l.tab_dashboard),
-                AppTabItem(icon: AppIcons.knowledge, label: l.tab_knowledge),
-                AppTabItem(icon: AppIcons.account, label: l.tab_account),
+                AppTabItem(icon: AppIcons.tabInbox, label: l.tab_conversations, badge: mineUnread),
+                AppTabItem(icon: AppIcons.tabDashboard, label: l.tab_dashboard),
+                AppTabItem(icon: AppIcons.tabKnowledge, label: l.tab_knowledge),
+                AppTabItem(icon: AppIcons.tabAccount, label: l.tab_account),
               ],
             ),
     );

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../core/api/wd_api.dart' show useRealApi;
-import '../../core/data/data.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/l10n.dart';
 import '../../core/widgets/widgets.dart';
@@ -21,7 +19,7 @@ class _SubscriptionScreenState extends ConsumerState<SubscriptionScreen> {
   void initState() {
     super.initState();
     // Reopening shows the kept copy at once and refreshes it quietly.
-    if (useRealApi && ref.exists(subscriptionInfoProvider)) {
+    if (ref.exists(subscriptionInfoProvider)) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) ref.invalidate(subscriptionInfoProvider);
       });
@@ -42,29 +40,25 @@ class _SubscriptionScreenState extends ConsumerState<SubscriptionScreen> {
     final l = context.l10n;
 
     Widget body;
-    if (!useRealApi) {
-      body = _sampleBody(context);
+    final async = ref.watch(subscriptionInfoProvider);
+    final info = async.valueOrNull;
+    if (info != null) {
+      body = RefreshIndicator(
+        color: c.primary,
+        onRefresh: () => ref.refresh(subscriptionInfoProvider.future).then((_) {}, onError: (_) {
+          if (context.mounted) AppSnackbar.show(context, message: l.account_load_error, kind: SnackKind.error);
+        }),
+        child: _realBody(context, info),
+      );
+    } else if (async.hasError) {
+      body = EmptyState(
+        icon: AppIcons.offline,
+        title: l.account_load_error,
+        actionLabel: l.common_retry,
+        onAction: () => ref.invalidate(subscriptionInfoProvider),
+      );
     } else {
-      final async = ref.watch(subscriptionInfoProvider);
-      final info = async.valueOrNull;
-      if (info != null) {
-        body = RefreshIndicator(
-          color: c.primary,
-          onRefresh: () => ref.refresh(subscriptionInfoProvider.future).then((_) {}, onError: (_) {
-            if (context.mounted) AppSnackbar.show(context, message: l.account_load_error, kind: SnackKind.error);
-          }),
-          child: _realBody(context, info),
-        );
-      } else if (async.hasError) {
-        body = EmptyState(
-          icon: AppIcons.wifiOff,
-          title: l.account_load_error,
-          actionLabel: l.common_retry,
-          onAction: () => ref.invalidate(subscriptionInfoProvider),
-        );
-      } else {
-        body = AppSkeleton.list(rows: 5);
-      }
+      body = AppSkeleton.list(rows: 5);
     }
 
     return ScrolledUnderBuilder(
@@ -102,25 +96,6 @@ class _SubscriptionScreenState extends ConsumerState<SubscriptionScreen> {
         _meter(context, l.subscription_agents, s.seatsUsed, s.seatsLimit),
       ],
       onBilling: () => _openBilling(s.manageUrl),
-    );
-  }
-
-  Widget _sampleBody(BuildContext context) {
-    final l = context.l10n;
-    final ai = ref.watch(aiSettingsProvider);
-    final agents = 1 + ref.watch(colleaguesProvider).length;
-    final renew = DateTime.now().add(const Duration(days: 18));
-    return _layout(
-      context,
-      planName: l.subscription_plan_name,
-      price: l.subscription_price,
-      footer: l.subscription_renews(AppFormat.date(context, renew)),
-      meters: [
-        _meter(context, l.subscription_ai_replies, ai.repliesUsed, ai.repliesQuota),
-        _meter(context, l.subscription_agents, agents, 5),
-        _meter(context, l.subscription_channels, 5, 8),
-      ],
-      onBilling: () => AppSnackbar.show(context, message: l.subscription_upgrade_web),
     );
   }
 
@@ -210,7 +185,7 @@ class _SubscriptionScreenState extends ConsumerState<SubscriptionScreen> {
             children: [
               AppButton(
                 label: l.subscription_upgrade,
-                icon: AppIcons.zap,
+                icon: AppIcons.quickReply,
                 size: AppButtonSize.large,
                 expand: true,
                 onPressed: onBilling,

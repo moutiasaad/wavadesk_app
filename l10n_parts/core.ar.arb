@@ -4,7 +4,6 @@
   "tab_dashboard": "لوحة التحكم",
   "tab_knowledge": "المعرفة",
   "tab_account": "الحساب",
-
   "channel_whatsapp": "واتساب",
   "channel_web": "دردشة الموقع",
   "channel_messenger": "ماسنجر",
@@ -13,7 +12,6 @@
   "channel_telegram": "تيليغرام",
   "channel_sms": "رسائل SMS",
   "channel_other": "قناة أخرى",
-
   "status_open": "مفتوحة",
   "status_pending": "بانتظار العميل",
   "status_waiting": "بانتظار الرد",
@@ -21,26 +19,27 @@
   "status_resolved": "محلولة",
   "status_closed": "مغلقة",
   "status_ai": "يتولاها الذكاء",
-
   "priority_urgent": "عاجل",
   "priority_high": "عالية",
   "priority_medium": "متوسطة",
   "priority_low": "منخفضة",
-
   "presence_online": "متاح",
   "presence_busy": "مشغول",
   "presence_away": "غير متاح",
-
   "role_admin": "مدير",
   "role_supervisor": "مشرف",
   "role_agent": "موظف دعم",
-
   "ownership_mine": "مُسندة لك",
   "ownership_unassigned": "غير مُسندة",
   "ownership_colleague": "مُسندة لـ{name}",
-  "@ownership_colleague": {"placeholders": {"name": {"type": "String"}}},
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "ownership_ai": "يتولاها الذكاء الاصطناعي",
-
   "media_image": "صورة",
   "media_voice": "رسالة صوتية",
   "media_file": "ملف",
@@ -53,7 +52,6 @@
   "media_email": "بريد إلكتروني",
   "media_deleted": "رسالة محذوفة",
   "media_unsupported": "رسالة غير مدعومة",
-
   "common_cancel": "إلغاء",
   "common_save": "حفظ",
   "common_undo": "تراجع",
@@ -71,36 +69,92 @@
   "common_you": "أنت",
   "common_loading": "جارٍ التحميل…",
   "common_selected": "محدد",
-
   "time_now": "الآن",
   "time_today": "اليوم",
   "time_yesterday": "أمس",
   "time_minutes_ago": "{count, plural, =1{قبل دقيقة} =2{قبل دقيقتين} few{قبل {count} دقائق} other{قبل {count} دقيقة}}",
-  "@time_minutes_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "time_hours_ago": "{count, plural, =1{قبل ساعة} =2{قبل ساعتين} few{قبل {count} ساعات} other{قبل {count} ساعة}}",
-  "@time_hours_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "time_days_ago": "{count, plural, =1{قبل يوم} =2{قبل يومين} few{قبل {count} أيام} other{قبل {count} يومًا}}",
-  "@time_days_ago": {"placeholders": {"count": {"type": "int"}}},
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_minutes_short": "{count} د",
-  "@duration_minutes_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_hours_short": "{count} س",
-  "@duration_hours_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "duration_days_short": "{count} ي",
-  "@duration_days_short": {"placeholders": {"count": {"type": "int"}}},
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "waiting_for": "ينتظر منذ {duration}",
-  "@waiting_for": {"placeholders": {"duration": {"type": "String"}}},
-
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "network_connecting": "جارٍ الاتصال…",
   "network_offline": "غير متصل",
   "empty_offline_title": "أنت غير متصل بالإنترنت",
   "empty_offline_body": "تحقق من اتصالك ثم أعد المحاولة. ستُرسل رسائلك عند عودة الاتصال.",
-
   "a11y_unread_messages": "{count, plural, =0{لا رسائل غير مقروءة} =1{رسالة غير مقروءة} =2{رسالتان غير مقروءتين} few{{count} رسائل غير مقروءة} other{{count} رسالة غير مقروءة}}",
-  "@a11y_unread_messages": {"placeholders": {"count": {"type": "int"}}},
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "a11y_notifications_unread": "الإشعارات، يوجد جديد",
   "a11y_ai_avatar": "الذكاء الاصطناعي",
   "a11y_team_avatar": "فريق",
   "a11y_selected": "محدد",
   "a11y_priority": "الأولوية: {label}",
-  "@a11y_priority": {"placeholders": {"label": {"type": "String"}}}
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "time_unit_day": "ي",
+  "time_unit_hour": "س",
+  "time_unit_min": "د",
+  "common_increase": "زيادة",
+  "common_decrease": "إنقاص"
 }

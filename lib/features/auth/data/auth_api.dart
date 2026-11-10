@@ -5,7 +5,7 @@ import '../../../core/api/wd_api.dart';
 
 import '../domain/login_state.dart';
 
-export '../../../core/api/wd_api.dart' show apiBaseUrl, useRealApi;
+export '../../../core/api/wd_api.dart' show apiBaseUrl;
 
 @immutable
 class DeviceInfo {
@@ -167,63 +167,3 @@ class HttpAuthApi implements AuthApi {
   }
 }
 
-/// Offline stand-in used until the backend exposes a mobile login endpoint.
-///
-/// Any valid identifier + password (8+ chars) succeeds, except:
-/// - password `wrongpassword` → 401 invalid credentials
-/// - identifier containing `disabled` / `suspended` / `locked` / `server`
-///   / `2fa` / `team` → 403 / 403 / 429 (30s) / 500 / 2FA / workspace picker
-///
-/// Sessions last 2 minutes in debug builds so the biometric re-login path
-/// (expired access token + stored refresh token) can be exercised.
-class SimulatedAuthApi implements AuthApi {
-  @override
-  Future<LoginOutcome> login({
-    required String identifier,
-    required String password,
-    required DeviceInfo device,
-    required String locale,
-  }) async {
-    await Future<void>.delayed(const Duration(milliseconds: 1100));
-    final id = identifier.toLowerCase();
-    if (password == 'wrongpassword') throw const AuthFailure(LoginErrorCode.invalidCredentials);
-    if (id.contains('disabled')) throw const AuthFailure(LoginErrorCode.accountDisabled);
-    if (id.contains('suspended')) throw const AuthFailure(LoginErrorCode.workspaceSuspended);
-    if (id.contains('locked')) {
-      throw const AuthFailure(LoginErrorCode.tooManyAttempts, retryAfter: Duration(seconds: 30));
-    }
-    if (id.contains('server')) throw const AuthFailure(LoginErrorCode.server);
-    if (id.contains('2fa')) return const LoginNeeds2fa('temp-2fa');
-    if (id.contains('team')) {
-      return const LoginNeedsWorkspace([
-        {'id': 'w_1', 'name': 'متجر لمسة'},
-        {'id': 'w_2', 'name': 'متجر وافا'},
-      ]);
-    }
-    return LoginSucceeded(_session(identifier));
-  }
-
-  @override
-  Future<Session> refresh({required String refreshToken, required String locale}) async {
-    await Future<void>.delayed(const Duration(milliseconds: 700));
-    if (!refreshToken.startsWith('sim-refresh')) throw const AuthFailure(LoginErrorCode.invalidCredentials);
-    return _session(null);
-  }
-
-  Session _session(String? identifier) {
-    final stamp = DateTime.now().millisecondsSinceEpoch;
-    return Session.fromResponse({
-      'access_token': 'sim-access-$stamp',
-      'refresh_token': 'sim-refresh-$stamp',
-      'expires_in': kDebugMode ? 120 : 3600,
-      'user': {
-        'id': 'u_1',
-        'name': 'أحمد السالم',
-        'email': identifier != null && identifier.contains('@') ? identifier : 'ahmed@wavadesk.com',
-        'role': 'admin',
-        'avatar_url': null,
-      },
-      'workspace': {'id': 'w_1', 'name': 'متجر لمسة', 'plan': 'pro', 'trial_ends_at': null},
-    });
-  }
-}

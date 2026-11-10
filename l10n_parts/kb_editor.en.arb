@@ -232,5 +232,37 @@
     }
   },
   "kbe_a11y_save_disabled": "Complete the question and answer",
-  "kbe_a11y_dismiss": "Dismiss warning"
+  "kbe_a11y_dismiss": "Dismiss warning",
+  "kbe_media": "Attachments",
+  "kbe_media_hint": "AI sends them with the answer",
+  "kbe_media_add": "Add image or voice note",
+  "kbe_media_image": "Image",
+  "kbe_media_voice": "Voice note",
+  "kbe_media_with_text": "With text",
+  "kbe_media_file_only": "File only",
+  "kbe_media_remove": "Remove",
+  "kbe_media_uploading": "Uploading {p}%",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "Upload failed",
+  "kbe_media_queued": "Uploads after saving",
+  "kbe_media_too_big": "File larger than 16 MB",
+  "kbe_media_image_too_big": "Image larger than 5 MB",
+  "kbe_media_type_err": "Choose an image or an audio file",
+  "kbe_media_upgrade": "Images and voice notes are on paid plans",
+  "kbe_media_upgrade_cta": "View plans",
+  "kbe_media_some_failed": "Saved, but {n} attachments failed to upload",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "How it is sent"
 }

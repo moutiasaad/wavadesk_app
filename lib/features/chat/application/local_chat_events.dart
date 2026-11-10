@@ -5,7 +5,7 @@ import '../../../core/models/models.dart';
 /// System pills the real API doesn't return in the message list (it has no
 /// ownership events), kept for this app session and merged into the thread
 /// by `MessagesController`: "استلمت المحادثة", "استلم {name} المحادثة"
-/// (Claim spec §6). Sample mode writes these into the inbox instead.
+/// (Claim spec §6).
 final localChatEventsProvider = NotifierProvider<LocalChatEvents, Map<String, List<Message>>>(LocalChatEvents.new);
 
 class LocalChatEvents extends Notifier<Map<String, List<Message>>> {

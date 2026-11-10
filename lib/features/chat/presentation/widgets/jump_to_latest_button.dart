@@ -37,7 +37,7 @@ class JumpToLatestButton extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 child: InkWell(
                   onTap: onTap,
-                  child: Icon(AppIcons.chevronDown, size: 20, color: c.textPrimary),
+                  child: AppIcon(AppIcons.chevronDown, color: c.textPrimary),
                 ),
               ),
             ),

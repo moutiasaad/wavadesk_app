@@ -198,14 +198,6 @@
     }
   },
   "account_network_online": "متصل",
-  "account_network_demo": "وضع الاتصال التجريبي: {state}",
-  "@account_network_demo": {
-    "placeholders": {
-      "state": {
-        "type": "String"
-      }
-    }
-  },
   "ai_settings_title": "وكيل الذكاء الاصطناعي",
   "ai_settings_enable": "تفعيل وكيل الذكاء الاصطناعي",
   "ai_settings_status_on": "يعمل ويقترح الردود",
@@ -1752,11 +1744,11 @@
       }
     }
   },
-  "claim_viewing_since_min": "منذ {n} د",
+  "claim_viewing_since_min": "منذ {t}",
   "@claim_viewing_since_min": {
     "placeholders": {
-      "n": {
-        "type": "int"
+      "t": {
+        "type": "String"
       }
     }
   },
@@ -1921,6 +1913,14 @@
     }
   },
   "actions_add_note": "إضافة ملاحظة داخلية",
+  "claim_a11y_wait_span": "ينتظر منذ {t}",
+  "@claim_a11y_wait_span": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "conversations_segment_mine": "لي",
   "conversations_segment_unassigned": "غير مُسندة",
   "conversations_segment_all": "الكل",
@@ -2176,6 +2176,11 @@
       }
     }
   },
+  "time_unit_day": "ي",
+  "time_unit_hour": "س",
+  "time_unit_min": "د",
+  "common_increase": "زيادة",
+  "common_decrease": "إنقاص",
   "dash_title": "لوحة التحكم",
   "dash_morning": "صباح الخير، {name}",
   "@dash_morning": {
@@ -2503,11 +2508,11 @@
   "inbox_location": "موقع",
   "inbox_sticker": "ملصق",
   "inbox_deleted": "تم حذف هذه الرسالة",
-  "inbox_tag_waiting": "{n, plural, =1{ينتظر دقيقة} =2{ينتظر دقيقتين} few{ينتظر {n} دقائق} other{ينتظر {n} دقيقة}}",
+  "inbox_tag_waiting": "ينتظر {t}",
   "@inbox_tag_waiting": {
     "placeholders": {
-      "n": {
-        "type": "int"
+      "t": {
+        "type": "String"
       }
     }
   },
@@ -2956,6 +2961,38 @@
   },
   "kbe_a11y_save_disabled": "أكمل السؤال والإجابة",
   "kbe_a11y_dismiss": "إغلاق التنبيه",
+  "kbe_media": "المرفقات",
+  "kbe_media_hint": "يرسلها الذكاء مع الإجابة",
+  "kbe_media_add": "إضافة صورة أو تسجيل صوتي",
+  "kbe_media_image": "صورة",
+  "kbe_media_voice": "تسجيل صوتي",
+  "kbe_media_with_text": "مع النص",
+  "kbe_media_file_only": "ملف فقط",
+  "kbe_media_remove": "إزالة",
+  "kbe_media_uploading": "جارٍ الرفع {p}%",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "تعذّر رفع الملف",
+  "kbe_media_queued": "يُرفع بعد الحفظ",
+  "kbe_media_too_big": "الملف أكبر من 16 ميجابايت",
+  "kbe_media_image_too_big": "الصورة أكبر من 5 ميجابايت",
+  "kbe_media_type_err": "اختر صورة أو ملفًا صوتيًا",
+  "kbe_media_upgrade": "إرفاق الصور والتسجيلات متاح في الباقات المدفوعة",
+  "kbe_media_upgrade_cta": "عرض الباقات",
+  "kbe_media_some_failed": "تم الحفظ، لكن تعذّر رفع {n} من المرفقات",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "طريقة الإرسال",
   "kb_title": "المعرفة",
   "kb_search": "ابحث في {n} مدخلًا",
   "@kb_search": {
@@ -3053,7 +3090,7 @@
   "kb_add_title": "إضافة إلى قاعدة المعرفة",
   "kb_add_qa_sub": "الأسرع والأدق للذكاء",
   "kb_add_file": "رفع ملف",
-  "kb_add_file_sub": "PDF أو Word أو TXT حتى 10 ميجابايت",
+  "kb_add_file_sub": "ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب",
   "kb_add_link": "إضافة رابط",
   "kb_add_link_sub": "صفحة من موقعك، يقرأها الذكاء تلقائيًا",
   "kb_alt_phrasings": "صيغ أخرى",
@@ -3309,6 +3346,51 @@
   "kb_proposed": "أُرسل اقتراحك للمراجعة",
   "kb_save_err": "تعذّر الحفظ",
   "kb_none_found": "لا توجد نتائج",
+  "kb_import_title": "استيراد من ملف JSON",
+  "kb_import_hint": "ملف يحتوي قائمة entries، لكل مدخل type و title و body — بنفس صيغة لوحة الويب.",
+  "kb_import_pick": "اختيار ملف JSON",
+  "kb_import_template": "تنزيل القالب",
+  "kb_importing": "جارٍ الاستيراد…",
+  "kb_import_done": "تم استيراد {n} مدخلًا",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "تم تخطي {n}",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "السطر {row}: {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "تعذّر الاستيراد",
+  "kb_import_json_only": "اختر ملفًا بصيغة JSON",
+  "kb_template_saved": "تم حفظ القالب",
+  "kb_template_copied": "تم نسخ القالب إلى الحافظة",
+  "kb_media_title": "المرفقات",
+  "kb_media_n": "{n} مرفقات",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "ntf_title": "الإشعارات",
   "ntf_read_all": "قراءة الكل",
   "ntf_read_all_done": "تم تعليم الكل كمقروء",
@@ -3381,14 +3463,14 @@
       }
     }
   },
-  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m} د",
+  "ntf_t_sla_breach": "{customer} ينتظر ردّك منذ {m}",
   "@ntf_t_sla_breach": {
     "placeholders": {
       "customer": {
         "type": "String"
       },
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -3449,11 +3531,11 @@
   "ntf_t_payment_failed": "فشل تحصيل الاشتراك",
   "ntf_t_plan_limit": "اقتربت من حد ردود الذكاء",
   "ntf_t_app_update": "يتوفر إصدار جديد",
-  "ntf_b_claim_needed": "أقدمها منذ {m} د",
+  "ntf_b_claim_needed": "أقدمها منذ {m}",
   "@ntf_b_claim_needed": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -3475,11 +3557,11 @@
   },
   "ntf_b_kb_suggestion": "أضفها لقاعدة المعرفة لتحسين الردود",
   "ntf_b_channel_disconnected": "لن تصل الرسائل حتى تعيد الربط",
-  "ntf_b_channel_reconnected": "توقف {m} دقائق · لم تُفقد أي رسالة",
+  "ntf_b_channel_reconnected": "توقف {m} · لم تُفقد أي رسالة",
   "@ntf_b_channel_reconnected": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

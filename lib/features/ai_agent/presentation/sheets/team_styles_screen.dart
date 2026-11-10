@@ -44,7 +44,7 @@ class TeamStylesScreen extends ConsumerWidget {
         actions: [
           if (canEdit)
             AppIconButton(
-              icon: AppIcons.plus,
+              icon: AppIcons.add,
               semanticLabel: l.ai_style_add,
               onPressed: () => _showAddSheet(context, ref),
             ),
@@ -52,7 +52,7 @@ class TeamStylesScreen extends ConsumerWidget {
       ),
       body: styles.isEmpty
           ? EmptyState(
-              icon: AppIcons.wand,
+              icon: AppIcons.rewrite,
               title: l.ai_styles_empty,
               actionLabel: canEdit ? l.ai_style_add : null,
               onAction: canEdit ? () => _showAddSheet(context, ref) : null,
@@ -74,12 +74,12 @@ class TeamStylesScreen extends ConsumerWidget {
                           color: c.errorContainer,
                           alignment: AlignmentDirectional.centerEnd,
                           padding: const EdgeInsetsDirectional.only(end: AppSpacing.xl),
-                          child: Icon(AppIcons.delete, color: c.textError),
+                          child: AppIcon(AppIcons.delete, color: c.textError),
                         ),
                         child: SettingsTile(
                           title: s.name,
                           subtitle: s.instruction,
-                          icon: AppIcons.wand,
+                          icon: AppIcons.rewrite,
                           showChevron: false,
                           trailing: canEdit
                               ? AppIconButton(

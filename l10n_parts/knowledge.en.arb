@@ -97,7 +97,7 @@
   "kb_add_title": "Add to knowledge base",
   "kb_add_qa_sub": "Fastest and most accurate for AI",
   "kb_add_file": "Upload file",
-  "kb_add_file_sub": "PDF, Word or TXT up to 10 MB",
+  "kb_add_file_sub": "A JSON file with many Q&As — like the web panel",
   "kb_add_link": "Add link",
   "kb_add_link_sub": "A page from your site, read by AI",
   "kb_alt_phrasings": "Other phrasings",
@@ -352,5 +352,50 @@
   "kb_show_less": "Show less",
   "kb_proposed": "Your suggestion was sent for review",
   "kb_save_err": "Couldn't save",
-  "kb_none_found": "No results"
+  "kb_none_found": "No results",
+  "kb_import_title": "Import from JSON",
+  "kb_import_hint": "A file with an entries list, each with type, title and body — same format as the web panel.",
+  "kb_import_pick": "Choose JSON file",
+  "kb_import_template": "Download template",
+  "kb_importing": "Importing…",
+  "kb_import_done": "Imported {n} entries",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "{n} skipped",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "Row {row}: {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "Import failed",
+  "kb_import_json_only": "Choose a .json file",
+  "kb_template_saved": "Template saved",
+  "kb_template_copied": "Template copied to clipboard",
+  "kb_media_title": "Attachments",
+  "kb_media_n": "{n} attachments",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
 }

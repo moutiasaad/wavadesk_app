@@ -237,7 +237,7 @@ class _MessageListState extends ConsumerState<MessageList> with WidgetsBindingOb
     if (s.loadFailed) {
       final l = context.l10n;
       return EmptyState(
-        icon: AppIcons.wifiOff,
+        icon: AppIcons.offline,
         title: l.chatscreen_load_failed,
         actionLabel: l.common_retry,
         onAction: ref.read(messagesControllerProvider(_id).notifier).reload,

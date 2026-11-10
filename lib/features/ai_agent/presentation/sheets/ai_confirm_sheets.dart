@@ -13,7 +13,7 @@ Future<bool> showAiOffConfirm(BuildContext context, {required int handling}) asy
       final c = ctx.colors;
       final t = ctx.text;
       return _ConfirmBody(
-        icon: AppIcons.alertTriangle,
+        icon: AppIcons.warning,
         iconColor: c.textWarning,
         iconBackground: c.warningContainer,
         title: l.ai_off_title,
@@ -56,7 +56,7 @@ Future<ReadinessBlockerChoice?> showReadinessBlocker(BuildContext context) {
       final c = ctx.colors;
       final t = ctx.text;
       return _ConfirmBody(
-        icon: AppIcons.knowledge,
+        icon: AppIcons.kb,
         iconColor: c.primary,
         iconBackground: c.primaryContainer,
         title: l.ai_kb_first_title,
@@ -109,14 +109,14 @@ class _AutoReplyBodyState extends State<_AutoReplyBody> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(AppIcons.check, size: 18, color: c.success),
+              AppIcon(AppIcons.check, dp: 18, color: c.success),
               const SizedBox(width: AppSpacing.sm),
               Expanded(child: Text(s, style: t.bodySmall)),
             ],
           ),
         );
     return _ConfirmBody(
-      icon: AppIcons.sparkle,
+      icon: AppIcons.ai,
       iconColor: c.primary,
       iconBackground: c.primaryContainer,
       title: l.ai_auto_title,
@@ -179,7 +179,7 @@ Future<bool> showOutsideKbConfirm(BuildContext context) {
     title: l.ai_outside_title,
     body: l.ai_outside_body,
     confirmLabel: l.ai_allow,
-    icon: AppIcons.alertTriangle,
+    icon: AppIcons.warning,
     severity: DialogSeverity.destructive,
   );
 }
@@ -213,7 +213,7 @@ class _ConfirmBody extends StatelessWidget {
             width: 52,
             height: 52,
             decoration: BoxDecoration(color: iconBackground, shape: BoxShape.circle),
-            child: Icon(icon, size: 24, color: iconColor),
+            child: AppIcon(icon, size: AppIconSize.lg, color: iconColor),
           ),
           const SizedBox(height: AppSpacing.md),
           Semantics(header: true, child: Text(title, style: t.h5, textAlign: TextAlign.center)),

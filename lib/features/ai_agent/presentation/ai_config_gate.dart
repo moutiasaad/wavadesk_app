@@ -26,7 +26,7 @@ class AiConfigGate extends ConsumerWidget {
       appBar: AppBarStandard(title: title, background: c.backgroundMuted),
       body: s.error != null && !s.loading
           ? EmptyState(
-              icon: s.offline ? AppIcons.wifiOff : AppIcons.alert,
+              icon: s.offline ? AppIcons.offline : AppIcons.error,
               title: l.ai_load_error,
               actionLabel: l.ai_retry,
               onAction: ref.read(aiAgentControllerProvider.notifier).load,

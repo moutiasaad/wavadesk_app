@@ -83,7 +83,7 @@ class _SearchHeaderState extends State<SearchHeader> {
         padding: const EdgeInsetsDirectional.only(start: 12, end: 6),
         child: Row(
           children: [
-            Icon(AppIcons.search, size: 16, color: c.textTertiary),
+            AppIcon(AppIcons.search, size: AppIconSize.sm, color: c.textTertiary),
             const SizedBox(width: AppSpacing.sm),
             Expanded(
               child: Semantics(
@@ -169,7 +169,7 @@ class _ClearButton extends StatelessWidget {
               width: 22,
               height: 22,
               decoration: BoxDecoration(color: c.borderStrong, shape: BoxShape.circle),
-              child: const Icon(AppIcons.close, size: 13, color: Colors.white, weight: 900),
+              child: const AppIcon(AppIcons.close, size: AppIconSize.xs, color: Colors.white),
             ),
           ),
         ),

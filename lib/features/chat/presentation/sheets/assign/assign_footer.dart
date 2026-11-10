@@ -41,7 +41,7 @@ class AssignFooter extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: AppSpacing.sm),
             child: Row(
               children: [
-                Icon(AppIcons.wifiOff, size: 14, color: c.textWarning),
+                AppIcon(AppIcons.offline, size: AppIconSize.sm, color: c.textWarning),
                 const SizedBox(width: AppSpacing.xs),
                 Expanded(
                   child: Text(l.as_offline, style: context.text.caption.copyWith(color: c.textWarning)),

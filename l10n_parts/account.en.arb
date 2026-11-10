@@ -1,7 +1,12 @@
 {
-
   "dashboard_greeting": "Hi, {name} 👋",
-  "@dashboard_greeting": {"placeholders": {"name": {"type": "String"}}},
+  "@dashboard_greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "dashboard_open": "Open conversations",
   "dashboard_waiting_sla": "Waiting over SLA",
   "dashboard_view_queue": "View queue",
@@ -11,25 +16,56 @@
   "dashboard_csat": "Customer satisfaction",
   "dashboard_csat_scale": "out of 5",
   "dashboard_vs_yesterday": "{delta} vs yesterday",
-  "@dashboard_vs_yesterday": {"placeholders": {"delta": {"type": "String"}}},
+  "@dashboard_vs_yesterday": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
   "dashboard_volume_title": "Conversations today",
   "dashboard_volume_a11y": "{total} conversations today, peak of {peak} at {hour}",
-  "@dashboard_volume_a11y": {"placeholders": {"total": {"type": "int"}, "peak": {"type": "int"}, "hour": {"type": "String"}}},
+  "@dashboard_volume_a11y": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "peak": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      }
+    }
+  },
   "dashboard_channels_title": "By channel",
   "dashboard_ai_usage_title": "AI usage",
   "dashboard_ai_manage": "Manage",
   "dashboard_ai_usage_value": "{used} of {quota} replies this month",
-  "@dashboard_ai_usage_value": {"placeholders": {"used": {"type": "int"}, "quota": {"type": "int"}}},
+  "@dashboard_ai_usage_value": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
   "dashboard_team_title": "Team right now",
   "dashboard_team_open": "{count, plural, =0{No chats} =1{1 chat} other{{count} chats}}",
-  "@dashboard_team_open": {"placeholders": {"count": {"type": "int"}}},
-
+  "@dashboard_team_open": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "notifications_title": "Notifications",
   "notifications_mark_all": "Mark all as read",
   "notifications_earlier": "Earlier",
   "notifications_empty_title": "No notifications yet",
   "notifications_empty_body": "We'll let you know when a chat is assigned to you or you're mentioned in a note.",
-
   "knowledge_search": "Search knowledge",
   "knowledge_search_hint": "Search answers…",
   "knowledge_add": "Add answer",
@@ -41,22 +77,60 @@
   "knowledge_type_website": "Website",
   "knowledge_coverage_title": "What the AI knows",
   "knowledge_coverage_body": "{total, plural, =1{1 answer} other{{total} answers}}, {enabled} enabled",
-  "@knowledge_coverage_body": {"placeholders": {"total": {"type": "int"}, "enabled": {"type": "int"}}},
+  "@knowledge_coverage_body": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "enabled": {
+        "type": "int"
+      }
+    }
+  },
   "knowledge_coverage_top": "Most used: {title}",
-  "@knowledge_coverage_top": {"placeholders": {"title": {"type": "String"}}},
+  "@knowledge_coverage_top": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "knowledge_used": "{count, plural, =0{Not used yet} =1{Used once} other{Used {count} times}}",
-  "@knowledge_used": {"placeholders": {"count": {"type": "int"}}},
+  "@knowledge_used": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "knowledge_updated": "Updated {time}",
-  "@knowledge_updated": {"placeholders": {"time": {"type": "String"}}},
+  "@knowledge_updated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "knowledge_disabled": "Off",
   "knowledge_enabled_a11y": "Enable “{title}”",
-  "@knowledge_enabled_a11y": {"placeholders": {"title": {"type": "String"}}},
+  "@knowledge_enabled_a11y": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "knowledge_empty_title": "Your knowledge base is empty",
   "knowledge_empty_body": "Add answers and policies so the AI can draft replies from them.",
   "knowledge_empty_filtered": "No answers of this type",
   "knowledge_no_results": "No results for “{query}”",
-  "@knowledge_no_results": {"placeholders": {"query": {"type": "String"}}},
-
+  "@knowledge_no_results": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
   "knowledge_edit_title_add": "Add answer",
   "knowledge_edit_title_edit": "Edit answer",
   "knowledge_edit_type": "Type",
@@ -66,7 +140,16 @@
   "knowledge_edit_body_label": "Answer",
   "knowledge_edit_body_hint": "Write the answer the way you want the AI to say it…",
   "knowledge_edit_counter": "{count} / {max}",
-  "@knowledge_edit_counter": {"placeholders": {"count": {"type": "int"}, "max": {"type": "int"}}},
+  "@knowledge_edit_counter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
   "knowledge_edit_keywords": "Keywords",
   "knowledge_edit_keywords_hint": "Type a keyword and press enter",
   "knowledge_edit_keyword_add": "Add keyword",
@@ -85,7 +168,6 @@
   "knowledge_edit_discard_title": "Discard changes?",
   "knowledge_edit_discard_body": "You have unsaved edits that will be lost if you leave now.",
   "knowledge_edit_discard_confirm": "Discard and leave",
-
   "account_section_admin": "Management",
   "account_section_app": "App",
   "account_whatsapp": "Your WhatsApp",
@@ -107,17 +189,29 @@
   "account_logout_title": "Log out?",
   "account_logout_body": "You won't get conversation notifications on this device until you sign in again.",
   "account_version": "Wavadesk {version}",
-  "@account_version": {"placeholders": {"version": {"type": "String"}}},
+  "@account_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
   "account_network_online": "Online",
-  "account_network_demo": "Demo connection state: {state}",
-  "@account_network_demo": {"placeholders": {"state": {"type": "String"}}},
-
   "ai_settings_title": "AI agent",
   "ai_settings_enable": "Enable AI agent",
   "ai_settings_status_on": "Active and suggesting replies",
   "ai_settings_status_off": "Off",
   "ai_settings_usage": "{used} of {quota} replies this month",
-  "@ai_settings_usage": {"placeholders": {"used": {"type": "int"}, "quota": {"type": "int"}}},
+  "@ai_settings_usage": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
   "ai_settings_section_behavior": "Behavior",
   "ai_settings_suggest": "Suggest replies",
   "ai_settings_suggest_sub": "A draft is ready before you open the chat",
@@ -137,7 +231,6 @@
   "ai_settings_section_knowledge": "Knowledge source",
   "ai_settings_knowledge": "Enabled answers",
   "ai_settings_knowledge_footer": "The AI only uses your knowledge base and never makes things up.",
-
   "whatsapp_title": "Your WhatsApp",
   "whatsapp_status_connected": "Connected",
   "whatsapp_status_disconnected": "Disconnected",
@@ -158,7 +251,6 @@
   "whatsapp_simulate_scan": "Scan code (demo)",
   "whatsapp_new_code": "Generate new code",
   "whatsapp_connected_toast": "WhatsApp linked successfully",
-
   "channels_title": "Channels",
   "channels_section_connected": "Connected",
   "channels_section_available": "Available",
@@ -166,34 +258,64 @@
   "channels_not_connected": "Not linked",
   "channels_manage_on_web": "This channel is managed from the web dashboard",
   "channels_footer": "Messages from every linked channel land in one inbox.",
-
   "team_title": "Team & users",
   "team_invite": "Invite a colleague",
   "team_invite_sent": "Invite link sent",
   "team_section_members": "{count, plural, =1{1 member} other{{count} members}}",
-  "@team_section_members": {"placeholders": {"count": {"type": "int"}}},
+  "@team_section_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "team_section_teams": "Teams",
   "team_you": "{name} (you)",
-  "@team_you": {"placeholders": {"name": {"type": "String"}}},
+  "@team_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "team_members": "{count, plural, =1{1 member} other{{count} members}}",
-  "@team_members": {"placeholders": {"count": {"type": "int"}}},
-
+  "@team_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "subscription_title": "Subscription",
   "subscription_current": "Current plan",
   "subscription_plan_name": "Professional",
   "subscription_price": "SAR 199 / month",
   "subscription_renews": "Renews on {date}",
-  "@subscription_renews": {"placeholders": {"date": {"type": "String"}}},
+  "@subscription_renews": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "subscription_section_usage": "Usage this month",
   "subscription_ai_replies": "AI replies",
   "subscription_agents": "Users",
   "subscription_channels": "Channels",
   "subscription_usage": "{used} / {total}",
-  "@subscription_usage": {"placeholders": {"used": {"type": "String"}, "total": {"type": "String"}}},
+  "@subscription_usage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
   "subscription_upgrade": "Upgrade plan",
   "subscription_invoices": "Invoices",
   "subscription_upgrade_web": "We'll open the billing page on the web",
-
   "notif_settings_title": "Notifications",
   "notif_settings_section_push": "Notify me when",
   "notif_settings_assigned": "A chat is assigned to me",
@@ -206,7 +328,6 @@
   "notif_settings_sound": "Notification sound",
   "notif_settings_sound_sub": "Play a sound when a new message arrives",
   "notif_settings_footer": "You won't get notifications while your status is “Away”.",
-
   "help_title": "Help & guides",
   "help_section_guides": "Guides",
   "help_topic_claim": "Claiming and assigning chats",
@@ -221,12 +342,30 @@
   "help_opening": "Opening…",
   "account_load_error": "Couldn't load",
   "subscription_ends": "Ends on {date}",
-  "@subscription_ends": {"placeholders": {"date": {"type": "String"}}},
+  "@subscription_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "subscription_trial_ends": "Trial ends on {date}",
-  "@subscription_trial_ends": {"placeholders": {"date": {"type": "String"}}},
+  "@subscription_trial_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "subscription_trial": "Trial",
   "subscription_unlimited": "Unlimited",
   "subscription_no_plan": "No plan",
   "subscription_per_month": "{price} / month",
-  "@subscription_per_month": {"placeholders": {"price": {"type": "String"}}}
+  "@subscription_per_month": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  }
 }

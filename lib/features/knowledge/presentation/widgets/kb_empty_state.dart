@@ -30,7 +30,7 @@ class KbEmptyState extends StatelessWidget {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-                child: Icon(AppIcons.knowledge, size: 32, color: c.primary),
+                child: AppIcon(AppIcons.kb, size: AppIconSize.xl, color: c.primary),
               ),
               const SizedBox(height: AppSpacing.lg),
               Text(l.kb_empty_title, style: t.h5, textAlign: TextAlign.center),
@@ -38,7 +38,7 @@ class KbEmptyState extends StatelessWidget {
               Text(l.kb_empty_body, style: t.bodySmall.copyWith(color: c.textSecondary), textAlign: TextAlign.center),
               if (canEdit) ...[
                 const SizedBox(height: AppSpacing.xl),
-                AppButton(label: l.kb_empty_cta, icon: AppIcons.plus, expand: true, onPressed: onAddQa),
+                AppButton(label: l.kb_empty_cta, icon: AppIcons.add, expand: true, onPressed: onAddQa),
                 const SizedBox(height: AppSpacing.sm),
                 AppButton(label: l.kb_add_file, icon: AppIcons.file, variant: AppButtonVariant.secondary, expand: true, onPressed: onUpload),
               ],

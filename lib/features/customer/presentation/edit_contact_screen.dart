@@ -184,7 +184,7 @@ class _EditContactScreenState extends ConsumerState<EditContactScreen> {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(color: c.warningContainer, shape: BoxShape.circle),
-                    child: Icon(AppIcons.alert, size: 22, color: c.textWarning),
+                    child: AppIcon(AppIcons.error, color: c.textWarning),
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   Semantics(header: true, child: Text(l.edit_discard_title, style: t.h4, textAlign: TextAlign.center)),
@@ -418,7 +418,7 @@ class _PickerRow extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(icon, size: 18, color: c.textTertiary),
+                  AppIcon(icon, dp: 18, color: c.textTertiary),
                   const SizedBox(width: 10),
                   Expanded(
                     child: Text(
@@ -426,7 +426,7 @@ class _PickerRow extends StatelessWidget {
                       style: t.bodyLarge.copyWith(color: empty ? c.textTertiary : c.textPrimary),
                     ),
                   ),
-                  Icon(AppIcons.chevronDown, size: 18, color: c.borderStrong),
+                  AppIcon(AppIcons.chevronDown, dp: 18, color: c.borderStrong),
                 ],
               ),
             ),

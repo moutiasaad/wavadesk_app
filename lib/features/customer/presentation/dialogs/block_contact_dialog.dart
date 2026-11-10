@@ -81,7 +81,7 @@ class _BlockDialogState extends State<_BlockDialog> {
                 width: 48,
                 height: 48,
                 decoration: BoxDecoration(color: c.errorContainer, shape: BoxShape.circle),
-                child: Icon(AppIcons.block, size: 22, color: c.textError),
+                child: AppIcon(AppIcons.block, color: c.textError),
               ),
               const SizedBox(height: AppSpacing.lg),
               Semantics(header: true, child: Text(l.block_title(widget.name), style: t.h4, textAlign: TextAlign.center)),

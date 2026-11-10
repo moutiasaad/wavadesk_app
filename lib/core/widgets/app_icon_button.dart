@@ -70,7 +70,7 @@ class AppIconButton extends StatelessWidget {
                       onTap: onPressed,
                       child: SizedBox.square(
                         dimension: d,
-                        child: Icon(icon, size: iconSize ?? 20, color: iconColor ?? fg),
+                        child: AppIcon(icon, dp: iconSize ?? 20, color: iconColor ?? fg),
                       ),
                     ),
                   ),

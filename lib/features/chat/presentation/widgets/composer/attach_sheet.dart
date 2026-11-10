@@ -27,11 +27,11 @@ Future<AttachOption?> showAttachSheet(BuildContext context, {required bool whats
         if (!windowClosed)
           (AttachOption.location, AppIcons.location, l.chat_attach_location, c.successContainer, c.success),
         if (!windowClosed)
-          (AttachOption.quickReplies, AppIcons.zap, l.chat_attach_quick, c.warningContainer, c.warning),
+          (AttachOption.quickReplies, AppIcons.quickReply, l.chat_attach_quick, c.warningContainer, c.warning),
         if (whatsapp)
           (
             AttachOption.template,
-            AppIcons.template,
+            AppIcons.templates,
             l.chat_attach_template,
             c.channelWhatsappContainer,
             c.channelWhatsapp,
@@ -64,7 +64,7 @@ Future<AttachOption?> showAttachSheet(BuildContext context, {required bool whats
                         width: 52,
                         height: 52,
                         decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(16)),
-                        child: Icon(icon, size: 22, color: fg),
+                        child: AppIcon(icon, color: fg),
                       ),
                       const SizedBox(height: 6),
                       Text(

@@ -58,7 +58,7 @@ class AppFab extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(icon, size: 24, color: c.onPrimary),
+                    AppIcon(icon, size: AppIconSize.lg, color: c.onPrimary),
                     if (label != null) ...[
                       const SizedBox(width: AppSpacing.sm),
                       Text(label!, style: context.text.buttonMedium.copyWith(color: c.onPrimary)),

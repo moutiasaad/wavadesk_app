@@ -215,7 +215,7 @@ class SheetActionRow extends StatelessWidget {
           color: selected ? c.primaryContainer : null,
           child: Row(
             children: [
-              Icon(icon, size: 20, color: destructive ? c.textError : c.textSecondary),
+              AppIcon(icon, color: destructive ? c.textError : c.textSecondary),
               const SizedBox(width: 14),
               Expanded(
                 child: Text(

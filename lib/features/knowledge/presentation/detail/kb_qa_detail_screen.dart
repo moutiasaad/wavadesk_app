@@ -12,6 +12,7 @@ import '../../../../core/widgets/widgets.dart';
 import '../../application/knowledge_controller.dart';
 import '../../data/kb_api.dart';
 import '../../domain/kb_entry.dart';
+import '../kb_media_view.dart';
 import 'kb_usage_card.dart';
 
 enum _Menu { toggle, copy, delete }
@@ -130,7 +131,7 @@ class _KbQaDetailScreenState extends ConsumerState<KbQaDetailScreen> {
     if (qa == null && _error != null) {
       final e = _error;
       body = EmptyState(
-        icon: e is KbApiException && e.isNetwork ? AppIcons.wifiOff : AppIcons.alert,
+        icon: e is KbApiException && e.isNetwork ? AppIcons.offline : AppIcons.error,
         title: l.kb_error,
         actionLabel: l.kb_retry,
         onAction: _load,
@@ -148,6 +149,10 @@ class _KbQaDetailScreenState extends ConsumerState<KbQaDetailScreen> {
             const SizedBox(height: AppSpacing.md),
             _AnswerCard(qa: qa),
             const SizedBox(height: AppSpacing.md),
+            if (qa.media.isNotEmpty) ...[
+              KbMediaCard(media: qa.media),
+              const SizedBox(height: AppSpacing.md),
+            ],
             KbUsageCard(usage: qa.usage),
             if (qa.recentUses.isNotEmpty) _RecentUses(uses: qa.recentUses.take(5).toList()),
             const SizedBox(height: AppSpacing.md),
@@ -179,7 +184,7 @@ class _KbQaDetailScreenState extends ConsumerState<KbQaDetailScreen> {
           if (qa != null && perms.canEdit) AppBarTextAction(label: l.kb_edit, onPressed: _edit),
           if (qa != null && (perms.canEdit || perms.canDelete))
             PopupMenuButton<_Menu>(
-              icon: Icon(AppIcons.more, size: 20, color: c.textPrimary),
+              icon: AppIcon(AppIcons.more, color: c.textPrimary),
               tooltip: l.common_more,
               onSelected: _menu,
               itemBuilder: (_) => [
@@ -267,7 +272,7 @@ class _Chip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (icon != null) ...[Icon(icon, size: 12, color: c.textSecondary), const SizedBox(width: 4)],
+          if (icon != null) ...[AppIcon(icon, size: AppIconSize.xs, color: c.textSecondary), const SizedBox(width: 4)],
           Flexible(child: Text(text, style: context.text.chipLabel.copyWith(color: c.textSecondary))),
         ],
       ),
@@ -346,7 +351,7 @@ class _RecentUses extends StatelessWidget {
                         const SizedBox(width: AppSpacing.sm),
                         Text(AppFormat.relative(context, u.at), style: t.caption.copyWith(color: c.textTertiary)),
                         const SizedBox(width: AppSpacing.xs),
-                        Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+                        AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
                       ],
                     ),
                   ),

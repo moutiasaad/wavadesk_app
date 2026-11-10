@@ -148,7 +148,7 @@ class _NotificationTileState extends State<NotificationTile> with SingleTickerPr
         extentRatio: 0.28,
         children: [
           _SwipeAction(
-            icon: head.isRead ? AppIcons.mailOpen : AppIcons.checkDouble,
+            icon: head.isRead ? AppIcons.mailOpen : AppIcons.read,
             label: readLabel,
             color: c.info,
             onPressed: () => widget.onToggleRead(head),
@@ -182,7 +182,7 @@ class _SwipeAction extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 20, color: fg),
+          AppIcon(icon, color: fg),
           const SizedBox(height: AppSpacing.xs),
           Text(label, style: context.text.caption.copyWith(color: fg), maxLines: 1, overflow: TextOverflow.ellipsis),
         ],

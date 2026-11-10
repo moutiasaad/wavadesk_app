@@ -70,11 +70,11 @@ class ChatBanner extends StatelessWidget {
         VoidCallback? onAction,
         double h,
       ) = switch (kind) {
-        _BannerKind.offline => (c.errorContainer, c.textError, AppIcons.wifiOff, l.chat_banner_offline, null, null, 32),
+        _BannerKind.offline => (c.errorContainer, c.textError, AppIcons.offline, l.chat_banner_offline, null, null, 32),
         _BannerKind.connecting => (
           c.warningContainer,
           c.textWarning,
-          AppIcons.wifiOff,
+          AppIcons.offline,
           l.banner_connecting,
           null,
           null,
@@ -92,12 +92,12 @@ class ChatBanner extends StatelessWidget {
         _BannerKind.windowSoon => () {
           final left = detail.waWindowExpiresAt!.difference(now);
           final hm = '${left.inHours}:${(left.inMinutes % 60).toString().padLeft(2, '0')}';
-          return (c.infoContainer, c.textInfo, AppIcons.hourglass, l.chat_banner_window_soon(hm), null, null, 32.0);
+          return (c.infoContainer, c.textInfo, AppIcons.waiting, l.chat_banner_window_soon(hm), null, null, 32.0);
         }(),
         _BannerKind.channelDown => (
           c.errorContainer,
           c.textError,
-          AppIcons.alert,
+          AppIcons.error,
           l.chat_banner_channel_down,
           l.chat_reconnect,
           onReconnect,
@@ -106,7 +106,7 @@ class ChatBanner extends StatelessWidget {
         _BannerKind.snoozed => (
           c.statusSnoozedContainer,
           c.statusSnoozed,
-          AppIcons.moon,
+          AppIcons.snooze,
           l.chat_snoozed_until(_snoozeTime(context, detail.conversation.snoozedUntil!)),
           l.chat_unsnooze,
           onUnsnooze,
@@ -127,7 +127,7 @@ class ChatBanner extends StatelessWidget {
               if (kind == _BannerKind.connecting)
                 AppSpinner(size: 14, color: fg, delayed: false)
               else
-                Icon(icon, size: 14, color: fg),
+                AppIcon(icon, size: AppIconSize.sm, color: fg),
               const SizedBox(width: AppSpacing.sm),
               Expanded(
                 child: Padding(

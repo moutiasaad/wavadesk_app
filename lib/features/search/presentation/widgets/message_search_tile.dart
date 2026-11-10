@@ -28,7 +28,7 @@ class MessageSearchTile extends StatelessWidget {
 
     final (IconData? icon, String? prefix) = switch (hit.senderType) {
       HitSender.contact => (null, null),
-      HitSender.ai => (AppIcons.sparkle, null),
+      HitSender.ai => (AppIcons.ai, null),
       HitSender.note => (AppIcons.note, l.search_note),
       HitSender.agent => (null, hit.isMe ? l.search_you : '${hit.senderName ?? ''}:'),
     };
@@ -79,11 +79,7 @@ class MessageSearchTile extends StatelessWidget {
                         if (icon != null)
                           Padding(
                             padding: const EdgeInsetsDirectional.only(top: 3, end: 4),
-                            child: Icon(
-                              icon,
-                              size: 13,
-                              color: hit.senderType == HitSender.ai ? c.primary : c.noteForeground,
-                            ),
+                            child: AppIcon(icon, size: AppIconSize.xs, color: hit.senderType == HitSender.ai ? c.primary : c.noteForeground,),
                           ),
                         if (prefix != null)
                           Padding(

@@ -53,7 +53,7 @@ class DuplicateWarning extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 1),
-              child: Icon(AppIcons.alertTriangle, size: 16, color: c.textWarning),
+              child: AppIcon(AppIcons.warning, size: AppIconSize.sm, color: c.textWarning),
             ),
             const SizedBox(width: 10),
             Expanded(
@@ -81,7 +81,7 @@ class DuplicateWarning extends StatelessWidget {
               tooltip: l.kbe_a11y_dismiss,
               iconSize: 14,
               visualDensity: VisualDensity.compact,
-              icon: Icon(AppIcons.close, color: c.textSecondary),
+              icon: AppIcon(AppIcons.close, color: c.textSecondary),
             ),
           ],
         ),

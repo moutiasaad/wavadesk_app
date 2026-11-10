@@ -41,7 +41,7 @@ class AiReadinessCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(AppIcons.alertTriangle, size: 18, color: c.textWarning),
+              AppIcon(AppIcons.warning, dp: 18, color: c.textWarning),
               const SizedBox(width: AppSpacing.sm),
               Expanded(child: Text(l.ai_ready_title, style: t.h6)),
             ],
@@ -62,7 +62,7 @@ class AiReadinessCard extends StatelessWidget {
                     child: Row(
                       children: [
                         r.done(item)
-                            ? Icon(AppIcons.check, size: 18, color: c.success)
+                            ? AppIcon(AppIcons.check, dp: 18, color: c.success)
                             : Container(
                                 width: 18,
                                 height: 18,
@@ -75,7 +75,7 @@ class AiReadinessCard extends StatelessWidget {
                             style: t.bodySmall.copyWith(color: r.done(item) ? c.textSecondary : c.textPrimary),
                           ),
                         ),
-                        if (!r.done(item)) Icon(AppIcons.chevronEnd, size: 16, color: c.textTertiary),
+                        if (!r.done(item)) AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.textTertiary),
                       ],
                     ),
                   ),

@@ -27,7 +27,7 @@ Future<bool> showClaimConfirmSheet(BuildContext context, {required ClaimConfirmK
               width: 56,
               height: 56,
               decoration: BoxDecoration(color: c.warningContainer, shape: BoxShape.circle),
-              child: Icon(AppIcons.clock, size: 28, color: c.textWarning),
+              child: AppIcon(AppIcons.clock, size: AppIconSize.xl, color: c.textWarning),
             ),
             const SizedBox(height: AppSpacing.lg),
             Semantics(

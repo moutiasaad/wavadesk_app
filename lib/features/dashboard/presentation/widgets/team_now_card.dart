@@ -224,7 +224,7 @@ class _AiItem extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-                  child: Icon(AppIcons.sparkle, size: 18, color: c.primary),
+                  child: AppIcon(AppIcons.ai, dp: 18, color: c.primary),
                 ),
               ),
               const SizedBox(height: 3),

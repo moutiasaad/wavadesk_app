@@ -158,7 +158,7 @@ class MessageBubble extends ConsumerWidget {
       MessageKind.deleted => Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(AppIcons.block, size: 13, color: c.textTertiary),
+          AppIcon(AppIcons.block, size: AppIconSize.xs, color: c.textTertiary),
           const SizedBox(width: 4),
           Flexible(
             child: Text(l.chat_deleted, style: context.text.chatMessage.copyWith(color: c.textTertiary)),
@@ -177,7 +177,7 @@ class MessageBubble extends ConsumerWidget {
       MessageBubbleType.outgoingAi when firstInGroup => Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(AppIcons.sparkle, size: 12, color: c.primary),
+          AppIcon(AppIcons.ai, size: AppIconSize.xs, color: c.primary),
           const SizedBox(width: 4),
           Text(l.chat_ai_reply_label, style: context.text.chatSenderLabel.copyWith(color: c.primary)),
         ],
@@ -222,7 +222,7 @@ class MessageBubble extends ConsumerWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(AppIcons.template, size: 12, color: fg.withValues(alpha: 0.8)),
+                        AppIcon(AppIcons.templates, size: AppIconSize.xs, color: fg.withValues(alpha: 0.8)),
                         const SizedBox(width: 4),
                         Text(
                           l.bubble_template_label(m.templateName!),
@@ -430,7 +430,7 @@ class _FailedRow extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(AppIcons.alert, size: 13, color: c.error),
+        AppIcon(AppIcons.error, size: AppIconSize.xs, color: c.error),
         const SizedBox(width: 4),
         Text(l.chat_failed, style: style),
         Text(' · ', style: style),
@@ -466,7 +466,7 @@ class _NoteCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(AppIcons.note, size: 13, color: c.noteForeground),
+                AppIcon(AppIcons.note, size: AppIconSize.xs, color: c.noteForeground),
                 const SizedBox(width: 6),
                 Expanded(
                   child: Text(

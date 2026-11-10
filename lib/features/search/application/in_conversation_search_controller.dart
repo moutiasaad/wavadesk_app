@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
 import '../../../core/models/models.dart';
 import '../../../core/theme/app_theme.dart';
@@ -127,7 +126,7 @@ class InConversationSearchController extends AutoDisposeFamilyNotifier<InConvers
               if (_searchable(m) && ArabicNormalizer.matches(m.text, q)) m,
           ];
     final List<String> matches;
-    if (!useRealApi || q.isEmpty) {
+    if (q.isEmpty) {
       matches = [for (final m in local) m.id];
     } else {
       if (_remoteFor != q) {

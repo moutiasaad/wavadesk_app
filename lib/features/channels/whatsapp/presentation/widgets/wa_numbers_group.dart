@@ -32,7 +32,7 @@ class WaNumbersGroup extends StatelessWidget {
       children: [
         if (admin && canAdd)
           SettingsTile(
-            icon: AppIcons.plus,
+            icon: AppIcons.add,
             title: l.wa_add_number,
             onTap: () => context.push(Routes.whatsappConnect(source: 'add_number')),
           )
@@ -75,7 +75,7 @@ class WaNumbersGroup extends StatelessWidget {
                   width: 34,
                   height: 34,
                   decoration: BoxDecoration(color: c.errorContainer, borderRadius: BorderRadius.circular(10)),
-                  child: Icon(AppIcons.play, size: 18, color: c.textError),
+                  child: AppIcon(AppIcons.play, dp: 18, color: c.textError),
                 ),
                 const SizedBox(width: AppSpacing.md),
                 Expanded(
@@ -87,7 +87,7 @@ class WaNumbersGroup extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(AppIcons.chevronEnd, size: 16, color: c.borderStrong),
+                AppIcon(AppIcons.chevronForward, size: AppIconSize.sm, color: c.borderStrong),
               ],
             ),
           ),

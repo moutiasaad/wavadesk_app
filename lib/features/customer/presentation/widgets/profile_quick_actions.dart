@@ -178,7 +178,7 @@ class _TileState extends State<_Tile> {
                     width: 48,
                     height: 48,
                     decoration: BoxDecoration(color: widget.bg, shape: BoxShape.circle),
-                    child: Icon(widget.icon, size: 20, color: widget.fg),
+                    child: AppIcon(widget.icon, color: widget.fg),
                   ),
                   const SizedBox(height: AppSpacing.xs),
                   Text(

@@ -85,7 +85,7 @@ class _QuickRepliesScreenState extends ConsumerState<QuickRepliesScreen> {
     if (state.loading && !state.loaded) {
       list = AppSkeleton.list(rows: 6);
     } else if (state.error != null && !state.loaded) {
-      list = EmptyState(icon: AppIcons.alert, title: l.wa_load_error, actionLabel: l.wa_retry, onAction: ref.read(quickRepliesControllerProvider.notifier).load);
+      list = EmptyState(icon: AppIcons.error, title: l.wa_load_error, actionLabel: l.wa_retry, onAction: ref.read(quickRepliesControllerProvider.notifier).load);
     } else if (rows.isEmpty) {
       list = EmptyState(
         icon: AppIcons.send,
@@ -119,7 +119,7 @@ class _QuickRepliesScreenState extends ConsumerState<QuickRepliesScreen> {
                 alignment: AlignmentDirectional.centerEnd,
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
                 decoration: BoxDecoration(color: c.error, borderRadius: BorderRadius.circular(AppRadius.xl)),
-                child: Icon(AppIcons.delete, color: c.onPrimary),
+                child: AppIcon(AppIcons.delete, color: c.onPrimary),
               ),
               child: tile,
             );
@@ -143,7 +143,7 @@ class _QuickRepliesScreenState extends ConsumerState<QuickRepliesScreen> {
             Padding(
               padding: const EdgeInsetsDirectional.only(end: AppSpacing.sm),
               child: AppIconButton(
-                icon: AppIcons.plus,
+                icon: AppIcons.add,
                 variant: AppIconButtonVariant.primary,
                 size: 40,
                 semanticLabel: l.wa_qr_new,

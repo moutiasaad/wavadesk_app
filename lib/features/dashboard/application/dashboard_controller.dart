@@ -4,33 +4,15 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
 import '../../../core/data/data.dart';
 import '../../../core/models/models.dart';
 import '../../../core/utils/analytics.dart';
 import '../../conversations/data/conversations_repository.dart';
-import '../../conversations/domain/conversation_summary.dart';
 import '../data/dashboard_api.dart';
 import '../domain/dashboard_snapshot.dart';
 
-final dashboardApiProvider = Provider<DashboardApi>((ref) {
-  if (useRealApi) return HttpDashboardApi(ref.watch(wdApiRequiredProvider));
-  return SampleDashboardApi(
-    conversations: () {
-      final meId = ref.read(currentAgentProvider).id;
-      return [
-        for (final c in ref.read(inboxProvider).conversations)
-          ConversationSummary.fromConversation(c, meId: meId, teamIds: const []),
-      ];
-    },
-    me: () => ref.read(currentAgentProvider),
-    colleagues: () => ref.read(colleaguesProvider),
-    maxConcurrent: MockData.maxConcurrent,
-    slaSeconds: MockData.slaSeconds,
-    whatsappConnected: () => MockData.whatsapp.connected,
-  );
-});
+final dashboardApiProvider = Provider<DashboardApi>((ref) => HttpDashboardApi(ref.watch(wdApiRequiredProvider)));
 
 /// Spec §6 states the screen draws from this.
 @immutable
@@ -313,7 +295,7 @@ class DashboardController extends Notifier<DashboardState> {
   /// The server knows the status set on the web panel too.
   void _syncPresence(String? wire) {
     final p = Presence.values.where((v) => v.name == wire).firstOrNull;
-    if (p == null || !useRealApi) return;
+    if (p == null) return;
     if (ref.read(settingsProvider).presence != p) ref.read(settingsProvider.notifier).setPresence(p);
   }
 

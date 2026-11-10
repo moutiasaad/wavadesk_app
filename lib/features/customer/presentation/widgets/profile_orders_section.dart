@@ -67,7 +67,7 @@ class ProfileOrdersSection extends StatelessWidget {
                             width: 34,
                             height: 34,
                             decoration: BoxDecoration(color: c.surfaceVariant, borderRadius: BorderRadius.circular(10)),
-                            child: Icon(AppIcons.bag, size: 17, color: c.textSecondary),
+                            child: AppIcon(AppIcons.orders, size: AppIconSize.sm, color: c.textSecondary),
                           ),
                           const SizedBox(width: AppSpacing.md),
                           Expanded(

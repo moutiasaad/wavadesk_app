@@ -232,5 +232,37 @@
     }
   },
   "kbe_a11y_save_disabled": "أكمل السؤال والإجابة",
-  "kbe_a11y_dismiss": "إغلاق التنبيه"
+  "kbe_a11y_dismiss": "إغلاق التنبيه",
+  "kbe_media": "المرفقات",
+  "kbe_media_hint": "يرسلها الذكاء مع الإجابة",
+  "kbe_media_add": "إضافة صورة أو تسجيل صوتي",
+  "kbe_media_image": "صورة",
+  "kbe_media_voice": "تسجيل صوتي",
+  "kbe_media_with_text": "مع النص",
+  "kbe_media_file_only": "ملف فقط",
+  "kbe_media_remove": "إزالة",
+  "kbe_media_uploading": "جارٍ الرفع {p}%",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "تعذّر رفع الملف",
+  "kbe_media_queued": "يُرفع بعد الحفظ",
+  "kbe_media_too_big": "الملف أكبر من 16 ميجابايت",
+  "kbe_media_image_too_big": "الصورة أكبر من 5 ميجابايت",
+  "kbe_media_type_err": "اختر صورة أو ملفًا صوتيًا",
+  "kbe_media_upgrade": "إرفاق الصور والتسجيلات متاح في الباقات المدفوعة",
+  "kbe_media_upgrade_cta": "عرض الباقات",
+  "kbe_media_some_failed": "تم الحفظ، لكن تعذّر رفع {n} من المرفقات",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "طريقة الإرسال"
 }

@@ -198,14 +198,6 @@
     }
   },
   "account_network_online": "Online",
-  "account_network_demo": "Demo connection state: {state}",
-  "@account_network_demo": {
-    "placeholders": {
-      "state": {
-        "type": "String"
-      }
-    }
-  },
   "ai_settings_title": "AI agent",
   "ai_settings_enable": "Enable AI agent",
   "ai_settings_status_on": "Active and suggesting replies",
@@ -1752,11 +1744,11 @@
       }
     }
   },
-  "claim_viewing_since_min": "{n}m ago",
+  "claim_viewing_since_min": "{t} ago",
   "@claim_viewing_since_min": {
     "placeholders": {
-      "n": {
-        "type": "int"
+      "t": {
+        "type": "String"
       }
     }
   },
@@ -1921,6 +1913,14 @@
     }
   },
   "actions_add_note": "Add internal note",
+  "claim_a11y_wait_span": "Waiting for {t}",
+  "@claim_a11y_wait_span": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "conversations_segment_mine": "Mine",
   "conversations_segment_unassigned": "Unassigned",
   "conversations_segment_all": "All",
@@ -2176,6 +2176,11 @@
       }
     }
   },
+  "time_unit_day": "d",
+  "time_unit_hour": "h",
+  "time_unit_min": "m",
+  "common_increase": "Increase",
+  "common_decrease": "Decrease",
   "dash_title": "Dashboard",
   "dash_morning": "Good morning, {name}",
   "@dash_morning": {
@@ -2503,11 +2508,11 @@
   "inbox_location": "Location",
   "inbox_sticker": "Sticker",
   "inbox_deleted": "This message was deleted",
-  "inbox_tag_waiting": "{n, plural, =1{Waiting 1 min} other{Waiting {n} min}}",
+  "inbox_tag_waiting": "Waiting {t}",
   "@inbox_tag_waiting": {
     "placeholders": {
-      "n": {
-        "type": "int"
+      "t": {
+        "type": "String"
       }
     }
   },
@@ -2956,6 +2961,38 @@
   },
   "kbe_a11y_save_disabled": "Complete the question and answer",
   "kbe_a11y_dismiss": "Dismiss warning",
+  "kbe_media": "Attachments",
+  "kbe_media_hint": "AI sends them with the answer",
+  "kbe_media_add": "Add image or voice note",
+  "kbe_media_image": "Image",
+  "kbe_media_voice": "Voice note",
+  "kbe_media_with_text": "With text",
+  "kbe_media_file_only": "File only",
+  "kbe_media_remove": "Remove",
+  "kbe_media_uploading": "Uploading {p}%",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "Upload failed",
+  "kbe_media_queued": "Uploads after saving",
+  "kbe_media_too_big": "File larger than 16 MB",
+  "kbe_media_image_too_big": "Image larger than 5 MB",
+  "kbe_media_type_err": "Choose an image or an audio file",
+  "kbe_media_upgrade": "Images and voice notes are on paid plans",
+  "kbe_media_upgrade_cta": "View plans",
+  "kbe_media_some_failed": "Saved, but {n} attachments failed to upload",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "How it is sent",
   "kb_title": "Knowledge",
   "kb_search": "Search {n} entries",
   "@kb_search": {
@@ -3053,7 +3090,7 @@
   "kb_add_title": "Add to knowledge base",
   "kb_add_qa_sub": "Fastest and most accurate for AI",
   "kb_add_file": "Upload file",
-  "kb_add_file_sub": "PDF, Word or TXT up to 10 MB",
+  "kb_add_file_sub": "A JSON file with many Q&As — like the web panel",
   "kb_add_link": "Add link",
   "kb_add_link_sub": "A page from your site, read by AI",
   "kb_alt_phrasings": "Other phrasings",
@@ -3309,6 +3346,51 @@
   "kb_proposed": "Your suggestion was sent for review",
   "kb_save_err": "Couldn't save",
   "kb_none_found": "No results",
+  "kb_import_title": "Import from JSON",
+  "kb_import_hint": "A file with an entries list, each with type, title and body — same format as the web panel.",
+  "kb_import_pick": "Choose JSON file",
+  "kb_import_template": "Download template",
+  "kb_importing": "Importing…",
+  "kb_import_done": "Imported {n} entries",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "{n} skipped",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "Row {row}: {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "Import failed",
+  "kb_import_json_only": "Choose a .json file",
+  "kb_template_saved": "Template saved",
+  "kb_template_copied": "Template copied to clipboard",
+  "kb_media_title": "Attachments",
+  "kb_media_n": "{n} attachments",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "ntf_title": "Notifications",
   "ntf_read_all": "Mark all read",
   "ntf_read_all_done": "All marked as read",
@@ -3381,14 +3463,14 @@
       }
     }
   },
-  "ntf_t_sla_breach": "{customer} has been waiting {m}m for your reply",
+  "ntf_t_sla_breach": "{customer} has been waiting {m} for your reply",
   "@ntf_t_sla_breach": {
     "placeholders": {
       "customer": {
         "type": "String"
       },
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -3449,11 +3531,11 @@
   "ntf_t_payment_failed": "Subscription payment failed",
   "ntf_t_plan_limit": "You're close to your AI reply limit",
   "ntf_t_app_update": "A new version is available",
-  "ntf_b_claim_needed": "Oldest waiting {m}m",
+  "ntf_b_claim_needed": "Oldest waiting {m}",
   "@ntf_b_claim_needed": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },
@@ -3475,11 +3557,11 @@
   },
   "ntf_b_kb_suggestion": "Add them to the knowledge base to improve replies",
   "ntf_b_channel_disconnected": "Messages won't arrive until you reconnect",
-  "ntf_b_channel_reconnected": "Down for {m} minutes · no messages lost",
+  "ntf_b_channel_reconnected": "Down for {m} · no messages lost",
   "@ntf_b_channel_reconnected": {
     "placeholders": {
       "m": {
-        "type": "int"
+        "type": "String"
       }
     }
   },

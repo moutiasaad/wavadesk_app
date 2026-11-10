@@ -65,7 +65,7 @@ class PresencePill extends ConsumerWidget {
                   const SizedBox(width: 6),
                   Text(label, style: t.chipLabel.copyWith(color: fg)),
                   const SizedBox(width: 2),
-                  Icon(AppIcons.chevronDown, size: 14, color: fg),
+                  AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: fg),
                 ],
               ),
             ),

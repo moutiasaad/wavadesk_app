@@ -50,7 +50,7 @@ class ProfileNoteCard extends StatelessWidget {
                 Row(
                   children: [
                     if (note.pinned) ...[
-                      Icon(AppIcons.pin, size: 12, color: c.noteForeground.withValues(alpha: 0.8)),
+                      AppIcon(AppIcons.pin, size: AppIconSize.xs, color: c.noteForeground.withValues(alpha: 0.8)),
                       const SizedBox(width: 4),
                     ],
                     Flexible(

@@ -84,7 +84,7 @@ class _ConfirmDialog extends StatelessWidget {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
-                  child: Icon(icon, size: 22, color: iconFg),
+                  child: AppIcon(icon, color: iconFg),
                 ),
                 const SizedBox(height: AppSpacing.lg),
               ],

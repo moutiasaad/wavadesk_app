@@ -98,7 +98,7 @@ class _Quality extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(AppIcons.check, size: 16, color: c.primary),
+                  AppIcon(AppIcons.check, size: AppIconSize.sm, color: c.primary),
                   const SizedBox(width: AppSpacing.sm),
                   Expanded(child: Text(tip, style: t.bodySmall)),
                 ],

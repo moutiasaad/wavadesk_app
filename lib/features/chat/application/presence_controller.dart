@@ -50,7 +50,6 @@ class PresenceController extends AutoDisposeFamilyNotifier<List<ViewerPresence>,
   /// leaving simply lets the server entry expire.
   void join() {
     final api = ref.read(chatApiProvider);
-    if (api == null) return;
     unawaited(api.detail(arg).then((r) => syncRemoteConversation(ref, r)).catchError((Object _) {}));
   }
 

@@ -45,15 +45,3 @@ class HttpUploadsApi implements UploadsApi {
     yield UploadProgress(1, uploadId: '${r.map['id']}');
   }
 }
-
-/// Sample mode: fake progress over ~1.2s.
-class SimulatedUploadsApi implements UploadsApi {
-  @override
-  Stream<UploadProgress> upload({required String fileName, required List<int> bytes, required String mime}) async* {
-    for (var i = 1; i <= 6; i++) {
-      await Future<void>.delayed(const Duration(milliseconds: 200));
-      yield UploadProgress(i / 6 * 0.99);
-    }
-    yield UploadProgress(1, uploadId: 'upload-${DateTime.now().millisecondsSinceEpoch}');
-  }
-}

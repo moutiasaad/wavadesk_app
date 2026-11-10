@@ -650,12 +650,6 @@ abstract class AppLocalizations {
   /// **'متصل'**
   String get account_network_online;
 
-  /// No description provided for @account_network_demo.
-  ///
-  /// In ar, this message translates to:
-  /// **'وضع الاتصال التجريبي: {state}'**
-  String account_network_demo(String state);
-
   /// No description provided for @ai_settings_title.
   ///
   /// In ar, this message translates to:
@@ -5081,8 +5075,8 @@ abstract class AppLocalizations {
   /// No description provided for @claim_viewing_since_min.
   ///
   /// In ar, this message translates to:
-  /// **'منذ {n} د'**
-  String claim_viewing_since_min(int n);
+  /// **'منذ {t}'**
+  String claim_viewing_since_min(String t);
 
   /// No description provided for @claim_wait_sec.
   ///
@@ -5323,6 +5317,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'إضافة ملاحظة داخلية'**
   String get actions_add_note;
+
+  /// No description provided for @claim_a11y_wait_span.
+  ///
+  /// In ar, this message translates to:
+  /// **'ينتظر منذ {t}'**
+  String claim_a11y_wait_span(String t);
 
   /// No description provided for @conversations_segment_mine.
   ///
@@ -6206,6 +6206,36 @@ abstract class AppLocalizations {
   /// **'الأولوية: {label}'**
   String a11y_priority(String label);
 
+  /// No description provided for @time_unit_day.
+  ///
+  /// In ar, this message translates to:
+  /// **'ي'**
+  String get time_unit_day;
+
+  /// No description provided for @time_unit_hour.
+  ///
+  /// In ar, this message translates to:
+  /// **'س'**
+  String get time_unit_hour;
+
+  /// No description provided for @time_unit_min.
+  ///
+  /// In ar, this message translates to:
+  /// **'د'**
+  String get time_unit_min;
+
+  /// No description provided for @common_increase.
+  ///
+  /// In ar, this message translates to:
+  /// **'زيادة'**
+  String get common_increase;
+
+  /// No description provided for @common_decrease.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنقاص'**
+  String get common_decrease;
+
   /// No description provided for @dash_title.
   ///
   /// In ar, this message translates to:
@@ -6941,8 +6971,8 @@ abstract class AppLocalizations {
   /// No description provided for @inbox_tag_waiting.
   ///
   /// In ar, this message translates to:
-  /// **'{n, plural, =1{ينتظر دقيقة} =2{ينتظر دقيقتين} few{ينتظر {n} دقائق} other{ينتظر {n} دقيقة}}'**
-  String inbox_tag_waiting(int n);
+  /// **'ينتظر {t}'**
+  String inbox_tag_waiting(String t);
 
   /// No description provided for @inbox_tag_ai_ready.
   ///
@@ -8138,6 +8168,114 @@ abstract class AppLocalizations {
   /// **'إغلاق التنبيه'**
   String get kbe_a11y_dismiss;
 
+  /// No description provided for @kbe_media.
+  ///
+  /// In ar, this message translates to:
+  /// **'المرفقات'**
+  String get kbe_media;
+
+  /// No description provided for @kbe_media_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرسلها الذكاء مع الإجابة'**
+  String get kbe_media_hint;
+
+  /// No description provided for @kbe_media_add.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة صورة أو تسجيل صوتي'**
+  String get kbe_media_add;
+
+  /// No description provided for @kbe_media_image.
+  ///
+  /// In ar, this message translates to:
+  /// **'صورة'**
+  String get kbe_media_image;
+
+  /// No description provided for @kbe_media_voice.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل صوتي'**
+  String get kbe_media_voice;
+
+  /// No description provided for @kbe_media_with_text.
+  ///
+  /// In ar, this message translates to:
+  /// **'مع النص'**
+  String get kbe_media_with_text;
+
+  /// No description provided for @kbe_media_file_only.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف فقط'**
+  String get kbe_media_file_only;
+
+  /// No description provided for @kbe_media_remove.
+  ///
+  /// In ar, this message translates to:
+  /// **'إزالة'**
+  String get kbe_media_remove;
+
+  /// No description provided for @kbe_media_uploading.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ الرفع {p}%'**
+  String kbe_media_uploading(int p);
+
+  /// No description provided for @kbe_media_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر رفع الملف'**
+  String get kbe_media_failed;
+
+  /// No description provided for @kbe_media_queued.
+  ///
+  /// In ar, this message translates to:
+  /// **'يُرفع بعد الحفظ'**
+  String get kbe_media_queued;
+
+  /// No description provided for @kbe_media_too_big.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف أكبر من 16 ميجابايت'**
+  String get kbe_media_too_big;
+
+  /// No description provided for @kbe_media_image_too_big.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصورة أكبر من 5 ميجابايت'**
+  String get kbe_media_image_too_big;
+
+  /// No description provided for @kbe_media_type_err.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر صورة أو ملفًا صوتيًا'**
+  String get kbe_media_type_err;
+
+  /// No description provided for @kbe_media_upgrade.
+  ///
+  /// In ar, this message translates to:
+  /// **'إرفاق الصور والتسجيلات متاح في الباقات المدفوعة'**
+  String get kbe_media_upgrade;
+
+  /// No description provided for @kbe_media_upgrade_cta.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض الباقات'**
+  String get kbe_media_upgrade_cta;
+
+  /// No description provided for @kbe_media_some_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الحفظ، لكن تعذّر رفع {n} من المرفقات'**
+  String kbe_media_some_failed(int n);
+
+  /// No description provided for @kbe_media_send_mode.
+  ///
+  /// In ar, this message translates to:
+  /// **'طريقة الإرسال'**
+  String get kbe_media_send_mode;
+
   /// No description provided for @kb_title.
   ///
   /// In ar, this message translates to:
@@ -8369,7 +8507,7 @@ abstract class AppLocalizations {
   /// No description provided for @kb_add_file_sub.
   ///
   /// In ar, this message translates to:
-  /// **'PDF أو Word أو TXT حتى 10 ميجابايت'**
+  /// **'ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب'**
   String get kb_add_file_sub;
 
   /// No description provided for @kb_add_link.
@@ -8936,6 +9074,90 @@ abstract class AppLocalizations {
   /// **'لا توجد نتائج'**
   String get kb_none_found;
 
+  /// No description provided for @kb_import_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'استيراد من ملف JSON'**
+  String get kb_import_title;
+
+  /// No description provided for @kb_import_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف يحتوي قائمة entries، لكل مدخل type و title و body — بنفس صيغة لوحة الويب.'**
+  String get kb_import_hint;
+
+  /// No description provided for @kb_import_pick.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار ملف JSON'**
+  String get kb_import_pick;
+
+  /// No description provided for @kb_import_template.
+  ///
+  /// In ar, this message translates to:
+  /// **'تنزيل القالب'**
+  String get kb_import_template;
+
+  /// No description provided for @kb_importing.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ الاستيراد…'**
+  String get kb_importing;
+
+  /// No description provided for @kb_import_done.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم استيراد {n} مدخلًا'**
+  String kb_import_done(int n);
+
+  /// No description provided for @kb_import_skipped.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تخطي {n}'**
+  String kb_import_skipped(int n);
+
+  /// No description provided for @kb_import_row_err.
+  ///
+  /// In ar, this message translates to:
+  /// **'السطر {row}: {message}'**
+  String kb_import_row_err(int row, String message);
+
+  /// No description provided for @kb_import_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر الاستيراد'**
+  String get kb_import_failed;
+
+  /// No description provided for @kb_import_json_only.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر ملفًا بصيغة JSON'**
+  String get kb_import_json_only;
+
+  /// No description provided for @kb_template_saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حفظ القالب'**
+  String get kb_template_saved;
+
+  /// No description provided for @kb_template_copied.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم نسخ القالب إلى الحافظة'**
+  String get kb_template_copied;
+
+  /// No description provided for @kb_media_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'المرفقات'**
+  String get kb_media_title;
+
+  /// No description provided for @kb_media_n.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} مرفقات'**
+  String kb_media_n(int n);
+
   /// No description provided for @ntf_title.
   ///
   /// In ar, this message translates to:
@@ -9185,8 +9407,8 @@ abstract class AppLocalizations {
   /// No description provided for @ntf_t_sla_breach.
   ///
   /// In ar, this message translates to:
-  /// **'{customer} ينتظر ردّك منذ {m} د'**
-  String ntf_t_sla_breach(String customer, int m);
+  /// **'{customer} ينتظر ردّك منذ {m}'**
+  String ntf_t_sla_breach(String customer, String m);
 
   /// No description provided for @ntf_t_transfer_request.
   ///
@@ -9281,8 +9503,8 @@ abstract class AppLocalizations {
   /// No description provided for @ntf_b_claim_needed.
   ///
   /// In ar, this message translates to:
-  /// **'أقدمها منذ {m} د'**
-  String ntf_b_claim_needed(int m);
+  /// **'أقدمها منذ {m}'**
+  String ntf_b_claim_needed(String m);
 
   /// No description provided for @ntf_b_ai_no_answer.
   ///
@@ -9311,8 +9533,8 @@ abstract class AppLocalizations {
   /// No description provided for @ntf_b_channel_reconnected.
   ///
   /// In ar, this message translates to:
-  /// **'توقف {m} دقائق · لم تُفقد أي رسالة'**
-  String ntf_b_channel_reconnected(int m);
+  /// **'توقف {m} · لم تُفقد أي رسالة'**
+  String ntf_b_channel_reconnected(String m);
 
   /// No description provided for @ntf_b_channel_quality_low.
   ///

@@ -304,7 +304,7 @@ class _AssignSheetState extends ConsumerState<_AssignSheet> {
           controller: scroll,
           children: [
             EmptyState(
-              icon: s.offline ? AppIcons.wifiOff : AppIcons.alert,
+              icon: s.offline ? AppIcons.offline : AppIcons.error,
               title: s.offline ? l.as_offline : l.as_load_error,
               actionLabel: l.as_retry,
               onAction: ctrl.load,
@@ -410,7 +410,7 @@ class _AssignSheetState extends ConsumerState<_AssignSheet> {
           Padding(
             padding: const EdgeInsets.only(top: AppSpacing.xl),
             child: EmptyState(
-              icon: AppIcons.users,
+              icon: AppIcons.team,
               title: l.as_none_available,
               actionLabel: l.as_show_all,
               actionVariant: AppButtonVariant.text,
