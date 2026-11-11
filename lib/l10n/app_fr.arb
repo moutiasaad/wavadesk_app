@@ -3094,7 +3094,7 @@
   "kb_add_title": "Ajouter à la base de connaissances",
   "kb_add_qa_sub": "Le plus rapide et le plus précis pour l'IA",
   "kb_add_file": "Importer un fichier",
-  "kb_add_file_sub": "Un fichier JSON avec plusieurs Q&R — comme sur le panneau web",
+  "kb_add_file_sub": "Plusieurs questions-réponses d’un coup depuis un fichier JSON (format du panneau web)",
   "kb_add_link": "Ajouter un lien",
   "kb_add_link_sub": "Une page de votre site, lue par l'IA",
   "kb_alt_phrasings": "Autres formulations",
@@ -3511,6 +3511,10 @@
       }
     }
   },
+  "kb_add_document": "Importer un document",
+  "kb_add_document_sub": "PDF, Word ou texte. L’IA le transforme en réponses à vérifier.",
+  "kb_add_ai_badge": "IA",
+  "kb_import_another": "Importer un autre fichier",
   "ntf_title": "Notifications",
   "ntf_read_all": "Tout marquer comme lu",
   "ntf_read_all_done": "Tout a été marqué comme lu",

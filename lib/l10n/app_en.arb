@@ -3094,7 +3094,7 @@
   "kb_add_title": "Add to knowledge base",
   "kb_add_qa_sub": "Fastest and most accurate for AI",
   "kb_add_file": "Upload file",
-  "kb_add_file_sub": "A JSON file with many Q&As — like the web panel",
+  "kb_add_file_sub": "Many Q&As at once from a JSON file (web panel format)",
   "kb_add_link": "Add link",
   "kb_add_link_sub": "A page from your site, read by AI",
   "kb_alt_phrasings": "Other phrasings",
@@ -3511,6 +3511,10 @@
       }
     }
   },
+  "kb_add_document": "Upload a document",
+  "kb_add_document_sub": "PDF, Word or text. The AI turns it into answers you review.",
+  "kb_add_ai_badge": "AI",
+  "kb_import_another": "Import another file",
   "ntf_title": "Notifications",
   "ntf_read_all": "Mark all read",
   "ntf_read_all_done": "All marked as read",

@@ -4926,7 +4926,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kb_add_file_sub =>
-      'A JSON file with many Q&As — like the web panel';
+      'Many Q&As at once from a JSON file (web panel format)';
 
   @override
   String get kb_add_link => 'Add link';
@@ -5502,6 +5502,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String kb_file_failed_named(String f) {
     return 'Couldn\'t read \"$f\"';
   }
+
+  @override
+  String get kb_add_document => 'Upload a document';
+
+  @override
+  String get kb_add_document_sub =>
+      'PDF, Word or text. The AI turns it into answers you review.';
+
+  @override
+  String get kb_add_ai_badge => 'AI';
+
+  @override
+  String get kb_import_another => 'Import another file';
 
   @override
   String get ntf_title => 'Notifications';

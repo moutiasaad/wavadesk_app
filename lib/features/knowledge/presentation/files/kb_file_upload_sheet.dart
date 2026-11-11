@@ -304,6 +304,7 @@ class _Failed extends StatelessWidget {
       (KbFileError.corrupt, _) => (l.kb_fail_corrupt, l.kb_fail_corrupt_hint),
       (KbFileError.noAnswers, _) => (l.kb_fail_no_answers, l.kb_fail_no_answers_hint),
       (KbFileError.aiUnavailable, _) => (l.kb_fail_ai, l.kb_fail_ai_hint),
+      (_, KbApiException(isNotSupported: true)) => (l.kb_file_failed, l.kb_web_only),
       (_, KbApiException(isPlanLimit: true)) => (l.kb_fail_quota, l.kb_fail_quota_hint),
       (_, KbApiException(status: 413)) => (l.kb_file_size_err, l.kb_fail_corrupt_hint),
       (_, KbApiException(status: 415)) => (l.kb_file_type_err, l.kb_fail_corrupt_hint),

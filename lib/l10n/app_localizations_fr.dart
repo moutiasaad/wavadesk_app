@@ -5004,7 +5004,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kb_add_file_sub =>
-      'Un fichier JSON avec plusieurs Q&R — comme sur le panneau web';
+      'Plusieurs questions-réponses d’un coup depuis un fichier JSON (format du panneau web)';
 
   @override
   String get kb_add_link => 'Ajouter un lien';
@@ -5582,6 +5582,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String kb_file_failed_named(String f) {
     return 'Impossible de lire « $f »';
   }
+
+  @override
+  String get kb_add_document => 'Importer un document';
+
+  @override
+  String get kb_add_document_sub =>
+      'PDF, Word ou texte. L’IA le transforme en réponses à vérifier.';
+
+  @override
+  String get kb_add_ai_badge => 'IA';
+
+  @override
+  String get kb_import_another => 'Importer un autre fichier';
 
   @override
   String get ntf_title => 'Notifications';

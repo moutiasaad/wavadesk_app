@@ -97,7 +97,7 @@
   "kb_add_title": "إضافة إلى قاعدة المعرفة",
   "kb_add_qa_sub": "الأسرع والأدق للذكاء",
   "kb_add_file": "رفع ملف",
-  "kb_add_file_sub": "ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب",
+  "kb_add_file_sub": "عدة أسئلة وأجوبة دفعة واحدة من ملف JSON (بصيغة لوحة الويب)",
   "kb_add_link": "إضافة رابط",
   "kb_add_link_sub": "صفحة من موقعك، يقرأها الذكاء تلقائيًا",
   "kb_alt_phrasings": "صيغ أخرى",
@@ -513,5 +513,9 @@
         "type": "String"
       }
     }
-  }
+  },
+  "kb_add_document": "رفع مستند",
+  "kb_add_document_sub": "PDF أو Word أو ملف نصي. يحوّله الذكاء الاصطناعي إلى إجابات تراجعها.",
+  "kb_add_ai_badge": "ذكاء",
+  "kb_import_another": "استيراد ملف آخر"
 }

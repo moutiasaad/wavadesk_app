@@ -4947,7 +4947,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kb_add_file => 'رفع ملف';
 
   @override
-  String get kb_add_file_sub => 'ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب';
+  String get kb_add_file_sub =>
+      'عدة أسئلة وأجوبة دفعة واحدة من ملف JSON (بصيغة لوحة الويب)';
 
   @override
   String get kb_add_link => 'إضافة رابط';
@@ -5537,6 +5538,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String kb_file_failed_named(String f) {
     return 'تعذّرت قراءة «$f»';
   }
+
+  @override
+  String get kb_add_document => 'رفع مستند';
+
+  @override
+  String get kb_add_document_sub =>
+      'PDF أو Word أو ملف نصي. يحوّله الذكاء الاصطناعي إلى إجابات تراجعها.';
+
+  @override
+  String get kb_add_ai_badge => 'ذكاء';
+
+  @override
+  String get kb_import_another => 'استيراد ملف آخر';
 
   @override
   String get ntf_title => 'الإشعارات';

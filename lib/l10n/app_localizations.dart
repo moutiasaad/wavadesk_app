@@ -8533,7 +8533,7 @@ abstract class AppLocalizations {
   /// No description provided for @kb_add_file_sub.
   ///
   /// In ar, this message translates to:
-  /// **'ملف JSON بعدة أسئلة وأجوبة — مثل لوحة الويب'**
+  /// **'عدة أسئلة وأجوبة دفعة واحدة من ملف JSON (بصيغة لوحة الويب)'**
   String get kb_add_file_sub;
 
   /// No description provided for @kb_add_link.
@@ -9411,6 +9411,30 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تعذّرت قراءة «{f}»'**
   String kb_file_failed_named(String f);
+
+  /// No description provided for @kb_add_document.
+  ///
+  /// In ar, this message translates to:
+  /// **'رفع مستند'**
+  String get kb_add_document;
+
+  /// No description provided for @kb_add_document_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'PDF أو Word أو ملف نصي. يحوّله الذكاء الاصطناعي إلى إجابات تراجعها.'**
+  String get kb_add_document_sub;
+
+  /// No description provided for @kb_add_ai_badge.
+  ///
+  /// In ar, this message translates to:
+  /// **'ذكاء'**
+  String get kb_add_ai_badge;
+
+  /// No description provided for @kb_import_another.
+  ///
+  /// In ar, this message translates to:
+  /// **'استيراد ملف آخر'**
+  String get kb_import_another;
 
   /// No description provided for @ntf_title.
   ///

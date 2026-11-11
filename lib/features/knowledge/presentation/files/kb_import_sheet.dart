@@ -171,21 +171,33 @@ class _KbImportSheetState extends ConsumerState<KbImportSheet> {
             ],
           ],
           const SizedBox(height: AppSpacing.lg),
-          AppButton(
-            label: l.kb_import_pick,
-            icon: AppIcons.file,
-            expand: true,
-            loading: _busy,
-            onPressed: _busy ? null : _pickAndImport,
-          ),
-          const SizedBox(height: AppSpacing.sm),
-          AppButton(
-            label: l.kb_import_template,
-            variant: AppButtonVariant.secondary,
-            expand: true,
-            loading: _savingTemplate,
-            onPressed: _savingTemplate ? null : _template,
-          ),
+          // After an import the next step is "Done"; before, choosing the file.
+          if (r != null && r.imported > 0) ...[
+            AppButton(label: l.common_done, icon: AppIcons.check, expand: true, onPressed: () => Navigator.of(context).maybePop()),
+            const SizedBox(height: AppSpacing.sm),
+            AppButton(
+              label: l.kb_import_another,
+              variant: AppButtonVariant.secondary,
+              expand: true,
+              onPressed: _busy ? null : _pickAndImport,
+            ),
+          ] else ...[
+            AppButton(
+              label: _fileName == null ? l.kb_import_pick : l.kb_import_another,
+              icon: AppIcons.file,
+              expand: true,
+              loading: _busy,
+              onPressed: _busy ? null : _pickAndImport,
+            ),
+            const SizedBox(height: AppSpacing.sm),
+            AppButton(
+              label: l.kb_import_template,
+              variant: AppButtonVariant.secondary,
+              expand: true,
+              loading: _savingTemplate,
+              onPressed: _savingTemplate ? null : _template,
+            ),
+          ],
         ],
       ),
     );
