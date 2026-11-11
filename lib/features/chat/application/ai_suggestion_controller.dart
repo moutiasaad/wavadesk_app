@@ -8,7 +8,9 @@ import 'package:uuid/uuid.dart';
 import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
 import '../../../core/models/models.dart';
+import '../../../core/data/data.dart';
 import '../../../core/utils/analytics.dart';
+import '../../ai_agent/application/ai_agent_controller.dart';
 
 /// idle = the "suggest a reply" button only; nothing is generated until
 /// the agent taps it (each request costs AI quota).
@@ -50,9 +52,15 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
   /// 402/403: plan limit or AI module off — no button at all.
   bool _unavailable = false;
 
+  /// The workspace's AI mode allows suggestions (web panel: "Suggestion").
+  bool _allowed = false;
+
   @override
   AiSuggestionState build(String id) {
     ref.onDispose(() => _poll?.cancel());
+    _allowed = ref.watch(aiSettingsProvider.select((s) => s.suggestReplies));
+    // Pick up a mode changed on the web since the settings were read.
+    Future.microtask(() => ref.read(aiAgentControllerProvider.notifier).refreshIfStale());
     return _remoteState();
   }
 
@@ -74,7 +82,7 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
     final s = _remote;
     final view = _remoteLoading
         ? AiCardView.loading
-        : _unavailable
+        : _unavailable || !_allowed
         ? AiCardView.hidden
         : s == null
         ? AiCardView.idle

@@ -129,10 +129,15 @@ class AiSettingsController extends Notifier<AiAgentSettings> {
     // The workspace AI settings from the AI agent screen's controller
     // (`GET ai-agent`).
     final cfg = ref.watch(aiAgentControllerProvider.select((s) => s.config));
-    if (cfg == null) return const AiAgentSettings(repliesQuota: 0);
+    // Unknown yet: offer nothing AI until the settings are loaded.
+    if (cfg == null) return const AiAgentSettings(enabled: false, suggestReplies: false, repliesQuota: 0);
+    final on = cfg.enabled && cfg.planAllowsAi;
     return AiAgentSettings(
-      enabled: cfg.enabled && cfg.planAllowsAi,
+      enabled: on,
       autoReply: cfg.mode != AiMode.suggest,
+      // Web panel: only the "Suggestion" mode drafts replies for agents;
+      // Autonomous / Hybrid answer on their own, Off does nothing.
+      suggestReplies: on && cfg.mode == AiMode.suggest,
       tone: cfg.tone.name,
       repliesUsed: cfg.usage.used,
       repliesQuota: cfg.usage.limit ?? 0,

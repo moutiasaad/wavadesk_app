@@ -71,10 +71,21 @@ class AiAgentController extends Notifier<AiAgentState> {
     return const AiAgentState(loading: true);
   }
 
+  DateTime? _loadedAt;
+
+  /// Reload when the last good load is older than [maxAge] (settings may
+  /// have been changed on the web panel meanwhile).
+  Future<void> refreshIfStale([Duration maxAge = const Duration(minutes: 1)]) async {
+    final at = _loadedAt;
+    if (state.loading || (at != null && DateTime.now().difference(at) < maxAge)) return;
+    await load();
+  }
+
   Future<void> load() async {
     state = state.copyWith(loading: true, clearError: true);
     try {
       final c = await _api.fetch();
+      _loadedAt = DateTime.now();
       _confirmed = c;
       state = state.copyWith(config: c, loading: false, clearError: true);
     } catch (e) {
