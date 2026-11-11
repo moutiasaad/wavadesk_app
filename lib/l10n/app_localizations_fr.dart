@@ -783,18 +783,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get ai_mode => 'Fonctionnement';
 
   @override
-  String get ai_mode_suggest => 'Suggestion uniquement';
+  String get ai_mode_suggest => 'Suggestion';
 
   @override
-  String get ai_mode_suggest_sub =>
-      'Rédige des brouillons ; les agents vérifient et envoient';
+  String get ai_mode_suggest_sub => 'L’IA rédige, l’agent envoie';
 
   @override
-  String get ai_mode_auto => 'Réponse automatique';
+  String get ai_mode_auto => 'Autonome';
 
   @override
-  String get ai_mode_auto_sub =>
-      'Répond instantanément, transfère si nécessaire';
+  String get ai_mode_auto_sub => 'L’IA répond automatiquement';
 
   @override
   String get ai_mode_after => 'Hors horaires uniquement';
@@ -1370,8 +1368,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get ai_mode_hybrid => 'Hybride';
 
   @override
-  String get ai_mode_hybrid_sub =>
-      'Envoie seul les réponses que vous avez validées, propose un brouillon pour le reste.';
+  String get ai_mode_hybrid_sub => 'Automatique jusqu’au mot-clé d’escalade';
 
   @override
   String get ai_replies => 'Réponses';
@@ -1448,6 +1445,23 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get ai_lang_it => 'Italien';
+
+  @override
+  String get ai_mode_off => 'Désactivé';
+
+  @override
+  String get ai_mode_off_sub => 'IA désactivée';
+
+  @override
+  String get ai_mode_auto_info =>
+      'En mode autonome, l’IA envoie les réponses directement. Les mots-clés d’escalade mettent l’IA en pause et alertent les agents.';
+
+  @override
+  String get ai_mode_set_on_web => 'À régler sur le site pour l’instant';
+
+  @override
+  String get ai_mode_hybrid_on_web =>
+      'Choisissez « Hybride » sur le site, puis revenez.';
 
   @override
   String get rw_title => 'Améliorer la réponse';

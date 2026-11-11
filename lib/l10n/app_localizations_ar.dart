@@ -776,16 +776,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ai_mode => 'طريقة العمل';
 
   @override
-  String get ai_mode_suggest => 'اقتراح فقط';
+  String get ai_mode_suggest => 'اقتراح';
 
   @override
-  String get ai_mode_suggest_sub => 'يكتب الرد والموظف يراجعه ويرسله';
+  String get ai_mode_suggest_sub => 'يقترح الردود مع إبقاء الوكيل في التحكم';
 
   @override
-  String get ai_mode_auto => 'رد تلقائي';
+  String get ai_mode_auto => 'ذاتي';
 
   @override
-  String get ai_mode_auto_sub => 'يرد فورًا ويحوّل للفريق عند الحاجة';
+  String get ai_mode_auto_sub => 'يرد تلقائياً ضمن الحدود المسموح بها';
 
   @override
   String get ai_mode_after => 'خارج الدوام فقط';
@@ -1343,8 +1343,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ai_mode_hybrid => 'هجين';
 
   @override
-  String get ai_mode_hybrid_sub =>
-      'يرسل تلقائيًا الإجابات التي اعتمدتها، ويقترح الباقي.';
+  String get ai_mode_hybrid_sub => 'يمزج بين الاقتراح والرد التلقائي';
 
   @override
   String get ai_replies => 'الردود';
@@ -1421,6 +1420,23 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get ai_lang_it => 'الإيطالية';
+
+  @override
+  String get ai_mode_off => 'متوقف';
+
+  @override
+  String get ai_mode_off_sub => 'لا توجد ردود آلية';
+
+  @override
+  String get ai_mode_auto_info =>
+      'في الوضع الذاتي يرسل الذكاء الاصطناعي الردود مباشرة دون مراجعة الوكيل. كلمات التصعيد توقف الذكاء الاصطناعي وتنبّه الوكلاء.';
+
+  @override
+  String get ai_mode_set_on_web => 'يُضبط من الموقع حاليًا';
+
+  @override
+  String get ai_mode_hybrid_on_web =>
+      'اختر «هجين» على الموقع ثم عُد إلى التطبيق.';
 
   @override
   String get rw_title => 'حسّن الرد';

@@ -70,6 +70,45 @@ class BrandHeader extends StatelessWidget {
   }
 }
 
+/// For a [BrandHeader] placed inside a screen's top SafeArea (chat,
+/// search, notifications, editor): paints the brand gradient into the
+/// status-bar strip above it, which would otherwise keep the page color.
+/// No-op without a status bar or outside a SafeArea.
+class BrandStatusBarBleed extends StatelessWidget {
+  const BrandStatusBarBleed({super.key, required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = MediaQuery.viewPaddingOf(context).top;
+    // Not under a SafeArea (BrandHeader pads itself) or no status bar.
+    if (inset == 0 || MediaQuery.paddingOf(context).top > 0) return child;
+    final colors = BrandHeader.colorsOf(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          top: -inset,
+          left: 0,
+          right: 0,
+          height: inset + 24,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.centerStart,
+                end: AlignmentDirectional.centerEnd,
+                colors: [colors.first, Color.lerp(colors.first, colors.last, 0.5)!],
+              ),
+            ),
+          ),
+        ),
+        child,
+      ],
+    );
+  }
+}
+
 /// Tab-root header (Account…): brand header with a large white title and
 /// up to 2 actions.
 class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {

@@ -775,16 +775,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ai_mode => 'How it works';
 
   @override
-  String get ai_mode_suggest => 'Suggest only';
+  String get ai_mode_suggest => 'Suggestion';
 
   @override
-  String get ai_mode_suggest_sub => 'Drafts replies; agents review and send';
+  String get ai_mode_suggest_sub => 'AI drafts, agent sends';
 
   @override
-  String get ai_mode_auto => 'Auto-reply';
+  String get ai_mode_auto => 'Autonomous';
 
   @override
-  String get ai_mode_auto_sub => 'Replies instantly, hands off when needed';
+  String get ai_mode_auto_sub => 'AI replies automatically';
 
   @override
   String get ai_mode_after => 'After hours only';
@@ -1343,8 +1343,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ai_mode_hybrid => 'Hybrid';
 
   @override
-  String get ai_mode_hybrid_sub =>
-      'Sends the answers you have approved on its own, drafts everything else.';
+  String get ai_mode_hybrid_sub => 'Auto until escalation keyword';
 
   @override
   String get ai_replies => 'Replies';
@@ -1421,6 +1420,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get ai_lang_it => 'Italian';
+
+  @override
+  String get ai_mode_off => 'Off';
+
+  @override
+  String get ai_mode_off_sub => 'AI disabled';
+
+  @override
+  String get ai_mode_auto_info =>
+      'In autonomous mode the AI sends replies directly without agent review. Escalation keywords will pause the AI and alert agents.';
+
+  @override
+  String get ai_mode_set_on_web => 'Set on the website for now';
+
+  @override
+  String get ai_mode_hybrid_on_web =>
+      'Choose Hybrid on the website, then come back.';
 
   @override
   String get rw_title => 'Improve reply';

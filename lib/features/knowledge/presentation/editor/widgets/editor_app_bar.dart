@@ -32,7 +32,7 @@ class EditorAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = context.text;
     final l = context.l10n;
-    return _StatusBarBleed(
+    return BrandStatusBarBleed(
       child: BrandHeader(
         padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.md, AppSpacing.xxs, AppSpacing.sm, AppSpacing.md),
         child: SizedBox(
@@ -85,44 +85,6 @@ class EditorAppBar extends StatelessWidget {
         ),
         ),
       ),
-    );
-  }
-}
-
-/// The screen puts this header inside a top SafeArea, so the status-bar
-/// strip above it would keep the page color: paint the brand gradient there
-/// too (outside the header's own bounds; nothing else is drawn there).
-class _StatusBarBleed extends StatelessWidget {
-  const _StatusBarBleed({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    final inset = MediaQuery.viewPaddingOf(context).top;
-    // Not under a SafeArea (BrandHeader pads itself) or no status bar.
-    if (inset == 0 || MediaQuery.paddingOf(context).top > 0) return child;
-    final colors = BrandHeader.colorsOf(context);
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        Positioned(
-          top: -inset,
-          left: 0,
-          right: 0,
-          height: inset + 24,
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: AlignmentDirectional.centerStart,
-                end: AlignmentDirectional.centerEnd,
-                colors: [colors.first, Color.lerp(colors.first, colors.last, 0.5)!],
-              ),
-            ),
-          ),
-        ),
-        child,
-      ],
     );
   }
 }

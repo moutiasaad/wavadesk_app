@@ -32,61 +32,72 @@ class _InConversationSearchBarState extends ConsumerState<InConversationSearchBa
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
     final t = context.text;
     final l = context.l10n;
     final s = ref.watch(inConversationSearchProvider(widget.conversationId));
     final n = s.matches.length;
     final i = n == 0 ? 0 : s.index + 1;
 
-    return Material(
-      color: c.background,
-      child: Container(
-        constraints: const BoxConstraints(minHeight: 64),
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: c.divider)),
-        ),
-        padding: const EdgeInsetsDirectional.only(start: AppSpacing.xs, end: AppSpacing.xs),
-        child: Row(
-          children: [
-            AppIconButton(
-              icon: AppIcons.back,
-              iconSize: 24,
-              semanticLabel: l.search_in_conv_close,
-              onPressed: _ctrl.close,
-            ),
-            Expanded(
-              child: SizedBox(
-                height: 44,
-                child: AppSearchField(
-                  hint: l.search_in_conv_placeholder,
-                  controller: _text,
-                  autofocus: true,
-                  showCancel: false,
-                  onChanged: _ctrl.setQuery,
-                  onSubmitted: (_) => _ctrl.previous(),
+    // Same brand header as the chat header it replaces while searching.
+    return BrandStatusBarBleed(
+      child: BrandHeader(
+        padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.sm, AppSpacing.xs, AppSpacing.xs, AppSpacing.md),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 52),
+          child: Row(
+            children: [
+              AppIconButton(
+                icon: AppIcons.back,
+                iconSize: 22,
+                variant: AppIconButtonVariant.filled,
+                semanticLabel: l.search_in_conv_close,
+                onPressed: _ctrl.close,
+              ),
+              const SizedBox(width: AppSpacing.sm),
+              Expanded(
+                child: SizedBox(
+                  height: 44,
+                  child: AppSearchField(
+                    hint: l.search_in_conv_placeholder,
+                    controller: _text,
+                    autofocus: true,
+                    showCancel: false,
+                    onChanged: _ctrl.setQuery,
+                    onSubmitted: (_) => _ctrl.previous(),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(width: AppSpacing.sm),
-            Semantics(
-              liveRegion: true,
-              child: Text(
-                l.search_in_conv_count(i, n),
-                style: t.caption.copyWith(color: n == 0 ? c.textTertiary : c.textSecondary),
+              const SizedBox(width: AppSpacing.sm),
+              Semantics(
+                liveRegion: true,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: 0.16),
+                    borderRadius: BorderRadius.circular(AppRadius.full),
+                  ),
+                  child: Text(
+                    l.search_in_conv_count(i, n),
+                    style: t.caption.copyWith(
+                      color: Colors.white.withValues(alpha: n == 0 ? 0.7 : 1),
+                      fontWeight: FontWeight.w700,
+                      fontFeatures: const [FontFeature.tabularFigures()],
+                    ),
+                  ),
+                ),
               ),
-            ),
-            AppIconButton(
-              icon: AppIcons.chevronUp,
-              semanticLabel: l.search_in_conv_prev,
-              onPressed: s.hasPrevious ? _ctrl.previous : null,
-            ),
-            AppIconButton(
-              icon: AppIcons.chevronDown,
-              semanticLabel: l.search_in_conv_next,
-              onPressed: s.hasNext ? _ctrl.next : null,
-            ),
-          ],
+              AppIconButton(
+                icon: AppIcons.chevronUp,
+                semanticLabel: l.search_in_conv_prev,
+                onPressed: s.hasPrevious ? _ctrl.previous : null,
+              ),
+              AppIconButton(
+                icon: AppIcons.chevronDown,
+                semanticLabel: l.search_in_conv_next,
+                onPressed: s.hasNext ? _ctrl.next : null,
+              ),
+            ],
+          ),
         ),
       ),
     );

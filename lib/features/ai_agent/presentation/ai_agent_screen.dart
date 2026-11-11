@@ -119,7 +119,8 @@ class _AiAgentScreenState extends ConsumerState<AiAgentScreen> {
             const SizedBox(height: AppSpacing.sm),
             AiStatusHero(config: cfg, countUp: _countUp),
             if (cfg.canEdit && cfg.planAllowsAi) AiReadinessCard(config: cfg),
-            dimmed(AiModeGroup(config: cfg, interactive: interactive)),
+            // Modes stay usable while the AI is off: picking one switches it on.
+            AiModeGroup(config: cfg, interactive: editable),
             dimmed(AiRulesGroup(config: cfg, interactive: interactive)),
             AiPerformanceGroup(config: cfg),
             dimmed(AiAdvancedGroup(config: cfg, interactive: interactive)),

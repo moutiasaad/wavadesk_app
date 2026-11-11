@@ -1417,25 +1417,25 @@ abstract class AppLocalizations {
   /// No description provided for @ai_mode_suggest.
   ///
   /// In ar, this message translates to:
-  /// **'اقتراح فقط'**
+  /// **'اقتراح'**
   String get ai_mode_suggest;
 
   /// No description provided for @ai_mode_suggest_sub.
   ///
   /// In ar, this message translates to:
-  /// **'يكتب الرد والموظف يراجعه ويرسله'**
+  /// **'يقترح الردود مع إبقاء الوكيل في التحكم'**
   String get ai_mode_suggest_sub;
 
   /// No description provided for @ai_mode_auto.
   ///
   /// In ar, this message translates to:
-  /// **'رد تلقائي'**
+  /// **'ذاتي'**
   String get ai_mode_auto;
 
   /// No description provided for @ai_mode_auto_sub.
   ///
   /// In ar, this message translates to:
-  /// **'يرد فورًا ويحوّل للفريق عند الحاجة'**
+  /// **'يرد تلقائياً ضمن الحدود المسموح بها'**
   String get ai_mode_auto_sub;
 
   /// No description provided for @ai_mode_after.
@@ -2497,7 +2497,7 @@ abstract class AppLocalizations {
   /// No description provided for @ai_mode_hybrid_sub.
   ///
   /// In ar, this message translates to:
-  /// **'يرسل تلقائيًا الإجابات التي اعتمدتها، ويقترح الباقي.'**
+  /// **'يمزج بين الاقتراح والرد التلقائي'**
   String get ai_mode_hybrid_sub;
 
   /// No description provided for @ai_replies.
@@ -2637,6 +2637,36 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الإيطالية'**
   String get ai_lang_it;
+
+  /// No description provided for @ai_mode_off.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوقف'**
+  String get ai_mode_off;
+
+  /// No description provided for @ai_mode_off_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد ردود آلية'**
+  String get ai_mode_off_sub;
+
+  /// No description provided for @ai_mode_auto_info.
+  ///
+  /// In ar, this message translates to:
+  /// **'في الوضع الذاتي يرسل الذكاء الاصطناعي الردود مباشرة دون مراجعة الوكيل. كلمات التصعيد توقف الذكاء الاصطناعي وتنبّه الوكلاء.'**
+  String get ai_mode_auto_info;
+
+  /// No description provided for @ai_mode_set_on_web.
+  ///
+  /// In ar, this message translates to:
+  /// **'يُضبط من الموقع حاليًا'**
+  String get ai_mode_set_on_web;
+
+  /// No description provided for @ai_mode_hybrid_on_web.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر «هجين» على الموقع ثم عُد إلى التطبيق.'**
+  String get ai_mode_hybrid_on_web;
 
   /// No description provided for @rw_title.
   ///
