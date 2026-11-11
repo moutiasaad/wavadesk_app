@@ -25,10 +25,8 @@ import 'widgets/biometric_login_button.dart';
 import 'widgets/enable_biometrics_sheet.dart';
 import 'widgets/login_error_banner.dart';
 import 'widgets/or_divider.dart';
-import 'widgets/sign_up_prompt.dart';
 
 /// Sign-up lives on the web (Login spec §4.11).
-final Uri signUpUrl = Uri.parse('https://wavadesk.com/start');
 
 /// Opened from the "workspace suspended" banner (§7).
 final Uri manageSubscriptionUrl = Uri.parse('https://app.wavadesk.com/billing');
@@ -541,30 +539,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                       ],
                     ),
                   ),
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: _LoginColumn(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const SizedBox(height: AppSpacing.xxl),
-                        _enterGroup(
-                          4,
-                          Opacity(
-                            opacity: busy ? 0.4 : 1,
-                            child: SignUpPrompt(
-                              onTap: busy
-                                  ? null
-                                  : () {
-                                      Analytics.log('login_signup_tap');
-                                      _openWeb(signUpUrl);
-                                    },
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.x4l),
-                      ],
-                    ),
-                  ),
+                  // No sign-up from the app: accounts are created by a workspace admin.
+                  const SliverToBoxAdapter(child: SizedBox(height: AppSpacing.x4l)),
                 ],
               ),
             ),
@@ -577,10 +553,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
 
 /// Centred column, max 420 wide, with the page's side gutter.
 class _LoginColumn extends StatelessWidget {
-  const _LoginColumn({required this.children, this.mainAxisAlignment = MainAxisAlignment.start});
+  const _LoginColumn({required this.children});
 
   final List<Widget> children;
-  final MainAxisAlignment mainAxisAlignment;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -591,7 +566,6 @@ class _LoginColumn extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 420),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: mainAxisAlignment,
               children: children,
             ),
           ),

@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/app_theme.dart';
 
-/// Login spec §4.1: 64×64 rounded square (radius 20), `primary`, white wave
-/// mark 34×34, primary glow. The tile keeps the brand teal `#0F7E7A` in dark
-/// mode too (§10).
+/// The website's green Wavadesk logo (public/images/wavadesk-icon-gradient
+/// .svg): gradient tile with the white wave, with a soft brand glow. Same
+/// look in light and dark mode.
 class AppLogoMark extends StatelessWidget {
   const AppLogoMark({super.key, this.size = 64});
 
@@ -16,19 +16,16 @@ class AppLogoMark extends StatelessWidget {
     return Semantics(
       label: 'Wavadesk',
       image: true,
-      child: Container(
-        width: size,
-        height: size,
+      child: DecoratedBox(
         decoration: BoxDecoration(
-          color: AppColors.light.primary,
-          borderRadius: BorderRadius.circular(AppRadius.xxl),
+          // The SVG tile has rx 16 of 64 and a 2/64 inset.
+          borderRadius: BorderRadius.circular(size * 15 / 64),
           boxShadow: context.shadows.primaryGlow,
         ),
-        alignment: Alignment.center,
         child: SvgPicture.asset(
-          'assets/brand/wave_mark.svg',
-          width: size * 34 / 64,
-          height: size * 34 / 64,
+          'assets/brand/wavadesk_logo.svg',
+          width: size,
+          height: size,
           excludeFromSemantics: true,
         ),
       ),
