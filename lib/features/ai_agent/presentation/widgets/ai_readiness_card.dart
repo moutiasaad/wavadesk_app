@@ -23,8 +23,6 @@ class AiReadinessCard extends StatelessWidget {
 
     final rows = [
       (ReadinessItem.kb, l.ai_ready_kb('${config.readiness.kbEntries.clamp(0, config.readiness.kbMin)}'), () => context.go(Routes.knowledge)),
-      (ReadinessItem.hours, l.ai_ready_hours, () => context.push(Routes.aiAgentHours)),
-      (ReadinessItem.handoff, l.ai_ready_handoff, () => context.push(Routes.aiAgentHandoff)),
       (ReadinessItem.tested, l.ai_ready_tested, () => context.push(Routes.aiAgentTest)),
     ];
 

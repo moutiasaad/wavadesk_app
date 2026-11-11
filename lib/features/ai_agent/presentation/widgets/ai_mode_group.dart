@@ -14,11 +14,11 @@ import '../sheets/ai_confirm_sheets.dart';
 
 String aiModeTitle(AppLocalizations l, AiMode m) => switch (m) {
       AiMode.suggest => l.ai_mode_suggest,
-      AiMode.auto => l.ai_mode_auto,
-      AiMode.afterHours => l.ai_mode_after,
+      AiMode.hybrid => l.ai_mode_hybrid,
+      AiMode.auto || AiMode.afterHours => l.ai_mode_auto,
     };
 
-/// "طريقة العمل" radio rows (AI Agent spec §4.4).
+/// "طريقة العمل" radio rows — the web panel's modes: suggest, hybrid, auto.
 class AiModeGroup extends ConsumerWidget {
   const AiModeGroup({super.key, required this.config, required this.interactive});
 
@@ -29,12 +29,7 @@ class AiModeGroup extends ConsumerWidget {
     final l = context.l10n;
     if (mode == config.mode) return;
     if (mode != AiMode.suggest) {
-      // After-hours needs hours (§4.4); auto-reply needs readiness 1–3 (§4.3).
-      if (mode == AiMode.afterHours && !config.hours.isSet) {
-        AppSnackbar.show(context, message: l.ai_mode_needs_hours);
-        context.push(Routes.aiAgentHours);
-        return;
-      }
+      // Sending on its own needs a knowledge base, as on the web.
       if (!Readiness.of(config).autoReplyAllowed) {
         AppSnackbar.show(context, message: l.ai_mode_needs_ready);
         return;
@@ -62,9 +57,11 @@ class AiModeGroup extends ConsumerWidget {
     final l = context.l10n;
     final rows = [
       (AiMode.suggest, l.ai_mode_suggest, l.ai_mode_suggest_sub, null, false),
+      (AiMode.hybrid, l.ai_mode_hybrid, l.ai_mode_hybrid_sub, null, false),
       (AiMode.auto, l.ai_mode_auto, l.ai_mode_auto_sub, null, true),
-      (AiMode.afterHours, l.ai_mode_after, l.ai_mode_after_sub, l.ai_mode_after_sub2, false),
     ];
+    // The retired "after hours" setting reads as auto (it replies on its own).
+    final current = config.mode == AiMode.afterHours ? AiMode.auto : config.mode;
     return SettingsGroup(
       title: l.ai_mode,
       children: [
@@ -80,7 +77,7 @@ class AiModeGroup extends ConsumerWidget {
                   subtitle: rows[i].$3,
                   subtitle2: rows[i].$4,
                   recommended: rows[i].$5,
-                  selected: config.mode == rows[i].$1,
+                  selected: current == rows[i].$1,
                   onTap: interactive ? () => _select(context, ref, rows[i].$1) : null,
                 ),
               ],

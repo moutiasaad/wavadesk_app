@@ -290,5 +290,37 @@
   "ai_ho_target_last": "آخر موظف تعامل مع العميل",
   "ai_ho_after_hours": "خارج الدوام",
   "ai_ho_tell_return": "يخبر العميل بموعد العودة",
-  "ai_ho_notify": "يحوّل ويرسل إشعارًا للفريق"
+  "ai_ho_notify": "يحوّل ويرسل إشعارًا للفريق",
+  "ai_mode_hybrid": "هجين",
+  "ai_mode_hybrid_sub": "يرسل تلقائيًا الإجابات التي اعتمدتها، ويقترح الباقي.",
+  "ai_replies": "الردود",
+  "ai_suggestions": "عدد الاقتراحات لكل رسالة",
+  "ai_suggestions_sub": "كم اقتراح رد يقدّمه الذكاء الاصطناعي في كل مرة.",
+  "ai_reply_claimed": "الرد عندما يستلم موظف المحادثة",
+  "ai_reply_claimed_sub": "عند الإيقاف: يتوقف الذكاء الاصطناعي بمجرد أن يستلم شخص المحادثة.",
+  "ai_keywords": "كلمات التحويل",
+  "ai_keywords_sub": "عندما يكتب العميل إحدى هذه الكلمات، تُحوَّل المحادثة إلى موظف.",
+  "ai_keywords_none": "لا توجد",
+  "ai_keywords_count": "{n} كلمات",
+  "@ai_keywords_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_keywords_empty": "لا توجد كلمات بعد.",
+  "ai_keywords_hint": "أضف كلمة، مثل: مدير",
+  "ai_keywords_add": "إضافة",
+  "ai_keywords_remove": "حذف",
+  "ai_answer_source": "مصدر الإجابات",
+  "ai_answer_source_kb": "قاعدة المعرفة",
+  "ai_answer_source_kb_sub": "يجيب الذكاء الاصطناعي من قاعدة المعرفة.",
+  "ai_answer_source_flow": "تنظيم البوت",
+  "ai_answer_source_flow_sub": "يتبع الذكاء الاصطناعي مسار البوت الذي أنشأته على الويب.",
+  "ai_lang_fr": "الفرنسية",
+  "ai_lang_es": "الإسبانية",
+  "ai_lang_pt": "البرتغالية",
+  "ai_lang_de": "الألمانية",
+  "ai_lang_it": "الإيطالية"
 }

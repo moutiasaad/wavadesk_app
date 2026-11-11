@@ -2464,6 +2464,156 @@ abstract class AppLocalizations {
   /// **'يحوّل ويرسل إشعارًا للفريق'**
   String get ai_ho_notify;
 
+  /// No description provided for @ai_mode_hybrid.
+  ///
+  /// In ar, this message translates to:
+  /// **'هجين'**
+  String get ai_mode_hybrid;
+
+  /// No description provided for @ai_mode_hybrid_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرسل تلقائيًا الإجابات التي اعتمدتها، ويقترح الباقي.'**
+  String get ai_mode_hybrid_sub;
+
+  /// No description provided for @ai_replies.
+  ///
+  /// In ar, this message translates to:
+  /// **'الردود'**
+  String get ai_replies;
+
+  /// No description provided for @ai_suggestions.
+  ///
+  /// In ar, this message translates to:
+  /// **'عدد الاقتراحات لكل رسالة'**
+  String get ai_suggestions;
+
+  /// No description provided for @ai_suggestions_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'كم اقتراح رد يقدّمه الذكاء الاصطناعي في كل مرة.'**
+  String get ai_suggestions_sub;
+
+  /// No description provided for @ai_reply_claimed.
+  ///
+  /// In ar, this message translates to:
+  /// **'الرد عندما يستلم موظف المحادثة'**
+  String get ai_reply_claimed;
+
+  /// No description provided for @ai_reply_claimed_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'عند الإيقاف: يتوقف الذكاء الاصطناعي بمجرد أن يستلم شخص المحادثة.'**
+  String get ai_reply_claimed_sub;
+
+  /// No description provided for @ai_keywords.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمات التحويل'**
+  String get ai_keywords;
+
+  /// No description provided for @ai_keywords_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'عندما يكتب العميل إحدى هذه الكلمات، تُحوَّل المحادثة إلى موظف.'**
+  String get ai_keywords_sub;
+
+  /// No description provided for @ai_keywords_none.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد'**
+  String get ai_keywords_none;
+
+  /// No description provided for @ai_keywords_count.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} كلمات'**
+  String ai_keywords_count(int n);
+
+  /// No description provided for @ai_keywords_empty.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد كلمات بعد.'**
+  String get ai_keywords_empty;
+
+  /// No description provided for @ai_keywords_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف كلمة، مثل: مدير'**
+  String get ai_keywords_hint;
+
+  /// No description provided for @ai_keywords_add.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة'**
+  String get ai_keywords_add;
+
+  /// No description provided for @ai_keywords_remove.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف'**
+  String get ai_keywords_remove;
+
+  /// No description provided for @ai_answer_source.
+  ///
+  /// In ar, this message translates to:
+  /// **'مصدر الإجابات'**
+  String get ai_answer_source;
+
+  /// No description provided for @ai_answer_source_kb.
+  ///
+  /// In ar, this message translates to:
+  /// **'قاعدة المعرفة'**
+  String get ai_answer_source_kb;
+
+  /// No description provided for @ai_answer_source_kb_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'يجيب الذكاء الاصطناعي من قاعدة المعرفة.'**
+  String get ai_answer_source_kb_sub;
+
+  /// No description provided for @ai_answer_source_flow.
+  ///
+  /// In ar, this message translates to:
+  /// **'تنظيم البوت'**
+  String get ai_answer_source_flow;
+
+  /// No description provided for @ai_answer_source_flow_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'يتبع الذكاء الاصطناعي مسار البوت الذي أنشأته على الويب.'**
+  String get ai_answer_source_flow_sub;
+
+  /// No description provided for @ai_lang_fr.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفرنسية'**
+  String get ai_lang_fr;
+
+  /// No description provided for @ai_lang_es.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإسبانية'**
+  String get ai_lang_es;
+
+  /// No description provided for @ai_lang_pt.
+  ///
+  /// In ar, this message translates to:
+  /// **'البرتغالية'**
+  String get ai_lang_pt;
+
+  /// No description provided for @ai_lang_de.
+  ///
+  /// In ar, this message translates to:
+  /// **'الألمانية'**
+  String get ai_lang_de;
+
+  /// No description provided for @ai_lang_it.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإيطالية'**
+  String get ai_lang_it;
+
   /// No description provided for @rw_title.
   ///
   /// In ar, this message translates to:

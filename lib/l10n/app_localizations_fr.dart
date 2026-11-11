@@ -1355,6 +1355,89 @@ class AppLocalizationsFr extends AppLocalizations {
   String get ai_ho_notify => 'Transférer et notifier l\'équipe';
 
   @override
+  String get ai_mode_hybrid => 'Hybride';
+
+  @override
+  String get ai_mode_hybrid_sub =>
+      'Envoie seul les réponses que vous avez validées, propose un brouillon pour le reste.';
+
+  @override
+  String get ai_replies => 'Réponses';
+
+  @override
+  String get ai_suggestions => 'Suggestions par message';
+
+  @override
+  String get ai_suggestions_sub =>
+      'Nombre de suggestions de réponse proposées à chaque fois.';
+
+  @override
+  String get ai_reply_claimed => 'Répondre quand un agent a la conversation';
+
+  @override
+  String get ai_reply_claimed_sub =>
+      'Désactivé : l’IA se tait dès qu’une personne prend la conversation.';
+
+  @override
+  String get ai_keywords => 'Mots-clés de transfert';
+
+  @override
+  String get ai_keywords_sub =>
+      'Quand un client écrit l’un de ces mots, la conversation passe à une personne.';
+
+  @override
+  String get ai_keywords_none => 'Aucun';
+
+  @override
+  String ai_keywords_count(int n) {
+    return '$n mots';
+  }
+
+  @override
+  String get ai_keywords_empty => 'Aucun mot-clé pour l’instant.';
+
+  @override
+  String get ai_keywords_hint => 'Ajoutez un mot, ex. responsable';
+
+  @override
+  String get ai_keywords_add => 'Ajouter';
+
+  @override
+  String get ai_keywords_remove => 'Retirer';
+
+  @override
+  String get ai_answer_source => 'Source des réponses';
+
+  @override
+  String get ai_answer_source_kb => 'Base de connaissances';
+
+  @override
+  String get ai_answer_source_kb_sub =>
+      'L’IA répond à partir de votre base de connaissances.';
+
+  @override
+  String get ai_answer_source_flow => 'Organisation du bot';
+
+  @override
+  String get ai_answer_source_flow_sub =>
+      'L’IA suit le parcours du bot créé sur le web.';
+
+  @override
+  String get ai_lang_fr => 'Français';
+
+  @override
+  String get ai_lang_es => 'Espagnol';
+
+  @override
+  String get ai_lang_pt => 'Portugais';
+
+  @override
+  String get ai_lang_de => 'Allemand';
+
+  @override
+  String get ai_lang_it => 'Italien';
+
+  @override
   String get rw_title => 'Améliorer la réponse';
 
   @override

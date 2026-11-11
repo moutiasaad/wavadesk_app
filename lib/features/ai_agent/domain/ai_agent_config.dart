@@ -3,7 +3,12 @@ import 'package:flutter/foundation.dart';
 /// AI Agent spec §8 (`GET /mobile/v1/ai-agent`).
 enum AiMode {
   suggest,
+
+  /// Web "Hybrid": sends answers already approved, drafts the rest.
+  hybrid,
   auto,
+
+  /// Older app setting; no longer offered (not on the web panel).
   afterHours('after_hours');
 
   const AiMode([this._wire]);
@@ -21,10 +26,16 @@ enum AiTone {
   static AiTone parse(Object? v) => values.firstWhere((t) => t.name == v, orElse: () => friendly);
 }
 
+/// The web panel's reply languages; [customer] is its "Auto".
 enum LanguagePolicy {
   customer,
   ar,
-  en;
+  en,
+  fr,
+  es,
+  pt,
+  de,
+  it;
 
   static LanguagePolicy parse(Object? v) => values.firstWhere((p) => p.name == v, orElse: () => customer);
 }
@@ -405,6 +416,10 @@ class AiAgentConfig {
     this.canEdit = false,
     this.unansweredCount = 0,
     this.autoConfirmed = false,
+    this.replyWhenClaimed = false,
+    this.suggestionCount = 3,
+    this.answerSource = 'knowledge',
+    this.answerSources = const ['knowledge'],
   });
 
   final int version;
@@ -437,6 +452,16 @@ class AiAgentConfig {
   /// The first-time auto-reply confirmation (§6.3) was accepted before.
   final bool autoConfirmed;
 
+  /// Web: the AI still answers when an agent has taken the conversation.
+  final bool replyWhenClaimed;
+
+  /// Web: suggestions offered per customer message (1–5).
+  final int suggestionCount;
+
+  /// knowledge | flow (bot organisation; only when [answerSources] has it).
+  final String answerSource;
+  final List<String> answerSources;
+
   AiAgentConfig copyWith({
     int? version,
     bool? enabled,
@@ -455,6 +480,9 @@ class AiAgentConfig {
     List<RewriteStyle>? rewriteStyles,
     AiReadinessFacts? readiness,
     bool? autoConfirmed,
+    bool? replyWhenClaimed,
+    int? suggestionCount,
+    String? answerSource,
   }) =>
       AiAgentConfig(
         version: version ?? this.version,
@@ -480,6 +508,10 @@ class AiAgentConfig {
         canEdit: canEdit,
         unansweredCount: unansweredCount,
         autoConfirmed: autoConfirmed ?? this.autoConfirmed,
+        replyWhenClaimed: replyWhenClaimed ?? this.replyWhenClaimed,
+        suggestionCount: suggestionCount ?? this.suggestionCount,
+        answerSource: answerSource ?? this.answerSource,
+        answerSources: answerSources,
       );
 
   factory AiAgentConfig.fromJson(Map<String, dynamic> j) {
@@ -508,6 +540,10 @@ class AiAgentConfig {
       canEdit: _map(j['permissions'])['can_edit'] == true,
       unansweredCount: _int(j['unanswered_count']),
       autoConfirmed: j['auto_confirmed'] == true,
+      replyWhenClaimed: j['reply_when_claimed'] == true,
+      suggestionCount: _int(j['suggestion_count'], 3).clamp(1, 5),
+      answerSource: '${j['answer_source'] ?? 'knowledge'}',
+      answerSources: [for (final s in _list(j['answer_sources'])) '$s'],
     );
   }
 
@@ -534,6 +570,10 @@ class AiAgentConfig {
         'permissions': {'can_edit': canEdit},
         'unanswered_count': unansweredCount,
         'auto_confirmed': autoConfirmed,
+        'reply_when_claimed': replyWhenClaimed,
+        'suggestion_count': suggestionCount,
+        'answer_source': answerSource,
+        'answer_sources': answerSources,
       };
 
   /// Editable fields only, wire names (the PATCH body adds `version`).
@@ -542,6 +582,7 @@ class AiAgentConfig {
     const keys = [
       'enabled', 'mode', 'tone', 'use_customer_name', 'language', 'auto_reply_delay_seconds', 'hours', 'handoff',
       'channels', 'custom_instructions', 'allow_outside_kb', 'confidence_threshold', 'auto_confirmed',
+      'reply_when_claimed', 'suggestion_count', 'answer_source',
     ];
     return {for (final k in keys) k: j[k]};
   }

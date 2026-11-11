@@ -20,7 +20,6 @@ import 'widgets/ai_readiness_card.dart';
 import 'widgets/ai_rules_group.dart';
 import 'widgets/ai_status_hero.dart';
 import 'widgets/ai_test_button.dart';
-import 'widgets/ai_tone_selector.dart';
 
 /// وكيل الذكاء الاصطناعي (spec "11 AI Agent.md").
 class AiAgentScreen extends ConsumerStatefulWidget {
@@ -121,7 +120,6 @@ class _AiAgentScreenState extends ConsumerState<AiAgentScreen> {
             AiStatusHero(config: cfg, countUp: _countUp),
             if (cfg.canEdit && cfg.planAllowsAi) AiReadinessCard(config: cfg),
             dimmed(AiModeGroup(config: cfg, interactive: interactive)),
-            dimmed(AiToneSelector(config: cfg, interactive: interactive)),
             dimmed(AiRulesGroup(config: cfg, interactive: interactive)),
             AiPerformanceGroup(config: cfg),
             dimmed(AiAdvancedGroup(config: cfg, interactive: interactive)),

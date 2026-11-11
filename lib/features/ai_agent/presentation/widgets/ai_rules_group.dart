@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/utils/analytics.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/ai_agent_config.dart';
 import '../../domain/hours_validator.dart';
-import '../sheets/handoff_message_sheet.dart';
-import '../sheets/reply_delay_sheet.dart';
+import '../ai_save_feedback.dart';
 import '../sheets/reply_language_sheet.dart';
+import '../sheets/web_reply_sheets.dart';
 
 /// "9 ص – 10 م" (Latin digits; AM/PM in English).
 String aiClock(AppLocalizations l, int minutes, {required bool arabic}) {
@@ -33,6 +32,11 @@ String aiLanguageLabel(AppLocalizations l, LanguagePolicy p) => switch (p) {
       LanguagePolicy.customer => l.ai_lang_customer,
       LanguagePolicy.ar => l.ai_lang_ar,
       LanguagePolicy.en => l.ai_lang_en,
+      LanguagePolicy.fr => l.ai_lang_fr,
+      LanguagePolicy.es => l.ai_lang_es,
+      LanguagePolicy.pt => l.ai_lang_pt,
+      LanguagePolicy.de => l.ai_lang_de,
+      LanguagePolicy.it => l.ai_lang_it,
     };
 
 String aiDelayLabel(AppLocalizations l, int s) => switch (s) {
@@ -43,7 +47,8 @@ String aiDelayLabel(AppLocalizations l, int s) => switch (s) {
       _ => '$s s',
     };
 
-/// "القواعد" (AI Agent spec §4.6).
+/// "Replies" — the web panel's reply settings: language, suggestions per
+/// message, answering when an agent has the chat, escalation keywords.
 class AiRulesGroup extends ConsumerWidget {
   const AiRulesGroup({super.key, required this.config, required this.interactive});
 
@@ -52,30 +57,18 @@ class AiRulesGroup extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final c = context.colors;
     final l = context.l10n;
-    final arabic = context.localeName.startsWith('ar');
-    final unset = !config.hours.isSet;
-    final msg = config.handoff.message.isEmpty ? l.ai_handoff_msg_default : config.handoff.message;
-    final shortMsg = msg.length > 28 ? '«${msg.substring(0, 26)}…»' : '«$msg»';
+    final words = config.handoff.keywords;
+    final editable = interactive && config.canEdit;
 
-    // Sub-screens still open read-only for agents (they show disabled controls).
+    void toggleClaimed(bool v) {
+      Analytics.log('ai_rule_change', {'rule': 'reply_when_claimed', 'value': v});
+      saveAiChange(context, ref, (c) => c.copyWith(replyWhenClaimed: v));
+    }
+
     return SettingsGroup(
-      title: l.ai_rules,
+      title: l.ai_replies,
       children: [
-        SettingsTile(
-          icon: AppIcons.clock,
-          title: l.ai_hours,
-          value: unset ? null : aiHoursSummary(l, config.hours, arabic: arabic),
-          trailing: unset ? Text(l.ai_hours_unset, style: context.text.bodySmall.copyWith(color: c.textWarning)) : null,
-          onTap: () => context.push(Routes.aiAgentHours),
-        ),
-        SettingsTile(
-          icon: AppIcons.team,
-          title: l.ai_handoff,
-          subtitle: l.ai_handoff_sub,
-          onTap: () => context.push(Routes.aiAgentHandoff),
-        ),
         SettingsTile(
           icon: AppIcons.globe,
           title: l.ai_language,
@@ -83,16 +76,28 @@ class AiRulesGroup extends ConsumerWidget {
           onTap: interactive ? () => showReplyLanguageSheet(context, ref) : null,
         ),
         SettingsTile(
-          icon: AppIcons.conversation,
-          title: l.ai_handoff_msg,
-          value: shortMsg,
-          onTap: interactive ? () => showHandoffMessageSheet(context, ref) : null,
+          icon: AppIcons.ai,
+          title: l.ai_suggestions,
+          value: '${config.suggestionCount}',
+          onTap: interactive ? () => showSuggestionCountSheet(context, ref) : null,
         ),
         SettingsTile(
-          icon: AppIcons.waiting,
-          title: l.ai_delay,
-          value: aiDelayLabel(l, config.autoReplyDelaySeconds),
-          onTap: interactive ? () => showReplyDelaySheet(context, ref) : null,
+          icon: AppIcons.claim,
+          title: l.ai_reply_claimed,
+          subtitle: l.ai_reply_claimed_sub,
+          showChevron: false,
+          onTap: editable ? () => toggleClaimed(!config.replyWhenClaimed) : null,
+          trailing: AppSwitch(
+            value: config.replyWhenClaimed,
+            semanticLabel: l.ai_reply_claimed,
+            onChanged: editable ? toggleClaimed : null,
+          ),
+        ),
+        SettingsTile(
+          icon: AppIcons.team,
+          title: l.ai_keywords,
+          value: words.isEmpty ? l.ai_keywords_none : (words.length <= 2 ? words.join('، ') : l.ai_keywords_count(words.length)),
+          onTap: () => showEscalationKeywordsSheet(context, ref),
         ),
       ],
     );

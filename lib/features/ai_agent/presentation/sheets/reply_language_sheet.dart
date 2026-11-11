@@ -8,8 +8,9 @@ import '../../../../core/widgets/widgets.dart';
 import '../../application/ai_agent_controller.dart';
 import '../../domain/ai_agent_config.dart';
 import '../ai_save_feedback.dart';
+import '../widgets/ai_rules_group.dart' show aiLanguageLabel;
 
-/// §5.3 reply language: customer / Arabic / English, + Arabic style.
+/// Reply language — the web panel's list (Auto = the customer's language).
 Future<void> showReplyLanguageSheet(BuildContext context, WidgetRef ref) {
   return AppBottomSheet.show<void>(context, title: context.l10n.ai_language, builder: (_) => const _LanguageBody());
 }
@@ -32,9 +33,8 @@ class _LanguageBody extends ConsumerWidget {
     }
 
     final policies = {
-      LanguagePolicy.customer: (l.ai_lang_customer, l.ai_lang_customer_sub),
-      LanguagePolicy.ar: (l.ai_lang_ar, null),
-      LanguagePolicy.en: (l.ai_lang_en, null),
+      for (final p in LanguagePolicy.values)
+        p: (aiLanguageLabel(l, p), p == LanguagePolicy.customer ? l.ai_lang_customer_sub : null),
     };
 
     return Padding(
@@ -62,30 +62,6 @@ class _LanguageBody extends ConsumerWidget {
               ],
             ),
           ),
-          if (cfg.language == LanguagePolicy.ar) ...[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.xl, AppSpacing.md, AppSpacing.xl, AppSpacing.xs),
-              child: Text(l.ai_lang_style, style: t.caption.copyWith(color: c.textSecondary, fontWeight: FontWeight.w700)),
-            ),
-            RadioGroup<ArabicStyle>(
-              groupValue: cfg.arabicStyle,
-              onChanged: (s) {
-                if (s == null || !enabled) return;
-                save((c) => c.copyWith(arabicStyle: s), 'ar_${s.name}');
-              },
-              child: Column(
-                children: [
-                  for (final s in ArabicStyle.values)
-                    RadioListTile<ArabicStyle>(
-                      value: s,
-                      enabled: enabled,
-                      title: Text(s == ArabicStyle.msa ? l.ai_lang_msa : l.ai_lang_saudi, style: t.listTitle),
-                      controlAffinity: ListTileControlAffinity.trailing,
-                    ),
-                ],
-              ),
-            ),
-          ],
         ],
       ),
     );

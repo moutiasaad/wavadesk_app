@@ -9,6 +9,9 @@ import '../../application/ai_agent_controller.dart';
 import '../ai_save_feedback.dart';
 
 /// Channel key → label (whatsapp / web / messenger; unknown keys raw).
+/// The channels the web panel switches the AI on for.
+const aiWebChannels = {'whatsapp', 'web'};
+
 String aiChannelLabel(AppLocalizations l, String key) => switch (key) {
       'whatsapp' => l.ai_channel_whatsapp,
       'web' || 'webchat' => l.ai_channel_web,
@@ -42,6 +45,7 @@ class _ChannelsBody extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           for (final e in cfg.channels.entries)
+            if (aiWebChannels.contains(e.key))
             MergeSemantics(
               child: InkWell(
                 onTap: cfg.canEdit ? () => toggle(e.key, !e.value) : null,

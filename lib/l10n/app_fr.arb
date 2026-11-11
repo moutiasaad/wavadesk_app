@@ -660,6 +660,38 @@
   "ai_ho_after_hours": "Hors horaires de travail",
   "ai_ho_tell_return": "Indiquer au client quand vous serez de retour",
   "ai_ho_notify": "Transférer et notifier l'équipe",
+  "ai_mode_hybrid": "Hybride",
+  "ai_mode_hybrid_sub": "Envoie seul les réponses que vous avez validées, propose un brouillon pour le reste.",
+  "ai_replies": "Réponses",
+  "ai_suggestions": "Suggestions par message",
+  "ai_suggestions_sub": "Nombre de suggestions de réponse proposées à chaque fois.",
+  "ai_reply_claimed": "Répondre quand un agent a la conversation",
+  "ai_reply_claimed_sub": "Désactivé : l’IA se tait dès qu’une personne prend la conversation.",
+  "ai_keywords": "Mots-clés de transfert",
+  "ai_keywords_sub": "Quand un client écrit l’un de ces mots, la conversation passe à une personne.",
+  "ai_keywords_none": "Aucun",
+  "ai_keywords_count": "{n} mots",
+  "@ai_keywords_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_keywords_empty": "Aucun mot-clé pour l’instant.",
+  "ai_keywords_hint": "Ajoutez un mot, ex. responsable",
+  "ai_keywords_add": "Ajouter",
+  "ai_keywords_remove": "Retirer",
+  "ai_answer_source": "Source des réponses",
+  "ai_answer_source_kb": "Base de connaissances",
+  "ai_answer_source_kb_sub": "L’IA répond à partir de votre base de connaissances.",
+  "ai_answer_source_flow": "Organisation du bot",
+  "ai_answer_source_flow_sub": "L’IA suit le parcours du bot créé sur le web.",
+  "ai_lang_fr": "Français",
+  "ai_lang_es": "Espagnol",
+  "ai_lang_pt": "Portugais",
+  "ai_lang_de": "Allemand",
+  "ai_lang_it": "Italien",
   "rw_title": "Améliorer la réponse",
   "rw_subtitle": "Choisissez un style et l'IA la reformulera",
   "rw_original": "Votre texte original",

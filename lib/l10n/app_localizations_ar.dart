@@ -1328,6 +1328,89 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ai_ho_notify => 'يحوّل ويرسل إشعارًا للفريق';
 
   @override
+  String get ai_mode_hybrid => 'هجين';
+
+  @override
+  String get ai_mode_hybrid_sub =>
+      'يرسل تلقائيًا الإجابات التي اعتمدتها، ويقترح الباقي.';
+
+  @override
+  String get ai_replies => 'الردود';
+
+  @override
+  String get ai_suggestions => 'عدد الاقتراحات لكل رسالة';
+
+  @override
+  String get ai_suggestions_sub =>
+      'كم اقتراح رد يقدّمه الذكاء الاصطناعي في كل مرة.';
+
+  @override
+  String get ai_reply_claimed => 'الرد عندما يستلم موظف المحادثة';
+
+  @override
+  String get ai_reply_claimed_sub =>
+      'عند الإيقاف: يتوقف الذكاء الاصطناعي بمجرد أن يستلم شخص المحادثة.';
+
+  @override
+  String get ai_keywords => 'كلمات التحويل';
+
+  @override
+  String get ai_keywords_sub =>
+      'عندما يكتب العميل إحدى هذه الكلمات، تُحوَّل المحادثة إلى موظف.';
+
+  @override
+  String get ai_keywords_none => 'لا توجد';
+
+  @override
+  String ai_keywords_count(int n) {
+    return '$n كلمات';
+  }
+
+  @override
+  String get ai_keywords_empty => 'لا توجد كلمات بعد.';
+
+  @override
+  String get ai_keywords_hint => 'أضف كلمة، مثل: مدير';
+
+  @override
+  String get ai_keywords_add => 'إضافة';
+
+  @override
+  String get ai_keywords_remove => 'حذف';
+
+  @override
+  String get ai_answer_source => 'مصدر الإجابات';
+
+  @override
+  String get ai_answer_source_kb => 'قاعدة المعرفة';
+
+  @override
+  String get ai_answer_source_kb_sub =>
+      'يجيب الذكاء الاصطناعي من قاعدة المعرفة.';
+
+  @override
+  String get ai_answer_source_flow => 'تنظيم البوت';
+
+  @override
+  String get ai_answer_source_flow_sub =>
+      'يتبع الذكاء الاصطناعي مسار البوت الذي أنشأته على الويب.';
+
+  @override
+  String get ai_lang_fr => 'الفرنسية';
+
+  @override
+  String get ai_lang_es => 'الإسبانية';
+
+  @override
+  String get ai_lang_pt => 'البرتغالية';
+
+  @override
+  String get ai_lang_de => 'الألمانية';
+
+  @override
+  String get ai_lang_it => 'الإيطالية';
+
+  @override
   String get rw_title => 'حسّن الرد';
 
   @override

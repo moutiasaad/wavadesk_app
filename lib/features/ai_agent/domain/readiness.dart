@@ -1,7 +1,8 @@
 import 'ai_agent_config.dart';
 
-/// Readiness checklist (AI Agent spec §4.3).
-enum ReadinessItem { kb, hours, handoff, tested }
+/// Readiness checklist (AI Agent spec §4.3). Only what the web panel has:
+/// a knowledge base, and a test (recommended).
+enum ReadinessItem { kb, tested }
 
 class Readiness {
   const Readiness(this.facts, {required this.hoursSet, required this.handoffSet});
@@ -15,15 +16,13 @@ class Readiness {
 
   bool done(ReadinessItem i) => switch (i) {
         ReadinessItem.kb => facts.kbEntries >= facts.kbMin,
-        ReadinessItem.hours => hoursSet,
-        ReadinessItem.handoff => handoffSet,
         ReadinessItem.tested => facts.tested,
       };
 
   bool get kbReady => done(ReadinessItem.kb);
 
-  /// Auto-reply needs the first three; testing is recommended (§4.3).
-  bool get autoReplyAllowed => done(ReadinessItem.kb) && done(ReadinessItem.hours) && done(ReadinessItem.handoff);
+  /// Auto-reply needs the knowledge base, as on the web; testing is recommended.
+  bool get autoReplyAllowed => done(ReadinessItem.kb);
 
   bool get complete => ReadinessItem.values.every(done);
 

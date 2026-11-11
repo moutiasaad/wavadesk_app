@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../../../core/router/app_router.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/utils/l10n.dart';
 import '../../../../../core/widgets/widgets.dart';
@@ -42,11 +40,6 @@ class WaAdvancedGroup extends ConsumerWidget {
           iconBackground: c.errorContainer,
           title: l.wa_blocked,
           onTap: () => _showBlockedSheet(context),
-        ),
-        SettingsTile(
-          icon: AppIcons.clock,
-          title: l.wa_hours,
-          onTap: () => context.push(Routes.aiAgentHours),
         ),
       ],
     );
