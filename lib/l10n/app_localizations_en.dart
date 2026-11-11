@@ -2871,6 +2871,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get actions_unblocked_toast => 'Contact unblocked';
 
   @override
+  String get close_title => 'Close conversation';
+
+  @override
+  String get close_subtitle => 'A short title helps your team find it later.';
+
+  @override
+  String get close_field_label => 'Title';
+
+  @override
+  String get close_field_hint => 'e.g. Delivery question';
+
+  @override
+  String get close_ai_writing => 'Writing a title with AI…';
+
+  @override
+  String get close_ai_suggest => 'Suggest a title';
+
+  @override
+  String get close_ai_again => 'Suggest another';
+
+  @override
+  String get close_ai_unavailable =>
+      'Couldn\'t suggest a title right now. You can type one.';
+
+  @override
+  String get close_hint =>
+      'The customer can still write again; a new message reopens the conversation.';
+
+  @override
+  String get close_confirm => 'Close conversation';
+
+  @override
   String get claim_button => 'Claim conversation';
 
   @override

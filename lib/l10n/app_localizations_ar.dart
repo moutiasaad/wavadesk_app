@@ -2871,6 +2871,39 @@ class AppLocalizationsAr extends AppLocalizations {
   String get actions_unblocked_toast => 'تم إلغاء الحظر';
 
   @override
+  String get close_title => 'إغلاق المحادثة';
+
+  @override
+  String get close_subtitle =>
+      'عنوان قصير يساعد فريقك على العثور عليها لاحقًا.';
+
+  @override
+  String get close_field_label => 'العنوان';
+
+  @override
+  String get close_field_hint => 'مثال: استفسار عن التوصيل';
+
+  @override
+  String get close_ai_writing => 'جارٍ كتابة عنوان بالذكاء الاصطناعي…';
+
+  @override
+  String get close_ai_suggest => 'اقترح عنوانًا';
+
+  @override
+  String get close_ai_again => 'اقترح عنوانًا آخر';
+
+  @override
+  String get close_ai_unavailable =>
+      'تعذّر اقتراح عنوان الآن. يمكنك كتابته بنفسك.';
+
+  @override
+  String get close_hint =>
+      'يمكن للعميل المراسلة مجددًا، وأي رسالة جديدة تعيد فتح المحادثة.';
+
+  @override
+  String get close_confirm => 'إغلاق المحادثة';
+
+  @override
   String get claim_button => 'استلم المحادثة';
 
   @override

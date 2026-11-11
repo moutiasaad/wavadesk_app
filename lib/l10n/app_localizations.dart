@@ -5098,6 +5098,66 @@ abstract class AppLocalizations {
   /// **'تم إلغاء الحظر'**
   String get actions_unblocked_toast;
 
+  /// No description provided for @close_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'إغلاق المحادثة'**
+  String get close_title;
+
+  /// No description provided for @close_subtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'عنوان قصير يساعد فريقك على العثور عليها لاحقًا.'**
+  String get close_subtitle;
+
+  /// No description provided for @close_field_label.
+  ///
+  /// In ar, this message translates to:
+  /// **'العنوان'**
+  String get close_field_label;
+
+  /// No description provided for @close_field_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'مثال: استفسار عن التوصيل'**
+  String get close_field_hint;
+
+  /// No description provided for @close_ai_writing.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ كتابة عنوان بالذكاء الاصطناعي…'**
+  String get close_ai_writing;
+
+  /// No description provided for @close_ai_suggest.
+  ///
+  /// In ar, this message translates to:
+  /// **'اقترح عنوانًا'**
+  String get close_ai_suggest;
+
+  /// No description provided for @close_ai_again.
+  ///
+  /// In ar, this message translates to:
+  /// **'اقترح عنوانًا آخر'**
+  String get close_ai_again;
+
+  /// No description provided for @close_ai_unavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر اقتراح عنوان الآن. يمكنك كتابته بنفسك.'**
+  String get close_ai_unavailable;
+
+  /// No description provided for @close_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكن للعميل المراسلة مجددًا، وأي رسالة جديدة تعيد فتح المحادثة.'**
+  String get close_hint;
+
+  /// No description provided for @close_confirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'إغلاق المحادثة'**
+  String get close_confirm;
+
   /// No description provided for @claim_button.
   ///
   /// In ar, this message translates to:

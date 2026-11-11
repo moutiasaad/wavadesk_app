@@ -299,6 +299,10 @@ class ChatApi {
   /// Unblock lives on the contact (`DELETE contacts/{ct}/block`).
   Future<void> unblockContact(String contactId) => _guard(() => _api.delete('contacts/$contactId/block'));
 
+  /// The AI's short title for the close card ('' when unavailable).
+  Future<String> titleSuggestion(String id) =>
+      _guard(() async => '${(await _api.post('conversations/$id/title-suggestion', body: const <String, Object?>{})).map['title'] ?? ''}');
+
   /// 5-minute signed URL for a message's media (or an own upload).
   Future<String> mediaUrl(String messageOrUploadId) =>
       _guard(() async => (await _api.get('media/$messageOrUploadId/url')).map['url'] as String);

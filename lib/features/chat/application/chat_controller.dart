@@ -144,15 +144,25 @@ class ChatActions {
     _remote('unassign');
   }
 
-  /// Returns an undo callback (§6 resolve flow).
-  Future<void> Function() resolve() {
-    Analytics.log('chat_resolve');
+  /// Returns an undo callback (§6 resolve flow). [title] comes from the
+  /// close card (AI-suggested, editable); empty → none.
+  Future<void> Function() resolve({String? title}) {
+    Analytics.log('chat_resolve', {'has_title': title != null && title.isNotEmpty});
     final before = _inbox.resolve(id);
-    _remote('resolve');
+    _remote('resolve', {if (title != null && title.isNotEmpty) 'title': title});
     return () async {
       if (before != null) _inbox.restore(before);
       _remote('reopen');
     };
+  }
+
+  /// AI title for the close card; '' when the AI is unavailable.
+  Future<String> suggestTitle() async {
+    try {
+      return (await _api.titleSuggestion(id)).trim();
+    } catch (_) {
+      return '';
+    }
   }
 
   void reopen() {

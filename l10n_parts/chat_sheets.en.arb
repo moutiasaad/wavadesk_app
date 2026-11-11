@@ -1,45 +1,80 @@
 {
   "chat_online": "Online",
   "chat_last_seen": "Last seen {time}",
-  "@chat_last_seen": {"placeholders": {"time": {"type": "String"}}},
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "chat_typing": "typing…",
   "chat_assigned_you": "Assigned to you",
   "chat_assigned_to": "Assigned to {name}",
-  "@chat_assigned_to": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_unassigned": "Unassigned",
   "chat_ai_handling": "AI is handling",
   "chat_resolve": "Resolve conversation",
   "chat_resolved_toast": "Conversation resolved",
   "chat_undo": "Undo",
-
   "chatbar_browsing": "Browsing: {page}",
-  "@chatbar_browsing": {"placeholders": {"page": {"type": "String"}}},
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_back_unread": "{n, plural, =1{Back, 1 other unread conversation} other{Back, {n} other unread conversations}}",
-  "@chatbar_back_unread": {"placeholders": {"n": {"type": "int"}}},
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "chatbar_open_profile": "Open {name}'s profile",
-  "@chatbar_open_profile": {"placeholders": {"name": {"type": "String"}}},
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_call": "Call",
   "chatbar_more": "Conversation actions",
   "chatbar_call_phone": "Phone call",
   "chatbar_call_whatsapp": "WhatsApp call",
   "chatbar_call_failed": "Couldn't start a call on this device",
-
   "strip_snoozed_until": "Snoozed until {t}",
-  "@strip_snoozed_until": {"placeholders": {"t": {"type": "String"}}},
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "strip_order": "Order {ref}",
-  "@strip_order": {"placeholders": {"ref": {"type": "String"}}},
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
   "strip_no_store_integration": "No store integration yet",
   "strip_add_tag": "Tag",
-
   "snoozepick_subtitle": "The conversation comes back to your list at that time",
-
   "templates_title": "Approved templates",
   "templates_subtitle": "WhatsApp templates approved by Meta",
   "templates_empty": "No approved templates yet",
   "templates_sent": "Template sent",
-
-
-
   "actions_assign": "Assign",
   "actions_change_owner": "Assign / change owner",
   "actions_unassign": "Release conversation",
@@ -62,9 +97,24 @@
   "actions_block": "Block contact",
   "actions_unblock": "Unblock contact",
   "actions_block_title": "Block {name}?",
-  "@actions_block_title": {"placeholders": {"name": {"type": "String"}}},
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "actions_block_body": "You won't receive messages from this contact and the conversation will close. You can unblock later.",
   "actions_blocked_toast": "Contact blocked",
-  "actions_unblocked_toast": "Contact unblocked"
-
+  "actions_unblocked_toast": "Contact unblocked",
+  "close_title": "Close conversation",
+  "close_subtitle": "A short title helps your team find it later.",
+  "close_field_label": "Title",
+  "close_field_hint": "e.g. Delivery question",
+  "close_ai_writing": "Writing a title with AI…",
+  "close_ai_suggest": "Suggest a title",
+  "close_ai_again": "Suggest another",
+  "close_ai_unavailable": "Couldn't suggest a title right now. You can type one.",
+  "close_hint": "The customer can still write again; a new message reopens the conversation.",
+  "close_confirm": "Close conversation"
 }

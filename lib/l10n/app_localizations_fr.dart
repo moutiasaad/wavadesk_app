@@ -2924,6 +2924,39 @@ class AppLocalizationsFr extends AppLocalizations {
   String get actions_unblocked_toast => 'Contact débloqué';
 
   @override
+  String get close_title => 'Clôturer la conversation';
+
+  @override
+  String get close_subtitle =>
+      'Un titre court aide votre équipe à la retrouver.';
+
+  @override
+  String get close_field_label => 'Titre';
+
+  @override
+  String get close_field_hint => 'ex. Question sur la livraison';
+
+  @override
+  String get close_ai_writing => 'Rédaction d’un titre par l’IA…';
+
+  @override
+  String get close_ai_suggest => 'Suggérer un titre';
+
+  @override
+  String get close_ai_again => 'Suggérer un autre titre';
+
+  @override
+  String get close_ai_unavailable =>
+      'Impossible de suggérer un titre pour le moment. Vous pouvez en saisir un.';
+
+  @override
+  String get close_hint =>
+      'Le client peut réécrire ; un nouveau message rouvre la conversation.';
+
+  @override
+  String get close_confirm => 'Clôturer la conversation';
+
+  @override
   String get claim_button => 'Prendre en charge la conversation';
 
   @override

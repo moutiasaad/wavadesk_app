@@ -1,45 +1,80 @@
 {
   "chat_online": "متصل الآن",
   "chat_last_seen": "آخر ظهور {time}",
-  "@chat_last_seen": {"placeholders": {"time": {"type": "String"}}},
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "chat_typing": "يكتب الآن…",
   "chat_assigned_you": "مُسندة لك",
   "chat_assigned_to": "مُسندة لـ{name}",
-  "@chat_assigned_to": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_unassigned": "غير مُسندة",
   "chat_ai_handling": "يتولاها الذكاء الاصطناعي",
   "chat_resolve": "حلّ المحادثة",
   "chat_resolved_toast": "تم حلّ المحادثة",
   "chat_undo": "تراجع",
-
   "chatbar_browsing": "يتصفح: {page}",
-  "@chatbar_browsing": {"placeholders": {"page": {"type": "String"}}},
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_back_unread": "{n, plural, =1{رجوع، محادثة أخرى غير مقروءة} =2{رجوع، محادثتان أخريان غير مقروءتين} few{رجوع، {n} محادثات أخرى غير مقروءة} other{رجوع، {n} محادثة أخرى غير مقروءة}}",
-  "@chatbar_back_unread": {"placeholders": {"n": {"type": "int"}}},
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "chatbar_open_profile": "فتح ملف {name}",
-  "@chatbar_open_profile": {"placeholders": {"name": {"type": "String"}}},
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_call": "اتصال",
   "chatbar_more": "إجراءات المحادثة",
   "chatbar_call_phone": "اتصال هاتفي",
   "chatbar_call_whatsapp": "اتصال واتساب",
   "chatbar_call_failed": "تعذّر بدء الاتصال على هذا الجهاز",
-
   "strip_snoozed_until": "مؤجلة حتى {t}",
-  "@strip_snoozed_until": {"placeholders": {"t": {"type": "String"}}},
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "strip_order": "طلب {ref}",
-  "@strip_order": {"placeholders": {"ref": {"type": "String"}}},
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
   "strip_no_store_integration": "لا يوجد تكامل مع المتجر بعد",
   "strip_add_tag": "وسم",
-
   "snoozepick_subtitle": "ستعود المحادثة إلى قائمتك في الوقت المحدد",
-
   "templates_title": "القوالب المعتمدة",
   "templates_subtitle": "قوالب واتساب الموافق عليها من Meta",
   "templates_empty": "لا توجد قوالب معتمدة بعد",
   "templates_sent": "تم إرسال القالب",
-
-
-
   "actions_assign": "إسناد",
   "actions_change_owner": "إسناد / تغيير المسؤول",
   "actions_unassign": "تحرير من المسؤولية",
@@ -62,9 +97,24 @@
   "actions_block": "حظر العميل",
   "actions_unblock": "إلغاء حظر العميل",
   "actions_block_title": "حظر {name}؟",
-  "@actions_block_title": {"placeholders": {"name": {"type": "String"}}},
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "actions_block_body": "لن تصلك رسائل هذا العميل وستُغلق المحادثة. يمكنك إلغاء الحظر لاحقًا.",
   "actions_blocked_toast": "تم حظر العميل",
-  "actions_unblocked_toast": "تم إلغاء الحظر"
-
+  "actions_unblocked_toast": "تم إلغاء الحظر",
+  "close_title": "إغلاق المحادثة",
+  "close_subtitle": "عنوان قصير يساعد فريقك على العثور عليها لاحقًا.",
+  "close_field_label": "العنوان",
+  "close_field_hint": "مثال: استفسار عن التوصيل",
+  "close_ai_writing": "جارٍ كتابة عنوان بالذكاء الاصطناعي…",
+  "close_ai_suggest": "اقترح عنوانًا",
+  "close_ai_again": "اقترح عنوانًا آخر",
+  "close_ai_unavailable": "تعذّر اقتراح عنوان الآن. يمكنك كتابته بنفسك.",
+  "close_hint": "يمكن للعميل المراسلة مجددًا، وأي رسالة جديدة تعيد فتح المحادثة.",
+  "close_confirm": "إغلاق المحادثة"
 }

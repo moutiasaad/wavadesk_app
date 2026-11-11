@@ -1,45 +1,80 @@
 {
   "chat_online": "En ligne",
   "chat_last_seen": "Vu pour la dernière fois {time}",
-  "@chat_last_seen": {"placeholders": {"time": {"type": "String"}}},
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "chat_typing": "en train d'écrire…",
   "chat_assigned_you": "Attribuée à vous",
   "chat_assigned_to": "Attribuée à {name}",
-  "@chat_assigned_to": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_unassigned": "Non attribuée",
   "chat_ai_handling": "Prise en charge par l'IA",
   "chat_resolve": "Résoudre la conversation",
   "chat_resolved_toast": "Conversation résolue",
   "chat_undo": "Annuler",
-
   "chatbar_browsing": "Navigation : {page}",
-  "@chatbar_browsing": {"placeholders": {"page": {"type": "String"}}},
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_back_unread": "{n, plural, =1{Retour, 1 autre conversation non lue} other{Retour, {n} autres conversations non lues}}",
-  "@chatbar_back_unread": {"placeholders": {"n": {"type": "int"}}},
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "chatbar_open_profile": "Ouvrir le profil de {name}",
-  "@chatbar_open_profile": {"placeholders": {"name": {"type": "String"}}},
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chatbar_call": "Appeler",
   "chatbar_more": "Actions de la conversation",
   "chatbar_call_phone": "Appel téléphonique",
   "chatbar_call_whatsapp": "Appel WhatsApp",
   "chatbar_call_failed": "Impossible de démarrer un appel sur cet appareil",
-
   "strip_snoozed_until": "Mise en pause jusqu'à {t}",
-  "@strip_snoozed_until": {"placeholders": {"t": {"type": "String"}}},
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "strip_order": "Commande {ref}",
-  "@strip_order": {"placeholders": {"ref": {"type": "String"}}},
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
   "strip_no_store_integration": "Aucune intégration boutique pour le moment",
   "strip_add_tag": "Étiquette",
-
   "snoozepick_subtitle": "La conversation revient dans votre liste à cette heure",
-
   "templates_title": "Modèles approuvés",
   "templates_subtitle": "Modèles WhatsApp approuvés par Meta",
   "templates_empty": "Aucun modèle approuvé pour le moment",
   "templates_sent": "Modèle envoyé",
-
-
-
   "actions_assign": "Attribuer",
   "actions_change_owner": "Attribuer / changer de responsable",
   "actions_unassign": "Libérer la conversation",
@@ -62,9 +97,24 @@
   "actions_block": "Bloquer le contact",
   "actions_unblock": "Débloquer le contact",
   "actions_block_title": "Bloquer {name} ?",
-  "@actions_block_title": {"placeholders": {"name": {"type": "String"}}},
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "actions_block_body": "Vous ne recevrez plus de messages de ce contact et la conversation sera fermée. Vous pourrez le débloquer plus tard.",
   "actions_blocked_toast": "Contact bloqué",
-  "actions_unblocked_toast": "Contact débloqué"
-
+  "actions_unblocked_toast": "Contact débloqué",
+  "close_title": "Clôturer la conversation",
+  "close_subtitle": "Un titre court aide votre équipe à la retrouver.",
+  "close_field_label": "Titre",
+  "close_field_hint": "ex. Question sur la livraison",
+  "close_ai_writing": "Rédaction d’un titre par l’IA…",
+  "close_ai_suggest": "Suggérer un titre",
+  "close_ai_again": "Suggérer un autre titre",
+  "close_ai_unavailable": "Impossible de suggérer un titre pour le moment. Vous pouvez en saisir un.",
+  "close_hint": "Le client peut réécrire ; un nouveau message rouvre la conversation.",
+  "close_confirm": "Clôturer la conversation"
 }

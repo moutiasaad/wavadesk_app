@@ -8,10 +8,9 @@ import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/utils/l10n.dart';
 import '../../../../../core/widgets/widgets.dart';
 import '../../../application/chat_controller.dart';
-import '../../../domain/conversation_detail.dart';
-import '../../../domain/system_event_formatter.dart';
 import '../../../domain/assignee.dart';
 import '../../sheets/assign/assign_sheet.dart';
+import 'close_conversation_sheet.dart';
 import 'snooze_picker_sheet.dart';
 
 /// Conversation actions (⋮) — Chat spec §6. Resolve is pinned first; the
@@ -36,7 +35,6 @@ Future<void> showConversationActionsSheet(
   final c = context.colors;
   final actions = ref.read(chatActionsProvider(conversationId));
   final canResolve = detail.isOpen && detail.permissions.canResolve;
-  final aiPaused = detail.conversation.aiPaused;
 
   final picked = await AppBottomSheet.show<_Action>(
     context,
@@ -79,29 +77,6 @@ Future<void> showConversationActionsSheet(
           ),
         if (onAddNote != null)
           SheetActionRow(icon: AppIcons.note, label: l.actions_add_note, onTap: () => Navigator.pop(ctx, _Action.note)),
-        if (detail.aiEnabledInWorkspace)
-          SheetActionRow(
-            icon: aiPaused ? AppIcons.aiAgent : AppIcons.aiOff,
-            label: aiPaused ? l.actions_ai_resume : l.actions_ai_pause,
-            onTap: () => Navigator.pop(ctx, _Action.toggleAi),
-          ),
-        SheetActionRow(
-          icon: AppIcons.email,
-          label: l.actions_mark_unread,
-          onTap: () => Navigator.pop(ctx, _Action.unread),
-        ),
-        if (detail.permissions.isAdmin)
-          SheetActionRow(
-            icon: AppIcons.export,
-            label: l.actions_export,
-            onTap: () => Navigator.pop(ctx, _Action.export),
-          ),
-        SheetActionRow(
-          icon: detail.blocked ? AppIcons.unblock : AppIcons.block,
-          label: detail.blocked ? l.actions_unblock : l.actions_block,
-          destructive: !detail.blocked,
-          onTap: () => Navigator.pop(ctx, _Action.block),
-        ),
       ],
     ),
   );
@@ -109,8 +84,11 @@ Future<void> showConversationActionsSheet(
 
   switch (picked) {
     case _Action.resolve:
+      // The close card: AI title, editable, then close.
+      final title = await showCloseConversationSheet(context, ref, conversationId);
+      if (title == null || !context.mounted) return;
       HapticFeedback.lightImpact();
-      onResolved(actions.resolve());
+      onResolved(actions.resolve(title: title));
     case _Action.assign:
       if (onOpenAssign != null) {
         onOpenAssign();
@@ -133,29 +111,10 @@ Future<void> showConversationActionsSheet(
       onAddNote?.call();
     case _Action.search:
       onSearch?.call();
-    case _Action.toggleAi:
-      actions.setAiPaused(!aiPaused);
-      AppSnackbar.show(
-        context,
-        message: aiPaused ? l.actions_ai_resumed_toast : l.actions_ai_paused_toast,
-        kind: SnackKind.success,
-      );
-    case _Action.unread:
-      actions.markUnread();
-      Navigator.of(context).maybePop();
-    case _Action.export:
-      await _export(context, ref, detail);
-    case _Action.block:
-      if (detail.blocked) {
-        actions.setBlocked(false);
-        AppSnackbar.show(context, message: l.actions_unblocked_toast, kind: SnackKind.success);
-      } else {
-        await confirmBlockCustomer(context, ref, conversationId);
-      }
   }
 }
 
-enum _Action { note, resolve, assign, unassign, snooze, priority, tag, search, toggleAi, unread, export, block }
+enum _Action { note, resolve, assign, unassign, snooze, priority, tag, search }
 
 /// Pinned first row in `textSuccess` with a check icon (§6).
 class _ResolveRow extends StatelessWidget {
@@ -205,35 +164,6 @@ Future<void> confirmBlockCustomer(BuildContext context, WidgetRef ref, String co
   if (!ok || !context.mounted) return;
   ref.read(chatActionsProvider(conversationId)).setBlocked(true);
   AppSnackbar.show(context, message: l.actions_blocked_toast, kind: SnackKind.success);
-}
-
-Future<void> _export(BuildContext context, WidgetRef ref, ConversationDetail detail) async {
-  final l = context.l10n;
-  final meId = detail.meId;
-  String describe(Message m) {
-    if (m.systemEvent != null) {
-      return SystemEventFormatter.format(
-        m.systemEvent!,
-        l: l,
-        meId: meId,
-        formatTime: (t) => AppFormat.date(context, t),
-        priorityLabel: (p) => Priority.values.where((x) => x.name == p).firstOrNull?.label(l) ?? p,
-        channelLabel: (ch) => Channel.values.where((x) => x.name == ch).firstOrNull?.label(l) ?? ch,
-      );
-    }
-    final who = switch (m.type) {
-      MessageBubbleType.incoming => detail.contact.name,
-      MessageBubbleType.outgoingAi => l.chat_ai_handling,
-      MessageBubbleType.internalNote => '${l.actions_export_note} · ${m.senderName ?? ''}',
-      _ => m.senderName ?? l.common_you,
-    };
-    final body = m.text.isNotEmpty ? m.text : m.kind.label(l);
-    return '$who: $body';
-  }
-
-  final text = ref.read(chatActionsProvider(detail.id)).exportText(describe: describe);
-  await Clipboard.setData(ClipboardData(text: text));
-  if (context.mounted) AppSnackbar.show(context, message: l.actions_exported_toast, kind: SnackKind.success);
 }
 
 /// Priority chips picker.
