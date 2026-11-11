@@ -1224,6 +1224,24 @@
   "composer_record_failed": "Couldn't record. Please try again.",
   "composer_record_delete": "Delete recording",
   "chat_ai_suggest_pill": "Suggest a reply",
+  "composer_file_too_big": "Too large to send: {names}. Photos up to 5 MB, videos and audio 16 MB, documents 10 MB.",
+  "@composer_file_too_big": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_file_type": "This file type can’t be sent: {names}",
+  "@composer_file_type": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_upload_failed": "Upload failed",
+  "composer_upload_retry": "Retry upload",
   "sys_called": "{actor} called the customer",
   "@sys_called": {
     "placeholders": {
@@ -1542,6 +1560,8 @@
       }
     }
   },
+  "bubble_file_sending": "Still sending — try again in a moment",
+  "bubble_file_unavailable": "This file isn’t available on the phone",
   "chatscreen_load_failed": "Couldn't load this conversation",
   "chatscreen_not_found": "We couldn't find this conversation",
   "chatscreen_action_failed": "Couldn't complete that. Try again.",

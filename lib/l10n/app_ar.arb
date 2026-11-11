@@ -1224,6 +1224,24 @@
   "composer_record_failed": "تعذّر التسجيل. حاول مرة أخرى.",
   "composer_record_delete": "حذف التسجيل",
   "chat_ai_suggest_pill": "اقترح ردًا",
+  "composer_file_too_big": "حجم كبير لا يمكن إرساله: {names}. الصور حتى 5 ميجابايت، والفيديو والصوت 16، والمستندات 10.",
+  "@composer_file_too_big": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_file_type": "لا يمكن إرسال هذا النوع من الملفات: {names}",
+  "@composer_file_type": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_upload_failed": "فشل الرفع",
+  "composer_upload_retry": "إعادة الرفع",
   "sys_called": "اتصل {actor} بالعميل",
   "@sys_called": {
     "placeholders": {
@@ -1542,6 +1560,8 @@
       }
     }
   },
+  "bubble_file_sending": "ما زال قيد الإرسال، حاول بعد لحظات",
+  "bubble_file_unavailable": "هذا الملف غير متاح على الهاتف",
   "chatscreen_load_failed": "تعذّر تحميل المحادثة",
   "chatscreen_not_found": "لم نعثر على هذه المحادثة",
   "chatscreen_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",

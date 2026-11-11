@@ -15,6 +15,7 @@ import '../../../application/messages_controller.dart';
 import '../../../data/messages_repository.dart';
 import '../../../domain/conversation_detail.dart';
 import '../../../domain/rewrite_session.dart';
+import 'attach_pickers.dart';
 import 'attach_sheet.dart';
 import 'attachments_preview.dart';
 import 'composer_mode_toggle.dart';
@@ -134,19 +135,24 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
 
   Future<void> _attach() async {
     final now = DateTime.now();
+    final channel = widget.detail.channel;
     final opt = await showAttachSheet(
       context,
-      whatsapp: widget.detail.channel == Channel.whatsapp,
+      whatsapp: channel == Channel.whatsapp,
       windowClosed: widget.detail.windowClosed(now),
+      // Files go out on WhatsApp and website chat; not Messenger/Instagram yet.
+      media: channel == Channel.whatsapp || channel == Channel.web,
     );
     if (opt == null || !mounted) return;
     final l = context.l10n;
     switch (opt) {
       case AttachOption.media:
+        _addPicked(await pickGalleryMedia());
       case AttachOption.camera:
-        _composer.addAttachment(MessageKind.image, 'IMG_${now.millisecondsSinceEpoch % 10000}.jpg');
+        final photo = await pickCameraPhoto();
+        if (photo != null) _addPicked([photo]);
       case AttachOption.file:
-        _composer.addAttachment(MessageKind.file, 'document.pdf');
+        _addPicked(await pickDocuments());
       case AttachOption.location:
         final label = l.composer_location_sample;
         ref
@@ -164,6 +170,31 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
         _composer.enterNoteMode();
         _focus.requestFocus();
     }
+  }
+
+  /// Queues every acceptable file (uploads start at once) and says which
+  /// ones were left out and why.
+  void _addPicked(List<PickedMedia> files) {
+    if (!mounted || files.isEmpty) return;
+    final l = context.l10n;
+    final tooBig = <String>[];
+    final wrongType = <String>[];
+    for (final f in files) {
+      switch (ChatMediaRules.check(f)) {
+        case PickRejection.size:
+          tooBig.add(f.name);
+        case PickRejection.type:
+          wrongType.add(f.name);
+        case null:
+          _composer.addAttachment(f.kind, f.name, f.bytes, f.mime);
+      }
+    }
+    if (tooBig.isNotEmpty) {
+      _toast(l.composer_file_too_big(tooBig.join('، ')));
+    } else if (wrongType.isNotEmpty) {
+      _toast(l.composer_file_type(wrongType.join('، ')));
+    }
+    _focus.requestFocus();
   }
 
   /// ✦ in the field: needs ≥ 2 characters, else the 2s hint (§2).
@@ -448,7 +479,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                   onClose: () => _composer.setReply(null),
                 ),
               if (state.attachments.isNotEmpty)
-                AttachmentsPreview(attachments: state.attachments, onRemove: _composer.removeAttachment),
+                AttachmentsPreview(attachments: state.attachments, onRemove: _composer.removeAttachment, onRetry: _composer.retryAttachment),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [

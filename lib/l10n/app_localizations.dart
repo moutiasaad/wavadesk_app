@@ -4036,6 +4036,30 @@ abstract class AppLocalizations {
   /// **'اقترح ردًا'**
   String get chat_ai_suggest_pill;
 
+  /// No description provided for @composer_file_too_big.
+  ///
+  /// In ar, this message translates to:
+  /// **'حجم كبير لا يمكن إرساله: {names}. الصور حتى 5 ميجابايت، والفيديو والصوت 16، والمستندات 10.'**
+  String composer_file_too_big(String names);
+
+  /// No description provided for @composer_file_type.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يمكن إرسال هذا النوع من الملفات: {names}'**
+  String composer_file_type(String names);
+
+  /// No description provided for @composer_upload_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشل الرفع'**
+  String get composer_upload_failed;
+
+  /// No description provided for @composer_upload_retry.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة الرفع'**
+  String get composer_upload_retry;
+
   /// No description provided for @sys_called.
   ///
   /// In ar, this message translates to:
@@ -4653,6 +4677,18 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تفاعل {emoji}'**
   String msgaction_react(String emoji);
+
+  /// No description provided for @bubble_file_sending.
+  ///
+  /// In ar, this message translates to:
+  /// **'ما زال قيد الإرسال، حاول بعد لحظات'**
+  String get bubble_file_sending;
+
+  /// No description provided for @bubble_file_unavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الملف غير متاح على الهاتف'**
+  String get bubble_file_unavailable;
 
   /// No description provided for @chatscreen_load_failed.
   ///

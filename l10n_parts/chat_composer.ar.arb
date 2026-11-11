@@ -168,5 +168,23 @@
   "composer_mic_denied": "اسمح بالوصول إلى الميكروفون من الإعدادات لتسجيل الرسائل الصوتية.",
   "composer_record_failed": "تعذّر التسجيل. حاول مرة أخرى.",
   "composer_record_delete": "حذف التسجيل",
-  "chat_ai_suggest_pill": "اقترح ردًا"
+  "chat_ai_suggest_pill": "اقترح ردًا",
+  "composer_file_too_big": "حجم كبير لا يمكن إرساله: {names}. الصور حتى 5 ميجابايت، والفيديو والصوت 16، والمستندات 10.",
+  "@composer_file_too_big": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_file_type": "لا يمكن إرسال هذا النوع من الملفات: {names}",
+  "@composer_file_type": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_upload_failed": "فشل الرفع",
+  "composer_upload_retry": "إعادة الرفع"
 }

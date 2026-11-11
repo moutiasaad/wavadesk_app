@@ -38,6 +38,7 @@ dependencies:
   simple_icons: ^16.23.0
   record: ^6.2.1
   just_audio: ^0.10.6
+  image_picker: ^1.2.2
 
 dev_dependencies:
   flutter_test:

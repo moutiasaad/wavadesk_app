@@ -2,10 +2,22 @@
   "msgaction_add_to_profile": "Ajouter au profil client",
   "msgaction_added_to_profile": "Note ajoutée au profil client",
   "chat_new_messages": "{n, plural, =1{1 nouveau message} other{{n} nouveaux messages}}",
-  "@chat_new_messages": {"placeholders": {"n": {"type": "int"}}},
+  "@chat_new_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "chat_ai_reply_label": "Réponse IA",
   "chat_note_label": "Note interne · {name}",
-  "@chat_note_label": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_note_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_failed": "Non envoyé",
   "chat_retry": "Réessayer",
   "chat_delete": "Supprimer",
@@ -13,9 +25,14 @@
   "chat_deleted": "Ce message a été supprimé",
   "chat_unsupported": "Message non pris en charge — ouvrir dans WhatsApp",
   "chat_transcribe": "Transcrire",
-
   "bubble_template_label": "Modèle : {name}",
-  "@bubble_template_label": {"placeholders": {"name": {"type": "String"}}},
+  "@bubble_template_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "bubble_show_all": "Afficher tout",
   "bubble_show_less": "Afficher moins",
   "bubble_save_contact": "Enregistrer",
@@ -23,15 +40,45 @@
   "bubble_play": "Lire le message vocal",
   "bubble_pause": "Mettre en pause le message vocal",
   "bubble_speed": "Vitesse de lecture {speed}",
-  "@bubble_speed": {"placeholders": {"speed": {"type": "String"}}},
+  "@bubble_speed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
   "bubble_voice_summary": "{n, plural, =1{Message vocal, 1 seconde} other{Message vocal, {n} secondes}}",
-  "@bubble_voice_summary": {"placeholders": {"n": {"type": "int"}}},
+  "@bubble_voice_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "bubble_image_from": "Photo de {name}",
-  "@bubble_image_from": {"placeholders": {"name": {"type": "String"}}},
+  "@bubble_image_from": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "bubble_album_summary": "{n, plural, =1{1 photo} other{{n} photos}}",
-  "@bubble_album_summary": {"placeholders": {"n": {"type": "int"}}},
+  "@bubble_album_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "bubble_video_summary": "Vidéo {duration}",
-  "@bubble_video_summary": {"placeholders": {"duration": {"type": "String"}}},
+  "@bubble_video_summary": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
   "bubble_play_video": "Lire la vidéo",
   "bubble_video_unavailable": "L'aperçu vidéo n'est pas disponible dans les données d'exemple",
   "bubble_download": "Télécharger le fichier",
@@ -44,17 +91,27 @@
   "bubble_delivery_delivered": "Distribué",
   "bubble_delivery_read": "Lu",
   "bubble_reply_to": "Répondre à {name}",
-  "@bubble_reply_to": {"placeholders": {"name": {"type": "String"}}},
+  "@bubble_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "bubble_viewer_share": "Partager",
   "bubble_viewer_save": "Enregistrer",
   "bubble_viewer_sample": "Il s'agit d'une image d'exemple qui ne peut être ni partagée ni enregistrée",
   "bubble_reactions": "Réactions : {emojis}",
-  "@bubble_reactions": {"placeholders": {"emojis": {"type": "String"}}},
-
+  "@bubble_reactions": {
+    "placeholders": {
+      "emojis": {
+        "type": "String"
+      }
+    }
+  },
   "chatlist_jump_latest": "Aller au dernier message",
   "chatlist_loading_older": "Chargement des messages plus anciens",
   "chatlist_typing": "en train d'écrire…",
-
   "msgaction_reply": "Répondre",
   "msgaction_copy": "Copier",
   "msgaction_copied": "Message copié",
@@ -81,5 +138,13 @@
   "msgaction_more_reactions": "Plus de réactions",
   "msgaction_pick_reaction": "Choisir une réaction",
   "msgaction_react": "Réagir {emoji}",
-  "@msgaction_react": {"placeholders": {"emoji": {"type": "String"}}}
+  "@msgaction_react": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_file_sending": "Envoi en cours, réessayez dans un instant",
+  "bubble_file_unavailable": "Ce fichier n’est pas disponible sur le téléphone"
 }

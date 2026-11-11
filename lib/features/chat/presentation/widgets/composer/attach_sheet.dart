@@ -13,7 +13,7 @@ const bool _hasCatalog = false;
 /// Attach sheet (Chat spec §4.7.2): 4-column grid, items 72 — tinted icon
 /// tile 52 (radius 16) + caption. Template only for WhatsApp. When the 24h
 /// window is closed only templates and media are offered.
-Future<AttachOption?> showAttachSheet(BuildContext context, {required bool whatsapp, required bool windowClosed}) {
+Future<AttachOption?> showAttachSheet(BuildContext context, {required bool whatsapp, required bool windowClosed, bool media = true}) {
   return AppBottomSheet.show<AttachOption>(
     context,
     showClose: false,
@@ -21,11 +21,10 @@ Future<AttachOption?> showAttachSheet(BuildContext context, {required bool whats
       final c = ctx.colors;
       final l = ctx.l10n;
       final items = <(AttachOption, IconData, String, Color, Color)>[
-        (AttachOption.media, AppIcons.image, l.chat_attach_media, c.infoContainer, c.info),
-        (AttachOption.camera, AppIcons.camera, l.chat_attach_camera, c.statusSnoozedContainer, c.statusSnoozed),
-        if (!windowClosed) (AttachOption.file, AppIcons.file, l.chat_attach_file, c.surfaceVariant, c.textSecondary),
-        if (!windowClosed)
-          (AttachOption.location, AppIcons.location, l.chat_attach_location, c.successContainer, c.success),
+        if (media) (AttachOption.media, AppIcons.image, l.chat_attach_media, c.infoContainer, c.info),
+        if (media) (AttachOption.camera, AppIcons.camera, l.chat_attach_camera, c.statusSnoozedContainer, c.statusSnoozed),
+        if (media && !windowClosed) (AttachOption.file, AppIcons.file, l.chat_attach_file, c.surfaceVariant, c.textSecondary),
+        // Location is hidden until it sends a real position (it used to send a sample label).
         if (!windowClosed)
           (AttachOption.quickReplies, AppIcons.quickReply, l.chat_attach_quick, c.warningContainer, c.warning),
         if (whatsapp)

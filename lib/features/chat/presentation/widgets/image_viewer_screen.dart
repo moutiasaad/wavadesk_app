@@ -9,7 +9,10 @@ import 'bubbles/image_content.dart';
 /// close, share / save. Sample images are drawn placeholders, so share and
 /// save explain that instead of acting.
 class ImageViewerScreen extends StatefulWidget {
-  const ImageViewerScreen({super.key, required this.heroTag, required this.seed, this.caption = ''});
+  const ImageViewerScreen({super.key, required this.heroTag, required this.seed, this.caption = '', this.image});
+
+  /// The real picture; null → the sample placeholder.
+  final ImageProvider? image;
 
   final String heroTag;
   final String seed;
@@ -60,10 +63,12 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
                     maxScale: 4,
                     child: Hero(
                       tag: widget.heroTag,
-                      child: AspectRatio(
-                        aspectRatio: MediaPlaceholder.hue(widget.seed) > 180 ? 4 / 5 : 4 / 3,
-                        child: MediaPlaceholder(seed: widget.seed, iconSize: 64),
-                      ),
+                      child: widget.image != null
+                          ? Image(image: widget.image!, fit: BoxFit.contain)
+                          : AspectRatio(
+                              aspectRatio: MediaPlaceholder.hue(widget.seed) > 180 ? 4 / 5 : 4 / 3,
+                              child: MediaPlaceholder(seed: widget.seed, iconSize: 64),
+                            ),
                     ),
                   ),
                 ),

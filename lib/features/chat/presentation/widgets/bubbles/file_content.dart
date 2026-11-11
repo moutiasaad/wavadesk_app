@@ -1,52 +1,51 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../core/models/models.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/utils/l10n.dart';
 import '../../../../../core/widgets/widgets.dart';
+import '../../../application/media_url_provider.dart';
 
 /// File (Chat spec §4.4): 40 tile (`surfaceVariant`, type icon) + name (1
-/// line) + size/type caption + download icon; progress ring while
-/// downloading (simulated — no real files in sample data).
-class FileContent extends StatefulWidget {
+/// line) + size/type caption + download icon. Tap opens the file from its
+/// signed link in the phone's viewer / browser.
+class FileContent extends ConsumerStatefulWidget {
   const FileContent({super.key, required this.message, required this.foreground});
 
   final Message message;
   final Color foreground;
 
   @override
-  State<FileContent> createState() => _FileContentState();
+  ConsumerState<FileContent> createState() => _FileContentState();
 }
 
-class _FileContentState extends State<FileContent> {
-  double? _progress;
+class _FileContentState extends ConsumerState<FileContent> {
+  bool _opening = false;
   bool _done = false;
-  Timer? _timer;
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _download() {
-    if (_progress != null || _done) return;
-    setState(() => _progress = 0);
-    _timer = Timer.periodic(const Duration(milliseconds: 120), (t) {
-      final next = (_progress ?? 0) + 0.1;
-      if (next >= 1) {
-        t.cancel();
-        setState(() {
-          _progress = null;
-          _done = true;
-        });
-        AppSnackbar.show(context, message: context.l10n.bubble_downloaded, kind: SnackKind.success);
-      } else {
-        setState(() => _progress = next);
-      }
-    });
+  Future<void> _download() async {
+    if (_opening) return;
+    final l = context.l10n;
+    final id = widget.message.id;
+    if (!hasServerMedia(id)) {
+      AppSnackbar.show(context, message: l.bubble_file_sending);
+      return;
+    }
+    setState(() => _opening = true);
+    try {
+      final url = await ref.read(mediaUrlProvider(id).future);
+      final ok = await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+      if (!mounted) return;
+      if (!ok) throw StateError('no app');
+      setState(() => _done = true);
+    } catch (_) {
+      ref.invalidate(mediaUrlProvider(id));
+      if (mounted) AppSnackbar.show(context, message: l.bubble_file_unavailable, kind: SnackKind.error);
+    } finally {
+      if (mounted) setState(() => _opening = false);
+    }
   }
 
   @override
@@ -98,11 +97,10 @@ class _FileContentState extends State<FileContent> {
               child: SizedBox.square(
                 dimension: 40,
                 child: Center(
-                  child: _progress != null
+                  child: _opening
                       ? SizedBox.square(
                           dimension: 22,
                           child: CircularProgressIndicator(
-                            value: _progress,
                             strokeWidth: 2.5,
                             color: widget.foreground,
                             backgroundColor: widget.foreground.withValues(alpha: 0.2),

@@ -168,5 +168,23 @@
   "composer_mic_denied": "Autorisez l'accès au microphone dans les réglages pour enregistrer des messages vocaux.",
   "composer_record_failed": "Impossible d'enregistrer. Veuillez réessayer.",
   "composer_record_delete": "Supprimer l'enregistrement",
-  "chat_ai_suggest_pill": "Suggérer une réponse"
+  "chat_ai_suggest_pill": "Suggérer une réponse",
+  "composer_file_too_big": "Trop volumineux : {names}. Photos 5 Mo max, vidéos et audio 16 Mo, documents 10 Mo.",
+  "@composer_file_too_big": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_file_type": "Ce type de fichier ne peut pas être envoyé : {names}",
+  "@composer_file_type": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_upload_failed": "Échec de l’envoi",
+  "composer_upload_retry": "Réessayer l’envoi"
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,6 +12,7 @@ import '../../../core/api/wd_api.dart';
 import '../../../core/api/wd_api_provider.dart';
 import '../domain/message.dart';
 import 'chat_api.dart';
+import 'local_media.dart';
 import 'uploads_api.dart';
 
 /// What the composer hands to the send queue.
@@ -33,6 +35,7 @@ class OutgoingMessage {
     this.uploadId,
     this.localPath,
     this.localMime,
+    this.localBytes,
   });
 
   final String text;
@@ -59,6 +62,9 @@ class OutgoingMessage {
   /// before the message is sent, then referenced as `media_upload_id`.
   final String? localPath;
   final String? localMime;
+
+  /// A picked image, shown in its bubble at once (see LocalMedia).
+  final Uint8List? localBytes;
 }
 
 /// Messages + per-message actions (Chat spec §6 data, §4.7.6 sending).
@@ -412,6 +418,7 @@ class HttpMessagesRepository implements MessagesRepository {
       templateButtons: o.templateButtons,
       mentions: o.mentions,
     );
+    if (o.localBytes != null) LocalMedia.put(clientId, o.localBytes!);
     _messages[id] = [...current(id), local];
     _notify(id);
     final body = _body(clientId, o);
@@ -463,6 +470,7 @@ class HttpMessagesRepository implements MessagesRepository {
           return _api.sendMessage(id, ready, idempotencyKey: idemKey);
         })
         .then((server) {
+          LocalMedia.alias(clientId, server.id);
           _dequeue(id, clientId);
           // A poll may already have brought the server copy in.
           _messages[id] = [

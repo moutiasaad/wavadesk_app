@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,23 +14,47 @@ enum ComposerMode { reply, note }
 /// A picked file/photo uploading before send (§4.7 attachments preview).
 @immutable
 class PendingAttachment {
-  const PendingAttachment({required this.id, required this.kind, required this.name, this.progress = 0, this.uploadId});
+  const PendingAttachment({
+    required this.id,
+    required this.kind,
+    required this.name,
+    required this.bytes,
+    required this.mime,
+    this.progress = 0,
+    this.uploadId,
+    this.failed = false,
+  });
 
   final String id;
   final MessageKind kind;
   final String name;
+  final Uint8List bytes;
+  final String mime;
   final double progress;
   final String? uploadId;
 
+  /// The upload failed; the chip offers retry.
+  final bool failed;
+
   bool get ready => uploadId != null;
 
-  PendingAttachment copyWith({double? progress, String? uploadId}) => PendingAttachment(
+  PendingAttachment copyWith({double? progress, String? uploadId, bool? failed}) => PendingAttachment(
     id: id,
     kind: kind,
     name: name,
+    bytes: bytes,
+    mime: mime,
     progress: progress ?? this.progress,
     uploadId: uploadId ?? this.uploadId,
+    failed: failed ?? this.failed,
   );
+}
+
+/// "1.2 MB" / "340 KB" (file bubbles).
+String formatFileSize(int bytes) {
+  if (bytes < 1024) return '$bytes B';
+  if (bytes < 1024 * 1024) return '${(bytes / 1024).round()} KB';
+  return '${(bytes / (1024 * 1024)).toStringAsFixed(1)} MB';
 }
 
 @immutable
@@ -195,27 +220,43 @@ class ComposerController extends AutoDisposeFamilyNotifier<ComposerState, String
 
   // ---- Attachments ------------------------------------------------------------------
 
-  /// [bytes]/[mime]: the picked file. Without bytes (no picker plugin yet)
-  /// the real API rejects the upload and the chip is removed.
-  void addAttachment(MessageKind kind, String name, {List<int> bytes = const [], String? mime}) {
-    final a = PendingAttachment(id: 'att-${DateTime.now().microsecondsSinceEpoch}', kind: kind, name: name);
+  /// Adds a picked file and starts its upload right away (`POST uploads`),
+  /// so Send is instant once it is ready.
+  void addAttachment(MessageKind kind, String name, Uint8List bytes, String mime) {
+    final a = PendingAttachment(
+      id: 'att-${DateTime.now().microsecondsSinceEpoch}-${state.attachments.length}',
+      kind: kind,
+      name: name,
+      bytes: bytes,
+      mime: mime,
+    );
     state = state.copyWith(attachments: [...state.attachments, a]);
+    _upload(a);
+  }
+
+  /// A failed chip: try the same file again.
+  void retryAttachment(String id) {
+    final a = state.attachments.where((x) => x.id == id).firstOrNull;
+    if (a == null) return;
+    _update(id, (x) => x.copyWith(failed: false, progress: 0));
+    _upload(a);
+  }
+
+  void _update(String id, PendingAttachment Function(PendingAttachment) fn) => state = state.copyWith(
+    attachments: [
+      for (final x in state.attachments) x.id == id ? fn(x) : x,
+    ],
+  );
+
+  void _upload(PendingAttachment a) {
     ref
         .read(messagesRepositoryProvider)
         .uploads
-        .upload(
-          fileName: name,
-          bytes: bytes,
-          mime: mime ?? (kind == MessageKind.image ? 'image/jpeg' : 'application/pdf'),
-        )
-        .listen((p) {
-          state = state.copyWith(
-            attachments: [
-              for (final x in state.attachments)
-                x.id == a.id ? x.copyWith(progress: p.progress, uploadId: p.uploadId) : x,
-            ],
-          );
-        }, onError: (_) => removeAttachment(a.id));
+        .upload(fileName: a.name, bytes: a.bytes, mime: a.mime)
+        .listen(
+          (p) => _update(a.id, (x) => x.copyWith(progress: p.progress, uploadId: p.uploadId)),
+          onError: (_) => _update(a.id, (x) => x.copyWith(failed: true)),
+        );
   }
 
   void removeAttachment(String id) => state = state.copyWith(
@@ -247,9 +288,10 @@ class ComposerController extends AutoDisposeFamilyNotifier<ComposerState, String
           OutgoingMessage(
             text: '',
             kind: a.kind,
-            fileName: a.kind == MessageKind.file ? a.name : null,
-            fileSize: a.kind == MessageKind.file ? '240 KB' : null,
+            fileName: a.kind == MessageKind.file || a.kind == MessageKind.video ? a.name : null,
+            fileSize: a.kind == MessageKind.file ? formatFileSize(a.bytes.length) : null,
             uploadId: a.uploadId,
+            localBytes: a.kind == MessageKind.image ? a.bytes : null,
             isNote: note,
           ),
       if (body.isNotEmpty)

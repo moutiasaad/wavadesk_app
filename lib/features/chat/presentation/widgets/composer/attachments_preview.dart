@@ -8,10 +8,11 @@ import '../../../application/composer_controller.dart';
 /// Horizontal 64×64 thumbnails (radius 10) with ✕ and an upload progress
 /// ring (Chat spec §4.7).
 class AttachmentsPreview extends StatelessWidget {
-  const AttachmentsPreview({super.key, required this.attachments, required this.onRemove});
+  const AttachmentsPreview({super.key, required this.attachments, required this.onRemove, required this.onRetry});
 
   final List<PendingAttachment> attachments;
   final ValueChanged<String> onRemove;
+  final ValueChanged<String> onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class AttachmentsPreview extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8),
           itemCount: attachments.length,
           separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.sm),
-          itemBuilder: (context, i) => _Thumb(attachment: attachments[i], onRemove: onRemove),
+          itemBuilder: (context, i) => _Thumb(attachment: attachments[i], onRemove: onRemove, onRetry: onRetry),
         ),
       ),
     );
@@ -32,10 +33,11 @@ class AttachmentsPreview extends StatelessWidget {
 }
 
 class _Thumb extends StatelessWidget {
-  const _Thumb({required this.attachment, required this.onRemove});
+  const _Thumb({required this.attachment, required this.onRemove, required this.onRetry});
 
   final PendingAttachment attachment;
   final ValueChanged<String> onRemove;
+  final ValueChanged<String> onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,9 @@ class _Thumb extends StatelessWidget {
     final a = attachment;
     final isImage = a.kind == MessageKind.image;
     return Semantics(
-      label: a.ready ? a.name : '${a.name}، ${l.composer_uploading((a.progress * 100).round())}',
+      label: a.failed
+          ? '${a.name}، ${l.composer_upload_failed}'
+          : (a.ready ? a.name : '${a.name}، ${l.composer_uploading((a.progress * 100).round())}'),
       child: SizedBox(
         width: 64,
         height: 64,
@@ -54,12 +58,15 @@ class _Thumb extends StatelessWidget {
             Container(
               width: 64,
               height: 64,
+              clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 color: isImage ? c.primaryContainer : c.surfaceVariant,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: c.border),
+                border: Border.all(color: a.failed ? c.error : c.border, width: a.failed ? 1.5 : 1),
               ),
-              child: Column(
+              child: isImage
+                  ? Image.memory(a.bytes, fit: BoxFit.cover, width: 64, height: 64, gaplessPlayback: true, cacheWidth: 192)
+                  : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AppIcon(a.kind.icon, color: isImage ? c.primary : c.textSecondary),
@@ -77,7 +84,23 @@ class _Thumb extends StatelessWidget {
                 ],
               ),
             ),
-            if (!a.ready)
+            if (a.failed)
+              Positioned.fill(
+                child: Semantics(
+                  button: true,
+                  label: l.composer_upload_retry,
+                  excludeSemantics: true,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () => onRetry(a.id),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(color: c.scrim.withValues(alpha: 0.45), borderRadius: BorderRadius.circular(10)),
+                      child: const Center(child: AppIcon(AppIcons.retry, color: Colors.white)),
+                    ),
+                  ),
+                ),
+              )
+            else if (!a.ready)
               Positioned.fill(
                 child: DecoratedBox(
                   decoration: BoxDecoration(

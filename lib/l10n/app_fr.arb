@@ -1224,6 +1224,24 @@
   "composer_record_failed": "Impossible d'enregistrer. Veuillez réessayer.",
   "composer_record_delete": "Supprimer l'enregistrement",
   "chat_ai_suggest_pill": "Suggérer une réponse",
+  "composer_file_too_big": "Trop volumineux : {names}. Photos 5 Mo max, vidéos et audio 16 Mo, documents 10 Mo.",
+  "@composer_file_too_big": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_file_type": "Ce type de fichier ne peut pas être envoyé : {names}",
+  "@composer_file_type": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_upload_failed": "Échec de l’envoi",
+  "composer_upload_retry": "Réessayer l’envoi",
   "sys_called": "{actor} a appelé le client",
   "@sys_called": {
     "placeholders": {
@@ -1542,6 +1560,8 @@
       }
     }
   },
+  "bubble_file_sending": "Envoi en cours, réessayez dans un instant",
+  "bubble_file_unavailable": "Ce fichier n’est pas disponible sur le téléphone",
   "chatscreen_load_failed": "Impossible de charger cette conversation",
   "chatscreen_not_found": "Nous n'avons pas trouvé cette conversation",
   "chatscreen_action_failed": "Action impossible. Réessayez.",

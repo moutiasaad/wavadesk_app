@@ -2259,6 +2259,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get chat_ai_suggest_pill => 'Suggérer une réponse';
 
   @override
+  String composer_file_too_big(String names) {
+    return 'Trop volumineux : $names. Photos 5 Mo max, vidéos et audio 16 Mo, documents 10 Mo.';
+  }
+
+  @override
+  String composer_file_type(String names) {
+    return 'Ce type de fichier ne peut pas être envoyé : $names';
+  }
+
+  @override
+  String get composer_upload_failed => 'Échec de l’envoi';
+
+  @override
+  String get composer_upload_retry => 'Réessayer l’envoi';
+
+  @override
   String sys_called(String actor) {
     return '$actor a appelé le client';
   }
@@ -2649,6 +2665,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String msgaction_react(String emoji) {
     return 'Réagir $emoji';
   }
+
+  @override
+  String get bubble_file_sending => 'Envoi en cours, réessayez dans un instant';
+
+  @override
+  String get bubble_file_unavailable =>
+      'Ce fichier n’est pas disponible sur le téléphone';
 
   @override
   String get chatscreen_load_failed =>
