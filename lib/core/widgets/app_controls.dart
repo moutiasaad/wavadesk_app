@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import 'brand_surface.dart';
 
 /// §8.21 toggle: 48×29 track, thumb 23, on `primary`, off `borderStrong`.
 class AppSwitch extends StatelessWidget {
@@ -13,6 +14,10 @@ class AppSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    // On the brand header: white track when on, translucent when off.
+    final brand = BrandSurface.of(context);
+    final track = brand ? (value ? Colors.white : Colors.white.withValues(alpha: 0.3)) : (value ? c.primary : c.borderStrong);
+    final thumb = brand && value ? c.primary : Colors.white;
     return Semantics(
       toggled: value,
       enabled: onChanged != null,
@@ -32,7 +37,7 @@ class AppSwitch extends StatelessWidget {
                 height: 29,
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
-                  color: value ? c.primary : c.borderStrong,
+                  color: track,
                   borderRadius: BorderRadius.circular(AppRadius.full),
                 ),
                 child: AnimatedAlign(
@@ -43,7 +48,7 @@ class AppSwitch extends StatelessWidget {
                     width: 23,
                     height: 23,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: thumb,
                       shape: BoxShape.circle,
                       boxShadow: const [BoxShadow(color: Color(0x290F172A), blurRadius: 3, offset: Offset(0, 1))],
                     ),

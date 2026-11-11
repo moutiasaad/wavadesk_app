@@ -116,7 +116,7 @@ class _WhatsAppChannelScreenState extends ConsumerState<WhatsAppChannelScreen> {
         actions: [
           if (admin)
             PopupMenuButton<_Menu>(
-              icon: AppIcon(AppIcons.more, color: c.textPrimary),
+              icon: const AppIcon(AppIcons.more, color: Colors.white),
               tooltip: l.wa_more,
               onSelected: _onMenu,
               itemBuilder: (_) => [

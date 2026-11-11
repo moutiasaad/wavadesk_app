@@ -1,5 +1,6 @@
 export 'app_avatar.dart';
 export 'app_bars.dart';
+export 'brand_surface.dart';
 export 'app_bottom_sheet.dart';
 export 'app_button.dart';
 export 'app_controls.dart';

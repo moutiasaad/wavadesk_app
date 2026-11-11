@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import 'brand_surface.dart';
 
 /// Circular spinner (§8.15): 18 in buttons, 24 on screens, stroke 2.5.
 /// By default it only appears after 300ms so fast actions don't flash.
@@ -35,7 +36,7 @@ class _AppSpinnerState extends State<AppSpinner> {
       child: _visible
           ? CircularProgressIndicator(
               strokeWidth: 2.5,
-              color: widget.color ?? context.colors.primary,
+              color: widget.color ?? (BrandSurface.of(context) ? Colors.white : context.colors.primary),
               semanticsLabel: MaterialLocalizations.of(context).refreshIndicatorSemanticLabel,
             )
           : null,

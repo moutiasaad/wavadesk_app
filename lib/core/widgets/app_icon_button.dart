@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_theme.dart';
+import 'brand_surface.dart';
 
 enum AppIconButtonVariant { plain, filled, outlined, primary }
 
@@ -38,9 +39,12 @@ class AppIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final d = size ?? (variant == AppIconButtonVariant.primary ? 44.0 : 40.0);
+    final brand = BrandSurface.of(context);
     final (Color bg, Color fg, Border? border) = switch (variant) {
-      AppIconButtonVariant.plain => (Colors.transparent, c.textPrimary, null),
-      AppIconButtonVariant.filled => (c.surfaceVariant, c.textPrimary, null),
+      AppIconButtonVariant.plain => (Colors.transparent, brand ? Colors.white : c.textPrimary, null),
+      AppIconButtonVariant.filled => brand
+          ? (Colors.white.withValues(alpha: 0.16), Colors.white, null)
+          : (c.surfaceVariant, c.textPrimary, null),
       AppIconButtonVariant.outlined => (c.surface, c.textPrimary, Border.all(color: c.border)),
       AppIconButtonVariant.primary => (c.primary, c.onPrimary, null),
     };

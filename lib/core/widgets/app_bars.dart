@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/app_theme.dart';
 import '../utils/l10n.dart';
-import 'app_icon_button.dart';
+import 'brand_surface.dart';
 
 /// §8.1 root app bar for tab roots. Height 56 + status bar, no shadow or
 /// border, title `h1` start-aligned, up to 2 filled icon buttons.
@@ -46,13 +47,16 @@ class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-/// §8.1 pushed app bar: height 56, mirrored back button, title `h4`
-/// start-aligned, trailing text action or icons. Bottom border only once
-/// content scrolls under — pass [scrolledUnder].
+/// Inner-screen header: teal brand gradient with rounded bottom corners,
+/// a round glassy back button (the title area is part of its tap zone),
+/// bold white title and an optional [subtitle]. Actions are drawn on a
+/// [BrandSurface], so the shared buttons / switches turn light. A stronger
+/// shadow once content scrolls under ([scrolledUnder]).
 class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   const AppBarStandard({
     super.key,
     required this.title,
+    this.subtitle,
     this.actions = const [],
     this.scrolledUnder = false,
     this.onBack,
@@ -62,53 +66,134 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final String title;
+
+  /// Small second line under the title.
+  final String? subtitle;
   final List<Widget> actions;
   final bool scrolledUnder;
   final VoidCallback? onBack;
+
+  /// Kept for older call sites; the header always uses the brand colors.
   final Color? background;
   final bool showBack;
   final Widget? leading;
 
+  static const _radius = Radius.circular(24);
+
   @override
-  Size get preferredSize => const Size.fromHeight(56);
+  Size get preferredSize => Size.fromHeight(subtitle == null ? 66 : 78);
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    return Material(
-      color: background ?? c.background,
-      child: SafeArea(
-        bottom: false,
-        child: AnimatedContainer(
-          duration: AppMotion.fast,
-          constraints: const BoxConstraints(minHeight: 56),
-          decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: scrolledUnder ? c.divider : Colors.transparent)),
+    final t = context.text;
+    final colors = c.isDark
+        ? const [Color(0xFF0B5552), Color(0xFF0E6E69)]
+        : const [Color(0xFF0F7E7A), Color(0xFF169C94)];
+    void back() => (onBack ?? () => Navigator.of(context).maybePop())();
+
+    final titleBlock = Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Semantics(
+          header: true,
+          child: Text(
+            title,
+            style: t.h4.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-          child: Row(
-            children: [
-              if (leading != null)
-                leading!
-              else if (showBack)
-                AppIconButton(
-                  icon: AppIcons.back,
-                  iconSize: 24,
-                  semanticLabel: context.l10n.common_back,
-                  onPressed: onBack ?? () => Navigator.of(context).maybePop(),
-                )
-              else
-                const SizedBox(width: AppSpacing.md),
-              const SizedBox(width: AppSpacing.xs),
-              Expanded(
-                child: Semantics(
-                  header: true,
-                  child: Text(title, style: context.text.h4, maxLines: 1, overflow: TextOverflow.ellipsis),
+        ),
+        if (subtitle != null)
+          Text(
+            subtitle!,
+            style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+      ],
+    );
+
+    final Widget start;
+    if (leading != null) {
+      start = Row(children: [leading!, const SizedBox(width: AppSpacing.sm), Expanded(child: titleBlock)]);
+    } else if (showBack) {
+      // A big back target: the round button and the title both go back.
+      start = GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: back,
+        child: Row(
+          children: [
+            Semantics(
+              button: true,
+              label: context.l10n.common_back,
+              excludeSemantics: true,
+              child: _GlassBackButton(onTap: back),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(child: titleBlock),
+          ],
+        ),
+      );
+    } else {
+      start = Padding(padding: const EdgeInsetsDirectional.only(start: AppSpacing.md), child: titleBlock);
+    }
+
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      child: AnimatedContainer(
+        duration: AppMotion.fast,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: AlignmentDirectional.topStart, end: AlignmentDirectional.bottomEnd, colors: colors),
+          borderRadius: const BorderRadius.only(bottomLeft: _radius, bottomRight: _radius),
+          boxShadow: [
+            BoxShadow(
+              color: colors.first.withValues(alpha: scrolledUnder ? 0.35 : 0.16),
+              blurRadius: scrolledUnder ? 18 : 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.md, AppSpacing.xs, AppSpacing.sm, AppSpacing.md),
+            child: BrandSurface(
+              child: IconTheme.merge(
+                data: const IconThemeData(color: Colors.white),
+                child: Row(
+                  children: [
+                    Expanded(child: start),
+                    ...actions,
+                  ],
                 ),
               ),
-              ...actions,
-            ],
+            ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// 40 dp round back button, white on a translucent white disc.
+class _GlassBackButton extends StatelessWidget {
+  const _GlassBackButton({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.white.withValues(alpha: 0.16),
+      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.22))),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: const SizedBox.square(
+          dimension: 40,
+          child: AppIcon(AppIcons.back, dp: 22, color: Colors.white),
         ),
       ),
     );
@@ -123,15 +208,36 @@ class AppBarTextAction extends StatelessWidget {
   final VoidCallback? onPressed;
 
   @override
-  Widget build(BuildContext context) => TextButton(
-    style: TextButton.styleFrom(
-      foregroundColor: context.colors.primary,
-      textStyle: context.text.buttonMedium,
-      minimumSize: const Size(48, 48),
-    ),
-    onPressed: onPressed,
-    child: Text(label),
-  );
+  Widget build(BuildContext context) {
+    if (BrandSurface.of(context)) {
+      // On the brand header: a light pill.
+      return Padding(
+        padding: const EdgeInsetsDirectional.only(start: AppSpacing.xs),
+        child: TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.white,
+            disabledForegroundColor: Colors.white.withValues(alpha: 0.5),
+            backgroundColor: Colors.white.withValues(alpha: onPressed == null ? 0.08 : 0.18),
+            textStyle: context.text.buttonMedium,
+            shape: const StadiumBorder(),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+            minimumSize: const Size(48, 38),
+          ),
+          onPressed: onPressed,
+          child: Text(label),
+        ),
+      );
+    }
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: context.colors.primary,
+        textStyle: context.text.buttonMedium,
+        minimumSize: const Size(48, 48),
+      ),
+      onPressed: onPressed,
+      child: Text(label),
+    );
+  }
 }
 
 /// Tracks whether a scrollable has content under the app bar.
