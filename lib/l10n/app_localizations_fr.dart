@@ -5061,7 +5061,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String kb_file_ready(String f, int n) {
-    return '« $f » est prêt · $n informations extraites';
+    return '« $f » est prêt · $n réponses à vérifier';
   }
 
   @override
@@ -5413,6 +5413,174 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String kb_media_n(int n) {
     return '$n pièces jointes';
+  }
+
+  @override
+  String get kb_step_upload => 'Fichier envoyé';
+
+  @override
+  String get kb_step_read => 'Lecture du document';
+
+  @override
+  String get kb_step_prepare => 'Préparation des réponses';
+
+  @override
+  String get kb_processing_hint =>
+      'En général moins d’une minute. Vous pouvez masquer cette fenêtre, nous continuons.';
+
+  @override
+  String get kb_hide => 'Masquer';
+
+  @override
+  String kb_found_answers(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Nous avons trouvé $n réponses',
+      one: 'Nous avons trouvé 1 réponse',
+      zero: 'Aucune réponse trouvée',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_found_review_hint =>
+      'Vérifiez-les et choisissez ce que l’IA doit savoir.';
+
+  @override
+  String get kb_found_admin_hint =>
+      'Un administrateur les vérifiera avant que l’IA ne les utilise.';
+
+  @override
+  String get kb_review_answers => 'Vérifier les réponses';
+
+  @override
+  String get kb_later => 'Plus tard';
+
+  @override
+  String get kb_fail_encrypted_hint =>
+      'Retirez le mot de passe et envoyez-le à nouveau.';
+
+  @override
+  String get kb_fail_images_hint =>
+      'Aucun texte lisible trouvé. Essayez un PDF avec du texte sélectionnable ou un fichier Word.';
+
+  @override
+  String get kb_fail_corrupt_hint =>
+      'Essayez un autre fichier : PDF, Word, TXT ou MD, 10 Mo maximum.';
+
+  @override
+  String get kb_fail_no_answers => 'Aucune réponse trouvée';
+
+  @override
+  String get kb_fail_no_answers_hint =>
+      'Le document ne semble pas contenir d’informations demandées par les clients.';
+
+  @override
+  String get kb_fail_ai => 'Impossible de lire le fichier pour le moment';
+
+  @override
+  String get kb_fail_ai_hint => 'Veuillez réessayer dans quelques minutes.';
+
+  @override
+  String get kb_fail_quota => 'Quota IA épuisé';
+
+  @override
+  String get kb_fail_quota_hint =>
+      'Rechargez ou changez d’offre pour lire des documents avec l’IA.';
+
+  @override
+  String get kb_fail_network => 'Pas de connexion';
+
+  @override
+  String get kb_fail_network_hint => 'Vérifiez votre connexion et réessayez.';
+
+  @override
+  String get kb_try_another => 'Choisir un autre fichier';
+
+  @override
+  String get kb_review_title => 'Vérifier les réponses';
+
+  @override
+  String kb_review_from(int n, String file) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n réponses issues de $file',
+      one: '1 réponse issue de $file',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_review_hint =>
+      'Cochez ce que l’IA doit savoir, corrigez si besoin, puis ajoutez.';
+
+  @override
+  String kb_review_selected(int n, int total) {
+    return '$n sur $total sélectionnées';
+  }
+
+  @override
+  String get kb_review_select_all => 'Tout sélectionner';
+
+  @override
+  String get kb_review_clear => 'Tout désélectionner';
+
+  @override
+  String get kb_review_edit => 'Modifier';
+
+  @override
+  String get kb_review_discard => 'Supprimer';
+
+  @override
+  String kb_review_add(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Ajouter $n réponses',
+      one: 'Ajouter 1 réponse',
+      zero: 'Ajouter les réponses',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_adding(int done, int total) {
+    return 'Ajout $done/$total…';
+  }
+
+  @override
+  String kb_review_added(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n réponses ajoutées à la base de connaissances',
+      one: '1 réponse ajoutée à la base de connaissances',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_added_left(int n, int left) {
+    return '$n ajoutées · $left restent à vérifier';
+  }
+
+  @override
+  String kb_review_partial(int done, int failed) {
+    return '$done ajoutées, $failed n’ont pas pu l’être. Réessayez.';
+  }
+
+  @override
+  String get kb_review_all_done => 'Toutes les réponses ont été vérifiées';
+
+  @override
+  String get kb_review_all_done_body =>
+      'Plus rien à vérifier pour ce document.';
+
+  @override
+  String kb_file_failed_named(String f) {
+    return 'Impossible de lire « $f »';
   }
 
   @override

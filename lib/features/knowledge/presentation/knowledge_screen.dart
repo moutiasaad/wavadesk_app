@@ -191,7 +191,20 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
 
     ref.listen(kbUploadControllerProvider.select((u) => u.readyTick), (_, _) {
       final job = ref.read(kbUploadControllerProvider).lastReady;
-      if (job != null) _snack(l.kb_file_ready(job.file.name, job.facts), kind: SnackKind.success);
+      // The upload sheet shows the result itself while it is open.
+      if (job == null || ModalRoute.of(context)?.isCurrent != true) return;
+      if (job.phase == KbUploadPhase.failed) {
+        _snack(l.kb_file_failed_named(job.file.name), kind: SnackKind.error);
+        return;
+      }
+      final id = job.entryId;
+      final review = id != null && (job.result?.canApprove ?? false);
+      _snack(
+        l.kb_file_ready(job.file.name, job.facts),
+        kind: SnackKind.success,
+        actionLabel: review ? l.kb_review_answers : null,
+        onAction: review ? () => context.push(Routes.knowledgeFileReview(id)) : null,
+      );
     });
 
     // A failed refresh keeps the rows on screen; say so once (rule 3).

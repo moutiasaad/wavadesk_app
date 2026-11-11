@@ -4982,7 +4982,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String kb_file_ready(String f, int n) {
-    return '\"$f\" is ready · $n facts extracted';
+    return '\"$f\" is ready · $n answers to review';
   }
 
   @override
@@ -5333,6 +5333,174 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String kb_media_n(int n) {
     return '$n attachments';
+  }
+
+  @override
+  String get kb_step_upload => 'File uploaded';
+
+  @override
+  String get kb_step_read => 'Reading the document';
+
+  @override
+  String get kb_step_prepare => 'Preparing answers';
+
+  @override
+  String get kb_processing_hint =>
+      'Usually under a minute. You can hide this — we\'ll keep working.';
+
+  @override
+  String get kb_hide => 'Hide';
+
+  @override
+  String kb_found_answers(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'We found $n answers',
+      one: 'We found 1 answer',
+      zero: 'No answers found',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_found_review_hint =>
+      'Review them and choose what the AI should know.';
+
+  @override
+  String get kb_found_admin_hint =>
+      'An admin will review them before the AI uses them.';
+
+  @override
+  String get kb_review_answers => 'Review answers';
+
+  @override
+  String get kb_later => 'Later';
+
+  @override
+  String get kb_fail_encrypted_hint =>
+      'Remove the password and upload it again.';
+
+  @override
+  String get kb_fail_images_hint =>
+      'We couldn\'t find readable text. Try a PDF with selectable text or a Word file.';
+
+  @override
+  String get kb_fail_corrupt_hint =>
+      'Try another file: PDF, Word, TXT or MD, up to 10 MB.';
+
+  @override
+  String get kb_fail_no_answers => 'No answers found';
+
+  @override
+  String get kb_fail_no_answers_hint =>
+      'The document doesn\'t seem to have information customers ask about.';
+
+  @override
+  String get kb_fail_ai => 'Couldn\'t read the file right now';
+
+  @override
+  String get kb_fail_ai_hint => 'Please try again in a few minutes.';
+
+  @override
+  String get kb_fail_quota => 'AI allowance used up';
+
+  @override
+  String get kb_fail_quota_hint =>
+      'Top up or upgrade your plan to read documents with AI.';
+
+  @override
+  String get kb_fail_network => 'No connection';
+
+  @override
+  String get kb_fail_network_hint => 'Check your internet and try again.';
+
+  @override
+  String get kb_try_another => 'Choose another file';
+
+  @override
+  String get kb_review_title => 'Review answers';
+
+  @override
+  String kb_review_from(int n, String file) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n answers from $file',
+      one: '1 answer from $file',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_review_hint =>
+      'Tick what the AI should know, edit anything that isn\'t quite right, then add.';
+
+  @override
+  String kb_review_selected(int n, int total) {
+    return '$n of $total selected';
+  }
+
+  @override
+  String get kb_review_select_all => 'Select all';
+
+  @override
+  String get kb_review_clear => 'Clear';
+
+  @override
+  String get kb_review_edit => 'Edit';
+
+  @override
+  String get kb_review_discard => 'Discard';
+
+  @override
+  String kb_review_add(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'Add $n answers',
+      one: 'Add 1 answer',
+      zero: 'Add answers',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_adding(int done, int total) {
+    return 'Adding $done/$total…';
+  }
+
+  @override
+  String kb_review_added(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n answers added to the knowledge base',
+      one: '1 answer added to the knowledge base',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_added_left(int n, int left) {
+    return '$n added · $left still to review';
+  }
+
+  @override
+  String kb_review_partial(int done, int failed) {
+    return '$done added, $failed couldn\'t be added. Try again.';
+  }
+
+  @override
+  String get kb_review_all_done => 'All answers reviewed';
+
+  @override
+  String get kb_review_all_done_body =>
+      'Nothing left to review from this document.';
+
+  @override
+  String kb_file_failed_named(String f) {
+    return 'Couldn\'t read \"$f\"';
   }
 
   @override

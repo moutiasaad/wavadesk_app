@@ -3153,7 +3153,7 @@
     }
   },
   "kb_processing_long": "جارٍ المعالجة… قد يستغرق دقيقة",
-  "kb_file_ready": "أصبح «{f}» جاهزًا · استخرجنا {n} معلومة",
+  "kb_file_ready": "أصبح «{f}» جاهزًا · {n} إجابة للمراجعة",
   "@kb_file_ready": {
     "placeholders": {
       "f": {
@@ -3392,6 +3392,122 @@
     "placeholders": {
       "n": {
         "type": "int"
+      }
+    }
+  },
+  "kb_step_upload": "تم رفع الملف",
+  "kb_step_read": "قراءة المستند",
+  "kb_step_prepare": "تجهيز الإجابات",
+  "kb_processing_hint": "يستغرق عادةً أقل من دقيقة. يمكنك الإخفاء وسنكمل العمل.",
+  "kb_hide": "إخفاء",
+  "kb_found_answers": "{n, plural, =0{لم نجد إجابات} =1{وجدنا إجابة واحدة} =2{وجدنا إجابتين} few{وجدنا {n} إجابات} other{وجدنا {n} إجابة}}",
+  "@kb_found_answers": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_found_review_hint": "راجعها واختر ما يجب أن يعرفه الذكاء الاصطناعي.",
+  "kb_found_admin_hint": "سيراجعها أحد المشرفين قبل أن يستخدمها الذكاء الاصطناعي.",
+  "kb_review_answers": "مراجعة الإجابات",
+  "kb_later": "لاحقًا",
+  "kb_fail_encrypted_hint": "أزل كلمة المرور ثم ارفعه مجددًا.",
+  "kb_fail_images_hint": "لم نجد نصًا قابلًا للقراءة. جرّب ملف PDF بنص قابل للتحديد أو ملف Word.",
+  "kb_fail_corrupt_hint": "جرّب ملفًا آخر: PDF أو Word أو TXT أو MD حتى 10 ميجابايت.",
+  "kb_fail_no_answers": "لم نجد إجابات",
+  "kb_fail_no_answers_hint": "يبدو أن المستند لا يحتوي على معلومات يسأل عنها العملاء.",
+  "kb_fail_ai": "تعذّرت قراءة الملف حاليًا",
+  "kb_fail_ai_hint": "يرجى المحاولة مرة أخرى بعد دقائق.",
+  "kb_fail_quota": "نفد رصيد الذكاء الاصطناعي",
+  "kb_fail_quota_hint": "اشحن الرصيد أو رقِّ الباقة لقراءة المستندات بالذكاء الاصطناعي.",
+  "kb_fail_network": "لا يوجد اتصال",
+  "kb_fail_network_hint": "تحقق من الإنترنت وحاول مرة أخرى.",
+  "kb_try_another": "اختر ملفًا آخر",
+  "kb_review_title": "مراجعة الإجابات",
+  "kb_review_from": "{n, plural, =1{إجابة واحدة من {file}} =2{إجابتان من {file}} few{{n} إجابات من {file}} other{{n} إجابة من {file}}}",
+  "@kb_review_from": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_review_hint": "حدّد ما يجب أن يعرفه الذكاء الاصطناعي، وعدّل ما يحتاج تعديلًا، ثم أضِف.",
+  "kb_review_selected": "تم تحديد {n} من {total}",
+  "@kb_review_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_select_all": "تحديد الكل",
+  "kb_review_clear": "إلغاء التحديد",
+  "kb_review_edit": "تعديل",
+  "kb_review_discard": "حذف",
+  "kb_review_add": "{n, plural, =0{إضافة الإجابات} =1{إضافة إجابة واحدة} =2{إضافة إجابتين} few{إضافة {n} إجابات} other{إضافة {n} إجابة}}",
+  "@kb_review_add": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_adding": "جارٍ الإضافة {done}/{total}…",
+  "@kb_review_adding": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added": "{n, plural, =1{أُضيفت إجابة واحدة إلى قاعدة المعرفة} other{أُضيفت {n} إجابة إلى قاعدة المعرفة}}",
+  "@kb_review_added": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added_left": "أُضيفت {n} · بقيت {left} للمراجعة",
+  "@kb_review_added_left": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "left": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_partial": "أُضيفت {done}، وتعذّرت إضافة {failed}. حاول مرة أخرى.",
+  "@kb_review_partial": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_all_done": "تمت مراجعة كل الإجابات",
+  "kb_review_all_done_body": "لم يتبقَّ شيء للمراجعة من هذا المستند.",
+  "kb_file_failed_named": "تعذّرت قراءة «{f}»",
+  "@kb_file_failed_named": {
+    "placeholders": {
+      "f": {
+        "type": "String"
       }
     }
   },

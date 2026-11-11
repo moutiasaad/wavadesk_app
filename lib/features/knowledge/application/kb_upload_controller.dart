@@ -22,6 +22,7 @@ class KbUploadJob {
     this.entryId,
     this.facts = 0,
     this.error,
+    this.result,
   });
 
   final String key;
@@ -36,7 +37,11 @@ class KbUploadJob {
   final int facts;
   final Object? error;
 
-  KbUploadJob copyWith({KbUploadPhase? phase, double? progress, String? entryId, int? facts, Object? error}) => KbUploadJob(
+  /// The server's view once processing ended (drafts, error code, rights).
+  final KbFile? result;
+
+  KbUploadJob copyWith({KbUploadPhase? phase, double? progress, String? entryId, int? facts, Object? error, KbFile? result}) =>
+      KbUploadJob(
         key: key,
         file: file,
         phase: phase ?? this.phase,
@@ -44,6 +49,7 @@ class KbUploadJob {
         entryId: entryId ?? this.entryId,
         facts: facts ?? this.facts,
         error: error ?? this.error,
+        result: result ?? this.result,
       );
 }
 
@@ -53,7 +59,8 @@ class KbUploadState {
 
   final Map<String, KbUploadJob> jobs;
 
-  /// Bumped when a file finishes processing; [lastReady] is that job.
+  /// Bumped when a file finishes processing (ready or failed); [lastReady]
+  /// is that job.
   final int readyTick;
   final KbUploadJob? lastReady;
 }
@@ -109,7 +116,6 @@ class KbUploadController extends Notifier<KbUploadState> {
         if (j != null) _put(j.copyWith(progress: p));
       });
       _put(state.jobs[key]!.copyWith(phase: KbUploadPhase.processing, progress: 1, entryId: id));
-      ref.read(knowledgeControllerProvider.notifier).entryCreated();
       _poll(key, id);
     } catch (e) {
       _put(state.jobs[key]!.copyWith(phase: KbUploadPhase.failed, error: e));
@@ -126,8 +132,9 @@ class KbUploadController extends Notifier<KbUploadState> {
         if (j == null) return;
         if (f.status == KbStatus.processing) return _poll(key, id);
         final ok = f.status != KbStatus.failed;
-        final done = j.copyWith(phase: ok ? KbUploadPhase.ready : KbUploadPhase.failed, facts: f.chunks.length);
-        state = KbUploadState(jobs: {...state.jobs, key: done}, readyTick: state.readyTick + (ok ? 1 : 0), lastReady: ok ? done : state.lastReady);
+        final done = j.copyWith(phase: ok ? KbUploadPhase.ready : KbUploadPhase.failed, facts: f.draftsCount, result: f);
+        // readyTick also moves on failure: [lastReady] says which (its phase).
+        state = KbUploadState(jobs: {...state.jobs, key: done}, readyTick: state.readyTick + 1, lastReady: done);
         Analytics.log('kb_file_upload', {'mime': j.file.mime, 'size_bucket': sizeBucket(j.file.sizeBytes), 'result': ok ? 'ready' : 'failed'});
         ref.read(knowledgeControllerProvider.notifier).refresh();
       } catch (_) {

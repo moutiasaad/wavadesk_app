@@ -8623,7 +8623,7 @@ abstract class AppLocalizations {
   /// No description provided for @kb_file_ready.
   ///
   /// In ar, this message translates to:
-  /// **'أصبح «{f}» جاهزًا · استخرجنا {n} معلومة'**
+  /// **'أصبح «{f}» جاهزًا · {n} إجابة للمراجعة'**
   String kb_file_ready(String f, int n);
 
   /// No description provided for @kb_extracted.
@@ -9183,6 +9183,234 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'{n} مرفقات'**
   String kb_media_n(int n);
+
+  /// No description provided for @kb_step_upload.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم رفع الملف'**
+  String get kb_step_upload;
+
+  /// No description provided for @kb_step_read.
+  ///
+  /// In ar, this message translates to:
+  /// **'قراءة المستند'**
+  String get kb_step_read;
+
+  /// No description provided for @kb_step_prepare.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجهيز الإجابات'**
+  String get kb_step_prepare;
+
+  /// No description provided for @kb_processing_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يستغرق عادةً أقل من دقيقة. يمكنك الإخفاء وسنكمل العمل.'**
+  String get kb_processing_hint;
+
+  /// No description provided for @kb_hide.
+  ///
+  /// In ar, this message translates to:
+  /// **'إخفاء'**
+  String get kb_hide;
+
+  /// No description provided for @kb_found_answers.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =0{لم نجد إجابات} =1{وجدنا إجابة واحدة} =2{وجدنا إجابتين} few{وجدنا {n} إجابات} other{وجدنا {n} إجابة}}'**
+  String kb_found_answers(int n);
+
+  /// No description provided for @kb_found_review_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'راجعها واختر ما يجب أن يعرفه الذكاء الاصطناعي.'**
+  String get kb_found_review_hint;
+
+  /// No description provided for @kb_found_admin_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيراجعها أحد المشرفين قبل أن يستخدمها الذكاء الاصطناعي.'**
+  String get kb_found_admin_hint;
+
+  /// No description provided for @kb_review_answers.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراجعة الإجابات'**
+  String get kb_review_answers;
+
+  /// No description provided for @kb_later.
+  ///
+  /// In ar, this message translates to:
+  /// **'لاحقًا'**
+  String get kb_later;
+
+  /// No description provided for @kb_fail_encrypted_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أزل كلمة المرور ثم ارفعه مجددًا.'**
+  String get kb_fail_encrypted_hint;
+
+  /// No description provided for @kb_fail_images_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم نجد نصًا قابلًا للقراءة. جرّب ملف PDF بنص قابل للتحديد أو ملف Word.'**
+  String get kb_fail_images_hint;
+
+  /// No description provided for @kb_fail_corrupt_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرّب ملفًا آخر: PDF أو Word أو TXT أو MD حتى 10 ميجابايت.'**
+  String get kb_fail_corrupt_hint;
+
+  /// No description provided for @kb_fail_no_answers.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم نجد إجابات'**
+  String get kb_fail_no_answers;
+
+  /// No description provided for @kb_fail_no_answers_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يبدو أن المستند لا يحتوي على معلومات يسأل عنها العملاء.'**
+  String get kb_fail_no_answers_hint;
+
+  /// No description provided for @kb_fail_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّرت قراءة الملف حاليًا'**
+  String get kb_fail_ai;
+
+  /// No description provided for @kb_fail_ai_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يرجى المحاولة مرة أخرى بعد دقائق.'**
+  String get kb_fail_ai_hint;
+
+  /// No description provided for @kb_fail_quota.
+  ///
+  /// In ar, this message translates to:
+  /// **'نفد رصيد الذكاء الاصطناعي'**
+  String get kb_fail_quota;
+
+  /// No description provided for @kb_fail_quota_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'اشحن الرصيد أو رقِّ الباقة لقراءة المستندات بالذكاء الاصطناعي.'**
+  String get kb_fail_quota_hint;
+
+  /// No description provided for @kb_fail_network.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد اتصال'**
+  String get kb_fail_network;
+
+  /// No description provided for @kb_fail_network_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقق من الإنترنت وحاول مرة أخرى.'**
+  String get kb_fail_network_hint;
+
+  /// No description provided for @kb_try_another.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر ملفًا آخر'**
+  String get kb_try_another;
+
+  /// No description provided for @kb_review_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'مراجعة الإجابات'**
+  String get kb_review_title;
+
+  /// No description provided for @kb_review_from.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{إجابة واحدة من {file}} =2{إجابتان من {file}} few{{n} إجابات من {file}} other{{n} إجابة من {file}}}'**
+  String kb_review_from(int n, String file);
+
+  /// No description provided for @kb_review_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'حدّد ما يجب أن يعرفه الذكاء الاصطناعي، وعدّل ما يحتاج تعديلًا، ثم أضِف.'**
+  String get kb_review_hint;
+
+  /// No description provided for @kb_review_selected.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تحديد {n} من {total}'**
+  String kb_review_selected(int n, int total);
+
+  /// No description provided for @kb_review_select_all.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحديد الكل'**
+  String get kb_review_select_all;
+
+  /// No description provided for @kb_review_clear.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء التحديد'**
+  String get kb_review_clear;
+
+  /// No description provided for @kb_review_edit.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل'**
+  String get kb_review_edit;
+
+  /// No description provided for @kb_review_discard.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف'**
+  String get kb_review_discard;
+
+  /// No description provided for @kb_review_add.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =0{إضافة الإجابات} =1{إضافة إجابة واحدة} =2{إضافة إجابتين} few{إضافة {n} إجابات} other{إضافة {n} إجابة}}'**
+  String kb_review_add(int n);
+
+  /// No description provided for @kb_review_adding.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ الإضافة {done}/{total}…'**
+  String kb_review_adding(int done, int total);
+
+  /// No description provided for @kb_review_added.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{أُضيفت إجابة واحدة إلى قاعدة المعرفة} other{أُضيفت {n} إجابة إلى قاعدة المعرفة}}'**
+  String kb_review_added(int n);
+
+  /// No description provided for @kb_review_added_left.
+  ///
+  /// In ar, this message translates to:
+  /// **'أُضيفت {n} · بقيت {left} للمراجعة'**
+  String kb_review_added_left(int n, int left);
+
+  /// No description provided for @kb_review_partial.
+  ///
+  /// In ar, this message translates to:
+  /// **'أُضيفت {done}، وتعذّرت إضافة {failed}. حاول مرة أخرى.'**
+  String kb_review_partial(int done, int failed);
+
+  /// No description provided for @kb_review_all_done.
+  ///
+  /// In ar, this message translates to:
+  /// **'تمت مراجعة كل الإجابات'**
+  String get kb_review_all_done;
+
+  /// No description provided for @kb_review_all_done_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتبقَّ شيء للمراجعة من هذا المستند.'**
+  String get kb_review_all_done_body;
+
+  /// No description provided for @kb_file_failed_named.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّرت قراءة «{f}»'**
+  String kb_file_failed_named(String f);
 
   /// No description provided for @ntf_title.
   ///

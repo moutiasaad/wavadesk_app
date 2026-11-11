@@ -3153,7 +3153,7 @@
     }
   },
   "kb_processing_long": "Processing… may take a minute",
-  "kb_file_ready": "\"{f}\" is ready · {n} facts extracted",
+  "kb_file_ready": "\"{f}\" is ready · {n} answers to review",
   "@kb_file_ready": {
     "placeholders": {
       "f": {
@@ -3392,6 +3392,122 @@
     "placeholders": {
       "n": {
         "type": "int"
+      }
+    }
+  },
+  "kb_step_upload": "File uploaded",
+  "kb_step_read": "Reading the document",
+  "kb_step_prepare": "Preparing answers",
+  "kb_processing_hint": "Usually under a minute. You can hide this — we'll keep working.",
+  "kb_hide": "Hide",
+  "kb_found_answers": "{n, plural, =0{No answers found} =1{We found 1 answer} other{We found {n} answers}}",
+  "@kb_found_answers": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_found_review_hint": "Review them and choose what the AI should know.",
+  "kb_found_admin_hint": "An admin will review them before the AI uses them.",
+  "kb_review_answers": "Review answers",
+  "kb_later": "Later",
+  "kb_fail_encrypted_hint": "Remove the password and upload it again.",
+  "kb_fail_images_hint": "We couldn't find readable text. Try a PDF with selectable text or a Word file.",
+  "kb_fail_corrupt_hint": "Try another file: PDF, Word, TXT or MD, up to 10 MB.",
+  "kb_fail_no_answers": "No answers found",
+  "kb_fail_no_answers_hint": "The document doesn't seem to have information customers ask about.",
+  "kb_fail_ai": "Couldn't read the file right now",
+  "kb_fail_ai_hint": "Please try again in a few minutes.",
+  "kb_fail_quota": "AI allowance used up",
+  "kb_fail_quota_hint": "Top up or upgrade your plan to read documents with AI.",
+  "kb_fail_network": "No connection",
+  "kb_fail_network_hint": "Check your internet and try again.",
+  "kb_try_another": "Choose another file",
+  "kb_review_title": "Review answers",
+  "kb_review_from": "{n, plural, =1{1 answer from {file}} other{{n} answers from {file}}}",
+  "@kb_review_from": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_review_hint": "Tick what the AI should know, edit anything that isn't quite right, then add.",
+  "kb_review_selected": "{n} of {total} selected",
+  "@kb_review_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_select_all": "Select all",
+  "kb_review_clear": "Clear",
+  "kb_review_edit": "Edit",
+  "kb_review_discard": "Discard",
+  "kb_review_add": "{n, plural, =0{Add answers} =1{Add 1 answer} other{Add {n} answers}}",
+  "@kb_review_add": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_adding": "Adding {done}/{total}…",
+  "@kb_review_adding": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added": "{n, plural, =1{1 answer added to the knowledge base} other{{n} answers added to the knowledge base}}",
+  "@kb_review_added": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added_left": "{n} added · {left} still to review",
+  "@kb_review_added_left": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "left": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_partial": "{done} added, {failed} couldn't be added. Try again.",
+  "@kb_review_partial": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_all_done": "All answers reviewed",
+  "kb_review_all_done_body": "Nothing left to review from this document.",
+  "kb_file_failed_named": "Couldn't read \"{f}\"",
+  "@kb_file_failed_named": {
+    "placeholders": {
+      "f": {
+        "type": "String"
       }
     }
   },

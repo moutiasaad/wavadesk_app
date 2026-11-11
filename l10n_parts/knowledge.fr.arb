@@ -156,7 +156,7 @@
     }
   },
   "kb_processing_long": "Traitement en cours… cela peut prendre une minute",
-  "kb_file_ready": "« {f} » est prêt · {n} informations extraites",
+  "kb_file_ready": "« {f} » est prêt · {n} réponses à vérifier",
   "@kb_file_ready": {
     "placeholders": {
       "f": {
@@ -395,6 +395,122 @@
     "placeholders": {
       "n": {
         "type": "int"
+      }
+    }
+  },
+  "kb_step_upload": "Fichier envoyé",
+  "kb_step_read": "Lecture du document",
+  "kb_step_prepare": "Préparation des réponses",
+  "kb_processing_hint": "En général moins d’une minute. Vous pouvez masquer cette fenêtre, nous continuons.",
+  "kb_hide": "Masquer",
+  "kb_found_answers": "{n, plural, =0{Aucune réponse trouvée} =1{Nous avons trouvé 1 réponse} other{Nous avons trouvé {n} réponses}}",
+  "@kb_found_answers": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_found_review_hint": "Vérifiez-les et choisissez ce que l’IA doit savoir.",
+  "kb_found_admin_hint": "Un administrateur les vérifiera avant que l’IA ne les utilise.",
+  "kb_review_answers": "Vérifier les réponses",
+  "kb_later": "Plus tard",
+  "kb_fail_encrypted_hint": "Retirez le mot de passe et envoyez-le à nouveau.",
+  "kb_fail_images_hint": "Aucun texte lisible trouvé. Essayez un PDF avec du texte sélectionnable ou un fichier Word.",
+  "kb_fail_corrupt_hint": "Essayez un autre fichier : PDF, Word, TXT ou MD, 10 Mo maximum.",
+  "kb_fail_no_answers": "Aucune réponse trouvée",
+  "kb_fail_no_answers_hint": "Le document ne semble pas contenir d’informations demandées par les clients.",
+  "kb_fail_ai": "Impossible de lire le fichier pour le moment",
+  "kb_fail_ai_hint": "Veuillez réessayer dans quelques minutes.",
+  "kb_fail_quota": "Quota IA épuisé",
+  "kb_fail_quota_hint": "Rechargez ou changez d’offre pour lire des documents avec l’IA.",
+  "kb_fail_network": "Pas de connexion",
+  "kb_fail_network_hint": "Vérifiez votre connexion et réessayez.",
+  "kb_try_another": "Choisir un autre fichier",
+  "kb_review_title": "Vérifier les réponses",
+  "kb_review_from": "{n, plural, =1{1 réponse issue de {file}} other{{n} réponses issues de {file}}}",
+  "@kb_review_from": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "file": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_review_hint": "Cochez ce que l’IA doit savoir, corrigez si besoin, puis ajoutez.",
+  "kb_review_selected": "{n} sur {total} sélectionnées",
+  "@kb_review_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_select_all": "Tout sélectionner",
+  "kb_review_clear": "Tout désélectionner",
+  "kb_review_edit": "Modifier",
+  "kb_review_discard": "Supprimer",
+  "kb_review_add": "{n, plural, =0{Ajouter les réponses} =1{Ajouter 1 réponse} other{Ajouter {n} réponses}}",
+  "@kb_review_add": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_adding": "Ajout {done}/{total}…",
+  "@kb_review_adding": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added": "{n, plural, =1{1 réponse ajoutée à la base de connaissances} other{{n} réponses ajoutées à la base de connaissances}}",
+  "@kb_review_added": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_added_left": "{n} ajoutées · {left} restent à vérifier",
+  "@kb_review_added_left": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "left": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_partial": "{done} ajoutées, {failed} n’ont pas pu l’être. Réessayez.",
+  "@kb_review_partial": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "failed": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_review_all_done": "Toutes les réponses ont été vérifiées",
+  "kb_review_all_done_body": "Plus rien à vérifier pour ce document.",
+  "kb_file_failed_named": "Impossible de lire « {f} »",
+  "@kb_file_failed_named": {
+    "placeholders": {
+      "f": {
+        "type": "String"
       }
     }
   }

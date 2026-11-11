@@ -34,6 +34,7 @@ import '../../features/conversations/presentation/conversations_screen.dart';
 import '../../features/dashboard/presentation/dashboard_screen.dart';
 import '../../features/knowledge/presentation/editor/kb_answer_editor_screen.dart';
 import '../../features/knowledge/presentation/detail/kb_qa_detail_screen.dart';
+import '../../features/knowledge/presentation/files/kb_document_review_screen.dart';
 import '../../features/knowledge/presentation/files/kb_file_detail_screen.dart';
 import '../../features/knowledge/presentation/knowledge_screen.dart';
 import '../../features/knowledge/presentation/links/kb_link_detail_screen.dart';
@@ -66,6 +67,8 @@ abstract final class Routes {
   static const knowledgeUnanswered = '/knowledge/unanswered';
   static String knowledgeDetail(String id) => '/knowledge/${Uri.encodeComponent(id)}';
   static String knowledgeFile(String id) => '/knowledge/files/${Uri.encodeComponent(id)}';
+  /// Review the answers the AI drafted from an uploaded document.
+  static String knowledgeFileReview(String id) => '/knowledge/files/${Uri.encodeComponent(id)}/review';
   static String knowledgeLink(String id) => '/knowledge/links/${Uri.encodeComponent(id)}';
   /// AI agent settings (AI Agent spec §2) and its sub-screens.
   static const aiAgent = '/settings/ai-agent';
@@ -306,6 +309,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       // Knowledge Base sub-screens. Kept last so '/knowledge/new' and the
       // fixed segments win over '/knowledge/:id'.
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.knowledgeUnanswered, builder: (_, _) => const KbUnansweredScreen()),
+      GoRoute(
+        parentNavigatorKey: _rootKey,
+        path: '/knowledge/files/:id/review',
+        builder: (_, s) => KbDocumentReviewScreen(id: s.pathParameters['id']!),
+      ),
       GoRoute(
         parentNavigatorKey: _rootKey,
         path: '/knowledge/files/:id',

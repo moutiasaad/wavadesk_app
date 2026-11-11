@@ -5003,7 +5003,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String kb_file_ready(String f, int n) {
-    return 'أصبح «$f» جاهزًا · استخرجنا $n معلومة';
+    return 'أصبح «$f» جاهزًا · $n إجابة للمراجعة';
   }
 
   @override
@@ -5363,6 +5363,179 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String kb_media_n(int n) {
     return '$n مرفقات';
+  }
+
+  @override
+  String get kb_step_upload => 'تم رفع الملف';
+
+  @override
+  String get kb_step_read => 'قراءة المستند';
+
+  @override
+  String get kb_step_prepare => 'تجهيز الإجابات';
+
+  @override
+  String get kb_processing_hint =>
+      'يستغرق عادةً أقل من دقيقة. يمكنك الإخفاء وسنكمل العمل.';
+
+  @override
+  String get kb_hide => 'إخفاء';
+
+  @override
+  String kb_found_answers(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'وجدنا $n إجابة',
+      few: 'وجدنا $n إجابات',
+      two: 'وجدنا إجابتين',
+      one: 'وجدنا إجابة واحدة',
+      zero: 'لم نجد إجابات',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_found_review_hint =>
+      'راجعها واختر ما يجب أن يعرفه الذكاء الاصطناعي.';
+
+  @override
+  String get kb_found_admin_hint =>
+      'سيراجعها أحد المشرفين قبل أن يستخدمها الذكاء الاصطناعي.';
+
+  @override
+  String get kb_review_answers => 'مراجعة الإجابات';
+
+  @override
+  String get kb_later => 'لاحقًا';
+
+  @override
+  String get kb_fail_encrypted_hint => 'أزل كلمة المرور ثم ارفعه مجددًا.';
+
+  @override
+  String get kb_fail_images_hint =>
+      'لم نجد نصًا قابلًا للقراءة. جرّب ملف PDF بنص قابل للتحديد أو ملف Word.';
+
+  @override
+  String get kb_fail_corrupt_hint =>
+      'جرّب ملفًا آخر: PDF أو Word أو TXT أو MD حتى 10 ميجابايت.';
+
+  @override
+  String get kb_fail_no_answers => 'لم نجد إجابات';
+
+  @override
+  String get kb_fail_no_answers_hint =>
+      'يبدو أن المستند لا يحتوي على معلومات يسأل عنها العملاء.';
+
+  @override
+  String get kb_fail_ai => 'تعذّرت قراءة الملف حاليًا';
+
+  @override
+  String get kb_fail_ai_hint => 'يرجى المحاولة مرة أخرى بعد دقائق.';
+
+  @override
+  String get kb_fail_quota => 'نفد رصيد الذكاء الاصطناعي';
+
+  @override
+  String get kb_fail_quota_hint =>
+      'اشحن الرصيد أو رقِّ الباقة لقراءة المستندات بالذكاء الاصطناعي.';
+
+  @override
+  String get kb_fail_network => 'لا يوجد اتصال';
+
+  @override
+  String get kb_fail_network_hint => 'تحقق من الإنترنت وحاول مرة أخرى.';
+
+  @override
+  String get kb_try_another => 'اختر ملفًا آخر';
+
+  @override
+  String get kb_review_title => 'مراجعة الإجابات';
+
+  @override
+  String kb_review_from(int n, String file) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n إجابة من $file',
+      few: '$n إجابات من $file',
+      two: 'إجابتان من $file',
+      one: 'إجابة واحدة من $file',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get kb_review_hint =>
+      'حدّد ما يجب أن يعرفه الذكاء الاصطناعي، وعدّل ما يحتاج تعديلًا، ثم أضِف.';
+
+  @override
+  String kb_review_selected(int n, int total) {
+    return 'تم تحديد $n من $total';
+  }
+
+  @override
+  String get kb_review_select_all => 'تحديد الكل';
+
+  @override
+  String get kb_review_clear => 'إلغاء التحديد';
+
+  @override
+  String get kb_review_edit => 'تعديل';
+
+  @override
+  String get kb_review_discard => 'حذف';
+
+  @override
+  String kb_review_add(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'إضافة $n إجابة',
+      few: 'إضافة $n إجابات',
+      two: 'إضافة إجابتين',
+      one: 'إضافة إجابة واحدة',
+      zero: 'إضافة الإجابات',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_adding(int done, int total) {
+    return 'جارٍ الإضافة $done/$total…';
+  }
+
+  @override
+  String kb_review_added(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'أُضيفت $n إجابة إلى قاعدة المعرفة',
+      one: 'أُضيفت إجابة واحدة إلى قاعدة المعرفة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String kb_review_added_left(int n, int left) {
+    return 'أُضيفت $n · بقيت $left للمراجعة';
+  }
+
+  @override
+  String kb_review_partial(int done, int failed) {
+    return 'أُضيفت $done، وتعذّرت إضافة $failed. حاول مرة أخرى.';
+  }
+
+  @override
+  String get kb_review_all_done => 'تمت مراجعة كل الإجابات';
+
+  @override
+  String get kb_review_all_done_body =>
+      'لم يتبقَّ شيء للمراجعة من هذا المستند.';
+
+  @override
+  String kb_file_failed_named(String f) {
+    return 'تعذّرت قراءة «$f»';
   }
 
   @override

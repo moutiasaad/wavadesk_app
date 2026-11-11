@@ -587,12 +587,20 @@ class KbUnanswered {
 enum KbFileError {
   encrypted,
   imagesOnly,
-  corrupt;
+  corrupt,
+
+  /// The AI read the document but found nothing a customer would ask.
+  noAnswers,
+
+  /// The AI could not be reached; trying again later may work.
+  aiUnavailable;
 
   static KbFileError? parse(Object? v) => switch (v) {
         'encrypted' => encrypted,
         'images_only' => imagesOnly,
         'corrupt' => corrupt,
+        'no_answers' => noAnswers,
+        'ai_unavailable' => aiUnavailable,
         _ => null,
       };
 }
@@ -624,6 +632,8 @@ class KbFile {
     this.downloadUrl,
     this.uploadedBy,
     this.uploadedAt,
+    this.draftsCount = 0,
+    this.canApprove = false,
   });
 
   factory KbFile.fromJson(Map<String, dynamic> j) => KbFile(
@@ -639,6 +649,8 @@ class KbFile {
         downloadUrl: j['download_url'] as String?,
         uploadedBy: KbPerson.fromJson(j['uploaded_by']),
         uploadedAt: _date(j['uploaded_at'] ?? j['created_at']),
+        draftsCount: _int(j['drafts_count']),
+        canApprove: j['can_approve'] == true,
       );
 
   final String id;
@@ -653,6 +665,13 @@ class KbFile {
   final String? downloadUrl;
   final KbPerson? uploadedBy;
   final DateTime? uploadedAt;
+
+  /// Answers the AI drafted from this document (all of them; [chunks] are
+  /// the ones still waiting for review).
+  final int draftsCount;
+
+  /// The viewer may publish drafts (admins); others' drafts wait for one.
+  final bool canApprove;
 }
 
 enum KbRefresh {
