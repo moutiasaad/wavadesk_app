@@ -6,8 +6,9 @@ import '../../../../core/widgets/widgets.dart';
 import '../../domain/contact.dart';
 import 'profile_hero.dart';
 
-/// Pinned mini-header (§3): appears once the hero scrolls out. 56dp,
-/// `surfaceElevated`, bottom border; avatar 28 + name + "فتح كصفحة" + ✕ 36.
+/// Pinned mini-header (§3): appears once the hero scrolls out. Brand
+/// surface (BrandHeader, no status-bar padding: it lives in the sheet);
+/// avatar 28 + white name + "فتح كصفحة" + ✕ 36.
 class ProfilePinnedHeader extends StatelessWidget {
   const ProfilePinnedHeader({super.key, required this.contact, required this.onClose, this.onOpenPage});
 
@@ -17,21 +18,27 @@ class ProfilePinnedHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
     final l = context.l10n;
     final name = profileDisplayName(contact, l);
-    return Container(
-      constraints: const BoxConstraints(minHeight: 56),
-      padding: const EdgeInsetsDirectional.only(start: 18, end: AppSpacing.sm),
-      decoration: BoxDecoration(
-        color: c.surfaceElevated,
-        border: Border(bottom: BorderSide(color: c.divider)),
-      ),
-      child: Row(
+    return BrandHeader(
+      safeTop: false,
+      elevated: true,
+      padding: const EdgeInsetsDirectional.fromSTEB(18, AppSpacing.sm, AppSpacing.sm, AppSpacing.sm),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 44),
+        child: Row(
         children: [
-          AppAvatar(name: name, id: contact.id, imageUrl: contact.avatarUrl, size: AppAvatarSize.sm, ringColor: c.surfaceElevated),
+          AppAvatar(
+            name: name,
+            id: contact.id,
+            imageUrl: contact.avatarUrl,
+            size: AppAvatarSize.sm,
+            ringColor: BrandHeader.colorsOf(context).first,
+          ),
           const SizedBox(width: 10),
-          Expanded(child: Text(name, style: context.text.h5, maxLines: 1, overflow: TextOverflow.ellipsis)),
+          Expanded(
+            child: Text(name, style: context.text.h5.copyWith(color: Colors.white), maxLines: 1, overflow: TextOverflow.ellipsis),
+          ),
           if (onOpenPage != null)
             AppIconButton(
               icon: AppIcons.maximize,
@@ -49,6 +56,7 @@ class ProfilePinnedHeader extends StatelessWidget {
             onPressed: onClose,
           ),
         ],
+      ),
       ),
     );
   }

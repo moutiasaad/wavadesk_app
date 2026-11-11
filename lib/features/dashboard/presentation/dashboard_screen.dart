@@ -158,8 +158,9 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         // The shell draws the tab bar over the page (extendBody): clear it.
         padding: EdgeInsets.only(bottom: tabBarInset(context) + AppSpacing.xxl),
         children: [
-          if (state.offline) ConnectionBanner(state: NetworkState.offline),
+          // The brand header first: it paints under the status bar.
           DashboardHeader(state: state),
+          if (state.offline) ConnectionBanner(state: NetworkState.offline),
           ScopeRangeBar(state: state),
           Center(
             child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 1100), child: body),
@@ -177,6 +178,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       child: Scaffold(
         backgroundColor: c.backgroundMuted,
         body: SafeArea(
+          top: false,
           bottom: false,
           child: Stack(
             children: [
@@ -187,14 +189,12 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                 child: AnimatedOpacity(
                   opacity: _compact ? 1 : 0,
                   duration: reduced ? Duration.zero : AppMotion.fast,
-                  child: Container(
-                    height: 48,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: c.backgroundMuted,
-                      border: Border(bottom: BorderSide(color: c.divider)),
+                  child: BrandHeader(
+                    elevated: true,
+                    padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
+                    child: Center(
+                      child: Text(l.dash_title, style: t.h6.copyWith(fontWeight: FontWeight.w800, color: Colors.white)),
                     ),
-                    child: Text(l.dash_title, style: t.h6.copyWith(fontWeight: FontWeight.w800)),
                   ),
                 ),
               ),

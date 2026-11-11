@@ -81,21 +81,13 @@ class _AiTestChatScreenState extends ConsumerState<AiTestChatScreen> {
 
     return Scaffold(
       backgroundColor: c.chatBackground,
-      appBar: AppBar(
-        backgroundColor: c.background,
-        surfaceTintColor: Colors.transparent,
-        titleSpacing: 0,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(l.ai_test_title, style: t.h5),
-            Text(l.ai_test_sub, style: t.caption.copyWith(color: c.textSecondary)),
-          ],
-        ),
+      appBar: AppBarStandard(
+        title: l.ai_test_title,
+        subtitle: l.ai_test_sub,
         actions: [
           PopupMenuButton<String>(
             tooltip: l.common_more,
-            icon: AppIcon(AppIcons.more, color: c.textPrimary),
+            icon: const AppIcon(AppIcons.more, color: Colors.white),
             onSelected: (v) => v == 'reset' ? ctrl.reset() : _pickChannel(),
             itemBuilder: (_) => [
               PopupMenuItem(value: 'reset', child: Text(l.ai_test_reset)),

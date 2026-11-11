@@ -5,14 +5,16 @@ import 'package:intl/intl.dart' as intl;
 import '../../../../core/data/data.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
+import '../../../../core/widgets/widgets.dart';
 import '../../../conversations/application/relative_time_ticker.dart';
 import '../../application/dashboard_controller.dart';
 import '../../domain/greeting.dart';
 import 'presence_pill.dart';
 
-/// Date + greeting + presence pill (spec §4.1); renders from local user
-/// data before the first answer. Under it: "آخر تحديث" for cached /
-/// offline snapshots (§6).
+/// Date + greeting + presence pill (spec §4.1) on the brand surface
+/// (BrandHeader, from the top of the screen); renders from local user data
+/// before the first answer. Under it: "آخر تحديث" for cached / offline
+/// snapshots (§6).
 class DashboardHeader extends ConsumerWidget {
   const DashboardHeader({super.key, required this.state});
 
@@ -20,7 +22,6 @@ class DashboardHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final c = context.colors;
     final t = context.text;
     final l = context.l10n;
     final me = ref.watch(currentAgentProvider);
@@ -35,8 +36,8 @@ class DashboardHeader extends ConsumerWidget {
     final showUpdated = (state.fromCache || state.offline) && state.lastUpdated != null;
     final updated = state.lastUpdated == null ? '' : intl.DateFormat('HH:mm').format(state.lastUpdated!);
 
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 4, 18, 6),
+    return BrandHeader(
+      padding: const EdgeInsetsDirectional.fromSTEB(18, AppSpacing.sm, 18, AppSpacing.lg),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -44,13 +45,13 @@ class DashboardHeader extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(date, style: t.caption.copyWith(fontSize: 13, fontWeight: FontWeight.w600, color: c.textSecondary)),
+                Text(date, style: t.caption.copyWith(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white.withValues(alpha: 0.8))),
                 const SizedBox(height: 2),
                 Semantics(
                   header: true,
                   child: Text(
                     greeting,
-                    style: t.h2.copyWith(fontSize: 24, fontWeight: FontWeight.w800, color: c.textPrimary),
+                    style: t.h2.copyWith(fontSize: 24, fontWeight: FontWeight.w800, color: Colors.white),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -60,7 +61,10 @@ class DashboardHeader extends ConsumerWidget {
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       l.dash_last_updated(updated),
-                      style: t.caption.copyWith(color: state.offline ? c.textWarning : c.textTertiary),
+                      // Light amber reads on the teal header.
+                      style: t.caption.copyWith(
+                        color: state.offline ? const Color(0xFFFFE08A) : Colors.white.withValues(alpha: 0.7),
+                      ),
                     ),
                   ),
               ],

@@ -4,8 +4,9 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 
-/// Focused field (46, radius 14, `surface`, 1.5 `primary` + 4dp ring) +
-/// clear ⊗ 22 + "إلغاء" (Search spec §4.1). Hero tag `search-field`.
+/// On the brand header: a light pill field (46, radius 14, `surface`, white
+/// ring when focused) + clear ⊗ 22 + white "إلغاء" (Search spec §4.1). Hero
+/// tag `search-field`.
 class SearchHeader extends StatefulWidget {
   const SearchHeader({
     super.key,
@@ -77,8 +78,8 @@ class _SearchHeaderState extends State<SearchHeader> {
         decoration: BoxDecoration(
           color: c.surface,
           borderRadius: BorderRadius.circular(AppRadius.lg),
-          border: Border.all(color: focused ? c.primary : c.border, width: 1.5),
-          boxShadow: focused ? [BoxShadow(color: c.primaryContainer, spreadRadius: 4)] : null,
+          border: Border.all(color: focused ? c.primary : Colors.transparent, width: 1.5),
+          boxShadow: focused ? [BoxShadow(color: Colors.white.withValues(alpha: 0.35), spreadRadius: 3)] : null,
         ),
         padding: const EdgeInsetsDirectional.only(start: 12, end: 6),
         child: Row(
@@ -123,23 +124,27 @@ class _SearchHeaderState extends State<SearchHeader> {
       ),
     );
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.screenH, vertical: AppSpacing.xs),
-      child: Row(
-        children: [
-          Expanded(
-            child: AppMotion.reduced(context) ? field : Hero(tag: SearchHeader.heroTag, child: field),
-          ),
-          const SizedBox(width: 10),
-          AppButton(
-            label: l.search_cancel,
-            variant: AppButtonVariant.text,
-            size: AppButtonSize.medium,
-            horizontalPadding: AppSpacing.xs,
-            textStyle: t.buttonMedium,
-            onPressed: widget.onCancel,
-          ),
-        ],
+    return _StatusBarBleed(
+      child: BrandHeader(
+        padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.screenH, AppSpacing.sm, AppSpacing.sm, AppSpacing.md),
+        child: Row(
+          children: [
+            Expanded(
+              child: AppMotion.reduced(context) ? field : Hero(tag: SearchHeader.heroTag, child: field),
+            ),
+            const SizedBox(width: AppSpacing.xs),
+            TextButton(
+              onPressed: widget.onCancel,
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                textStyle: t.buttonMedium,
+                minimumSize: const Size(48, 48),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+              ),
+              child: Text(l.search_cancel),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -174,6 +179,44 @@ class _ClearButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// The screen puts this header inside a top SafeArea, so the status-bar
+/// strip above it would keep the page color: paint the brand gradient there
+/// too (outside the header's own bounds; nothing else is drawn there).
+class _StatusBarBleed extends StatelessWidget {
+  const _StatusBarBleed({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = MediaQuery.viewPaddingOf(context).top;
+    // Not under a SafeArea (BrandHeader pads itself) or no status bar.
+    if (inset == 0 || MediaQuery.paddingOf(context).top > 0) return child;
+    final colors = BrandHeader.colorsOf(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          top: -inset,
+          left: 0,
+          right: 0,
+          height: inset + 24,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.centerStart,
+                end: AlignmentDirectional.centerEnd,
+                colors: [colors.first, Color.lerp(colors.first, colors.last, 0.5)!],
+              ),
+            ),
+          ),
+        ),
+        child,
+      ],
     );
   }
 }

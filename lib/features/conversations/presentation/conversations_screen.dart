@@ -368,6 +368,8 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
       onExitSelection: ctrl.clearSelection,
       onSelectAll: ctrl.selectAll,
       textScale: scale,
+      // The brand header paints under the status bar (no top SafeArea).
+      topInset: MediaQuery.paddingOf(context).top,
     );
 
     Widget disabledWhileSelecting(Widget child) => IgnorePointer(
@@ -520,6 +522,7 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
       child: Scaffold(
         backgroundColor: c.background,
         body: SafeArea(
+          top: false,
           bottom: false,
           child: Stack(
             children: [

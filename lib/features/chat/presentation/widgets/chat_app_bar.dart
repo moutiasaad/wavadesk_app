@@ -10,8 +10,9 @@ import '../../../../core/widgets/widgets.dart';
 import '../../../conversations/domain/relative_time_formatter.dart';
 import '../../domain/conversation_detail.dart';
 
-/// Chat header (Chat spec §4.1). Min height 64, grows with text scale;
-/// placed in a Column (not a PreferredSizeWidget).
+/// Chat header (Chat spec §4.1) on the brand header: white name, light
+/// presence line, white actions. Min height 56 + rounded bottom, grows with
+/// text scale; placed in a Column (not a PreferredSizeWidget).
 class ChatAppBar extends ConsumerWidget {
   const ChatAppBar({
     super.key,
@@ -49,7 +50,11 @@ class ChatAppBar extends ConsumerWidget {
     Widget? subline;
     if (!largeText) {
       if (conv.customerTyping) {
-        subline = Text(l.chat_typing, style: t.caption.copyWith(color: c.primary), maxLines: 1);
+        subline = Text(
+          l.chat_typing,
+          style: t.caption.copyWith(color: Colors.white, fontWeight: FontWeight.w700),
+          maxLines: 1,
+        );
       } else {
         final presence = conv.browsingPage != null
             ? l.chatbar_browsing(conv.browsingPage!)
@@ -64,14 +69,18 @@ class ChatAppBar extends ConsumerWidget {
               Container(
                 width: 7,
                 height: 7,
-                decoration: BoxDecoration(color: c.presenceOnline, shape: BoxShape.circle),
+                decoration: BoxDecoration(
+                  color: c.presenceOnline,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Colors.white, width: 1),
+                ),
               ),
               const SizedBox(width: 5),
             ],
             Flexible(
               child: Text(
                 presence == null ? detail.channel.label(l) : '${detail.channel.label(l)} · $presence',
-                style: t.caption.copyWith(color: c.textSecondary),
+                style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -81,15 +90,12 @@ class ChatAppBar extends ConsumerWidget {
       }
     }
 
-    return Material(
-      color: c.background,
-      child: Container(
-        constraints: const BoxConstraints(minHeight: 64),
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: c.divider)),
-        ),
-        padding: const EdgeInsetsDirectional.only(start: AppSpacing.xs, end: AppSpacing.xs),
-        child: Row(
+    return _StatusBarBleed(
+      child: BrandHeader(
+        padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.xs, AppSpacing.xxs, AppSpacing.xs, AppSpacing.sm),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 56),
+          child: Row(
           children: [
             if (showBack) ...[
               AppIconButton(
@@ -122,6 +128,7 @@ class ChatAppBar extends ConsumerWidget {
                           imageUrl: contact.avatarUrl,
                           channel: detail.channel,
                           size: AppAvatarSize.md,
+                          ringColor: BrandHeader.colorsOf(context).first,
                         ),
                         const SizedBox(width: 10),
                         Expanded(
@@ -129,7 +136,12 @@ class ChatAppBar extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(contact.name, style: t.h5, maxLines: 1, overflow: TextOverflow.ellipsis),
+                              Text(
+                                contact.name,
+                                style: t.h5.copyWith(color: Colors.white),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                               ?subline,
                             ],
                           ),
@@ -148,6 +160,7 @@ class ChatAppBar extends ConsumerWidget {
               ),
             AppIconButton(icon: AppIcons.more, semanticLabel: l.chatbar_more, onPressed: onMore),
           ],
+        ),
         ),
       ),
     );
@@ -182,5 +195,43 @@ class ChatAppBar extends ConsumerWidget {
     } catch (_) {
       if (context.mounted) AppSnackbar.show(context, message: l.chatbar_call_failed, kind: SnackKind.error);
     }
+  }
+}
+
+/// The screen puts this header inside a top SafeArea, so the status-bar
+/// strip above it would keep the page color: paint the brand gradient there
+/// too (outside the header's own bounds; nothing else is drawn there).
+class _StatusBarBleed extends StatelessWidget {
+  const _StatusBarBleed({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = MediaQuery.viewPaddingOf(context).top;
+    // Not under a SafeArea (BrandHeader pads itself) or no status bar.
+    if (inset == 0 || MediaQuery.paddingOf(context).top > 0) return child;
+    final colors = BrandHeader.colorsOf(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          top: -inset,
+          left: 0,
+          right: 0,
+          height: inset + 24,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.centerStart,
+                end: AlignmentDirectional.centerEnd,
+                colors: [colors.first, Color.lerp(colors.first, colors.last, 0.5)!],
+              ),
+            ),
+          ),
+        ),
+        child,
+      ],
+    );
   }
 }

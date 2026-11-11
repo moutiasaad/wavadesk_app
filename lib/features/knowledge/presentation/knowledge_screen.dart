@@ -222,24 +222,26 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
       Analytics.log('kb_view', {'total': s.counts.total, 'unanswered': s.unansweredCount, 'role': agent.role.name});
     }
 
-    final header = SliverPersistentHeader(
-      pinned: true,
-      delegate: _KbAppBarDelegate(
-        title: l.kb_title,
-        textScale: scale,
-        background: c.backgroundMuted,
-        actions: [
-          if (perms.canEdit)
-            AppIconButton(
-              icon: AppIcons.add,
-              variant: AppIconButtonVariant.primary,
-              size: 40,
-              iconSize: 20,
-              semanticLabel: l.kb_add_title,
-              onPressed: _add,
-            ),
-          PopupMenuButton<_Overflow>(
-            icon: AppIcon(AppIcons.more, color: c.textPrimary),
+    final kbHeader = _KbAppBarDelegate(
+      title: l.kb_title,
+      textScale: scale,
+      // The brand header paints under the status bar (no top SafeArea).
+      topInset: MediaQuery.paddingOf(context).top,
+      actions: [
+        if (perms.canEdit)
+          // White disc with a teal + on the teal header.
+          AppIconButton(
+            icon: AppIcons.add,
+            variant: AppIconButtonVariant.primary,
+            background: Colors.white,
+            iconColor: c.primary,
+            size: 40,
+            iconSize: 20,
+            semanticLabel: l.kb_add_title,
+            onPressed: _add,
+          ),
+        PopupMenuButton<_Overflow>(
+            icon: const AppIcon(AppIcons.more, color: Colors.white),
             tooltip: l.common_more,
             onSelected: _overflow,
             itemBuilder: (_) => [
@@ -248,9 +250,9 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
               if (perms.canEdit) PopupMenuItem(value: _Overflow.import, child: Text(l.kb_menu_import)),
             ],
           ),
-        ],
-      ),
+      ],
     );
+    final header = SliverPersistentHeader(pinned: true, delegate: kbHeader);
 
     final bottomPad = tabBarInset(context) + AppSpacing.lg;
     final slivers = <Widget>[header];
@@ -359,6 +361,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
     return Scaffold(
       backgroundColor: c.backgroundMuted,
       body: SafeArea(
+        top: false,
         bottom: false,
         child: SlidableAutoCloseBehavior(
           child: NotificationListener<ScrollNotification>(
@@ -368,7 +371,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
             },
             child: RefreshIndicator(
               color: c.primary,
-              edgeOffset: 56,
+              edgeOffset: kbHeader.minExtent,
               onRefresh: _ctrl.refresh,
               child: CustomScrollView(
                 physics: const AlwaysScrollableScrollPhysics(),
@@ -383,45 +386,52 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
 }
 
 /// Large title "المعرفة" that shrinks to a standard bar on scroll (Inbox
-/// pattern). The child fills the extent (SizedBox.expand) — a shorter child
-/// breaks the sliver geometry.
+/// pattern), on the brand surface (BrandHeader) from the top of the screen.
+/// The child fills the extent (SizedBox.expand) — a shorter child breaks the
+/// sliver geometry.
 class _KbAppBarDelegate extends SliverPersistentHeaderDelegate {
-  _KbAppBarDelegate({required this.title, required this.actions, required this.textScale, required this.background});
+  _KbAppBarDelegate({required this.title, required this.actions, required this.textScale, this.topInset = 0});
 
   final String title;
   final List<Widget> actions;
   final double textScale;
-  final Color background;
+
+  /// Status-bar height: the teal header paints under it.
+  final double topInset;
 
   double get _scale => textScale.clamp(1.0, 2.0);
 
   @override
-  double get minExtent => 56 * _scale;
+  double get minExtent => topInset + 60 * _scale;
 
   @override
-  double get maxExtent => math.max(minExtent, 64 * _scale);
+  double get maxExtent => math.max(minExtent, topInset + 76 * _scale);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     final t = context.text;
     final range = maxExtent - minExtent;
     final p = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
-    return Material(
-      color: background,
-      child: SizedBox.expand(
-        child: Padding(
-          padding: EdgeInsetsDirectional.only(start: 18, end: 8, top: 4 * (1 - p), bottom: 8 * (1 - p)),
-          child: Row(
-            children: [
-              Expanded(
-                child: Semantics(
-                  header: true,
-                  child: Text(title, style: TextStyle.lerp(t.h1, t.h4, p)!.copyWith(fontWeight: FontWeight.w800), maxLines: 1, overflow: TextOverflow.ellipsis),
+    return SizedBox.expand(
+      child: BrandHeader(
+        safeTop: false,
+        elevated: p > 0.5 || overlapsContent,
+        padding: EdgeInsetsDirectional.fromSTEB(18, topInset + 4 * (1 - p), 8, AppSpacing.sm + 6 * (1 - p)),
+        child: Row(
+          children: [
+            Expanded(
+              child: Semantics(
+                header: true,
+                child: Text(
+                  title,
+                  style: TextStyle.lerp(t.h1, t.h4, p)!.copyWith(fontWeight: FontWeight.w800, color: Colors.white),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ),
-              ...actions,
-            ],
-          ),
+            ),
+            ...actions,
+          ],
         ),
       ),
     );

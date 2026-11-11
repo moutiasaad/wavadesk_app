@@ -7,9 +7,10 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 
-/// Collapsing inbox header (Inbox spec §3, §4.1). Expanded: `h1` title with
-/// padding top 4 / H 18 / bottom 12. Collapsed: 56dp bar with an `h4` title.
-/// In multi-select it becomes ✕ · "{n} محدد" · "تحديد الكل" (§4.9).
+/// Collapsing inbox header (Inbox spec §3, §4.1) on the brand surface
+/// (BrandHeader): teal gradient from the top of the screen ([topInset] = the
+/// status bar), white `h1` title shrinking to `h4`. In multi-select it
+/// becomes ✕ · "{n} محدد" · "تحديد الكل" (§4.9).
 class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
   ConversationsAppBarDelegate({
     required this.title,
@@ -20,6 +21,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
     required this.onExitSelection,
     required this.onSelectAll,
     required this.textScale,
+    this.topInset = 0,
   });
 
   final String title;
@@ -35,17 +37,19 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
   /// Header heights grow with large text so titles never clip (§9).
   final double textScale;
 
+  /// Status-bar height: the teal header paints under it.
+  final double topInset;
+
   double get _scale => textScale.clamp(1.0, 2.0);
 
   @override
-  double get minExtent => 56 * _scale;
+  double get minExtent => topInset + 60 * _scale;
 
   @override
-  double get maxExtent => selectedCount > 0 ? minExtent : math.max(minExtent, 64 * _scale);
+  double get maxExtent => selectedCount > 0 ? minExtent : math.max(minExtent, topInset + 76 * _scale);
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final c = context.colors;
     final t = context.text;
     final l = context.l10n;
 
@@ -53,12 +57,12 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
     // makes layoutExtent > paintExtent ("SliverGeometry is not valid"),
     // which breaks layout and hit-testing of the whole inbox list.
     if (selectedCount > 0) {
-      return Material(
-        color: c.background,
-        child: SizedBox.expand(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-            child: Row(
+      return SizedBox.expand(
+        child: BrandHeader(
+          safeTop: false,
+          elevated: true,
+          padding: EdgeInsetsDirectional.fromSTEB(AppSpacing.xs, topInset, AppSpacing.sm, AppSpacing.sm),
+          child: Row(
               children: [
                 AppIconButton(
                   icon: AppIcons.close,
@@ -72,7 +76,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
                     liveRegion: true,
                     child: Text(
                       l.inbox_selected(selectedCount),
-                      style: t.h4,
+                      style: t.h4.copyWith(color: Colors.white),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -81,7 +85,6 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
                 AppBarTextAction(label: l.inbox_select_all, onPressed: onSelectAll),
               ],
             ),
-          ),
         ),
       );
     }
@@ -89,14 +92,14 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
     // 0 = expanded, 1 = collapsed.
     final range = maxExtent - minExtent;
     final p = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
-    final titleStyle = TextStyle.lerp(t.h1, t.h4, p)!;
+    final titleStyle = TextStyle.lerp(t.h1, t.h4, p)!.copyWith(color: Colors.white, fontWeight: FontWeight.w800);
 
-    return Material(
-      color: c.background,
-      child: SizedBox.expand(
-        child: Padding(
-          padding: EdgeInsetsDirectional.only(start: 18, end: 18, top: 4 * (1 - p), bottom: 12 * (1 - p)),
-          child: Row(
+    return SizedBox.expand(
+      child: BrandHeader(
+        safeTop: false,
+        elevated: p > 0.5 || overlapsContent,
+        padding: EdgeInsetsDirectional.fromSTEB(18, topInset + 4 * (1 - p), 10, AppSpacing.sm + 6 * (1 - p)),
+        child: Row(
             children: [
               Expanded(
                 child: Semantics(
@@ -125,7 +128,6 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
               ),
             ],
           ),
-        ),
       ),
     );
   }
@@ -136,6 +138,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
       old.unreadNotifications != unreadNotifications ||
       old.selectedCount != selectedCount ||
       old.textScale != textScale ||
+      old.topInset != topInset ||
       old.onSearch != onSearch;
 }
 

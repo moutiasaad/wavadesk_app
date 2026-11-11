@@ -5,8 +5,8 @@ import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/notification_type.dart';
 
-/// App bar (Notifications spec §4.1, design frame 09): 40dp outlined back ·
-/// title · قراءة الكل · filter menu (filters, settings, delete read).
+/// App bar (Notifications spec §4.1) on the brand header: glassy back ·
+/// white title · قراءة الكل pill · filter menu (filters, settings, delete read).
 class NotificationsAppBar extends StatelessWidget {
   const NotificationsAppBar({
     super.key,
@@ -32,16 +32,16 @@ class NotificationsAppBar extends StatelessWidget {
     final c = context.colors;
     final t = context.text;
     final l = context.l10n;
-    return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(18, 4, 12, 12),
+    return _StatusBarBleed(
+      child: BrandHeader(
+      padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.md, AppSpacing.xs, AppSpacing.sm, AppSpacing.md),
       child: Row(
         children: [
           AppIconButton(
             icon: AppIcons.back,
             size: 40,
-            iconSize: 18,
-            variant: AppIconButtonVariant.outlined,
-            background: c.surface,
+            iconSize: 20,
+            variant: AppIconButtonVariant.filled,
             semanticLabel: l.common_back,
             onPressed: () => Navigator.of(context).maybePop(),
           ),
@@ -49,27 +49,18 @@ class NotificationsAppBar extends StatelessWidget {
           Expanded(
             child: Semantics(
               header: true,
-              child: Text(l.ntf_title, style: t.h4.copyWith(fontWeight: FontWeight.w800), maxLines: 1),
+              child: Text(l.ntf_title, style: t.h4.copyWith(fontWeight: FontWeight.w800, color: Colors.white), maxLines: 1),
             ),
           ),
-          TextButton(
-            onPressed: canReadAll ? onReadAll : null,
-            style: TextButton.styleFrom(
-              foregroundColor: c.primary,
-              disabledForegroundColor: c.textTertiary,
-              textStyle: t.buttonMedium,
-              minimumSize: const Size(48, 48),
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-            ),
-            child: Text(l.ntf_read_all),
-          ),
+          // Light pill on the brand header.
+          AppBarTextAction(label: l.ntf_read_all, onPressed: canReadAll ? onReadAll : null),
           PopupMenuButton<String>(
             tooltip: l.ntf_more,
             icon: Badge(
               isLabelVisible: filter != NotificationFilter.all,
               smallSize: 7,
-              backgroundColor: c.primary,
-              child: AppIcon(AppIcons.filter, color: c.textSecondary),
+              backgroundColor: Colors.white,
+              child: const AppIcon(AppIcons.filter, color: Colors.white),
             ),
             color: c.surfaceElevated,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),
@@ -88,6 +79,45 @@ class NotificationsAppBar extends StatelessWidget {
           ),
         ],
       ),
+      ),
+    );
+  }
+}
+
+/// The screen puts this header inside a top SafeArea, so the status-bar
+/// strip above it would keep the page color: paint the brand gradient there
+/// too (outside the header's own bounds; nothing else is drawn there).
+class _StatusBarBleed extends StatelessWidget {
+  const _StatusBarBleed({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final inset = MediaQuery.viewPaddingOf(context).top;
+    // Not under a SafeArea (BrandHeader pads itself) or no status bar.
+    if (inset == 0 || MediaQuery.paddingOf(context).top > 0) return child;
+    final colors = BrandHeader.colorsOf(context);
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        Positioned(
+          top: -inset,
+          left: 0,
+          right: 0,
+          height: inset + 24,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: AlignmentDirectional.centerStart,
+                end: AlignmentDirectional.centerEnd,
+                colors: [colors.first, Color.lerp(colors.first, colors.last, 0.5)!],
+              ),
+            ),
+          ),
+        ),
+        child,
+      ],
     );
   }
 }
