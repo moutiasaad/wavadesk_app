@@ -691,13 +691,16 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get channels_meta => 'ميتا (ماسنجر)';
+  String get channels_meta => 'واتساب للأعمال (ميتا)';
 
   @override
   String get channels_open_on_web => 'يُفتح على الموقع';
 
   @override
   String get channels_open_web_failed => 'تعذّر فتح الموقع';
+
+  @override
+  String get channels_meta_sub => 'الواجهة الرسمية · يُفتح على الموقع';
 
   @override
   String get ai_title => 'وكيل الذكاء الاصطناعي';

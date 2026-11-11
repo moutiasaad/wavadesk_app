@@ -11,21 +11,27 @@ import '../../core/theme/app_theme.dart';
 import '../../core/utils/l10n.dart';
 import '../../core/widgets/widgets.dart';
 
-/// The web panel page that manages [ch] for this role (the browser asks to
-/// sign in first when needed, then lands there).
-Uri channelWebPage(Channel ch, AgentRole role) {
+/// A page of the web panel for this role (the browser asks to sign in first
+/// when needed, then lands there).
+Uri webPanelPage(AgentRole role, String path) {
   final panel = switch (role) {
     AgentRole.admin => 'tenant-admin',
     AgentRole.supervisor => 'supervisor',
     AgentRole.agent => 'agent',
   };
-  final path = switch (ch) {
-    Channel.messenger => 'messenger/settings',
-    // Widget settings are admin-only on the web; others get the inbox.
-    Channel.web => role == AgentRole.admin ? 'webchat/settings' : 'webchat/conversations',
-    _ => '',
-  };
   return Uri.parse('$apiBaseUrl/$panel/$path');
+}
+
+/// The channels the product offers.
+enum _Entry {
+  /// WhatsApp by QR code: managed in the app.
+  whatsapp,
+
+  /// Official WhatsApp Business API (Meta): connected on the web panel.
+  metaWhatsApp,
+
+  /// Website chat widget: web panel.
+  web,
 }
 
 class ChannelsScreen extends ConsumerWidget {
@@ -38,54 +44,52 @@ class ChannelsScreen extends ConsumerWidget {
     final wa = ref.watch(whatsappProvider);
     final role = ref.watch(currentAgentProvider).role;
 
-    Future<void> openOnWeb(Channel ch) async {
-      final ok = await launchUrl(channelWebPage(ch, role), mode: LaunchMode.externalApplication);
+    Future<void> openOnWeb(String path) async {
+      final ok = await launchUrl(webPanelPage(role, path), mode: LaunchMode.externalApplication);
       if (!ok && context.mounted) AppSnackbar.show(context, message: l.channels_open_web_failed, kind: SnackKind.error);
     }
-    final whatsapp = wa.connected;
 
     // WhatsApp: until its status is known it stays in the first group (no jump).
-    bool isOn(Channel ch) => ch == Channel.whatsapp ? (!wa.loaded || whatsapp) : false;
-    // The API has no status for the other channels yet: they are managed on the web.
+    // The API has no status for the others yet: they are managed on the web.
+    bool isOn(_Entry e) => e == _Entry.whatsapp && (!wa.loaded || wa.connected);
 
-    Widget row(Channel ch) {
-      final on = isOn(ch);
-      final String? subtitle;
-      if (ch == Channel.whatsapp) {
-        subtitle = !wa.loaded ? null : (on ? l.channels_connected : l.channels_not_connected);
-      } else {
-        subtitle = l.channels_open_on_web;
-      }
+    Widget row(_Entry e) {
+      final on = isOn(e);
+      final (String title, String? subtitle, Channel badge) = switch (e) {
+        _Entry.whatsapp => (
+            Channel.whatsapp.label(l),
+            !wa.loaded ? null : (on ? l.channels_connected : l.channels_not_connected),
+            Channel.whatsapp,
+          ),
+        _Entry.metaWhatsApp => (l.channels_meta, l.channels_meta_sub, Channel.whatsapp),
+        _Entry.web => (Channel.web.label(l), l.channels_open_on_web, Channel.web),
+      };
       return SettingsTile(
-        title: ch == Channel.messenger ? l.channels_meta : ch.label(l),
+        title: title,
         subtitle: subtitle,
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ChannelBadge.avatar(channel: ch, size: 28, ringColor: c.surface),
+            ChannelBadge.avatar(channel: badge, size: 28, ringColor: c.surface),
             const SizedBox(width: AppSpacing.sm),
             AppIcon(
-              ch == Channel.whatsapp ? AppIcons.chevronForward : AppIcons.externalLink,
+              e == _Entry.whatsapp ? AppIcons.chevronForward : AppIcons.externalLink,
               size: AppIconSize.sm,
               color: c.borderStrong,
             ),
           ],
         ),
-        onTap: () {
-          if (ch == Channel.whatsapp) {
-            context.push(Routes.whatsapp);
-          } else {
-            openOnWeb(ch);
-          }
+        onTap: () => switch (e) {
+          _Entry.whatsapp => context.push(Routes.whatsapp),
+          _Entry.metaWhatsApp => openOnWeb('whatsapp-official'),
+          // Widget settings are admin-only on the web; others get the inbox.
+          _Entry.web => openOnWeb(role == AgentRole.admin ? 'webchat/settings' : 'webchat/conversations'),
         },
       );
     }
 
-    // The channels the product offers: WhatsApp (managed here), website
-    // chat and Meta Messenger (opened on the web panel).
-    const shown = [Channel.whatsapp, Channel.web, Channel.messenger];
-    final on = shown.where(isOn).toList();
-    final off = shown.where((ch) => !isOn(ch)).toList();
+    final on = _Entry.values.where(isOn).toList();
+    final off = _Entry.values.where((e) => !isOn(e)).toList();
 
     return ScrolledUnderBuilder(
       builder: (context, under) => Scaffold(
@@ -94,12 +98,12 @@ class ChannelsScreen extends ConsumerWidget {
         body: ListView(
           padding: EdgeInsets.only(bottom: AppSpacing.xxl + MediaQuery.viewPaddingOf(context).bottom),
           children: [
-            if (on.isNotEmpty) SettingsGroup(title: l.channels_section_connected, children: [for (final ch in on) row(ch)]),
+            if (on.isNotEmpty) SettingsGroup(title: l.channels_section_connected, children: [for (final e in on) row(e)]),
             if (off.isNotEmpty)
               SettingsGroup(
                 title: l.channels_section_available,
                 footer: l.channels_footer,
-                children: [for (final ch in off) row(ch)],
+                children: [for (final e in off) row(e)],
               ),
           ],
         ),

@@ -1267,7 +1267,7 @@ abstract class AppLocalizations {
   /// No description provided for @channels_meta.
   ///
   /// In ar, this message translates to:
-  /// **'ميتا (ماسنجر)'**
+  /// **'واتساب للأعمال (ميتا)'**
   String get channels_meta;
 
   /// No description provided for @channels_open_on_web.
@@ -1281,6 +1281,12 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'تعذّر فتح الموقع'**
   String get channels_open_web_failed;
+
+  /// No description provided for @channels_meta_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'الواجهة الرسمية · يُفتح على الموقع'**
+  String get channels_meta_sub;
 
   /// No description provided for @ai_title.
   ///

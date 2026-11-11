@@ -368,7 +368,8 @@
       }
     }
   },
-  "channels_meta": "Meta (Messenger)",
+  "channels_meta": "WhatsApp Business (Meta)",
   "channels_open_on_web": "Opens on the website",
-  "channels_open_web_failed": "Couldn't open the website"
+  "channels_open_web_failed": "Couldn't open the website",
+  "channels_meta_sub": "Official API · opens on the website"
 }

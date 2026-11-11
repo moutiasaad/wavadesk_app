@@ -368,7 +368,8 @@
       }
     }
   },
-  "channels_meta": "ميتا (ماسنجر)",
+  "channels_meta": "واتساب للأعمال (ميتا)",
   "channels_open_on_web": "يُفتح على الموقع",
-  "channels_open_web_failed": "تعذّر فتح الموقع"
+  "channels_open_web_failed": "تعذّر فتح الموقع",
+  "channels_meta_sub": "الواجهة الرسمية · يُفتح على الموقع"
 }

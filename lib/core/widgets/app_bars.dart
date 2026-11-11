@@ -5,43 +5,120 @@ import '../theme/app_theme.dart';
 import '../utils/l10n.dart';
 import 'brand_surface.dart';
 
-/// §8.1 root app bar for tab roots. Height 56 + status bar, no shadow or
-/// border, title `h1` start-aligned, up to 2 filled icon buttons.
-class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarLarge({super.key, required this.title, this.actions = const [], this.background});
+/// The app's header surface (every screen's top bar): teal brand gradient,
+/// rounded bottom corners, soft shadow (stronger when [elevated]), light
+/// status-bar icons. [child] sits below the status bar on a [BrandSurface]
+/// with white icons / text, so shared buttons and switches turn light.
+class BrandHeader extends StatelessWidget {
+  const BrandHeader({
+    super.key,
+    required this.child,
+    this.elevated = false,
+    this.padding = const EdgeInsetsDirectional.fromSTEB(AppSpacing.md, AppSpacing.xs, AppSpacing.sm, AppSpacing.md),
+    this.safeTop = true,
+  });
 
-  final String title;
-  final List<Widget> actions;
+  final Widget child;
 
-  /// `backgroundMuted` on grouped screens.
-  final Color? background;
+  /// Content scrolls under the header: deeper shadow.
+  final bool elevated;
+  final EdgeInsetsGeometry padding;
 
-  @override
-  Size get preferredSize => const Size.fromHeight(56);
+  /// Pad for the status bar (false inside a sliver that already does).
+  final bool safeTop;
+
+  static const radius = Radius.circular(24);
+
+  /// Light / dark gradient stops.
+  static List<Color> colorsOf(BuildContext context) => context.colors.isDark
+      ? const [Color(0xFF0B5552), Color(0xFF0E6E69)]
+      : const [Color(0xFF0F7E7A), Color(0xFF169C94)];
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
-    assert(actions.length <= 2, 'AppBarLarge allows up to 2 actions');
-    return Material(
-      color: background ?? c.background,
-      child: SafeArea(
-        bottom: false,
-        child: Container(
-          constraints: const BoxConstraints(minHeight: 56),
-          padding: const EdgeInsetsDirectional.only(start: AppSpacing.screenH, end: AppSpacing.sm),
-          child: Row(
-            children: [
-              Expanded(
-                child: Semantics(
-                  header: true,
-                  child: Text(title, style: context.text.h1, maxLines: 1, overflow: TextOverflow.ellipsis),
-                ),
+    final colors = colorsOf(context);
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      child: AnimatedContainer(
+        duration: AppMotion.fast,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: AlignmentDirectional.topStart, end: AlignmentDirectional.bottomEnd, colors: colors),
+          borderRadius: const BorderRadius.only(bottomLeft: radius, bottomRight: radius),
+          boxShadow: [
+            BoxShadow(
+              color: colors.first.withValues(alpha: elevated ? 0.35 : 0.16),
+              blurRadius: elevated ? 18 : 10,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          top: safeTop,
+          bottom: false,
+          child: Padding(
+            padding: padding,
+            child: BrandSurface(
+              child: IconTheme.merge(
+                data: const IconThemeData(color: Colors.white),
+                child: DefaultTextStyle.merge(style: const TextStyle(color: Colors.white), child: child),
               ),
-              ...actions,
-            ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// Tab-root header (Account…): brand header with a large white title and
+/// up to 2 actions.
+class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarLarge({super.key, required this.title, this.subtitle, this.actions = const [], this.background});
+
+  final String title;
+  final String? subtitle;
+  final List<Widget> actions;
+
+  /// Kept for older call sites; the header always uses the brand colors.
+  final Color? background;
+
+  @override
+  Size get preferredSize => Size.fromHeight(subtitle == null ? 70 : 84);
+
+  @override
+  Widget build(BuildContext context) {
+    assert(actions.length <= 2, 'AppBarLarge allows up to 2 actions');
+    final t = context.text;
+    return BrandHeader(
+      padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.screenH, AppSpacing.sm, AppSpacing.sm, AppSpacing.lg),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Semantics(
+                  header: true,
+                  child: Text(
+                    title,
+                    style: t.h2.copyWith(color: Colors.white),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                if (subtitle != null)
+                  Text(
+                    subtitle!,
+                    style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+              ],
+            ),
+          ),
+          ...actions,
+        ],
       ),
     );
   }
@@ -78,18 +155,12 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   final bool showBack;
   final Widget? leading;
 
-  static const _radius = Radius.circular(24);
-
   @override
   Size get preferredSize => Size.fromHeight(subtitle == null ? 66 : 78);
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
     final t = context.text;
-    final colors = c.isDark
-        ? const [Color(0xFF0B5552), Color(0xFF0E6E69)]
-        : const [Color(0xFF0F7E7A), Color(0xFF169C94)];
     void back() => (onBack ?? () => Navigator.of(context).maybePop())();
 
     final titleBlock = Column(
@@ -140,38 +211,13 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
       start = Padding(padding: const EdgeInsetsDirectional.only(start: AppSpacing.md), child: titleBlock);
     }
 
-    return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
-      child: AnimatedContainer(
-        duration: AppMotion.fast,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(begin: AlignmentDirectional.topStart, end: AlignmentDirectional.bottomEnd, colors: colors),
-          borderRadius: const BorderRadius.only(bottomLeft: _radius, bottomRight: _radius),
-          boxShadow: [
-            BoxShadow(
-              color: colors.first.withValues(alpha: scrolledUnder ? 0.35 : 0.16),
-              blurRadius: scrolledUnder ? 18 : 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
-        child: SafeArea(
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(AppSpacing.md, AppSpacing.xs, AppSpacing.sm, AppSpacing.md),
-            child: BrandSurface(
-              child: IconTheme.merge(
-                data: const IconThemeData(color: Colors.white),
-                child: Row(
-                  children: [
-                    Expanded(child: start),
-                    ...actions,
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
+    return BrandHeader(
+      elevated: scrolledUnder,
+      child: Row(
+        children: [
+          Expanded(child: start),
+          ...actions,
+        ],
       ),
     );
   }

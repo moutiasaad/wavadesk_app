@@ -689,13 +689,16 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get channels_meta => 'Meta (Messenger)';
+  String get channels_meta => 'WhatsApp Business (Meta)';
 
   @override
   String get channels_open_on_web => 'Opens on the website';
 
   @override
   String get channels_open_web_failed => 'Couldn\'t open the website';
+
+  @override
+  String get channels_meta_sub => 'Official API · opens on the website';
 
   @override
   String get ai_title => 'AI agent';
