@@ -1220,6 +1220,10 @@
   "readonly_take_instead": "Take over instead",
   "readonly_add_note": "Add internal note",
   "banner_connecting": "Connecting…",
+  "composer_mic_denied": "Allow microphone access in Settings to record voice messages.",
+  "composer_record_failed": "Couldn't record. Please try again.",
+  "composer_record_delete": "Delete recording",
+  "chat_ai_suggest_pill": "Suggest a reply",
   "sys_called": "{actor} called the customer",
   "@sys_called": {
     "placeholders": {
@@ -4207,6 +4211,12 @@
   "search_in_conv_prev": "Previous match",
   "search_in_conv_next": "Next match",
   "search_in_conv_close": "Close search",
+  "startup_unavailable_title": "We can't connect right now",
+  "startup_unavailable_body": "Wavadesk couldn't reach its servers. Make sure you're using the latest version of the app, then try again.",
+  "startup_unavailable_help": "Still not working? Contact us at support@wavadesk.com",
+  "startup_retry": "Try again",
+  "startup_contact_support": "Contact support",
+  "startup_dev_hint": "Developer: the API URL or key is missing. Run with --dart-define-from-file=dart_defines/<env>.json or fill assets/config/api.json.",
   "wa_title": "Your WhatsApp",
   "wa_refresh": "Refresh status",
   "wa_log": "Connection log",

@@ -92,7 +92,11 @@ Message messageFromJson(Map<String, dynamic> j, {required String meId}) {
             messageId: reply['id']?.toString(),
           ),
     mediaUrl: media?['url'] as String?,
-    mediaDuration: media?['duration_sec'] == null ? null : Duration(seconds: (media!['duration_sec'] as num).toInt()),
+    // Server sends `media.duration` (seconds); `duration_sec` is the older name.
+    mediaDuration: switch (media?['duration'] ?? media?['duration_sec']) {
+      final num secs => Duration(seconds: secs.round()),
+      _ => null,
+    },
     fileName: media?['file_name'] as String?,
     fileSize: _fmtSize((media?['size_bytes'] as num?)?.toInt()),
     locationLabel: location?['address'] as String?,

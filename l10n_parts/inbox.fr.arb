@@ -1,0 +1,253 @@
+{
+  "inbox_title": "Conversations",
+  "inbox_seg_mine": "Les miennes",
+  "inbox_seg_unassigned": "Non attribuées",
+  "inbox_seg_all": "Toutes",
+  "inbox_chip_all": "Toutes",
+  "inbox_chip_unread": "Non lues",
+  "inbox_chip_awaiting": "En attente de réponse",
+  "inbox_chip_ai": "Réponse de l'IA",
+  "inbox_chip_snoozed": "En pause",
+  "inbox_chip_closed": "Fermées",
+  "inbox_chip_filters": "Filtres",
+  "inbox_needs_reply": "Nécessite votre réponse",
+  "inbox_rest": "Autres conversations",
+  "inbox_see_all": "Tout voir",
+  "inbox_show_less": "Afficher moins",
+  "inbox_you_prefix": "Vous :",
+  "inbox_draft_prefix": "Brouillon :",
+  "inbox_note_prefix": "Note :",
+  "inbox_typing": "en train d'écrire…",
+  "inbox_image": "Photo",
+  "inbox_voice": "Message vocal · {d}",
+  "@inbox_voice": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_location": "Position",
+  "inbox_sticker": "Autocollant",
+  "inbox_deleted": "Ce message a été supprimé",
+  "inbox_tag_waiting": "En attente depuis {t}",
+  "@inbox_tag_waiting": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_ai_ready": "Suggestion prête",
+  "inbox_tag_ai_replied": "Réponse de l'IA",
+  "inbox_tag_snoozed": "En pause jusqu'à {t}",
+  "@inbox_tag_snoozed": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_window": "Fenêtre fermée dans {h} h",
+  "@inbox_tag_window": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_now": "maintenant",
+  "inbox_min": "{n} min",
+  "@inbox_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_hour": "{n} h",
+  "@inbox_hour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_yesterday": "Hier",
+  "inbox_am": "AM",
+  "inbox_pm": "PM",
+  "inbox_swipe_resolve": "Résoudre",
+  "inbox_swipe_snooze": "Mettre en pause",
+  "inbox_swipe_assign": "Attribuer",
+  "inbox_swipe_claim": "Prendre en charge",
+  "inbox_resolved": "Conversation résolue",
+  "inbox_resolved_n": "{n, plural, =1{1 conversation résolue} other{{n} conversations résolues}}",
+  "@inbox_resolved_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_snoozed_1h": "Mise en pause pour 1 heure",
+  "inbox_snoozed_n": "{n, plural, =1{Conversation mise en pause} other{{n} conversations mises en pause}}",
+  "@inbox_snoozed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_undo": "Annuler",
+  "inbox_assigned_to_you": "{name} vous a attribué une conversation",
+  "@inbox_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_open": "Ouvrir",
+  "inbox_claimed_by": "Prise en charge par {name}",
+  "@inbox_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_new_pill": "{n, plural, =1{1 nouvelle conversation} other{{n} nouvelles conversations}}",
+  "@inbox_new_pill": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_selected": "{n} sélectionnée(s)",
+  "@inbox_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_select_all": "Tout sélectionner",
+  "inbox_exit_selection": "Quitter la sélection",
+  "inbox_mark_read": "Marquer comme lue",
+  "inbox_mark_unread": "Marquer comme non lue",
+  "inbox_marked_read_n": "{n, plural, =1{1 conversation marquée comme lue} other{{n} conversations marquées comme lues}}",
+  "@inbox_marked_read_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_marked_unread_n": "{n, plural, =1{1 conversation marquée comme non lue} other{{n} conversations marquées comme non lues}}",
+  "@inbox_marked_unread_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_conversation": "Nouvelle conversation",
+  "inbox_load_error": "Chargement impossible · Réessayer",
+  "inbox_end": "Plus aucune conversation",
+  "inbox_exit_hint": "Appuyez à nouveau pour quitter",
+  "inbox_offline_cached": "Hors ligne — affichage de la dernière copie enregistrée",
+  "inbox_action_failed": "Action impossible. Réessayez.",
+  "inbox_tag": "Étiquette",
+  "inbox_tag_added": "Étiquette « {tag} » ajoutée",
+  "@inbox_tag_added": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_priority": "Priorité",
+  "inbox_priority_set": "Priorité définie sur {label}",
+  "@inbox_priority_set": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_archive": "Archiver",
+  "inbox_archived_n": "{n, plural, =1{Conversation archivée} other{{n} conversations archivées}}",
+  "@inbox_archived_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_clear_all": "Tout effacer",
+  "inbox_a11y_unread": "{n, plural, =1{1 message non lu} other{{n} messages non lus}}",
+  "@inbox_a11y_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_a11y_open_hint": "Appuyez deux fois pour ouvrir la conversation",
+  "inbox_a11y_notifications": "Notifications, {n} non lue(s)",
+  "@inbox_a11y_notifications": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_empty_mine_title": "Aucune conversation ne vous est attribuée",
+  "inbox_empty_mine_body": "Les conversations que vous prenez en charge ou qui vous sont attribuées apparaîtront ici.",
+  "inbox_empty_mine_action": "Voir les non attribuées",
+  "inbox_empty_done_title": "Vous êtes à jour",
+  "inbox_empty_done_body": "Personne n'attend votre réponse pour le moment.",
+  "inbox_empty_unassigned_title": "Aucune conversation en attente de prise en charge",
+  "inbox_empty_unassigned_body": "L'IA et votre équipe gèrent tout.",
+  "inbox_empty_new_title": "Aucune conversation pour l'instant",
+  "inbox_empty_new_body": "Connectez WhatsApp pour commencer à recevoir les messages de vos clients.",
+  "inbox_empty_new_action": "Connecter WhatsApp",
+  "inbox_empty_filters_title": "Aucune conversation ne correspond à ces filtres",
+  "inbox_empty_filters_action": "Effacer les filtres",
+  "inbox_empty_error_title": "Impossible de charger les conversations",
+  "inbox_empty_error_body": "Vérifiez votre connexion et réessayez.",
+  "inbox_filters_title": "Filtres",
+  "inbox_filters_clear": "Effacer",
+  "inbox_filters_apply": "Afficher les conversations",
+  "inbox_filters_show": "{n, plural, =0{Aucune conversation} =1{Afficher 1 conversation} other{Afficher {n} conversations}}",
+  "@inbox_filters_show": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_filters_channel": "Canal",
+  "inbox_filters_priority": "Priorité",
+  "inbox_filters_assignee": "Attribué à",
+  "inbox_filters_assignee_all": "Tous",
+  "inbox_filters_assignee_me": "Moi",
+  "inbox_filters_assignee_colleague": "Coéquipier spécifique ▸",
+  "inbox_filters_assignee_ai": "IA",
+  "inbox_filters_assignee_unassigned": "Non attribué",
+  "inbox_filters_pick_colleague": "Choisir un coéquipier",
+  "inbox_filters_team": "Équipe",
+  "inbox_filters_tags": "Étiquettes",
+  "inbox_filters_tags_search": "Rechercher des étiquettes",
+  "inbox_filters_date": "Date",
+  "inbox_filters_date_today": "Aujourd'hui",
+  "inbox_filters_date_7d": "7 jours",
+  "inbox_filters_date_30d": "30 jours",
+  "inbox_filters_date_custom": "Personnalisé ▸",
+  "inbox_filters_sort": "Trier",
+  "inbox_filters_sort_smart": "Intelligent (par défaut)",
+  "inbox_filters_sort_newest": "Plus récentes",
+  "inbox_filters_sort_oldest": "Plus anciennes",
+  "inbox_filters_sort_waiting": "En attente depuis le plus longtemps"
+}

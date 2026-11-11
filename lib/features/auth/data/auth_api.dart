@@ -123,7 +123,7 @@ class HttpAuthApi implements AuthApi {
   final WdApi _api;
 
   Future<Map<String, dynamic>> _post(String path, Map<String, Object?> body, String locale) async {
-    _api.locale = locale == 'en' ? 'en' : 'ar';
+    _api.locale = WdApi.supportedLocale(locale);
     try {
       return (await _api.post(path, body: body, bootstrap: true)).map;
     } on WdApiException catch (e) {

@@ -1,0 +1,232 @@
+{
+  "claim_button": "Prendre en charge la conversation",
+  "claim_button_hint": "Elle vous sera attribuée et vous pourrez répondre",
+  "claim_region": "Prendre en charge la conversation",
+  "claim_assign_colleague": "Attribuer à un collègue",
+  "claim_ai_takeover": "Laisser l'IA s'en charger",
+  "claim_ai_takeover_done": "La conversation a été transférée à l'agent IA",
+  "claim_waiting": "En attente de prise en charge",
+  "claim_viewer_one_f": "{name} consulte cette conversation en ce moment",
+  "@claim_viewer_one_f": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_one_m": "{name} consulte cette conversation en ce moment",
+  "@claim_viewer_one_m": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_two": "{a} et {b} consultent cette conversation",
+  "@claim_viewer_two": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_many": "{n, plural, =1{{a} et 1 autre personne consultent cette conversation} other{{a} et {n} autres personnes consultent cette conversation}}",
+  "@claim_viewer_many": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_sec": "il y a {n} s",
+  "@claim_viewing_since_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_min": "il y a {t}",
+  "@claim_viewing_since_min": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_wait_sec": "{n} s",
+  "@claim_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_min": "{n} min",
+  "@claim_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_hm": "{h} h {m} min",
+  "@claim_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_sec": "{n, plural, =1{En attente depuis 1 seconde} other{En attente depuis {n} secondes}}",
+  "@claim_a11y_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_min": "{n, plural, =1{En attente depuis 1 minute} other{En attente depuis {n} minutes}}",
+  "@claim_a11y_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_hm": "En attente depuis {h} heures {m} minutes",
+  "@claim_a11y_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_success_event": "Vous avez pris en charge la conversation",
+  "claim_conflict": "{name} l'a prise en charge en premier",
+  "@claim_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_taken_live": "{name} a pris en charge cette conversation",
+  "@claim_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_assigned_to_you": "{name} vous l'a attribuée",
+  "@claim_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_resolved_live": "{name} a résolu la conversation",
+  "@claim_resolved_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_network_error": "Impossible de prendre en charge. Vérifiez votre connexion et réessayez.",
+  "claim_retry": "Réessayer",
+  "claim_forbidden": "Vous n'avez pas la permission de prendre en charge cette conversation",
+  "claim_team_only": "Cette conversation appartient à {team}",
+  "@claim_team_only": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_offline_hint": "La prise en charge nécessite une connexion internet",
+  "claim_capacity_hint": "Vous avez {n} conversations ouvertes (limite {max})",
+  "@claim_capacity_hint": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_reached": "Vous avez atteint votre limite de conversations",
+  "claim_away_title": "Votre statut : Absent",
+  "claim_away_body": "La prise en charge changera votre statut en Disponible.",
+  "claim_away_confirm": "Prendre en charge et passer en Disponible",
+  "claim_capacity_title": "Vous avez {n} conversations ouvertes",
+  "@claim_capacity_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_body": "En prendre en charge une de plus ?",
+  "claim_capacity_confirm": "Prendre en charge quand même",
+  "claim_cancel": "Annuler",
+  "claim_assigned_toast": "Attribuée à {name}",
+  "@claim_assigned_toast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_undo": "Annuler",
+  "claim_reply_placeholder": "Écrivez pour prendre en charge et répondre…",
+  "claim_short": "Prendre en charge",
+  "claim_handoff_event": "L'IA a transféré ceci à l'équipe : {reason}",
+  "@claim_handoff_event": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_reason_payment": "Problème de paiement",
+  "claim_reason_human": "A demandé un humain",
+  "claim_reason_complaint": "Réclamation",
+  "claim_reason_no_answer": "Question sans réponse",
+  "claim_reason_refund": "Demande de remboursement",
+  "claim_reason_other": "Autre",
+  "claim_push_title": "Nouvelle conversation en attente",
+  "claim_push_action": "Prendre en charge",
+  "claim_push_success": "Vous avez pris en charge la conversation avec {customer}",
+  "@claim_push_success": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_add_note": "Ajouter une note interne",
+  "claim_a11y_wait_span": "En attente depuis {t}",
+  "@claim_a11y_wait_span": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  }
+}

@@ -121,11 +121,7 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
   }
 
   /// +1 when "toward center" is the positive x direction.
-  double get _towardCenter {
-    final rtl = Directionality.of(context) == TextDirection.rtl;
-    final startSide = !_m.isOutgoing; // incoming bubbles sit at the start
-    return (startSide ? 1 : -1) * (rtl ? -1 : 1);
-  }
+  double get _towardCenter => _m.isOutgoing ? -1 : 1; // own messages sit on the right in every language
 
   void _openMenu() {
     final box = _bubbleKey.currentContext?.findRenderObject() as RenderBox?;
@@ -240,7 +236,7 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
         children: [
           Positioned.fill(
             child: Align(
-              alignment: _m.isOutgoing ? AlignmentDirectional.centerEnd : AlignmentDirectional.centerStart,
+              alignment: _m.isOutgoing ? Alignment.centerRight : Alignment.centerLeft,
               child: Opacity(
                 opacity: progress,
                 child: Transform.scale(

@@ -1,0 +1,8 @@
+{
+  "startup_unavailable_title": "تعذّر الاتصال حاليًا",
+  "startup_unavailable_body": "لم يتمكّن Wavadesk من الوصول إلى الخوادم. تأكّد من أنك تستخدم أحدث إصدار من التطبيق، ثم أعد المحاولة.",
+  "startup_unavailable_help": "ما زالت المشكلة قائمة؟ تواصل معنا عبر support@wavadesk.com",
+  "startup_retry": "إعادة المحاولة",
+  "startup_contact_support": "التواصل مع الدعم",
+  "startup_dev_hint": "للمطوّر: عنوان الـ API أو المفتاح غير موجود. شغّل التطبيق مع --dart-define-from-file=dart_defines/<env>.json أو املأ assets/config/api.json."
+}

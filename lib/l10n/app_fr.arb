@@ -1,0 +1,4637 @@
+{
+  "@@locale": "fr",
+  "dashboard_greeting": "Bonjour, {name} 👋",
+  "@dashboard_greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_open": "Conversations ouvertes",
+  "dashboard_waiting_sla": "En attente au-delà du SLA",
+  "dashboard_view_queue": "Voir la file",
+  "dashboard_first_response": "1ère réponse moy.",
+  "dashboard_resolved_today": "Résolues aujourd'hui",
+  "dashboard_ai_rate": "Résolues par l'IA",
+  "dashboard_csat": "Satisfaction client",
+  "dashboard_csat_scale": "sur 5",
+  "dashboard_vs_yesterday": "{delta} par rapport à hier",
+  "@dashboard_vs_yesterday": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_volume_title": "Conversations aujourd'hui",
+  "dashboard_volume_a11y": "{total} conversations aujourd'hui, pic de {peak} à {hour}",
+  "@dashboard_volume_a11y": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "peak": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_channels_title": "Par canal",
+  "dashboard_ai_usage_title": "Utilisation de l'IA",
+  "dashboard_ai_manage": "Gérer",
+  "dashboard_ai_usage_value": "{used} sur {quota} réponses ce mois-ci",
+  "@dashboard_ai_usage_value": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboard_team_title": "L'équipe en ce moment",
+  "dashboard_team_open": "{count, plural, =0{Aucune conversation} =1{1 conversation} other{{count} conversations}}",
+  "@dashboard_team_open": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notifications_title": "Notifications",
+  "notifications_mark_all": "Tout marquer comme lu",
+  "notifications_earlier": "Plus tôt",
+  "notifications_empty_title": "Aucune notification pour le moment",
+  "notifications_empty_body": "Nous vous préviendrons quand une conversation vous sera assignée ou que vous serez mentionné dans une note.",
+  "knowledge_search": "Rechercher dans la base de connaissances",
+  "knowledge_search_hint": "Rechercher des réponses…",
+  "knowledge_add": "Ajouter une réponse",
+  "knowledge_filter_all": "Tout",
+  "knowledge_type_faq": "FAQ",
+  "knowledge_type_policy": "Politiques",
+  "knowledge_type_product": "Produits",
+  "knowledge_type_snippet": "Extraits",
+  "knowledge_type_website": "Site web",
+  "knowledge_coverage_title": "Ce que l'IA sait",
+  "knowledge_coverage_body": "{total, plural, =1{1 réponse} other{{total} réponses}}, {enabled} activées",
+  "@knowledge_coverage_body": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "enabled": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_coverage_top": "Le plus utilisé : {title}",
+  "@knowledge_coverage_top": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_used": "{count, plural, =0{Pas encore utilisée} =1{Utilisée une fois} other{Utilisée {count} fois}}",
+  "@knowledge_used": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_updated": "Mise à jour {time}",
+  "@knowledge_updated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_disabled": "Désactivée",
+  "knowledge_enabled_a11y": "Activer « {title} »",
+  "@knowledge_enabled_a11y": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_empty_title": "Votre base de connaissances est vide",
+  "knowledge_empty_body": "Ajoutez des réponses et des politiques pour que l'IA puisse rédiger des réponses à partir de celles-ci.",
+  "knowledge_empty_filtered": "Aucune réponse de ce type",
+  "knowledge_no_results": "Aucun résultat pour « {query} »",
+  "@knowledge_no_results": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_edit_title_add": "Ajouter une réponse",
+  "knowledge_edit_title_edit": "Modifier la réponse",
+  "knowledge_edit_type": "Type",
+  "knowledge_edit_question": "Question",
+  "knowledge_edit_title_label": "Titre",
+  "knowledge_edit_title_hint": "p. ex. Quel est le délai de livraison ?",
+  "knowledge_edit_body_label": "Réponse",
+  "knowledge_edit_body_hint": "Rédigez la réponse telle que vous souhaitez que l'IA la formule…",
+  "knowledge_edit_counter": "{count} / {max}",
+  "@knowledge_edit_counter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_edit_keywords": "Mots-clés",
+  "knowledge_edit_keywords_hint": "Tapez un mot-clé et appuyez sur Entrée",
+  "knowledge_edit_keyword_add": "Ajouter un mot-clé",
+  "knowledge_edit_enabled": "Accessible à l'IA",
+  "knowledge_edit_enabled_sub": "Désactivée, elle ne sera pas utilisée dans les suggestions",
+  "knowledge_edit_preview_title": "Comment l'IA l'utilisera",
+  "knowledge_edit_preview_q": "La question du client apparaît ici",
+  "knowledge_edit_preview_a": "Et la réponse suggérée basée sur votre réponse",
+  "knowledge_edit_error_title": "Le titre est requis",
+  "knowledge_edit_error_body": "Rédigez une réponse d'au moins 10 caractères",
+  "knowledge_edit_saved": "Réponse enregistrée",
+  "knowledge_edit_delete": "Supprimer la réponse",
+  "knowledge_edit_delete_title": "Supprimer cette réponse ?",
+  "knowledge_edit_delete_body": "L'IA ne l'utilisera plus pour suggérer des réponses.",
+  "knowledge_edit_deleted": "Réponse supprimée",
+  "knowledge_edit_discard_title": "Abandonner les modifications ?",
+  "knowledge_edit_discard_body": "Vous avez des modifications non enregistrées qui seront perdues si vous quittez maintenant.",
+  "knowledge_edit_discard_confirm": "Abandonner et quitter",
+  "account_section_admin": "Gestion",
+  "account_section_app": "Application",
+  "account_whatsapp": "Votre WhatsApp",
+  "account_whatsapp_connected": "Connecté",
+  "account_whatsapp_disconnected": "Déconnecté",
+  "account_channels": "Canaux",
+  "account_ai_agent": "Agent IA",
+  "account_team": "Équipe & utilisateurs",
+  "account_subscription": "Abonnement",
+  "account_notifications": "Notifications",
+  "account_language": "Langue",
+  "account_appearance": "Apparence",
+  "account_theme_light": "Clair",
+  "account_theme_dark": "Sombre",
+  "account_theme_system": "Automatique",
+  "account_theme_system_sub": "Suit le réglage de votre appareil",
+  "account_help": "Aide & guides",
+  "account_logout": "Se déconnecter",
+  "account_logout_title": "Se déconnecter ?",
+  "account_logout_body": "Vous ne recevrez plus de notifications de conversation sur cet appareil jusqu'à votre prochaine connexion.",
+  "account_version": "Wavadesk {version}",
+  "@account_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "account_network_online": "En ligne",
+  "ai_settings_title": "Agent IA",
+  "ai_settings_enable": "Activer l'agent IA",
+  "ai_settings_status_on": "Actif et propose des réponses",
+  "ai_settings_status_off": "Désactivé",
+  "ai_settings_usage": "{used} sur {quota} réponses ce mois-ci",
+  "@ai_settings_usage": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_settings_section_behavior": "Comportement",
+  "ai_settings_suggest": "Suggérer des réponses",
+  "ai_settings_suggest_sub": "Un brouillon est prêt avant même que vous ouvriez la conversation",
+  "ai_settings_auto": "Réponse automatique",
+  "ai_settings_auto_sub": "Répond aux conversations non assignées sans attendre",
+  "ai_settings_claimed": "Répondre après prise en charge",
+  "ai_settings_claimed_sub": "Continue de répondre après qu'un agent a pris en charge la conversation",
+  "ai_settings_handoff": "Transférer en cas de frustration",
+  "ai_settings_handoff_sub": "Transmet la conversation à l'équipe si le client semble mécontent",
+  "ai_settings_section_tone": "Ton des réponses",
+  "ai_settings_tone_friendly": "Chaleureux",
+  "ai_settings_tone_friendly_sub": "Chaleureux et accessible",
+  "ai_settings_tone_formal": "Formel",
+  "ai_settings_tone_formal_sub": "Poli et professionnel",
+  "ai_settings_tone_concise": "Concis",
+  "ai_settings_tone_concise_sub": "Phrases courtes et directes",
+  "ai_settings_section_knowledge": "Source de connaissances",
+  "ai_settings_knowledge": "Réponses activées",
+  "ai_settings_knowledge_footer": "L'IA utilise uniquement votre base de connaissances et n'invente jamais de réponses.",
+  "whatsapp_title": "Votre WhatsApp",
+  "whatsapp_status_connected": "Connecté",
+  "whatsapp_status_disconnected": "Déconnecté",
+  "whatsapp_since": "Connecté depuis",
+  "whatsapp_messages_today": "Messages aujourd'hui",
+  "whatsapp_connected_tip": "Laissez votre téléphone connecté. Si vous vous déconnectez de WhatsApp sur le téléphone, vous devrez scanner le code à nouveau.",
+  "whatsapp_disconnect": "Déconnecter",
+  "whatsapp_disconnect_title": "Déconnecter WhatsApp ?",
+  "whatsapp_disconnect_body": "Les messages des clients n'arriveront plus dans votre boîte de réception jusqu'à ce que vous reliiez le numéro.",
+  "whatsapp_qr_a11y": "Code QR pour relier WhatsApp",
+  "whatsapp_qr_expires": "Le code expire dans une minute",
+  "whatsapp_waiting_scan": "En attente du scan depuis votre téléphone…",
+  "whatsapp_steps_title": "Comment relier",
+  "whatsapp_step1": "Ouvrez WhatsApp sur le téléphone professionnel",
+  "whatsapp_step2": "Appuyez sur ⋮ puis « Appareils connectés »",
+  "whatsapp_step3": "Choisissez « Connecter un appareil »",
+  "whatsapp_step4": "Pointez la caméra vers ce code",
+  "whatsapp_simulate_scan": "Scanner le code (démo)",
+  "whatsapp_new_code": "Générer un nouveau code",
+  "whatsapp_connected_toast": "WhatsApp relié avec succès",
+  "channels_title": "Canaux",
+  "channels_section_connected": "Connectés",
+  "channels_section_available": "Disponibles",
+  "channels_connected": "Connecté et reçoit des messages",
+  "channels_not_connected": "Non relié",
+  "channels_manage_on_web": "Ce canal se gère depuis le tableau de bord web",
+  "channels_footer": "Les messages de chaque canal relié arrivent dans une seule boîte de réception.",
+  "team_title": "Équipe & utilisateurs",
+  "team_invite": "Inviter un collègue",
+  "team_invite_sent": "Lien d'invitation envoyé",
+  "team_section_members": "{count, plural, =1{1 membre} other{{count} membres}}",
+  "@team_section_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "team_section_teams": "Équipes",
+  "team_you": "{name} (vous)",
+  "@team_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "team_members": "{count, plural, =1{1 membre} other{{count} membres}}",
+  "@team_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "subscription_title": "Abonnement",
+  "subscription_current": "Formule actuelle",
+  "subscription_plan_name": "Professionnel",
+  "subscription_price": "199 SAR / mois",
+  "subscription_renews": "Renouvellement le {date}",
+  "@subscription_renews": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_section_usage": "Utilisation ce mois-ci",
+  "subscription_ai_replies": "Réponses IA",
+  "subscription_agents": "Utilisateurs",
+  "subscription_channels": "Canaux",
+  "subscription_usage": "{used} / {total}",
+  "@subscription_usage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_upgrade": "Mettre à niveau la formule",
+  "subscription_invoices": "Factures",
+  "subscription_upgrade_web": "Nous ouvrirons la page de facturation sur le web",
+  "notif_settings_title": "Notifications",
+  "notif_settings_section_push": "Me notifier quand",
+  "notif_settings_assigned": "Une conversation m'est assignée",
+  "notif_settings_assigned_sub": "Par un collègue ou une règle de distribution",
+  "notif_settings_mentions": "Je suis mentionné dans une note",
+  "notif_settings_mentions_sub": "Quand un collègue tape @votre-nom",
+  "notif_settings_waiting": "Temps d'attente dépassé",
+  "notif_settings_waiting_sub": "Un client attend plus longtemps que l'objectif",
+  "notif_settings_section_sound": "Son",
+  "notif_settings_sound": "Son de notification",
+  "notif_settings_sound_sub": "Jouer un son à l'arrivée d'un nouveau message",
+  "notif_settings_footer": "Vous ne recevrez pas de notifications tant que votre statut est « Absent ».",
+  "help_title": "Aide & guides",
+  "help_section_guides": "Guides",
+  "help_topic_claim": "Prendre en charge et assigner des conversations",
+  "help_topic_ai": "Comment fonctionnent les suggestions de l'IA",
+  "help_topic_whatsapp": "Relier un numéro WhatsApp",
+  "help_topic_knowledge": "Construire votre base de connaissances",
+  "help_topic_snooze": "Mettre en pause et résoudre",
+  "help_section_contact": "Nous contacter",
+  "help_contact_chat": "Discuter avec le support",
+  "help_contact_chat_sub": "Nous répondons généralement en quelques minutes",
+  "help_contact_email": "E-mail",
+  "help_opening": "Ouverture…",
+  "account_load_error": "Impossible de charger",
+  "subscription_ends": "Se termine le {date}",
+  "@subscription_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial_ends": "L'essai se termine le {date}",
+  "@subscription_trial_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial": "Essai",
+  "subscription_unlimited": "Illimité",
+  "subscription_no_plan": "Aucune formule",
+  "subscription_per_month": "{price} / mois",
+  "@subscription_per_month": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_title": "Agent IA",
+  "ai_master_switch": "Activer l'IA",
+  "ai_state_on": "Activé",
+  "ai_state_off": "Désactivé",
+  "ai_readonly": "Seuls les administrateurs peuvent modifier les paramètres de l'IA",
+  "ai_hero_answered": "{n} questions",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "répondues cette semaine · ~{h} heures économisées",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "L'IA est désactivée",
+  "ai_hero_off_body": "Activez-la pour répondre à partir de votre base de connaissances",
+  "ai_hero_ready": "Prêt à fonctionner",
+  "ai_hero_ready_body": "N'a pas encore répondu — testez-la d'abord",
+  "ai_hero_a11y": "{n} questions répondues cette semaine, voir les performances",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "{p} % des réponses de ce mois utilisées",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "Avant la mise en service",
+  "ai_ready_kb": "La base de connaissances contient au moins 10 réponses ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "Horaires de travail définis",
+  "ai_ready_handoff": "Règle de transfert activée",
+  "ai_ready_tested": "Agent testé",
+  "ai_ready_done": "Terminé",
+  "ai_ready_missing": "Non terminé",
+  "ai_mode": "Fonctionnement",
+  "ai_mode_suggest": "Suggestion uniquement",
+  "ai_mode_suggest_sub": "Rédige des brouillons ; les agents vérifient et envoient",
+  "ai_mode_auto": "Réponse automatique",
+  "ai_mode_auto_sub": "Répond instantanément, transfère si nécessaire",
+  "ai_mode_after": "Hors horaires uniquement",
+  "ai_mode_after_sub": "Répond automatiquement hors des horaires de travail",
+  "ai_mode_after_sub2": "et suggère pendant les horaires",
+  "ai_mode_needs_hours": "Définissez d'abord les horaires de travail",
+  "ai_mode_needs_ready": "Terminez d'abord la liste de contrôle de préparation",
+  "ai_recommended": "Recommandé",
+  "ai_mode_changed": "Changé en « {mode} »",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "Annuler",
+  "ai_tone": "Ton",
+  "ai_tone_friendly": "Amical",
+  "ai_tone_formal": "Formel",
+  "ai_tone_concise": "Concis",
+  "ai_tone_sample_friendly": "Bonjour Noura ! La livraison à Dammam coûte 25 SAR, gratuite au-delà de 300. Elle arrive en 2–3 jours !",
+  "ai_tone_sample_formal": "Bienvenue. La livraison à Dammam coûte 25 SAR et est gratuite pour les commandes supérieures à 300 SAR, sous 2–3 jours ouvrables.",
+  "ai_tone_sample_concise": "Livraison à Dammam 25 SAR (gratuite au-delà de 300) · 2–3 jours.",
+  "ai_use_name": "Utiliser le nom du client",
+  "ai_rules": "Règles",
+  "ai_hours": "Horaires de travail",
+  "ai_hours_24": "24 heures",
+  "ai_hours_unset": "Non défini",
+  "ai_handoff": "Transfert à un agent",
+  "ai_handoff_sub": "En cas de demande d'un humain, de réclamation ou de paiement",
+  "ai_language": "Langue de réponse",
+  "ai_lang_customer": "Langue du client",
+  "ai_lang_customer_sub": "Détectée par message",
+  "ai_lang_ar": "Toujours en arabe",
+  "ai_lang_en": "Toujours en anglais",
+  "ai_lang_style": "Style",
+  "ai_lang_msa": "Arabe standard simple",
+  "ai_lang_saudi": "Dialecte saoudien neutre",
+  "ai_handoff_msg": "Message de transfert",
+  "ai_handoff_msg_default": "Je vous mets en relation avec un collègue, un instant s'il vous plaît.",
+  "ai_var_customer": "Nom du client",
+  "ai_var_return": "Heure de retour",
+  "ai_save": "Enregistrer",
+  "ai_delay": "Délai de réponse automatique",
+  "ai_delay_instant": "Immédiat",
+  "ai_delay_30s": "Après 30 s",
+  "ai_delay_1m": "Après 1 min",
+  "ai_delay_2m": "Après 2 min",
+  "ai_delay_note": "Ce délai laisse la priorité aux agents en réponse automatique",
+  "ai_perf": "Performances",
+  "ai_perf_resolution": "Résolues sans transfert",
+  "ai_perf_rating": "Avis positifs",
+  "ai_perf_unanswered": "Questions sans réponse",
+  "ai_perf_detail": "Voir les performances détaillées",
+  "ai_perf_week": "Cette semaine",
+  "ai_perf_answered": "Répondues",
+  "ai_perf_handoffs": "Transferts",
+  "ai_perf_reasons": "Principaux motifs de transfert",
+  "ai_perf_sources": "Sources les plus utilisées",
+  "ai_perf_none": "Aucune donnée pour l'instant",
+  "ai_reason_human_request": "A demandé un humain",
+  "ai_reason_complaint": "Réclamation",
+  "ai_reason_payment": "Paiement ou remboursement",
+  "ai_reason_no_answer": "Aucune réponse trouvée",
+  "ai_reason_low_confidence": "Faible confiance",
+  "ai_reason_after_replies": "Réponses sans résolution",
+  "ai_reason_keyword": "Mot-clé : {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "Autre",
+  "ai_advanced": "Avancé",
+  "ai_channels": "Canaux activés",
+  "ai_channels_none": "Aucun canal",
+  "ai_channel_whatsapp": "WhatsApp",
+  "ai_channel_web": "Site web",
+  "ai_channel_messenger": "Messenger",
+  "ai_instructions": "Instructions supplémentaires",
+  "ai_instructions_ph": "ex. Ne mentionnez pas les prix de gros ; demandez toujours le numéro de commande avant les questions de livraison",
+  "ai_instructions_empty": "Aucune",
+  "ai_outside_kb": "Répondre en dehors de la base de connaissances",
+  "ai_outside_kb_sub": "Non recommandé — peut donner des informations inexactes",
+  "ai_confidence": "Seuil de confiance pour l'envoi automatique",
+  "ai_conf_low": "Faible",
+  "ai_conf_med": "Moyen",
+  "ai_conf_high": "Élevé",
+  "ai_conf_low_sub": "Envoie automatiquement la plupart des réponses",
+  "ai_conf_med_sub": "Équilibre entre rapidité et précision",
+  "ai_conf_high_sub": "N'envoie que les réponses certaines ; le reste est suggéré ou transféré",
+  "ai_team_styles": "Styles de réécriture de l'équipe",
+  "ai_style_add": "Ajouter un style",
+  "ai_style_name": "Nom du style",
+  "ai_style_instruction": "Instruction",
+  "ai_style_delete": "Supprimer",
+  "ai_styles_empty": "Aucun style pour l'instant",
+  "ai_audit": "Journal des modifications",
+  "ai_audit_row": "Modifié : {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "Aucune modification pour l'instant",
+  "ai_test": "Tester l'agent dans une conversation d'exemple",
+  "ai_test_title": "Conversation de test",
+  "ai_test_sub": "Ne sera envoyé à aucun client",
+  "ai_test_info": "Vous êtes le client. Essayez de vraies questions de clients.",
+  "ai_test_why": "Pourquoi cette réponse ?",
+  "ai_test_handoff": "Dans une vraie conversation, ceci serait transféré à l'équipe : {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "Redémarrer",
+  "ai_test_channel": "Changer de canal",
+  "ai_test_p1": "Combien coûte la livraison ?",
+  "ai_test_p2": "Je veux retourner ma commande",
+  "ai_test_p3": "Quels sont vos horaires d'ouverture ?",
+  "ai_test_p4": "Je veux parler à quelqu'un",
+  "ai_test_hint": "Tapez votre question en tant que client…",
+  "ai_test_label": "IA",
+  "ai_test_error": "Impossible d'obtenir une réponse. Réessayez.",
+  "ai_test_unsaved": "Vous avez des modifications non enregistrées des horaires de travail",
+  "ai_why_sources": "Sources",
+  "ai_why_no_sources": "Aucune source de la base de connaissances utilisée",
+  "ai_why_confidence": "Confiance",
+  "ai_why_rule": "Règle",
+  "ai_why_tone": "Ton",
+  "ai_off_title": "Désactiver l'IA ?",
+  "ai_off_body": "Elle arrêtera de répondre et de suggérer. Les conversations qu'elle gère seront transférées à l'équipe.",
+  "ai_off_handling": "Gère actuellement {n} conversations",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "Désactiver",
+  "ai_cancel": "Annuler",
+  "ai_kb_first_title": "Ajoutez d'abord votre base de connaissances",
+  "ai_kb_first_body": "L'IA ne répond qu'à partir de vos informations. Ajoutez au moins 10 réponses.",
+  "ai_kb_add": "Ajouter des réponses",
+  "ai_enable_suggest": "Activer en mode suggestion uniquement",
+  "ai_auto_title": "L'IA répondra directement aux clients",
+  "ai_auto_b1": "Répond uniquement à partir de votre base de connaissances",
+  "ai_auto_b2": "Transfère selon vos règles",
+  "ai_auto_b3": "Vous pouvez la désactiver à tout moment",
+  "ai_auto_tested": "J'ai testé l'agent",
+  "ai_auto_try": "Essayer maintenant",
+  "ai_auto_confirm": "Activer la réponse automatique",
+  "ai_outside_title": "Autoriser les réponses en dehors de la base de connaissances ?",
+  "ai_outside_body": "L'IA peut donner des informations incorrectes sur vos produits ou vos prix.",
+  "ai_allow": "Autoriser",
+  "ai_plan_off": "L'IA n'est pas disponible avec votre forfait",
+  "ai_view_plans": "Voir les forfaits",
+  "ai_quota_out": "Quota mensuel de réponses atteint — suggestion uniquement jusqu'au {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "Impossible d'enregistrer la modification",
+  "ai_retry": "Réessayer",
+  "ai_conflict": "{name} vient de modifier les paramètres",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "Quelqu'un d'autre vient de modifier les paramètres",
+  "ai_offline": "Une connexion internet est nécessaire pour modifier",
+  "ai_load_error": "Impossible de charger les paramètres de l'IA",
+  "ai_saved": "Enregistré",
+  "ai_hours_247": "Ouvert 24h/24 et 7j/7",
+  "ai_hours_closed": "Fermé",
+  "ai_hours_add_range": "+ Créneau",
+  "ai_hours_copy_all": "Copier pour tous les jours",
+  "ai_hours_timezone": "Fuseau horaire",
+  "ai_hours_holidays": "Jours fériés",
+  "ai_hours_err_order": "L'heure de fin doit être après l'heure de début",
+  "ai_hours_err_overlap": "Les créneaux se chevauchent",
+  "ai_hours_err_max": "2 créneaux maximum",
+  "ai_hours_start": "De",
+  "ai_hours_end": "À",
+  "ai_hours_discard": "Annuler les modifications ?",
+  "ai_hours_discard_body": "Vous n'avez pas enregistré les horaires de travail.",
+  "ai_hours_discard_confirm": "Annuler",
+  "ai_day_sat": "Samedi",
+  "ai_day_sun": "Dimanche",
+  "ai_day_mon": "Lundi",
+  "ai_day_tue": "Mardi",
+  "ai_day_wed": "Mercredi",
+  "ai_day_thu": "Jeudi",
+  "ai_day_fri": "Vendredi",
+  "ai_ho_intro": "L'IA transfère automatiquement la conversation à l'équipe quand :",
+  "ai_ho_human": "Le client demande à parler à une personne",
+  "ai_ho_always": "Toujours activé",
+  "ai_ho_complaint": "Réclamation ou client mécontent",
+  "ai_ho_payment": "Sujet de paiement ou de remboursement",
+  "ai_ho_no_answer": "Aucune réponse dans la base de connaissances",
+  "ai_ho_low_conf": "Faible confiance dans la réponse",
+  "ai_ho_after_n": "Après {n} réponses sans résolution",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "Mots spécifiques",
+  "ai_ho_keyword_add": "Ajouter un mot…",
+  "ai_ho_target": "Transférer à ?",
+  "ai_ho_target_unassigned": "Non attribué (premier à la prendre en charge)",
+  "ai_ho_target_team": "Une équipe spécifique",
+  "ai_ho_target_last": "Dernier agent ayant aidé le client",
+  "ai_ho_after_hours": "Hors horaires de travail",
+  "ai_ho_tell_return": "Indiquer au client quand vous serez de retour",
+  "ai_ho_notify": "Transférer et notifier l'équipe",
+  "rw_title": "Améliorer la réponse",
+  "rw_subtitle": "Choisissez un style et l'IA la reformulera",
+  "rw_original": "Votre texte original",
+  "rw_edit": "Modifier",
+  "rw_more": "Plus",
+  "rw_selection_hint": "Seule la partie sélectionnée sera remplacée",
+  "rw_style_professional": "Plus professionnel",
+  "rw_style_shorter": "Plus court",
+  "rw_style_friendlier": "Plus chaleureux",
+  "rw_style_apology": "Excuse",
+  "rw_style_fix": "Corriger l'orthographe",
+  "rw_style_to_en": "Traduire en anglais",
+  "rw_style_to_ar": "Traduire en arabe",
+  "rw_style_more": "Plus",
+  "rw_style_formal": "Très formel",
+  "rw_style_saudi": "Dialecte saoudien",
+  "rw_style_msa": "Arabe standard moderne",
+  "rw_style_greeting": "Ajouter une salutation et une formule de politesse",
+  "rw_style_bullets": "Transformer en liste à puces",
+  "rw_style_sales": "Plus persuasif",
+  "rw_style_simple": "Plus simple et plus clair",
+  "rw_team_styles": "Les styles de votre équipe",
+  "rw_customer_prefers": "Le client préfère le {language}",
+  "@rw_customer_prefers": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_result": "Formulation suggérée",
+  "rw_writing": "Reformulation…",
+  "rw_streaming": "Rédaction…",
+  "rw_edited": "Modifié manuellement",
+  "rw_name_added": "Nom du client ajouté",
+  "rw_fact_warning": "À vérifier : l'IA a ajouté des informations absentes de votre réponse",
+  "rw_chars": "{n} caractères ({delta})",
+  "@rw_chars": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_over_limit": "Plus long que ce que permet le canal",
+  "rw_show_diff": "Afficher les modifications",
+  "rw_hide_diff": "Masquer les modifications",
+  "rw_use": "Utiliser cette réponse",
+  "rw_use_as_is": "Utiliser tel quel",
+  "rw_rerun": "Reformuler à nouveau",
+  "rw_regenerate": "Une autre version",
+  "rw_max_versions": "Nombre maximal de tentatives atteint",
+  "rw_no_change": "Votre réponse est déjà bonne — aucune modification",
+  "rw_error": "Impossible de reformuler",
+  "rw_retry": "Réessayer",
+  "rw_rate_limited": "Limite d'utilisation atteinte, réessayez dans {n} s",
+  "@rw_rate_limited": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_plan_limit": "La reformulation n'est pas disponible avec votre formule",
+  "rw_view_plans": "Voir les formules",
+  "rw_blocked": "Ce texte ne peut pas être reformulé",
+  "rw_offline": "Connexion Internet requise",
+  "rw_too_long": "Texte trop long pour être reformulé (2 000 max)",
+  "rw_empty_hint": "Écrivez d'abord une réponse ou utilisez la suggestion IA",
+  "rw_toolbar": "Améliorer avec l'IA",
+  "rw_lang_ar": "Arabe",
+  "rw_lang_en": "Anglais",
+  "rw_copy": "Copier",
+  "rw_copied": "Copié",
+  "rw_a11y_ready": "Formulation suggérée prête : {text}",
+  "@rw_a11y_ready": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "rw_a11y_cached": "Générée",
+  "rw_a11y_version": "Version {i} sur {n}",
+  "@rw_a11y_version": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "rw_a11y_prev": "Précédent",
+  "rw_a11y_next": "Suivant",
+  "rw_a11y_edit_result": "Appuyez pour modifier la formulation, appui long pour copier",
+  "as_title": "Attribuer la conversation",
+  "as_title_bulk": "Attribuer {n} conversations",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "Actuel : {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "Rechercher un coéquipier ou une équipe",
+  "as_no_results": "Aucun résultat pour « {q} »",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "Tous",
+  "as_filter_available": "Disponibles ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "Mon équipe",
+  "as_suggested": "Suggérés",
+  "as_teammates": "Coéquipiers",
+  "as_teams": "Équipes",
+  "as_ai_section": "IA",
+  "as_me": "Moi",
+  "as_badge_current": "Actuel",
+  "as_badge_capacity": "À la limite",
+  "as_online_m": "Disponible",
+  "as_online_f": "Disponible",
+  "as_busy_m": "Occupé",
+  "as_busy_f": "Occupée",
+  "as_away": "Absent",
+  "as_last_seen": "Vu pour la dernière fois il y a {t}",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} conversations ouvertes",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} membres",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} disponibles",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "Attribué au membre le moins occupé",
+  "as_routing_rr": "Répartition tournante",
+  "as_routing_manual": "Reste dans la file d'attente de l'équipe",
+  "as_team_none_available": "Personne n'est disponible — elle attendra dans la file d'attente de l'équipe",
+  "as_ai_name": "Agent IA",
+  "as_ai_sub": "Répond automatiquement et transfère si nécessaire",
+  "as_ai_unavailable": "La base de connaissances est trop limitée",
+  "as_reason_handled": "A déjà échangé avec ce client",
+  "as_reason_handled_f": "A déjà échangé avec ce client",
+  "as_reason_skill": "Expert en {skill}",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "Experte en {skill}",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "Le moins occupé",
+  "as_note": "Note pour le coéquipier (facultatif)",
+  "as_note_q1": "Le client a besoin d'une réponse rapide",
+  "as_note_q2": "Problème de paiement",
+  "as_note_q3": "Relancer demain",
+  "as_pick": "Choisissez un coéquipier ou une équipe",
+  "as_assign_to": "Attribuer à {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "Prendre en charge la conversation",
+  "as_assign_ai": "Attribuer à l'IA",
+  "as_assign_bulk_to": "Attribuer {n} à {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "Retirer l'attribution (retour à non attribuée)",
+  "as_busy_hint": "Occupé — la réponse peut être retardée",
+  "as_busy_hint_f": "Occupée — la réponse peut être retardée",
+  "as_away_hint": "Absent — il sera notifié",
+  "as_away_hint_f": "Absente — elle sera notifiée",
+  "as_capacity_reached": "Au maximum ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "Non attribuable",
+  "as_taken_live": "{name} vient de la prendre",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "Réattribuer à {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "L'attribution nécessite une connexion internet",
+  "as_none_available": "Aucun coéquipier disponible",
+  "as_show_all": "Afficher tout",
+  "as_done": "Attribuée à {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "{ok} sur {n} attribuées",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "Voir les erreurs",
+  "as_undo": "Annuler",
+  "as_forbidden": "Vous ne pouvez pas attribuer à ce coéquipier",
+  "as_error": "Impossible d'attribuer. Réessayez.",
+  "as_retry": "Réessayer",
+  "as_event_assigned": "Vous avez attribué ceci à {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "{actor} a annulé l'attribution",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "La conversation a été résolue",
+  "as_queued_team": "En attente dans la file de l'équipe {team}",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "La conversation n'est plus attribuée",
+  "as_errors_title": "{n} n'ont pas pu être attribuées",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "Déjà attribuée à cette personne",
+  "as_err_resolved": "La conversation est résolue",
+  "as_err_state": "Le responsable a changé",
+  "as_err_generic": "Erreur inattendue",
+  "as_expand_team": "Afficher les membres de {team}",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "sélectionné",
+  "as_load_error": "Impossible de charger les coéquipiers",
+  "login_title": "Content de vous revoir",
+  "login_subtitle": "Connectez-vous pour suivre les conversations de vos clients, où que vous soyez.",
+  "login_identifier_label": "E-mail ou téléphone",
+  "login_identifier_hint": "name@company.com",
+  "login_password_label": "Mot de passe",
+  "login_password_show": "Afficher le mot de passe",
+  "login_password_hide": "Masquer le mot de passe",
+  "login_forgot": "Mot de passe oublié ?",
+  "login_submit": "Se connecter",
+  "login_or": "ou",
+  "login_biometric_face": "Se connecter avec Face ID",
+  "login_biometric_finger": "Se connecter avec l'empreinte digitale",
+  "login_biometric_reason": "Connectez-vous à Wavadesk",
+  "login_biometric_locked": "L'authentification biométrique est temporairement verrouillée. Utilisez votre mot de passe.",
+  "login_no_account": "Vous n'avez pas de compte ?",
+  "login_start_trial": "Commencer un essai gratuit de 7 jours",
+  "login_offline": "Aucune connexion internet",
+  "login_err_invalid": "E-mail ou mot de passe incorrect.",
+  "login_err_disabled": "Ce compte est désactivé. Contactez l'administrateur de votre espace de travail.",
+  "login_err_suspended": "L'abonnement de l'espace de travail est suspendu.",
+  "login_manage_subscription": "Gérer l'abonnement",
+  "login_err_locked": "Trop de tentatives. Réessayez dans {time}.",
+  "@login_err_locked": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "login_err_network": "Connexion impossible. Vérifiez votre connexion internet et réessayez.",
+  "login_err_server": "Un problème est survenu de notre côté. Réessayez dans quelques instants.",
+  "login_retry": "Réessayer",
+  "login_val_identifier_required": "Saisissez votre e-mail ou téléphone",
+  "login_val_email_invalid": "Format d'e-mail invalide",
+  "login_val_phone_invalid": "Numéro de téléphone invalide",
+  "login_val_password_required": "Saisissez votre mot de passe",
+  "login_val_password_short": "Au moins 8 caractères",
+  "login_bio_sheet_title": "Connectez-vous plus vite la prochaine fois",
+  "login_bio_sheet_body": "Utilisez Face ID au lieu de votre mot de passe.",
+  "login_bio_sheet_body_finger": "Utilisez votre empreinte digitale au lieu de votre mot de passe.",
+  "login_bio_sheet_enable": "Activer Face ID",
+  "login_bio_sheet_enable_finger": "Activer l'empreinte digitale",
+  "login_bio_sheet_later": "Plus tard",
+  "auth_coming_soon_title": "Bientôt disponible",
+  "auth_forgot_placeholder": "La récupération de mot de passe arrivera dans une prochaine mise à jour.",
+  "auth_forgot_placeholder_for": "La récupération de mot de passe pour {identifier} arrivera dans une prochaine mise à jour.",
+  "@auth_forgot_placeholder_for": {
+    "placeholders": {
+      "identifier": {
+        "type": "String"
+      }
+    }
+  },
+  "auth_2fa_title": "Code de vérification",
+  "auth_2fa_placeholder": "La saisie du code de validation en deux étapes arrivera dans une prochaine mise à jour.",
+  "auth_workspace_title": "Choisir un espace de travail",
+  "auth_workspace_placeholder": "Votre compte appartient à plusieurs espaces de travail. La sélection arrivera dans une prochaine mise à jour.",
+  "chat_ai_suggestion": "Suggestion IA",
+  "chat_ai_source": "Source : {title}",
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ai_send": "Envoyer",
+  "chat_ai_edit": "Modifier",
+  "chat_ai_more": "Plus",
+  "chat_ai_low_conf": "À vérifier avant l'envoi",
+  "chat_ai_writing": "Rédaction de la suggestion…",
+  "chat_ai_no_answer": "L'IA n'a trouvé aucune réponse dans la base de connaissances",
+  "chat_ai_add_answer": "Ajouter une réponse",
+  "chat_ai_ready_pill": "Suggestion prête",
+  "chat_placeholder": "Écrivez une réponse…",
+  "chat_note_placeholder": "Note pour votre équipe — le client ne la verra pas",
+  "chat_mode_reply": "Réponse",
+  "chat_mode_note": "Note interne",
+  "chat_attach_media": "Photo/Vidéo",
+  "chat_attach_camera": "Appareil photo",
+  "chat_attach_file": "Fichier",
+  "chat_attach_location": "Position",
+  "chat_attach_quick": "Réponses rapides",
+  "chat_attach_template": "Modèle WhatsApp",
+  "chat_attach_product": "Produit",
+  "chat_record_cancel_hint": "Glisser pour annuler",
+  "chat_claim": "Prendre en charge la conversation",
+  "chat_assign_colleague": "Attribuer à un collègue",
+  "chat_viewing_now": "{name} consulte cette conversation en ce moment",
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_waiting_claim": "En attente d'être prise en charge",
+  "chat_claimed_before": "{name} l'a prise en charge en premier",
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_colleague": "Attribuée à {name}",
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_request": "Demander le transfert",
+  "chat_ro_resolved": "Conversation résolue",
+  "chat_reopen": "Rouvrir",
+  "chat_ro_ai": "L'IA gère cette conversation",
+  "chat_take_over": "Reprendre",
+  "chat_ro_blocked": "Ce contact est bloqué",
+  "chat_unblock": "Débloquer",
+  "chat_ro_past": "Conversation passée — lecture seule",
+  "chat_banner_offline": "Hors ligne — les messages s'envoient à la reconnexion",
+  "chat_banner_window_closed": "Fenêtre de 24 heures fermée — seuls les modèles approuvés sont disponibles",
+  "chat_choose_template": "Choisir un modèle",
+  "chat_banner_window_soon": "La fenêtre de réponse se ferme dans {t}",
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_banner_channel_down": "WhatsApp déconnecté — les messages ne seront pas livrés",
+  "chat_reconnect": "Se reconnecter",
+  "chat_snoozed_until": "Mise en pause jusqu'à {t}",
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unsnooze": "Annuler la pause",
+  "composer_attach": "Joindre",
+  "composer_send": "Envoyer",
+  "composer_send_note": "Envoyer la note",
+  "composer_record": "Maintenir pour enregistrer un message vocal",
+  "composer_recording": "Enregistrement",
+  "composer_record_stop": "Arrêter",
+  "composer_record_send": "Envoyer l'enregistrement",
+  "composer_record_cancelled": "Enregistrement annulé",
+  "composer_record_locked": "Enregistrement mains libres",
+  "composer_record_slide_up": "Glisser vers le haut pour verrouiller",
+  "composer_ai_rewrite": "Améliorer la réponse avec l'IA",
+  "composer_field_label": "Écrire une réponse",
+  "composer_note_field_label": "Écrire une note interne",
+  "composer_template": "Modèle",
+  "composer_template_only": "Fenêtre fermée — envoyez un modèle approuvé",
+  "composer_colleague_typing_note": "{name} rédige une note…",
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_colleague_viewing": "{name} consulte aussi",
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_quick_title": "Réponses rapides",
+  "composer_quick_empty": "Aucune réponse rapide correspondante",
+  "composer_mention_title": "Mentionner un collègue",
+  "composer_reply_to": "En réponse à {name}",
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_cancel_reply": "Annuler la réponse",
+  "composer_remove_attachment": "Supprimer la pièce jointe",
+  "composer_uploading": "Envoi {percent} %",
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "composer_customer": "Client",
+  "composer_location_sample": "Al Malqa, Riyad",
+  "aicard_close": "Réduire la suggestion",
+  "aicard_regenerate": "Régénérer la suggestion",
+  "aicard_less": "Moins",
+  "aicard_open_pill": "Afficher la suggestion IA",
+  "claimbar_waiting_minutes": "{n} min",
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claimbar_viewers_more": "{name} et {count, plural, =1{1 autre} other{{count} autres}} consultent cette conversation",
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "readonly_take_instead": "Reprendre à la place",
+  "readonly_add_note": "Ajouter une note interne",
+  "banner_connecting": "Connexion…",
+  "composer_mic_denied": "Autorisez l'accès au microphone dans les réglages pour enregistrer des messages vocaux.",
+  "composer_record_failed": "Impossible d'enregistrer. Veuillez réessayer.",
+  "composer_record_delete": "Supprimer l'enregistrement",
+  "chat_ai_suggest_pill": "Suggérer une réponse",
+  "sys_called": "{actor} a appelé le client",
+  "@sys_called": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_called_me": "Vous avez appelé le client",
+  "snooze_title": "Mettre la conversation en pause",
+  "snooze_one_hour": "Dans 1 heure",
+  "snooze_three_hours": "Dans 3 heures",
+  "snooze_tomorrow": "Demain 9 h",
+  "snooze_next_week": "La semaine prochaine",
+  "snooze_custom": "Personnalisé",
+  "sys_claimed": "{actor} a pris en charge la conversation",
+  "@sys_claimed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_claimed_me": "Vous avez pris en charge la conversation",
+  "sys_assigned": "{actor} a attribué la conversation à {target}",
+  "@sys_assigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_assigned_me": "Vous avez attribué la conversation à {target}",
+  "@sys_assigned_me": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned": "{actor} a libéré la conversation",
+  "@sys_unassigned": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unassigned_me": "Vous avez libéré la conversation",
+  "sys_ai_handoff": "L'IA a transféré la conversation à l'équipe : {reason}",
+  "@sys_ai_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused": "{actor} a mis l'IA en pause pour cette conversation",
+  "@sys_ai_paused": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_paused_me": "Vous avez mis l'IA en pause pour cette conversation",
+  "sys_ai_resumed": "{actor} a réactivé l'IA pour cette conversation",
+  "@sys_ai_resumed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_ai_resumed_me": "Vous avez réactivé l'IA pour cette conversation",
+  "sys_resolved": "{actor} a résolu la conversation",
+  "@sys_resolved": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_resolved_me": "Vous avez résolu la conversation",
+  "sys_reopened": "La conversation a été rouverte",
+  "sys_snoozed": "{actor} a mis la conversation en pause jusqu'à {time}",
+  "@sys_snoozed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_snoozed_me": "Vous avez mis la conversation en pause jusqu'à {time}",
+  "@sys_snoozed_me": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority": "{actor} a changé la priorité à {value}",
+  "@sys_priority": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_priority_me": "Vous avez changé la priorité à {value}",
+  "@sys_priority_me": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added": "{actor} a ajouté l'étiquette « {tag} »",
+  "@sys_tag_added": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      },
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_tag_added_me": "Vous avez ajouté l'étiquette « {tag} »",
+  "@sys_tag_added_me": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_window_closed": "La fenêtre de réponse de 24 heures s'est fermée",
+  "sys_blocked": "{actor} a bloqué ce contact",
+  "@sys_blocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_blocked_me": "Vous avez bloqué ce contact",
+  "sys_unblocked": "{actor} a débloqué ce contact",
+  "@sys_unblocked": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "sys_unblocked_me": "Vous avez débloqué ce contact",
+  "sys_started": "Conversation démarrée sur {channel}",
+  "@sys_started": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "msgaction_add_to_profile": "Ajouter au profil client",
+  "msgaction_added_to_profile": "Note ajoutée au profil client",
+  "chat_new_messages": "{n, plural, =1{1 nouveau message} other{{n} nouveaux messages}}",
+  "@chat_new_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chat_ai_reply_label": "Réponse IA",
+  "chat_note_label": "Note interne · {name}",
+  "@chat_note_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_failed": "Non envoyé",
+  "chat_retry": "Réessayer",
+  "chat_delete": "Supprimer",
+  "chat_edited": "modifié",
+  "chat_deleted": "Ce message a été supprimé",
+  "chat_unsupported": "Message non pris en charge — ouvrir dans WhatsApp",
+  "chat_transcribe": "Transcrire",
+  "bubble_template_label": "Modèle : {name}",
+  "@bubble_template_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_show_all": "Afficher tout",
+  "bubble_show_less": "Afficher moins",
+  "bubble_save_contact": "Enregistrer",
+  "bubble_contact_saved": "Contact enregistré",
+  "bubble_play": "Lire le message vocal",
+  "bubble_pause": "Mettre en pause le message vocal",
+  "bubble_speed": "Vitesse de lecture {speed}",
+  "@bubble_speed": {
+    "placeholders": {
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_voice_summary": "{n, plural, =1{Message vocal, 1 seconde} other{Message vocal, {n} secondes}}",
+  "@bubble_voice_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_image_from": "Photo de {name}",
+  "@bubble_image_from": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_album_summary": "{n, plural, =1{1 photo} other{{n} photos}}",
+  "@bubble_album_summary": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "bubble_video_summary": "Vidéo {duration}",
+  "@bubble_video_summary": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_play_video": "Lire la vidéo",
+  "bubble_video_unavailable": "L'aperçu vidéo n'est pas disponible dans les données d'exemple",
+  "bubble_download": "Télécharger le fichier",
+  "bubble_downloaded": "Fichier téléchargé",
+  "bubble_open_maps": "Ouvrir la position dans les plans",
+  "bubble_transcribing": "Transcription en cours…",
+  "bubble_transcript": "Transcription",
+  "bubble_delivery_sending": "Envoi en cours",
+  "bubble_delivery_sent": "Envoyé",
+  "bubble_delivery_delivered": "Distribué",
+  "bubble_delivery_read": "Lu",
+  "bubble_reply_to": "Répondre à {name}",
+  "@bubble_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_viewer_share": "Partager",
+  "bubble_viewer_save": "Enregistrer",
+  "bubble_viewer_sample": "Il s'agit d'une image d'exemple qui ne peut être ni partagée ni enregistrée",
+  "bubble_reactions": "Réactions : {emojis}",
+  "@bubble_reactions": {
+    "placeholders": {
+      "emojis": {
+        "type": "String"
+      }
+    }
+  },
+  "chatlist_jump_latest": "Aller au dernier message",
+  "chatlist_loading_older": "Chargement des messages plus anciens",
+  "chatlist_typing": "en train d'écrire…",
+  "msgaction_reply": "Répondre",
+  "msgaction_copy": "Copier",
+  "msgaction_copied": "Message copié",
+  "msgaction_forward": "Transférer",
+  "msgaction_forward_soon": "Le transfert arrive bientôt",
+  "msgaction_save_kb": "Enregistrer dans la base de connaissances",
+  "msgaction_info": "Infos",
+  "msgaction_info_title": "Informations sur le message",
+  "msgaction_info_sent": "Envoyé à",
+  "msgaction_info_status": "Statut",
+  "msgaction_info_channel": "Canal",
+  "msgaction_info_via": "Envoyé via",
+  "msgaction_via_manual": "Saisi manuellement",
+  "msgaction_via_ai_suggestion": "Suggestion de l'IA",
+  "msgaction_via_ai_edited": "Suggestion de l'IA modifiée",
+  "msgaction_via_quick_reply": "Réponse rapide",
+  "msgaction_via_template": "Modèle approuvé",
+  "msgaction_delete_title": "Supprimer le message ?",
+  "msgaction_delete_body": "Le message sera supprimé pour tout le monde si le canal le permet. Cette action est irréversible.",
+  "msgaction_rate": "Évaluer la réponse",
+  "msgaction_rate_up": "Réponse utile",
+  "msgaction_rate_down": "Réponse inutile",
+  "msgaction_rated": "Merci — l'IA apprendra de votre évaluation",
+  "msgaction_more_reactions": "Plus de réactions",
+  "msgaction_pick_reaction": "Choisir une réaction",
+  "msgaction_react": "Réagir {emoji}",
+  "@msgaction_react": {
+    "placeholders": {
+      "emoji": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_load_failed": "Impossible de charger cette conversation",
+  "chatscreen_not_found": "Nous n'avons pas trouvé cette conversation",
+  "chatscreen_action_failed": "Action impossible. Réessayez.",
+  "chatscreen_taken_from_me": "La conversation a été attribuée à {name}",
+  "@chatscreen_taken_from_me": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_claimed_by": "Prise en charge par {name}",
+  "@chatscreen_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_note": "@{name} Pourriez-vous me transférer cette conversation pour que je puisse m'en occuper ?",
+  "@chatscreen_transfer_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_transfer_sent": "Demande de transfert envoyée à {name}",
+  "@chatscreen_transfer_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_title": "Reprendre la conversation d'un coéquipier ?",
+  "chatscreen_takeover_body": "La conversation vous sera attribuée à la place de {name}, qui en sera informé(e).",
+  "@chatscreen_takeover_body": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatscreen_takeover_confirm": "Reprendre",
+  "chat_online": "En ligne",
+  "chat_last_seen": "Vu pour la dernière fois {time}",
+  "@chat_last_seen": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_typing": "en train d'écrire…",
+  "chat_assigned_you": "Attribuée à vous",
+  "chat_assigned_to": "Attribuée à {name}",
+  "@chat_assigned_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unassigned": "Non attribuée",
+  "chat_ai_handling": "Prise en charge par l'IA",
+  "chat_resolve": "Résoudre la conversation",
+  "chat_resolved_toast": "Conversation résolue",
+  "chat_undo": "Annuler",
+  "chatbar_browsing": "Navigation : {page}",
+  "@chatbar_browsing": {
+    "placeholders": {
+      "page": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_back_unread": "{n, plural, =1{Retour, 1 autre conversation non lue} other{Retour, {n} autres conversations non lues}}",
+  "@chatbar_back_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "chatbar_open_profile": "Ouvrir le profil de {name}",
+  "@chatbar_open_profile": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chatbar_call": "Appeler",
+  "chatbar_more": "Actions de la conversation",
+  "chatbar_call_phone": "Appel téléphonique",
+  "chatbar_call_whatsapp": "Appel WhatsApp",
+  "chatbar_call_failed": "Impossible de démarrer un appel sur cet appareil",
+  "strip_snoozed_until": "Mise en pause jusqu'à {t}",
+  "@strip_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_order": "Commande {ref}",
+  "@strip_order": {
+    "placeholders": {
+      "ref": {
+        "type": "String"
+      }
+    }
+  },
+  "strip_no_store_integration": "Aucune intégration boutique pour le moment",
+  "strip_add_tag": "Étiquette",
+  "snoozepick_subtitle": "La conversation revient dans votre liste à cette heure",
+  "templates_title": "Modèles approuvés",
+  "templates_subtitle": "Modèles WhatsApp approuvés par Meta",
+  "templates_empty": "Aucun modèle approuvé pour le moment",
+  "templates_sent": "Modèle envoyé",
+  "actions_assign": "Attribuer",
+  "actions_change_owner": "Attribuer / changer de responsable",
+  "actions_unassign": "Libérer la conversation",
+  "actions_unassigned_toast": "Déplacée vers Non attribuées",
+  "actions_snooze": "Mettre en pause",
+  "actions_snoozed_toast": "Conversation mise en pause",
+  "actions_priority": "Priorité",
+  "actions_tag": "Ajouter une étiquette",
+  "actions_tag_subtitle": "Choisissez des étiquettes ou créez-en une nouvelle",
+  "actions_tag_new_hint": "Nouvelle étiquette",
+  "actions_tag_add": "Ajouter une étiquette",
+  "actions_ai_pause": "Mettre l'IA en pause pour cette conversation",
+  "actions_ai_resume": "Activer l'IA pour cette conversation",
+  "actions_ai_paused_toast": "IA mise en pause pour cette conversation",
+  "actions_ai_resumed_toast": "IA activée pour cette conversation",
+  "actions_mark_unread": "Marquer comme non lue",
+  "actions_export": "Exporter la conversation",
+  "actions_export_note": "Note interne",
+  "actions_exported_toast": "Texte de la conversation copié — collez-le où vous voulez",
+  "actions_block": "Bloquer le contact",
+  "actions_unblock": "Débloquer le contact",
+  "actions_block_title": "Bloquer {name} ?",
+  "@actions_block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_block_body": "Vous ne recevrez plus de messages de ce contact et la conversation sera fermée. Vous pourrez le débloquer plus tard.",
+  "actions_blocked_toast": "Contact bloqué",
+  "actions_unblocked_toast": "Contact débloqué",
+  "claim_button": "Prendre en charge la conversation",
+  "claim_button_hint": "Elle vous sera attribuée et vous pourrez répondre",
+  "claim_region": "Prendre en charge la conversation",
+  "claim_assign_colleague": "Attribuer à un collègue",
+  "claim_ai_takeover": "Laisser l'IA s'en charger",
+  "claim_ai_takeover_done": "La conversation a été transférée à l'agent IA",
+  "claim_waiting": "En attente de prise en charge",
+  "claim_viewer_one_f": "{name} consulte cette conversation en ce moment",
+  "@claim_viewer_one_f": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_one_m": "{name} consulte cette conversation en ce moment",
+  "@claim_viewer_one_m": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_two": "{a} et {b} consultent cette conversation",
+  "@claim_viewer_two": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_viewer_many": "{n, plural, =1{{a} et 1 autre personne consultent cette conversation} other{{a} et {n} autres personnes consultent cette conversation}}",
+  "@claim_viewer_many": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_sec": "il y a {n} s",
+  "@claim_viewing_since_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_viewing_since_min": "il y a {t}",
+  "@claim_viewing_since_min": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_wait_sec": "{n} s",
+  "@claim_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_min": "{n} min",
+  "@claim_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_wait_hm": "{h} h {m} min",
+  "@claim_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_sec": "{n, plural, =1{En attente depuis 1 seconde} other{En attente depuis {n} secondes}}",
+  "@claim_a11y_wait_sec": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_min": "{n, plural, =1{En attente depuis 1 minute} other{En attente depuis {n} minutes}}",
+  "@claim_a11y_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_a11y_wait_hm": "En attente depuis {h} heures {m} minutes",
+  "@claim_a11y_wait_hm": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      },
+      "m": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_success_event": "Vous avez pris en charge la conversation",
+  "claim_conflict": "{name} l'a prise en charge en premier",
+  "@claim_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_taken_live": "{name} a pris en charge cette conversation",
+  "@claim_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_assigned_to_you": "{name} vous l'a attribuée",
+  "@claim_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_resolved_live": "{name} a résolu la conversation",
+  "@claim_resolved_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_network_error": "Impossible de prendre en charge. Vérifiez votre connexion et réessayez.",
+  "claim_retry": "Réessayer",
+  "claim_forbidden": "Vous n'avez pas la permission de prendre en charge cette conversation",
+  "claim_team_only": "Cette conversation appartient à {team}",
+  "@claim_team_only": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_offline_hint": "La prise en charge nécessite une connexion internet",
+  "claim_capacity_hint": "Vous avez {n} conversations ouvertes (limite {max})",
+  "@claim_capacity_hint": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_reached": "Vous avez atteint votre limite de conversations",
+  "claim_away_title": "Votre statut : Absent",
+  "claim_away_body": "La prise en charge changera votre statut en Disponible.",
+  "claim_away_confirm": "Prendre en charge et passer en Disponible",
+  "claim_capacity_title": "Vous avez {n} conversations ouvertes",
+  "@claim_capacity_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_capacity_body": "En prendre en charge une de plus ?",
+  "claim_capacity_confirm": "Prendre en charge quand même",
+  "claim_cancel": "Annuler",
+  "claim_assigned_toast": "Attribuée à {name}",
+  "@claim_assigned_toast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_undo": "Annuler",
+  "claim_reply_placeholder": "Écrivez pour prendre en charge et répondre…",
+  "claim_short": "Prendre en charge",
+  "claim_handoff_event": "L'IA a transféré ceci à l'équipe : {reason}",
+  "@claim_handoff_event": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_reason_payment": "Problème de paiement",
+  "claim_reason_human": "A demandé un humain",
+  "claim_reason_complaint": "Réclamation",
+  "claim_reason_no_answer": "Question sans réponse",
+  "claim_reason_refund": "Demande de remboursement",
+  "claim_reason_other": "Autre",
+  "claim_push_title": "Nouvelle conversation en attente",
+  "claim_push_action": "Prendre en charge",
+  "claim_push_success": "Vous avez pris en charge la conversation avec {customer}",
+  "@claim_push_success": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "actions_add_note": "Ajouter une note interne",
+  "claim_a11y_wait_span": "En attente depuis {t}",
+  "@claim_a11y_wait_span": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "conversations_segment_mine": "Les miennes",
+  "conversations_segment_unassigned": "Non attribuées",
+  "conversations_segment_all": "Toutes",
+  "conversations_filter_all": "Toutes",
+  "conversations_filter_unread": "Non lues",
+  "conversations_filter_awaiting": "En attente de réponse",
+  "conversations_filter_ai": "Répondu par l'IA",
+  "conversations_filter_closed": "Fermées",
+  "conversations_filter_more": "Filtres",
+  "conversations_channel_any": "Tous les canaux",
+  "conversations_priority_any": "Toutes les priorités",
+  "conversations_notifications": "Notifications",
+  "conversations_new_message": "Nouveau message",
+  "conversations_exit_selection": "Quitter la sélection",
+  "conversations_selected_count": "{count, plural, =1{1 sélectionnée} other{{count} sélectionnées}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "Attribuer la sélection",
+  "conversations_bulk_resolve": "Résoudre la sélection",
+  "conversations_bulk_resolved": "{count, plural, =1{1 conversation résolue} other{{count} conversations résolues}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "Conversation résolue",
+  "conversations_empty_mine_title": "Aucune conversation ne vous est attribuée",
+  "conversations_empty_mine_body": "Prenez-en une en charge depuis Non attribuées pour commencer à répondre.",
+  "conversations_empty_mine_action": "Afficher les non attribuées",
+  "conversations_empty_filters_title": "Aucune conversation ne correspond aux filtres",
+  "conversations_empty_filters_body": "Essayez de modifier ou de réinitialiser les filtres pour tout afficher.",
+  "conversations_empty_filters_action": "Réinitialiser les filtres",
+  "conversations_empty_done_title": "Vous êtes à jour",
+  "conversations_empty_done_body": "Rien ne nécessite votre attention pour l'instant. Nous vous préviendrons à l'arrivée d'un nouveau message.",
+  "tile_you_prefix": "Vous : ",
+  "tile_ai_reply": "Réponse IA",
+  "tile_ai_ready": "Suggestion prête",
+  "tile_typing": "En train d'écrire…",
+  "tile_snoozed_until": "Mise en pause jusqu'à {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "Résoudre",
+  "tile_swipe_snooze": "Mettre en pause",
+  "tile_swipe_assign": "Attribuer",
+  "filters_title": "Filtres",
+  "filters_channel": "Canal",
+  "filters_status": "Statut",
+  "filters_priority": "Priorité",
+  "filters_assignee": "Attribué à",
+  "filters_assignee_all": "Tout le monde",
+  "filters_assignee_me": "Moi",
+  "filters_assignee_colleague": "Un collègue",
+  "filters_assignee_ai": "IA",
+  "filters_assignee_unassigned": "Non attribuée",
+  "filters_date": "Date",
+  "filters_date_any": "N'importe quand",
+  "filters_date_today": "Aujourd'hui",
+  "filters_date_7": "7 jours",
+  "filters_date_30": "30 jours",
+  "filters_date_custom": "Personnalisé",
+  "filters_tags": "Étiquettes",
+  "filters_show": "{count, plural, =0{Aucune conversation} =1{Afficher 1 conversation} other{Afficher {count} conversations}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "Nouveau message",
+  "newmsg_subtitle": "Démarrez une conversation WhatsApp avec un modèle approuvé",
+  "newmsg_name": "Nom du client",
+  "newmsg_name_hint": "Facultatif",
+  "newmsg_phone": "Numéro de mobile",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "Entrez un numéro de mobile valide avec l'indicatif du pays",
+  "newmsg_template": "Modèle",
+  "newmsg_template_error": "Choisissez un modèle approuvé à envoyer",
+  "newmsg_send": "Envoyer le modèle",
+  "app_name": "Wavadesk",
+  "tab_conversations": "Conversations",
+  "tab_dashboard": "Tableau de bord",
+  "tab_knowledge": "Connaissances",
+  "tab_account": "Compte",
+  "channel_whatsapp": "WhatsApp",
+  "channel_web": "Chat du site",
+  "channel_messenger": "Messenger",
+  "channel_instagram": "Instagram",
+  "channel_email": "E-mail",
+  "channel_telegram": "Telegram",
+  "channel_sms": "SMS",
+  "channel_other": "Autre canal",
+  "status_open": "Ouverte",
+  "status_pending": "En attente du client",
+  "status_waiting": "En attente de réponse",
+  "status_snoozed": "Reportée",
+  "status_resolved": "Résolue",
+  "status_closed": "Fermée",
+  "status_ai": "Prise en charge par l'IA",
+  "priority_urgent": "Urgente",
+  "priority_high": "Élevée",
+  "priority_medium": "Moyenne",
+  "priority_low": "Faible",
+  "presence_online": "Disponible",
+  "presence_busy": "Occupé",
+  "presence_away": "Absent",
+  "role_admin": "Administrateur",
+  "role_supervisor": "Superviseur",
+  "role_agent": "Agent du support",
+  "ownership_mine": "Attribuée à vous",
+  "ownership_unassigned": "Non attribuée",
+  "ownership_colleague": "Attribuée à {name}",
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ownership_ai": "Prise en charge par l'IA",
+  "media_image": "Photo",
+  "media_voice": "Message vocal",
+  "media_file": "Fichier",
+  "media_location": "Position",
+  "media_album": "Album photo",
+  "media_video": "Vidéo",
+  "media_contact": "Contact",
+  "media_sticker": "Autocollant",
+  "media_template": "Modèle",
+  "media_email": "E-mail",
+  "media_deleted": "Message supprimé",
+  "media_unsupported": "Message non pris en charge",
+  "common_cancel": "Annuler",
+  "common_save": "Enregistrer",
+  "common_undo": "Annuler",
+  "common_retry": "Réessayer",
+  "common_close": "Fermer",
+  "common_back": "Retour",
+  "common_clear": "Effacer",
+  "common_done": "Terminé",
+  "common_search": "Rechercher",
+  "common_clear_search": "Effacer la recherche",
+  "common_more": "Plus",
+  "common_edit": "Modifier",
+  "common_delete": "Supprimer",
+  "common_confirm": "Confirmer",
+  "common_you": "Vous",
+  "common_loading": "Chargement…",
+  "common_selected": "Sélectionné",
+  "time_now": "Maintenant",
+  "time_today": "Aujourd'hui",
+  "time_yesterday": "Hier",
+  "time_minutes_ago": "{count, plural, =1{il y a 1 minute} other{il y a {count} minutes}}",
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_hours_ago": "{count, plural, =1{il y a 1 heure} other{il y a {count} heures}}",
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_days_ago": "{count, plural, =1{il y a 1 jour} other{il y a {count} jours}}",
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_minutes_short": "{count} min",
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_hours_short": "{count} h",
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_days_short": "{count} j",
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "waiting_for": "En attente depuis {duration}",
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "network_connecting": "Connexion en cours…",
+  "network_offline": "Hors ligne",
+  "empty_offline_title": "Vous êtes hors ligne",
+  "empty_offline_body": "Vérifiez votre connexion et réessayez. Vos messages seront envoyés dès que vous serez de nouveau en ligne.",
+  "a11y_unread_messages": "{count, plural, =0{Aucun message non lu} =1{1 message non lu} other{{count} messages non lus}}",
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "a11y_notifications_unread": "Notifications, nouveaux éléments",
+  "a11y_ai_avatar": "IA",
+  "a11y_team_avatar": "Équipe",
+  "a11y_selected": "Sélectionné",
+  "a11y_priority": "Priorité : {label}",
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "time_unit_day": "j",
+  "time_unit_hour": "h",
+  "time_unit_min": "min",
+  "common_increase": "Augmenter",
+  "common_decrease": "Diminuer",
+  "dash_title": "Tableau de bord",
+  "dash_morning": "Bonjour, {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "Bonsoir, {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "Disponible",
+  "dash_presence_online_f": "Disponible",
+  "dash_presence_busy_m": "Occupé",
+  "dash_presence_busy_f": "Occupée",
+  "dash_presence_away": "Absent",
+  "dash_presence_title": "Votre statut",
+  "dash_presence_until": "Jusqu'à…",
+  "dash_presence_30m": "30 minutes",
+  "dash_presence_1h": "1 heure",
+  "dash_presence_eod": "Fin de journée",
+  "dash_presence_auto": "Vous passerez en « Absent » après 15 min d'inactivité",
+  "dash_presence_until_time": "Jusqu'à {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "Impossible de modifier votre statut",
+  "dash_scope_me": "Moi",
+  "dash_scope_team": "Mon équipe",
+  "dash_scope_all": "Tout le monde",
+  "dash_team_picker": "Choisir une équipe",
+  "dash_range_today": "Aujourd'hui",
+  "dash_range_yesterday": "Hier",
+  "dash_range_7d": "7 derniers jours",
+  "dash_range_30d": "30 derniers jours",
+  "dash_range_title": "Période",
+  "dash_open": "Conversations ouvertes",
+  "dash_awaiting_me": "En attente de votre réponse",
+  "dash_awaiting_team": "En attente de réponse",
+  "dash_oldest": "La plus ancienne {m}",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "Personne en attente",
+  "dash_first_response": "1ère réponse moy.",
+  "dash_minute": "min",
+  "dash_ai_reply": "Répondu par l'IA",
+  "dash_of_questions": "des questions",
+  "dash_resolved": "Résolues",
+  "dash_volume_today": "Conversations aujourd'hui",
+  "dash_volume_range": "Conversations · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} conversations",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour} : {n} · {ai} par l'IA",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "Toutes",
+  "dash_legend_ai": "IA",
+  "dash_no_volume": "Aucune conversation aujourd'hui pour l'instant",
+  "dash_no_volume_range": "Aucune conversation sur cette période",
+  "dash_team_now": "L'équipe en ce moment",
+  "dash_see_all": "Voir tout",
+  "dash_ai_name": "IA",
+  "dash_agent_open": "{n} ouvertes",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "1ère réponse moy. aujourd'hui {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "Voir ses conversations",
+  "dash_redistribute": "Redistribuer",
+  "dash_redistribute_none": "Aucune conversation ouverte à redistribuer",
+  "dash_solo": "Vous êtes seul dans l'équipe",
+  "dash_invite": "Inviter un collègue",
+  "dash_ai_impact": "{n} questions répondues par l'IA",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "Environ {h} heures de temps d'équipe économisées",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "{n} transferts",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "{p} % positif",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "L'IA gère actuellement {n}",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "Par canal",
+  "dash_web_reports": "Rapports détaillés sur le web",
+  "dash_last_updated": "Dernière mise à jour {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "Impossible de charger le tableau de bord",
+  "dash_card_error": "Impossible de charger",
+  "dash_retry": "Réessayer",
+  "dash_frt_title": "Vitesse de première réponse",
+  "dash_frt_target": "Objectif : {m} min",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "Moins de 1 min",
+  "dash_frt_1_5": "1 à 5 min",
+  "dash_frt_5_15": "5 à 15 min",
+  "dash_frt_gt15": "Plus de 15 min",
+  "dash_frt_note": "Basé sur les conversations répondues par un agent",
+  "dash_frt_empty": "Aucune réponse pour l'instant sur cette période",
+  "dash_days_short": "j",
+  "dash_hours_short": "h",
+  "dash_minutes_short": "min",
+  "dash_thousand": "k",
+  "dash_onb_title": "Commencez à recevoir des conversations",
+  "dash_onb_wa": "Connecter WhatsApp",
+  "dash_onb_kb": "Ajouter une base de connaissances",
+  "dash_onb_ai": "Activer l'IA",
+  "dash_onb_cta": "Terminer la configuration",
+  "dash_alert_wa_title": "WhatsApp est déconnecté",
+  "dash_alert_wa_body": "Les messages n'arriveront pas tant que vous ne vous reconnectez pas",
+  "dash_alert_wa_action": "Se reconnecter",
+  "dash_alert_sla_title": "{n} clients en attente depuis plus de {sla} min",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "Répondre maintenant",
+  "dash_alert_unassigned_title": "{n} conversations en attente d'être prises en charge",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "Voir",
+  "dash_alert_kb_title": "{n} questions sans réponse",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "Ajoutez-les pour que l'IA réponde automatiquement",
+  "dash_alert_kb_action": "Examiner",
+  "dash_alert_trial_title": "Votre essai se termine dans {n} jours",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "Voir les formules",
+  "dash_alert_dismiss": "Ignorer",
+  "dash_a11y_metric": "{label} : {value} {aside}. Appuyez pour voir les conversations",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title} : {total}. Pic de {peak} avec {n} conversations.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}, {presence}, {n} conversations ouvertes",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "Votre statut : {status}. Appuyez pour changer",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_title": "Conversations",
+  "inbox_seg_mine": "Les miennes",
+  "inbox_seg_unassigned": "Non attribuées",
+  "inbox_seg_all": "Toutes",
+  "inbox_chip_all": "Toutes",
+  "inbox_chip_unread": "Non lues",
+  "inbox_chip_awaiting": "En attente de réponse",
+  "inbox_chip_ai": "Réponse de l'IA",
+  "inbox_chip_snoozed": "En pause",
+  "inbox_chip_closed": "Fermées",
+  "inbox_chip_filters": "Filtres",
+  "inbox_needs_reply": "Nécessite votre réponse",
+  "inbox_rest": "Autres conversations",
+  "inbox_see_all": "Tout voir",
+  "inbox_show_less": "Afficher moins",
+  "inbox_you_prefix": "Vous :",
+  "inbox_draft_prefix": "Brouillon :",
+  "inbox_note_prefix": "Note :",
+  "inbox_typing": "en train d'écrire…",
+  "inbox_image": "Photo",
+  "inbox_voice": "Message vocal · {d}",
+  "@inbox_voice": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_location": "Position",
+  "inbox_sticker": "Autocollant",
+  "inbox_deleted": "Ce message a été supprimé",
+  "inbox_tag_waiting": "En attente depuis {t}",
+  "@inbox_tag_waiting": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_ai_ready": "Suggestion prête",
+  "inbox_tag_ai_replied": "Réponse de l'IA",
+  "inbox_tag_snoozed": "En pause jusqu'à {t}",
+  "@inbox_tag_snoozed": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_tag_window": "Fenêtre fermée dans {h} h",
+  "@inbox_tag_window": {
+    "placeholders": {
+      "h": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_now": "maintenant",
+  "inbox_min": "{n} min",
+  "@inbox_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_hour": "{n} h",
+  "@inbox_hour": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_yesterday": "Hier",
+  "inbox_am": "AM",
+  "inbox_pm": "PM",
+  "inbox_swipe_resolve": "Résoudre",
+  "inbox_swipe_snooze": "Mettre en pause",
+  "inbox_swipe_assign": "Attribuer",
+  "inbox_swipe_claim": "Prendre en charge",
+  "inbox_resolved": "Conversation résolue",
+  "inbox_resolved_n": "{n, plural, =1{1 conversation résolue} other{{n} conversations résolues}}",
+  "@inbox_resolved_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_snoozed_1h": "Mise en pause pour 1 heure",
+  "inbox_snoozed_n": "{n, plural, =1{Conversation mise en pause} other{{n} conversations mises en pause}}",
+  "@inbox_snoozed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_undo": "Annuler",
+  "inbox_assigned_to_you": "{name} vous a attribué une conversation",
+  "@inbox_assigned_to_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_open": "Ouvrir",
+  "inbox_claimed_by": "Prise en charge par {name}",
+  "@inbox_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_new_pill": "{n, plural, =1{1 nouvelle conversation} other{{n} nouvelles conversations}}",
+  "@inbox_new_pill": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_selected": "{n} sélectionnée(s)",
+  "@inbox_selected": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_select_all": "Tout sélectionner",
+  "inbox_exit_selection": "Quitter la sélection",
+  "inbox_mark_read": "Marquer comme lue",
+  "inbox_mark_unread": "Marquer comme non lue",
+  "inbox_marked_read_n": "{n, plural, =1{1 conversation marquée comme lue} other{{n} conversations marquées comme lues}}",
+  "@inbox_marked_read_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_marked_unread_n": "{n, plural, =1{1 conversation marquée comme non lue} other{{n} conversations marquées comme non lues}}",
+  "@inbox_marked_unread_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_conversation": "Nouvelle conversation",
+  "inbox_load_error": "Chargement impossible · Réessayer",
+  "inbox_end": "Plus aucune conversation",
+  "inbox_exit_hint": "Appuyez à nouveau pour quitter",
+  "inbox_offline_cached": "Hors ligne — affichage de la dernière copie enregistrée",
+  "inbox_action_failed": "Action impossible. Réessayez.",
+  "inbox_tag": "Étiquette",
+  "inbox_tag_added": "Étiquette « {tag} » ajoutée",
+  "@inbox_tag_added": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_priority": "Priorité",
+  "inbox_priority_set": "Priorité définie sur {label}",
+  "@inbox_priority_set": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_archive": "Archiver",
+  "inbox_archived_n": "{n, plural, =1{Conversation archivée} other{{n} conversations archivées}}",
+  "@inbox_archived_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_clear_all": "Tout effacer",
+  "inbox_a11y_unread": "{n, plural, =1{1 message non lu} other{{n} messages non lus}}",
+  "@inbox_a11y_unread": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_a11y_open_hint": "Appuyez deux fois pour ouvrir la conversation",
+  "inbox_a11y_notifications": "Notifications, {n} non lue(s)",
+  "@inbox_a11y_notifications": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_empty_mine_title": "Aucune conversation ne vous est attribuée",
+  "inbox_empty_mine_body": "Les conversations que vous prenez en charge ou qui vous sont attribuées apparaîtront ici.",
+  "inbox_empty_mine_action": "Voir les non attribuées",
+  "inbox_empty_done_title": "Vous êtes à jour",
+  "inbox_empty_done_body": "Personne n'attend votre réponse pour le moment.",
+  "inbox_empty_unassigned_title": "Aucune conversation en attente de prise en charge",
+  "inbox_empty_unassigned_body": "L'IA et votre équipe gèrent tout.",
+  "inbox_empty_new_title": "Aucune conversation pour l'instant",
+  "inbox_empty_new_body": "Connectez WhatsApp pour commencer à recevoir les messages de vos clients.",
+  "inbox_empty_new_action": "Connecter WhatsApp",
+  "inbox_empty_filters_title": "Aucune conversation ne correspond à ces filtres",
+  "inbox_empty_filters_action": "Effacer les filtres",
+  "inbox_empty_error_title": "Impossible de charger les conversations",
+  "inbox_empty_error_body": "Vérifiez votre connexion et réessayez.",
+  "inbox_filters_title": "Filtres",
+  "inbox_filters_clear": "Effacer",
+  "inbox_filters_apply": "Afficher les conversations",
+  "inbox_filters_show": "{n, plural, =0{Aucune conversation} =1{Afficher 1 conversation} other{Afficher {n} conversations}}",
+  "@inbox_filters_show": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_filters_channel": "Canal",
+  "inbox_filters_priority": "Priorité",
+  "inbox_filters_assignee": "Attribué à",
+  "inbox_filters_assignee_all": "Tous",
+  "inbox_filters_assignee_me": "Moi",
+  "inbox_filters_assignee_colleague": "Coéquipier spécifique ▸",
+  "inbox_filters_assignee_ai": "IA",
+  "inbox_filters_assignee_unassigned": "Non attribué",
+  "inbox_filters_pick_colleague": "Choisir un coéquipier",
+  "inbox_filters_team": "Équipe",
+  "inbox_filters_tags": "Étiquettes",
+  "inbox_filters_tags_search": "Rechercher des étiquettes",
+  "inbox_filters_date": "Date",
+  "inbox_filters_date_today": "Aujourd'hui",
+  "inbox_filters_date_7d": "7 jours",
+  "inbox_filters_date_30d": "30 jours",
+  "inbox_filters_date_custom": "Personnalisé ▸",
+  "inbox_filters_sort": "Trier",
+  "inbox_filters_sort_smart": "Intelligent (par défaut)",
+  "inbox_filters_sort_newest": "Plus récentes",
+  "inbox_filters_sort_oldest": "Plus anciennes",
+  "inbox_filters_sort_waiting": "En attente depuis le plus longtemps",
+  "kbe_new": "Nouvelle question",
+  "kbe_edit": "Modifier la réponse",
+  "kbe_review": "Vérifier la suggestion",
+  "kbe_save": "Enregistrer",
+  "kbe_send": "Envoyer",
+  "kbe_src_unanswered": "Posée {n} fois sans réponse de l'IA",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "Depuis une conversation avec {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "Suggérée par {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "Suggérée à partir d'une conversation résolue",
+  "kbe_view_convs": "Voir les conversations",
+  "kbe_open": "Ouvrir",
+  "kbe_open_it": "Ouvrir",
+  "kbe_question": "Question",
+  "kbe_question_ph": "ex. Puis-je retourner un article après 30 jours ?",
+  "kbe_alts": "Autres façons dont les clients demandent",
+  "kbe_optional": "(facultatif)",
+  "kbe_add_alt": "+ Ajouter une formulation",
+  "kbe_alt_exists": "Cette formulation existe déjà",
+  "kbe_alt_limit": "Jusqu'à 15 formulations, 120 caractères chacune",
+  "kbe_answer": "Réponse",
+  "kbe_answer_ph": "Écrivez la réponse telle que l'IA doit la dire…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "Brouillon de l'IA — à vérifier avant d'enregistrer",
+  "kbe_tag": "Étiquette",
+  "kbe_tags_title": "Étiquettes de la réponse",
+  "kbe_tags_search": "Rechercher ou créer une étiquette",
+  "kbe_tags_create": "Créer « {name} »",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "Étiquette principale",
+  "kbe_done": "Terminé",
+  "kbe_improve": "Améliorer la formulation",
+  "kbe_add_link": "Ajouter un lien",
+  "kbe_link_url": "URL",
+  "kbe_link_label": "Titre du lien (facultatif)",
+  "kbe_link_invalid": "Saisissez un lien https:// valide",
+  "kbe_insert": "Insérer",
+  "kbe_cancel": "Annuler",
+  "kbe_similar": "Une question similaire existe : « {t} »",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "Fusionner comme formulation",
+  "kbe_conflict": "Peut entrer en conflit avec « {t} » : {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "Voir",
+  "kbe_preview": "Aperçu : comment l'IA répondra",
+  "kbe_ai_label": "IA",
+  "kbe_writing": "Rédaction en cours…",
+  "kbe_tone": "Ton : {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "Confiance élevée",
+  "kbe_conf_med": "Confiance moyenne",
+  "kbe_conf_low": "Confiance faible",
+  "kbe_low_hint": "Ajoutez des formulations ou précisez pour augmenter la confiance",
+  "kbe_try_another": "Essayer une autre question",
+  "kbe_test_hint": "Saisissez une question pour tester",
+  "kbe_preview_err": "Échec de l'aperçu",
+  "kbe_preview_offline": "L'aperçu nécessite une connexion",
+  "kbe_preview_empty": "Complétez la question et la réponse pour voir un aperçu",
+  "kbe_preview_regen": "Actualiser l'aperçu",
+  "kbe_advanced": "Options avancées",
+  "kbe_enabled": "Disponible pour l'IA",
+  "kbe_channels": "Canaux",
+  "kbe_channels_all": "Tous les canaux",
+  "kbe_expires": "Valable jusqu'au",
+  "kbe_expires_none": "Pas de date de fin",
+  "kbe_expires_clear": "Supprimer la date",
+  "kbe_verbatim": "Envoyer mot pour mot",
+  "kbe_verbatim_sub": "L'IA envoie exactement ce texte",
+  "kbe_handoff_after": "Transférer après la réponse",
+  "kbe_internal_notes": "Notes internes",
+  "kbe_internal_notes_ph": "Non utilisées par l'IA",
+  "kbe_meta": "Modifiée par {n} · {t} · utilisée {u} fois",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "Supprimer la réponse",
+  "kbe_delete_title": "Supprimer « {title} » ?",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "L'IA ne l'utilisera plus.",
+  "kbe_deleted": "Supprimée",
+  "kbe_history": "Historique des versions",
+  "kbe_restore": "Restaurer cette version",
+  "kbe_version_n": "Version {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "Actuelle",
+  "kbe_versions_empty": "Aucune version antérieure",
+  "kbe_restored": "Version restaurée",
+  "kbe_restore_failed": "Impossible de restaurer",
+  "kbe_err_q": "Saisissez la question (5 caractères minimum)",
+  "kbe_err_a": "Saisissez la réponse (10 caractères minimum)",
+  "kbe_err_a_long": "La réponse dépasse 2000 caractères",
+  "kbe_err_date": "Choisissez une date future",
+  "kbe_saved_new": "Réponse ajoutée · l'IA l'utilisera dès maintenant",
+  "kbe_saved_edit": "Modifications enregistrées",
+  "kbe_saved_unanswered": "Ajoutée · {n} conversations l'attendaient",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "Ajoutée à la base de connaissances",
+  "kbe_proposed": "Envoyée pour vérification",
+  "kbe_approve": "Approuver et publier",
+  "kbe_approved": "Réponse approuvée et publiée",
+  "kbe_reject": "Rejeter",
+  "kbe_rejected": "Suggestion rejetée",
+  "kbe_save_err": "Impossible d'enregistrer",
+  "kbe_save_forbidden": "Vous ne pouvez pas enregistrer — envoyez-la pour vérification",
+  "kbe_save_offline": "L'enregistrement nécessite une connexion",
+  "kbe_retry": "Réessayer",
+  "kbe_load_error": "Impossible de charger la réponse",
+  "kbe_conflict_title": "{name} vient de modifier cette réponse",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "Voir la sienne",
+  "kbe_overwrite": "Enregistrer la mienne à la place",
+  "kbe_restore_draft": "Brouillon non enregistré — le restaurer ?",
+  "kbe_restore_btn": "Restaurer",
+  "kbe_restore_ignore": "Ignorer",
+  "kbe_discard_title": "Abandonner les modifications ?",
+  "kbe_discard_body": "La réponse ne sera pas enregistrée.",
+  "kbe_discard": "Abandonner",
+  "kbe_keep": "Continuer la modification",
+  "kbe_deleted_elsewhere": "Cette réponse a été supprimée",
+  "kbe_close": "Fermer",
+  "kbe_a11y_alt": "Formulation : {text}, double-tapez pour modifier",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "Supprimer",
+  "kbe_a11y_ghost": "Formulation suggérée par l'IA : {text}, appuyez pour ajouter",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "Complétez la question et la réponse",
+  "kbe_a11y_dismiss": "Ignorer l'avertissement",
+  "kbe_media": "Pièces jointes",
+  "kbe_media_hint": "L'IA les envoie avec la réponse",
+  "kbe_media_add": "Ajouter une image ou une note vocale",
+  "kbe_media_image": "Image",
+  "kbe_media_voice": "Note vocale",
+  "kbe_media_with_text": "Avec le texte",
+  "kbe_media_file_only": "Fichier seul",
+  "kbe_media_remove": "Retirer",
+  "kbe_media_uploading": "Envoi {p} %",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "Échec de l'envoi",
+  "kbe_media_queued": "Envoi après l'enregistrement",
+  "kbe_media_too_big": "Fichier de plus de 16 Mo",
+  "kbe_media_image_too_big": "Image de plus de 5 Mo",
+  "kbe_media_type_err": "Choisissez une image ou un fichier audio",
+  "kbe_media_upgrade": "Les images et notes vocales sont réservées aux forfaits payants",
+  "kbe_media_upgrade_cta": "Voir les forfaits",
+  "kbe_media_some_failed": "Enregistrée, mais {n} pièces jointes n'ont pas pu être envoyées",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "Comment elle est envoyée",
+  "kb_title": "Base de connaissances",
+  "kb_search": "Rechercher parmi {n} entrées",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "Q&R",
+  "kb_files": "Fichiers",
+  "kb_links": "Liens",
+  "kb_processing": "Traitement",
+  "kb_unanswered_title": "{n} questions sans réponse",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "Des clients ont posé une question sans que l'IA ait de réponse",
+  "kb_review": "Vérifier",
+  "kb_sort_usage": "Les plus utilisées",
+  "kb_sort_recent": "Mises à jour récemment",
+  "kb_sort_stale": "Mises à jour il y a longtemps",
+  "kb_sort_alpha": "Alphabétique",
+  "kb_sort_least": "Les moins utilisées",
+  "kb_tags": "Étiquettes",
+  "kb_used_n": "Utilisée {n} fois",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "Mise à jour il y a {t}",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} pages",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "Brouillon",
+  "kb_badge_disabled": "Désactivée",
+  "kb_badge_stale": "Obsolète",
+  "kb_badge_failed": "Échec du traitement",
+  "kb_disable": "Désactiver pour l'IA",
+  "kb_enable": "Activer",
+  "kb_edit": "Modifier",
+  "kb_copy_answer": "Copier la réponse",
+  "kb_delete": "Supprimer",
+  "kb_delete_title": "Supprimer « {title} » ?",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "L'IA ne l'utilisera plus.",
+  "kb_deleted": "Supprimée",
+  "kb_drafts": "Suggestions à vérifier · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "Suggérée par {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "Suggérée à partir d'une conversation résolue",
+  "kb_approve": "Approuver",
+  "kb_reject": "Rejeter",
+  "kb_add_title": "Ajouter à la base de connaissances",
+  "kb_add_qa_sub": "Le plus rapide et le plus précis pour l'IA",
+  "kb_add_file": "Importer un fichier",
+  "kb_add_file_sub": "Un fichier JSON avec plusieurs Q&R — comme sur le panneau web",
+  "kb_add_link": "Ajouter un lien",
+  "kb_add_link_sub": "Une page de votre site, lue par l'IA",
+  "kb_alt_phrasings": "Autres formulations",
+  "kb_answer": "Réponse",
+  "kb_usage_month": "Utilisée {n} fois ce mois-ci",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "{p} % positif",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "Dernière utilisation {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "Utilisations récentes",
+  "kb_meta": "Créée par {a} · {d} · Modifiée par {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "Disponible pour l'IA",
+  "kb_file_type_err": "Type de fichier non pris en charge",
+  "kb_file_size_err": "Fichier de plus de 10 Mo",
+  "kb_uploading": "Envoi {p} %",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "Traitement en cours… cela peut prendre une minute",
+  "kb_file_ready": "« {f} » est prêt · {n} informations extraites",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "Ce que l'IA a extrait",
+  "kb_replace": "Remplacer le fichier",
+  "kb_download": "Télécharger",
+  "kb_file_failed": "Impossible de lire le fichier",
+  "kb_fail_encrypted": "Le fichier est protégé par un mot de passe",
+  "kb_fail_images": "Le fichier ne contient que des images",
+  "kb_fail_corrupt": "Le fichier est corrompu",
+  "kb_link_url": "URL de la page",
+  "kb_link_subpages": "Inclure les sous-pages",
+  "kb_add": "Ajouter",
+  "kb_last_crawl": "Dernière lecture {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "Actualiser maintenant",
+  "kb_auto_refresh": "Actualisation automatique",
+  "kb_weekly": "Hebdomadaire",
+  "kb_monthly": "Mensuelle",
+  "kb_manual": "Manuelle",
+  "kb_unanswered": "Questions sans réponse",
+  "kb_unanswered_info": "Questions auxquelles l'IA n'a pas pu répondre. Ajoutez une réponse pour qu'elle réponde la prochaine fois.",
+  "kb_sort_frequency": "Les plus fréquentes",
+  "kb_sort_newest": "Les plus récentes",
+  "kb_asked_n": "Posée {n} fois · dernière {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} formulations similaires",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "Brouillon suggéré",
+  "kb_add_answer": "Ajouter une réponse",
+  "kb_link_existing": "Associer à une réponse existante",
+  "kb_ignore": "Ignorer",
+  "kb_view_convs": "Voir les conversations",
+  "kb_suggest_answer": "Suggérer une réponse",
+  "kb_none_unanswered": "Aucune question sans réponse",
+  "kb_none_unanswered_body": "L'IA trouve une réponse à tout ce qui est demandé.",
+  "kb_empty_title": "Commencez à enseigner votre activité à l'IA",
+  "kb_empty_body": "Ajoutez les principales questions de vos clients, avec leurs réponses.",
+  "kb_empty_cta": "Ajouter la première question",
+  "kb_empty_tip": "Nous recommandons au moins 10 questions",
+  "kb_filter_empty": "Aucune entrée de ce type",
+  "kb_show_all": "Tout afficher",
+  "kb_error": "Impossible de charger la base de connaissances",
+  "kb_retry": "Réessayer",
+  "kb_offline": "La modification nécessite une connexion internet",
+  "kb_span_now": "à l'instant",
+  "kb_span_minutes": "{n, plural, =1{1 minute} other{{n} minutes}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{1 heure} other{{n} heures}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{1 jour} other{{n} jours}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{1 mois} other{{n} mois}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{1 an} other{{n} ans}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "Cette fonctionnalité est pour l'instant disponible sur le tableau de bord web",
+  "kb_menu_ai_settings": "Paramètres IA",
+  "kb_menu_tags": "Gérer les étiquettes",
+  "kb_menu_import": "Importer depuis le web",
+  "kb_sort_by": "Trier par",
+  "kb_tags_all": "Toutes les étiquettes",
+  "kb_tags_apply": "Appliquer",
+  "kb_tags_none": "Aucune étiquette pour le moment",
+  "kb_disabled_done": "Désactivée · l'IA ne l'utilisera pas",
+  "kb_enabled_done": "Activée",
+  "kb_copied": "Réponse copiée",
+  "kb_approved": "Approuvée et publiée",
+  "kb_rejected": "Suggestion rejetée",
+  "kb_ignored": "Ignorée",
+  "kb_linked": "Ajoutée comme formulation de « {t} »",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "Choisir une réponse",
+  "kb_pick_search": "Rechercher une réponse",
+  "kb_uploaded_by": "Importé par {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} Mo",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} Ko",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "Vous pouvez fermer cette fenêtre ; le traitement continue en arrière-plan",
+  "kb_url_invalid": "Saisissez un lien https:// valide",
+  "kb_link_added": "Lien ajouté · lecture en cours",
+  "kb_link_pages": "Pages",
+  "kb_never_crawled": "Pas encore lu",
+  "kb_recrawl_started": "Actualisation lancée",
+  "kb_filter_a11y": "{label}, {n}, filtre",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} questions sans réponse. Vérifier",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "Utilisation sur 30 jours",
+  "kb_not_used_yet": "Pas encore utilisée",
+  "kb_show_less": "Afficher moins",
+  "kb_proposed": "Votre suggestion a été envoyée pour vérification",
+  "kb_save_err": "Impossible d'enregistrer",
+  "kb_none_found": "Aucun résultat",
+  "kb_import_title": "Importer depuis un fichier JSON",
+  "kb_import_hint": "Un fichier avec une liste d'entrées, chacune avec un type, un titre et un contenu — même format que le panneau web.",
+  "kb_import_pick": "Choisir un fichier JSON",
+  "kb_import_template": "Télécharger le modèle",
+  "kb_importing": "Importation…",
+  "kb_import_done": "{n} entrées importées",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "{n} ignorées",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "Ligne {row} : {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "Échec de l'importation",
+  "kb_import_json_only": "Choisissez un fichier .json",
+  "kb_template_saved": "Modèle enregistré",
+  "kb_template_copied": "Modèle copié dans le presse-papiers",
+  "kb_media_title": "Pièces jointes",
+  "kb_media_n": "{n} pièces jointes",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_title": "Notifications",
+  "ntf_read_all": "Tout marquer comme lu",
+  "ntf_read_all_done": "Tout a été marqué comme lu",
+  "ntf_undo": "Annuler",
+  "ntf_settings": "Paramètres de notification",
+  "ntf_delete_read": "Supprimer les notifications lues",
+  "ntf_filter_all": "Toutes",
+  "ntf_filter_unread": "Non lues",
+  "ntf_filter_mentions": "Mentions",
+  "ntf_filter_assignments": "Attributions",
+  "ntf_filter_ai": "IA",
+  "ntf_filter_system": "Système",
+  "ntf_today": "Aujourd'hui",
+  "ntf_yesterday": "Hier",
+  "ntf_this_week": "Cette semaine",
+  "ntf_older": "Plus anciennes",
+  "ntf_push_off_title": "Les notifications push sont désactivées",
+  "ntf_push_off_body": "Activez-les pour ne jamais manquer une conversation qui vous est attribuée",
+  "ntf_enable": "Activer",
+  "ntf_mark_read": "Marquer comme lu",
+  "ntf_mark_unread": "Marquer comme non lu",
+  "ntf_mute_type": "Désactiver ce type",
+  "ntf_delete": "Supprimer",
+  "ntf_deleted": "Notification supprimée",
+  "ntf_empty_title": "Aucune notification",
+  "ntf_empty_body": "Nous vous préviendrons quand une conversation vous sera attribuée ou si votre équipe a besoin de vous.",
+  "ntf_empty_filter": "Aucune notification dans « {f} »",
+  "@ntf_empty_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_show_all": "Afficher tout",
+  "ntf_error": "Impossible de charger les notifications",
+  "ntf_retry": "Réessayer",
+  "ntf_end": "Aucune autre notification",
+  "ntf_retention": "Les notifications sont supprimées après 90 jours",
+  "ntf_target_gone": "Cette conversation n'est plus disponible",
+  "ntf_claimed_you": "Vous l'avez prise en charge",
+  "ntf_claimed_by": "Prise en charge par {name}",
+  "@ntf_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_approved": "Approuvé",
+  "ntf_rejected": "Rejeté",
+  "ntf_grouped": "{n} nouveaux messages de {name}",
+  "@ntf_grouped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_push_private": "Vous avez une nouvelle conversation",
+  "ntf_t_assigned": "Une nouvelle conversation vous a été attribuée",
+  "ntf_t_claim_needed": "{n} conversations en attente d'être prises en charge",
+  "@ntf_t_claim_needed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_sla_breach": "{customer} attend votre réponse depuis {m}",
+  "@ntf_t_sla_breach": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_transfer_request": "{agent} demande à reprendre une conversation",
+  "@ntf_t_transfer_request": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_mention": "{agent} vous a mentionné dans une note",
+  "@ntf_t_mention": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_ai_no_answer": "L'IA n'a pas trouvé de réponse",
+  "ntf_t_ai_handoff": "L'IA a transféré une conversation à l'équipe",
+  "ntf_t_ai_low_confidence": "L'IA a répondu avec un faible niveau de confiance",
+  "ntf_t_kb_suggestion": "{n} questions fréquentes sans réponse",
+  "@ntf_t_kb_suggestion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_channel_disconnected": "WhatsApp déconnecté",
+  "ntf_t_channel_reconnected": "WhatsApp s'est déconnecté puis reconnecté",
+  "ntf_t_channel_quality_low": "La qualité du numéro WhatsApp est faible",
+  "ntf_t_team_joined": "{name} a rejoint l'équipe",
+  "@ntf_t_team_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_team_role_changed": "Votre rôle est devenu {role}",
+  "@ntf_t_team_role_changed": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_trial_ending": "Votre essai se termine dans {n} jours",
+  "@ntf_t_trial_ending": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_payment_failed": "Le paiement de l'abonnement a échoué",
+  "ntf_t_plan_limit": "Vous approchez de votre limite de réponses IA",
+  "ntf_t_app_update": "Une nouvelle version est disponible",
+  "ntf_b_claim_needed": "La plus ancienne attend depuis {m}",
+  "@ntf_b_claim_needed": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_no_answer": "Une question sur {topic}. Ajoutez la réponse pour qu'elle réponde automatiquement la prochaine fois.",
+  "@ntf_b_ai_no_answer": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_low_confidence": "{customer} · Vérifiez la réponse",
+  "@ntf_b_ai_low_confidence": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_kb_suggestion": "Ajoutez-les à la base de connaissances pour améliorer les réponses",
+  "ntf_b_channel_disconnected": "Les messages ne vous parviendront pas jusqu'à la reconnexion",
+  "ntf_b_channel_reconnected": "Hors service pendant {m} · aucun message perdu",
+  "@ntf_b_channel_reconnected": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_channel_quality_low": "Envoyez moins de messages groupés pour éviter les restrictions",
+  "ntf_b_team_joined": "Rôle : {role}",
+  "@ntf_b_team_joined": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_team_role_changed": "Par {actor}",
+  "@ntf_b_team_role_changed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_trial_ending": "Choisissez un forfait pour conserver vos conversations et l'IA.",
+  "ntf_b_payment_failed": "Mettez à jour votre moyen de paiement pour éviter une interruption du service",
+  "ntf_b_plan_limit": "Vous avez utilisé {p} % ce mois-ci",
+  "@ntf_b_plan_limit": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_app_update": "{version} · Améliorations et corrections",
+  "@ntf_b_app_update": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_a_view": "Voir",
+  "ntf_a_reply": "Répondre maintenant",
+  "ntf_a_approve": "Approuver",
+  "ntf_a_reject": "Rejeter",
+  "ntf_a_add_answer": "Ajouter une réponse",
+  "ntf_a_claim": "Prendre en charge",
+  "ntf_a_review": "Vérifier",
+  "ntf_a_reconnect": "Reconnecter",
+  "ntf_a_plans": "Voir les forfaits",
+  "ntf_a_update": "Mettre à jour",
+  "ntf_a_open": "Ouvrir",
+  "ntf_more": "Plus",
+  "ntf_dismiss": "Ignorer",
+  "ntf_a11y_unread": "Non lu",
+  "ntf_a11y_filter": "{f}, {n} non lues",
+  "@ntf_a11y_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_muted": "Vous ne recevrez plus ce type de notification",
+  "ntf_push_unavailable": "Activez les notifications dans les paramètres de votre appareil",
+  "ntf_offline_action": "Cette action nécessite une connexion internet",
+  "ntf_action_failed": "Impossible d'effectuer l'action. Réessayez.",
+  "ntf_billing_agent_title": "La facturation est gérée par un administrateur",
+  "ntf_billing_agent_body": "Demandez à l'administrateur de votre espace de travail de gérer l'abonnement sur le site web de Wavadesk.",
+  "profile_title": "Profil client",
+  "profile_add_tag": "+ Étiquette",
+  "profile_vip": "VIP",
+  "profile_blocked": "Bloqué",
+  "profile_local_time": "{time}, heure locale du client",
+  "@profile_local_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_copied": "Copié",
+  "profile_call": "Appeler",
+  "profile_whatsapp": "WhatsApp",
+  "profile_note": "Note",
+  "profile_block": "Bloquer",
+  "profile_unblock": "Débloquer",
+  "profile_stat_conversations": "Conversations",
+  "profile_stat_orders": "Commandes",
+  "profile_stat_rating": "Note",
+  "profile_stat_first": "Premier contact",
+  "profile_ai_summary": "Résumé de l'IA",
+  "profile_ai_disclaimer": "Le résumé peut contenir des erreurs",
+  "profile_more": "Plus",
+  "profile_notes": "Notes de l'équipe",
+  "profile_add": "Ajouter",
+  "profile_all_notes": "Voir toutes les notes ({n})",
+  "@profile_all_notes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_no_notes": "Aucune note pour l'instant",
+  "profile_first_note": "Ajouter la première note",
+  "profile_pin": "Épingler",
+  "profile_edit": "Modifier",
+  "profile_delete": "Supprimer",
+  "profile_info": "Détails",
+  "profile_phone": "Téléphone",
+  "profile_email": "E-mail",
+  "profile_city": "Ville",
+  "profile_language": "Langue préférée",
+  "profile_timezone": "Fuseau horaire",
+  "profile_added_by": "Ajouté par",
+  "profile_not_set": "Non défini",
+  "profile_all_info": "Voir tous les détails",
+  "profile_channels": "Canaux",
+  "profile_channel_count": "{n, plural, =0{Aucune conversation} =1{1 conversation} other{{n} conversations}}",
+  "@profile_channel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_unlink": "Dissocier l'identité",
+  "profile_merge": "Fusionner avec un autre contact",
+  "profile_orders": "Commandes",
+  "profile_total_spent": "Total dépensé : {sum} SAR",
+  "@profile_total_spent": {
+    "placeholders": {
+      "sum": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_previous": "Conversations précédentes",
+  "profile_all_channels": "Tous les canaux",
+  "profile_closed_by": "{date} · Fermée par {name}",
+  "@profile_closed_by": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_ai_replied": "{date} · Réponse de l'IA",
+  "@profile_ai_replied": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_open_now": "{date} · Ouverte actuellement",
+  "@profile_open_now": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_load_more": "Charger plus",
+  "profile_first_conv": "C'est la première conversation",
+  "profile_block_cta": "Bloquer le client",
+  "profile_block_hint": "Vous ne recevrez plus de messages de ce client.",
+  "profile_erase": "Supprimer les données du client",
+  "profile_visitor": "Visiteur n° {id}",
+  "@profile_visitor": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_add_details": "Ajouter les informations du client",
+  "profile_offline": "Affichage de la dernière version enregistrée",
+  "profile_load_error": "Impossible de charger le profil",
+  "profile_section_error": "Impossible de charger {section}",
+  "@profile_section_error": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_retry": "Réessayer",
+  "profile_open_page": "Ouvrir en page entière",
+  "profile_dialog_label": "Profil client, {name}",
+  "@profile_dialog_label": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_unpin": "Désépingler",
+  "profile_regenerate": "Régénérer le résumé",
+  "profile_note_a11y": "Note de {author}, {date} : {text}",
+  "@profile_note_a11y": {
+    "placeholders": {
+      "author": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_delete_note_title": "Supprimer la note ?",
+  "profile_delete_note_body": "Cette note sera supprimée pour toute l'équipe.",
+  "profile_action_call_a11y": "Appeler {name}",
+  "@profile_action_call_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_whatsapp_a11y": "Contacter {name} par WhatsApp",
+  "@profile_action_whatsapp_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_note_a11y": "Ajouter une note sur {name}",
+  "@profile_action_note_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_block_a11y": "Bloquer {name}",
+  "@profile_action_block_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_action_unblock_a11y": "Débloquer {name}",
+  "@profile_action_unblock_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_disabled_no_phone": "Indisponible, aucun numéro",
+  "profile_stats_a11y": "{conversations} conversations, {orders} {ordersLabel}, premier contact {first}",
+  "@profile_stats_a11y": {
+    "placeholders": {
+      "conversations": {
+        "type": "int"
+      },
+      "orders": {
+        "type": "String"
+      },
+      "ordersLabel": {
+        "type": "String"
+      },
+      "first": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_items": "{date} · {n, plural, =1{1 article} other{{n} articles}}",
+  "@profile_order_items": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "profile_amount": "{amount} SAR",
+  "@profile_amount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_order_processing": "En cours",
+  "profile_order_shipped": "Expédiée",
+  "profile_order_delivered": "Livrée",
+  "profile_order_cancelled": "Annulée",
+  "profile_view_all": "Tout voir",
+  "profile_no_order_link": "Aucun lien pour cette commande",
+  "profile_lang_ar": "العربية",
+  "profile_lang_en": "English",
+  "profile_tz_value": "{tz} · {time}",
+  "@profile_tz_value": {
+    "placeholders": {
+      "tz": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "profile_attr_yes": "Oui",
+  "profile_attr_no": "Non",
+  "profile_unlinked": "Identité dissociée",
+  "profile_filter_channel": "Filtrer par canal",
+  "profile_merged": "Ce contact a été fusionné",
+  "profile_more_actions": "Plus d'actions",
+  "profile_edit_contact": "Modifier le client",
+  "edit_title": "Modifier le client",
+  "edit_save": "Enregistrer",
+  "edit_saved": "Modifications enregistrées",
+  "edit_failed": "Impossible d'enregistrer les modifications. Réessayez.",
+  "edit_discard_title": "Abandonner les modifications ?",
+  "edit_discard_body": "Vos modifications ne sont pas encore enregistrées. Si vous quittez maintenant, elles seront perdues.",
+  "edit_discard": "Abandonner",
+  "edit_keep": "Continuer la modification",
+  "edit_name": "Nom",
+  "edit_phone": "Téléphone",
+  "edit_email": "E-mail",
+  "edit_city": "Ville",
+  "edit_language": "Langue préférée",
+  "edit_not_set": "Non défini",
+  "edit_phone_invalid": "Numéro de téléphone invalide",
+  "edit_email_invalid": "Format d'e-mail invalide",
+  "tags_title": "Étiquettes",
+  "tags_search": "Rechercher ou créer une étiquette",
+  "tags_create": "Créer « {q} »",
+  "@tags_create": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "tags_done": "Terminé",
+  "tags_failed": "Impossible d'enregistrer les étiquettes. Réessayez.",
+  "tags_remove": "Retirer l'étiquette",
+  "note_new": "Nouvelle note",
+  "note_edit_title": "Modifier la note",
+  "note_placeholder": "Ce que votre équipe devrait savoir sur ce client…",
+  "note_pin": "Épingler la note",
+  "note_save": "Enregistrer",
+  "note_cancel": "Annuler",
+  "note_saved": "Note ajoutée",
+  "note_updated": "Note mise à jour",
+  "note_failed": "Impossible d'enregistrer la note. Réessayez.",
+  "call_phone": "Appel téléphonique",
+  "call_whatsapp": "Appel WhatsApp",
+  "call_copy": "Copier le numéro",
+  "call_cancel": "Annuler",
+  "call_copied": "Copié",
+  "call_failed": "Impossible d'ouvrir l'application d'appel",
+  "block_title": "Bloquer {name} ?",
+  "@block_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "block_body": "Vous ne recevrez plus leurs messages sur aucun canal et les conversations ouvertes seront fermées. Vous pourrez débloquer plus tard.",
+  "block_reason_label": "Motif (facultatif)",
+  "block_reason_spam": "Spam",
+  "block_reason_fraud": "Fraude",
+  "block_reason_abuse": "Abus",
+  "block_reason_other": "Autre",
+  "block_confirm": "Bloquer",
+  "block_cancel": "Annuler",
+  "block_done": "Client bloqué",
+  "block_failed": "Impossible de bloquer le client. Réessayez.",
+  "block_unnamed": "ce client",
+  "undo": "Annuler",
+  "merge_title": "Fusionner avec un autre contact",
+  "merge_search": "Rechercher par nom, téléphone ou e-mail",
+  "merge_no_results": "Aucun contact correspondant",
+  "merge_unnamed": "Contact sans nom",
+  "merge_into_label": "Fusion vers",
+  "merge_change": "Changer",
+  "merge_no_conflicts": "Aucune valeur en conflit — toutes les conversations et notes seront transférées vers le contact sélectionné.",
+  "merge_choose_values": "Choisissez les valeurs à conserver",
+  "merge_field_name": "Nom",
+  "merge_field_phone": "Téléphone",
+  "merge_field_email": "E-mail",
+  "merge_field_city": "Ville",
+  "merge_this_contact": "Ce contact",
+  "merge_other_contact": "Autre contact",
+  "merge_action": "Fusionner",
+  "merge_confirm_title": "La fusion est irréversible",
+  "merge_confirm_body": "Les conversations et notes sont transférées vers le contact sélectionné et ce profil est supprimé.",
+  "merge_done": "Contacts fusionnés",
+  "merge_failed": "Impossible de fusionner. Réessayez.",
+  "erase_title": "Supprimer définitivement les données du client ?",
+  "erase_body": "Toutes les conversations, notes et informations de ce client seront supprimées et ne pourront pas être récupérées.",
+  "erase_type_digits": "Saisissez les 4 derniers chiffres du téléphone du client pour confirmer",
+  "erase_type_word": "Saisissez « {word} » pour confirmer",
+  "@erase_type_word": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "erase_word": "supprimer",
+  "erase_confirm": "Supprimer définitivement",
+  "erase_cancel": "Annuler",
+  "erase_done": "Données du client supprimées",
+  "erase_failed": "Impossible de supprimer les données. Réessayez.",
+  "search_placeholder": "Rechercher des clients, des messages ou un numéro de commande",
+  "search_cancel": "Annuler",
+  "search_scope_all": "Tout",
+  "search_scope_contacts": "Clients",
+  "search_scope_messages": "Messages",
+  "search_scope_kb": "Connaissances",
+  "search_scope_conversations": "Conversations",
+  "search_filters": "Filtres",
+  "search_section_contacts": "Clients",
+  "search_section_messages": "Messages",
+  "search_section_kb": "Base de connaissances",
+  "search_section_conversations": "Conversations",
+  "search_see_all": "Tout voir ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "Meilleure correspondance",
+  "search_open_chat": "Ouvrir la conversation",
+  "search_profile": "Profil",
+  "search_open_badge": "Ouverte",
+  "search_more_in_conv": "+{n} de plus dans cette conversation",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "Utilisée par l'IA {n} fois ce mois-ci",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "Insérer dans la réponse",
+  "search_you": "Vous :",
+  "search_note": "Note :",
+  "search_order": "Commande {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "Étiquette : {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "Recherches récentes",
+  "search_clear": "Effacer",
+  "search_suggestions": "Suggestions",
+  "search_recent_contacts": "Contactés récemment",
+  "search_tip": "Recherchez par nom, téléphone, numéro de commande ou tout autre mot",
+  "search_no_results": "Aucun résultat pour « {q} »",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "Essayez un autre mot ou vérifiez l'orthographe",
+  "search_clear_filters": "Effacer les filtres",
+  "search_in_all": "Rechercher partout",
+  "search_did_you_mean": "Vouliez-vous dire : {s} ?",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "La recherche a échoué",
+  "search_retry": "Réessayer",
+  "search_offline": "Hors ligne — affichage des données enregistrées uniquement",
+  "search_local": "(local)",
+  "search_filter_sender": "Expéditeur",
+  "search_filter_contains": "Contient",
+  "search_filter_attachments": "Pièces jointes",
+  "search_filter_images": "Images",
+  "search_filter_voice": "Messages vocaux",
+  "search_show_results": "Afficher les résultats ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "Rechercher",
+  "search_filters_n": "Filtres · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "Canal",
+  "search_filter_date": "Date",
+  "search_filter_status": "Statut de la conversation",
+  "search_filter_assignee": "Attribué à",
+  "search_date_any": "À tout moment",
+  "search_date_today": "Aujourd'hui",
+  "search_date_7": "7 jours",
+  "search_date_30": "30 jours",
+  "search_date_custom": "Personnalisé",
+  "search_sender_all": "Tous",
+  "search_sender_contact": "Client",
+  "search_sender_me": "Moi",
+  "search_sender_colleagues": "Coéquipiers",
+  "search_sender_ai": "IA",
+  "search_sender_notes": "Notes internes",
+  "search_status_all": "Tous",
+  "search_status_open": "Ouverte",
+  "search_status_resolved": "Résolue",
+  "search_assignee_all": "Tous",
+  "search_assignee_me": "Moi",
+  "search_assignee_colleague": "Coéquipier",
+  "search_sugg_unread": "Non lues",
+  "search_sugg_awaiting": "En attente de réponse",
+  "search_sugg_vip": "Étiquette : VIP",
+  "search_sugg_orders_today": "Commandes du jour",
+  "search_recent_remove": "Supprimer {q} de l'historique",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "Historique de recherche effacé",
+  "search_results_announce": "{n} résultats : {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} clients",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} messages",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} articles",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} conversations",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "Message de {name}, {time} : {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "Ouvrir la dernière conversation",
+  "search_new_chat": "Nouvelle conversation",
+  "search_copy_number": "Copier le numéro",
+  "search_copied": "Numéro copié",
+  "search_call": "Appeler",
+  "search_section_teammates": "Coéquipiers",
+  "search_no_chat_yet": "Aucune conversation précédente avec ce client",
+  "search_inserted": "Réponse insérée dans le message",
+  "search_in_conv_placeholder": "Rechercher dans cette conversation",
+  "search_in_conv_count": "{i} sur {n}",
+  "@search_in_conv_count": {
+    "placeholders": {
+      "i": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_in_conv_action": "Rechercher dans la conversation",
+  "search_in_conv_prev": "Résultat précédent",
+  "search_in_conv_next": "Résultat suivant",
+  "search_in_conv_close": "Fermer la recherche",
+  "startup_unavailable_title": "Impossible de se connecter pour le moment",
+  "startup_unavailable_body": "Wavadesk n'a pas pu contacter ses serveurs. Assurez-vous d'utiliser la dernière version de l'application, puis réessayez.",
+  "startup_unavailable_help": "Toujours bloqué ? Contactez-nous à support@wavadesk.com",
+  "startup_retry": "Réessayer",
+  "startup_contact_support": "Contacter le support",
+  "startup_dev_hint": "Développeur : l'URL ou la clé API est manquante. Lancez avec --dart-define-from-file=dart_defines/<env>.json ou remplissez assets/config/api.json.",
+  "wa_title": "Votre WhatsApp",
+  "wa_refresh": "Actualiser le statut",
+  "wa_log": "Journal de connexion",
+  "wa_help": "Aide",
+  "wa_connected": "Connecté",
+  "wa_connecting": "Connexion en cours",
+  "wa_syncing": "Synchronisation",
+  "wa_phone_offline": "Téléphone hors ligne",
+  "wa_disconnected": "Déconnecté",
+  "wa_restricted": "Restreint",
+  "wa_pending": "Non lié",
+  "wa_msgs_today": "messages aujourd'hui",
+  "wa_quality": "Qualité du numéro",
+  "wa_q_high": "Élevée",
+  "wa_q_med": "Moyenne",
+  "wa_q_low": "Faible",
+  "wa_stable": "Stable",
+  "wa_unstable": "Instable",
+  "wa_linked_since": "Lié depuis",
+  "wa_days": "{n} jours",
+  "@wa_days": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_title": "Déconnecté depuis {t}",
+  "@wa_alert_disc_title": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_body": "Les messages des clients ne vous parviendront pas jusqu'à la reconnexion",
+  "wa_reconnect": "Reconnecter",
+  "wa_alert_phone_title": "Votre téléphone est hors ligne",
+  "wa_alert_phone_body": "Vérifiez que WhatsApp est actif sur le téléphone lié",
+  "wa_check_again": "Vérifier à nouveau",
+  "wa_alert_quality": "La qualité du numéro est faible",
+  "wa_alert_quality_body": "Réduisez les messages groupés et le contenu répétitif",
+  "wa_details": "Détails",
+  "wa_alert_limit": "Proche de la limite quotidienne de conversations ({u}/{l})",
+  "@wa_alert_limit": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_update": "Mettez à jour WhatsApp sur votre téléphone",
+  "wa_alert_pending": "WhatsApp n'est pas encore lié",
+  "wa_alert_pending_body": "Liez votre numéro pour commencer à recevoir des messages",
+  "wa_connect": "Connecter WhatsApp",
+  "wa_auto": "Messages automatiques",
+  "wa_welcome": "Message de bienvenue",
+  "wa_away": "Message d'absence",
+  "wa_away_ai": "Géré par l'IA pour le moment",
+  "wa_quick": "Réponses rapides",
+  "wa_welcome_delay": "Délai du message de bienvenue",
+  "wa_now": "Immédiatement",
+  "wa_welcome_off": "Message de bienvenue désactivé",
+  "wa_undo": "Annuler",
+  "wa_templates": "Modèles approuvés",
+  "wa_tpl_marketing": "Marketing",
+  "wa_tpl_utility": "Utilitaire",
+  "wa_tpl_auth": "Authentification",
+  "wa_tpl_approved": "Approuvé",
+  "wa_tpl_pending": "En cours de révision",
+  "wa_tpl_rejected": "Rejeté",
+  "wa_tpl_manage_web": "Gérer les modèles sur le web",
+  "wa_numbers": "Numéros",
+  "wa_add_second": "Ajouter un second numéro",
+  "wa_business_only": "Disponible avec le forfait Business",
+  "wa_upgrade": "Mettre à niveau",
+  "wa_add_number": "Ajouter un numéro",
+  "wa_watch": "Regarder : comment connecter WhatsApp",
+  "wa_watch_sub": "Guide vidéo · {d}",
+  "@wa_watch_sub": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_advanced": "Avancé",
+  "wa_read_receipts": "Accusés de lecture pour le client",
+  "wa_mark_read_open": "Marquer comme lu à l'ouverture",
+  "wa_auto_transcribe": "Transcrire automatiquement les messages vocaux",
+  "wa_ignore_groups": "Ignorer les messages de groupe",
+  "wa_blocked": "Numéros bloqués",
+  "wa_hours": "Heures d'ouverture",
+  "wa_disconnect": "Déconnecter le numéro",
+  "wa_disc_title": "Déconnecter le numéro WhatsApp ?",
+  "wa_disc_body": "Les messages ne parviendront plus à Wavadesk et l'IA arrêtera de répondre. Les conversations passées sont conservées.",
+  "wa_disc_open": "{n} conversations ouvertes seront interrompues",
+  "@wa_disc_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_disc_confirm_label": "Saisissez les 4 derniers chiffres pour confirmer",
+  "wa_disc_done": "Numéro déconnecté",
+  "wa_connect_title": "Connecter WhatsApp",
+  "wa_step": "Étape {i} sur {n}",
+  "@wa_step": {
+    "placeholders": {
+      "i": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_by_phone": "Numéro de téléphone",
+  "wa_by_qr": "Code QR",
+  "wa_get_code": "Obtenir le code",
+  "wa_copy": "Copier",
+  "wa_expires_in": "Expire dans {t}",
+  "@wa_expires_in": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_steps_pair": "Ouvrez WhatsApp → Paramètres → Appareils liés → Lier un appareil → Lier avec un numéro de téléphone → Saisissez le code",
+  "wa_open_app": "Ouvrir WhatsApp",
+  "wa_linked_ok": "WhatsApp connecté",
+  "wa_syncing_recent": "Synchronisation des conversations récentes…",
+  "wa_back": "Retour",
+  "wa_back_online": "De nouveau en ligne · aucun message perdu",
+  "wa_code_expired": "Code expiré",
+  "wa_new_code": "Nouveau code",
+  "wa_number_taken": "Ce numéro est lié à un autre espace de travail",
+  "wa_watch_video": "Regarder la vidéo",
+  "wa_welcome_when": "Quand envoyer ?",
+  "wa_trigger_first": "Premier message d'un nouveau client",
+  "wa_trigger_new": "Chaque nouvelle conversation",
+  "wa_trigger_24h": "Après 24h de silence",
+  "wa_buttons": "Boutons rapides",
+  "wa_ai_after_welcome": "L'IA répondra juste après le message de bienvenue",
+  "wa_away_outside": "Hors des heures d'ouverture",
+  "wa_away_team": "Quand toute l'équipe est absente",
+  "wa_away_cooldown": "Une fois toutes les {n}h par client",
+  "@wa_away_cooldown": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_away_ai_banner": "L'IA répond en dehors des heures — modifiez-le dans les paramètres IA",
+  "wa_qr_team": "Équipe",
+  "wa_qr_mine": "Les miennes",
+  "wa_qr_title_f": "Titre",
+  "wa_qr_shortcut": "Raccourci",
+  "wa_qr_text": "Texte",
+  "wa_qr_shared": "Partagée avec l'équipe",
+  "wa_notify_admin": "Notifier l'administrateur",
+  "wa_load_error": "Impossible de charger le statut WhatsApp",
+  "wa_enable_after": "Activer après la liaison",
+  "wa_more": "Plus",
+  "wa_last_updated": "Dernière mise à jour {t}",
+  "@wa_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_copied": "Copié",
+  "wa_details_title": "Détails de la connexion",
+  "wa_d_type": "Type de connexion",
+  "wa_d_type_linked": "Appareil lié",
+  "wa_d_type_cloud": "API officielle WhatsApp",
+  "wa_d_device": "Appareil",
+  "wa_d_wa_business": "WhatsApp Business {v}",
+  "@wa_d_wa_business": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_wa_personal": "WhatsApp {v}",
+  "@wa_d_wa_personal": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_last_activity": "Dernière activité",
+  "wa_d_sync": "Statut de synchronisation",
+  "wa_d_synced": "Synchronisé",
+  "wa_d_number_id": "ID du numéro de téléphone",
+  "wa_d_daily_limit": "Limite quotidienne de conversations",
+  "wa_d_limit_value": "{u} sur {l}",
+  "@wa_d_limit_value": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_unknown": "Inconnu",
+  "wa_qs_explain": "La qualité reflète la réaction des clients à vos messages au cours des 7 derniers jours. Les blocages, signalements et le faible engagement la réduisent.",
+  "wa_qs_tier": "Palier de messagerie",
+  "wa_qs_tier_value": "{tier} conversations / jour",
+  "@wa_qs_tier_value": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qs_trend": "7 derniers jours",
+  "wa_qs_tips": "Conseils pour améliorer la qualité",
+  "wa_qs_tip1": "N'envoyez des messages qu'aux clients ayant donné leur accord",
+  "wa_qs_tip2": "Personnalisez les messages, évitez les textes répétitifs",
+  "wa_qs_tip3": "Facilitez le désabonnement",
+  "wa_qs_help": "Centre d'aide WhatsApp",
+  "wa_log_connected": "Connecté",
+  "wa_log_connected_by": "Connecté par {name}",
+  "@wa_log_connected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_disconnected": "Déconnecté · {d}",
+  "@wa_log_disconnected": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_reconnected": "Reconnecté",
+  "wa_log_reconnected_by": "Reconnecté par {name}",
+  "@wa_log_reconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_recovered": "{n} messages récupérés",
+  "@wa_log_recovered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_reason_phone_offline": "Téléphone hors ligne",
+  "wa_reason_logged_out": "Déconnecté de la session",
+  "wa_reason_update": "Mise à jour",
+  "wa_log_empty": "Aucun événement au cours des 30 derniers jours",
+  "wa_cancel": "Annuler",
+  "wa_disc_mismatch": "Les chiffres ne correspondent pas",
+  "wa_disc_failed": "Impossible de déconnecter",
+  "wa_notify_sent": "Administrateur notifié",
+  "wa_save_failed": "Impossible d'enregistrer la modification",
+  "wa_retry": "Réessayer",
+  "wa_offline": "La modification nécessite une connexion internet",
+  "wa_saved": "Enregistré",
+  "wa_welcome_on": "Message de bienvenue activé",
+  "wa_away_on": "Message d'absence activé",
+  "wa_away_off": "Message d'absence désactivé",
+  "wa_delay_30s": "Après 30 secondes",
+  "wa_delay_1m": "Après 1 minute",
+  "wa_delay_2m": "Après 2 minutes",
+  "wa_delay_5m": "Après 5 minutes",
+  "wa_save": "Enregistrer",
+  "wa_welcome_enable": "Activer le message de bienvenue",
+  "wa_away_enable": "Activer le message d'absence",
+  "wa_message": "Message",
+  "wa_message_hint": "Écrivez le message…",
+  "wa_send_when": "Envoyer",
+  "wa_buttons_hint": "Jusqu'à 3 boutons, 20 caractères chacun",
+  "wa_button_add": "+ Ajouter un bouton",
+  "wa_button_hint": "Libellé du bouton",
+  "wa_preview": "Aperçu",
+  "wa_err_text": "Écrivez le message (1 à 1024 caractères)",
+  "wa_err_button": "Le libellé du bouton dépasse 20 caractères",
+  "wa_go_ai": "Paramètres IA",
+  "wa_discard_title": "Abandonner les modifications ?",
+  "wa_discard_body": "Vos modifications ne seront pas enregistrées.",
+  "wa_discard": "Abandonner",
+  "wa_keep": "Continuer la modification",
+  "wa_qr_new": "Nouvelle réponse rapide",
+  "wa_qr_edit": "Modifier la réponse rapide",
+  "wa_qr_search": "Rechercher des réponses",
+  "wa_qr_empty": "Aucune réponse rapide pour le moment",
+  "wa_qr_empty_body": "Créez-en une et utilisez-la en tapant / dans une conversation",
+  "wa_qr_no_results": "Aucun résultat",
+  "wa_qr_add": "Ajouter une réponse",
+  "wa_qr_used": "Utilisée {n} fois",
+  "@wa_qr_used": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_title": "Supprimer « {title} » ?",
+  "@wa_qr_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_body": "Elle n'apparaîtra plus dans la liste /.",
+  "wa_delete": "Supprimer",
+  "wa_qr_deleted": "Réponse supprimée",
+  "wa_qr_delete_failed": "Impossible de supprimer la réponse",
+  "wa_qr_attach": "Joindre une image ou un fichier",
+  "wa_qr_attach_hint": "Facultatif · jusqu'à 5 Mo",
+  "wa_qr_attach_too_big": "Fichier de plus de 5 Mo",
+  "wa_qr_attach_remove": "Supprimer la pièce jointe",
+  "wa_qr_err_title": "Saisissez un titre",
+  "wa_qr_err_text": "Saisissez le texte",
+  "wa_qr_err_shortcut_empty": "Saisissez un raccourci",
+  "wa_qr_err_shortcut_invalid": "Utilisez uniquement a–z, 0–9, _ et -",
+  "wa_qr_err_shortcut_taken": "Ce raccourci est déjà utilisé",
+  "wa_qr_err_shortcut_long": "Le raccourci est trop long",
+  "wa_qr_saved": "Réponse enregistrée",
+  "wa_qr_save_failed": "Impossible d'enregistrer la réponse",
+  "wa_qr_reorder_failed": "Impossible d'enregistrer l'ordre",
+  "wa_qr_shared_sub": "Visible par toute l'équipe",
+  "wa_qr_readonly": "Seuls les administrateurs modifient les réponses d'équipe",
+  "wa_tpl_empty": "Aucun modèle approuvé pour le moment",
+  "wa_tpl_preview": "Aperçu du modèle",
+  "wa_phone_hint": "5X XXX XXXX",
+  "wa_err_phone": "Saisissez un numéro valide",
+  "wa_rate_limited": "Trop de tentatives, réessayez dans un instant",
+  "wa_multi_device": "Ce compte ne prend pas en charge les appareils liés ; mettez à jour WhatsApp et réessayez",
+  "wa_connect_failed": "Connexion impossible, réessayez",
+  "wa_network_error": "Aucune connexion internet",
+  "wa_qr_steps": "Sur l'autre téléphone, ouvrez WhatsApp → Paramètres → Appareils liés → Lier un appareil → Scannez le code",
+  "wa_qr_refresh_in": "Actualisation dans {s}s",
+  "@wa_qr_refresh_in": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_alt": "Code QR pour lier WhatsApp, actualisé toutes les 20 secondes",
+  "wa_waiting_link": "En attente du code sur votre téléphone…",
+  "wa_change_number": "Changer de numéro",
+  "wa_phone_tip": "La liaison par numéro de téléphone est la plus simple sur cet appareil — un code QR ne peut pas être scanné par le même téléphone.",
+  "wa_plan_title": "WhatsApp n'est pas inclus dans votre forfait",
+  "wa_plan_body": "Passez à un forfait supérieur pour lier un numéro WhatsApp et recevoir les messages des clients",
+  "wa_view_plans": "Voir les forfaits",
+  "wa_upgrade_info": "Demandez au propriétaire de l'espace de travail de mettre à niveau",
+  "wa_blocked_empty": "Aucun numéro bloqué",
+  "wa_unblock": "Débloquer",
+  "wa_unblocked": "Débloqué",
+  "wa_card_a11y": "{name}, {phone}, {status}. {n} messages aujourd'hui, qualité du numéro {q}, lié depuis {d} jours",
+  "@wa_card_a11y": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      },
+      "q": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_save_disabled": "Complétez les champs obligatoires",
+  "wa_log_disconnected_by": "Déconnecté par {name}",
+  "@wa_log_disconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_connect_started": "Connexion démarrée",
+  "wa_log_connect_started_by": "{name} a démarré la connexion",
+  "@wa_log_connect_started_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_already_linked": "Déjà lié",
+  "wa_banned": "WhatsApp a banni ce numéro",
+  "wa_demo_state": "État de démonstration"
+}

@@ -17,6 +17,7 @@ import 'core/notifications/push_service.dart';
 import 'features/auth/application/auth_session.dart';
 import 'features/auth/data/auth_api.dart';
 import 'features/auth/data/auth_repository.dart';
+import 'features/startup/startup_error_app.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -34,12 +35,18 @@ Future<void> main() async {
     }
   }
 
-  // API only: without the build config there is nothing to talk to, so say
-  // so instead of starting on fake data. Run with
+  await _start();
+}
+
+/// Loads the API settings and starts the app. Re-run by "Try again" on the
+/// startup error screen.
+Future<void> _start() async {
+  // API only: without the build config there is nothing to talk to, so show
+  // the startup error screen instead of starting on fake data. Run with
   // --dart-define-from-file=dart_defines/<env>.json or ship assets/config/api.json.
   await loadApiConfig();
   if (apiBaseUrl.isEmpty || apiKey.isEmpty) {
-    runApp(const ApiNotConfiguredApp());
+    runApp(const StartupErrorApp(onRetry: _start));
     return;
   }
 
@@ -63,28 +70,4 @@ Future<void> main() async {
       child: const WavadeskApp(),
     ),
   );
-}
-
-/// Shown when the app was built without WAVADESK_API_URL / WAVADESK_API_KEY.
-class ApiNotConfiguredApp extends StatelessWidget {
-  const ApiNotConfiguredApp({super.key});
-
-  @override
-  Widget build(BuildContext context) => const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: SafeArea(
-            child: Center(
-              child: Padding(
-                padding: EdgeInsets.all(24),
-                child: Text(
-                  'لم يتم إعداد الاتصال بالخادم.\nشغّل التطبيق مع dart_defines/<env>.json\n\n'
-                  'API is not configured.\nRun with --dart-define-from-file=dart_defines/<env>.json',
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-        ),
-      );
 }

@@ -32,7 +32,7 @@ class AccountScreen extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
         child: Column(
           children: [
-            for (final (code, label) in const [('ar', 'العربية'), ('en', 'English')])
+            for (final (code, label) in const [('ar', 'العربية'), ('en', 'English'), ('fr', 'Français')])
               AppRadioRow(
                 label: label,
                 selected: current == code,
@@ -214,7 +214,11 @@ class AccountScreen extends ConsumerWidget {
               SettingsTile(
                 icon: AppIcons.language,
                 title: l.account_language,
-                value: settings.locale.languageCode == 'ar' ? 'العربية' : 'English',
+                value: switch (settings.locale.languageCode) {
+                  'ar' => 'العربية',
+                  'fr' => 'Français',
+                  _ => 'English',
+                },
                 onTap: () => _pickLanguage(context, ref),
               ),
               SettingsTile(

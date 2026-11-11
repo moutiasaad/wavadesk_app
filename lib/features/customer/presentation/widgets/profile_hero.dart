@@ -254,7 +254,7 @@ class ProfileHero extends ConsumerWidget {
           ),
           body: Center(
             child: InteractiveViewer(
-              child: Image.network(url, fit: BoxFit.contain),
+              child: Image.network(url, fit: BoxFit.contain, errorBuilder: (_, _, _) => const AppIcon(AppIcons.image, size: AppIconSize.xl, color: Colors.white54)),
             ),
           ),
         ),

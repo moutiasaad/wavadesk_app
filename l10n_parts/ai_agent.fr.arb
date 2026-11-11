@@ -1,0 +1,294 @@
+{
+  "@@locale": "fr",
+  "ai_title": "Agent IA",
+  "ai_master_switch": "Activer l'IA",
+  "ai_state_on": "Activé",
+  "ai_state_off": "Désactivé",
+  "ai_readonly": "Seuls les administrateurs peuvent modifier les paramètres de l'IA",
+  "ai_hero_answered": "{n} questions",
+  "@ai_hero_answered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_caption": "répondues cette semaine · ~{h} heures économisées",
+  "@ai_hero_caption": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_hero_off": "L'IA est désactivée",
+  "ai_hero_off_body": "Activez-la pour répondre à partir de votre base de connaissances",
+  "ai_hero_ready": "Prêt à fonctionner",
+  "ai_hero_ready_body": "N'a pas encore répondu — testez-la d'abord",
+  "ai_hero_a11y": "{n} questions répondues cette semaine, voir les performances",
+  "@ai_hero_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_usage": "{p} % des réponses de ce mois utilisées",
+  "@ai_usage": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_title": "Avant la mise en service",
+  "ai_ready_kb": "La base de connaissances contient au moins 10 réponses ({n}/10)",
+  "@ai_ready_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ready_hours": "Horaires de travail définis",
+  "ai_ready_handoff": "Règle de transfert activée",
+  "ai_ready_tested": "Agent testé",
+  "ai_ready_done": "Terminé",
+  "ai_ready_missing": "Non terminé",
+  "ai_mode": "Fonctionnement",
+  "ai_mode_suggest": "Suggestion uniquement",
+  "ai_mode_suggest_sub": "Rédige des brouillons ; les agents vérifient et envoient",
+  "ai_mode_auto": "Réponse automatique",
+  "ai_mode_auto_sub": "Répond instantanément, transfère si nécessaire",
+  "ai_mode_after": "Hors horaires uniquement",
+  "ai_mode_after_sub": "Répond automatiquement hors des horaires de travail",
+  "ai_mode_after_sub2": "et suggère pendant les horaires",
+  "ai_mode_needs_hours": "Définissez d'abord les horaires de travail",
+  "ai_mode_needs_ready": "Terminez d'abord la liste de contrôle de préparation",
+  "ai_recommended": "Recommandé",
+  "ai_mode_changed": "Changé en « {mode} »",
+  "@ai_mode_changed": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_undo": "Annuler",
+  "ai_tone": "Ton",
+  "ai_tone_friendly": "Amical",
+  "ai_tone_formal": "Formel",
+  "ai_tone_concise": "Concis",
+  "ai_tone_sample_friendly": "Bonjour Noura ! La livraison à Dammam coûte 25 SAR, gratuite au-delà de 300. Elle arrive en 2–3 jours !",
+  "ai_tone_sample_formal": "Bienvenue. La livraison à Dammam coûte 25 SAR et est gratuite pour les commandes supérieures à 300 SAR, sous 2–3 jours ouvrables.",
+  "ai_tone_sample_concise": "Livraison à Dammam 25 SAR (gratuite au-delà de 300) · 2–3 jours.",
+  "ai_use_name": "Utiliser le nom du client",
+  "ai_rules": "Règles",
+  "ai_hours": "Horaires de travail",
+  "ai_hours_24": "24 heures",
+  "ai_hours_unset": "Non défini",
+  "ai_handoff": "Transfert à un agent",
+  "ai_handoff_sub": "En cas de demande d'un humain, de réclamation ou de paiement",
+  "ai_language": "Langue de réponse",
+  "ai_lang_customer": "Langue du client",
+  "ai_lang_customer_sub": "Détectée par message",
+  "ai_lang_ar": "Toujours en arabe",
+  "ai_lang_en": "Toujours en anglais",
+  "ai_lang_style": "Style",
+  "ai_lang_msa": "Arabe standard simple",
+  "ai_lang_saudi": "Dialecte saoudien neutre",
+  "ai_handoff_msg": "Message de transfert",
+  "ai_handoff_msg_default": "Je vous mets en relation avec un collègue, un instant s'il vous plaît.",
+  "ai_var_customer": "Nom du client",
+  "ai_var_return": "Heure de retour",
+  "ai_save": "Enregistrer",
+  "ai_delay": "Délai de réponse automatique",
+  "ai_delay_instant": "Immédiat",
+  "ai_delay_30s": "Après 30 s",
+  "ai_delay_1m": "Après 1 min",
+  "ai_delay_2m": "Après 2 min",
+  "ai_delay_note": "Ce délai laisse la priorité aux agents en réponse automatique",
+  "ai_perf": "Performances",
+  "ai_perf_resolution": "Résolues sans transfert",
+  "ai_perf_rating": "Avis positifs",
+  "ai_perf_unanswered": "Questions sans réponse",
+  "ai_perf_detail": "Voir les performances détaillées",
+  "ai_perf_week": "Cette semaine",
+  "ai_perf_answered": "Répondues",
+  "ai_perf_handoffs": "Transferts",
+  "ai_perf_reasons": "Principaux motifs de transfert",
+  "ai_perf_sources": "Sources les plus utilisées",
+  "ai_perf_none": "Aucune donnée pour l'instant",
+  "ai_reason_human_request": "A demandé un humain",
+  "ai_reason_complaint": "Réclamation",
+  "ai_reason_payment": "Paiement ou remboursement",
+  "ai_reason_no_answer": "Aucune réponse trouvée",
+  "ai_reason_low_confidence": "Faible confiance",
+  "ai_reason_after_replies": "Réponses sans résolution",
+  "ai_reason_keyword": "Mot-clé : {word}",
+  "@ai_reason_keyword": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_reason_other": "Autre",
+  "ai_advanced": "Avancé",
+  "ai_channels": "Canaux activés",
+  "ai_channels_none": "Aucun canal",
+  "ai_channel_whatsapp": "WhatsApp",
+  "ai_channel_web": "Site web",
+  "ai_channel_messenger": "Messenger",
+  "ai_instructions": "Instructions supplémentaires",
+  "ai_instructions_ph": "ex. Ne mentionnez pas les prix de gros ; demandez toujours le numéro de commande avant les questions de livraison",
+  "ai_instructions_empty": "Aucune",
+  "ai_outside_kb": "Répondre en dehors de la base de connaissances",
+  "ai_outside_kb_sub": "Non recommandé — peut donner des informations inexactes",
+  "ai_confidence": "Seuil de confiance pour l'envoi automatique",
+  "ai_conf_low": "Faible",
+  "ai_conf_med": "Moyen",
+  "ai_conf_high": "Élevé",
+  "ai_conf_low_sub": "Envoie automatiquement la plupart des réponses",
+  "ai_conf_med_sub": "Équilibre entre rapidité et précision",
+  "ai_conf_high_sub": "N'envoie que les réponses certaines ; le reste est suggéré ou transféré",
+  "ai_team_styles": "Styles de réécriture de l'équipe",
+  "ai_style_add": "Ajouter un style",
+  "ai_style_name": "Nom du style",
+  "ai_style_instruction": "Instruction",
+  "ai_style_delete": "Supprimer",
+  "ai_styles_empty": "Aucun style pour l'instant",
+  "ai_audit": "Journal des modifications",
+  "ai_audit_row": "Modifié : {fields}",
+  "@ai_audit_row": {
+    "placeholders": {
+      "fields": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_audit_empty": "Aucune modification pour l'instant",
+  "ai_test": "Tester l'agent dans une conversation d'exemple",
+  "ai_test_title": "Conversation de test",
+  "ai_test_sub": "Ne sera envoyé à aucun client",
+  "ai_test_info": "Vous êtes le client. Essayez de vraies questions de clients.",
+  "ai_test_why": "Pourquoi cette réponse ?",
+  "ai_test_handoff": "Dans une vraie conversation, ceci serait transféré à l'équipe : {reason}",
+  "@ai_test_handoff": {
+    "placeholders": {
+      "reason": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_test_reset": "Redémarrer",
+  "ai_test_channel": "Changer de canal",
+  "ai_test_p1": "Combien coûte la livraison ?",
+  "ai_test_p2": "Je veux retourner ma commande",
+  "ai_test_p3": "Quels sont vos horaires d'ouverture ?",
+  "ai_test_p4": "Je veux parler à quelqu'un",
+  "ai_test_hint": "Tapez votre question en tant que client…",
+  "ai_test_label": "IA",
+  "ai_test_error": "Impossible d'obtenir une réponse. Réessayez.",
+  "ai_test_unsaved": "Vous avez des modifications non enregistrées des horaires de travail",
+  "ai_why_sources": "Sources",
+  "ai_why_no_sources": "Aucune source de la base de connaissances utilisée",
+  "ai_why_confidence": "Confiance",
+  "ai_why_rule": "Règle",
+  "ai_why_tone": "Ton",
+  "ai_off_title": "Désactiver l'IA ?",
+  "ai_off_body": "Elle arrêtera de répondre et de suggérer. Les conversations qu'elle gère seront transférées à l'équipe.",
+  "ai_off_handling": "Gère actuellement {n} conversations",
+  "@ai_off_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_off_confirm": "Désactiver",
+  "ai_cancel": "Annuler",
+  "ai_kb_first_title": "Ajoutez d'abord votre base de connaissances",
+  "ai_kb_first_body": "L'IA ne répond qu'à partir de vos informations. Ajoutez au moins 10 réponses.",
+  "ai_kb_add": "Ajouter des réponses",
+  "ai_enable_suggest": "Activer en mode suggestion uniquement",
+  "ai_auto_title": "L'IA répondra directement aux clients",
+  "ai_auto_b1": "Répond uniquement à partir de votre base de connaissances",
+  "ai_auto_b2": "Transfère selon vos règles",
+  "ai_auto_b3": "Vous pouvez la désactiver à tout moment",
+  "ai_auto_tested": "J'ai testé l'agent",
+  "ai_auto_try": "Essayer maintenant",
+  "ai_auto_confirm": "Activer la réponse automatique",
+  "ai_outside_title": "Autoriser les réponses en dehors de la base de connaissances ?",
+  "ai_outside_body": "L'IA peut donner des informations incorrectes sur vos produits ou vos prix.",
+  "ai_allow": "Autoriser",
+  "ai_plan_off": "L'IA n'est pas disponible avec votre forfait",
+  "ai_view_plans": "Voir les forfaits",
+  "ai_quota_out": "Quota mensuel de réponses atteint — suggestion uniquement jusqu'au {date}",
+  "@ai_quota_out": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_save_failed": "Impossible d'enregistrer la modification",
+  "ai_retry": "Réessayer",
+  "ai_conflict": "{name} vient de modifier les paramètres",
+  "@ai_conflict": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_conflict_anon": "Quelqu'un d'autre vient de modifier les paramètres",
+  "ai_offline": "Une connexion internet est nécessaire pour modifier",
+  "ai_load_error": "Impossible de charger les paramètres de l'IA",
+  "ai_saved": "Enregistré",
+  "ai_hours_247": "Ouvert 24h/24 et 7j/7",
+  "ai_hours_closed": "Fermé",
+  "ai_hours_add_range": "+ Créneau",
+  "ai_hours_copy_all": "Copier pour tous les jours",
+  "ai_hours_timezone": "Fuseau horaire",
+  "ai_hours_holidays": "Jours fériés",
+  "ai_hours_err_order": "L'heure de fin doit être après l'heure de début",
+  "ai_hours_err_overlap": "Les créneaux se chevauchent",
+  "ai_hours_err_max": "2 créneaux maximum",
+  "ai_hours_start": "De",
+  "ai_hours_end": "À",
+  "ai_hours_discard": "Annuler les modifications ?",
+  "ai_hours_discard_body": "Vous n'avez pas enregistré les horaires de travail.",
+  "ai_hours_discard_confirm": "Annuler",
+  "ai_day_sat": "Samedi",
+  "ai_day_sun": "Dimanche",
+  "ai_day_mon": "Lundi",
+  "ai_day_tue": "Mardi",
+  "ai_day_wed": "Mercredi",
+  "ai_day_thu": "Jeudi",
+  "ai_day_fri": "Vendredi",
+  "ai_ho_intro": "L'IA transfère automatiquement la conversation à l'équipe quand :",
+  "ai_ho_human": "Le client demande à parler à une personne",
+  "ai_ho_always": "Toujours activé",
+  "ai_ho_complaint": "Réclamation ou client mécontent",
+  "ai_ho_payment": "Sujet de paiement ou de remboursement",
+  "ai_ho_no_answer": "Aucune réponse dans la base de connaissances",
+  "ai_ho_low_conf": "Faible confiance dans la réponse",
+  "ai_ho_after_n": "Après {n} réponses sans résolution",
+  "@ai_ho_after_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "ai_ho_keywords": "Mots spécifiques",
+  "ai_ho_keyword_add": "Ajouter un mot…",
+  "ai_ho_target": "Transférer à ?",
+  "ai_ho_target_unassigned": "Non attribué (premier à la prendre en charge)",
+  "ai_ho_target_team": "Une équipe spécifique",
+  "ai_ho_target_last": "Dernier agent ayant aidé le client",
+  "ai_ho_after_hours": "Hors horaires de travail",
+  "ai_ho_tell_return": "Indiquer au client quand vous serez de retour",
+  "ai_ho_notify": "Transférer et notifier l'équipe"
+}

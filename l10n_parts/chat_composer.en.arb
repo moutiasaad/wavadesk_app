@@ -1,7 +1,13 @@
 {
   "chat_ai_suggestion": "AI suggestion",
   "chat_ai_source": "From: {title}",
-  "@chat_ai_source": {"placeholders": {"title": {"type": "String"}}},
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ai_send": "Send",
   "chat_ai_edit": "Edit",
   "chat_ai_more": "More",
@@ -25,12 +31,30 @@
   "chat_claim": "Claim conversation",
   "chat_assign_colleague": "Assign to a colleague",
   "chat_viewing_now": "{name} is viewing this now",
-  "@chat_viewing_now": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_waiting_claim": "Waiting to be claimed",
   "chat_claimed_before": "{name} claimed it first",
-  "@chat_claimed_before": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ro_colleague": "Assigned to {name}",
-  "@chat_ro_colleague": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ro_request": "Request transfer",
   "chat_ro_resolved": "Conversation resolved",
   "chat_reopen": "Reopen",
@@ -43,13 +67,24 @@
   "chat_banner_window_closed": "24-hour window closed — only approved templates",
   "chat_choose_template": "Choose template",
   "chat_banner_window_soon": "Reply window closes in {t}",
-  "@chat_banner_window_soon": {"placeholders": {"t": {"type": "String"}}},
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "chat_banner_channel_down": "WhatsApp disconnected — messages won't deliver",
   "chat_reconnect": "Reconnect",
   "chat_snoozed_until": "Snoozed until {t}",
-  "@chat_snoozed_until": {"placeholders": {"t": {"type": "String"}}},
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "chat_unsnooze": "Unsnooze",
-
   "composer_attach": "Attach",
   "composer_send": "Send",
   "composer_send_note": "Send note",
@@ -66,18 +101,42 @@
   "composer_template": "Template",
   "composer_template_only": "Window closed — send an approved template",
   "composer_colleague_typing_note": "{name} is writing a note…",
-  "@composer_colleague_typing_note": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_colleague_viewing": "{name} is also viewing",
-  "@composer_colleague_viewing": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_quick_title": "Quick replies",
   "composer_quick_empty": "No matching quick replies",
   "composer_mention_title": "Mention a teammate",
   "composer_reply_to": "Replying to {name}",
-  "@composer_reply_to": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_cancel_reply": "Cancel reply",
   "composer_remove_attachment": "Remove attachment",
   "composer_uploading": "Uploading {percent}%",
-  "@composer_uploading": {"placeholders": {"percent": {"type": "int"}}},
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "composer_customer": "Customer",
   "composer_location_sample": "Al Malqa, Riyadh",
   "aicard_close": "Collapse suggestion",
@@ -85,10 +144,29 @@
   "aicard_less": "Less",
   "aicard_open_pill": "Show AI suggestion",
   "claimbar_waiting_minutes": "{n}m",
-  "@claimbar_waiting_minutes": {"placeholders": {"n": {"type": "int"}}},
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "claimbar_viewers_more": "{name} and {count, plural, =1{1 other} other{{count} others}} are viewing",
-  "@claimbar_viewers_more": {"placeholders": {"name": {"type": "String"}, "count": {"type": "int"}}},
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "readonly_take_instead": "Take over instead",
   "readonly_add_note": "Add internal note",
-  "banner_connecting": "Connecting…"
+  "banner_connecting": "Connecting…",
+  "composer_mic_denied": "Allow microphone access in Settings to record voice messages.",
+  "composer_record_failed": "Couldn't record. Please try again.",
+  "composer_record_delete": "Delete recording",
+  "chat_ai_suggest_pill": "Suggest a reply"
 }

@@ -1,0 +1,243 @@
+{
+  "@@locale": "fr",
+  "ntf_title": "Notifications",
+  "ntf_read_all": "Tout marquer comme lu",
+  "ntf_read_all_done": "Tout a été marqué comme lu",
+  "ntf_undo": "Annuler",
+  "ntf_settings": "Paramètres de notification",
+  "ntf_delete_read": "Supprimer les notifications lues",
+  "ntf_filter_all": "Toutes",
+  "ntf_filter_unread": "Non lues",
+  "ntf_filter_mentions": "Mentions",
+  "ntf_filter_assignments": "Attributions",
+  "ntf_filter_ai": "IA",
+  "ntf_filter_system": "Système",
+  "ntf_today": "Aujourd'hui",
+  "ntf_yesterday": "Hier",
+  "ntf_this_week": "Cette semaine",
+  "ntf_older": "Plus anciennes",
+  "ntf_push_off_title": "Les notifications push sont désactivées",
+  "ntf_push_off_body": "Activez-les pour ne jamais manquer une conversation qui vous est attribuée",
+  "ntf_enable": "Activer",
+  "ntf_mark_read": "Marquer comme lu",
+  "ntf_mark_unread": "Marquer comme non lu",
+  "ntf_mute_type": "Désactiver ce type",
+  "ntf_delete": "Supprimer",
+  "ntf_deleted": "Notification supprimée",
+  "ntf_empty_title": "Aucune notification",
+  "ntf_empty_body": "Nous vous préviendrons quand une conversation vous sera attribuée ou si votre équipe a besoin de vous.",
+  "ntf_empty_filter": "Aucune notification dans « {f} »",
+  "@ntf_empty_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_show_all": "Afficher tout",
+  "ntf_error": "Impossible de charger les notifications",
+  "ntf_retry": "Réessayer",
+  "ntf_end": "Aucune autre notification",
+  "ntf_retention": "Les notifications sont supprimées après 90 jours",
+  "ntf_target_gone": "Cette conversation n'est plus disponible",
+  "ntf_claimed_you": "Vous l'avez prise en charge",
+  "ntf_claimed_by": "Prise en charge par {name}",
+  "@ntf_claimed_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_approved": "Approuvé",
+  "ntf_rejected": "Rejeté",
+  "ntf_grouped": "{n} nouveaux messages de {name}",
+  "@ntf_grouped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_push_private": "Vous avez une nouvelle conversation",
+  "ntf_t_assigned": "Une nouvelle conversation vous a été attribuée",
+  "ntf_t_claim_needed": "{n} conversations en attente d'être prises en charge",
+  "@ntf_t_claim_needed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_sla_breach": "{customer} attend votre réponse depuis {m}",
+  "@ntf_t_sla_breach": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      },
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_transfer_request": "{agent} demande à reprendre une conversation",
+  "@ntf_t_transfer_request": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_mention": "{agent} vous a mentionné dans une note",
+  "@ntf_t_mention": {
+    "placeholders": {
+      "agent": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_ai_no_answer": "L'IA n'a pas trouvé de réponse",
+  "ntf_t_ai_handoff": "L'IA a transféré une conversation à l'équipe",
+  "ntf_t_ai_low_confidence": "L'IA a répondu avec un faible niveau de confiance",
+  "ntf_t_kb_suggestion": "{n} questions fréquentes sans réponse",
+  "@ntf_t_kb_suggestion": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_channel_disconnected": "WhatsApp déconnecté",
+  "ntf_t_channel_reconnected": "WhatsApp s'est déconnecté puis reconnecté",
+  "ntf_t_channel_quality_low": "La qualité du numéro WhatsApp est faible",
+  "ntf_t_team_joined": "{name} a rejoint l'équipe",
+  "@ntf_t_team_joined": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_team_role_changed": "Votre rôle est devenu {role}",
+  "@ntf_t_team_role_changed": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_t_trial_ending": "Votre essai se termine dans {n} jours",
+  "@ntf_t_trial_ending": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_t_payment_failed": "Le paiement de l'abonnement a échoué",
+  "ntf_t_plan_limit": "Vous approchez de votre limite de réponses IA",
+  "ntf_t_app_update": "Une nouvelle version est disponible",
+  "ntf_b_claim_needed": "La plus ancienne attend depuis {m}",
+  "@ntf_b_claim_needed": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_no_answer": "Une question sur {topic}. Ajoutez la réponse pour qu'elle réponde automatiquement la prochaine fois.",
+  "@ntf_b_ai_no_answer": {
+    "placeholders": {
+      "topic": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_ai_low_confidence": "{customer} · Vérifiez la réponse",
+  "@ntf_b_ai_low_confidence": {
+    "placeholders": {
+      "customer": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_kb_suggestion": "Ajoutez-les à la base de connaissances pour améliorer les réponses",
+  "ntf_b_channel_disconnected": "Les messages ne vous parviendront pas jusqu'à la reconnexion",
+  "ntf_b_channel_reconnected": "Hors service pendant {m} · aucun message perdu",
+  "@ntf_b_channel_reconnected": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_channel_quality_low": "Envoyez moins de messages groupés pour éviter les restrictions",
+  "ntf_b_team_joined": "Rôle : {role}",
+  "@ntf_b_team_joined": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_team_role_changed": "Par {actor}",
+  "@ntf_b_team_role_changed": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_b_trial_ending": "Choisissez un forfait pour conserver vos conversations et l'IA.",
+  "ntf_b_payment_failed": "Mettez à jour votre moyen de paiement pour éviter une interruption du service",
+  "ntf_b_plan_limit": "Vous avez utilisé {p} % ce mois-ci",
+  "@ntf_b_plan_limit": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_b_app_update": "{version} · Améliorations et corrections",
+  "@ntf_b_app_update": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "ntf_a_view": "Voir",
+  "ntf_a_reply": "Répondre maintenant",
+  "ntf_a_approve": "Approuver",
+  "ntf_a_reject": "Rejeter",
+  "ntf_a_add_answer": "Ajouter une réponse",
+  "ntf_a_claim": "Prendre en charge",
+  "ntf_a_review": "Vérifier",
+  "ntf_a_reconnect": "Reconnecter",
+  "ntf_a_plans": "Voir les forfaits",
+  "ntf_a_update": "Mettre à jour",
+  "ntf_a_open": "Ouvrir",
+  "ntf_more": "Plus",
+  "ntf_dismiss": "Ignorer",
+  "ntf_a11y_unread": "Non lu",
+  "ntf_a11y_filter": "{f}, {n} non lues",
+  "@ntf_a11y_filter": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "ntf_muted": "Vous ne recevrez plus ce type de notification",
+  "ntf_push_unavailable": "Activez les notifications dans les paramètres de votre appareil",
+  "ntf_offline_action": "Cette action nécessite une connexion internet",
+  "ntf_action_failed": "Impossible d'effectuer l'action. Réessayez.",
+  "ntf_billing_agent_title": "La facturation est gérée par un administrateur",
+  "ntf_billing_agent_body": "Demandez à l'administrateur de votre espace de travail de gérer l'abonnement sur le site web de Wavadesk."
+}

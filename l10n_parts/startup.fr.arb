@@ -1,0 +1,8 @@
+{
+  "startup_unavailable_title": "Impossible de se connecter pour le moment",
+  "startup_unavailable_body": "Wavadesk n'a pas pu contacter ses serveurs. Assurez-vous d'utiliser la dernière version de l'application, puis réessayez.",
+  "startup_unavailable_help": "Toujours bloqué ? Contactez-nous à support@wavadesk.com",
+  "startup_retry": "Réessayer",
+  "startup_contact_support": "Contacter le support",
+  "startup_dev_hint": "Développeur : l'URL ou la clé API est manquante. Lancez avec --dart-define-from-file=dart_defines/<env>.json ou remplissez assets/config/api.json."
+}

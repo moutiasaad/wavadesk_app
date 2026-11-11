@@ -1,0 +1,420 @@
+{
+  "@@locale": "fr",
+  "wa_title": "Votre WhatsApp",
+  "wa_refresh": "Actualiser le statut",
+  "wa_log": "Journal de connexion",
+  "wa_help": "Aide",
+  "wa_connected": "Connecté",
+  "wa_connecting": "Connexion en cours",
+  "wa_syncing": "Synchronisation",
+  "wa_phone_offline": "Téléphone hors ligne",
+  "wa_disconnected": "Déconnecté",
+  "wa_restricted": "Restreint",
+  "wa_pending": "Non lié",
+  "wa_msgs_today": "messages aujourd'hui",
+  "wa_quality": "Qualité du numéro",
+  "wa_q_high": "Élevée",
+  "wa_q_med": "Moyenne",
+  "wa_q_low": "Faible",
+  "wa_stable": "Stable",
+  "wa_unstable": "Instable",
+  "wa_linked_since": "Lié depuis",
+  "wa_days": "{n} jours",
+  "@wa_days": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_title": "Déconnecté depuis {t}",
+  "@wa_alert_disc_title": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_disc_body": "Les messages des clients ne vous parviendront pas jusqu'à la reconnexion",
+  "wa_reconnect": "Reconnecter",
+  "wa_alert_phone_title": "Votre téléphone est hors ligne",
+  "wa_alert_phone_body": "Vérifiez que WhatsApp est actif sur le téléphone lié",
+  "wa_check_again": "Vérifier à nouveau",
+  "wa_alert_quality": "La qualité du numéro est faible",
+  "wa_alert_quality_body": "Réduisez les messages groupés et le contenu répétitif",
+  "wa_details": "Détails",
+  "wa_alert_limit": "Proche de la limite quotidienne de conversations ({u}/{l})",
+  "@wa_alert_limit": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_alert_update": "Mettez à jour WhatsApp sur votre téléphone",
+  "wa_alert_pending": "WhatsApp n'est pas encore lié",
+  "wa_alert_pending_body": "Liez votre numéro pour commencer à recevoir des messages",
+  "wa_connect": "Connecter WhatsApp",
+  "wa_auto": "Messages automatiques",
+  "wa_welcome": "Message de bienvenue",
+  "wa_away": "Message d'absence",
+  "wa_away_ai": "Géré par l'IA pour le moment",
+  "wa_quick": "Réponses rapides",
+  "wa_welcome_delay": "Délai du message de bienvenue",
+  "wa_now": "Immédiatement",
+  "wa_welcome_off": "Message de bienvenue désactivé",
+  "wa_undo": "Annuler",
+  "wa_templates": "Modèles approuvés",
+  "wa_tpl_marketing": "Marketing",
+  "wa_tpl_utility": "Utilitaire",
+  "wa_tpl_auth": "Authentification",
+  "wa_tpl_approved": "Approuvé",
+  "wa_tpl_pending": "En cours de révision",
+  "wa_tpl_rejected": "Rejeté",
+  "wa_tpl_manage_web": "Gérer les modèles sur le web",
+  "wa_numbers": "Numéros",
+  "wa_add_second": "Ajouter un second numéro",
+  "wa_business_only": "Disponible avec le forfait Business",
+  "wa_upgrade": "Mettre à niveau",
+  "wa_add_number": "Ajouter un numéro",
+  "wa_watch": "Regarder : comment connecter WhatsApp",
+  "wa_watch_sub": "Guide vidéo · {d}",
+  "@wa_watch_sub": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_advanced": "Avancé",
+  "wa_read_receipts": "Accusés de lecture pour le client",
+  "wa_mark_read_open": "Marquer comme lu à l'ouverture",
+  "wa_auto_transcribe": "Transcrire automatiquement les messages vocaux",
+  "wa_ignore_groups": "Ignorer les messages de groupe",
+  "wa_blocked": "Numéros bloqués",
+  "wa_hours": "Heures d'ouverture",
+  "wa_disconnect": "Déconnecter le numéro",
+  "wa_disc_title": "Déconnecter le numéro WhatsApp ?",
+  "wa_disc_body": "Les messages ne parviendront plus à Wavadesk et l'IA arrêtera de répondre. Les conversations passées sont conservées.",
+  "wa_disc_open": "{n} conversations ouvertes seront interrompues",
+  "@wa_disc_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_disc_confirm_label": "Saisissez les 4 derniers chiffres pour confirmer",
+  "wa_disc_done": "Numéro déconnecté",
+  "wa_connect_title": "Connecter WhatsApp",
+  "wa_step": "Étape {i} sur {n}",
+  "@wa_step": {
+    "placeholders": {
+      "i": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_by_phone": "Numéro de téléphone",
+  "wa_by_qr": "Code QR",
+  "wa_get_code": "Obtenir le code",
+  "wa_copy": "Copier",
+  "wa_expires_in": "Expire dans {t}",
+  "@wa_expires_in": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_steps_pair": "Ouvrez WhatsApp → Paramètres → Appareils liés → Lier un appareil → Lier avec un numéro de téléphone → Saisissez le code",
+  "wa_open_app": "Ouvrir WhatsApp",
+  "wa_linked_ok": "WhatsApp connecté",
+  "wa_syncing_recent": "Synchronisation des conversations récentes…",
+  "wa_back": "Retour",
+  "wa_back_online": "De nouveau en ligne · aucun message perdu",
+  "wa_code_expired": "Code expiré",
+  "wa_new_code": "Nouveau code",
+  "wa_number_taken": "Ce numéro est lié à un autre espace de travail",
+  "wa_watch_video": "Regarder la vidéo",
+  "wa_welcome_when": "Quand envoyer ?",
+  "wa_trigger_first": "Premier message d'un nouveau client",
+  "wa_trigger_new": "Chaque nouvelle conversation",
+  "wa_trigger_24h": "Après 24h de silence",
+  "wa_buttons": "Boutons rapides",
+  "wa_ai_after_welcome": "L'IA répondra juste après le message de bienvenue",
+  "wa_away_outside": "Hors des heures d'ouverture",
+  "wa_away_team": "Quand toute l'équipe est absente",
+  "wa_away_cooldown": "Une fois toutes les {n}h par client",
+  "@wa_away_cooldown": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_away_ai_banner": "L'IA répond en dehors des heures — modifiez-le dans les paramètres IA",
+  "wa_qr_team": "Équipe",
+  "wa_qr_mine": "Les miennes",
+  "wa_qr_title_f": "Titre",
+  "wa_qr_shortcut": "Raccourci",
+  "wa_qr_text": "Texte",
+  "wa_qr_shared": "Partagée avec l'équipe",
+  "wa_notify_admin": "Notifier l'administrateur",
+  "wa_load_error": "Impossible de charger le statut WhatsApp",
+  "wa_enable_after": "Activer après la liaison",
+  "wa_more": "Plus",
+  "wa_last_updated": "Dernière mise à jour {t}",
+  "@wa_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_copied": "Copié",
+  "wa_details_title": "Détails de la connexion",
+  "wa_d_type": "Type de connexion",
+  "wa_d_type_linked": "Appareil lié",
+  "wa_d_type_cloud": "API officielle WhatsApp",
+  "wa_d_device": "Appareil",
+  "wa_d_wa_business": "WhatsApp Business {v}",
+  "@wa_d_wa_business": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_wa_personal": "WhatsApp {v}",
+  "@wa_d_wa_personal": {
+    "placeholders": {
+      "v": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_d_last_activity": "Dernière activité",
+  "wa_d_sync": "Statut de synchronisation",
+  "wa_d_synced": "Synchronisé",
+  "wa_d_number_id": "ID du numéro de téléphone",
+  "wa_d_daily_limit": "Limite quotidienne de conversations",
+  "wa_d_limit_value": "{u} sur {l}",
+  "@wa_d_limit_value": {
+    "placeholders": {
+      "l": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_unknown": "Inconnu",
+  "wa_qs_explain": "La qualité reflète la réaction des clients à vos messages au cours des 7 derniers jours. Les blocages, signalements et le faible engagement la réduisent.",
+  "wa_qs_tier": "Palier de messagerie",
+  "wa_qs_tier_value": "{tier} conversations / jour",
+  "@wa_qs_tier_value": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qs_trend": "7 derniers jours",
+  "wa_qs_tips": "Conseils pour améliorer la qualité",
+  "wa_qs_tip1": "N'envoyez des messages qu'aux clients ayant donné leur accord",
+  "wa_qs_tip2": "Personnalisez les messages, évitez les textes répétitifs",
+  "wa_qs_tip3": "Facilitez le désabonnement",
+  "wa_qs_help": "Centre d'aide WhatsApp",
+  "wa_log_connected": "Connecté",
+  "wa_log_connected_by": "Connecté par {name}",
+  "@wa_log_connected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_disconnected": "Déconnecté · {d}",
+  "@wa_log_disconnected": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_reconnected": "Reconnecté",
+  "wa_log_reconnected_by": "Reconnecté par {name}",
+  "@wa_log_reconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_recovered": "{n} messages récupérés",
+  "@wa_log_recovered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_reason_phone_offline": "Téléphone hors ligne",
+  "wa_reason_logged_out": "Déconnecté de la session",
+  "wa_reason_update": "Mise à jour",
+  "wa_log_empty": "Aucun événement au cours des 30 derniers jours",
+  "wa_cancel": "Annuler",
+  "wa_disc_mismatch": "Les chiffres ne correspondent pas",
+  "wa_disc_failed": "Impossible de déconnecter",
+  "wa_notify_sent": "Administrateur notifié",
+  "wa_save_failed": "Impossible d'enregistrer la modification",
+  "wa_retry": "Réessayer",
+  "wa_offline": "La modification nécessite une connexion internet",
+  "wa_saved": "Enregistré",
+  "wa_welcome_on": "Message de bienvenue activé",
+  "wa_away_on": "Message d'absence activé",
+  "wa_away_off": "Message d'absence désactivé",
+  "wa_delay_30s": "Après 30 secondes",
+  "wa_delay_1m": "Après 1 minute",
+  "wa_delay_2m": "Après 2 minutes",
+  "wa_delay_5m": "Après 5 minutes",
+  "wa_save": "Enregistrer",
+  "wa_welcome_enable": "Activer le message de bienvenue",
+  "wa_away_enable": "Activer le message d'absence",
+  "wa_message": "Message",
+  "wa_message_hint": "Écrivez le message…",
+  "wa_send_when": "Envoyer",
+  "wa_buttons_hint": "Jusqu'à 3 boutons, 20 caractères chacun",
+  "wa_button_add": "+ Ajouter un bouton",
+  "wa_button_hint": "Libellé du bouton",
+  "wa_preview": "Aperçu",
+  "wa_err_text": "Écrivez le message (1 à 1024 caractères)",
+  "wa_err_button": "Le libellé du bouton dépasse 20 caractères",
+  "wa_go_ai": "Paramètres IA",
+  "wa_discard_title": "Abandonner les modifications ?",
+  "wa_discard_body": "Vos modifications ne seront pas enregistrées.",
+  "wa_discard": "Abandonner",
+  "wa_keep": "Continuer la modification",
+  "wa_qr_new": "Nouvelle réponse rapide",
+  "wa_qr_edit": "Modifier la réponse rapide",
+  "wa_qr_search": "Rechercher des réponses",
+  "wa_qr_empty": "Aucune réponse rapide pour le moment",
+  "wa_qr_empty_body": "Créez-en une et utilisez-la en tapant / dans une conversation",
+  "wa_qr_no_results": "Aucun résultat",
+  "wa_qr_add": "Ajouter une réponse",
+  "wa_qr_used": "Utilisée {n} fois",
+  "@wa_qr_used": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_title": "Supprimer « {title} » ?",
+  "@wa_qr_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_delete_body": "Elle n'apparaîtra plus dans la liste /.",
+  "wa_delete": "Supprimer",
+  "wa_qr_deleted": "Réponse supprimée",
+  "wa_qr_delete_failed": "Impossible de supprimer la réponse",
+  "wa_qr_attach": "Joindre une image ou un fichier",
+  "wa_qr_attach_hint": "Facultatif · jusqu'à 5 Mo",
+  "wa_qr_attach_too_big": "Fichier de plus de 5 Mo",
+  "wa_qr_attach_remove": "Supprimer la pièce jointe",
+  "wa_qr_err_title": "Saisissez un titre",
+  "wa_qr_err_text": "Saisissez le texte",
+  "wa_qr_err_shortcut_empty": "Saisissez un raccourci",
+  "wa_qr_err_shortcut_invalid": "Utilisez uniquement a–z, 0–9, _ et -",
+  "wa_qr_err_shortcut_taken": "Ce raccourci est déjà utilisé",
+  "wa_qr_err_shortcut_long": "Le raccourci est trop long",
+  "wa_qr_saved": "Réponse enregistrée",
+  "wa_qr_save_failed": "Impossible d'enregistrer la réponse",
+  "wa_qr_reorder_failed": "Impossible d'enregistrer l'ordre",
+  "wa_qr_shared_sub": "Visible par toute l'équipe",
+  "wa_qr_readonly": "Seuls les administrateurs modifient les réponses d'équipe",
+  "wa_tpl_empty": "Aucun modèle approuvé pour le moment",
+  "wa_tpl_preview": "Aperçu du modèle",
+  "wa_phone_hint": "5X XXX XXXX",
+  "wa_err_phone": "Saisissez un numéro valide",
+  "wa_rate_limited": "Trop de tentatives, réessayez dans un instant",
+  "wa_multi_device": "Ce compte ne prend pas en charge les appareils liés ; mettez à jour WhatsApp et réessayez",
+  "wa_connect_failed": "Connexion impossible, réessayez",
+  "wa_network_error": "Aucune connexion internet",
+  "wa_qr_steps": "Sur l'autre téléphone, ouvrez WhatsApp → Paramètres → Appareils liés → Lier un appareil → Scannez le code",
+  "wa_qr_refresh_in": "Actualisation dans {s}s",
+  "@wa_qr_refresh_in": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_qr_alt": "Code QR pour lier WhatsApp, actualisé toutes les 20 secondes",
+  "wa_waiting_link": "En attente du code sur votre téléphone…",
+  "wa_change_number": "Changer de numéro",
+  "wa_phone_tip": "La liaison par numéro de téléphone est la plus simple sur cet appareil — un code QR ne peut pas être scanné par le même téléphone.",
+  "wa_plan_title": "WhatsApp n'est pas inclus dans votre forfait",
+  "wa_plan_body": "Passez à un forfait supérieur pour lier un numéro WhatsApp et recevoir les messages des clients",
+  "wa_view_plans": "Voir les forfaits",
+  "wa_upgrade_info": "Demandez au propriétaire de l'espace de travail de mettre à niveau",
+  "wa_blocked_empty": "Aucun numéro bloqué",
+  "wa_unblock": "Débloquer",
+  "wa_unblocked": "Débloqué",
+  "wa_card_a11y": "{name}, {phone}, {status}. {n} messages aujourd'hui, qualité du numéro {q}, lié depuis {d} jours",
+  "@wa_card_a11y": {
+    "placeholders": {
+      "d": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      },
+      "q": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_save_disabled": "Complétez les champs obligatoires",
+  "wa_log_disconnected_by": "Déconnecté par {name}",
+  "@wa_log_disconnected_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_log_connect_started": "Connexion démarrée",
+  "wa_log_connect_started_by": "{name} a démarré la connexion",
+  "@wa_log_connect_started_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_already_linked": "Déjà lié",
+  "wa_banned": "WhatsApp a banni ce numéro",
+  "wa_demo_state": "État de démonstration"
+}

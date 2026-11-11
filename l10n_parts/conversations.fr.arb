@@ -1,0 +1,104 @@
+{
+  "conversations_segment_mine": "Les miennes",
+  "conversations_segment_unassigned": "Non attribuées",
+  "conversations_segment_all": "Toutes",
+  "conversations_filter_all": "Toutes",
+  "conversations_filter_unread": "Non lues",
+  "conversations_filter_awaiting": "En attente de réponse",
+  "conversations_filter_ai": "Répondu par l'IA",
+  "conversations_filter_closed": "Fermées",
+  "conversations_filter_more": "Filtres",
+  "conversations_channel_any": "Tous les canaux",
+  "conversations_priority_any": "Toutes les priorités",
+  "conversations_notifications": "Notifications",
+  "conversations_new_message": "Nouveau message",
+  "conversations_exit_selection": "Quitter la sélection",
+  "conversations_selected_count": "{count, plural, =1{1 sélectionnée} other{{count} sélectionnées}}",
+  "@conversations_selected_count": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_bulk_assign": "Attribuer la sélection",
+  "conversations_bulk_resolve": "Résoudre la sélection",
+  "conversations_bulk_resolved": "{count, plural, =1{1 conversation résolue} other{{count} conversations résolues}}",
+  "@conversations_bulk_resolved": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "conversations_resolved_snack": "Conversation résolue",
+  "conversations_empty_mine_title": "Aucune conversation ne vous est attribuée",
+  "conversations_empty_mine_body": "Prenez-en une en charge depuis Non attribuées pour commencer à répondre.",
+  "conversations_empty_mine_action": "Afficher les non attribuées",
+  "conversations_empty_filters_title": "Aucune conversation ne correspond aux filtres",
+  "conversations_empty_filters_body": "Essayez de modifier ou de réinitialiser les filtres pour tout afficher.",
+  "conversations_empty_filters_action": "Réinitialiser les filtres",
+  "conversations_empty_done_title": "Vous êtes à jour",
+  "conversations_empty_done_body": "Rien ne nécessite votre attention pour l'instant. Nous vous préviendrons à l'arrivée d'un nouveau message.",
+  "tile_you_prefix": "Vous : ",
+  "tile_ai_reply": "Réponse IA",
+  "tile_ai_ready": "Suggestion prête",
+  "tile_typing": "En train d'écrire…",
+  "tile_snoozed_until": "Mise en pause jusqu'à {time}",
+  "@tile_snoozed_until": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_media_with_duration": "{label} · {duration}",
+  "@tile_media_with_duration": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "tile_swipe_resolve": "Résoudre",
+  "tile_swipe_snooze": "Mettre en pause",
+  "tile_swipe_assign": "Attribuer",
+  "filters_title": "Filtres",
+  "filters_channel": "Canal",
+  "filters_status": "Statut",
+  "filters_priority": "Priorité",
+  "filters_assignee": "Attribué à",
+  "filters_assignee_all": "Tout le monde",
+  "filters_assignee_me": "Moi",
+  "filters_assignee_colleague": "Un collègue",
+  "filters_assignee_ai": "IA",
+  "filters_assignee_unassigned": "Non attribuée",
+  "filters_date": "Date",
+  "filters_date_any": "N'importe quand",
+  "filters_date_today": "Aujourd'hui",
+  "filters_date_7": "7 jours",
+  "filters_date_30": "30 jours",
+  "filters_date_custom": "Personnalisé",
+  "filters_tags": "Étiquettes",
+  "filters_show": "{count, plural, =0{Aucune conversation} =1{Afficher 1 conversation} other{Afficher {count} conversations}}",
+  "@filters_show": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "newmsg_title": "Nouveau message",
+  "newmsg_subtitle": "Démarrez une conversation WhatsApp avec un modèle approuvé",
+  "newmsg_name": "Nom du client",
+  "newmsg_name_hint": "Facultatif",
+  "newmsg_phone": "Numéro de mobile",
+  "newmsg_phone_hint": "+966 5x xxx xxxx",
+  "newmsg_phone_error": "Entrez un numéro de mobile valide avec l'indicatif du pays",
+  "newmsg_template": "Modèle",
+  "newmsg_template_error": "Choisissez un modèle approuvé à envoyer",
+  "newmsg_send": "Envoyer le modèle"
+}

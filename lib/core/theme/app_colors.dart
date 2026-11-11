@@ -289,8 +289,9 @@ class AppColors extends ThemeExtension<AppColors> {
     channelOther: Color(0xFF475569),
     channelOtherContainer: Color(0xFFEEF2F5),
     bubbleIncoming: Color(0xFFFFFFFF),
-    bubbleOutgoing: Color(0xFF0F7E7A),
-    bubbleOutgoingForeground: Color(0xFFFFFFFF),
+    // WhatsApp-style own messages: light green, dark text.
+    bubbleOutgoing: Color(0xFFD9FDD3),
+    bubbleOutgoingForeground: Color(0xFF111B21),
     bubbleAi: Color(0xFFE3F3F1),
     bubbleAiBorder: Color(0xFFD6EFED),
     bubbleSystem: Color(0xFFE8ECEF),
@@ -388,8 +389,8 @@ class AppColors extends ThemeExtension<AppColors> {
     channelOtherContainer: Color(0xFF1D262D),
     bubbleIncoming: Color(0xFF151E22),
     // Outgoing bubble keeps the brand teal in dark mode (§10 rule 2).
-    bubbleOutgoing: Color(0xFF0F7E7A),
-    bubbleOutgoingForeground: Color(0xFFFFFFFF),
+    bubbleOutgoing: Color(0xFF005C4B),
+    bubbleOutgoingForeground: Color(0xFFE9EDEF),
     bubbleAi: Color(0xFF12302E),
     bubbleAiBorder: Color(0xFF1D4A47),
     bubbleSystem: Color(0xFF1C272C),

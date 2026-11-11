@@ -53,7 +53,11 @@ class MessageComposer extends ConsumerStatefulWidget {
 
 class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTickerProviderStateMixin {
   late final FocusNode _focus = widget.focusNode ?? FocusNode();
-  late final VoiceRecorderController _recorder = VoiceRecorderController(onSend: _sendVoice);
+  late final VoiceRecorderController _recorder = VoiceRecorderController(
+    onSend: _sendVoice,
+    onPermissionDenied: () => _toast(context.l10n.composer_mic_denied),
+    onError: () => _toast(context.l10n.composer_record_failed),
+  );
   final _aiTooltip = GlobalKey<TooltipState>();
 
   /// 150ms cross-fade when a rewrite lands in the field (Rewrite spec §12).
@@ -113,11 +117,19 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
     widget.onSent?.call();
   }
 
-  void _sendVoice(Duration d) {
-    ref
-        .read(messagesControllerProvider(_id).notifier)
-        .send(OutgoingMessage(text: '', kind: MessageKind.voice, duration: d));
+  void _sendVoice(Duration d, String path) {
+    ref.read(messagesControllerProvider(_id).notifier).send(OutgoingMessage(
+          text: '',
+          kind: MessageKind.voice,
+          duration: d,
+          localPath: path,
+          localMime: VoiceRecorderController.mime,
+        ));
     HapticFeedback.lightImpact();
+  }
+
+  void _toast(String message) {
+    if (mounted) AppSnackbar.show(context, message: message, kind: SnackKind.error);
   }
 
   Future<void> _attach() async {
@@ -284,6 +296,29 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
           size: AppButtonSize.small,
           variant: AppButtonVariant.tonal,
           onPressed: widget.onOpenTemplates,
+        ),
+      );
+    } else if (_recorder.recording && _recorder.locked) {
+      // Hands-free recording: send the voice note.
+      trailingButton = Semantics(
+        button: true,
+        label: l.composer_record_send,
+        excludeSemantics: true,
+        child: InkResponse(
+          key: const ValueKey('send-voice'),
+          onTap: () => unawaited(_recorder.send()),
+          radius: 26,
+          child: SizedBox.square(
+            dimension: AppSpacing.minTouch,
+            child: Center(
+              child: Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
+                child: const AppIcon(AppIcons.send, color: Colors.white),
+              ),
+            ),
+          ),
         ),
       );
     } else if (state.canSend || note) {

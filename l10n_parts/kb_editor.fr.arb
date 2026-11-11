@@ -1,0 +1,268 @@
+{
+  "@@locale": "fr",
+  "kbe_new": "Nouvelle question",
+  "kbe_edit": "Modifier la réponse",
+  "kbe_review": "Vérifier la suggestion",
+  "kbe_save": "Enregistrer",
+  "kbe_send": "Envoyer",
+  "kbe_src_unanswered": "Posée {n} fois sans réponse de l'IA",
+  "@kbe_src_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_chat": "Depuis une conversation avec {c} · {d}",
+  "@kbe_src_chat": {
+    "placeholders": {
+      "c": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft": "Suggérée par {name} · {t}",
+  "@kbe_src_draft": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_src_draft_conv": "Suggérée à partir d'une conversation résolue",
+  "kbe_view_convs": "Voir les conversations",
+  "kbe_open": "Ouvrir",
+  "kbe_open_it": "Ouvrir",
+  "kbe_question": "Question",
+  "kbe_question_ph": "ex. Puis-je retourner un article après 30 jours ?",
+  "kbe_alts": "Autres façons dont les clients demandent",
+  "kbe_optional": "(facultatif)",
+  "kbe_add_alt": "+ Ajouter une formulation",
+  "kbe_alt_exists": "Cette formulation existe déjà",
+  "kbe_alt_limit": "Jusqu'à 15 formulations, 120 caractères chacune",
+  "kbe_answer": "Réponse",
+  "kbe_answer_ph": "Écrivez la réponse telle que l'IA doit la dire…",
+  "kbe_counter": "{n}/2000",
+  "@kbe_counter": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_ai_draft_tag": "Brouillon de l'IA — à vérifier avant d'enregistrer",
+  "kbe_tag": "Étiquette",
+  "kbe_tags_title": "Étiquettes de la réponse",
+  "kbe_tags_search": "Rechercher ou créer une étiquette",
+  "kbe_tags_create": "Créer « {name} »",
+  "@kbe_tags_create": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_tags_primary": "Étiquette principale",
+  "kbe_done": "Terminé",
+  "kbe_improve": "Améliorer la formulation",
+  "kbe_add_link": "Ajouter un lien",
+  "kbe_link_url": "URL",
+  "kbe_link_label": "Titre du lien (facultatif)",
+  "kbe_link_invalid": "Saisissez un lien https:// valide",
+  "kbe_insert": "Insérer",
+  "kbe_cancel": "Annuler",
+  "kbe_similar": "Une question similaire existe : « {t} »",
+  "@kbe_similar": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_merge_alt": "Fusionner comme formulation",
+  "kbe_conflict": "Peut entrer en conflit avec « {t} » : {r}",
+  "@kbe_conflict": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      },
+      "r": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view": "Voir",
+  "kbe_preview": "Aperçu : comment l'IA répondra",
+  "kbe_ai_label": "IA",
+  "kbe_writing": "Rédaction en cours…",
+  "kbe_tone": "Ton : {tone}",
+  "@kbe_tone": {
+    "placeholders": {
+      "tone": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_conf_high": "Confiance élevée",
+  "kbe_conf_med": "Confiance moyenne",
+  "kbe_conf_low": "Confiance faible",
+  "kbe_low_hint": "Ajoutez des formulations ou précisez pour augmenter la confiance",
+  "kbe_try_another": "Essayer une autre question",
+  "kbe_test_hint": "Saisissez une question pour tester",
+  "kbe_preview_err": "Échec de l'aperçu",
+  "kbe_preview_offline": "L'aperçu nécessite une connexion",
+  "kbe_preview_empty": "Complétez la question et la réponse pour voir un aperçu",
+  "kbe_preview_regen": "Actualiser l'aperçu",
+  "kbe_advanced": "Options avancées",
+  "kbe_enabled": "Disponible pour l'IA",
+  "kbe_channels": "Canaux",
+  "kbe_channels_all": "Tous les canaux",
+  "kbe_expires": "Valable jusqu'au",
+  "kbe_expires_none": "Pas de date de fin",
+  "kbe_expires_clear": "Supprimer la date",
+  "kbe_verbatim": "Envoyer mot pour mot",
+  "kbe_verbatim_sub": "L'IA envoie exactement ce texte",
+  "kbe_handoff_after": "Transférer après la réponse",
+  "kbe_internal_notes": "Notes internes",
+  "kbe_internal_notes_ph": "Non utilisées par l'IA",
+  "kbe_meta": "Modifiée par {n} · {t} · utilisée {u} fois",
+  "@kbe_meta": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      },
+      "u": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete": "Supprimer la réponse",
+  "kbe_delete_title": "Supprimer « {title} » ?",
+  "@kbe_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_delete_body": "L'IA ne l'utilisera plus.",
+  "kbe_deleted": "Supprimée",
+  "kbe_history": "Historique des versions",
+  "kbe_restore": "Restaurer cette version",
+  "kbe_version_n": "Version {n}",
+  "@kbe_version_n": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_version_current": "Actuelle",
+  "kbe_versions_empty": "Aucune version antérieure",
+  "kbe_restored": "Version restaurée",
+  "kbe_restore_failed": "Impossible de restaurer",
+  "kbe_err_q": "Saisissez la question (5 caractères minimum)",
+  "kbe_err_a": "Saisissez la réponse (10 caractères minimum)",
+  "kbe_err_a_long": "La réponse dépasse 2000 caractères",
+  "kbe_err_date": "Choisissez une date future",
+  "kbe_saved_new": "Réponse ajoutée · l'IA l'utilisera dès maintenant",
+  "kbe_saved_edit": "Modifications enregistrées",
+  "kbe_saved_unanswered": "Ajoutée · {n} conversations l'attendaient",
+  "@kbe_saved_unanswered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_saved_chat": "Ajoutée à la base de connaissances",
+  "kbe_proposed": "Envoyée pour vérification",
+  "kbe_approve": "Approuver et publier",
+  "kbe_approved": "Réponse approuvée et publiée",
+  "kbe_reject": "Rejeter",
+  "kbe_rejected": "Suggestion rejetée",
+  "kbe_save_err": "Impossible d'enregistrer",
+  "kbe_save_forbidden": "Vous ne pouvez pas enregistrer — envoyez-la pour vérification",
+  "kbe_save_offline": "L'enregistrement nécessite une connexion",
+  "kbe_retry": "Réessayer",
+  "kbe_load_error": "Impossible de charger la réponse",
+  "kbe_conflict_title": "{name} vient de modifier cette réponse",
+  "@kbe_conflict_title": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_view_theirs": "Voir la sienne",
+  "kbe_overwrite": "Enregistrer la mienne à la place",
+  "kbe_restore_draft": "Brouillon non enregistré — le restaurer ?",
+  "kbe_restore_btn": "Restaurer",
+  "kbe_restore_ignore": "Ignorer",
+  "kbe_discard_title": "Abandonner les modifications ?",
+  "kbe_discard_body": "La réponse ne sera pas enregistrée.",
+  "kbe_discard": "Abandonner",
+  "kbe_keep": "Continuer la modification",
+  "kbe_deleted_elsewhere": "Cette réponse a été supprimée",
+  "kbe_close": "Fermer",
+  "kbe_a11y_alt": "Formulation : {text}, double-tapez pour modifier",
+  "@kbe_a11y_alt": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_alt_delete": "Supprimer",
+  "kbe_a11y_ghost": "Formulation suggérée par l'IA : {text}, appuyez pour ajouter",
+  "@kbe_a11y_ghost": {
+    "placeholders": {
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "kbe_a11y_save_disabled": "Complétez la question et la réponse",
+  "kbe_a11y_dismiss": "Ignorer l'avertissement",
+  "kbe_media": "Pièces jointes",
+  "kbe_media_hint": "L'IA les envoie avec la réponse",
+  "kbe_media_add": "Ajouter une image ou une note vocale",
+  "kbe_media_image": "Image",
+  "kbe_media_voice": "Note vocale",
+  "kbe_media_with_text": "Avec le texte",
+  "kbe_media_file_only": "Fichier seul",
+  "kbe_media_remove": "Retirer",
+  "kbe_media_uploading": "Envoi {p} %",
+  "@kbe_media_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_failed": "Échec de l'envoi",
+  "kbe_media_queued": "Envoi après l'enregistrement",
+  "kbe_media_too_big": "Fichier de plus de 16 Mo",
+  "kbe_media_image_too_big": "Image de plus de 5 Mo",
+  "kbe_media_type_err": "Choisissez une image ou un fichier audio",
+  "kbe_media_upgrade": "Les images et notes vocales sont réservées aux forfaits payants",
+  "kbe_media_upgrade_cta": "Voir les forfaits",
+  "kbe_media_some_failed": "Enregistrée, mais {n} pièces jointes n'ont pas pu être envoyées",
+  "@kbe_media_some_failed": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kbe_media_send_mode": "Comment elle est envoyée"
+}

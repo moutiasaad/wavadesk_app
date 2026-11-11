@@ -10,7 +10,9 @@ import '../../../core/api/wd_api_provider.dart';
 import '../../../core/models/models.dart';
 import '../../../core/utils/analytics.dart';
 
-enum AiCardView { hidden, card, collapsed, loading, noAnswer }
+/// idle = the "suggest a reply" button only; nothing is generated until
+/// the agent taps it (each request costs AI quota).
+enum AiCardView { hidden, idle, card, collapsed, loading, noAnswer }
 
 @immutable
 class AiSuggestionState {
@@ -28,8 +30,9 @@ class AiSuggestionState {
 final aiSuggestionControllerProvider = NotifierProvider.autoDispose
     .family<AiSuggestionController, AiSuggestionState, String>(AiSuggestionController.new);
 
-/// AI suggestion card state (Chat spec §4.6). Mirrors the conversation's
-/// suggestion; dismiss collapses it to the "اقتراح جاهز" pill.
+/// AI suggestion card state (Chat spec §4.6). On demand only: the chat
+/// shows a "suggest a reply" button; tapping it fetches (or reuses) the
+/// suggestion. Dismiss collapses it to the "اقتراح جاهز" pill.
 ///
 /// Real API: `GET /mobile/v1/conversations/{id}/ai-suggestion` (202 while it
 /// is generated → polled), `POST …/ai-suggestion/regenerate`. A 402/403
@@ -43,24 +46,38 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
   bool _remoteDismissed = false;
   Timer? _poll;
   int _pollsLeft = 0;
-  bool _started = false;
+
+  /// 402/403: plan limit or AI module off — no button at all.
+  bool _unavailable = false;
 
   @override
   AiSuggestionState build(String id) {
     ref.onDispose(() => _poll?.cancel());
-    if (!_started) {
-      _started = true;
-      Future.microtask(_fetch);
-    }
     return _remoteState();
+  }
+
+  /// The agent tapped the AI button: show the held suggestion, or ask for one.
+  void request() {
+    if (_remote != null) {
+      _remoteDismissed = false;
+      _emit();
+      return;
+    }
+    _log('request');
+    _remoteLoading = true;
+    _pollsLeft = 0;
+    _emit();
+    unawaited(_fetch());
   }
 
   AiSuggestionState _remoteState() {
     final s = _remote;
     final view = _remoteLoading
         ? AiCardView.loading
-        : s == null
+        : _unavailable
         ? AiCardView.hidden
+        : s == null
+        ? AiCardView.idle
         : (_remoteDismissed ? AiCardView.collapsed : AiCardView.card);
     return AiSuggestionState(suggestion: s, view: view, expanded: _expanded);
   }
@@ -80,7 +97,10 @@ class AiSuggestionController extends AutoDisposeFamilyNotifier<AiSuggestionState
       // plan_limit / module_unavailable / no messages yet / network: no card.
       if (kDebugMode) debugPrint('[ai-suggestion] ${e.code}');
       _remoteLoading = false;
-      if (e.status == 402 || e.status == 403) _remote = null;
+      if (e.status == 402 || e.status == 403) {
+        _remote = null;
+        _unavailable = true;
+      }
       _emit();
     }
   }

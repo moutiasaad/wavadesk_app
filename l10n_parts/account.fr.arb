@@ -1,0 +1,371 @@
+{
+  "dashboard_greeting": "Bonjour, {name} 👋",
+  "@dashboard_greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_open": "Conversations ouvertes",
+  "dashboard_waiting_sla": "En attente au-delà du SLA",
+  "dashboard_view_queue": "Voir la file",
+  "dashboard_first_response": "1ère réponse moy.",
+  "dashboard_resolved_today": "Résolues aujourd'hui",
+  "dashboard_ai_rate": "Résolues par l'IA",
+  "dashboard_csat": "Satisfaction client",
+  "dashboard_csat_scale": "sur 5",
+  "dashboard_vs_yesterday": "{delta} par rapport à hier",
+  "@dashboard_vs_yesterday": {
+    "placeholders": {
+      "delta": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_volume_title": "Conversations aujourd'hui",
+  "dashboard_volume_a11y": "{total} conversations aujourd'hui, pic de {peak} à {hour}",
+  "@dashboard_volume_a11y": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "peak": {
+        "type": "int"
+      },
+      "hour": {
+        "type": "String"
+      }
+    }
+  },
+  "dashboard_channels_title": "Par canal",
+  "dashboard_ai_usage_title": "Utilisation de l'IA",
+  "dashboard_ai_manage": "Gérer",
+  "dashboard_ai_usage_value": "{used} sur {quota} réponses ce mois-ci",
+  "@dashboard_ai_usage_value": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "dashboard_team_title": "L'équipe en ce moment",
+  "dashboard_team_open": "{count, plural, =0{Aucune conversation} =1{1 conversation} other{{count} conversations}}",
+  "@dashboard_team_open": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "notifications_title": "Notifications",
+  "notifications_mark_all": "Tout marquer comme lu",
+  "notifications_earlier": "Plus tôt",
+  "notifications_empty_title": "Aucune notification pour le moment",
+  "notifications_empty_body": "Nous vous préviendrons quand une conversation vous sera assignée ou que vous serez mentionné dans une note.",
+  "knowledge_search": "Rechercher dans la base de connaissances",
+  "knowledge_search_hint": "Rechercher des réponses…",
+  "knowledge_add": "Ajouter une réponse",
+  "knowledge_filter_all": "Tout",
+  "knowledge_type_faq": "FAQ",
+  "knowledge_type_policy": "Politiques",
+  "knowledge_type_product": "Produits",
+  "knowledge_type_snippet": "Extraits",
+  "knowledge_type_website": "Site web",
+  "knowledge_coverage_title": "Ce que l'IA sait",
+  "knowledge_coverage_body": "{total, plural, =1{1 réponse} other{{total} réponses}}, {enabled} activées",
+  "@knowledge_coverage_body": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "enabled": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_coverage_top": "Le plus utilisé : {title}",
+  "@knowledge_coverage_top": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_used": "{count, plural, =0{Pas encore utilisée} =1{Utilisée une fois} other{Utilisée {count} fois}}",
+  "@knowledge_used": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_updated": "Mise à jour {time}",
+  "@knowledge_updated": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_disabled": "Désactivée",
+  "knowledge_enabled_a11y": "Activer « {title} »",
+  "@knowledge_enabled_a11y": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_empty_title": "Votre base de connaissances est vide",
+  "knowledge_empty_body": "Ajoutez des réponses et des politiques pour que l'IA puisse rédiger des réponses à partir de celles-ci.",
+  "knowledge_empty_filtered": "Aucune réponse de ce type",
+  "knowledge_no_results": "Aucun résultat pour « {query} »",
+  "@knowledge_no_results": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "knowledge_edit_title_add": "Ajouter une réponse",
+  "knowledge_edit_title_edit": "Modifier la réponse",
+  "knowledge_edit_type": "Type",
+  "knowledge_edit_question": "Question",
+  "knowledge_edit_title_label": "Titre",
+  "knowledge_edit_title_hint": "p. ex. Quel est le délai de livraison ?",
+  "knowledge_edit_body_label": "Réponse",
+  "knowledge_edit_body_hint": "Rédigez la réponse telle que vous souhaitez que l'IA la formule…",
+  "knowledge_edit_counter": "{count} / {max}",
+  "@knowledge_edit_counter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "knowledge_edit_keywords": "Mots-clés",
+  "knowledge_edit_keywords_hint": "Tapez un mot-clé et appuyez sur Entrée",
+  "knowledge_edit_keyword_add": "Ajouter un mot-clé",
+  "knowledge_edit_enabled": "Accessible à l'IA",
+  "knowledge_edit_enabled_sub": "Désactivée, elle ne sera pas utilisée dans les suggestions",
+  "knowledge_edit_preview_title": "Comment l'IA l'utilisera",
+  "knowledge_edit_preview_q": "La question du client apparaît ici",
+  "knowledge_edit_preview_a": "Et la réponse suggérée basée sur votre réponse",
+  "knowledge_edit_error_title": "Le titre est requis",
+  "knowledge_edit_error_body": "Rédigez une réponse d'au moins 10 caractères",
+  "knowledge_edit_saved": "Réponse enregistrée",
+  "knowledge_edit_delete": "Supprimer la réponse",
+  "knowledge_edit_delete_title": "Supprimer cette réponse ?",
+  "knowledge_edit_delete_body": "L'IA ne l'utilisera plus pour suggérer des réponses.",
+  "knowledge_edit_deleted": "Réponse supprimée",
+  "knowledge_edit_discard_title": "Abandonner les modifications ?",
+  "knowledge_edit_discard_body": "Vous avez des modifications non enregistrées qui seront perdues si vous quittez maintenant.",
+  "knowledge_edit_discard_confirm": "Abandonner et quitter",
+  "account_section_admin": "Gestion",
+  "account_section_app": "Application",
+  "account_whatsapp": "Votre WhatsApp",
+  "account_whatsapp_connected": "Connecté",
+  "account_whatsapp_disconnected": "Déconnecté",
+  "account_channels": "Canaux",
+  "account_ai_agent": "Agent IA",
+  "account_team": "Équipe & utilisateurs",
+  "account_subscription": "Abonnement",
+  "account_notifications": "Notifications",
+  "account_language": "Langue",
+  "account_appearance": "Apparence",
+  "account_theme_light": "Clair",
+  "account_theme_dark": "Sombre",
+  "account_theme_system": "Automatique",
+  "account_theme_system_sub": "Suit le réglage de votre appareil",
+  "account_help": "Aide & guides",
+  "account_logout": "Se déconnecter",
+  "account_logout_title": "Se déconnecter ?",
+  "account_logout_body": "Vous ne recevrez plus de notifications de conversation sur cet appareil jusqu'à votre prochaine connexion.",
+  "account_version": "Wavadesk {version}",
+  "@account_version": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  },
+  "account_network_online": "En ligne",
+  "ai_settings_title": "Agent IA",
+  "ai_settings_enable": "Activer l'agent IA",
+  "ai_settings_status_on": "Actif et propose des réponses",
+  "ai_settings_status_off": "Désactivé",
+  "ai_settings_usage": "{used} sur {quota} réponses ce mois-ci",
+  "@ai_settings_usage": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "quota": {
+        "type": "int"
+      }
+    }
+  },
+  "ai_settings_section_behavior": "Comportement",
+  "ai_settings_suggest": "Suggérer des réponses",
+  "ai_settings_suggest_sub": "Un brouillon est prêt avant même que vous ouvriez la conversation",
+  "ai_settings_auto": "Réponse automatique",
+  "ai_settings_auto_sub": "Répond aux conversations non assignées sans attendre",
+  "ai_settings_claimed": "Répondre après prise en charge",
+  "ai_settings_claimed_sub": "Continue de répondre après qu'un agent a pris en charge la conversation",
+  "ai_settings_handoff": "Transférer en cas de frustration",
+  "ai_settings_handoff_sub": "Transmet la conversation à l'équipe si le client semble mécontent",
+  "ai_settings_section_tone": "Ton des réponses",
+  "ai_settings_tone_friendly": "Chaleureux",
+  "ai_settings_tone_friendly_sub": "Chaleureux et accessible",
+  "ai_settings_tone_formal": "Formel",
+  "ai_settings_tone_formal_sub": "Poli et professionnel",
+  "ai_settings_tone_concise": "Concis",
+  "ai_settings_tone_concise_sub": "Phrases courtes et directes",
+  "ai_settings_section_knowledge": "Source de connaissances",
+  "ai_settings_knowledge": "Réponses activées",
+  "ai_settings_knowledge_footer": "L'IA utilise uniquement votre base de connaissances et n'invente jamais de réponses.",
+  "whatsapp_title": "Votre WhatsApp",
+  "whatsapp_status_connected": "Connecté",
+  "whatsapp_status_disconnected": "Déconnecté",
+  "whatsapp_since": "Connecté depuis",
+  "whatsapp_messages_today": "Messages aujourd'hui",
+  "whatsapp_connected_tip": "Laissez votre téléphone connecté. Si vous vous déconnectez de WhatsApp sur le téléphone, vous devrez scanner le code à nouveau.",
+  "whatsapp_disconnect": "Déconnecter",
+  "whatsapp_disconnect_title": "Déconnecter WhatsApp ?",
+  "whatsapp_disconnect_body": "Les messages des clients n'arriveront plus dans votre boîte de réception jusqu'à ce que vous reliiez le numéro.",
+  "whatsapp_qr_a11y": "Code QR pour relier WhatsApp",
+  "whatsapp_qr_expires": "Le code expire dans une minute",
+  "whatsapp_waiting_scan": "En attente du scan depuis votre téléphone…",
+  "whatsapp_steps_title": "Comment relier",
+  "whatsapp_step1": "Ouvrez WhatsApp sur le téléphone professionnel",
+  "whatsapp_step2": "Appuyez sur ⋮ puis « Appareils connectés »",
+  "whatsapp_step3": "Choisissez « Connecter un appareil »",
+  "whatsapp_step4": "Pointez la caméra vers ce code",
+  "whatsapp_simulate_scan": "Scanner le code (démo)",
+  "whatsapp_new_code": "Générer un nouveau code",
+  "whatsapp_connected_toast": "WhatsApp relié avec succès",
+  "channels_title": "Canaux",
+  "channels_section_connected": "Connectés",
+  "channels_section_available": "Disponibles",
+  "channels_connected": "Connecté et reçoit des messages",
+  "channels_not_connected": "Non relié",
+  "channels_manage_on_web": "Ce canal se gère depuis le tableau de bord web",
+  "channels_footer": "Les messages de chaque canal relié arrivent dans une seule boîte de réception.",
+  "team_title": "Équipe & utilisateurs",
+  "team_invite": "Inviter un collègue",
+  "team_invite_sent": "Lien d'invitation envoyé",
+  "team_section_members": "{count, plural, =1{1 membre} other{{count} membres}}",
+  "@team_section_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "team_section_teams": "Équipes",
+  "team_you": "{name} (vous)",
+  "@team_you": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "team_members": "{count, plural, =1{1 membre} other{{count} membres}}",
+  "@team_members": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "subscription_title": "Abonnement",
+  "subscription_current": "Formule actuelle",
+  "subscription_plan_name": "Professionnel",
+  "subscription_price": "199 SAR / mois",
+  "subscription_renews": "Renouvellement le {date}",
+  "@subscription_renews": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_section_usage": "Utilisation ce mois-ci",
+  "subscription_ai_replies": "Réponses IA",
+  "subscription_agents": "Utilisateurs",
+  "subscription_channels": "Canaux",
+  "subscription_usage": "{used} / {total}",
+  "@subscription_usage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_upgrade": "Mettre à niveau la formule",
+  "subscription_invoices": "Factures",
+  "subscription_upgrade_web": "Nous ouvrirons la page de facturation sur le web",
+  "notif_settings_title": "Notifications",
+  "notif_settings_section_push": "Me notifier quand",
+  "notif_settings_assigned": "Une conversation m'est assignée",
+  "notif_settings_assigned_sub": "Par un collègue ou une règle de distribution",
+  "notif_settings_mentions": "Je suis mentionné dans une note",
+  "notif_settings_mentions_sub": "Quand un collègue tape @votre-nom",
+  "notif_settings_waiting": "Temps d'attente dépassé",
+  "notif_settings_waiting_sub": "Un client attend plus longtemps que l'objectif",
+  "notif_settings_section_sound": "Son",
+  "notif_settings_sound": "Son de notification",
+  "notif_settings_sound_sub": "Jouer un son à l'arrivée d'un nouveau message",
+  "notif_settings_footer": "Vous ne recevrez pas de notifications tant que votre statut est « Absent ».",
+  "help_title": "Aide & guides",
+  "help_section_guides": "Guides",
+  "help_topic_claim": "Prendre en charge et assigner des conversations",
+  "help_topic_ai": "Comment fonctionnent les suggestions de l'IA",
+  "help_topic_whatsapp": "Relier un numéro WhatsApp",
+  "help_topic_knowledge": "Construire votre base de connaissances",
+  "help_topic_snooze": "Mettre en pause et résoudre",
+  "help_section_contact": "Nous contacter",
+  "help_contact_chat": "Discuter avec le support",
+  "help_contact_chat_sub": "Nous répondons généralement en quelques minutes",
+  "help_contact_email": "E-mail",
+  "help_opening": "Ouverture…",
+  "account_load_error": "Impossible de charger",
+  "subscription_ends": "Se termine le {date}",
+  "@subscription_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial_ends": "L'essai se termine le {date}",
+  "@subscription_trial_ends": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "subscription_trial": "Essai",
+  "subscription_unlimited": "Illimité",
+  "subscription_no_plan": "Aucune formule",
+  "subscription_per_month": "{price} / mois",
+  "@subscription_per_month": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  }
+}

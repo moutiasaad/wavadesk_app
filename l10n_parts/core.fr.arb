@@ -1,0 +1,160 @@
+{
+  "app_name": "Wavadesk",
+  "tab_conversations": "Conversations",
+  "tab_dashboard": "Tableau de bord",
+  "tab_knowledge": "Connaissances",
+  "tab_account": "Compte",
+  "channel_whatsapp": "WhatsApp",
+  "channel_web": "Chat du site",
+  "channel_messenger": "Messenger",
+  "channel_instagram": "Instagram",
+  "channel_email": "E-mail",
+  "channel_telegram": "Telegram",
+  "channel_sms": "SMS",
+  "channel_other": "Autre canal",
+  "status_open": "Ouverte",
+  "status_pending": "En attente du client",
+  "status_waiting": "En attente de réponse",
+  "status_snoozed": "Reportée",
+  "status_resolved": "Résolue",
+  "status_closed": "Fermée",
+  "status_ai": "Prise en charge par l'IA",
+  "priority_urgent": "Urgente",
+  "priority_high": "Élevée",
+  "priority_medium": "Moyenne",
+  "priority_low": "Faible",
+  "presence_online": "Disponible",
+  "presence_busy": "Occupé",
+  "presence_away": "Absent",
+  "role_admin": "Administrateur",
+  "role_supervisor": "Superviseur",
+  "role_agent": "Agent du support",
+  "ownership_mine": "Attribuée à vous",
+  "ownership_unassigned": "Non attribuée",
+  "ownership_colleague": "Attribuée à {name}",
+  "@ownership_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ownership_ai": "Prise en charge par l'IA",
+  "media_image": "Photo",
+  "media_voice": "Message vocal",
+  "media_file": "Fichier",
+  "media_location": "Position",
+  "media_album": "Album photo",
+  "media_video": "Vidéo",
+  "media_contact": "Contact",
+  "media_sticker": "Autocollant",
+  "media_template": "Modèle",
+  "media_email": "E-mail",
+  "media_deleted": "Message supprimé",
+  "media_unsupported": "Message non pris en charge",
+  "common_cancel": "Annuler",
+  "common_save": "Enregistrer",
+  "common_undo": "Annuler",
+  "common_retry": "Réessayer",
+  "common_close": "Fermer",
+  "common_back": "Retour",
+  "common_clear": "Effacer",
+  "common_done": "Terminé",
+  "common_search": "Rechercher",
+  "common_clear_search": "Effacer la recherche",
+  "common_more": "Plus",
+  "common_edit": "Modifier",
+  "common_delete": "Supprimer",
+  "common_confirm": "Confirmer",
+  "common_you": "Vous",
+  "common_loading": "Chargement…",
+  "common_selected": "Sélectionné",
+  "time_now": "Maintenant",
+  "time_today": "Aujourd'hui",
+  "time_yesterday": "Hier",
+  "time_minutes_ago": "{count, plural, =1{il y a 1 minute} other{il y a {count} minutes}}",
+  "@time_minutes_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_hours_ago": "{count, plural, =1{il y a 1 heure} other{il y a {count} heures}}",
+  "@time_hours_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "time_days_ago": "{count, plural, =1{il y a 1 jour} other{il y a {count} jours}}",
+  "@time_days_ago": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_minutes_short": "{count} min",
+  "@duration_minutes_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_hours_short": "{count} h",
+  "@duration_hours_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "duration_days_short": "{count} j",
+  "@duration_days_short": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "waiting_for": "En attente depuis {duration}",
+  "@waiting_for": {
+    "placeholders": {
+      "duration": {
+        "type": "String"
+      }
+    }
+  },
+  "network_connecting": "Connexion en cours…",
+  "network_offline": "Hors ligne",
+  "empty_offline_title": "Vous êtes hors ligne",
+  "empty_offline_body": "Vérifiez votre connexion et réessayez. Vos messages seront envoyés dès que vous serez de nouveau en ligne.",
+  "a11y_unread_messages": "{count, plural, =0{Aucun message non lu} =1{1 message non lu} other{{count} messages non lus}}",
+  "@a11y_unread_messages": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "a11y_notifications_unread": "Notifications, nouveaux éléments",
+  "a11y_ai_avatar": "IA",
+  "a11y_team_avatar": "Équipe",
+  "a11y_selected": "Sélectionné",
+  "a11y_priority": "Priorité : {label}",
+  "@a11y_priority": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "time_unit_day": "j",
+  "time_unit_hour": "h",
+  "time_unit_min": "min",
+  "common_increase": "Augmenter",
+  "common_decrease": "Diminuer"
+}

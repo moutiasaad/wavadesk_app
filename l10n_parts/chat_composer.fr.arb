@@ -1,0 +1,172 @@
+{
+  "chat_ai_suggestion": "Suggestion IA",
+  "chat_ai_source": "Source : {title}",
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ai_send": "Envoyer",
+  "chat_ai_edit": "Modifier",
+  "chat_ai_more": "Plus",
+  "chat_ai_low_conf": "À vérifier avant l'envoi",
+  "chat_ai_writing": "Rédaction de la suggestion…",
+  "chat_ai_no_answer": "L'IA n'a trouvé aucune réponse dans la base de connaissances",
+  "chat_ai_add_answer": "Ajouter une réponse",
+  "chat_ai_ready_pill": "Suggestion prête",
+  "chat_placeholder": "Écrivez une réponse…",
+  "chat_note_placeholder": "Note pour votre équipe — le client ne la verra pas",
+  "chat_mode_reply": "Réponse",
+  "chat_mode_note": "Note interne",
+  "chat_attach_media": "Photo/Vidéo",
+  "chat_attach_camera": "Appareil photo",
+  "chat_attach_file": "Fichier",
+  "chat_attach_location": "Position",
+  "chat_attach_quick": "Réponses rapides",
+  "chat_attach_template": "Modèle WhatsApp",
+  "chat_attach_product": "Produit",
+  "chat_record_cancel_hint": "Glisser pour annuler",
+  "chat_claim": "Prendre en charge la conversation",
+  "chat_assign_colleague": "Attribuer à un collègue",
+  "chat_viewing_now": "{name} consulte cette conversation en ce moment",
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_waiting_claim": "En attente d'être prise en charge",
+  "chat_claimed_before": "{name} l'a prise en charge en premier",
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_colleague": "Attribuée à {name}",
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_ro_request": "Demander le transfert",
+  "chat_ro_resolved": "Conversation résolue",
+  "chat_reopen": "Rouvrir",
+  "chat_ro_ai": "L'IA gère cette conversation",
+  "chat_take_over": "Reprendre",
+  "chat_ro_blocked": "Ce contact est bloqué",
+  "chat_unblock": "Débloquer",
+  "chat_ro_past": "Conversation passée — lecture seule",
+  "chat_banner_offline": "Hors ligne — les messages s'envoient à la reconnexion",
+  "chat_banner_window_closed": "Fenêtre de 24 heures fermée — seuls les modèles approuvés sont disponibles",
+  "chat_choose_template": "Choisir un modèle",
+  "chat_banner_window_soon": "La fenêtre de réponse se ferme dans {t}",
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_banner_channel_down": "WhatsApp déconnecté — les messages ne seront pas livrés",
+  "chat_reconnect": "Se reconnecter",
+  "chat_snoozed_until": "Mise en pause jusqu'à {t}",
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "chat_unsnooze": "Annuler la pause",
+  "composer_attach": "Joindre",
+  "composer_send": "Envoyer",
+  "composer_send_note": "Envoyer la note",
+  "composer_record": "Maintenir pour enregistrer un message vocal",
+  "composer_recording": "Enregistrement",
+  "composer_record_stop": "Arrêter",
+  "composer_record_send": "Envoyer l'enregistrement",
+  "composer_record_cancelled": "Enregistrement annulé",
+  "composer_record_locked": "Enregistrement mains libres",
+  "composer_record_slide_up": "Glisser vers le haut pour verrouiller",
+  "composer_ai_rewrite": "Améliorer la réponse avec l'IA",
+  "composer_field_label": "Écrire une réponse",
+  "composer_note_field_label": "Écrire une note interne",
+  "composer_template": "Modèle",
+  "composer_template_only": "Fenêtre fermée — envoyez un modèle approuvé",
+  "composer_colleague_typing_note": "{name} rédige une note…",
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_colleague_viewing": "{name} consulte aussi",
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_quick_title": "Réponses rapides",
+  "composer_quick_empty": "Aucune réponse rapide correspondante",
+  "composer_mention_title": "Mentionner un collègue",
+  "composer_reply_to": "En réponse à {name}",
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "composer_cancel_reply": "Annuler la réponse",
+  "composer_remove_attachment": "Supprimer la pièce jointe",
+  "composer_uploading": "Envoi {percent} %",
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "composer_customer": "Client",
+  "composer_location_sample": "Al Malqa, Riyad",
+  "aicard_close": "Réduire la suggestion",
+  "aicard_regenerate": "Régénérer la suggestion",
+  "aicard_less": "Moins",
+  "aicard_open_pill": "Afficher la suggestion IA",
+  "claimbar_waiting_minutes": "{n} min",
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claimbar_viewers_more": "{name} et {count, plural, =1{1 autre} other{{count} autres}} consultent cette conversation",
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "readonly_take_instead": "Reprendre à la place",
+  "readonly_add_note": "Ajouter une note interne",
+  "banner_connecting": "Connexion…",
+  "composer_mic_denied": "Autorisez l'accès au microphone dans les réglages pour enregistrer des messages vocaux.",
+  "composer_record_failed": "Impossible d'enregistrer. Veuillez réessayer.",
+  "composer_record_delete": "Supprimer l'enregistrement",
+  "chat_ai_suggest_pill": "Suggérer une réponse"
+}

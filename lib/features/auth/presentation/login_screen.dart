@@ -500,69 +500,72 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
           children: [
             ConnectionBanner(state: _network, offlineLabel: l.login_offline),
             Expanded(
-              child: LayoutBuilder(
-                builder: (context, viewport) => SingleChildScrollView(
-                  physics: const ClampingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 420, minHeight: viewport.maxHeight),
-                      child: IntrinsicHeight(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            const SizedBox(height: AppSpacing.x4l),
-                            _enterGroup(
-                              0,
-                              const Align(alignment: AlignmentDirectional.centerStart, child: AppLogoMark()),
-                              scaleIn: true,
-                            ),
-                            const SizedBox(height: 26),
-                            _enterGroup(
-                              1,
-                              Semantics(
-                                header: true,
-                                child: Text(
-                                  l.login_title,
-                                  style: t.displayLarge.copyWith(fontSize: 30, height: 1.3),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: AppSpacing.xs),
-                            _enterGroup(
-                              2,
-                              Text(
-                                l.login_subtitle,
-                                style: t.bodyLarge.copyWith(fontSize: 15, color: c.textSecondary),
-                                maxLines: largeText ? null : 2,
-                                overflow: largeText ? null : TextOverflow.ellipsis,
-                              ),
-                            ),
-                            const SizedBox(height: 28),
-                            _enterGroup(3, _ShakeX(animation: _shake, child: form)),
-                            const Spacer(),
-                            const SizedBox(height: AppSpacing.xxl),
-                            _enterGroup(
-                              4,
-                              Opacity(
-                                opacity: busy ? 0.4 : 1,
-                                child: SignUpPrompt(
-                                  onTap: busy
-                                      ? null
-                                      : () {
-                                          Analytics.log('login_signup_tap');
-                                          _openWeb(signUpUrl);
-                                        },
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: AppSpacing.x4l),
-                          ],
+              // Slivers instead of IntrinsicHeight + Spacer: the form is laid out
+              // for real (error banner, keyboard), and "sign up" still sits at
+              // the bottom when there is room.
+              child: CustomScrollView(
+                physics: const ClampingScrollPhysics(),
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: _LoginColumn(
+                      children: [
+                        const SizedBox(height: AppSpacing.x4l),
+                        _enterGroup(
+                          0,
+                          const Align(alignment: AlignmentDirectional.centerStart, child: AppLogoMark()),
+                          scaleIn: true,
                         ),
-                      ),
+                        const SizedBox(height: 26),
+                        _enterGroup(
+                          1,
+                          Semantics(
+                            header: true,
+                            child: Text(
+                              l.login_title,
+                              style: t.displayLarge.copyWith(fontSize: 30, height: 1.3),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.xs),
+                        _enterGroup(
+                          2,
+                          Text(
+                            l.login_subtitle,
+                            style: t.bodyLarge.copyWith(fontSize: 15, color: c.textSecondary),
+                            maxLines: largeText ? null : 2,
+                            overflow: largeText ? null : TextOverflow.ellipsis,
+                          ),
+                        ),
+                        const SizedBox(height: 28),
+                        _enterGroup(3, _ShakeX(animation: _shake, child: form)),
+                      ],
                     ),
                   ),
-                ),
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: _LoginColumn(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const SizedBox(height: AppSpacing.xxl),
+                        _enterGroup(
+                          4,
+                          Opacity(
+                            opacity: busy ? 0.4 : 1,
+                            child: SignUpPrompt(
+                              onTap: busy
+                                  ? null
+                                  : () {
+                                      Analytics.log('login_signup_tap');
+                                      _openWeb(signUpUrl);
+                                    },
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: AppSpacing.x4l),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
@@ -570,6 +573,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
       ),
     );
   }
+}
+
+/// Centred column, max 420 wide, with the page's side gutter.
+class _LoginColumn extends StatelessWidget {
+  const _LoginColumn({required this.children, this.mainAxisAlignment = MainAxisAlignment.start});
+
+  final List<Widget> children;
+  final MainAxisAlignment mainAxisAlignment;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xxl),
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 420),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: mainAxisAlignment,
+              children: children,
+            ),
+          ),
+        ),
+      );
 }
 
 /// Horizontal shake: 3 cycles, ±6dp, decaying over 300ms (§11).

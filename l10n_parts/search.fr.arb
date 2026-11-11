@@ -1,0 +1,210 @@
+{
+  "search_placeholder": "Rechercher des clients, des messages ou un numéro de commande",
+  "search_cancel": "Annuler",
+  "search_scope_all": "Tout",
+  "search_scope_contacts": "Clients",
+  "search_scope_messages": "Messages",
+  "search_scope_kb": "Connaissances",
+  "search_scope_conversations": "Conversations",
+  "search_filters": "Filtres",
+  "search_section_contacts": "Clients",
+  "search_section_messages": "Messages",
+  "search_section_kb": "Base de connaissances",
+  "search_section_conversations": "Conversations",
+  "search_see_all": "Tout voir ({n})",
+  "@search_see_all": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_best_match": "Meilleure correspondance",
+  "search_open_chat": "Ouvrir la conversation",
+  "search_profile": "Profil",
+  "search_open_badge": "Ouverte",
+  "search_more_in_conv": "+{n} de plus dans cette conversation",
+  "@search_more_in_conv": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_kb_usage": "Utilisée par l'IA {n} fois ce mois-ci",
+  "@search_kb_usage": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_insert_reply": "Insérer dans la réponse",
+  "search_you": "Vous :",
+  "search_note": "Note :",
+  "search_order": "Commande {n}",
+  "@search_order": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "search_tag": "Étiquette : {tag}",
+  "@search_tag": {
+    "placeholders": {
+      "tag": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recent": "Recherches récentes",
+  "search_clear": "Effacer",
+  "search_suggestions": "Suggestions",
+  "search_recent_contacts": "Contactés récemment",
+  "search_tip": "Recherchez par nom, téléphone, numéro de commande ou tout autre mot",
+  "search_no_results": "Aucun résultat pour « {q} »",
+  "@search_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_no_results_body": "Essayez un autre mot ou vérifiez l'orthographe",
+  "search_clear_filters": "Effacer les filtres",
+  "search_in_all": "Rechercher partout",
+  "search_did_you_mean": "Vouliez-vous dire : {s} ?",
+  "@search_did_you_mean": {
+    "placeholders": {
+      "s": {
+        "type": "String"
+      }
+    }
+  },
+  "search_error": "La recherche a échoué",
+  "search_retry": "Réessayer",
+  "search_offline": "Hors ligne — affichage des données enregistrées uniquement",
+  "search_local": "(local)",
+  "search_filter_sender": "Expéditeur",
+  "search_filter_contains": "Contient",
+  "search_filter_attachments": "Pièces jointes",
+  "search_filter_images": "Images",
+  "search_filter_voice": "Messages vocaux",
+  "search_show_results": "Afficher les résultats ({n})",
+  "@search_show_results": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_field_label": "Rechercher",
+  "search_filters_n": "Filtres · {n}",
+  "@search_filters_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_filter_channel": "Canal",
+  "search_filter_date": "Date",
+  "search_filter_status": "Statut de la conversation",
+  "search_filter_assignee": "Attribué à",
+  "search_date_any": "À tout moment",
+  "search_date_today": "Aujourd'hui",
+  "search_date_7": "7 jours",
+  "search_date_30": "30 jours",
+  "search_date_custom": "Personnalisé",
+  "search_sender_all": "Tous",
+  "search_sender_contact": "Client",
+  "search_sender_me": "Moi",
+  "search_sender_colleagues": "Coéquipiers",
+  "search_sender_ai": "IA",
+  "search_sender_notes": "Notes internes",
+  "search_status_all": "Tous",
+  "search_status_open": "Ouverte",
+  "search_status_resolved": "Résolue",
+  "search_assignee_all": "Tous",
+  "search_assignee_me": "Moi",
+  "search_assignee_colleague": "Coéquipier",
+  "search_sugg_unread": "Non lues",
+  "search_sugg_awaiting": "En attente de réponse",
+  "search_sugg_vip": "Étiquette : VIP",
+  "search_sugg_orders_today": "Commandes du jour",
+  "search_recent_remove": "Supprimer {q} de l'historique",
+  "@search_recent_remove": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "search_recents_cleared": "Historique de recherche effacé",
+  "search_results_announce": "{n} résultats : {parts}",
+  "@search_results_announce": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "parts": {
+        "type": "String"
+      }
+    }
+  },
+  "search_announce_contacts": "{n} clients",
+  "@search_announce_contacts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_messages": "{n} messages",
+  "@search_announce_messages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_kb": "{n} articles",
+  "@search_announce_kb": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_announce_conversations": "{n} conversations",
+  "@search_announce_conversations": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "search_a11y_message": "Message de {name}, {time} : {text}",
+  "@search_a11y_message": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      },
+      "text": {
+        "type": "String"
+      }
+    }
+  },
+  "search_last_chat": "Ouvrir la dernière conversation",
+  "search_new_chat": "Nouvelle conversation",
+  "search_copy_number": "Copier le numéro",
+  "search_copied": "Numéro copié",
+  "search_call": "Appeler",
+  "search_section_teammates": "Coéquipiers",
+  "search_no_chat_yet": "Aucune conversation précédente avec ce client",
+  "search_inserted": "Réponse insérée dans le message"
+}

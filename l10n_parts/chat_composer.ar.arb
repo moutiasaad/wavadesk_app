@@ -1,7 +1,13 @@
 {
   "chat_ai_suggestion": "اقتراح الذكاء الاصطناعي",
   "chat_ai_source": "من: {title}",
-  "@chat_ai_source": {"placeholders": {"title": {"type": "String"}}},
+  "@chat_ai_source": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ai_send": "إرسال",
   "chat_ai_edit": "تعديل",
   "chat_ai_more": "المزيد",
@@ -25,12 +31,30 @@
   "chat_claim": "استلم المحادثة",
   "chat_assign_colleague": "إسناد لزميل",
   "chat_viewing_now": "{name} تشاهد هذه المحادثة الآن",
-  "@chat_viewing_now": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_viewing_now": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_waiting_claim": "بانتظار الاستلام",
   "chat_claimed_before": "استلمها {name} قبلك",
-  "@chat_claimed_before": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_claimed_before": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ro_colleague": "مُسندة إلى {name}",
-  "@chat_ro_colleague": {"placeholders": {"name": {"type": "String"}}},
+  "@chat_ro_colleague": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "chat_ro_request": "اطلب التحويل",
   "chat_ro_resolved": "المحادثة محلولة",
   "chat_reopen": "إعادة الفتح",
@@ -43,13 +67,24 @@
   "chat_banner_window_closed": "انتهت نافذة 24 ساعة — يمكنك إرسال قالب معتمد فقط",
   "chat_choose_template": "اختر قالبًا",
   "chat_banner_window_soon": "تنتهي نافذة الرد خلال {t}",
-  "@chat_banner_window_soon": {"placeholders": {"t": {"type": "String"}}},
+  "@chat_banner_window_soon": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "chat_banner_channel_down": "واتساب غير متصل — لن تصل الرسائل",
   "chat_reconnect": "إعادة الربط",
   "chat_snoozed_until": "مؤجلة حتى {t}",
-  "@chat_snoozed_until": {"placeholders": {"t": {"type": "String"}}},
+  "@chat_snoozed_until": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
   "chat_unsnooze": "إلغاء التأجيل",
-
   "composer_attach": "إرفاق",
   "composer_send": "إرسال",
   "composer_send_note": "إرسال الملاحظة",
@@ -66,18 +101,42 @@
   "composer_template": "قالب",
   "composer_template_only": "النافذة مغلقة — أرسل قالبًا معتمدًا",
   "composer_colleague_typing_note": "{name} يكتب ملاحظة…",
-  "@composer_colleague_typing_note": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_colleague_typing_note": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_colleague_viewing": "{name} يشاهد أيضًا",
-  "@composer_colleague_viewing": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_colleague_viewing": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_quick_title": "ردود سريعة",
   "composer_quick_empty": "لا توجد ردود سريعة مطابقة",
   "composer_mention_title": "اذكر زميلًا",
   "composer_reply_to": "رد على {name}",
-  "@composer_reply_to": {"placeholders": {"name": {"type": "String"}}},
+  "@composer_reply_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "composer_cancel_reply": "إلغاء الرد",
   "composer_remove_attachment": "إزالة المرفق",
   "composer_uploading": "جارٍ الرفع {percent}٪",
-  "@composer_uploading": {"placeholders": {"percent": {"type": "int"}}},
+  "@composer_uploading": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
   "composer_customer": "العميل",
   "composer_location_sample": "حي الملقا، الرياض",
   "aicard_close": "طي الاقتراح",
@@ -85,10 +144,29 @@
   "aicard_less": "أقل",
   "aicard_open_pill": "عرض اقتراح الذكاء الاصطناعي",
   "claimbar_waiting_minutes": "{n} د",
-  "@claimbar_waiting_minutes": {"placeholders": {"n": {"type": "int"}}},
+  "@claimbar_waiting_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "claimbar_viewers_more": "{name} و{count, plural, =1{زميل آخر} =2{زميلان آخران} few{{count} زملاء آخرين} other{{count} زميلًا آخر}} يشاهدون المحادثة",
-  "@claimbar_viewers_more": {"placeholders": {"name": {"type": "String"}, "count": {"type": "int"}}},
+  "@claimbar_viewers_more": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "readonly_take_instead": "استلم بدلًا عنه",
   "readonly_add_note": "إضافة ملاحظة داخلية",
-  "banner_connecting": "جارٍ الاتصال…"
+  "banner_connecting": "جارٍ الاتصال…",
+  "composer_mic_denied": "اسمح بالوصول إلى الميكروفون من الإعدادات لتسجيل الرسائل الصوتية.",
+  "composer_record_failed": "تعذّر التسجيل. حاول مرة أخرى.",
+  "composer_record_delete": "حذف التسجيل",
+  "chat_ai_suggest_pill": "اقترح ردًا"
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -30,6 +31,8 @@ class OutgoingMessage {
     this.templateName,
     this.templateButtons = const [],
     this.uploadId,
+    this.localPath,
+    this.localMime,
   });
 
   final String text;
@@ -51,6 +54,11 @@ class OutgoingMessage {
   final String? templateName;
   final List<String> templateButtons;
   final String? uploadId;
+
+  /// A file recorded on the device (voice note) that is uploaded right
+  /// before the message is sent, then referenced as `media_upload_id`.
+  final String? localPath;
+  final String? localMime;
 }
 
 /// Messages + per-message actions (Chat spec §6 data, §4.7.6 sending).
@@ -352,7 +360,36 @@ class HttpMessagesRepository implements MessagesRepository {
     if (o.isNote) 'is_note': true,
     'sent_via': _sentVia(o),
     if (o.sentVia == 'ai_rewrite') 'rewrite_id': ?o.rewriteId,
+    // Local-only keys: [_resolveUpload] swaps them for `media_upload_id`.
+    if (o.uploadId == null && o.localPath != null) ...{_localPathKey: o.localPath, _localMimeKey: o.localMime},
   };
+
+  static const _localPathKey = '_local_path';
+  static const _localMimeKey = '_local_mime';
+
+  /// Uploads a recorded file the body still points at, and stores the
+  /// resulting body in the queue so a retry does not upload it again.
+  Future<Map<String, Object?>> _resolveUpload(String id, String clientId, String idemKey, Map<String, Object?> body) async {
+    final path = body[_localPathKey];
+    if (path is! String) return body;
+    final file = File(path);
+    final mime = '${body[_localMimeKey] ?? 'application/octet-stream'}';
+    String? uploadId;
+    await for (final p in uploads.upload(fileName: file.uri.pathSegments.last, bytes: await file.readAsBytes(), mime: mime)) {
+      if (p.done) uploadId = p.uploadId;
+    }
+    final resolved = {
+      for (final e in body.entries)
+        if (e.key != _localPathKey && e.key != _localMimeKey) e.key: e.value,
+      'media_upload_id': uploadId,
+    };
+    _dequeue(id, clientId);
+    _enqueue(id, clientId, idemKey, resolved);
+    try {
+      file.deleteSync();
+    } catch (_) {}
+    return resolved;
+  }
 
   @override
   String send(String id, OutgoingMessage o) {
@@ -420,8 +457,11 @@ class HttpMessagesRepository implements MessagesRepository {
   /// Exponential backoff 2s, 4s… (max 60s); failed after 3 tries. Errors
   /// the server will keep refusing (4xx) fail at once.
   void _attempt(String id, String clientId, String idemKey, Map<String, Object?> body, int attempt) {
-    _api
-        .sendMessage(id, body, idempotencyKey: idemKey)
+    _resolveUpload(id, clientId, idemKey, body)
+        .then((ready) {
+          body = ready;
+          return _api.sendMessage(id, ready, idempotencyKey: idemKey);
+        })
         .then((server) {
           _dequeue(id, clientId);
           // A poll may already have brought the server copy in.
@@ -433,8 +473,14 @@ class HttpMessagesRepository implements MessagesRepository {
           _writeCache(id);
         })
         .catchError((Object e) {
-          final permanent =
-              e is ChatApiException && e.statusCode >= 400 && e.statusCode < 500 && e.statusCode != 429 && e.statusCode != 401;
+          final status = switch (e) {
+            ChatApiException() => e.statusCode,
+            WdApiException() => e.status,
+            // Recorded file gone (app data cleared): retrying cannot help.
+            FileSystemException() => 410,
+            _ => 0,
+          };
+          final permanent = status >= 400 && status < 500 && status != 429 && status != 401;
           if (permanent || attempt + 1 >= 3) {
             _replace(id, clientId, (m) => m.copyWith(delivery: DeliveryState.failed, retries: attempt + 1));
             return;

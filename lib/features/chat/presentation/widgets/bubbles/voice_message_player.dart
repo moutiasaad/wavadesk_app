@@ -66,6 +66,10 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
     final ctrl = ref.read(voicePlayerProvider.notifier);
     final active = player.isActive(m.id);
     final playing = active && player.playing;
+    final loading = active && player.loading;
+    final failed = player.failed.contains(m.id);
+    // A voice note still uploading has no audio on the server yet.
+    final ready = VoicePlayerController.canPlay(m.id);
     final progress = player.progressOf(m.id);
     final played = widget.onPrimary ? Colors.white : c.primary;
     final unplayed = widget.onPrimary ? Colors.white.withValues(alpha: 0.4) : c.borderStrong;
@@ -74,19 +78,30 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
 
     final playButton = Semantics(
       button: true,
+      enabled: ready,
       label: playing ? l.bubble_pause : l.bubble_play,
       excludeSemantics: true,
       child: InkResponse(
-        onTap: () => ctrl.toggle(m.id, duration),
+        onTap: ready ? () => ctrl.toggle(m.id, duration) : null,
         radius: 24,
         child: SizedBox.square(
           dimension: 40,
           child: Center(
-            child: Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(color: widget.onPrimary ? Colors.white : c.primary, shape: BoxShape.circle),
-              child: AppIcon(playing ? AppIcons.pause : AppIcons.play, size: AppIconSize.sm, color: widget.onPrimary ? c.primary : c.onPrimary,),
+            child: Opacity(
+              opacity: ready ? 1 : 0.5,
+              child: Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(color: widget.onPrimary ? Colors.white : c.primary, shape: BoxShape.circle),
+                alignment: Alignment.center,
+                child: loading || !ready
+                    ? AppSpinner(size: 16, delayed: false, color: widget.onPrimary ? c.primary : c.onPrimary)
+                    : AppIcon(
+                        failed ? AppIcons.retry : (playing ? AppIcons.pause : AppIcons.play),
+                        size: AppIconSize.sm,
+                        color: widget.onPrimary ? c.primary : c.onPrimary,
+                      ),
+              ),
             ),
           ),
         ),
@@ -96,7 +111,7 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
     final waveform = LayoutBuilder(
       builder: (context, box) => GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTapDown: (d) {
+        onTapDown: !ready ? null : (d) {
           final w = _bars * 4.0 - 2;
           var x = d.localPosition.dx / w;
           if (Directionality.of(context) == TextDirection.rtl) x = 1 - x;

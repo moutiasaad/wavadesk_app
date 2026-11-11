@@ -127,8 +127,12 @@ class WdApi {
 
   late WdSessionStore session;
 
-  /// `ar` | `en`; sent as `Accept-Language` so `error.message` is localised.
-  String locale = PlatformDispatcher.instance.locale.languageCode == 'en' ? 'en' : 'ar';
+  /// `ar` | `en` | `fr`; sent as `Accept-Language` so `error.message` is
+  /// localised. Kept in sync with the app language (WavadeskApp).
+  String locale = supportedLocale(PlatformDispatcher.instance.locale.languageCode);
+
+  /// The app's languages; anything else falls back to Arabic.
+  static String supportedLocale(String code) => const {'en', 'fr'}.contains(code) ? code : 'ar';
 
   /// Emits the error code when the server ends the session
   /// (`token_reused`, `invalid_refresh_token`, …). The auth layer signs out.
@@ -137,6 +141,9 @@ class WdApi {
 
   static const _uuid = Uuid();
   static const _timeout = Duration(seconds: 20);
+  /// Endpoints that need no access token.
+  static final _publicPath = RegExp(r'/mobile/v1/(health|media/download/)');
+
   static const _hardLogoutCodes = {
     'unauthenticated',
     'invalid_refresh_token',
@@ -285,6 +292,11 @@ class WdApi {
     final bytes = body == null ? <int>[] : utf8.encode(jsonEncode(body));
     Future<WdResponse> once() async {
       if (!bootstrap) await ensureFreshToken();
+      // Signed out (login screen, after a logout): a provider still alive
+      // must not hit the server without a token — fail locally instead.
+      if (!bootstrap && session.accessToken == null && !_publicPath.hasMatch(target.path)) {
+        throw const WdApiException(status: 401, code: 'signed_out');
+      }
       final headers = _headers(method, target, bytes, bootstrap: bootstrap, idempotencyKey: key);
       if (body != null) headers['Content-Type'] = 'application/json';
       if (ifNoneMatch != null) headers['If-None-Match'] = ifNoneMatch;

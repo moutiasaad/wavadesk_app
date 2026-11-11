@@ -1,0 +1,9 @@
+{
+  "search_in_conv_placeholder": "Rechercher dans cette conversation",
+  "search_in_conv_count": "{i} sur {n}",
+  "@search_in_conv_count": {"placeholders": {"i": {"type": "int"}, "n": {"type": "int"}}},
+  "search_in_conv_action": "Rechercher dans la conversation",
+  "search_in_conv_prev": "Résultat précédent",
+  "search_in_conv_next": "Résultat suivant",
+  "search_in_conv_close": "Fermer la recherche"
+}

@@ -11,7 +11,7 @@ import 'dart:convert';
 import 'dart:io';
 
 void main() {
-  const locales = ['ar', 'en'];
+  const locales = ['ar', 'en', 'fr'];
   final parts = Directory('l10n_parts')
       .listSync()
       .whereType<File>()

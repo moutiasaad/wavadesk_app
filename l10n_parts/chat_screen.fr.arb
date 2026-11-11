@@ -1,0 +1,17 @@
+{
+  "chatscreen_load_failed": "Impossible de charger cette conversation",
+  "chatscreen_not_found": "Nous n'avons pas trouvé cette conversation",
+  "chatscreen_action_failed": "Action impossible. Réessayez.",
+  "chatscreen_taken_from_me": "La conversation a été attribuée à {name}",
+  "@chatscreen_taken_from_me": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_claimed_by": "Prise en charge par {name}",
+  "@chatscreen_claimed_by": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_transfer_note": "@{name} Pourriez-vous me transférer cette conversation pour que je puisse m'en occuper ?",
+  "@chatscreen_transfer_note": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_transfer_sent": "Demande de transfert envoyée à {name}",
+  "@chatscreen_transfer_sent": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_takeover_title": "Reprendre la conversation d'un coéquipier ?",
+  "chatscreen_takeover_body": "La conversation vous sera attribuée à la place de {name}, qui en sera informé(e).",
+  "@chatscreen_takeover_body": {"placeholders": {"name": {"type": "String"}}},
+  "chatscreen_takeover_confirm": "Reprendre"
+}

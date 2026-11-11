@@ -1,0 +1,401 @@
+{
+  "@@locale": "fr",
+  "kb_title": "Base de connaissances",
+  "kb_search": "Rechercher parmi {n} entrées",
+  "@kb_search": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_qa": "Q&R",
+  "kb_files": "Fichiers",
+  "kb_links": "Liens",
+  "kb_processing": "Traitement",
+  "kb_unanswered_title": "{n} questions sans réponse",
+  "@kb_unanswered_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_unanswered_body": "Des clients ont posé une question sans que l'IA ait de réponse",
+  "kb_review": "Vérifier",
+  "kb_sort_usage": "Les plus utilisées",
+  "kb_sort_recent": "Mises à jour récemment",
+  "kb_sort_stale": "Mises à jour il y a longtemps",
+  "kb_sort_alpha": "Alphabétique",
+  "kb_sort_least": "Les moins utilisées",
+  "kb_tags": "Étiquettes",
+  "kb_used_n": "Utilisée {n} fois",
+  "@kb_used_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_updated": "Mise à jour il y a {t}",
+  "@kb_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pages": "{n} pages",
+  "@kb_pages": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_badge_draft": "Brouillon",
+  "kb_badge_disabled": "Désactivée",
+  "kb_badge_stale": "Obsolète",
+  "kb_badge_failed": "Échec du traitement",
+  "kb_disable": "Désactiver pour l'IA",
+  "kb_enable": "Activer",
+  "kb_edit": "Modifier",
+  "kb_copy_answer": "Copier la réponse",
+  "kb_delete": "Supprimer",
+  "kb_delete_title": "Supprimer « {title} » ?",
+  "@kb_delete_title": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_delete_body": "L'IA ne l'utilisera plus.",
+  "kb_deleted": "Supprimée",
+  "kb_drafts": "Suggestions à vérifier · {n}",
+  "@kb_drafts": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_draft_by": "Suggérée par {name} · {t}",
+  "@kb_draft_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_draft_from_conv": "Suggérée à partir d'une conversation résolue",
+  "kb_approve": "Approuver",
+  "kb_reject": "Rejeter",
+  "kb_add_title": "Ajouter à la base de connaissances",
+  "kb_add_qa_sub": "Le plus rapide et le plus précis pour l'IA",
+  "kb_add_file": "Importer un fichier",
+  "kb_add_file_sub": "Un fichier JSON avec plusieurs Q&R — comme sur le panneau web",
+  "kb_add_link": "Ajouter un lien",
+  "kb_add_link_sub": "Une page de votre site, lue par l'IA",
+  "kb_alt_phrasings": "Autres formulations",
+  "kb_answer": "Réponse",
+  "kb_usage_month": "Utilisée {n} fois ce mois-ci",
+  "@kb_usage_month": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_positive": "{p} % positif",
+  "@kb_positive": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_last_used": "Dernière utilisation {t}",
+  "@kb_last_used": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recent_uses": "Utilisations récentes",
+  "kb_meta": "Créée par {a} · {d} · Modifiée par {b} {t}",
+  "@kb_meta": {
+    "placeholders": {
+      "a": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      },
+      "b": {
+        "type": "String"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_available_ai": "Disponible pour l'IA",
+  "kb_file_type_err": "Type de fichier non pris en charge",
+  "kb_file_size_err": "Fichier de plus de 10 Mo",
+  "kb_uploading": "Envoi {p} %",
+  "@kb_uploading": {
+    "placeholders": {
+      "p": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_processing_long": "Traitement en cours… cela peut prendre une minute",
+  "kb_file_ready": "« {f} » est prêt · {n} informations extraites",
+  "@kb_file_ready": {
+    "placeholders": {
+      "f": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_extracted": "Ce que l'IA a extrait",
+  "kb_replace": "Remplacer le fichier",
+  "kb_download": "Télécharger",
+  "kb_file_failed": "Impossible de lire le fichier",
+  "kb_fail_encrypted": "Le fichier est protégé par un mot de passe",
+  "kb_fail_images": "Le fichier ne contient que des images",
+  "kb_fail_corrupt": "Le fichier est corrompu",
+  "kb_link_url": "URL de la page",
+  "kb_link_subpages": "Inclure les sous-pages",
+  "kb_add": "Ajouter",
+  "kb_last_crawl": "Dernière lecture {t}",
+  "@kb_last_crawl": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_recrawl": "Actualiser maintenant",
+  "kb_auto_refresh": "Actualisation automatique",
+  "kb_weekly": "Hebdomadaire",
+  "kb_monthly": "Mensuelle",
+  "kb_manual": "Manuelle",
+  "kb_unanswered": "Questions sans réponse",
+  "kb_unanswered_info": "Questions auxquelles l'IA n'a pas pu répondre. Ajoutez une réponse pour qu'elle réponde la prochaine fois.",
+  "kb_sort_frequency": "Les plus fréquentes",
+  "kb_sort_newest": "Les plus récentes",
+  "kb_asked_n": "Posée {n} fois · dernière {t}",
+  "@kb_asked_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_similar": "+{k} formulations similaires",
+  "@kb_similar": {
+    "placeholders": {
+      "k": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_ai_draft": "Brouillon suggéré",
+  "kb_add_answer": "Ajouter une réponse",
+  "kb_link_existing": "Associer à une réponse existante",
+  "kb_ignore": "Ignorer",
+  "kb_view_convs": "Voir les conversations",
+  "kb_suggest_answer": "Suggérer une réponse",
+  "kb_none_unanswered": "Aucune question sans réponse",
+  "kb_none_unanswered_body": "L'IA trouve une réponse à tout ce qui est demandé.",
+  "kb_empty_title": "Commencez à enseigner votre activité à l'IA",
+  "kb_empty_body": "Ajoutez les principales questions de vos clients, avec leurs réponses.",
+  "kb_empty_cta": "Ajouter la première question",
+  "kb_empty_tip": "Nous recommandons au moins 10 questions",
+  "kb_filter_empty": "Aucune entrée de ce type",
+  "kb_show_all": "Tout afficher",
+  "kb_error": "Impossible de charger la base de connaissances",
+  "kb_retry": "Réessayer",
+  "kb_offline": "La modification nécessite une connexion internet",
+  "kb_span_now": "à l'instant",
+  "kb_span_minutes": "{n, plural, =1{1 minute} other{{n} minutes}}",
+  "@kb_span_minutes": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_hours": "{n, plural, =1{1 heure} other{{n} heures}}",
+  "@kb_span_hours": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_days": "{n, plural, =1{1 jour} other{{n} jours}}",
+  "@kb_span_days": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_months": "{n, plural, =1{1 mois} other{{n} mois}}",
+  "@kb_span_months": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_span_years": "{n, plural, =1{1 an} other{{n} ans}}",
+  "@kb_span_years": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_web_only": "Cette fonctionnalité est pour l'instant disponible sur le tableau de bord web",
+  "kb_menu_ai_settings": "Paramètres IA",
+  "kb_menu_tags": "Gérer les étiquettes",
+  "kb_menu_import": "Importer depuis le web",
+  "kb_sort_by": "Trier par",
+  "kb_tags_all": "Toutes les étiquettes",
+  "kb_tags_apply": "Appliquer",
+  "kb_tags_none": "Aucune étiquette pour le moment",
+  "kb_disabled_done": "Désactivée · l'IA ne l'utilisera pas",
+  "kb_enabled_done": "Activée",
+  "kb_copied": "Réponse copiée",
+  "kb_approved": "Approuvée et publiée",
+  "kb_rejected": "Suggestion rejetée",
+  "kb_ignored": "Ignorée",
+  "kb_linked": "Ajoutée comme formulation de « {t} »",
+  "@kb_linked": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_pick_answer": "Choisir une réponse",
+  "kb_pick_search": "Rechercher une réponse",
+  "kb_uploaded_by": "Importé par {name} · {d}",
+  "@kb_uploaded_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "d": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_mb": "{n} Mo",
+  "@kb_mb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_kb": "{n} Ko",
+  "@kb_kb": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_processing_bg": "Vous pouvez fermer cette fenêtre ; le traitement continue en arrière-plan",
+  "kb_url_invalid": "Saisissez un lien https:// valide",
+  "kb_link_added": "Lien ajouté · lecture en cours",
+  "kb_link_pages": "Pages",
+  "kb_never_crawled": "Pas encore lu",
+  "kb_recrawl_started": "Actualisation lancée",
+  "kb_filter_a11y": "{label}, {n}, filtre",
+  "@kb_filter_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_banner_a11y": "{n} questions sans réponse. Vérifier",
+  "@kb_banner_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_daily_chart": "Utilisation sur 30 jours",
+  "kb_not_used_yet": "Pas encore utilisée",
+  "kb_show_less": "Afficher moins",
+  "kb_proposed": "Votre suggestion a été envoyée pour vérification",
+  "kb_save_err": "Impossible d'enregistrer",
+  "kb_none_found": "Aucun résultat",
+  "kb_import_title": "Importer depuis un fichier JSON",
+  "kb_import_hint": "Un fichier avec une liste d'entrées, chacune avec un type, un titre et un contenu — même format que le panneau web.",
+  "kb_import_pick": "Choisir un fichier JSON",
+  "kb_import_template": "Télécharger le modèle",
+  "kb_importing": "Importation…",
+  "kb_import_done": "{n} entrées importées",
+  "@kb_import_done": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_skipped": "{n} ignorées",
+  "@kb_import_skipped": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "kb_import_row_err": "Ligne {row} : {message}",
+  "@kb_import_row_err": {
+    "placeholders": {
+      "row": {
+        "type": "int"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "kb_import_failed": "Échec de l'importation",
+  "kb_import_json_only": "Choisissez un fichier .json",
+  "kb_template_saved": "Modèle enregistré",
+  "kb_template_copied": "Modèle copié dans le presse-papiers",
+  "kb_media_title": "Pièces jointes",
+  "kb_media_n": "{n} pièces jointes",
+  "@kb_media_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
+}

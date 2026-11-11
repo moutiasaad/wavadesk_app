@@ -11,7 +11,8 @@ import '../../../../core/widgets/widgets.dart';
 import '../../application/ai_suggestion_controller.dart';
 
 /// AI suggestion card (Chat spec §4.6, DS §8.5): full card, loading
-/// shimmer, collapsed "اقتراح جاهز" pill, or the no-answer row.
+/// shimmer, collapsed "اقتراح جاهز" pill, the on-demand "suggest a reply"
+/// button, or the no-answer row.
 class AiSuggestionCard extends ConsumerWidget {
   const AiSuggestionCard({super.key, required this.conversationId, required this.onEdit, required this.onAddAnswer});
 
@@ -26,7 +27,8 @@ class AiSuggestionCard extends ConsumerWidget {
 
     final Widget child = switch (s.view) {
       AiCardView.hidden => const SizedBox(key: ValueKey('hidden'), width: double.infinity),
-      AiCardView.collapsed => _ReadyPill(key: const ValueKey('pill'), onTap: ctrl.expandFromPill),
+      AiCardView.idle => _ReadyPill(key: const ValueKey('idle'), label: context.l10n.chat_ai_suggest_pill, onTap: ctrl.request),
+      AiCardView.collapsed => _ReadyPill(key: const ValueKey('pill'), label: context.l10n.chat_ai_ready_pill, onTap: ctrl.expandFromPill),
       AiCardView.noAnswer => _NoAnswerRow(
         key: const ValueKey('noanswer'),
         onAdd: () {
@@ -328,20 +330,20 @@ class _LoadingBody extends StatelessWidget {
 
 /// h32 `primaryContainer` pill: sparkle + "اقتراح جاهز".
 class _ReadyPill extends StatelessWidget {
-  const _ReadyPill({super.key, required this.onTap});
+  const _ReadyPill({super.key, required this.label, required this.onTap});
 
+  final String label;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final l = context.l10n;
     return Padding(
       padding: const EdgeInsets.only(bottom: AppSpacing.sm),
       child: Center(
         child: Semantics(
           button: true,
-          label: l.aicard_open_pill,
+          label: label,
           excludeSemantics: true,
           child: Material(
             color: c.primaryContainer,
@@ -357,7 +359,7 @@ class _ReadyPill extends StatelessWidget {
                   children: [
                     AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.primary),
                     const SizedBox(width: 6),
-                    Text(l.chat_ai_ready_pill, style: context.text.buttonSmall.copyWith(color: c.onPrimaryContainer)),
+                    Text(label, style: context.text.buttonSmall.copyWith(color: c.onPrimaryContainer)),
                   ],
                 ),
               ),

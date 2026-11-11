@@ -103,7 +103,9 @@ class MessageBubble extends ConsumerWidget {
     }
 
     final outgoing = m.isOutgoing;
-    final onPrimary = m.type == MessageBubbleType.outgoing || m.type == MessageBubbleType.outgoingColleague;
+    // Own messages always sit on the right, customer messages on the left,
+    // in every language: in RTL the right edge is the logical start.
+    final endSide = outgoing != context.isRtl;
     final (Color bg, Color fg, Border? border, List<BoxShadow>? shadow) = switch (m.type) {
       MessageBubbleType.incoming => (
         c.bubbleIncoming,
@@ -112,16 +114,20 @@ class MessageBubble extends ConsumerWidget {
         c.isDark ? null : context.shadows.low,
       ),
       MessageBubbleType.outgoingAi => (c.bubbleAi, c.textPrimary, Border.all(color: c.bubbleAiBorder), null),
-      _ => (c.bubbleOutgoing, c.bubbleOutgoingForeground, null, null),
+      _ => (c.bubbleOutgoing, c.bubbleOutgoingForeground, null, c.isDark ? null : context.shadows.low),
     };
+    // Light controls (play button, ticks) only on a dark bubble.
+    final onPrimary =
+        (m.type == MessageBubbleType.outgoing || m.type == MessageBubbleType.outgoingColleague) &&
+        bg.computeLuminance() < 0.4;
 
     // Bubble-less content: stickers and emoji-only text.
     final emojiOnly = m.kind == MessageKind.text && TextContent.isEmojiOnly(m.text);
     if (m.kind == MessageKind.sticker || emojiOnly) {
       return _Aligned(
-        outgoing: outgoing,
+        endSide: endSide,
         child: Column(
-          crossAxisAlignment: outgoing ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: endSide ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             m.kind == MessageKind.sticker
@@ -192,7 +198,7 @@ class MessageBubble extends ConsumerWidget {
     final bubble = Container(
       decoration: BoxDecoration(
         color: bg,
-        borderRadius: AppRadius.bubble(outgoing: outgoing, hasTail: lastInGroup),
+        borderRadius: AppRadius.bubble(outgoing: endSide, hasTail: lastInGroup),
         border: border,
         boxShadow: shadow,
       ),
@@ -261,11 +267,11 @@ class MessageBubble extends ConsumerWidget {
 
     final failed = m.delivery == DeliveryState.failed && outgoing;
     return _Aligned(
-      outgoing: outgoing,
+      endSide: endSide,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: media ? 248 : maxWidth),
         child: Column(
-          crossAxisAlignment: outgoing ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+          crossAxisAlignment: endSide ? CrossAxisAlignment.end : CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             Stack(
@@ -277,7 +283,7 @@ class MessageBubble extends ConsumerWidget {
                     opacity: failed ? 0.7 : 1,
                     child: _SearchOutline(
                       active: current,
-                      radius: AppRadius.bubble(outgoing: outgoing, hasTail: lastInGroup),
+                      radius: AppRadius.bubble(outgoing: endSide, hasTail: lastInGroup),
                       child: bubble,
                     ),
                   ),
@@ -321,16 +327,17 @@ class _SearchOutline extends StatelessWidget {
   }
 }
 
-/// Start for incoming, end for outgoing (logical — mirrors in RTL).
+/// Logical end or start of the row (see endSide: own messages are always
+/// on the physical right).
 class _Aligned extends StatelessWidget {
-  const _Aligned({required this.outgoing, required this.child});
+  const _Aligned({required this.endSide, required this.child});
 
-  final bool outgoing;
+  final bool endSide;
   final Widget child;
 
   @override
   Widget build(BuildContext context) =>
-      Align(alignment: outgoing ? AlignmentDirectional.centerEnd : AlignmentDirectional.centerStart, child: child);
+      Align(alignment: endSide ? AlignmentDirectional.centerEnd : AlignmentDirectional.centerStart, child: child);
 }
 
 /// "معدّلة" + time + delivery icon, end-aligned, `chatTimestamp` at 65%.

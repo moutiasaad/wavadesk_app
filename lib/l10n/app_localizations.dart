@@ -7,6 +7,7 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
 
 // ignore_for_file: type=lint
 
@@ -96,6 +97,7 @@ abstract class AppLocalizations {
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
     Locale('en'),
+    Locale('fr'),
   ];
 
   /// No description provided for @dashboard_greeting.
@@ -4009,6 +4011,30 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'جارٍ الاتصال…'**
   String get banner_connecting;
+
+  /// No description provided for @composer_mic_denied.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسمح بالوصول إلى الميكروفون من الإعدادات لتسجيل الرسائل الصوتية.'**
+  String get composer_mic_denied;
+
+  /// No description provided for @composer_record_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر التسجيل. حاول مرة أخرى.'**
+  String get composer_record_failed;
+
+  /// No description provided for @composer_record_delete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف التسجيل'**
+  String get composer_record_delete;
+
+  /// No description provided for @chat_ai_suggest_pill.
+  ///
+  /// In ar, this message translates to:
+  /// **'اقترح ردًا'**
+  String get chat_ai_suggest_pill;
 
   /// No description provided for @sys_called.
   ///
@@ -11269,6 +11295,42 @@ abstract class AppLocalizations {
   /// **'إغلاق البحث'**
   String get search_in_conv_close;
 
+  /// No description provided for @startup_unavailable_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر الاتصال حاليًا'**
+  String get startup_unavailable_title;
+
+  /// No description provided for @startup_unavailable_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتمكّن Wavadesk من الوصول إلى الخوادم. تأكّد من أنك تستخدم أحدث إصدار من التطبيق، ثم أعد المحاولة.'**
+  String get startup_unavailable_body;
+
+  /// No description provided for @startup_unavailable_help.
+  ///
+  /// In ar, this message translates to:
+  /// **'ما زالت المشكلة قائمة؟ تواصل معنا عبر support@wavadesk.com'**
+  String get startup_unavailable_help;
+
+  /// No description provided for @startup_retry.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة المحاولة'**
+  String get startup_retry;
+
+  /// No description provided for @startup_contact_support.
+  ///
+  /// In ar, this message translates to:
+  /// **'التواصل مع الدعم'**
+  String get startup_contact_support;
+
+  /// No description provided for @startup_dev_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'للمطوّر: عنوان الـ API أو المفتاح غير موجود. شغّل التطبيق مع --dart-define-from-file=dart_defines/<env>.json أو املأ assets/config/api.json.'**
+  String get startup_dev_hint;
+
   /// No description provided for @wa_title.
   ///
   /// In ar, this message translates to:
@@ -12680,7 +12742,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['ar', 'en'].contains(locale.languageCode);
+      <String>['ar', 'en', 'fr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -12693,6 +12755,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsAr();
     case 'en':
       return AppLocalizationsEn();
+    case 'fr':
+      return AppLocalizationsFr();
   }
 
   throw FlutterError(

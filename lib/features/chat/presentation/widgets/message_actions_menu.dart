@@ -213,9 +213,8 @@ class _MenuOverlay extends ConsumerWidget {
     final spaceBelow = screen.height - padding.bottom - bubbleRect.bottom;
     final below = spaceBelow > estimatedHeight + 12 || bubbleRect.top - padding.top < estimatedHeight + 12;
     final outgoing = m.isOutgoing;
-    final isRtl = Directionality.of(context) == TextDirection.rtl;
-    // Align the menu with the bubble's side (end for outgoing).
-    final alignRight = outgoing != isRtl;
+    // Align the menu with the bubble's side (own messages are on the right).
+    final alignRight = outgoing;
     final left = (alignRight ? bubbleRect.right - menuWidth : bubbleRect.left).clamp(
       12.0,
       screen.width - menuWidth - 12,

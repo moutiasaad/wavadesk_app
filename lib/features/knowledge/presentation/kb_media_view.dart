@@ -81,7 +81,9 @@ Future<void> openKbMedia(BuildContext context, KbMedia m) async {
         ),
         body: Center(
           child: InteractiveViewer(
-            child: bytes != null ? Image.memory(bytes, fit: BoxFit.contain) : Image.network(url!, fit: BoxFit.contain),
+            child: bytes != null
+                ? Image.memory(bytes, fit: BoxFit.contain, errorBuilder: (_, _, _) => const AppIcon(AppIcons.image, size: AppIconSize.xl, color: Colors.white54))
+                : Image.network(url!, fit: BoxFit.contain, errorBuilder: (_, _, _) => const AppIcon(AppIcons.image, size: AppIconSize.xl, color: Colors.white54)),
           ),
         ),
       ),

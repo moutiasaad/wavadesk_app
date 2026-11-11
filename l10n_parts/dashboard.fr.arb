@@ -1,0 +1,299 @@
+{
+  "@@locale": "fr",
+  "dash_title": "Tableau de bord",
+  "dash_morning": "Bonjour, {name}",
+  "@dash_morning": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_evening": "Bonsoir, {name}",
+  "@dash_evening": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_online_m": "Disponible",
+  "dash_presence_online_f": "Disponible",
+  "dash_presence_busy_m": "Occupé",
+  "dash_presence_busy_f": "Occupée",
+  "dash_presence_away": "Absent",
+  "dash_presence_title": "Votre statut",
+  "dash_presence_until": "Jusqu'à…",
+  "dash_presence_30m": "30 minutes",
+  "dash_presence_1h": "1 heure",
+  "dash_presence_eod": "Fin de journée",
+  "dash_presence_auto": "Vous passerez en « Absent » après 15 min d'inactivité",
+  "dash_presence_until_time": "Jusqu'à {time}",
+  "@dash_presence_until_time": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_presence_failed": "Impossible de modifier votre statut",
+  "dash_scope_me": "Moi",
+  "dash_scope_team": "Mon équipe",
+  "dash_scope_all": "Tout le monde",
+  "dash_team_picker": "Choisir une équipe",
+  "dash_range_today": "Aujourd'hui",
+  "dash_range_yesterday": "Hier",
+  "dash_range_7d": "7 derniers jours",
+  "dash_range_30d": "30 derniers jours",
+  "dash_range_title": "Période",
+  "dash_open": "Conversations ouvertes",
+  "dash_awaiting_me": "En attente de votre réponse",
+  "dash_awaiting_team": "En attente de réponse",
+  "dash_oldest": "La plus ancienne {m}",
+  "@dash_oldest": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_none_waiting": "Personne en attente",
+  "dash_first_response": "1ère réponse moy.",
+  "dash_minute": "min",
+  "dash_ai_reply": "Répondu par l'IA",
+  "dash_of_questions": "des questions",
+  "dash_resolved": "Résolues",
+  "dash_volume_today": "Conversations aujourd'hui",
+  "dash_volume_range": "Conversations · {range}",
+  "@dash_volume_range": {
+    "placeholders": {
+      "range": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_total": "{n} conversations",
+  "@dash_total": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_tooltip": "{hour} : {n} · {ai} par l'IA",
+  "@dash_tooltip": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      },
+      "ai": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_legend_all": "Toutes",
+  "dash_legend_ai": "IA",
+  "dash_no_volume": "Aucune conversation aujourd'hui pour l'instant",
+  "dash_no_volume_range": "Aucune conversation sur cette période",
+  "dash_team_now": "L'équipe en ce moment",
+  "dash_see_all": "Voir tout",
+  "dash_ai_name": "IA",
+  "dash_agent_open": "{n} ouvertes",
+  "@dash_agent_open": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_frt": "1ère réponse moy. aujourd'hui {t}",
+  "@dash_agent_frt": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_agent_view": "Voir ses conversations",
+  "dash_redistribute": "Redistribuer",
+  "dash_redistribute_none": "Aucune conversation ouverte à redistribuer",
+  "dash_solo": "Vous êtes seul dans l'équipe",
+  "dash_invite": "Inviter un collègue",
+  "dash_ai_impact": "{n} questions répondues par l'IA",
+  "@dash_ai_impact": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_saved": "Environ {h} heures de temps d'équipe économisées",
+  "@dash_ai_saved": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handoffs": "{n} transferts",
+  "@dash_ai_handoffs": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_rating": "{p} % positif",
+  "@dash_ai_rating": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_ai_handling": "L'IA gère actuellement {n}",
+  "@dash_ai_handling": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_by_channel": "Par canal",
+  "dash_web_reports": "Rapports détaillés sur le web",
+  "dash_last_updated": "Dernière mise à jour {t}",
+  "@dash_last_updated": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_load_error": "Impossible de charger le tableau de bord",
+  "dash_card_error": "Impossible de charger",
+  "dash_retry": "Réessayer",
+  "dash_frt_title": "Vitesse de première réponse",
+  "dash_frt_target": "Objectif : {m} min",
+  "@dash_frt_target": {
+    "placeholders": {
+      "m": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_frt_lt1": "Moins de 1 min",
+  "dash_frt_1_5": "1 à 5 min",
+  "dash_frt_5_15": "5 à 15 min",
+  "dash_frt_gt15": "Plus de 15 min",
+  "dash_frt_note": "Basé sur les conversations répondues par un agent",
+  "dash_frt_empty": "Aucune réponse pour l'instant sur cette période",
+  "dash_days_short": "j",
+  "dash_hours_short": "h",
+  "dash_minutes_short": "min",
+  "dash_thousand": "k",
+  "dash_onb_title": "Commencez à recevoir des conversations",
+  "dash_onb_wa": "Connecter WhatsApp",
+  "dash_onb_kb": "Ajouter une base de connaissances",
+  "dash_onb_ai": "Activer l'IA",
+  "dash_onb_cta": "Terminer la configuration",
+  "dash_alert_wa_title": "WhatsApp est déconnecté",
+  "dash_alert_wa_body": "Les messages n'arriveront pas tant que vous ne vous reconnectez pas",
+  "dash_alert_wa_action": "Se reconnecter",
+  "dash_alert_sla_title": "{n} clients en attente depuis plus de {sla} min",
+  "@dash_alert_sla_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "sla": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_sla_action": "Répondre maintenant",
+  "dash_alert_unassigned_title": "{n} conversations en attente d'être prises en charge",
+  "@dash_alert_unassigned_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_view": "Voir",
+  "dash_alert_kb_title": "{n} questions sans réponse",
+  "@dash_alert_kb_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_kb_body": "Ajoutez-les pour que l'IA réponde automatiquement",
+  "dash_alert_kb_action": "Examiner",
+  "dash_alert_trial_title": "Votre essai se termine dans {n} jours",
+  "@dash_alert_trial_title": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_alert_trial_action": "Voir les formules",
+  "dash_alert_dismiss": "Ignorer",
+  "dash_a11y_metric": "{label} : {value} {aside}. Appuyez pour voir les conversations",
+  "@dash_a11y_metric": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "aside": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_chart": "{title} : {total}. Pic de {peak} avec {n} conversations.",
+  "@dash_a11y_chart": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      },
+      "peak": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_team": "{name}, {presence}, {n} conversations ouvertes",
+  "@dash_a11y_team": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "presence": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_a11y_presence": "Votre statut : {status}. Appuyez pour changer",
+  "@dash_a11y_presence": {
+    "placeholders": {
+      "status": {
+        "type": "String"
+      }
+    }
+  }
+}

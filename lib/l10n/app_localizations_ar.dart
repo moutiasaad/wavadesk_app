@@ -2202,6 +2202,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get banner_connecting => 'جارٍ الاتصال…';
 
   @override
+  String get composer_mic_denied =>
+      'اسمح بالوصول إلى الميكروفون من الإعدادات لتسجيل الرسائل الصوتية.';
+
+  @override
+  String get composer_record_failed => 'تعذّر التسجيل. حاول مرة أخرى.';
+
+  @override
+  String get composer_record_delete => 'حذف التسجيل';
+
+  @override
+  String get chat_ai_suggest_pill => 'اقترح ردًا';
+
+  @override
   String sys_called(String actor) {
     return 'اتصل $actor بالعميل';
   }
@@ -6556,6 +6569,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get search_in_conv_close => 'إغلاق البحث';
+
+  @override
+  String get startup_unavailable_title => 'تعذّر الاتصال حاليًا';
+
+  @override
+  String get startup_unavailable_body =>
+      'لم يتمكّن Wavadesk من الوصول إلى الخوادم. تأكّد من أنك تستخدم أحدث إصدار من التطبيق، ثم أعد المحاولة.';
+
+  @override
+  String get startup_unavailable_help =>
+      'ما زالت المشكلة قائمة؟ تواصل معنا عبر support@wavadesk.com';
+
+  @override
+  String get startup_retry => 'إعادة المحاولة';
+
+  @override
+  String get startup_contact_support => 'التواصل مع الدعم';
+
+  @override
+  String get startup_dev_hint =>
+      'للمطوّر: عنوان الـ API أو المفتاح غير موجود. شغّل التطبيق مع --dart-define-from-file=dart_defines/<env>.json أو املأ assets/config/api.json.';
 
   @override
   String get wa_title => 'واتساب الخاص بك';

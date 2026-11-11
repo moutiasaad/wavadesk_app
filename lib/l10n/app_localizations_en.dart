@@ -2206,6 +2206,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get banner_connecting => 'Connecting…';
 
   @override
+  String get composer_mic_denied =>
+      'Allow microphone access in Settings to record voice messages.';
+
+  @override
+  String get composer_record_failed => 'Couldn\'t record. Please try again.';
+
+  @override
+  String get composer_record_delete => 'Delete recording';
+
+  @override
+  String get chat_ai_suggest_pill => 'Suggest a reply';
+
+  @override
   String sys_called(String actor) {
     return '$actor called the customer';
   }
@@ -6531,6 +6544,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get search_in_conv_close => 'Close search';
+
+  @override
+  String get startup_unavailable_title => 'We can\'t connect right now';
+
+  @override
+  String get startup_unavailable_body =>
+      'Wavadesk couldn\'t reach its servers. Make sure you\'re using the latest version of the app, then try again.';
+
+  @override
+  String get startup_unavailable_help =>
+      'Still not working? Contact us at support@wavadesk.com';
+
+  @override
+  String get startup_retry => 'Try again';
+
+  @override
+  String get startup_contact_support => 'Contact support';
+
+  @override
+  String get startup_dev_hint =>
+      'Developer: the API URL or key is missing. Run with --dart-define-from-file=dart_defines/<env>.json or fill assets/config/api.json.';
 
   @override
   String get wa_title => 'Your WhatsApp';

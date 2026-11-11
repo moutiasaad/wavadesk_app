@@ -1220,6 +1220,10 @@
   "readonly_take_instead": "استلم بدلًا عنه",
   "readonly_add_note": "إضافة ملاحظة داخلية",
   "banner_connecting": "جارٍ الاتصال…",
+  "composer_mic_denied": "اسمح بالوصول إلى الميكروفون من الإعدادات لتسجيل الرسائل الصوتية.",
+  "composer_record_failed": "تعذّر التسجيل. حاول مرة أخرى.",
+  "composer_record_delete": "حذف التسجيل",
+  "chat_ai_suggest_pill": "اقترح ردًا",
   "sys_called": "اتصل {actor} بالعميل",
   "@sys_called": {
     "placeholders": {
@@ -4207,6 +4211,12 @@
   "search_in_conv_prev": "المطابقة السابقة",
   "search_in_conv_next": "المطابقة التالية",
   "search_in_conv_close": "إغلاق البحث",
+  "startup_unavailable_title": "تعذّر الاتصال حاليًا",
+  "startup_unavailable_body": "لم يتمكّن Wavadesk من الوصول إلى الخوادم. تأكّد من أنك تستخدم أحدث إصدار من التطبيق، ثم أعد المحاولة.",
+  "startup_unavailable_help": "ما زالت المشكلة قائمة؟ تواصل معنا عبر support@wavadesk.com",
+  "startup_retry": "إعادة المحاولة",
+  "startup_contact_support": "التواصل مع الدعم",
+  "startup_dev_hint": "للمطوّر: عنوان الـ API أو المفتاح غير موجود. شغّل التطبيق مع --dart-define-from-file=dart_defines/<env>.json أو املأ assets/config/api.json.",
   "wa_title": "واتساب الخاص بك",
   "wa_refresh": "تحديث الحالة",
   "wa_log": "سجل الاتصال",

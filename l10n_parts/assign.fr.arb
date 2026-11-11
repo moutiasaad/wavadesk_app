@@ -1,0 +1,239 @@
+{
+  "as_title": "Attribuer la conversation",
+  "as_title_bulk": "Attribuer {n} conversations",
+  "@as_title_bulk": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_current": "Actuel : {name}",
+  "@as_current": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_search": "Rechercher un coéquipier ou une équipe",
+  "as_no_results": "Aucun résultat pour « {q} »",
+  "@as_no_results": {
+    "placeholders": {
+      "q": {
+        "type": "String"
+      }
+    }
+  },
+  "as_filter_all": "Tous",
+  "as_filter_available": "Disponibles ({n})",
+  "@as_filter_available": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_filter_my_team": "Mon équipe",
+  "as_suggested": "Suggérés",
+  "as_teammates": "Coéquipiers",
+  "as_teams": "Équipes",
+  "as_ai_section": "IA",
+  "as_me": "Moi",
+  "as_badge_current": "Actuel",
+  "as_badge_capacity": "À la limite",
+  "as_online_m": "Disponible",
+  "as_online_f": "Disponible",
+  "as_busy_m": "Occupé",
+  "as_busy_f": "Occupée",
+  "as_away": "Absent",
+  "as_last_seen": "Vu pour la dernière fois il y a {t}",
+  "@as_last_seen": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "as_open_count": "{n} conversations ouvertes",
+  "@as_open_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_members": "{n} membres",
+  "@as_members": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_available_count": "{n} disponibles",
+  "@as_available_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_routing_least": "Attribué au membre le moins occupé",
+  "as_routing_rr": "Répartition tournante",
+  "as_routing_manual": "Reste dans la file d'attente de l'équipe",
+  "as_team_none_available": "Personne n'est disponible — elle attendra dans la file d'attente de l'équipe",
+  "as_ai_name": "Agent IA",
+  "as_ai_sub": "Répond automatiquement et transfère si nécessaire",
+  "as_ai_unavailable": "La base de connaissances est trop limitée",
+  "as_reason_handled": "A déjà échangé avec ce client",
+  "as_reason_handled_f": "A déjà échangé avec ce client",
+  "as_reason_skill": "Expert en {skill}",
+  "@as_reason_skill": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_skill_f": "Experte en {skill}",
+  "@as_reason_skill_f": {
+    "placeholders": {
+      "skill": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reason_least": "Le moins occupé",
+  "as_note": "Note pour le coéquipier (facultatif)",
+  "as_note_q1": "Le client a besoin d'une réponse rapide",
+  "as_note_q2": "Problème de paiement",
+  "as_note_q3": "Relancer demain",
+  "as_pick": "Choisissez un coéquipier ou une équipe",
+  "as_assign_to": "Attribuer à {name}",
+  "@as_assign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_claim": "Prendre en charge la conversation",
+  "as_assign_ai": "Attribuer à l'IA",
+  "as_assign_bulk_to": "Attribuer {n} à {name}",
+  "@as_assign_bulk_to": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassign": "Retirer l'attribution (retour à non attribuée)",
+  "as_busy_hint": "Occupé — la réponse peut être retardée",
+  "as_busy_hint_f": "Occupée — la réponse peut être retardée",
+  "as_away_hint": "Absent — il sera notifié",
+  "as_away_hint_f": "Absente — elle sera notifiée",
+  "as_capacity_reached": "Au maximum ({max})",
+  "@as_capacity_reached": {
+    "placeholders": {
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "as_unavailable": "Non attribuable",
+  "as_taken_live": "{name} vient de la prendre",
+  "@as_taken_live": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_reassign_to": "Réattribuer à {name}",
+  "@as_reassign_to": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_offline": "L'attribution nécessite une connexion internet",
+  "as_none_available": "Aucun coéquipier disponible",
+  "as_show_all": "Afficher tout",
+  "as_done": "Attribuée à {name}",
+  "@as_done": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_done_bulk": "{ok} sur {n} attribuées",
+  "@as_done_bulk": {
+    "placeholders": {
+      "ok": {
+        "type": "int"
+      },
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_show_errors": "Voir les erreurs",
+  "as_undo": "Annuler",
+  "as_forbidden": "Vous ne pouvez pas attribuer à ce coéquipier",
+  "as_error": "Impossible d'attribuer. Réessayez.",
+  "as_retry": "Réessayer",
+  "as_event_assigned": "Vous avez attribué ceci à {name}",
+  "@as_event_assigned": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "as_event_undo": "{actor} a annulé l'attribution",
+  "@as_event_undo": {
+    "placeholders": {
+      "actor": {
+        "type": "String"
+      }
+    }
+  },
+  "as_resolved_live": "La conversation a été résolue",
+  "as_queued_team": "En attente dans la file de l'équipe {team}",
+  "@as_queued_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_unassigned_done": "La conversation n'est plus attribuée",
+  "as_errors_title": "{n} n'ont pas pu être attribuées",
+  "@as_errors_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "as_err_same": "Déjà attribuée à cette personne",
+  "as_err_resolved": "La conversation est résolue",
+  "as_err_state": "Le responsable a changé",
+  "as_err_generic": "Erreur inattendue",
+  "as_expand_team": "Afficher les membres de {team}",
+  "@as_expand_team": {
+    "placeholders": {
+      "team": {
+        "type": "String"
+      }
+    }
+  },
+  "as_a11y_selected": "sélectionné",
+  "as_load_error": "Impossible de charger les coéquipiers"
+}
