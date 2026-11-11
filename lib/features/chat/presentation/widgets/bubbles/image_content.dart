@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/models/models.dart';
 import '../../../../../core/theme/app_theme.dart';
+import '../../../../../core/utils/l10n.dart';
 import '../../../../../core/widgets/widgets.dart';
+import '../../../application/media_download.dart';
 import '../../../application/media_url_provider.dart';
 import '../../../data/local_media.dart';
 import '../image_viewer_screen.dart';
@@ -47,56 +51,145 @@ class MediaPlaceholder extends StatelessWidget {
 }
 
 /// Single image (Chat spec §4.4): 4dp padding, radius 14, aspect kept,
-/// max 240×320, caption below; tap → full-screen viewer. Own images show
-/// from memory at once; others load from the signed media link.
-class ImageContent extends ConsumerWidget {
+/// max 240×320, caption below; tap → full-screen viewer (with save). Own
+/// images show from memory at once; others load from the signed media
+/// link. An incoming WhatsApp photo the server is still fetching shows a
+/// spinner until the poll says it is available; load errors retry by
+/// themselves a few times, then tap to retry.
+class ImageContent extends ConsumerStatefulWidget {
   const ImageContent({super.key, required this.message, required this.foreground});
 
   final Message message;
   final Color foreground;
 
+  @override
+  ConsumerState<ImageContent> createState() => _ImageContentState();
+}
+
+class _ImageContentState extends ConsumerState<ImageContent> {
   static const _width = 240.0;
+  static const _autoRetries = 3;
+
+  /// How long an incoming photo may stay "not available yet" before we
+  /// call it unavailable (the server fetches it from WhatsApp in seconds).
+  static const _fetchWindow = Duration(minutes: 3);
+
+  int _retries = 0;
+  Timer? _retryTimer;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final c = context.colors;
-    final tag = 'img-${message.id}';
-    final bytes = LocalMedia.of(message.id);
-    final ImageProvider? provider = bytes != null
-        ? MemoryImage(bytes)
-        : hasServerMedia(message.id)
-            ? switch (ref.watch(mediaUrlProvider(message.id))) {
-                AsyncData(:final value) => NetworkImage(value),
-                _ => null,
-              }
-            : null;
-    final failed = bytes == null && hasServerMedia(message.id) && ref.watch(mediaUrlProvider(message.id)).hasError;
+  void dispose() {
+    _retryTimer?.cancel();
+    super.dispose();
+  }
 
-    Widget placeholder({bool error = false}) => SizedBox(
+  void _scheduleRetry() {
+    if (_retryTimer != null || _retries >= _autoRetries) return;
+    _retryTimer = Timer(Duration(seconds: 2 + 2 * _retries), () {
+      _retryTimer = null;
+      _retries++;
+      if (mounted) ref.invalidate(mediaUrlProvider(widget.message.id));
+    });
+  }
+
+  void _manualRetry() {
+    _retries = 0;
+    ref.invalidate(mediaUrlProvider(widget.message.id));
+  }
+
+  Future<void> _save() async {
+    final l = context.l10n;
+    final m = widget.message;
+    try {
+      final bytes = await downloadMessageMedia(ref, m.id);
+      final name = 'wavadesk_${m.sentAt.millisecondsSinceEpoch}.jpg';
+      if (await saveToDevice(name, bytes) && mounted) {
+        AppSnackbar.show(context, message: l.bubble_saved(name), kind: SnackKind.success);
+      }
+    } catch (_) {
+      if (mounted) AppSnackbar.show(context, message: l.bubble_save_failed, kind: SnackKind.error);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final t = context.text;
+    final l = context.l10n;
+    final m = widget.message;
+    final tag = 'img-${m.id}';
+    final bytes = LocalMedia.of(m.id);
+    final onServer = hasServerMedia(m.id);
+    final fetching = bytes == null && onServer && !m.mediaAvailable && DateTime.now().difference(m.sentAt) < _fetchWindow;
+    final unavailable = bytes == null && onServer && !m.mediaAvailable && !fetching;
+
+    ImageProvider? provider;
+    var failed = false;
+    if (bytes != null) {
+      provider = MemoryImage(bytes);
+    } else if (onServer && m.mediaAvailable) {
+      switch (ref.watch(mediaUrlProvider(m.id))) {
+        case AsyncData(:final value):
+          provider = NetworkImage(value);
+        case AsyncError():
+          failed = _retries >= _autoRetries;
+          _scheduleRetry();
+        default:
+      }
+    }
+
+    Widget placeholder({IconData? icon, String? label, VoidCallback? onTap}) => SizedBox(
           width: _width,
           height: 180,
           child: Stack(
             fit: StackFit.expand,
             children: [
-              MediaPlaceholder(seed: message.id, icon: error ? AppIcons.image : null),
-              if (!error) Center(child: AppSpinner(size: 24, delayed: false, color: Colors.white.withValues(alpha: 0.9))),
+              MediaPlaceholder(seed: m.id, icon: null),
+              Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (icon == null)
+                      AppSpinner(size: 24, delayed: false, color: Colors.white.withValues(alpha: 0.9))
+                    else
+                      AppIcon(icon, dp: 28, color: Colors.white.withValues(alpha: 0.9)),
+                    if (label != null) ...[
+                      const SizedBox(height: AppSpacing.xs),
+                      Text(label, style: t.caption.copyWith(color: Colors.white), textAlign: TextAlign.center),
+                    ],
+                  ],
+                ),
+              ),
             ],
           ),
         );
 
-    final Widget picture = provider == null
-        ? placeholder(error: failed || !hasServerMedia(message.id) && bytes == null)
-        : ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: _width, minWidth: 120, maxHeight: 320, minHeight: 80),
-            child: Image(
-              image: provider,
-              width: _width,
-              fit: BoxFit.cover,
-              gaplessPlayback: true,
-              frameBuilder: (_, child, frame, sync) => sync || frame != null ? child : placeholder(),
-              errorBuilder: (_, _, _) => placeholder(error: true),
-            ),
-          );
+    final Widget picture;
+    if (provider != null) {
+      picture = ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: _width, minWidth: 120, maxHeight: 320, minHeight: 80),
+        child: Image(
+          image: provider,
+          width: _width,
+          fit: BoxFit.cover,
+          gaplessPlayback: true,
+          frameBuilder: (_, child, frame, sync) => sync || frame != null ? child : placeholder(),
+          errorBuilder: (_, _, _) {
+            // A refused / expired link: get a fresh one.
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (mounted) _scheduleRetry();
+            });
+            return placeholder(icon: AppIcons.retry, label: l.bubble_tap_retry);
+          },
+        ),
+      );
+    } else if (unavailable) {
+      picture = placeholder(icon: AppIcons.image, label: l.bubble_photo_unavailable);
+    } else if (failed) {
+      picture = placeholder(icon: AppIcons.retry, label: l.bubble_tap_retry);
+    } else {
+      picture = placeholder(label: fetching ? l.bubble_photo_fetching : null);
+    }
 
     return Padding(
       padding: const EdgeInsets.all(4),
@@ -106,14 +199,19 @@ class ImageContent extends ConsumerWidget {
         children: [
           GestureDetector(
             onTap: provider == null
-                ? (failed ? () => ref.invalidate(mediaUrlProvider(message.id)) : null)
+                ? (failed ? _manualRetry : null)
                 : () => Navigator.of(context).push(
                       PageRouteBuilder<void>(
                         opaque: false,
                         transitionDuration: AppMotion.normal,
                         reverseTransitionDuration: AppMotion.normal,
-                        pageBuilder: (_, _, _) =>
-                            ImageViewerScreen(heroTag: tag, seed: message.id, caption: message.text, image: provider),
+                        pageBuilder: (_, _, _) => ImageViewerScreen(
+                          heroTag: tag,
+                          seed: m.id,
+                          caption: m.text,
+                          image: provider,
+                          onSave: _save,
+                        ),
                         transitionsBuilder: (_, a, _, child) => FadeTransition(opacity: a, child: child),
                       ),
                     ),
@@ -125,12 +223,12 @@ class ImageContent extends ConsumerWidget {
               ),
             ),
           ),
-          if (message.text.trim().isNotEmpty)
+          if (m.text.trim().isNotEmpty)
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 6, 8, 0),
               child: SizedBox(
                 width: _width - 16,
-                child: TextContent(text: message.text, color: foreground),
+                child: TextContent(text: m.text, color: widget.foreground),
               ),
             ),
         ],

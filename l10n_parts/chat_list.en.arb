@@ -146,5 +146,18 @@
     }
   },
   "bubble_file_sending": "Still sending — try again in a moment",
-  "bubble_file_unavailable": "This file isn’t available on the phone"
+  "bubble_file_unavailable": "This file isn’t available on the phone",
+  "bubble_saved": "Saved: {name}",
+  "@bubble_saved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_save_failed": "Couldn't download the file. Try again.",
+  "bubble_open_file": "Open",
+  "bubble_tap_retry": "Tap to retry",
+  "bubble_photo_fetching": "Getting the photo…",
+  "bubble_photo_unavailable": "Photo not available"
 }

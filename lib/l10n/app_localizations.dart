@@ -4690,6 +4690,42 @@ abstract class AppLocalizations {
   /// **'هذا الملف غير متاح على الهاتف'**
   String get bubble_file_unavailable;
 
+  /// No description provided for @bubble_saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم الحفظ: {name}'**
+  String bubble_saved(String name);
+
+  /// No description provided for @bubble_save_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تنزيل الملف. حاول مرة أخرى.'**
+  String get bubble_save_failed;
+
+  /// No description provided for @bubble_open_file.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح'**
+  String get bubble_open_file;
+
+  /// No description provided for @bubble_tap_retry.
+  ///
+  /// In ar, this message translates to:
+  /// **'اضغط لإعادة المحاولة'**
+  String get bubble_tap_retry;
+
+  /// No description provided for @bubble_photo_fetching.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ جلب الصورة…'**
+  String get bubble_photo_fetching;
+
+  /// No description provided for @bubble_photo_unavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'الصورة غير متاحة'**
+  String get bubble_photo_unavailable;
+
   /// No description provided for @chatscreen_load_failed.
   ///
   /// In ar, this message translates to:

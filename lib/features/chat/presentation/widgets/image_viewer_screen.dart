@@ -9,7 +9,10 @@ import 'bubbles/image_content.dart';
 /// close, share / save. Sample images are drawn placeholders, so share and
 /// save explain that instead of acting.
 class ImageViewerScreen extends StatefulWidget {
-  const ImageViewerScreen({super.key, required this.heroTag, required this.seed, this.caption = '', this.image});
+  const ImageViewerScreen({super.key, required this.heroTag, required this.seed, this.caption = '', this.image, this.onSave});
+
+  /// Saves the picture on the phone; null → the sample explanation.
+  final Future<void> Function()? onSave;
 
   /// The real picture; null → the sample placeholder.
   final ImageProvider? image;
@@ -100,7 +103,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
                       icon: AppIcons.download,
                       iconColor: Colors.white,
                       semanticLabel: l.bubble_viewer_save,
-                      onPressed: () => AppSnackbar.show(context, message: l.bubble_viewer_sample),
+                      onPressed: () => widget.onSave != null ? widget.onSave!() : AppSnackbar.show(context, message: l.bubble_viewer_sample),
                     ),
                   ],
                 ),

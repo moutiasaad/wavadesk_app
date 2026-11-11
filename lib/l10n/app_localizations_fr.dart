@@ -2674,6 +2674,27 @@ class AppLocalizationsFr extends AppLocalizations {
       'Ce fichier n’est pas disponible sur le téléphone';
 
   @override
+  String bubble_saved(String name) {
+    return 'Enregistré : $name';
+  }
+
+  @override
+  String get bubble_save_failed =>
+      'Impossible de télécharger le fichier. Réessayez.';
+
+  @override
+  String get bubble_open_file => 'Ouvrir';
+
+  @override
+  String get bubble_tap_retry => 'Touchez pour réessayer';
+
+  @override
+  String get bubble_photo_fetching => 'Récupération de la photo…';
+
+  @override
+  String get bubble_photo_unavailable => 'Photo indisponible';
+
+  @override
   String get chatscreen_load_failed =>
       'Impossible de charger cette conversation';
 

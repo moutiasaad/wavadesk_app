@@ -2630,6 +2630,26 @@ class AppLocalizationsAr extends AppLocalizations {
   String get bubble_file_unavailable => 'هذا الملف غير متاح على الهاتف';
 
   @override
+  String bubble_saved(String name) {
+    return 'تم الحفظ: $name';
+  }
+
+  @override
+  String get bubble_save_failed => 'تعذّر تنزيل الملف. حاول مرة أخرى.';
+
+  @override
+  String get bubble_open_file => 'فتح';
+
+  @override
+  String get bubble_tap_retry => 'اضغط لإعادة المحاولة';
+
+  @override
+  String get bubble_photo_fetching => 'جارٍ جلب الصورة…';
+
+  @override
+  String get bubble_photo_unavailable => 'الصورة غير متاحة';
+
+  @override
   String get chatscreen_load_failed => 'تعذّر تحميل المحادثة';
 
   @override

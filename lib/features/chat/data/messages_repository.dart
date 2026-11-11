@@ -157,7 +157,11 @@ class HttpMessagesRepository implements MessagesRepository {
     if (!_disposed) _changes[id]?.add(null);
   }
 
-  static bool _pending(Message m) => m.delivery == DeliveryState.sending || m.delivery == DeliveryState.failed;
+  /// Not yet acknowledged by the server (still under its client id). A
+  /// server copy that is still "pending" there is NOT pending here: the
+  /// poll must replace it so its status moves on to sent / delivered.
+  static bool _pending(Message m) =>
+      !m.id.startsWith('msg_') && (m.delivery == DeliveryState.sending || m.delivery == DeliveryState.failed);
 
   @override
   List<Message> current(String id) {

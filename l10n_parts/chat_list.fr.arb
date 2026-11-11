@@ -146,5 +146,18 @@
     }
   },
   "bubble_file_sending": "Envoi en cours, réessayez dans un instant",
-  "bubble_file_unavailable": "Ce fichier n’est pas disponible sur le téléphone"
+  "bubble_file_unavailable": "Ce fichier n’est pas disponible sur le téléphone",
+  "bubble_saved": "Enregistré : {name}",
+  "@bubble_saved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_save_failed": "Impossible de télécharger le fichier. Réessayez.",
+  "bubble_open_file": "Ouvrir",
+  "bubble_tap_retry": "Touchez pour réessayer",
+  "bubble_photo_fetching": "Récupération de la photo…",
+  "bubble_photo_unavailable": "Photo indisponible"
 }

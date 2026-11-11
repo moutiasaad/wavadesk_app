@@ -94,6 +94,7 @@ class Message {
     this.retries = 0,
     this.sentVia,
     this.aiFeedback,
+    this.mediaAvailable = true,
   });
 
   final String id;
@@ -142,6 +143,10 @@ class Message {
 
   /// 'up' / 'down' feedback on an AI reply.
   final String? aiFeedback;
+
+  /// The server holds the media file (false while it is still fetching an
+  /// incoming WhatsApp photo, or for media it could not get).
+  final bool mediaAvailable;
 
   bool get isOutgoing =>
       type == MessageBubbleType.outgoing ||
@@ -198,5 +203,6 @@ class Message {
     retries: retries ?? this.retries,
     sentVia: sentVia,
     aiFeedback: aiFeedback ?? this.aiFeedback,
+    mediaAvailable: mediaAvailable,
   );
 }

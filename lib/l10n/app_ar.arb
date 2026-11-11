@@ -1562,6 +1562,19 @@
   },
   "bubble_file_sending": "ما زال قيد الإرسال، حاول بعد لحظات",
   "bubble_file_unavailable": "هذا الملف غير متاح على الهاتف",
+  "bubble_saved": "تم الحفظ: {name}",
+  "@bubble_saved": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "bubble_save_failed": "تعذّر تنزيل الملف. حاول مرة أخرى.",
+  "bubble_open_file": "فتح",
+  "bubble_tap_retry": "اضغط لإعادة المحاولة",
+  "bubble_photo_fetching": "جارٍ جلب الصورة…",
+  "bubble_photo_unavailable": "الصورة غير متاحة",
   "chatscreen_load_failed": "تعذّر تحميل المحادثة",
   "chatscreen_not_found": "لم نعثر على هذه المحادثة",
   "chatscreen_action_failed": "تعذّر تنفيذ الإجراء. حاول مجددًا.",

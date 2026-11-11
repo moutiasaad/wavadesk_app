@@ -208,6 +208,7 @@ Message _fromMobileV1(Map<String, dynamic> j, {required String meId}) {
     delivery: delivery,
     mediaDuration: duration == null ? null : Duration(seconds: duration),
     fileName: media?['file_name'] as String?,
+    mediaAvailable: media?['available'] != false,
     reactions: [
       for (final r in (j['reactions'] as List? ?? const []))
         if (r is Map) Reaction(emoji: '${r['emoji']}', byContact: r['mine'] != true),
