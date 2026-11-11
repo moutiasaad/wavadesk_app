@@ -166,16 +166,26 @@ class _ModeRow extends StatelessWidget {
                         children: [
                           Text(title, style: t.listTitle),
                           if (recommended)
+                            // Sized to its label: an `alignment` here made the
+                            // pill stretch across the whole card.
                             Container(
-                              height: 22,
-                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
-                              alignment: Alignment.center,
+                              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
                               decoration: BoxDecoration(
                                 color: c.primaryContainer,
                                 border: Border.all(color: c.primaryContainerBorder),
                                 borderRadius: BorderRadius.circular(AppRadius.full),
                               ),
-                              child: Text(l.ai_recommended, style: t.caption.copyWith(fontSize: 11, color: c.onPrimaryContainer, fontWeight: FontWeight.w700)),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  AppIcon(AppIcons.ai, dp: 12, color: c.primary),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    l.ai_recommended,
+                                    style: t.caption.copyWith(fontSize: 11, height: 1.3, color: c.onPrimaryContainer, fontWeight: FontWeight.w700),
+                                  ),
+                                ],
+                              ),
                             ),
                         ],
                       ),
