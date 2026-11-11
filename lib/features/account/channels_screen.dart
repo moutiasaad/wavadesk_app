@@ -52,8 +52,10 @@ class ChannelsScreen extends ConsumerWidget {
       );
     }
 
-    final on = Channel.values.where(isOn).toList();
-    final off = Channel.values.where((ch) => !isOn(ch)).toList();
+    // Only the channels the product offers: WhatsApp and website chat.
+    const shown = [Channel.whatsapp, Channel.web];
+    final on = shown.where(isOn).toList();
+    final off = shown.where((ch) => !isOn(ch)).toList();
 
     return ScrolledUnderBuilder(
       builder: (context, under) => Scaffold(
