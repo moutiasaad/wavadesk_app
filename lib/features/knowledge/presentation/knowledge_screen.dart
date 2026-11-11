@@ -281,7 +281,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
         child: KbEmptyState(
           canEdit: perms.canEdit,
           onAddQa: () => _guardOnline() ? context.push('/knowledge/new') : null,
-          onUpload: () => _guardOnline() ? startKbJsonImport(context, ref) : null,
+          onUpload: () => _guardOnline() ? startKbFileUpload(context, ref, snackOffset: _snackOffset) : null,
         ),
       ));
     } else {

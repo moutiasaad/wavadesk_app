@@ -40,7 +40,7 @@ class KbEmptyState extends StatelessWidget {
                 const SizedBox(height: AppSpacing.xl),
                 AppButton(label: l.kb_empty_cta, icon: AppIcons.add, expand: true, onPressed: onAddQa),
                 const SizedBox(height: AppSpacing.sm),
-                AppButton(label: l.kb_add_file, icon: AppIcons.file, variant: AppButtonVariant.secondary, expand: true, onPressed: onUpload),
+                AppButton(label: l.kb_add_document, icon: AppIcons.file, variant: AppButtonVariant.secondary, expand: true, onPressed: onUpload),
               ],
               const SizedBox(height: AppSpacing.md),
               Text(l.kb_empty_tip, style: t.caption.copyWith(color: c.textTertiary), textAlign: TextAlign.center),

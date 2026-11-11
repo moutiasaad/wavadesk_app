@@ -42,7 +42,7 @@ Future<void> startKbFileUpload(BuildContext context, WidgetRef ref, {String? rep
   final key = ref.read(kbUploadControllerProvider.notifier).start(file, replaceId: replaceId);
   final next = await AppBottomSheet.show<_SheetExit>(
     context,
-    title: l.kb_add_file,
+    title: l.kb_add_document,
     builder: (_) => KbFileUploadSheet(jobKey: key),
   );
   if (!context.mounted) return;
