@@ -138,7 +138,7 @@ class _ResolveRow extends StatelessWidget {
               const SizedBox(width: 14),
               Expanded(
                 child: Text(
-                  context.l10n.chat_resolve,
+                  context.l10n.close_title, // opens the close card
                   style: context.text.bodyLarge.copyWith(color: c.textSuccess, fontWeight: FontWeight.w600),
                 ),
               ),
