@@ -8,6 +8,7 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/analytics.dart';
 import '../../../core/utils/l10n.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../shell/home_shell.dart';
 import '../application/dashboard_controller.dart';
 import 'dashboard_links.dart';
 import 'widgets/ai_impact_card.dart';
@@ -154,7 +155,8 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
       child: ListView(
         controller: _scroll,
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.only(bottom: AppSpacing.xxl),
+        // The shell draws the tab bar over the page (extendBody): clear it.
+        padding: EdgeInsets.only(bottom: tabBarInset(context) + AppSpacing.xxl),
         children: [
           if (state.offline) ConnectionBanner(state: NetworkState.offline),
           DashboardHeader(state: state),
