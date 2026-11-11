@@ -369,6 +369,9 @@
       }
     }
   },
+  "channels_meta": "Meta (Messenger)",
+  "channels_open_on_web": "Opens on the website",
+  "channels_open_web_failed": "Couldn't open the website",
   "ai_title": "AI agent",
   "ai_master_switch": "Turn on AI",
   "ai_state_on": "On",

@@ -369,6 +369,9 @@
       }
     }
   },
+  "channels_meta": "ميتا (ماسنجر)",
+  "channels_open_on_web": "يُفتح على الموقع",
+  "channels_open_web_failed": "تعذّر فتح الموقع",
   "ai_title": "وكيل الذكاء الاصطناعي",
   "ai_master_switch": "تشغيل الذكاء الاصطناعي",
   "ai_state_on": "مفعّل",

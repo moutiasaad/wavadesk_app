@@ -1264,6 +1264,24 @@ abstract class AppLocalizations {
   /// **'{price} / شهريًا'**
   String subscription_per_month(String price);
 
+  /// No description provided for @channels_meta.
+  ///
+  /// In ar, this message translates to:
+  /// **'ميتا (ماسنجر)'**
+  String get channels_meta;
+
+  /// No description provided for @channels_open_on_web.
+  ///
+  /// In ar, this message translates to:
+  /// **'يُفتح على الموقع'**
+  String get channels_open_on_web;
+
+  /// No description provided for @channels_open_web_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر فتح الموقع'**
+  String get channels_open_web_failed;
+
   /// No description provided for @ai_title.
   ///
   /// In ar, this message translates to:

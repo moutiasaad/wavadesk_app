@@ -695,6 +695,15 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String get channels_meta => 'Meta (Messenger)';
+
+  @override
+  String get channels_open_on_web => 'S’ouvre sur le site web';
+
+  @override
+  String get channels_open_web_failed => 'Impossible d’ouvrir le site web';
+
+  @override
   String get ai_title => 'Agent IA';
 
   @override
