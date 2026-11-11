@@ -420,6 +420,7 @@ class AiAgentConfig {
     this.suggestionCount = 3,
     this.answerSource = 'knowledge',
     this.answerSources = const ['knowledge'],
+    this.serverHasWebSettings = true,
   });
 
   final int version;
@@ -461,6 +462,11 @@ class AiAgentConfig {
   /// knowledge | flow (bot organisation; only when [answerSources] has it).
   final String answerSource;
   final List<String> answerSources;
+
+  /// The server knows the web panel's extra settings (hybrid mode, every web
+  /// language, suggestion count, reply when claimed). An older server
+  /// rejects them (422), so the screen hides them there.
+  final bool serverHasWebSettings;
 
   AiAgentConfig copyWith({
     int? version,
@@ -512,6 +518,7 @@ class AiAgentConfig {
         suggestionCount: suggestionCount ?? this.suggestionCount,
         answerSource: answerSource ?? this.answerSource,
         answerSources: answerSources,
+        serverHasWebSettings: serverHasWebSettings,
       );
 
   factory AiAgentConfig.fromJson(Map<String, dynamic> j) {
@@ -544,6 +551,7 @@ class AiAgentConfig {
       suggestionCount: _int(j['suggestion_count'], 3).clamp(1, 5),
       answerSource: '${j['answer_source'] ?? 'knowledge'}',
       answerSources: [for (final s in _list(j['answer_sources'])) '$s'],
+      serverHasWebSettings: j.containsKey('suggestion_count'),
     );
   }
 
@@ -579,10 +587,11 @@ class AiAgentConfig {
   /// Editable fields only, wire names (the PATCH body adds `version`).
   Map<String, Object?> editable() {
     final j = toJson();
-    const keys = [
+    final keys = [
       'enabled', 'mode', 'tone', 'use_customer_name', 'language', 'auto_reply_delay_seconds', 'hours', 'handoff',
       'channels', 'custom_instructions', 'allow_outside_kb', 'confidence_threshold', 'auto_confirmed',
-      'reply_when_claimed', 'suggestion_count', 'answer_source',
+      'answer_source',
+      if (serverHasWebSettings) ...['reply_when_claimed', 'suggestion_count'],
     ];
     return {for (final k in keys) k: j[k]};
   }

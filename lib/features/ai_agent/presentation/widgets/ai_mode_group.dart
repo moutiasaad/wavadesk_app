@@ -57,7 +57,8 @@ class AiModeGroup extends ConsumerWidget {
     final l = context.l10n;
     final rows = [
       (AiMode.suggest, l.ai_mode_suggest, l.ai_mode_suggest_sub, null, false),
-      (AiMode.hybrid, l.ai_mode_hybrid, l.ai_mode_hybrid_sub, null, false),
+      // Hybrid only where the server accepts it (older servers answer 422).
+      if (config.serverHasWebSettings) (AiMode.hybrid, l.ai_mode_hybrid, l.ai_mode_hybrid_sub, null, false),
       (AiMode.auto, l.ai_mode_auto, l.ai_mode_auto_sub, null, true),
     ];
     // The retired "after hours" setting reads as auto (it replies on its own).

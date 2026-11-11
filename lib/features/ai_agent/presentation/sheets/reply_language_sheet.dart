@@ -34,7 +34,9 @@ class _LanguageBody extends ConsumerWidget {
 
     final policies = {
       for (final p in LanguagePolicy.values)
-        p: (aiLanguageLabel(l, p), p == LanguagePolicy.customer ? l.ai_lang_customer_sub : null),
+        // An older server only accepts Auto / Arabic / English.
+        if (cfg.serverHasWebSettings || p.index <= LanguagePolicy.en.index)
+          p: (aiLanguageLabel(l, p), p == LanguagePolicy.customer ? l.ai_lang_customer_sub : null),
     };
 
     return Padding(

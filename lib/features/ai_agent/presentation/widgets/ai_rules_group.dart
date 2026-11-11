@@ -75,24 +75,27 @@ class AiRulesGroup extends ConsumerWidget {
           value: aiLanguageLabel(l, config.language),
           onTap: interactive ? () => showReplyLanguageSheet(context, ref) : null,
         ),
-        SettingsTile(
-          icon: AppIcons.ai,
-          title: l.ai_suggestions,
-          value: '${config.suggestionCount}',
-          onTap: interactive ? () => showSuggestionCountSheet(context, ref) : null,
-        ),
-        SettingsTile(
-          icon: AppIcons.claim,
-          title: l.ai_reply_claimed,
-          subtitle: l.ai_reply_claimed_sub,
-          showChevron: false,
-          onTap: editable ? () => toggleClaimed(!config.replyWhenClaimed) : null,
-          trailing: AppSwitch(
-            value: config.replyWhenClaimed,
-            semanticLabel: l.ai_reply_claimed,
-            onChanged: editable ? toggleClaimed : null,
+        // Older servers reject these two (422): shown only where supported.
+        if (config.serverHasWebSettings) ...[
+          SettingsTile(
+            icon: AppIcons.ai,
+            title: l.ai_suggestions,
+            value: '${config.suggestionCount}',
+            onTap: interactive ? () => showSuggestionCountSheet(context, ref) : null,
           ),
-        ),
+          SettingsTile(
+            icon: AppIcons.claim,
+            title: l.ai_reply_claimed,
+            subtitle: l.ai_reply_claimed_sub,
+            showChevron: false,
+            onTap: editable ? () => toggleClaimed(!config.replyWhenClaimed) : null,
+            trailing: AppSwitch(
+              value: config.replyWhenClaimed,
+              semanticLabel: l.ai_reply_claimed,
+              onChanged: editable ? toggleClaimed : null,
+            ),
+          ),
+        ],
         SettingsTile(
           icon: AppIcons.team,
           title: l.ai_keywords,
