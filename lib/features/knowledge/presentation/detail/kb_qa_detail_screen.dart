@@ -184,7 +184,7 @@ class _KbQaDetailScreenState extends ConsumerState<KbQaDetailScreen> {
           if (qa != null && perms.canEdit) AppBarTextAction(label: l.kb_edit, onPressed: _edit),
           if (qa != null && (perms.canEdit || perms.canDelete))
             PopupMenuButton<_Menu>(
-              icon: AppIcon(AppIcons.more, dp: 14, color: c.textPrimary),
+              icon: AppIcon(AppIcons.more, dp: 12, color: c.textPrimary),
               tooltip: l.common_more,
               onSelected: _menu,
               itemBuilder: (_) => [
