@@ -7,13 +7,12 @@ import '../../../../core/models/models.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
-import '../../../../core/widgets/widgets.dart';
 import '../../application/ai_suggestion_controller.dart';
 
 /// AI suggestion card (Chat spec §4.6, DS §8.5): full card, loading
 /// shimmer, collapsed "اقتراح جاهز" pill, the on-demand "suggest a reply"
 /// button, or the no-answer row.
-class AiSuggestionCard extends ConsumerWidget {
+class AiSuggestionCard extends ConsumerStatefulWidget {
   const AiSuggestionCard({super.key, required this.conversationId, required this.onEdit, required this.onAddAnswer});
 
   final String conversationId;
@@ -21,7 +20,22 @@ class AiSuggestionCard extends ConsumerWidget {
   final void Function(String question) onAddAnswer;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AiSuggestionCard> createState() => _AiSuggestionCardState();
+}
+
+class _AiSuggestionCardState extends ConsumerState<AiSuggestionCard> {
+  /// The suggestion just arrived after the AI loading state: glow once.
+  bool _glow = false;
+
+  String get conversationId => widget.conversationId;
+  void Function(String text) get onEdit => widget.onEdit;
+  void Function(String question) get onAddAnswer => widget.onAddAnswer;
+
+  @override
+  Widget build(BuildContext context) {
+    ref.listen(aiSuggestionControllerProvider(conversationId).select((s) => s.view), (prev, next) {
+      if (next == AiCardView.card) _glow = prev == AiCardView.loading;
+    });
     final s = ref.watch(aiSuggestionControllerProvider(conversationId));
     final ctrl = ref.read(aiSuggestionControllerProvider(conversationId).notifier);
 
@@ -43,6 +57,7 @@ class AiSuggestionCard extends ConsumerWidget {
       AiCardView.loading => const _CardShell(key: ValueKey('loading'), child: _LoadingBody()),
       AiCardView.card => _CardShell(
         key: const ValueKey('card'),
+        glow: _glow,
         onSwipeDown: () => ctrl.collapse(),
         child: _CardBody(
           state: s,
@@ -89,15 +104,57 @@ class AiSuggestionCard extends ConsumerWidget {
 
 /// Container: margin H10 bottom 8, radius 20, surface (dark elevated),
 /// 1dp primaryContainerBorder, upward teal glow.
-class _CardShell extends StatelessWidget {
-  const _CardShell({super.key, required this.child, this.onSwipeDown});
+class _CardShell extends StatefulWidget {
+  const _CardShell({super.key, required this.child, this.onSwipeDown, this.glow = false});
 
   final Widget child;
   final VoidCallback? onSwipeDown;
 
+  /// Green glow around the card that fades out (suggestion just generated).
+  final bool glow;
+
+  @override
+  State<_CardShell> createState() => _CardShellState();
+}
+
+class _CardShellState extends State<_CardShell> with SingleTickerProviderStateMixin {
+  late final AnimationController _glow = AnimationController(vsync: this, duration: const Duration(milliseconds: 1600));
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.glow) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _glow.forward(from: 0);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _glow.dispose();
+    super.dispose();
+  }
+
+  Widget get child => widget.child;
+  VoidCallback? get onSwipeDown => widget.onSwipeDown;
+
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    final reduced = AppMotion.reduced(context);
+    return AnimatedBuilder(
+      animation: _glow,
+      builder: (context, _) {
+        // Quick bloom over the first 25%, then a slow fade.
+        final t = _glow.value;
+        final g = t == 0 || t == 1 ? 0.0 : (t < 0.25 ? t / 0.25 : 1 - (t - 0.25) / 0.75);
+        return _shell(context, c, reduced ? 0.0 : Curves.easeOut.transform(g.clamp(0.0, 1.0)));
+      },
+    );
+  }
+
+  Widget _shell(BuildContext context, AppColors c, double glow) {
     return GestureDetector(
       onVerticalDragEnd: onSwipeDown == null
           ? null
@@ -110,13 +167,19 @@ class _CardShell extends StatelessWidget {
         decoration: BoxDecoration(
           color: c.isDark ? c.surfaceElevated : c.surface,
           borderRadius: BorderRadius.circular(AppRadius.xxl),
-          border: Border.all(color: c.primaryContainerBorder),
-          boxShadow: c.isDark
-              ? context.shadows.mediumUp
-              : const [
-                  // Spec value: 0 -8 24 -14 rgba(15,126,122,.45).
-                  BoxShadow(offset: Offset(0, -8), blurRadius: 24, spreadRadius: -14, color: Color(0x730F7E7A)),
-                ],
+          border: Border.all(
+            color: Color.lerp(c.primaryContainerBorder, c.success, glow)!,
+            width: 1 + glow * 0.5,
+          ),
+          boxShadow: [
+            if (c.isDark)
+              ...context.shadows.mediumUp
+            else
+              // Spec value: 0 -8 24 -14 rgba(15,126,122,.45).
+              const BoxShadow(offset: Offset(0, -8), blurRadius: 24, spreadRadius: -14, color: Color(0x730F7E7A)),
+            if (glow > 0)
+              BoxShadow(blurRadius: 22 * glow, spreadRadius: 3 * glow, color: c.success.withValues(alpha: 0.45 * glow)),
+          ],
         ),
         child: child,
       ),
@@ -265,41 +328,115 @@ class _CardBody extends StatelessWidget {
   }
 }
 
-class _LoadingBody extends StatelessWidget {
+class _LoadingBody extends StatefulWidget {
   const _LoadingBody();
+
+  @override
+  State<_LoadingBody> createState() => _LoadingBodyState();
+}
+
+/// AI loading inside the card: the ✦ pulses next to "يكتب الاقتراح…", three
+/// lines with a teal light sweeping across, and the button row as quiet
+/// placeholders so the card keeps its final size.
+class _LoadingBodyState extends State<_LoadingBody> with SingleTickerProviderStateMixin {
+  late final AnimationController _t = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400));
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (AppMotion.reduced(context)) {
+      _t.stop();
+    } else if (!_t.isAnimating) {
+      _t.repeat();
+    }
+  }
+
+  @override
+  void dispose() {
+    _t.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    final t = context.text;
     final l = context.l10n;
     return Semantics(
       liveRegion: true,
       label: l.chat_ai_writing,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const _Header(),
-          const SizedBox(height: AppSpacing.sm),
-          LayoutBuilder(
-            builder: (context, box) => AppSkeleton(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SkeletonBox(width: box.maxWidth, height: 10),
-                  const SizedBox(height: 8),
-                  SkeletonBox(width: box.maxWidth * 0.85, height: 10),
-                  const SizedBox(height: 8),
-                  SkeletonBox(width: box.maxWidth * 0.55, height: 10),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          ExcludeSemantics(
-            child: Text(l.chat_ai_writing, style: context.text.caption.copyWith(color: c.textSecondary)),
-          ),
-        ],
+      child: ExcludeSemantics(
+        child: AnimatedBuilder(
+          animation: _t,
+          builder: (context, _) {
+            final v = _t.value;
+            // 0.55 → 1 → 0.55 over one loop.
+            final pulse = 0.55 + 0.45 * (1 - (2 * v - 1).abs());
+            Widget line(double factor) => FractionallySizedBox(
+                  alignment: AlignmentDirectional.centerStart,
+                  widthFactor: factor,
+                  child: Container(
+                    height: 10,
+                    margin: const EdgeInsets.only(bottom: 9),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      gradient: LinearGradient(
+                        begin: Alignment(-3 + 4 * v, 0),
+                        end: Alignment(-1 + 4 * v, 0),
+                        colors: [c.primaryContainer, c.primary.withValues(alpha: 0.28), c.primaryContainer],
+                      ),
+                    ),
+                  ),
+                );
+            Widget slot({double? width}) => Container(
+                  height: 40,
+                  width: width,
+                  decoration: BoxDecoration(
+                    color: c.surfaceVariant.withValues(alpha: 0.7),
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                );
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Transform.scale(
+                      scale: 0.85 + 0.25 * pulse,
+                      child: Opacity(opacity: pulse, child: AppIcon(AppIcons.ai, size: AppIconSize.sm, color: c.primary)),
+                    ),
+                    const SizedBox(width: 6),
+                    Flexible(
+                      child: Text(
+                        l.chat_ai_suggestion,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: t.bodySmall.copyWith(fontWeight: FontWeight.w800, color: c.textPrimary),
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(l.chat_ai_writing, style: t.caption.copyWith(fontWeight: FontWeight.w600, color: c.primary)),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                line(1),
+                line(0.86),
+                line(0.55),
+                const SizedBox(height: 3),
+                Row(
+                  children: [
+                    Expanded(child: slot()),
+                    const SizedBox(width: AppSpacing.sm),
+                    slot(width: 86),
+                    const SizedBox(width: AppSpacing.sm),
+                    slot(width: 40),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
