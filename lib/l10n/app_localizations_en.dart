@@ -8086,10 +8086,9 @@ class AppLocalizationsEn extends AppLocalizations {
     String n,
     String name,
     String phone,
-    String q,
     String status,
   ) {
-    return '$name, $phone, $status. $n messages today, number quality $q, linked for $d days';
+    return '$name, $phone, $status. $n messages today, linked for $d days';
   }
 
   @override

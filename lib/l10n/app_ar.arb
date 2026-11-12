@@ -5067,7 +5067,7 @@
   "wa_blocked_empty": "لا توجد أرقام محظورة",
   "wa_unblock": "إلغاء الحظر",
   "wa_unblocked": "تم إلغاء الحظر",
-  "wa_card_a11y": "{name}، {phone}، {status}. {n} رسالة اليوم، جودة الرقم {q}، مرتبط منذ {d} يومًا",
+  "wa_card_a11y": "{name}، {phone}، {status}. {n} رسالة اليوم، مرتبط منذ {d} يومًا",
   "@wa_card_a11y": {
     "placeholders": {
       "d": {
@@ -5080,9 +5080,6 @@
         "type": "String"
       },
       "phone": {
-        "type": "String"
-      },
-      "q": {
         "type": "String"
       },
       "status": {

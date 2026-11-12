@@ -10,8 +10,6 @@ import '../../../../../core/widgets/widgets.dart';
 import '../../domain/wa_channel.dart';
 import '../../domain/wa_status.dart';
 import '../sheets/wa_connection_details_sheet.dart';
-import '../sheets/wa_connection_log_sheet.dart';
-import '../sheets/wa_quality_sheet.dart';
 import 'wa_status_pill.dart';
 
 /// 52 circle WhatsApp tile (§4.2; dark §11).
@@ -100,12 +98,6 @@ class _WaConnectionCardState extends State<WaConnectionCard> {
     final name = ch.displayName ?? (ch.isPending ? l.wa_alert_pending : l.wa_title);
     // Disconnected: last known values dimmed (§7).
     final dimStats = ch.status == WaStatus.disconnected || ch.status == WaStatus.restricted;
-    final qualityText = ch.isCloud
-        ? waQualityLabel(l, ch.quality.rating)
-        : (ch.quality.stable == null ? '—' : (ch.quality.stable! ? l.wa_stable : l.wa_unstable));
-    final qualityColor = ch.isCloud
-        ? waQualityColor(context, ch.quality.rating)
-        : (ch.quality.stable == false ? c.textWarning : (ch.quality.stable == true ? c.textSuccess : c.textSecondary));
     final days = ch.linkedDays;
 
     final a11y = l.wa_card_a11y(
@@ -113,7 +105,6 @@ class _WaConnectionCardState extends State<WaConnectionCard> {
       phone,
       waStatusLabel(l, ch.status),
       '${ch.statsToday.messages}',
-      qualityText,
       '${days ?? 0}',
     );
 
@@ -182,12 +173,6 @@ class _WaConnectionCardState extends State<WaConnectionCard> {
                               l.wa_msgs_today,
                               c.textPrimary,
                               () => context.go(Routes.dashboard),
-                            ),
-                            (
-                              qualityText,
-                              l.wa_quality,
-                              qualityColor,
-                              () => ch.isCloud ? showWaQualitySheet(context, ch) : showWaConnectionLogSheet(context),
                             ),
                             (days == null ? '—' : l.wa_days('$days'), l.wa_linked_since, c.textPrimary, null),
                           ],

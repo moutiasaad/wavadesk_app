@@ -8113,10 +8113,9 @@ class AppLocalizationsAr extends AppLocalizations {
     String n,
     String name,
     String phone,
-    String q,
     String status,
   ) {
-    return '$name، $phone، $status. $n رسالة اليوم، جودة الرقم $q، مرتبط منذ $d يومًا';
+    return '$name، $phone، $status. $n رسالة اليوم، مرتبط منذ $d يومًا';
   }
 
   @override

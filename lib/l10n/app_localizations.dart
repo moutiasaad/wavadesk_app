@@ -14027,13 +14027,12 @@ abstract class AppLocalizations {
   /// No description provided for @wa_card_a11y.
   ///
   /// In ar, this message translates to:
-  /// **'{name}، {phone}، {status}. {n} رسالة اليوم، جودة الرقم {q}، مرتبط منذ {d} يومًا'**
+  /// **'{name}، {phone}، {status}. {n} رسالة اليوم، مرتبط منذ {d} يومًا'**
   String wa_card_a11y(
     String d,
     String n,
     String name,
     String phone,
-    String q,
     String status,
   );
 

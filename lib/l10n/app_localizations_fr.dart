@@ -8198,10 +8198,9 @@ class AppLocalizationsFr extends AppLocalizations {
     String n,
     String name,
     String phone,
-    String q,
     String status,
   ) {
-    return '$name, $phone, $status. $n messages aujourd\'hui, qualité du numéro $q, lié depuis $d jours';
+    return '$name, $phone, $status. $n messages aujourd\'hui, lié depuis $d jours';
   }
 
   @override

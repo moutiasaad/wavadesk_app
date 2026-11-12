@@ -373,7 +373,7 @@
   "wa_blocked_empty": "No blocked numbers",
   "wa_unblock": "Unblock",
   "wa_unblocked": "Unblocked",
-  "wa_card_a11y": "{name}, {phone}, {status}. {n} messages today, number quality {q}, linked for {d} days",
+  "wa_card_a11y": "{name}, {phone}, {status}. {n} messages today, linked for {d} days",
   "@wa_card_a11y": {
     "placeholders": {
       "d": {
@@ -386,9 +386,6 @@
         "type": "String"
       },
       "phone": {
-        "type": "String"
-      },
-      "q": {
         "type": "String"
       },
       "status": {
