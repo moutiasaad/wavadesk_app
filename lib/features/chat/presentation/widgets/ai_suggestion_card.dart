@@ -208,7 +208,7 @@ class _CardBody extends StatelessWidget {
     final t = context.text;
     final l = context.l10n;
     final s = state.suggestion!;
-    final bodyStyle = t.chatMessage.copyWith(fontSize: 14, height: 1.65);
+    final bodyStyle = t.chatMessage.copyWith(height: 1.65);
 
     return Semantics(
       container: true,

@@ -317,7 +317,7 @@ class _ClaimOnReplyRow extends StatelessWidget {
               ),
               child: Text(
                 l.claim_reply_placeholder,
-                style: context.text.bodyLarge.copyWith(fontSize: 15, color: c.textTertiary),
+                style: context.text.bodyLarge.copyWith(fontSize: 14, color: c.textTertiary),
               ),
             ),
           ),

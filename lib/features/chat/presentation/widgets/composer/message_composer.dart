@@ -574,7 +574,7 @@ class _Field extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     final t = context.text;
-    final style = t.bodyLarge.copyWith(fontSize: 15);
+    final style = t.bodyLarge.copyWith(fontSize: 14);
     return LayoutBuilder(
       builder: (context, box) {
         final innerWidth = box.maxWidth - 16 - (actionButton == null ? 14 : 48);

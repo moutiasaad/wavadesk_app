@@ -54,12 +54,12 @@ class AppTextStyles extends ThemeExtension<AppTextStyles> {
   TextStyle get buttonLarge => _s(16, FontWeight.w700, 1.2);
   TextStyle get buttonMedium => _s(14, FontWeight.w700, 1.2);
   TextStyle get buttonSmall => _s(13, FontWeight.w700, 1.2);
-  TextStyle get chatMessage => _s(15, FontWeight.w500, 1.6);
+  TextStyle get chatMessage => _s(13.5, FontWeight.w500, 1.6);
   TextStyle get chatMessageEmoji => _s(32, FontWeight.w400, 1.2);
-  TextStyle get chatSenderLabel => _s(11, FontWeight.w800, 1.3);
-  TextStyle get chatTimestamp => _s(11, FontWeight.w600, 1.2, tabular: true);
+  TextStyle get chatSenderLabel => _s(10.5, FontWeight.w800, 1.3);
+  TextStyle get chatTimestamp => _s(10, FontWeight.w600, 1.2, tabular: true);
   TextStyle get listTimestamp => _s(12, FontWeight.w600, 1.2, color: _c.textTertiary, tabular: true);
-  TextStyle get dayDivider => _s(12, FontWeight.w700, 1.2, color: _c.textSecondary);
+  TextStyle get dayDivider => _s(11, FontWeight.w700, 1.2, color: _c.textSecondary);
   TextStyle get badge => _s(11, FontWeight.w800, 1.0, tabular: true);
   TextStyle get chipLabel => _s(13, FontWeight.w700, 1.2);
   TextStyle get tagLabel => _s(11.5, FontWeight.w700, 1.2);
