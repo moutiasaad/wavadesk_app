@@ -8,6 +8,9 @@ enum AppIconButtonVariant { plain, filled, outlined, primary }
 /// §8.11 icon buttons. All circular; visual 40 (44 for primary) inside a
 /// 48dp hit area. Every instance needs a [semanticLabel] (§11).
 class AppIconButton extends StatelessWidget {
+  /// Glyph size for every icon button on a brand header (app bars).
+  static const double headerIconSize = 16;
+
   const AppIconButton({
     super.key,
     required this.icon,
@@ -42,9 +45,8 @@ class AppIconButton extends StatelessWidget {
     final brand = BrandSurface.of(context);
     final (Color bg, Color fg, Border? border) = switch (variant) {
       AppIconButtonVariant.plain => (Colors.transparent, brand ? Colors.white : c.textPrimary, null),
-      AppIconButtonVariant.filled => brand
-          ? (Colors.white.withValues(alpha: 0.16), Colors.white, null)
-          : (c.surfaceVariant, c.textPrimary, null),
+      AppIconButtonVariant.filled =>
+        brand ? (Colors.white.withValues(alpha: 0.16), Colors.white, null) : (c.surfaceVariant, c.textPrimary, null),
       AppIconButtonVariant.outlined => (c.surface, c.textPrimary, Border.all(color: c.border)),
       // On the brand header the solid button flips: white disc, teal icon.
       AppIconButtonVariant.primary => brand ? (Colors.white, c.primary, null) : (c.primary, c.onPrimary, null),
@@ -75,7 +77,13 @@ class AppIconButton extends StatelessWidget {
                       onTap: onPressed,
                       child: SizedBox.square(
                         dimension: d,
-                        child: AppIcon(icon, dp: iconSize ?? 18, color: iconColor ?? fg),
+                        // Every app bar icon (back included) is one size,
+                        // matching the row icons on the screen below.
+                        child: AppIcon(
+                          icon,
+                          dp: brand ? AppIconButton.headerIconSize : (iconSize ?? 18),
+                          color: iconColor ?? fg,
+                        ),
                       ),
                     ),
                   ),
