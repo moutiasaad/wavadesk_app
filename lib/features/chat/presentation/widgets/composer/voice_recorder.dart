@@ -273,7 +273,7 @@ class VoiceRecordButton extends StatelessWidget {
                             ? [BoxShadow(color: c.error.withValues(alpha: 0.35), blurRadius: 16, spreadRadius: 2)]
                             : null,
                       ),
-                      child: const AppIcon(AppIcons.mic, color: Colors.white),
+                      child: const AppIcon(AppIcons.mic, dp: 18, color: Colors.white),
                     ),
                   ),
                 ],

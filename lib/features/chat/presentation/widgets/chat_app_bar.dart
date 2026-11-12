@@ -100,7 +100,7 @@ class ChatAppBar extends ConsumerWidget {
             if (showBack) ...[
               AppIconButton(
                 icon: AppIcons.back,
-                iconSize: 24,
+                iconSize: 20,
                 semanticLabel: otherUnread > 0 ? l.chatbar_back_unread(otherUnread) : l.common_back,
                 onPressed: () => Navigator.of(context).maybePop(),
               ),
@@ -155,10 +155,11 @@ class ChatAppBar extends ConsumerWidget {
             if (canCall)
               AppIconButton(
                 icon: AppIcons.call,
+                iconSize: 18,
                 semanticLabel: l.chatbar_call,
                 onPressed: () => _callSheet(context, contact),
               ),
-            AppIconButton(icon: AppIcons.more, semanticLabel: l.chatbar_more, onPressed: onMore),
+            AppIconButton(icon: AppIcons.more, iconSize: 18, semanticLabel: l.chatbar_more, onPressed: onMore),
           ],
         ),
         ),
