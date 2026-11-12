@@ -34,9 +34,8 @@ class BrandHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final overlay = c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: overlay.copyWith(statusBarColor: Colors.transparent),
+      value: appOverlay(context, lightStatusIcons: c.isDark),
       child: AnimatedContainer(
         duration: AppMotion.fast,
         decoration: BoxDecoration(

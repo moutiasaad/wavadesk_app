@@ -24,6 +24,17 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  // Transparent navigation bar (3-button or gesture): the tab bar / page
+  // shows behind it instead of a black strip. Headers refine it per screen.
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarDividerColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemNavigationBarContrastEnforced: false,
+    ),
+  );
   // Western digits everywhere (times, dates): intl uses Arabic-Indic digits
   // for `ar` dates by default ("١٣:٣٥"); numbers already use 0-9.
   DateFormat.useNativeDigitsByDefaultFor('ar', false);

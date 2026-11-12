@@ -41,7 +41,7 @@ class AccountTealHeader extends ConsumerWidget {
     final big = MediaQuery.textScalerOf(context).scale(10) >= 20;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      value: appOverlay(context, lightStatusIcons: true),
       child: Container(
         color: DashPalette.header,
         padding: EdgeInsets.fromLTRB(16, MediaQuery.viewPaddingOf(context).top + 4, 16, 22),

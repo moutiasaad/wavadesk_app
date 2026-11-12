@@ -8,6 +8,7 @@ import 'app_text_styles.dart';
 import 'simple_slide_transition.dart';
 
 export 'app_colors.dart';
+export 'app_overlay.dart';
 export 'app_icons.dart';
 export 'app_motion.dart';
 export 'app_radius.dart';

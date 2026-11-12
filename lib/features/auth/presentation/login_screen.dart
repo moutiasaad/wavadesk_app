@@ -326,7 +326,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with TickerProviderSt
         if (!didPop) SystemNavigator.pop();
       },
       child: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+        value: appOverlay(context, lightStatusIcons: true),
         child: Scaffold(
           backgroundColor: dark ? const Color(0xFF0F171A) : Colors.white,
           resizeToAvoidBottomInset: true,

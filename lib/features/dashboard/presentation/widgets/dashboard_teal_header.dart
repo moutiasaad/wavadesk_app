@@ -48,7 +48,7 @@ class DashboardTealHeader extends ConsumerWidget {
     final big = MediaQuery.textScalerOf(context).scale(10) >= 20;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      value: appOverlay(context, lightStatusIcons: true),
       child: Container(
         color: DashPalette.header,
         padding: EdgeInsets.fromLTRB(16, MediaQuery.viewPaddingOf(context).top, 16, 18),
@@ -298,9 +298,7 @@ class TealCollapsedBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final c = context.colors;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: (c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark).copyWith(
-        statusBarColor: Colors.transparent,
-      ),
+      value: appOverlay(context, lightStatusIcons: c.isDark),
       child: Container(
         padding: EdgeInsets.only(top: MediaQuery.viewPaddingOf(context).top),
         decoration: BoxDecoration(

@@ -29,7 +29,7 @@ class InboxHeader extends StatelessWidget {
     final l = context.l10n;
     final big = MediaQuery.textScalerOf(context).scale(10) >= 20;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      value: appOverlay(context, lightStatusIcons: true),
       child: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -217,7 +217,7 @@ class InboxSelectionBar extends StatelessWidget {
           ),
         );
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: (c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark).copyWith(statusBarColor: Colors.transparent),
+      value: appOverlay(context, lightStatusIcons: c.isDark),
       child: Container(
         padding: EdgeInsets.only(top: MediaQuery.viewPaddingOf(context).top),
         decoration: BoxDecoration(color: c.surface, border: Border(bottom: BorderSide(color: p.divider))),
