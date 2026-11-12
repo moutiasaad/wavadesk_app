@@ -14377,6 +14377,210 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'حالة تجريبية'**
   String get wa_demo_state;
+
+  /// No description provided for @wa_ct_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'عناوين الإغلاق'**
+  String get wa_ct_title;
+
+  /// No description provided for @wa_ct_subtitle.
+  ///
+  /// In ar, this message translates to:
+  /// **'العناوين التي يختار منها الموظفون عند إغلاق المحادثة. أضف عناوين جديدة أو احذف ما لا تستخدمه.'**
+  String get wa_ct_subtitle;
+
+  /// No description provided for @wa_ct_add_label.
+  ///
+  /// In ar, this message translates to:
+  /// **'عنوان جديد'**
+  String get wa_ct_add_label;
+
+  /// No description provided for @wa_ct_add_placeholder.
+  ///
+  /// In ar, this message translates to:
+  /// **'مثال: تم استلام الدفع'**
+  String get wa_ct_add_placeholder;
+
+  /// No description provided for @wa_ct_add_btn.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة عنوان'**
+  String get wa_ct_add_btn;
+
+  /// No description provided for @wa_ct_search.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث في العناوين…'**
+  String get wa_ct_search;
+
+  /// No description provided for @wa_ct_list_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'العناوين في نافذة الإغلاق'**
+  String get wa_ct_list_title;
+
+  /// No description provided for @wa_ct_list_desc.
+  ///
+  /// In ar, this message translates to:
+  /// **'تظهر بهذا الترتيب عند إغلاق المحادثة.'**
+  String get wa_ct_list_desc;
+
+  /// No description provided for @wa_ct_default_badge.
+  ///
+  /// In ar, this message translates to:
+  /// **'افتراضي'**
+  String get wa_ct_default_badge;
+
+  /// No description provided for @wa_ct_added_by.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضافه {name}'**
+  String wa_ct_added_by(String name);
+
+  /// No description provided for @wa_ct_empty_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد عناوين بعد'**
+  String get wa_ct_empty_title;
+
+  /// No description provided for @wa_ct_empty_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'أضف أول عنوان من الأعلى، أو استرجع العناوين الافتراضية.'**
+  String get wa_ct_empty_hint;
+
+  /// No description provided for @wa_ct_no_matches.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد عنوان يطابق البحث.'**
+  String get wa_ct_no_matches;
+
+  /// No description provided for @wa_ct_restore_defaults.
+  ///
+  /// In ar, this message translates to:
+  /// **'استرجاع العناوين الافتراضية'**
+  String get wa_ct_restore_defaults;
+
+  /// No description provided for @wa_ct_restore_done.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم استرجاع العناوين الافتراضية.'**
+  String get wa_ct_restore_done;
+
+  /// No description provided for @wa_ct_delete_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف هذا العنوان؟'**
+  String get wa_ct_delete_title;
+
+  /// No description provided for @wa_ct_delete_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'لن يظهر بعد الآن عند إغلاق المحادثة. المحادثات المغلقة به تحتفظ بعنوانها:'**
+  String get wa_ct_delete_body;
+
+  /// No description provided for @wa_ct_deleted.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حذف العنوان.'**
+  String get wa_ct_deleted;
+
+  /// No description provided for @wa_ct_saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حفظ العنوان.'**
+  String get wa_ct_saved;
+
+  /// No description provided for @wa_ct_added.
+  ///
+  /// In ar, this message translates to:
+  /// **'تمت إضافة العنوان.'**
+  String get wa_ct_added;
+
+  /// No description provided for @wa_ct_edit.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل'**
+  String get wa_ct_edit;
+
+  /// No description provided for @wa_ct_delete.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف'**
+  String get wa_ct_delete;
+
+  /// No description provided for @wa_ct_save.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ'**
+  String get wa_ct_save;
+
+  /// No description provided for @wa_ct_cancel.
+  ///
+  /// In ar, this message translates to:
+  /// **'إلغاء'**
+  String get wa_ct_cancel;
+
+  /// No description provided for @wa_ct_readonly_hint.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكن لصاحب مساحة العمل أو المشرفين أو الموظف الذي أضاف العنوان فقط تعديله.'**
+  String get wa_ct_readonly_hint;
+
+  /// No description provided for @wa_ct_error_empty.
+  ///
+  /// In ar, this message translates to:
+  /// **'اكتب عنوانًا أولًا.'**
+  String get wa_ct_error_empty;
+
+  /// No description provided for @wa_ct_error_limit.
+  ///
+  /// In ar, this message translates to:
+  /// **'يمكن لمساحة العمل الاحتفاظ بـ {n} عنوانًا كحد أقصى. احذف عنوانًا لإضافة آخر.'**
+  String wa_ct_error_limit(String n);
+
+  /// No description provided for @wa_ct_error_duplicate.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا العنوان موجود في القائمة.'**
+  String get wa_ct_error_duplicate;
+
+  /// No description provided for @wa_ct_save_error.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر حفظ هذا العنوان.'**
+  String get wa_ct_save_error;
+
+  /// No description provided for @wa_ct_load_error.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تحميل العناوين.'**
+  String get wa_ct_load_error;
+
+  /// No description provided for @wa_ct_unavailable_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستتوفر قريبًا في التطبيق'**
+  String get wa_ct_unavailable_title;
+
+  /// No description provided for @wa_ct_unavailable_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستعمل هذه الصفحة في التطبيق بعد تحديث الخادم القادم. يمكنك إدارة عناوين الإغلاق من لوحة الويب الآن.'**
+  String get wa_ct_unavailable_body;
+
+  /// No description provided for @wa_ct_open_web.
+  ///
+  /// In ar, this message translates to:
+  /// **'فتح لوحة الويب'**
+  String get wa_ct_open_web;
+
+  /// No description provided for @wa_kb_row.
+  ///
+  /// In ar, this message translates to:
+  /// **'قاعدة المعرفة'**
+  String get wa_kb_row;
 }
 
 class _AppLocalizationsDelegate

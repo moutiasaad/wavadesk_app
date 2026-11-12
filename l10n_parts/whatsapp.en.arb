@@ -413,5 +413,53 @@
   },
   "wa_already_linked": "Already linked",
   "wa_banned": "WhatsApp banned this number",
-  "wa_demo_state": "Demo state"
+  "wa_demo_state": "Demo state",
+  "wa_ct_title": "Closing titles",
+  "wa_ct_subtitle": "The titles agents pick from when they close a conversation. Add new ones or remove the ones you don't use.",
+  "wa_ct_add_label": "New title",
+  "wa_ct_add_placeholder": "e.g. Payment received",
+  "wa_ct_add_btn": "Add title",
+  "wa_ct_search": "Search titles…",
+  "wa_ct_list_title": "Titles in the close window",
+  "wa_ct_list_desc": "Shown in this order when a conversation is closed.",
+  "wa_ct_default_badge": "Default",
+  "wa_ct_added_by": "Added by {name}",
+  "@wa_ct_added_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_ct_empty_title": "No titles yet",
+  "wa_ct_empty_hint": "Add your first title above, or bring back the default ones.",
+  "wa_ct_no_matches": "No title matches that search.",
+  "wa_ct_restore_defaults": "Restore default titles",
+  "wa_ct_restore_done": "Default titles restored.",
+  "wa_ct_delete_title": "Delete this title?",
+  "wa_ct_delete_body": "It will no longer be offered when closing a conversation. Conversations already closed with it keep their title:",
+  "wa_ct_deleted": "Title deleted.",
+  "wa_ct_saved": "Title saved.",
+  "wa_ct_added": "Title added.",
+  "wa_ct_edit": "Edit",
+  "wa_ct_delete": "Delete",
+  "wa_ct_save": "Save",
+  "wa_ct_cancel": "Cancel",
+  "wa_ct_readonly_hint": "Only the workspace owner, supervisors, or the agent who added a title can change it.",
+  "wa_ct_error_empty": "Type a title first.",
+  "wa_ct_error_limit": "A workspace can keep up to {n} titles. Delete one to add another.",
+  "@wa_ct_error_limit": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_ct_error_duplicate": "This title is already in the list.",
+  "wa_ct_save_error": "Could not save this title.",
+  "wa_ct_load_error": "Could not load the titles.",
+  "wa_ct_unavailable_title": "Coming soon to the app",
+  "wa_ct_unavailable_body": "This page works in the app after the next server update. You can manage closing titles on the web panel now.",
+  "wa_ct_open_web": "Open the web panel",
+  "wa_kb_row": "Knowledge base"
 }

@@ -8340,4 +8340,115 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get wa_demo_state => 'حالة تجريبية';
+
+  @override
+  String get wa_ct_title => 'عناوين الإغلاق';
+
+  @override
+  String get wa_ct_subtitle =>
+      'العناوين التي يختار منها الموظفون عند إغلاق المحادثة. أضف عناوين جديدة أو احذف ما لا تستخدمه.';
+
+  @override
+  String get wa_ct_add_label => 'عنوان جديد';
+
+  @override
+  String get wa_ct_add_placeholder => 'مثال: تم استلام الدفع';
+
+  @override
+  String get wa_ct_add_btn => 'إضافة عنوان';
+
+  @override
+  String get wa_ct_search => 'ابحث في العناوين…';
+
+  @override
+  String get wa_ct_list_title => 'العناوين في نافذة الإغلاق';
+
+  @override
+  String get wa_ct_list_desc => 'تظهر بهذا الترتيب عند إغلاق المحادثة.';
+
+  @override
+  String get wa_ct_default_badge => 'افتراضي';
+
+  @override
+  String wa_ct_added_by(String name) {
+    return 'أضافه $name';
+  }
+
+  @override
+  String get wa_ct_empty_title => 'لا توجد عناوين بعد';
+
+  @override
+  String get wa_ct_empty_hint =>
+      'أضف أول عنوان من الأعلى، أو استرجع العناوين الافتراضية.';
+
+  @override
+  String get wa_ct_no_matches => 'لا يوجد عنوان يطابق البحث.';
+
+  @override
+  String get wa_ct_restore_defaults => 'استرجاع العناوين الافتراضية';
+
+  @override
+  String get wa_ct_restore_done => 'تم استرجاع العناوين الافتراضية.';
+
+  @override
+  String get wa_ct_delete_title => 'حذف هذا العنوان؟';
+
+  @override
+  String get wa_ct_delete_body =>
+      'لن يظهر بعد الآن عند إغلاق المحادثة. المحادثات المغلقة به تحتفظ بعنوانها:';
+
+  @override
+  String get wa_ct_deleted => 'تم حذف العنوان.';
+
+  @override
+  String get wa_ct_saved => 'تم حفظ العنوان.';
+
+  @override
+  String get wa_ct_added => 'تمت إضافة العنوان.';
+
+  @override
+  String get wa_ct_edit => 'تعديل';
+
+  @override
+  String get wa_ct_delete => 'حذف';
+
+  @override
+  String get wa_ct_save => 'حفظ';
+
+  @override
+  String get wa_ct_cancel => 'إلغاء';
+
+  @override
+  String get wa_ct_readonly_hint =>
+      'يمكن لصاحب مساحة العمل أو المشرفين أو الموظف الذي أضاف العنوان فقط تعديله.';
+
+  @override
+  String get wa_ct_error_empty => 'اكتب عنوانًا أولًا.';
+
+  @override
+  String wa_ct_error_limit(String n) {
+    return 'يمكن لمساحة العمل الاحتفاظ بـ $n عنوانًا كحد أقصى. احذف عنوانًا لإضافة آخر.';
+  }
+
+  @override
+  String get wa_ct_error_duplicate => 'هذا العنوان موجود في القائمة.';
+
+  @override
+  String get wa_ct_save_error => 'تعذّر حفظ هذا العنوان.';
+
+  @override
+  String get wa_ct_load_error => 'تعذّر تحميل العناوين.';
+
+  @override
+  String get wa_ct_unavailable_title => 'ستتوفر قريبًا في التطبيق';
+
+  @override
+  String get wa_ct_unavailable_body =>
+      'ستعمل هذه الصفحة في التطبيق بعد تحديث الخادم القادم. يمكنك إدارة عناوين الإغلاق من لوحة الويب الآن.';
+
+  @override
+  String get wa_ct_open_web => 'فتح لوحة الويب';
+
+  @override
+  String get wa_kb_row => 'قاعدة المعرفة';
 }

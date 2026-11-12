@@ -8419,4 +8419,116 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get wa_demo_state => 'État de démonstration';
+
+  @override
+  String get wa_ct_title => 'Titres de clôture';
+
+  @override
+  String get wa_ct_subtitle =>
+      'Les titres proposés aux agents lorsqu’ils clôturent une conversation. Ajoutez-en ou supprimez ceux que vous n’utilisez pas.';
+
+  @override
+  String get wa_ct_add_label => 'Nouveau titre';
+
+  @override
+  String get wa_ct_add_placeholder => 'ex. Paiement reçu';
+
+  @override
+  String get wa_ct_add_btn => 'Ajouter';
+
+  @override
+  String get wa_ct_search => 'Rechercher un titre…';
+
+  @override
+  String get wa_ct_list_title => 'Titres de la fenêtre de clôture';
+
+  @override
+  String get wa_ct_list_desc =>
+      'Affichés dans cet ordre lors de la clôture d’une conversation.';
+
+  @override
+  String get wa_ct_default_badge => 'Par défaut';
+
+  @override
+  String wa_ct_added_by(String name) {
+    return 'Ajouté par $name';
+  }
+
+  @override
+  String get wa_ct_empty_title => 'Aucun titre';
+
+  @override
+  String get wa_ct_empty_hint =>
+      'Ajoutez votre premier titre ci-dessus, ou restaurez les titres par défaut.';
+
+  @override
+  String get wa_ct_no_matches => 'Aucun titre ne correspond.';
+
+  @override
+  String get wa_ct_restore_defaults => 'Restaurer les titres par défaut';
+
+  @override
+  String get wa_ct_restore_done => 'Titres par défaut restaurés.';
+
+  @override
+  String get wa_ct_delete_title => 'Supprimer ce titre ?';
+
+  @override
+  String get wa_ct_delete_body =>
+      'Il ne sera plus proposé à la clôture. Les conversations déjà clôturées gardent leur titre :';
+
+  @override
+  String get wa_ct_deleted => 'Titre supprimé.';
+
+  @override
+  String get wa_ct_saved => 'Titre enregistré.';
+
+  @override
+  String get wa_ct_added => 'Titre ajouté.';
+
+  @override
+  String get wa_ct_edit => 'Modifier';
+
+  @override
+  String get wa_ct_delete => 'Supprimer';
+
+  @override
+  String get wa_ct_save => 'Enregistrer';
+
+  @override
+  String get wa_ct_cancel => 'Annuler';
+
+  @override
+  String get wa_ct_readonly_hint =>
+      'Seuls le propriétaire de l’espace, les superviseurs ou l’agent qui a ajouté le titre peuvent le modifier.';
+
+  @override
+  String get wa_ct_error_empty => 'Saisissez d’abord un titre.';
+
+  @override
+  String wa_ct_error_limit(String n) {
+    return 'Un espace peut garder jusqu’à $n titres. Supprimez-en un pour en ajouter un autre.';
+  }
+
+  @override
+  String get wa_ct_error_duplicate => 'Ce titre est déjà dans la liste.';
+
+  @override
+  String get wa_ct_save_error => 'Impossible d’enregistrer ce titre.';
+
+  @override
+  String get wa_ct_load_error => 'Impossible de charger les titres.';
+
+  @override
+  String get wa_ct_unavailable_title => 'Bientôt dans l’application';
+
+  @override
+  String get wa_ct_unavailable_body =>
+      'Cette page fonctionnera dans l’application après la prochaine mise à jour du serveur. Gérez les titres de clôture depuis le panneau web.';
+
+  @override
+  String get wa_ct_open_web => 'Ouvrir le panneau web';
+
+  @override
+  String get wa_kb_row => 'Base de connaissances';
 }

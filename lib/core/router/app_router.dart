@@ -19,6 +19,7 @@ import '../../features/ai_agent/presentation/sheets/team_styles_screen.dart';
 import '../../features/ai_agent/presentation/test/ai_test_chat_screen.dart';
 import '../../features/auth/application/auth_session.dart';
 import '../../features/channels/whatsapp/data/quick_replies_api.dart' show QuickReplyScope;
+import '../../features/channels/whatsapp/presentation/close_titles/close_titles_screen.dart';
 import '../../features/channels/whatsapp/presentation/connect/wa_connect_screen.dart';
 import '../../features/channels/whatsapp/presentation/editors/wa_away_editor_screen.dart';
 import '../../features/channels/whatsapp/presentation/editors/wa_welcome_editor_screen.dart';
@@ -85,6 +86,7 @@ abstract final class Routes {
   static const whatsappWelcome = '/settings/whatsapp/welcome';
   static const whatsappAway = '/settings/whatsapp/away';
   static const whatsappQuickReplies = '/settings/whatsapp/quick-replies';
+  static const whatsappCloseTitles = '/settings/whatsapp/close-titles';
   static const whatsappTemplates = '/settings/whatsapp/templates';
   static const whatsappNumbers = '/settings/whatsapp/numbers';
   static String whatsappConnect({String? source}) =>
@@ -291,6 +293,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.whatsappWelcome, builder: (_, _) => const WaWelcomeEditorScreen()),
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.whatsappAway, builder: (_, _) => const WaAwayEditorScreen()),
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.whatsappQuickReplies, builder: (_, _) => const QuickRepliesScreen()),
+      GoRoute(parentNavigatorKey: _rootKey, path: Routes.whatsappCloseTitles, builder: (_, _) => const CloseTitlesScreen()),
       GoRoute(
         parentNavigatorKey: _rootKey,
         path: '/settings/whatsapp/quick-replies/:id',

@@ -8306,4 +8306,116 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get wa_demo_state => 'Demo state';
+
+  @override
+  String get wa_ct_title => 'Closing titles';
+
+  @override
+  String get wa_ct_subtitle =>
+      'The titles agents pick from when they close a conversation. Add new ones or remove the ones you don\'t use.';
+
+  @override
+  String get wa_ct_add_label => 'New title';
+
+  @override
+  String get wa_ct_add_placeholder => 'e.g. Payment received';
+
+  @override
+  String get wa_ct_add_btn => 'Add title';
+
+  @override
+  String get wa_ct_search => 'Search titles…';
+
+  @override
+  String get wa_ct_list_title => 'Titles in the close window';
+
+  @override
+  String get wa_ct_list_desc =>
+      'Shown in this order when a conversation is closed.';
+
+  @override
+  String get wa_ct_default_badge => 'Default';
+
+  @override
+  String wa_ct_added_by(String name) {
+    return 'Added by $name';
+  }
+
+  @override
+  String get wa_ct_empty_title => 'No titles yet';
+
+  @override
+  String get wa_ct_empty_hint =>
+      'Add your first title above, or bring back the default ones.';
+
+  @override
+  String get wa_ct_no_matches => 'No title matches that search.';
+
+  @override
+  String get wa_ct_restore_defaults => 'Restore default titles';
+
+  @override
+  String get wa_ct_restore_done => 'Default titles restored.';
+
+  @override
+  String get wa_ct_delete_title => 'Delete this title?';
+
+  @override
+  String get wa_ct_delete_body =>
+      'It will no longer be offered when closing a conversation. Conversations already closed with it keep their title:';
+
+  @override
+  String get wa_ct_deleted => 'Title deleted.';
+
+  @override
+  String get wa_ct_saved => 'Title saved.';
+
+  @override
+  String get wa_ct_added => 'Title added.';
+
+  @override
+  String get wa_ct_edit => 'Edit';
+
+  @override
+  String get wa_ct_delete => 'Delete';
+
+  @override
+  String get wa_ct_save => 'Save';
+
+  @override
+  String get wa_ct_cancel => 'Cancel';
+
+  @override
+  String get wa_ct_readonly_hint =>
+      'Only the workspace owner, supervisors, or the agent who added a title can change it.';
+
+  @override
+  String get wa_ct_error_empty => 'Type a title first.';
+
+  @override
+  String wa_ct_error_limit(String n) {
+    return 'A workspace can keep up to $n titles. Delete one to add another.';
+  }
+
+  @override
+  String get wa_ct_error_duplicate => 'This title is already in the list.';
+
+  @override
+  String get wa_ct_save_error => 'Could not save this title.';
+
+  @override
+  String get wa_ct_load_error => 'Could not load the titles.';
+
+  @override
+  String get wa_ct_unavailable_title => 'Coming soon to the app';
+
+  @override
+  String get wa_ct_unavailable_body =>
+      'This page works in the app after the next server update. You can manage closing titles on the web panel now.';
+
+  @override
+  String get wa_ct_open_web => 'Open the web panel';
+
+  @override
+  String get wa_kb_row => 'Knowledge base';
 }

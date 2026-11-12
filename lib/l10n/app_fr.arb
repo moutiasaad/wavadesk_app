@@ -5134,5 +5134,53 @@
   },
   "wa_already_linked": "Déjà lié",
   "wa_banned": "WhatsApp a banni ce numéro",
-  "wa_demo_state": "État de démonstration"
+  "wa_demo_state": "État de démonstration",
+  "wa_ct_title": "Titres de clôture",
+  "wa_ct_subtitle": "Les titres proposés aux agents lorsqu’ils clôturent une conversation. Ajoutez-en ou supprimez ceux que vous n’utilisez pas.",
+  "wa_ct_add_label": "Nouveau titre",
+  "wa_ct_add_placeholder": "ex. Paiement reçu",
+  "wa_ct_add_btn": "Ajouter",
+  "wa_ct_search": "Rechercher un titre…",
+  "wa_ct_list_title": "Titres de la fenêtre de clôture",
+  "wa_ct_list_desc": "Affichés dans cet ordre lors de la clôture d’une conversation.",
+  "wa_ct_default_badge": "Par défaut",
+  "wa_ct_added_by": "Ajouté par {name}",
+  "@wa_ct_added_by": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_ct_empty_title": "Aucun titre",
+  "wa_ct_empty_hint": "Ajoutez votre premier titre ci-dessus, ou restaurez les titres par défaut.",
+  "wa_ct_no_matches": "Aucun titre ne correspond.",
+  "wa_ct_restore_defaults": "Restaurer les titres par défaut",
+  "wa_ct_restore_done": "Titres par défaut restaurés.",
+  "wa_ct_delete_title": "Supprimer ce titre ?",
+  "wa_ct_delete_body": "Il ne sera plus proposé à la clôture. Les conversations déjà clôturées gardent leur titre :",
+  "wa_ct_deleted": "Titre supprimé.",
+  "wa_ct_saved": "Titre enregistré.",
+  "wa_ct_added": "Titre ajouté.",
+  "wa_ct_edit": "Modifier",
+  "wa_ct_delete": "Supprimer",
+  "wa_ct_save": "Enregistrer",
+  "wa_ct_cancel": "Annuler",
+  "wa_ct_readonly_hint": "Seuls le propriétaire de l’espace, les superviseurs ou l’agent qui a ajouté le titre peuvent le modifier.",
+  "wa_ct_error_empty": "Saisissez d’abord un titre.",
+  "wa_ct_error_limit": "Un espace peut garder jusqu’à {n} titres. Supprimez-en un pour en ajouter un autre.",
+  "@wa_ct_error_limit": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "wa_ct_error_duplicate": "Ce titre est déjà dans la liste.",
+  "wa_ct_save_error": "Impossible d’enregistrer ce titre.",
+  "wa_ct_load_error": "Impossible de charger les titres.",
+  "wa_ct_unavailable_title": "Bientôt dans l’application",
+  "wa_ct_unavailable_body": "Cette page fonctionnera dans l’application après la prochaine mise à jour du serveur. Gérez les titres de clôture depuis le panneau web.",
+  "wa_ct_open_web": "Ouvrir le panneau web",
+  "wa_kb_row": "Base de connaissances"
 }
