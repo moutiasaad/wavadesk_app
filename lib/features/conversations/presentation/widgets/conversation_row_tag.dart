@@ -28,9 +28,9 @@ class ConversationRowTag extends StatelessWidget {
     final c = context.colors;
     final text = label(tag, now, context.l10n, context.localeName);
     final (Color fg, Color bg, IconData? icon) = switch (tag.kind) {
-      RowTagKind.waiting => (c.statusWaiting, c.statusWaitingContainer, AppIcons.waiting),
+      RowTagKind.waiting => (c.statusWaiting, c.statusWaitingContainer, AppIcons.clock),
       RowTagKind.aiReady => (c.statusAi, c.statusAiContainer, AppIcons.ai),
-      RowTagKind.aiReplied => (c.statusClosed, c.statusClosedContainer, AppIcons.aiAgent),
+      RowTagKind.aiReplied => (c.statusClosed, c.statusClosedContainer, null),
       RowTagKind.colleague => (c.statusClosed, c.statusClosedContainer, null),
       RowTagKind.snoozed => (c.statusSnoozed, c.statusSnoozedContainer, AppIcons.snooze),
       RowTagKind.windowClosing => (c.statusPending, c.statusPendingContainer, AppIcons.waiting),

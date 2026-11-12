@@ -29,14 +29,15 @@ abstract final class RowTagResolver {
     required String meId,
     required DateTime now,
   }) {
-    // 1. Customer waiting > SLA and unanswered.
-    if (c.waitingOverSla(now)) {
-      return RowTag(RowTagKind.waiting, minutes: now.difference(c.waitingSince!).inMinutes);
-    }
+    // 1. Customer waiting for a human (unanswered) for a minute or more.
+    final waited = c.waitingSince == null || !c.isActive ? null : now.difference(c.waitingSince!).inMinutes;
+    if (waited != null && waited >= 1) return RowTag(RowTagKind.waiting, minutes: waited);
     // 2. AI suggestion ready.
     if (c.aiSuggestionReady && c.isActive) return const RowTag(RowTagKind.aiReady);
-    // 3. Last reply was AI and the conversation is open.
-    if (c.isActive && c.lastMessage?.senderType == SenderType.ai) return const RowTag(RowTagKind.aiReplied);
+    // 3. The AI is answering it (the list API's `ai_handling`) or wrote last.
+    if (c.isActive && (c.handledByAi || c.lastMessage?.senderType == SenderType.ai)) {
+      return const RowTag(RowTagKind.aiReplied);
+    }
     // 4. Assigned to a colleague — only in "الكل".
     if (segment == InboxSegment.all && c.assignee != null && !c.isMine(meId)) {
       return RowTag(RowTagKind.colleague, assignee: c.assignee);
