@@ -4072,6 +4072,12 @@ abstract class AppLocalizations {
   /// **'حسّن الرد بالذكاء الاصطناعي'**
   String get composer_ai_rewrite;
 
+  /// No description provided for @composer_saved_replies.
+  ///
+  /// In ar, this message translates to:
+  /// **'الردود المحفوظة'**
+  String get composer_saved_replies;
+
   /// No description provided for @composer_field_label.
   ///
   /// In ar, this message translates to:

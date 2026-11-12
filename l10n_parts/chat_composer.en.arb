@@ -96,6 +96,7 @@
   "composer_record_locked": "Recording hands-free",
   "composer_record_slide_up": "Slide up to lock",
   "composer_ai_rewrite": "Improve reply with AI",
+  "composer_saved_replies": "Saved replies",
   "composer_field_label": "Write a reply",
   "composer_note_field_label": "Write an internal note",
   "composer_template": "Template",

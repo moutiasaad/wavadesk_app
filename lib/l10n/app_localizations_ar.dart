@@ -2221,6 +2221,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get composer_ai_rewrite => 'حسّن الرد بالذكاء الاصطناعي';
 
   @override
+  String get composer_saved_replies => 'الردود المحفوظة';
+
+  @override
   String get composer_field_label => 'اكتب ردًّا';
 
   @override

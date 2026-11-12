@@ -96,6 +96,7 @@
   "composer_record_locked": "التسجيل مستمر بدون ضغط",
   "composer_record_slide_up": "اسحب للأعلى للتثبيت",
   "composer_ai_rewrite": "حسّن الرد بالذكاء الاصطناعي",
+  "composer_saved_replies": "الردود المحفوظة",
   "composer_field_label": "اكتب ردًّا",
   "composer_note_field_label": "اكتب ملاحظة داخلية",
   "composer_template": "قالب",

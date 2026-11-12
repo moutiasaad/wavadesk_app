@@ -2226,6 +2226,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get composer_ai_rewrite => 'Improve reply with AI';
 
   @override
+  String get composer_saved_replies => 'Saved replies';
+
+  @override
   String get composer_field_label => 'Write a reply';
 
   @override

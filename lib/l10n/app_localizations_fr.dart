@@ -2263,6 +2263,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get composer_ai_rewrite => 'Améliorer la réponse avec l\'IA';
 
   @override
+  String get composer_saved_replies => 'Réponses enregistrées';
+
+  @override
   String get composer_field_label => 'Écrire une réponse';
 
   @override

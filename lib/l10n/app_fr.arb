@@ -1192,6 +1192,7 @@
   "composer_record_locked": "Enregistrement mains libres",
   "composer_record_slide_up": "Glisser vers le haut pour verrouiller",
   "composer_ai_rewrite": "Améliorer la réponse avec l'IA",
+  "composer_saved_replies": "Réponses enregistrées",
   "composer_field_label": "Écrire une réponse",
   "composer_note_field_label": "Écrire une note interne",
   "composer_template": "Modèle",

@@ -59,7 +59,9 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
     onPermissionDenied: () => _toast(context.l10n.composer_mic_denied),
     onError: () => _toast(context.l10n.composer_record_failed),
   );
-  final _aiTooltip = GlobalKey<TooltipState>();
+  /// Saved-replies panel opened from the field button (the `/` shortcut
+  /// still works on its own).
+  bool _repliesOpen = false;
 
   /// 150ms cross-fade when a rewrite lands in the field (Rewrite spec §12).
   late final AnimationController _applyFade = AnimationController(vsync: this, duration: AppMotion.fast, value: 1);
@@ -109,6 +111,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
     final names = [for (final a in ref.read(colleaguesProvider)) a.name.split(' ').first];
     final out = _composer.takeOutgoing(mentionNames: names);
     if (out.isEmpty) return;
+    _repliesOpen = false;
     final messages = ref.read(messagesControllerProvider(_id).notifier);
     for (final m in out) {
       messages.send(m);
@@ -197,14 +200,13 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
     _focus.requestFocus();
   }
 
-  /// ✦ in the field: needs ≥ 2 characters, else the 2s hint (§2).
-  Future<void> _rewrite() async {
-    final text = _composer.text.text;
-    if (text.trim().characters.length < 2) {
-      _aiTooltip.currentState?.ensureTooltipVisible();
-      return;
-    }
-    await _openRewrite(text, entry: _composer.fromSuggestion ? RewriteEntry.suggestion : RewriteEntry.composer);
+  /// Saved-replies button in the field: toggles the panel. A typed `/query`
+  /// is cleared on close; any other draft is kept until a reply is picked.
+  void _toggleReplies() {
+    final open = _repliesOpen || _composer.text.text.startsWith('/');
+    setState(() => _repliesOpen = !open);
+    if (open && _composer.text.text.startsWith('/')) _composer.text.clear();
+    _focus.requestFocus();
   }
 
   /// Selection toolbar "حسّن بالذكاء": only the selected text is rewritten
@@ -308,6 +310,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
 
     final text = ctrl.text;
     final slashQuery = !note && text.startsWith('/') && !text.contains('\n') ? text.substring(1) : null;
+    final repliesShown = !note && !windowClosed && (slashQuery != null || _repliesOpen);
     final mentionMatch = note ? RegExp(r'@([^\s@]*)$').firstMatch(text) : null;
 
     // Presence / colleague typing row (§7).
@@ -396,22 +399,16 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                 : (note ? l.chat_note_placeholder : l.chat_placeholder),
             semanticLabel: note ? l.composer_note_field_label : l.composer_field_label,
             contextMenuBuilder: (ctx, s) => _contextMenu(ctx, s, allowRewrite: !windowClosed),
-            // Notes get the ✦ too, with the note-only styles (§2).
-            aiButton: windowClosed
+            // Saved replies go to the customer, so notes don't get the button.
+            actionButton: windowClosed || note
                 ? null
-                : Tooltip(
-                    key: _aiTooltip,
-                    message: l.rw_empty_hint,
-                    triggerMode: TooltipTriggerMode.manual,
-                    showDuration: const Duration(seconds: 2),
-                    child: AppIconButton(
-                      icon: AppIcons.ai,
-                      size: 32,
-                      iconSize: 22,
-                      iconColor: text.trim().isEmpty ? c.primary.withValues(alpha: 0.4) : c.primary,
-                      semanticLabel: l.composer_ai_rewrite,
-                      onPressed: _rewrite,
-                    ),
+                : AppIconButton(
+                    icon: AppIcons.quickReply,
+                    size: 32,
+                    iconSize: 22,
+                    iconColor: repliesShown ? c.primary : c.textSecondary,
+                    semanticLabel: l.composer_saved_replies,
+                    onPressed: _toggleReplies,
                   ),
           );
 
@@ -452,11 +449,12 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                     },
                   ),
                 ),
-              if (slashQuery != null)
+              if (repliesShown)
                 QuickRepliesPanel(
                   replies: ref.watch(quickRepliesProvider),
-                  query: slashQuery,
+                  query: slashQuery ?? '',
                   onPick: (r) {
+                    _repliesOpen = false;
                     _composer.insertQuickReply(r, contactName: widget.detail.contact.name);
                     _focus.requestFocus();
                   },
@@ -514,7 +512,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
 }
 
 /// The pill text field: min 44, max 6 lines, radius full (22 multi-line),
-/// `surfaceVariant` (note mode: `noteBackground`), AI ✦ trailing.
+/// `surfaceVariant` (note mode: `noteBackground`), saved-replies button trailing.
 class _Field extends StatelessWidget {
   const _Field({
     required this.controller,
@@ -526,7 +524,7 @@ class _Field extends StatelessWidget {
     required this.placeholder,
     required this.semanticLabel,
     required this.contextMenuBuilder,
-    this.aiButton,
+    this.actionButton,
   });
 
   final TextEditingController controller;
@@ -538,7 +536,7 @@ class _Field extends StatelessWidget {
   final String placeholder;
   final String semanticLabel;
   final EditableTextContextMenuBuilder contextMenuBuilder;
-  final Widget? aiButton;
+  final Widget? actionButton;
 
   @override
   Widget build(BuildContext context) {
@@ -547,7 +545,7 @@ class _Field extends StatelessWidget {
     final style = t.bodyLarge.copyWith(fontSize: 15);
     return LayoutBuilder(
       builder: (context, box) {
-        final innerWidth = box.maxWidth - 16 - (aiButton == null ? 14 : 48);
+        final innerWidth = box.maxWidth - 16 - (actionButton == null ? 14 : 48);
         final painter = TextPainter(
           text: TextSpan(text: controller.text.isEmpty ? ' ' : controller.text, style: style),
           textDirection: direction ?? Directionality.of(context),
@@ -562,7 +560,7 @@ class _Field extends StatelessWidget {
             borderRadius: BorderRadius.circular(multiline ? 22 : AppRadius.full),
             border: note ? Border.all(color: c.noteBorder) : null,
           ),
-          padding: EdgeInsetsDirectional.only(start: 16, end: aiButton == null ? 14 : 4),
+          padding: EdgeInsetsDirectional.only(start: 16, end: actionButton == null ? 14 : 4),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -596,7 +594,7 @@ class _Field extends StatelessWidget {
                   ),
                 ),
               ),
-              if (aiButton != null) Padding(padding: const EdgeInsets.only(bottom: 2), child: aiButton),
+              if (actionButton != null) Padding(padding: const EdgeInsets.only(bottom: 2), child: actionButton),
             ],
           ),
         );
