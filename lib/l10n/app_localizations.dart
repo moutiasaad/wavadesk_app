@@ -1791,6 +1791,66 @@ abstract class AppLocalizations {
   /// **'مقفل'**
   String get common_locked;
 
+  /// No description provided for @del_row.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الحساب'**
+  String get del_row;
+
+  /// No description provided for @del_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف حسابك نهائيًا؟'**
+  String get del_title;
+
+  /// No description provided for @del_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يمكن التراجع عن هذا الإجراء. ستبقى المحادثات مع مساحة العمل، وسيتم تسجيل خروجك من كل الأجهزة.'**
+  String get del_body;
+
+  /// No description provided for @del_password.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور للتأكيد'**
+  String get del_password;
+
+  /// No description provided for @del_show_pw.
+  ///
+  /// In ar, this message translates to:
+  /// **'إظهار كلمة المرور'**
+  String get del_show_pw;
+
+  /// No description provided for @del_hide_pw.
+  ///
+  /// In ar, this message translates to:
+  /// **'إخفاء كلمة المرور'**
+  String get del_hide_pw;
+
+  /// No description provided for @del_confirm.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الحساب نهائيًا'**
+  String get del_confirm;
+
+  /// No description provided for @del_wrong_password.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور غير صحيحة'**
+  String get del_wrong_password;
+
+  /// No description provided for @del_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر حذف الحساب، حاول مجددًا'**
+  String get del_failed;
+
+  /// No description provided for @del_not_available.
+  ///
+  /// In ar, this message translates to:
+  /// **'حذف الحساب من التطبيق غير متاح بعد. تواصل مع الدعم: support@wavadesk.com'**
+  String get del_not_available;
+
   /// No description provided for @ai_title.
   ///
   /// In ar, this message translates to:

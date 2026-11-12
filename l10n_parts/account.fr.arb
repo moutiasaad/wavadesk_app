@@ -454,5 +454,15 @@
   "sec_logout_done": "Déconnecté",
   "sec_last_active": "Actif {t}",
   "sec_devices_failed": "Impossible de charger les appareils",
-  "common_locked": "Verrouillé"
+  "common_locked": "Verrouillé",
+  "del_row": "Supprimer le compte",
+  "del_title": "Supprimer définitivement votre compte ?",
+  "del_body": "Cette action est irréversible. Les conversations restent dans l'espace de travail et vous serez déconnecté de tous les appareils.",
+  "del_password": "Mot de passe pour confirmer",
+  "del_show_pw": "Afficher le mot de passe",
+  "del_hide_pw": "Masquer le mot de passe",
+  "del_confirm": "Supprimer définitivement",
+  "del_wrong_password": "Mot de passe incorrect",
+  "del_failed": "Impossible de supprimer le compte, réessayez",
+  "del_not_available": "La suppression du compte depuis l'app n'est pas encore disponible. Contactez le support : support@wavadesk.com"
 }

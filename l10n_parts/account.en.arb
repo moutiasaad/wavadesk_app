@@ -454,5 +454,15 @@
   "sec_logout_done": "Signed out",
   "sec_last_active": "Last active {t}",
   "sec_devices_failed": "Couldn't load devices",
-  "common_locked": "Locked"
+  "common_locked": "Locked",
+  "del_row": "Delete account",
+  "del_title": "Delete your account permanently?",
+  "del_body": "This can't be undone. Conversations stay with the workspace, and you'll be signed out on every device.",
+  "del_password": "Password to confirm",
+  "del_show_pw": "Show password",
+  "del_hide_pw": "Hide password",
+  "del_confirm": "Delete permanently",
+  "del_wrong_password": "Incorrect password",
+  "del_failed": "Couldn't delete the account, try again",
+  "del_not_available": "Deleting your account from the app is not available yet. Contact support: support@wavadesk.com"
 }

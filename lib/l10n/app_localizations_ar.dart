@@ -977,6 +977,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get common_locked => 'مقفل';
 
   @override
+  String get del_row => 'حذف الحساب';
+
+  @override
+  String get del_title => 'حذف حسابك نهائيًا؟';
+
+  @override
+  String get del_body =>
+      'لا يمكن التراجع عن هذا الإجراء. ستبقى المحادثات مع مساحة العمل، وسيتم تسجيل خروجك من كل الأجهزة.';
+
+  @override
+  String get del_password => 'كلمة المرور للتأكيد';
+
+  @override
+  String get del_show_pw => 'إظهار كلمة المرور';
+
+  @override
+  String get del_hide_pw => 'إخفاء كلمة المرور';
+
+  @override
+  String get del_confirm => 'حذف الحساب نهائيًا';
+
+  @override
+  String get del_wrong_password => 'كلمة المرور غير صحيحة';
+
+  @override
+  String get del_failed => 'تعذّر حذف الحساب، حاول مجددًا';
+
+  @override
+  String get del_not_available =>
+      'حذف الحساب من التطبيق غير متاح بعد. تواصل مع الدعم: support@wavadesk.com';
+
+  @override
   String get ai_title => 'وكيل الذكاء الاصطناعي';
 
   @override

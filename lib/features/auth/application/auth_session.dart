@@ -63,4 +63,12 @@ class AuthController extends Notifier<bool> {
     MemoryCache.clear();
     state = false;
   }
+
+  /// Local-only sign-out after the account was deleted: the server already
+  /// revoked every session (and its push tokens), so no logout call.
+  Future<void> signOutLocal() async {
+    await _repo.clearSession();
+    MemoryCache.clear();
+    state = false;
+  }
 }

@@ -987,6 +987,38 @@ class AppLocalizationsFr extends AppLocalizations {
   String get common_locked => 'Verrouillé';
 
   @override
+  String get del_row => 'Supprimer le compte';
+
+  @override
+  String get del_title => 'Supprimer définitivement votre compte ?';
+
+  @override
+  String get del_body =>
+      'Cette action est irréversible. Les conversations restent dans l\'espace de travail et vous serez déconnecté de tous les appareils.';
+
+  @override
+  String get del_password => 'Mot de passe pour confirmer';
+
+  @override
+  String get del_show_pw => 'Afficher le mot de passe';
+
+  @override
+  String get del_hide_pw => 'Masquer le mot de passe';
+
+  @override
+  String get del_confirm => 'Supprimer définitivement';
+
+  @override
+  String get del_wrong_password => 'Mot de passe incorrect';
+
+  @override
+  String get del_failed => 'Impossible de supprimer le compte, réessayez';
+
+  @override
+  String get del_not_available =>
+      'La suppression du compte depuis l\'app n\'est pas encore disponible. Contactez le support : support@wavadesk.com';
+
+  @override
   String get ai_title => 'Agent IA';
 
   @override

@@ -976,6 +976,38 @@ class AppLocalizationsEn extends AppLocalizations {
   String get common_locked => 'Locked';
 
   @override
+  String get del_row => 'Delete account';
+
+  @override
+  String get del_title => 'Delete your account permanently?';
+
+  @override
+  String get del_body =>
+      'This can\'t be undone. Conversations stay with the workspace, and you\'ll be signed out on every device.';
+
+  @override
+  String get del_password => 'Password to confirm';
+
+  @override
+  String get del_show_pw => 'Show password';
+
+  @override
+  String get del_hide_pw => 'Hide password';
+
+  @override
+  String get del_confirm => 'Delete permanently';
+
+  @override
+  String get del_wrong_password => 'Incorrect password';
+
+  @override
+  String get del_failed => 'Couldn\'t delete the account, try again';
+
+  @override
+  String get del_not_available =>
+      'Deleting your account from the app is not available yet. Contact support: support@wavadesk.com';
+
+  @override
   String get ai_title => 'AI agent';
 
   @override

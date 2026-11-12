@@ -26,6 +26,7 @@ import 'subscription_info.dart';
 import 'widgets/account_header.dart';
 import 'widgets/account_online.dart';
 import 'widgets/account_sheets.dart';
+import 'widgets/delete_account_sheet.dart';
 import 'widgets/presence_card.dart';
 
 final _packageInfoProvider = FutureProvider<PackageInfo>((ref) => PackageInfo.fromPlatform());
@@ -365,7 +366,13 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                       ),
                     ],
                   ),
-                  _SignOutButton(onTap: _signOut),
+                  _DangerButton(icon: AppIcons.logout, label: l.account_logout, hint: l.acc_logout_body, onTap: _signOut),
+                  _DangerButton(
+                    icon: AppIcons.delete,
+                    label: l.del_row,
+                    hint: l.del_title,
+                    onTap: () => showDeleteAccountSheet(context),
+                  ),
                   SizedBox(height: tabBarInset(context) + 24),
                 ],
               ),
@@ -395,17 +402,20 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
   }
 }
 
-/// Red-outline sign out (§4.7): 48 high, radius 14, white, border `#FECDD3`,
-/// `out.svg` 16 + "تسجيل الخروج" 15/800 red; pressed `#FFF1F2`.
-class _SignOutButton extends StatelessWidget {
-  const _SignOutButton({required this.onTap});
+/// Red-outline destructive row (§4.7 sign out; delete account below it):
+/// 48 high, radius 14, white, border `#FECDD3`, icon 16 + label 15/800 red;
+/// pressed `#FFF1F2`.
+class _DangerButton extends StatelessWidget {
+  const _DangerButton({required this.icon, required this.label, required this.hint, required this.onTap});
 
+  final IconData icon;
+  final String label;
+  final String hint;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    final l = context.l10n;
     final dark = c.isDark;
     final red = dark ? const Color(0xFFFB7185) : const Color(0xFFE11D48);
     final shape = RoundedRectangleBorder(
@@ -416,8 +426,8 @@ class _SignOutButton extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
       child: Semantics(
         button: true,
-        label: l.account_logout,
-        hint: l.acc_logout_body,
+        label: label,
+        hint: hint,
         excludeSemantics: true,
         child: Material(
           color: dark ? const Color(0xFF151E22) : Colors.white,
@@ -432,10 +442,10 @@ class _SignOutButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppIcon(AppIcons.logout, dp: 16, color: red),
+                  AppIcon(icon, dp: 16, color: red),
                   const SizedBox(width: 8),
                   Text(
-                    l.account_logout,
+                    label,
                     style: context.text.buttonMedium.copyWith(fontSize: 15, fontWeight: FontWeight.w800, color: red),
                   ),
                 ],
