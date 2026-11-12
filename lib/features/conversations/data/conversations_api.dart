@@ -225,7 +225,42 @@ class ConversationsApi {
 
   // ---- calls ------------------------------------------------------------------
 
-  Future<ConversationsPage> list(InboxQuery q, {String? cursor, int limit = 30}) => _guard(() async {
+  /// "الكل" tab + "الكل" chip = every conversation. The server's `all`
+  /// segment is open-only and it has no every-status list, so the app merges
+  /// the open, snoozed and resolved segments by activity ([_MergedPager]).
+  static bool isMergedAll(InboxQuery q) => q.segment == InboxSegment.all && q.chip == QuickChip.all;
+
+  _MergedPager? _merged;
+
+  Future<ConversationsPage> list(InboxQuery q, {String? cursor, int limit = 30}) =>
+      isMergedAll(q) ? _listMerged(q, cursor: cursor, limit: limit) : _listOne(q, cursor: cursor, limit: limit);
+
+  Future<ConversationsPage> _listMerged(InboxQuery q, {String? cursor, required int limit}) => _guard(() async {
+        final query = _query(q);
+        final pager = cursor == null ? (_merged = _MergedPager(query, _api)) : _merged;
+        // A cursor from an older pager (query changed meanwhile): nothing more.
+        if (pager == null || (cursor != null && cursor != pager.token)) {
+          return const ConversationsPage(items: [], nextCursor: null, counts: {});
+        }
+        final items = await pager.next(limit.clamp(1, 50));
+        final counts = <String, int>{};
+        if (cursor == null) {
+          final m = pager.firstMeta;
+          final server = m['counts'] is Map ? Map<String, dynamic>.from(m['counts'] as Map) : const {};
+          for (final e in server.entries) {
+            if (e.value is num) counts[e.key] = (e.value as num).toInt();
+          }
+          final extra = await Future.wait([
+            _countRaw({...query, 'unread': 'true'}),
+            _countRaw({'segment': 'mine', 'unread': 'true'}),
+          ]);
+          counts['unread'] = extra[0];
+          counts['mine_unread'] = extra[1];
+        }
+        return ConversationsPage(items: items, nextCursor: pager.hasMore ? pager.token : null, counts: counts);
+      });
+
+  Future<ConversationsPage> _listOne(InboxQuery q, {String? cursor, required int limit}) => _guard(() async {
         final query = _query(q);
         final res = await _api.get('conversations', query: {...query, 'limit': limit.clamp(1, 50), 'cursor': ?cursor});
         final serverCounts = res.meta['counts'] is Map ? Map<String, dynamic>.from(res.meta['counts'] as Map) : const {};
@@ -292,4 +327,73 @@ class ConversationsApi {
       });
 
   static String priorityValue(Priority? p) => p == null ? 'normal' : _priorityOut[p]!;
+}
+
+/// Keyset merge of several server segments into one list ordered by
+/// activity. Every source keeps its own cursor and a buffer; a row is only
+/// emitted once every unfinished source has a head to compare with, so the
+/// order stays exact across pages.
+class _MergedPager {
+  _MergedPager(Map<String, Object?> query, this._api)
+      : _oldestFirst = query['sort'] == 'oldest',
+        _sources = [
+          for (final seg in const ['all', 'snoozed', 'resolved']) _Source({...query, 'segment': seg}),
+        ];
+
+  static int _seq = 0;
+
+  final WdApi _api;
+  final bool _oldestFirst;
+  final List<_Source> _sources;
+  final Set<String> _seen = {};
+  final String token = 'merged:${++_seq}';
+  Map<String, dynamic> firstMeta = const {};
+
+  bool get hasMore => _sources.any((s) => !s.done || s.buffer.isNotEmpty);
+
+  Future<void> _fill(int limit) async {
+    final need = [for (final s in _sources) if (!s.done && s.buffer.isEmpty) s];
+    if (need.isEmpty) return;
+    await Future.wait([
+      for (final s in need)
+        _api.get('conversations', query: {...s.query, 'limit': limit, 'cursor': ?s.cursor}).then((res) {
+          if (s.query['segment'] == 'all' && s.cursor == null) firstMeta = res.meta;
+          s.buffer.addAll([for (final item in res.list) ConversationsApi.fromServer(item)]);
+          s.cursor = res.nextCursor;
+          s.done = res.nextCursor == null;
+        }),
+    ]);
+  }
+
+  Future<List<ConversationSummary>> next(int limit) async {
+    final out = <ConversationSummary>[];
+    while (out.length < limit) {
+      await _fill(limit);
+      _Source? best;
+      for (final s in _sources) {
+        if (s.buffer.isEmpty) continue;
+        if (best == null) {
+          best = s;
+          continue;
+        }
+        final a = s.buffer.first.lastActivityAt;
+        final b = best.buffer.first.lastActivityAt;
+        if (_oldestFirst ? a.isBefore(b) : a.isAfter(b)) best = s;
+      }
+      if (best == null) break;
+      final row = best.buffer.removeAt(0);
+      // A row can move between segments while paging: show it once.
+      if (_seen.add(row.id)) out.add(row);
+    }
+    return out;
+  }
+}
+
+class _Source {
+  _Source(this.query);
+
+  final Map<String, Object?> query;
+  String? cursor;
+  bool done = false;
+  final List<ConversationSummary> buffer = [];
 }
