@@ -125,16 +125,6 @@ class _MenuOverlay extends ConsumerWidget {
           },
           false,
         ),
-      if (!readOnly && m.kind != MessageKind.deleted)
-        (
-          AppIcons.forward,
-          l.msgaction_forward,
-          () {
-            close();
-            AppSnackbar.show(hostContext, message: l.msgaction_forward_soon);
-          },
-          false,
-        ),
       if (!readOnly && hasText && m.type != MessageBubbleType.internalNote)
         (
           AppIcons.saveToKb,

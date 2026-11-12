@@ -5,6 +5,7 @@ import 'app_colors.dart';
 import 'app_radius.dart';
 import 'app_shadows.dart';
 import 'app_text_styles.dart';
+import 'simple_slide_transition.dart';
 
 export 'app_colors.dart';
 export 'app_icons.dart';
@@ -96,7 +97,8 @@ abstract final class AppTheme {
       ),
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: {
-          TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
+          // One plain slide everywhere (no fade / zoom).
+          TargetPlatform.android: SimpleSlidePageTransitionsBuilder(),
           TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
         },
       ),

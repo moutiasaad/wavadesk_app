@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../theme/simple_slide_transition.dart';
+
 import '../../features/account/edit_profile_screen.dart';
 import '../../features/account/security_screen.dart';
 import '../../features/account/account_screen.dart';
@@ -249,7 +251,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             key: s.pageKey,
             transitionDuration: const Duration(milliseconds: 200),
             reverseTransitionDuration: const Duration(milliseconds: 200),
-            transitionsBuilder: (_, anim, _, child) => FadeTransition(opacity: anim, child: child),
+            transitionsBuilder: simpleSlide,
             child: SearchScreen(
               args: SearchArgs(
                 initialQuery: p['q'],
@@ -342,33 +344,11 @@ final routerProvider = Provider<GoRouter>((ref) {
   );
 });
 
-/// Horizontal push, 300ms, mirrored in RTL: the incoming page slides in
-/// fully opaque from the end edge (with a soft edge shadow) over the outgoing
-/// one, which drifts a little toward the start edge. No cross-fade — fading
-/// two pages at once showed both screens through each other mid-transition.
+/// Every pushed screen: the app's one plain slide ([simpleSlide]).
 CustomTransitionPage<void> sharedAxisPage(GoRouterState state, Widget child) => CustomTransitionPage<void>(
   key: state.pageKey,
   child: child,
-  opaque: true,
-  transitionDuration: const Duration(milliseconds: 300),
-  reverseTransitionDuration: const Duration(milliseconds: 260),
-  transitionsBuilder: (context, animation, secondary, child) {
-    if (MediaQuery.maybeDisableAnimationsOf(context) ?? false) return child;
-    final dir = Directionality.of(context) == TextDirection.rtl ? -1.0 : 1.0;
-    final inCurve = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
-    final outCurve = CurvedAnimation(parent: secondary, curve: Curves.easeOutCubic, reverseCurve: Curves.easeInCubic);
-    return SlideTransition(
-      position: Tween(begin: Offset.zero, end: Offset(-0.25 * dir, 0)).animate(outCurve),
-      child: SlideTransition(
-        position: Tween(begin: Offset(dir, 0), end: Offset.zero).animate(inCurve),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
-            boxShadow: const [BoxShadow(color: Color(0x22000000), blurRadius: 16)],
-          ),
-          child: child,
-        ),
-      ),
-    );
-  },
+  transitionDuration: const Duration(milliseconds: 280),
+  reverseTransitionDuration: const Duration(milliseconds: 240),
+  transitionsBuilder: simpleSlide,
 );
