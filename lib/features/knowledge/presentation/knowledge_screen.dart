@@ -20,9 +20,7 @@ import '../application/kb_upload_controller.dart';
 import '../application/knowledge_controller.dart';
 import '../data/kb_api.dart';
 import '../domain/kb_entry.dart';
-import 'files/kb_file_upload_sheet.dart';
 import 'files/kb_import_sheet.dart';
-import 'links/kb_link_add_sheet.dart';
 import 'widgets/kb_add_sheet.dart';
 import 'widgets/kb_drafts_section.dart';
 import 'widgets/kb_empty_state.dart';
@@ -71,16 +69,9 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
     switch (choice) {
       case KbAddChoice.qa:
         context.push('/knowledge/new');
-      case KbAddChoice.document:
-        // Picker opens right away; the sheet then shows the steps and ends
-        // on "Review answers".
-        await startKbFileUpload(context, ref, snackOffset: _snackOffset);
       case KbAddChoice.json:
         // Same as the web panel: a JSON file of entries.
         await startKbJsonImport(context, ref);
-      case KbAddChoice.link:
-        final id = await showKbLinkAddSheet(context);
-        if (id != null && mounted) _snack(context.l10n.kb_link_added, kind: SnackKind.success);
     }
   }
 
@@ -280,7 +271,6 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
         child: KbEmptyState(
           canEdit: perms.canEdit,
           onAddQa: () => _guardOnline() ? context.push('/knowledge/new') : null,
-          onUpload: () => _guardOnline() ? startKbFileUpload(context, ref, snackOffset: _snackOffset) : null,
         ),
       ));
     } else {

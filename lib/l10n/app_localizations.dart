@@ -8940,13 +8940,13 @@ abstract class AppLocalizations {
   /// No description provided for @kbe_new.
   ///
   /// In ar, this message translates to:
-  /// **'سؤال جديد'**
+  /// **'مدخل جديد'**
   String get kbe_new;
 
   /// No description provided for @kbe_edit.
   ///
   /// In ar, this message translates to:
-  /// **'تعديل الإجابة'**
+  /// **'تعديل المدخل'**
   String get kbe_edit;
 
   /// No description provided for @kbe_review.
@@ -9408,19 +9408,19 @@ abstract class AppLocalizations {
   /// No description provided for @kbe_err_q.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب السؤال (5 أحرف على الأقل)'**
+  /// **'اكتب العنوان'**
   String get kbe_err_q;
 
   /// No description provided for @kbe_err_a.
   ///
   /// In ar, this message translates to:
-  /// **'اكتب الإجابة (10 أحرف على الأقل)'**
+  /// **'اكتب المحتوى'**
   String get kbe_err_a;
 
   /// No description provided for @kbe_err_a_long.
   ///
   /// In ar, this message translates to:
-  /// **'الإجابة أطول من 2000 حرف'**
+  /// **'المحتوى طويل جدًا'**
   String get kbe_err_a_long;
 
   /// No description provided for @kbe_err_date.
@@ -9722,6 +9722,78 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'طريقة الإرسال'**
   String get kbe_media_send_mode;
+
+  /// No description provided for @kbe_type.
+  ///
+  /// In ar, this message translates to:
+  /// **'النوع'**
+  String get kbe_type;
+
+  /// No description provided for @kbe_type_faq.
+  ///
+  /// In ar, this message translates to:
+  /// **'أسئلة شائعة'**
+  String get kbe_type_faq;
+
+  /// No description provided for @kbe_type_product.
+  ///
+  /// In ar, this message translates to:
+  /// **'منتج'**
+  String get kbe_type_product;
+
+  /// No description provided for @kbe_type_policy.
+  ///
+  /// In ar, this message translates to:
+  /// **'سياسة'**
+  String get kbe_type_policy;
+
+  /// No description provided for @kbe_type_company_profile.
+  ///
+  /// In ar, this message translates to:
+  /// **'ملف الشركة'**
+  String get kbe_type_company_profile;
+
+  /// No description provided for @kbe_type_custom_instruction.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعليمات مخصصة'**
+  String get kbe_type_custom_instruction;
+
+  /// No description provided for @kbe_title_label.
+  ///
+  /// In ar, this message translates to:
+  /// **'العنوان'**
+  String get kbe_title_label;
+
+  /// No description provided for @kbe_title_ph.
+  ///
+  /// In ar, this message translates to:
+  /// **'مثال: سياسة الشحن'**
+  String get kbe_title_ph;
+
+  /// No description provided for @kbe_content_label.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحتوى'**
+  String get kbe_content_label;
+
+  /// No description provided for @kbe_content_ph.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل المحتوى الذي يجب أن يعرفه المساعد الذكي...'**
+  String get kbe_content_ph;
+
+  /// No description provided for @kbe_active.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشط'**
+  String get kbe_active;
+
+  /// No description provided for @kbe_active_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'يستخدمه الذكاء الاصطناعي في الرد على العملاء'**
+  String get kbe_active_sub;
 
   /// No description provided for @kb_title.
   ///

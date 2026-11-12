@@ -7,11 +7,10 @@ import '../../../../core/widgets/widgets.dart';
 /// Empty KB onboarding (spec §7): book icon, title, body, "أضف أول سؤال",
 /// "رفع ملف", tip.
 class KbEmptyState extends StatelessWidget {
-  const KbEmptyState({super.key, required this.canEdit, required this.onAddQa, required this.onUpload});
+  const KbEmptyState({super.key, required this.canEdit, required this.onAddQa});
 
   final bool canEdit;
   final VoidCallback onAddQa;
-  final VoidCallback onUpload;
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +38,6 @@ class KbEmptyState extends StatelessWidget {
               if (canEdit) ...[
                 const SizedBox(height: AppSpacing.xl),
                 AppButton(label: l.kb_empty_cta, icon: AppIcons.add, expand: true, onPressed: onAddQa),
-                const SizedBox(height: AppSpacing.sm),
-                AppButton(label: l.kb_add_document, icon: AppIcons.file, variant: AppButtonVariant.secondary, expand: true, onPressed: onUpload),
               ],
               const SizedBox(height: AppSpacing.md),
               Text(l.kb_empty_tip, style: t.caption.copyWith(color: c.textTertiary), textAlign: TextAlign.center),

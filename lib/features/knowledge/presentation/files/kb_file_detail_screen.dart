@@ -74,11 +74,6 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
     }
   }
 
-  Future<void> _replace() async {
-    await startKbFileUpload(context, ref, replaceId: widget.id);
-    if (mounted) _load();
-  }
-
   Future<void> _download() async {
     final url = _file?.downloadUrl;
     if (url == null) {
@@ -183,7 +178,6 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
                       ],
                     ),
                   ),
-                  if (perms.canEdit) AppButton(label: l.kb_retry, size: AppButtonSize.small, variant: AppButtonVariant.secondary, onPressed: _replace),
                 ],
               ),
             ),
@@ -215,10 +209,6 @@ class _KbFileDetailScreenState extends ConsumerState<KbFileDetailScreen> {
                   title: l.kb_available_ai,
                   trailing: AppSwitch(value: f.enabled, semanticLabel: l.kb_available_ai, onChanged: perms.canEdit ? _setEnabled : null),
                 ),
-                if (perms.canEdit) ...[
-                  Divider(height: 1, color: c.divider),
-                  SettingsTile(icon: AppIcons.regenerate, title: l.kb_replace, onTap: _replace),
-                ],
                 Divider(height: 1, color: c.divider),
                 SettingsTile(icon: AppIcons.download, title: l.kb_download, onTap: _download),
                 if (perms.canDelete) ...[

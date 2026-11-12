@@ -5180,10 +5180,10 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get kbe_new => 'New question';
+  String get kbe_new => 'New Entry';
 
   @override
-  String get kbe_edit => 'Edit answer';
+  String get kbe_edit => 'Edit Entry';
 
   @override
   String get kbe_review => 'Review suggestion';
@@ -5437,13 +5437,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get kbe_restore_failed => 'Couldn\'t restore';
 
   @override
-  String get kbe_err_q => 'Enter the question (min 5 chars)';
+  String get kbe_err_q => 'Enter a title';
 
   @override
-  String get kbe_err_a => 'Enter the answer (min 10 chars)';
+  String get kbe_err_a => 'Enter the content';
 
   @override
-  String get kbe_err_a_long => 'Answer exceeds 2000 characters';
+  String get kbe_err_a_long => 'The content is too long';
 
   @override
   String get kbe_err_date => 'Pick a future date';
@@ -5606,6 +5606,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kbe_media_send_mode => 'How it is sent';
+
+  @override
+  String get kbe_type => 'Type';
+
+  @override
+  String get kbe_type_faq => 'FAQ';
+
+  @override
+  String get kbe_type_product => 'Product';
+
+  @override
+  String get kbe_type_policy => 'Policy';
+
+  @override
+  String get kbe_type_company_profile => 'Company Profile';
+
+  @override
+  String get kbe_type_custom_instruction => 'Custom Instruction';
+
+  @override
+  String get kbe_title_label => 'Title';
+
+  @override
+  String get kbe_title_ph => 'e.g. Shipping Policy';
+
+  @override
+  String get kbe_content_label => 'Content';
+
+  @override
+  String get kbe_content_ph => 'Enter the content the AI should know about...';
+
+  @override
+  String get kbe_active => 'Active';
+
+  @override
+  String get kbe_active_sub => 'The AI uses it to answer customers';
 
   @override
   String get kb_title => 'Knowledge';

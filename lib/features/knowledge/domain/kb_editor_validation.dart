@@ -1,11 +1,12 @@
-/// Add Answer spec §5 rules.
+/// Entry editor rules — same limits as the web form / mobile API
+/// (title required ≤ 200, content required ≤ 20000).
 enum KbeFieldError { questionShort, answerShort, answerLong, datePast }
 
 abstract final class KbEditorValidation {
-  static const questionMin = 5;
+  static const questionMin = 2;
   static const questionMax = 200;
-  static const answerMin = 10;
-  static const answerMax = 2000;
+  static const answerMin = 2;
+  static const answerMax = 20000;
 
   /// "{n}/2000" appears from here on (§4.5).
   static const answerCounterFrom = 1600;

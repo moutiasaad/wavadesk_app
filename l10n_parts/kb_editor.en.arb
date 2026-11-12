@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
-  "kbe_new": "New question",
-  "kbe_edit": "Edit answer",
+  "kbe_new": "New Entry",
+  "kbe_edit": "Edit Entry",
   "kbe_review": "Review suggestion",
   "kbe_save": "Save",
   "kbe_send": "Send",
@@ -170,9 +170,9 @@
   "kbe_versions_empty": "No earlier versions",
   "kbe_restored": "Version restored",
   "kbe_restore_failed": "Couldn't restore",
-  "kbe_err_q": "Enter the question (min 5 chars)",
-  "kbe_err_a": "Enter the answer (min 10 chars)",
-  "kbe_err_a_long": "Answer exceeds 2000 characters",
+  "kbe_err_q": "Enter a title",
+  "kbe_err_a": "Enter the content",
+  "kbe_err_a_long": "The content is too long",
   "kbe_err_date": "Pick a future date",
   "kbe_saved_new": "Answer added · AI will use it now",
   "kbe_saved_edit": "Changes saved",
@@ -264,5 +264,17 @@
       }
     }
   },
-  "kbe_media_send_mode": "How it is sent"
+  "kbe_media_send_mode": "How it is sent",
+  "kbe_type": "Type",
+  "kbe_type_faq": "FAQ",
+  "kbe_type_product": "Product",
+  "kbe_type_policy": "Policy",
+  "kbe_type_company_profile": "Company Profile",
+  "kbe_type_custom_instruction": "Custom Instruction",
+  "kbe_title_label": "Title",
+  "kbe_title_ph": "e.g. Shipping Policy",
+  "kbe_content_label": "Content",
+  "kbe_content_ph": "Enter the content the AI should know about...",
+  "kbe_active": "Active",
+  "kbe_active_sub": "The AI uses it to answer customers"
 }

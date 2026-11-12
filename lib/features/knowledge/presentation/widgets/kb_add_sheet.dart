@@ -9,17 +9,11 @@ import 'kb_entry_tile.dart';
 
 /// What the "add" sheet starts.
 enum KbAddChoice {
-  /// Write one question and answer.
+  /// Write one entry (the web form).
   qa,
-
-  /// PDF / Word / text: the AI drafts answers to review.
-  document,
 
   /// The web panel's JSON file of many entries.
   json,
-
-  /// A web page.
-  link,
 }
 
 /// "إضافة إلى قاعدة المعرفة" (spec §5). Returns the choice; the caller
@@ -39,19 +33,11 @@ Future<KbAddChoice?> showKbAddSheet(BuildContext context) async {
           children: [
             _Option(choice: KbAddChoice.qa, visual: KbTypeVisual.of(ctx, KbType.qa), title: l.kb_qa, subtitle: l.kb_add_qa_sub),
             _Option(
-              choice: KbAddChoice.document,
-              visual: KbTypeVisual.of(ctx, KbType.file),
-              title: l.kb_add_document,
-              subtitle: l.kb_add_document_sub,
-              badge: l.kb_add_ai_badge,
-            ),
-            _Option(
               choice: KbAddChoice.json,
               visual: KbTypeVisual(AppIcons.upload, dark ? const Color(0xFF1F2430) : c.surfaceVariant, c.textSecondary),
               title: l.kb_import_title,
               subtitle: l.kb_add_file_sub,
             ),
-            _Option(choice: KbAddChoice.link, visual: KbTypeVisual.of(ctx, KbType.link), title: l.kb_add_link, subtitle: l.kb_add_link_sub),
           ],
         ),
       );
@@ -62,15 +48,12 @@ Future<KbAddChoice?> showKbAddSheet(BuildContext context) async {
 }
 
 class _Option extends StatelessWidget {
-  const _Option({required this.choice, required this.visual, required this.title, required this.subtitle, this.badge});
+  const _Option({required this.choice, required this.visual, required this.title, required this.subtitle});
 
   final KbAddChoice choice;
   final KbTypeVisual visual;
   final String title;
   final String subtitle;
-
-  /// Small pill after the title ("AI").
-  final String? badge;
 
   @override
   Widget build(BuildContext context) {
@@ -96,26 +79,7 @@ class _Option extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Flexible(child: Text(title, style: t.listTitle)),
-                        if (badge != null) ...[
-                          const SizedBox(width: AppSpacing.sm),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
-                            decoration: BoxDecoration(color: c.primaryContainer, borderRadius: BorderRadius.circular(AppRadius.full)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AppIcon(AppIcons.ai, dp: 12, color: c.primary),
-                                const SizedBox(width: 3),
-                                Text(badge!, style: t.caption.copyWith(color: c.primary, fontWeight: FontWeight.w700)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
+                    Text(title, style: t.listTitle),
                     Text(subtitle, style: t.bodySmall.copyWith(color: c.textSecondary)),
                   ],
                 ),

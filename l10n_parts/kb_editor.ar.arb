@@ -1,7 +1,7 @@
 {
   "@@locale": "ar",
-  "kbe_new": "سؤال جديد",
-  "kbe_edit": "تعديل الإجابة",
+  "kbe_new": "مدخل جديد",
+  "kbe_edit": "تعديل المدخل",
   "kbe_review": "مراجعة مقترح",
   "kbe_save": "حفظ",
   "kbe_send": "إرسال",
@@ -170,9 +170,9 @@
   "kbe_versions_empty": "لا توجد نسخ سابقة",
   "kbe_restored": "تمت استعادة النسخة",
   "kbe_restore_failed": "تعذّرت الاستعادة",
-  "kbe_err_q": "اكتب السؤال (5 أحرف على الأقل)",
-  "kbe_err_a": "اكتب الإجابة (10 أحرف على الأقل)",
-  "kbe_err_a_long": "الإجابة أطول من 2000 حرف",
+  "kbe_err_q": "اكتب العنوان",
+  "kbe_err_a": "اكتب المحتوى",
+  "kbe_err_a_long": "المحتوى طويل جدًا",
   "kbe_err_date": "اختر تاريخًا في المستقبل",
   "kbe_saved_new": "تمت إضافة الإجابة · سيستخدمها الذكاء فورًا",
   "kbe_saved_edit": "تم حفظ التعديلات",
@@ -264,5 +264,17 @@
       }
     }
   },
-  "kbe_media_send_mode": "طريقة الإرسال"
+  "kbe_media_send_mode": "طريقة الإرسال",
+  "kbe_type": "النوع",
+  "kbe_type_faq": "أسئلة شائعة",
+  "kbe_type_product": "منتج",
+  "kbe_type_policy": "سياسة",
+  "kbe_type_company_profile": "ملف الشركة",
+  "kbe_type_custom_instruction": "تعليمات مخصصة",
+  "kbe_title_label": "العنوان",
+  "kbe_title_ph": "مثال: سياسة الشحن",
+  "kbe_content_label": "المحتوى",
+  "kbe_content_ph": "أدخل المحتوى الذي يجب أن يعرفه المساعد الذكي...",
+  "kbe_active": "نشط",
+  "kbe_active_sub": "يستخدمه الذكاء الاصطناعي في الرد على العملاء"
 }

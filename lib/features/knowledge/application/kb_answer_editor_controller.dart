@@ -76,6 +76,7 @@ class KbeFields {
   const KbeFields({
     this.question = '',
     this.answer = '',
+    this.category = 'faq',
     this.alts = const [],
     this.tags = const [],
     this.enabled = true,
@@ -89,6 +90,7 @@ class KbeFields {
   factory KbeFields.fromQa(KbQa e) => KbeFields(
         question: e.question,
         answer: e.answer,
+        category: e.category,
         alts: e.altPhrasings,
         tags: e.tags,
         enabled: e.enabled,
@@ -102,6 +104,7 @@ class KbeFields {
   factory KbeFields.fromJson(Map<String, dynamic> j) => KbeFields(
         question: '${j['question'] ?? ''}',
         answer: '${j['answer'] ?? ''}',
+        category: '${j['category'] ?? 'faq'}',
         alts: [for (final s in (j['alts'] as List? ?? const [])) '$s'],
         tags: [for (final t in (j['tags'] as List? ?? const [])) KbTag.fromJson(t)],
         enabled: j['enabled'] != false,
@@ -114,6 +117,9 @@ class KbeFields {
 
   final String question;
   final String answer;
+
+  /// Web "النوع" (faq / product / policy / company_profile / custom_instruction).
+  final String category;
   final List<String> alts;
   final List<KbTag> tags;
   final bool enabled;
@@ -128,6 +134,7 @@ class KbeFields {
   Map<String, Object?> toJson() => {
         'question': question,
         'answer': answer,
+        'category': category,
         'alts': alts,
         'tags': [for (final t in tags) t.toJson()],
         'enabled': enabled,
@@ -138,18 +145,14 @@ class KbeFields {
         'internal_notes': internalNotes,
       };
 
-  /// Wire body of `POST kb` / `PATCH kb/{id}` (§8).
+  /// Wire body of `POST kb` / `PATCH kb/{id}`: exactly the web form's fields
+  /// (type, active, title, content). Phrasings, tags, channels, expiry… are
+  /// not sent, so the server keeps whatever an entry already has.
   Map<String, Object?> toWriteJson() => {
         'question': question.trim(),
-        'alt_phrasings': alts,
         'answer': answer.trim(),
-        'tag_ids': [for (final t in tags) t.id],
+        'category': category,
         'enabled': enabled,
-        'channels': channels,
-        'expires_at': expiresAt?.toUtc().toIso8601String(),
-        'verbatim': verbatim,
-        'handoff_after': handoffAfter,
-        'internal_notes': internalNotes.trim().isEmpty ? null : internalNotes.trim(),
       };
 
   bool sameAs(KbeFields o) => jsonEncode(toJson()) == jsonEncode(o.toJson());
@@ -159,6 +162,7 @@ class KbeFields {
   KbeFields copyWith({
     String? question,
     String? answer,
+    String? category,
     List<String>? alts,
     List<KbTag>? tags,
     bool? enabled,
@@ -171,6 +175,7 @@ class KbeFields {
       KbeFields(
         question: question ?? this.question,
         answer: answer ?? this.answer,
+        category: category ?? this.category,
         alts: alts ?? this.alts,
         tags: tags ?? this.tags,
         enabled: enabled ?? this.enabled,
@@ -332,34 +337,21 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
 
   KbEditorApi get _api => ref.read(kbEditorApiProvider);
 
-  Timer? _suggestTimer;
-  Timer? _dupTimer;
-  Timer? _previewTimer;
   Timer? _autosaveTimer;
-  int _previewSeq = 0;
-  int _dupSeq = 0;
-  String _lastSuggestKey = '';
-  final _dismissedGhosts = <String>{};
   final _idempotencyKey = WdApi.newIdempotencyKey();
   final _opened = DateTime.now();
   bool _disposed = false;
-  int _testCursor = 0;
 
   @override
   KbeState build(KbeArgs args) {
     ref.onDispose(() {
       _disposed = true;
-      for (final t in [_suggestTimer, _dupTimer, _previewTimer, _autosaveTimer]) {
-        t?.cancel();
-      }
+      _autosaveTimer?.cancel();
     });
     final offline = ref.read(inboxProvider).network == NetworkState.offline;
     ref.listen(inboxProvider.select((s) => s.network), (_, n) {
       final off = n == NetworkState.offline;
-      if (off != state.offline) {
-        state = state.copyWith(offline: off);
-        if (!off) _schedulePreview(immediate: true);
-      }
+      if (off != state.offline) state = state.copyWith(offline: off);
     });
     Analytics.log('kbe_open', {'mode': args.mode.name, 'source': args.mode == KbeMode.create ? 'button' : args.mode.name});
     // `kb.edit` from the list's meta when it has loaded (agents may edit when
@@ -429,11 +421,6 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
         textRevision: state.textRevision + 1,
         restorable: () => restored != null && !restored.sameAs(fields) && !restored.isEmpty ? restored : null,
       ));
-      _schedulePreview(immediate: true);
-      if (fields.question.trim().runes.length >= KbEditorValidation.aiMinQuestion) {
-        _checkDuplicates();
-        if (a.mode == KbeMode.create || a.mode == KbeMode.fromMessage) _scheduleSuggest();
-      }
     } on KbEditorApiException catch (e) {
       _set(state.copyWith(phase: e.isNotFound ? KbePhase.deleted : KbePhase.loadError));
     } catch (_) {
@@ -447,115 +434,28 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
     if (v == state.fields.question) return;
     _set(state.copyWith(fields: state.fields.copyWith(question: v)));
     _afterEdit();
-    _scheduleSuggest();
-    _scheduleDuplicates();
-    _schedulePreview();
   }
 
   void setAnswer(String v) {
     if (v == state.fields.answer) return;
     _set(state.copyWith(fields: state.fields.copyWith(answer: v)));
     _afterEdit();
-    _schedulePreview();
   }
+
+  void setCategory(String v) => _update(state.fields.copyWith(category: v));
 
   /// Blur after the first edit shows inline errors (§5).
   void blurQuestion() {
     if (state.fields.question != state.initial.question || state.fields.question.isNotEmpty) {
       _set(state.copyWith(showQuestionError: state.fields.question.isNotEmpty || state.dirty));
     }
-    _dupTimer?.cancel();
-    _checkDuplicates();
-    _schedulePreview(immediate: true);
   }
 
   void blurAnswer() {
     if (state.fields.answer != state.initial.answer) _set(state.copyWith(showAnswerError: true));
   }
 
-  /// Adds phrasings; returns false (and shakes) when any was a duplicate.
-  bool addAlts(Iterable<String> raw, {bool fromAi = false}) {
-    var dup = false;
-    final alts = [...state.fields.alts];
-    for (final p in raw) {
-      final s = p.trim();
-      if (s.isEmpty) continue;
-      if (s.runes.length > KbEditorValidation.phrasingMax || alts.length >= KbEditorValidation.maxPhrasings) {
-        dup = true;
-        continue;
-      }
-      if (PhrasingNormalizer.isDuplicate(s, alts, question: state.fields.question)) {
-        dup = true;
-        continue;
-      }
-      alts.add(s);
-      Analytics.log('kbe_alt_add', {'from_ai': fromAi});
-    }
-    final ghosts = [for (final g in state.ghosts) if (!PhrasingNormalizer.isDuplicate(g, alts)) g];
-    _set(state.copyWith(fields: state.fields.copyWith(alts: alts), ghosts: ghosts, shakeTick: dup ? state.shakeTick + 1 : null));
-    _afterEdit();
-    _schedulePreview();
-    return !dup;
-  }
-
-  bool editAlt(int index, String value) {
-    final s = value.trim();
-    final others = [...state.fields.alts]..removeAt(index);
-    if (s.isEmpty) {
-      removeAlt(index);
-      return true;
-    }
-    if (s.runes.length > KbEditorValidation.phrasingMax ||
-        PhrasingNormalizer.isDuplicate(s, others, question: state.fields.question)) {
-      _set(state.copyWith(shakeTick: state.shakeTick + 1));
-      return false;
-    }
-    final alts = [...state.fields.alts]..[index] = s;
-    _set(state.copyWith(fields: state.fields.copyWith(alts: alts)));
-    _afterEdit();
-    _schedulePreview();
-    return true;
-  }
-
-  void removeAlt(int index) {
-    final alts = [...state.fields.alts]..removeAt(index);
-    _set(state.copyWith(fields: state.fields.copyWith(alts: alts)));
-    _afterEdit();
-    _schedulePreview();
-  }
-
-  void acceptGhost(String g) {
-    _set(state.copyWith(ghosts: [...state.ghosts]..remove(g)));
-    addAlts([g], fromAi: true);
-  }
-
-  void dismissGhost(String g) {
-    _dismissedGhosts.add(PhrasingNormalizer.key(g));
-    _set(state.copyWith(ghosts: [...state.ghosts]..remove(g)));
-  }
-
-  void setTags(List<KbTag> tags) => _update(state.fields.copyWith(tags: tags));
   void setEnabled(bool v) => _update(state.fields.copyWith(enabled: v));
-  void setChannels(List<String>? v) => _update(state.fields.copyWith(channels: () => v));
-  void setVerbatim(bool v) {
-    _update(state.fields.copyWith(verbatim: v));
-    _schedulePreview(immediate: true);
-  }
-
-  void setHandoffAfter(bool v) => _update(state.fields.copyWith(handoffAfter: v));
-  void setInternalNotes(String v) => _update(state.fields.copyWith(internalNotes: v));
-
-  void setExpiresAt(DateTime? d) {
-    _update(state.fields.copyWith(expiresAt: () => d));
-    _set(state.copyWith(showDateError: d != null));
-  }
-
-  /// Rewrite sheet "استخدم هذا الرد", link insert, variable token.
-  void replaceAnswer(String text) {
-    _set(state.copyWith(fields: state.fields.copyWith(answer: text), textRevision: state.textRevision + 1, aiDraft: false));
-    _afterEdit();
-    _schedulePreview();
-  }
 
   void _update(KbeFields f) {
     _set(state.copyWith(fields: f));
@@ -597,132 +497,11 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
     final r = state.restorable;
     if (r == null) return;
     _set(state.copyWith(fields: r, restorable: () => null, textRevision: state.textRevision + 1, aiDraft: false));
-    _schedulePreview(immediate: true);
   }
 
   void ignoreLocalDraft() {
     _set(state.copyWith(restorable: () => null));
     clearLocalDraft();
-  }
-
-  // ---- AI: phrasings / duplicates / preview ----------------------------------------
-
-  void _scheduleSuggest() {
-    _suggestTimer?.cancel();
-    final q = state.fields.question.trim();
-    if (q.runes.length < KbEditorValidation.aiMinQuestion || state.offline || !state.aiAvailable) return;
-    _suggestTimer = Timer(const Duration(milliseconds: 800), () async {
-      final key = PhrasingNormalizer.key(q);
-      if (key == _lastSuggestKey) return;
-      _lastSuggestKey = key;
-      try {
-        final list = await _api.suggestPhrasings(q);
-        if (_disposed || PhrasingNormalizer.key(state.fields.question) != key) return;
-        final ghosts = [
-          for (final g in list)
-            if (!_dismissedGhosts.contains(PhrasingNormalizer.key(g)) &&
-                !PhrasingNormalizer.isDuplicate(g, state.fields.alts, question: state.fields.question))
-              g,
-        ].take(3).toList();
-        _set(state.copyWith(ghosts: ghosts));
-      } catch (_) {
-        // Suggestions are optional.
-      }
-    });
-  }
-
-  void _scheduleDuplicates() {
-    _dupTimer?.cancel();
-    if (state.fields.question.trim().runes.length < KbEditorValidation.aiMinQuestion) return;
-    _dupTimer = Timer(const Duration(seconds: 1), _checkDuplicates);
-  }
-
-  Future<void> _checkDuplicates() async {
-    final q = state.fields.question.trim();
-    if (q.runes.length < KbEditorValidation.aiMinQuestion || state.offline) return;
-    final seq = ++_dupSeq;
-    try {
-      final r = await _api.checkDuplicates(
-        question: q,
-        answer: state.fields.answer.trim().isEmpty ? null : state.fields.answer.trim(),
-        excludeId: state.base?.id,
-      );
-      if (_disposed || seq != _dupSeq) return;
-      final similar = r.similar.firstOrNull;
-      final conflict = r.conflicts.firstOrNull;
-      final changed = similar?.id != state.similar?.id || conflict?.id != state.conflict?.id;
-      if (changed && (similar != null || conflict != null)) Analytics.log('kbe_duplicate_shown');
-      _set(state.copyWith(
-        similar: () => similar,
-        conflict: () => conflict,
-        warningDismissed: changed ? false : state.warningDismissed,
-      ));
-    } catch (_) {}
-  }
-
-  void dismissWarning() => _set(state.copyWith(warningDismissed: true));
-
-  void _schedulePreview({bool immediate = false}) {
-    _previewTimer?.cancel();
-    final f = state.fields;
-    if (KbEditorValidation.question(f.question) != null || KbEditorValidation.answer(f.answer) != null) {
-      if (state.preview != null || state.previewError) _set(state.copyWith(preview: () => null, previewError: false));
-      return;
-    }
-    if (state.offline) return;
-    _previewTimer = Timer(immediate ? Duration.zero : const Duration(milliseconds: 1200), _runPreview);
-  }
-
-  void refreshPreview() => _schedulePreview(immediate: true);
-
-  Future<void> _runPreview() async {
-    final f = state.fields;
-    final seq = ++_previewSeq;
-    final watch = Stopwatch()..start();
-    _set(state.copyWith(previewLoading: true, previewError: false));
-    try {
-      final p = await _api.preview(
-        question: f.question.trim(),
-        answer: f.answer.trim(),
-        altPhrasings: f.alts,
-        testQuestion: state.testQuestion,
-        verbatim: f.verbatim,
-      );
-      if (_disposed || seq != _previewSeq) return;
-      Analytics.log('kbe_preview', {'confidence': p.confidence.name, 'latency_ms': watch.elapsedMilliseconds});
-      _set(state.copyWith(preview: () => p, previewLoading: false));
-    } on KbEditorApiException catch (e) {
-      if (_disposed || seq != _previewSeq) return;
-      _set(state.copyWith(previewLoading: false, previewError: true, aiAvailable: e.code == 'plan_limit' ? false : null));
-    } catch (_) {
-      if (_disposed || seq != _previewSeq) return;
-      _set(state.copyWith(previewLoading: false, previewError: true));
-    }
-  }
-
-  /// Tap bubble → edited test question.
-  void setTestQuestion(String q) {
-    final t = q.trim();
-    _set(state.copyWith(testQuestion: () => t.isEmpty ? null : t));
-    _schedulePreview(immediate: true);
-  }
-
-  /// "جرّب سؤالًا آخر": cycle the phrasings, then a generated test.
-  void tryAnother() {
-    final pool = [...state.fields.alts, state.fields.question.trim()];
-    final current = state.preview?.testQuestion ?? state.testQuestion;
-    String? next;
-    for (var i = 0; i < pool.length; i++) {
-      final c = pool[(_testCursor + i) % pool.length];
-      if (c != current) {
-        next = c;
-        _testCursor = (_testCursor + i + 1) % pool.length;
-        break;
-      }
-    }
-    // Only the question left → let the server generate a paraphrase.
-    _set(state.copyWith(testQuestion: () => pool.length <= 1 ? null : next));
-    _schedulePreview(immediate: true);
   }
 
   // ---- Save / review (§5) ----------------------------------------------------------
@@ -813,7 +592,6 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
   void takeTheirs(KbQa current) {
     final f = KbeFields.fromQa(current);
     _set(state.copyWith(base: current, fields: f, initial: f, textRevision: state.textRevision + 1));
-    _schedulePreview(immediate: true);
   }
 
   Future<Object?> rejectDraft() async {
@@ -853,8 +631,7 @@ class KbAnswerEditorController extends AutoDisposeFamilyNotifier<KbeState, KbeAr
       _applySaved(e);
       final f = KbeFields.fromQa(e);
       _set(state.copyWith(base: e, fields: f, initial: f, textRevision: state.textRevision + 1));
-      _schedulePreview(immediate: true);
-      return true;
+        return true;
     } catch (_) {
       return false;
     }

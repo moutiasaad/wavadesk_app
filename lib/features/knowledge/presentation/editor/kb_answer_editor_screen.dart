@@ -9,30 +9,21 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../chat/presentation/sheets/ai_rewrite/ai_rewrite_sheet.dart';
 import '../../../conversations/domain/relative_time_formatter.dart';
 import '../../application/kb_answer_editor_controller.dart';
 import '../../application/kb_media_controller.dart';
 import '../../application/knowledge_controller.dart';
 import '../../domain/kb_editor_validation.dart';
 import '../../domain/kb_entry.dart';
-import 'widgets/ai_preview_card.dart';
-import 'widgets/alt_phrasings_editor.dart';
-import 'widgets/answer_field.dart';
-import 'widgets/duplicate_warning.dart';
-import 'widgets/editor_advanced_section.dart';
 import 'widgets/editor_app_bar.dart';
 import 'widgets/editor_conflict_sheet.dart';
 import 'widgets/editor_media_section.dart';
-import 'widgets/editor_meta_footer.dart';
 import 'widgets/editor_source_banner.dart';
-import 'widgets/editor_tools_row.dart';
-import 'widgets/kb_tag_picker_sheet.dart';
-import 'widgets/question_field.dart';
-import 'widgets/versions_sheet.dart';
 
-/// إضافة إجابة (Add Answer spec, frame 13): a full-screen modal that adds,
-/// edits or reviews one Q&A with a live preview of the AI reply.
+/// The web panel's knowledge entry form, on mobile: النوع · نشط · العنوان ·
+/// المحتوى · attachments — nothing the web form doesn't have. Opens as a
+/// full-screen modal for a new entry, an edit, a draft review or a prefill
+/// from an unanswered question / a chat message.
 class KbAnswerEditorScreen extends ConsumerStatefulWidget {
   const KbAnswerEditorScreen({super.key, required this.args});
 
@@ -49,7 +40,7 @@ class KbAnswerEditorScreen extends ConsumerStatefulWidget {
     return KbeArgs(mode: KbeMode.create, hintQuestion: q['question'], hintAnswer: q['answer']);
   }
 
-  /// Modal page: slide up 300ms / down 250ms (§12).
+  /// Modal page: slide up 300ms / down 250ms.
   static Page<void> page(GoRouterState s) => CustomTransitionPage<void>(
         key: s.pageKey,
         fullscreenDialog: true,
@@ -66,15 +57,26 @@ class KbAnswerEditorScreen extends ConsumerStatefulWidget {
         child: KbAnswerEditorScreen(args: argsFrom(s.pathParameters['id'], s.uri.queryParameters)),
       );
 
+  /// The web form's types, in its order.
+  static const types = ['faq', 'product', 'policy', 'company_profile', 'custom_instruction'];
+
+  static String typeLabel(AppLocalizations l, String type) => switch (type) {
+        'product' => l.kbe_type_product,
+        'policy' => l.kbe_type_policy,
+        'company_profile' => l.kbe_type_company_profile,
+        'custom_instruction' => l.kbe_type_custom_instruction,
+        _ => l.kbe_type_faq,
+      };
+
   @override
   ConsumerState<KbAnswerEditorScreen> createState() => _KbAnswerEditorScreenState();
 }
 
 class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
   final _q = TextEditingController();
-  final _a = KbAnswerTextController();
-  final _qFocus = FocusNode(debugLabel: 'kbe-question');
-  final _aFocus = FocusNode(debugLabel: 'kbe-answer');
+  final _a = TextEditingController();
+  final _qFocus = FocusNode(debugLabel: 'kbe-title-field');
+  final _aFocus = FocusNode(debugLabel: 'kbe-content-field');
   final _titleFocus = FocusNode(debugLabel: 'kbe-title');
   int _syncedRevision = -1;
   bool _closing = false;
@@ -95,7 +97,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     _aFocus.addListener(() {
       if (!_aFocus.hasFocus) _ctrl.blurAnswer();
     });
-    // §10: focus the title for screen readers outside create mode.
+    // Screen readers start on the header title outside create mode.
     if (_args.mode != KbeMode.create) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) _titleFocus.requestFocus();
@@ -120,7 +122,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     if (_a.text != s.fields.answer) _a.text = s.fields.answer;
   }
 
-  // ---- Close / discard (§6.3) ------------------------------------------------------
+  // ---- Close / discard -------------------------------------------------------------
 
   Future<void> _close() async {
     if (_closing) return;
@@ -151,6 +153,11 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     final s = ref.read(kbAnswerEditorControllerProvider(_args));
     if (s.offline) {
       AppSnackbar.show(context, message: l.kbe_save_offline, kind: SnackKind.error);
+      return;
+    }
+    // Inline errors on every field, like the web form's required checks.
+    if (!_ctrl.validateAll()) {
+      (KbEditorValidation.question(s.fields.question) != null ? _qFocus : _aFocus).requestFocus();
       return;
     }
     final r = await _ctrl.save(overwriteVersion: overwriteVersion);
@@ -205,7 +212,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     }
   }
 
-  /// Close (slide down) and confirm on the screen underneath (§5).
+  /// Close (slide down) and confirm on the screen underneath.
   void _finish(KbeOutcome o, {int mediaFailed = 0}) {
     final l = context.l10n;
     final host = Navigator.of(context, rootNavigator: true).context;
@@ -252,85 +259,26 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     if (mounted) await _handle(r);
   }
 
-  // ---- Tools -----------------------------------------------------------------------
-
-  Future<void> _pickTags(KbeState s) async {
-    final picked = await showKbTagPickerSheet(context, selected: s.fields.tags, load: _ctrl.tags);
-    if (picked != null) _ctrl.setTags(picked);
-  }
-
-  Future<void> _improve(KbeState s) async {
+  Future<void> _pickType(KbeState s) async {
     FocusScope.of(context).unfocus();
-    final out = await showKbAnswerRewriteSheet(context, ref, source: s.fields.answer.trim(), aiEnabled: s.aiAvailable);
-    if (out != null) _ctrl.replaceAnswer(out.text);
-  }
-
-  Future<void> _addLink() async {
     final l = context.l10n;
-    final url = TextEditingController();
-    final title = TextEditingController();
-    String? error;
-    final result = await showDialog<String>(
-      context: context,
-      barrierColor: context.colors.scrim,
-      builder: (ctx) => StatefulBuilder(
-        builder: (ctx, setLocal) => AlertDialog(
-          title: Text(l.kbe_add_link, style: ctx.text.h5),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppTextField(
-                label: l.kbe_link_url,
-                hint: 'https://',
-                controller: url,
-                autofocus: true,
-                error: error,
-                keyboardType: TextInputType.url,
-                textDirection: TextDirection.ltr,
-                autocorrect: false,
-              ),
-              const SizedBox(height: AppSpacing.md),
-              AppTextField(label: l.kbe_link_label, controller: title),
-            ],
-          ),
-          actions: [
-            TextButton(onPressed: () => Navigator.of(ctx).pop(), child: Text(l.kbe_cancel)),
-            TextButton(
-              onPressed: () {
-                final u = url.text.trim();
-                final uri = Uri.tryParse(u);
-                if (uri == null || !uri.hasScheme || !uri.scheme.startsWith('http') || uri.host.isEmpty) {
-                  setLocal(() => error = l.kbe_link_invalid);
-                  return;
-                }
-                final t = title.text.trim();
-                Navigator.of(ctx).pop(t.isEmpty ? u : '$t: $u');
-              },
-              child: Text(l.kbe_insert),
+    final picked = await AppBottomSheet.show<String>(
+      context,
+      title: l.kbe_type,
+      builder: (ctx) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (final t in KbAnswerEditorScreen.types)
+            AppRadioRow(
+              label: KbAnswerEditorScreen.typeLabel(l, t),
+              selected: t == s.fields.category,
+              onTap: () => Navigator.of(ctx).pop(t),
             ),
-          ],
-        ),
+          const SizedBox(height: AppSpacing.sm),
+        ],
       ),
     );
-    url.dispose();
-    title.dispose();
-    if (result == null || !mounted) return;
-    final text = _a.text;
-    final sel = _a.selection;
-    final at = sel.isValid ? sel.baseOffset.clamp(0, text.length) : text.length;
-    final pre = at > 0 && !RegExp(r'\s$').hasMatch(text.substring(0, at)) ? ' ' : '';
-    final next = text.replaceRange(at, at, '$pre$result ');
-    _a.value = TextEditingValue(text: next, selection: TextSelection.collapsed(offset: at + pre.length + result.length + 1));
-    _ctrl.setAnswer(next);
-  }
-
-  void _openEntry(String id) => context.push(Routes.knowledgeDetail(id));
-
-  void _mergeInto(String id, KbeState s) {
-    // The entry editor opens with this question appended to its phrasings.
-    _ctrl.clearLocalDraft();
-    _closing = true;
-    context.pushReplacement(Uri(path: '/knowledge/$id/edit', queryParameters: {'appendAlt': s.fields.question.trim()}).toString());
+    if (picked != null) _ctrl.setCategory(picked);
   }
 
   // ---- Build -----------------------------------------------------------------------
@@ -339,8 +287,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
         KbeFieldError.questionShort => l.kbe_err_q,
         KbeFieldError.answerShort => l.kbe_err_a,
         KbeFieldError.answerLong => l.kbe_err_a_long,
-        KbeFieldError.datePast => l.kbe_err_date,
-        null => null,
+        _ => null,
       };
 
   Widget? _sourceBanner(KbeState s) {
@@ -394,7 +341,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
         _showDeletedDialog();
       }
     });
-    // Read-only users can't open the edit route (§7) → detail screen.
+    // Read-only users can't open the edit route → detail screen.
     if (_args.mode == KbeMode.edit && !s.canEdit && !_closing) {
       _closing = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -410,7 +357,7 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
     };
     final ready = s.phase == KbePhase.ready || s.phase == KbePhase.saving;
     final editable = ready && !s.saving && !_flushing;
-    final canSubmit = ready && s.valid && !s.offline && !_flushing;
+    final canSubmit = ready && !s.offline && !_flushing;
     // Attachments: list meta when loaded, else edit rights; never in propose mode.
     final list = ref.watch(knowledgeControllerProvider.select((x) => (x.loaded, x.permissions.canUploadMedia)));
     final canUploadMedia = s.canEdit && (list.$1 ? list.$2 : s.canEdit);
@@ -424,114 +371,80 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
       body = const SizedBox.shrink();
     } else {
       final banner = _sourceBanner(s);
-      final showWarning = !s.warningDismissed && (s.similar != null || s.conflict != null);
       body = GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () => FocusScope.of(context).unfocus(),
         child: ListView(
-          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
-          padding: const EdgeInsets.fromLTRB(18, AppSpacing.sm, 18, AppSpacing.xxl),
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          padding: EdgeInsets.fromLTRB(18, AppSpacing.md, 18, AppSpacing.xxl + MediaQuery.viewInsetsOf(context).bottom),
           children: [
-            if (s.restorable != null)
+            if (s.restorable != null) ...[
               EditorRestoreDraftBanner(onRestore: _ctrl.restoreLocalDraft, onIgnore: _ctrl.ignoreLocalDraft),
-            ?banner,
-            QuestionField(
+              const SizedBox(height: AppSpacing.md),
+            ],
+            if (banner != null) ...[banner, const SizedBox(height: AppSpacing.md)],
+            // 1 · النوع (required select, like the web form).
+            _Label(text: l.kbe_type, required: true),
+            _TypeField(
+              label: KbAnswerEditorScreen.typeLabel(l, s.fields.category),
+              enabled: editable,
+              onTap: () => _pickType(s),
+            ),
+            const SizedBox(height: AppSpacing.lg),
+            // 2 · العنوان
+            AppTextField(
+              label: '${l.kbe_title_label} *',
+              hint: l.kbe_title_ph,
               controller: _q,
               focusNode: _qFocus,
               onChanged: _ctrl.setQuestion,
               error: _errorText(l, s.questionError),
+              maxLength: KbEditorValidation.questionMax,
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
               autofocus: _args.mode == KbeMode.create && s.fields.question.isEmpty,
               enabled: editable,
+              onSubmitted: (_) => _aFocus.requestFocus(),
             ),
-            const SizedBox(height: 14),
-            Row(
-              children: [
-                Flexible(child: Text(l.kbe_alts, style: context.text.inputLabel)),
-                const SizedBox(width: AppSpacing.xs),
-                Text(l.kbe_optional, style: context.text.caption.copyWith(color: c.textTertiary)),
-              ],
-            ),
-            const SizedBox(height: AppSpacing.sm),
-            AltPhrasingsEditor(
-              alts: s.fields.alts,
-              ghosts: s.ghosts,
-              shakeTick: s.shakeTick,
-              enabled: editable,
-              onAdd: (items) => _ctrl.addAlts(items),
-              onEdit: _ctrl.editAlt,
-              onRemove: _ctrl.removeAlt,
-              onAcceptGhost: _ctrl.acceptGhost,
-              onDismissGhost: _ctrl.dismissGhost,
-            ),
-            const SizedBox(height: 14),
-            AnswerField(
+            const SizedBox(height: AppSpacing.md),
+            // 3 · المحتوى
+            AppTextField(
+              label: '${l.kbe_content_label} *',
+              hint: l.kbe_content_ph,
               controller: _a,
               focusNode: _aFocus,
               onChanged: _ctrl.setAnswer,
               error: _errorText(l, s.answerError),
-              aiDraft: s.aiDraft,
+              minLines: 6,
+              maxLines: 14,
+              keyboardType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
+              textCapitalization: TextCapitalization.sentences,
               enabled: editable,
             ),
-            const SizedBox(height: 10),
-            EditorToolsRow(
-              tags: s.fields.tags,
-              enabled: editable,
-              onTag: () => _pickTags(s),
-              onImprove: s.fields.answer.trim().isEmpty || s.offline ? null : () => _improve(s),
-              onAddLink: _addLink,
-            ),
-            AnimatedSize(
-              duration: AppMotion.reduced(context) ? Duration.zero : AppMotion.normal,
-              alignment: Alignment.topCenter,
-              child: AnimatedSwitcher(
-                duration: AppMotion.reduced(context) ? Duration.zero : AppMotion.normal,
-                child: showWarning
-                    ? DuplicateWarning(
-                        key: ValueKey('${s.similar?.id}-${s.conflict?.id}'),
-                        similar: s.similar,
-                        conflict: s.conflict,
-                        onOpen: _openEntry,
-                        onMerge: s.canEdit && _args.mode != KbeMode.edit ? (id) => _mergeInto(id, s) : null,
-                        onDismiss: _ctrl.dismissWarning,
-                      )
-                    : const SizedBox(width: double.infinity),
+            const SizedBox(height: AppSpacing.md),
+            // 4 · نشط
+            Container(
+              decoration: BoxDecoration(
+                color: c.surface,
+                borderRadius: BorderRadius.circular(AppRadius.lg),
+                border: Border.all(color: c.border),
+              ),
+              child: SettingsTile(
+                title: l.kbe_active,
+                subtitle: l.kbe_active_sub,
+                showChevron: false,
+                trailing: AppSwitch(
+                  value: s.fields.enabled,
+                  semanticLabel: l.kbe_active,
+                  onChanged: editable ? _ctrl.setEnabled : null,
+                ),
+                onTap: editable ? () => _ctrl.setEnabled(!s.fields.enabled) : null,
               ),
             ),
+            const SizedBox(height: AppSpacing.lg),
+            // 5 · المرفقات (images / voice notes, send mode per file).
             EditorMediaSection(args: _args, enabled: editable, canUpload: canUploadMedia),
-            AiPreviewCard(
-              preview: s.preview,
-              loading: s.previewLoading,
-              error: s.previewError,
-              offline: s.offline,
-              ready: KbEditorValidation.question(s.fields.question) == null && KbEditorValidation.answer(s.fields.answer) == null,
-              fallbackQuestion: s.testQuestion ?? (s.fields.alts.isNotEmpty ? s.fields.alts.last : s.fields.question.trim()),
-              onRefresh: _ctrl.refreshPreview,
-              onTestQuestion: _ctrl.setTestQuestion,
-              onTryAnother: _ctrl.tryAnother,
-              onTone: () => context.push(Routes.aiAgent),
-            ),
-            EditorAdvancedSection(
-              enabled: s.fields.enabled,
-              channels: s.fields.channels,
-              expiresAt: s.fields.expiresAt,
-              verbatim: s.fields.verbatim,
-              handoffAfter: s.fields.handoffAfter,
-              internalNotes: s.fields.internalNotes,
-              dateError: _errorText(l, s.dateError),
-              editable: editable,
-              initiallyExpanded: s.fields.expiresAt != null || s.fields.verbatim || s.fields.handoffAfter,
-              onEnabled: _ctrl.setEnabled,
-              onChannels: _ctrl.setChannels,
-              onExpiresAt: _ctrl.setExpiresAt,
-              onVerbatim: _ctrl.setVerbatim,
-              onHandoffAfter: _ctrl.setHandoffAfter,
-              onInternalNotes: _ctrl.setInternalNotes,
-            ),
-            if (_args.mode == KbeMode.edit && s.base != null)
-              EditorMetaFooter(
-                entry: s.base!,
-                onHistory: () => showVersionsSheet(context, load: _ctrl.versions, onRestore: _ctrl.restoreVersion),
-              ),
           ],
         ),
       );
@@ -629,6 +542,71 @@ class _KbAnswerEditorScreenState extends ConsumerState<KbAnswerEditorScreen> {
   }
 }
 
+/// Field label above an input (`inputLabel`), "*" for required ones.
+class _Label extends StatelessWidget {
+  const _Label({required this.text, this.required = false});
+
+  final String text;
+  final bool required;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.text;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
+      child: Text.rich(
+        TextSpan(
+          text: text,
+          children: [if (required) TextSpan(text: ' *', style: TextStyle(color: context.colors.error))],
+        ),
+        style: t.inputLabel,
+      ),
+    );
+  }
+}
+
+/// Select-like field for النوع: current type + chevron, opens the radio sheet.
+class _TypeField extends StatelessWidget {
+  const _TypeField({required this.label, required this.enabled, required this.onTap});
+
+  final String label;
+  final bool enabled;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final t = context.text;
+    return Semantics(
+      button: true,
+      enabled: enabled,
+      label: '${context.l10n.kbe_type}: $label',
+      excludeSemantics: true,
+      child: Material(
+        color: c.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.lg),
+          side: BorderSide(color: c.border, width: 1.5),
+        ),
+        child: InkWell(
+          customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),
+          onTap: enabled ? onTap : null,
+          child: Container(
+            constraints: const BoxConstraints(minHeight: 52),
+            padding: const EdgeInsets.symmetric(horizontal: 14),
+            child: Row(
+              children: [
+                Expanded(child: Text(label, style: t.bodyMedium.copyWith(color: c.textPrimary, fontWeight: FontWeight.w600))),
+                AppIcon(AppIcons.chevronDown, size: AppIconSize.sm, color: c.textSecondary),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _BottomBar extends StatelessWidget {
   const _BottomBar({required this.child});
 
@@ -645,7 +623,7 @@ class _BottomBar extends StatelessWidget {
   }
 }
 
-/// Loading (edit / prefill, §7): field skeletons; the app bar stays active.
+/// Loading (edit / prefill): the form's field skeletons; the app bar stays active.
 class _EditorSkeleton extends StatelessWidget {
   const _EditorSkeleton();
 
@@ -662,27 +640,21 @@ class _EditorSkeleton extends StatelessWidget {
         );
     final content = ListView(
       physics: const NeverScrollableScrollPhysics(),
-      padding: const EdgeInsets.fromLTRB(18, AppSpacing.sm, 18, 0),
+      padding: const EdgeInsets.fromLTRB(18, AppSpacing.md, 18, 0),
       children: [
+        const SkeletonBox(width: 50, height: 12),
+        const SizedBox(height: AppSpacing.sm),
+        field(52),
+        const SizedBox(height: AppSpacing.lg),
         const SkeletonBox(width: 60, height: 12),
         const SizedBox(height: AppSpacing.sm),
         field(52),
-        const SizedBox(height: 18),
-        const SkeletonBox(width: 150, height: 12),
-        const SizedBox(height: AppSpacing.sm),
-        const Row(
-          children: [
-            SkeletonBox(width: 110, height: 32, radius: AppRadius.full),
-            SizedBox(width: 6),
-            SkeletonBox(width: 90, height: 32, radius: AppRadius.full),
-          ],
-        ),
-        const SizedBox(height: 18),
+        const SizedBox(height: AppSpacing.lg),
         const SkeletonBox(width: 60, height: 12),
         const SizedBox(height: AppSpacing.sm),
-        field(140),
-        const SizedBox(height: AppSpacing.lg),
-        Container(height: 150, decoration: BoxDecoration(color: c.backgroundMuted, borderRadius: BorderRadius.circular(AppRadius.xl))),
+        field(150),
+        const SizedBox(height: AppSpacing.md),
+        field(60),
       ],
     );
     return AppMotion.reduced(context) ? content : AppSkeleton(child: content);

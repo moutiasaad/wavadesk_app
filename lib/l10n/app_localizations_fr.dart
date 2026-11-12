@@ -5254,10 +5254,10 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get kbe_new => 'Nouvelle question';
+  String get kbe_new => 'Nouvelle entrée';
 
   @override
-  String get kbe_edit => 'Modifier la réponse';
+  String get kbe_edit => 'Modifier l’entrée';
 
   @override
   String get kbe_review => 'Vérifier la suggestion';
@@ -5517,13 +5517,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get kbe_restore_failed => 'Impossible de restaurer';
 
   @override
-  String get kbe_err_q => 'Saisissez la question (5 caractères minimum)';
+  String get kbe_err_q => 'Saisissez un titre';
 
   @override
-  String get kbe_err_a => 'Saisissez la réponse (10 caractères minimum)';
+  String get kbe_err_a => 'Saisissez le contenu';
 
   @override
-  String get kbe_err_a_long => 'La réponse dépasse 2000 caractères';
+  String get kbe_err_a_long => 'Le contenu est trop long';
 
   @override
   String get kbe_err_date => 'Choisissez une date future';
@@ -5689,6 +5689,43 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kbe_media_send_mode => 'Comment elle est envoyée';
+
+  @override
+  String get kbe_type => 'Type';
+
+  @override
+  String get kbe_type_faq => 'FAQ';
+
+  @override
+  String get kbe_type_product => 'Produit';
+
+  @override
+  String get kbe_type_policy => 'Politique';
+
+  @override
+  String get kbe_type_company_profile => 'Profil de l’entreprise';
+
+  @override
+  String get kbe_type_custom_instruction => 'Instruction personnalisée';
+
+  @override
+  String get kbe_title_label => 'Titre';
+
+  @override
+  String get kbe_title_ph => 'ex. Politique de livraison';
+
+  @override
+  String get kbe_content_label => 'Contenu';
+
+  @override
+  String get kbe_content_ph =>
+      'Saisissez le contenu que l’IA doit connaître...';
+
+  @override
+  String get kbe_active => 'Actif';
+
+  @override
+  String get kbe_active_sub => 'L’IA s’en sert pour répondre aux clients';
 
   @override
   String get kb_title => 'Base de connaissances';

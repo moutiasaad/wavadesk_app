@@ -311,6 +311,7 @@ class KbQa {
     required this.id,
     required this.question,
     required this.answer,
+    this.category = 'faq',
     this.altPhrasings = const [],
     this.tags = const [],
     this.enabled = true,
@@ -336,6 +337,7 @@ class KbQa {
         id: '${j['id']}',
         question: '${j['question'] ?? j['title'] ?? ''}',
         answer: '${j['answer'] ?? ''}',
+        category: '${j['category'] ?? 'faq'}',
         altPhrasings: _strings(j['alt_phrasings']),
         tags: [for (final t in (j['tags'] as List? ?? const [])) KbTag.fromJson(t)],
         enabled: j['enabled'] ?? j['is_active'] ?? true,
@@ -363,6 +365,9 @@ class KbQa {
   final String id;
   final String question;
   final String answer;
+
+  /// Web "النوع": faq | product | policy | company_profile | custom_instruction.
+  final String category;
   final List<String> altPhrasings;
   final List<KbTag> tags;
   final bool enabled;
@@ -410,6 +415,7 @@ class KbQa {
         id: id,
         question: question ?? this.question,
         answer: answer ?? this.answer,
+        category: category,
         altPhrasings: altPhrasings ?? this.altPhrasings,
         tags: tags ?? this.tags,
         enabled: enabled ?? this.enabled,

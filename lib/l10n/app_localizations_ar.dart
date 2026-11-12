@@ -5209,10 +5209,10 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
-  String get kbe_new => 'سؤال جديد';
+  String get kbe_new => 'مدخل جديد';
 
   @override
-  String get kbe_edit => 'تعديل الإجابة';
+  String get kbe_edit => 'تعديل المدخل';
 
   @override
   String get kbe_review => 'مراجعة مقترح';
@@ -5465,13 +5465,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get kbe_restore_failed => 'تعذّرت الاستعادة';
 
   @override
-  String get kbe_err_q => 'اكتب السؤال (5 أحرف على الأقل)';
+  String get kbe_err_q => 'اكتب العنوان';
 
   @override
-  String get kbe_err_a => 'اكتب الإجابة (10 أحرف على الأقل)';
+  String get kbe_err_a => 'اكتب المحتوى';
 
   @override
-  String get kbe_err_a_long => 'الإجابة أطول من 2000 حرف';
+  String get kbe_err_a_long => 'المحتوى طويل جدًا';
 
   @override
   String get kbe_err_date => 'اختر تاريخًا في المستقبل';
@@ -5635,6 +5635,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kbe_media_send_mode => 'طريقة الإرسال';
+
+  @override
+  String get kbe_type => 'النوع';
+
+  @override
+  String get kbe_type_faq => 'أسئلة شائعة';
+
+  @override
+  String get kbe_type_product => 'منتج';
+
+  @override
+  String get kbe_type_policy => 'سياسة';
+
+  @override
+  String get kbe_type_company_profile => 'ملف الشركة';
+
+  @override
+  String get kbe_type_custom_instruction => 'تعليمات مخصصة';
+
+  @override
+  String get kbe_title_label => 'العنوان';
+
+  @override
+  String get kbe_title_ph => 'مثال: سياسة الشحن';
+
+  @override
+  String get kbe_content_label => 'المحتوى';
+
+  @override
+  String get kbe_content_ph =>
+      'أدخل المحتوى الذي يجب أن يعرفه المساعد الذكي...';
+
+  @override
+  String get kbe_active => 'نشط';
+
+  @override
+  String get kbe_active_sub => 'يستخدمه الذكاء الاصطناعي في الرد على العملاء';
 
   @override
   String get kb_title => 'المعرفة';
