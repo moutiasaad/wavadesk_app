@@ -84,7 +84,7 @@ class _TabButton extends StatelessWidget {
         color: selected ? c.primaryContainer : c.primaryContainer.withValues(alpha: 0),
         borderRadius: BorderRadius.circular(AppRadius.full),
       ),
-      child: AppIcon(item.icon, size: AppIconSize.lg, color: color),
+      child: AppIcon(item.icon, dp: 20, color: color),
     );
     if (item.badge > 0) {
       icon = Stack(
