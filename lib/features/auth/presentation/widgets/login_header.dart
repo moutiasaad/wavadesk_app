@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/icons/wd_svg_icons.dart';
 import '../../../../core/theme/app_theme.dart';
 
 /// Login v2 §4.1 teal header: 170° gradient, brand row (logo tile,
@@ -84,7 +83,9 @@ class LoginHeader extends StatelessWidget {
   }
 }
 
-/// 42×42 white tile, radius 13, soft drop shadow, teal wave mark (24).
+/// 42×42 tile, radius 13, soft drop shadow: the app's launcher icon itself
+/// (assets/icon/app_icon.png), with a thin white edge so it reads on the
+/// teal header.
 class _LogoTile extends StatelessWidget {
   const _LogoTile();
 
@@ -94,12 +95,14 @@ class _LogoTile extends StatelessWidget {
       width: 42,
       height: 42,
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(13),
+        border: Border.all(color: Colors.white.withValues(alpha: 0.7), width: 1.5),
         boxShadow: const [BoxShadow(offset: Offset(0, 8), blurRadius: 18, spreadRadius: -8, color: Color(0x4D000000))],
       ),
-      alignment: Alignment.center,
-      child: const AppIcon(WdSvgIcons.logo, dp: 24, color: Color(0xFF0F7E7A)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(11.5),
+        child: Image.asset('assets/icon/app_icon.png', fit: BoxFit.cover, filterQuality: FilterQuality.medium),
+      ),
     ),
   );
 }

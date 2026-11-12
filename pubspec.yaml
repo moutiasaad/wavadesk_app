@@ -54,6 +54,7 @@ flutter:
     - assets/brand/
     - assets/config/
     - assets/icons/
+    - assets/icon/app_icon.png
     - assets/images/
 
   fonts:
