@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart' show DateFormat;
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,6 +24,9 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  // Western digits everywhere (times, dates): intl uses Arabic-Indic digits
+  // for `ar` dates by default ("١٣:٣٥"); numbers already use 0-9.
+  DateFormat.useNativeDigitsByDefaultFor('ar', false);
 
   // Push (FCM). Android/iOS only; a failure must never block the app.
   if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
