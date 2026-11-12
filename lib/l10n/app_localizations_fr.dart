@@ -707,6 +707,286 @@ class AppLocalizationsFr extends AppLocalizations {
   String get channels_meta_sub => 'API officielle · s’ouvre sur le site web';
 
   @override
+  String get acc_title => 'Compte';
+
+  @override
+  String get acc_role_owner => 'Propriétaire';
+
+  @override
+  String get acc_role_admin => 'Administrateur';
+
+  @override
+  String get acc_role_lead => 'Chef d\'équipe';
+
+  @override
+  String get acc_role_agent => 'Agent';
+
+  @override
+  String get acc_menu => 'Options du compte';
+
+  @override
+  String get acc_menu_edit => 'Modifier le profil';
+
+  @override
+  String get acc_menu_copy_id => 'Copier l\'ID utilisateur';
+
+  @override
+  String get acc_id_copied => 'ID copié';
+
+  @override
+  String acc_header_a11y(
+    String name,
+    String role,
+    String workspace,
+    String status,
+  ) {
+    return '$name, $role, $workspace, statut : $status';
+  }
+
+  @override
+  String get acc_my_status => 'Mon statut';
+
+  @override
+  String acc_away_open_title(int n) {
+    return 'Vous avez $n conversations ouvertes';
+  }
+
+  @override
+  String get acc_away_open_body =>
+      'Que faire de ces conversations pendant votre absence ?';
+
+  @override
+  String get acc_away_release => 'Les remettre en non assignées';
+
+  @override
+  String get acc_away_keep => 'Les garder';
+
+  @override
+  String get acc_presence_failed => 'Impossible de changer le statut';
+
+  @override
+  String acc_released(int n) {
+    return '$n conversations remises en non assignées';
+  }
+
+  @override
+  String get acc_sec_admin => 'Gestion';
+
+  @override
+  String get acc_sec_app => 'Application';
+
+  @override
+  String get acc_sec_about => 'À propos';
+
+  @override
+  String get acc_wa_connected => 'Connecté';
+
+  @override
+  String get acc_wa_disconnected => 'Déconnecté';
+
+  @override
+  String get acc_wa_phone_off => 'Téléphone hors ligne';
+
+  @override
+  String get acc_wa_pending => 'Non lié';
+
+  @override
+  String get acc_wa_connecting => 'Connexion…';
+
+  @override
+  String get acc_ai_on => 'Activé';
+
+  @override
+  String get acc_ai_off => 'Désactivé';
+
+  @override
+  String get acc_ai_suggest => 'Suggestions seulement';
+
+  @override
+  String get acc_ai_hybrid => 'Hybride';
+
+  @override
+  String acc_plan_trial(String plan, int d) {
+    return '$plan · Essai, $d jours restants';
+  }
+
+  @override
+  String acc_plan_trial_ended(String plan) {
+    return '$plan · Essai terminé';
+  }
+
+  @override
+  String acc_plan_active(String plan) {
+    return '$plan · Actif';
+  }
+
+  @override
+  String get acc_plan_failed => 'Paiement échoué — mettez à jour la carte';
+
+  @override
+  String get acc_plan_badge_trial => 'Essai';
+
+  @override
+  String get acc_plan_badge_active => 'Actif';
+
+  @override
+  String acc_plan_days_left(int d) {
+    return '$d jours d\'essai restants';
+  }
+
+  @override
+  String get acc_plan_seats => 'Sièges';
+
+  @override
+  String get acc_plan_ai => 'Réponses IA';
+
+  @override
+  String get acc_plan_unlimited => 'Illimité';
+
+  @override
+  String get acc_plan_manage => 'Gérer l\'abonnement';
+
+  @override
+  String get acc_plan_readonly => 'Géré par le propriétaire de l\'espace';
+
+  @override
+  String get acc_notif_all => 'Toutes';
+
+  @override
+  String get acc_notif_assigned => 'Assignées à moi';
+
+  @override
+  String get acc_notif_mentions => 'Mentions seulement';
+
+  @override
+  String get acc_notif_none => 'Désactivées';
+
+  @override
+  String get acc_notif_denied => 'Bloquées sur l\'appareil';
+
+  @override
+  String get acc_security => 'Sécurité';
+
+  @override
+  String get acc_terms => 'Conditions et confidentialité';
+
+  @override
+  String get acc_contact => 'Contacter le support';
+
+  @override
+  String get acc_version => 'Version';
+
+  @override
+  String get acc_debug_copied => 'Infos de diagnostic copiées';
+
+  @override
+  String get acc_logout_title => 'Se déconnecter ?';
+
+  @override
+  String get acc_logout_body =>
+      'Les notifications des conversations s’arrêteront sur cet appareil.';
+
+  @override
+  String acc_logout_open(int n) {
+    return '$n conversations ouvertes resteront assignées à vous.';
+  }
+
+  @override
+  String get acc_offline => 'Hors ligne';
+
+  @override
+  String get acc_offline_presence =>
+      'Changer de statut nécessite une connexion';
+
+  @override
+  String get acc_open_failed => 'Impossible d\'ouvrir la page';
+
+  @override
+  String get prof_title => 'Profil';
+
+  @override
+  String get prof_name => 'Nom';
+
+  @override
+  String get prof_name_error => 'Le nom doit faire 2 à 50 caractères';
+
+  @override
+  String get prof_email => 'E-mail';
+
+  @override
+  String get prof_email_locked =>
+      'Contactez un administrateur pour changer l\'e-mail';
+
+  @override
+  String get prof_photo_web => 'Changez votre photo depuis le panneau web';
+
+  @override
+  String get prof_save => 'Enregistrer';
+
+  @override
+  String get prof_saved => 'Profil enregistré';
+
+  @override
+  String get prof_save_failed => 'Impossible d\'enregistrer';
+
+  @override
+  String get prof_discard => 'Abandonner les modifications ?';
+
+  @override
+  String get prof_discard_body =>
+      'Vos modifications ne seront pas enregistrées.';
+
+  @override
+  String get prof_discard_ok => 'Abandonner';
+
+  @override
+  String get sec_change_pw => 'Changer le mot de passe';
+
+  @override
+  String get sec_change_pw_sub => 'S\'ouvre sur le site';
+
+  @override
+  String get sec_biometric => 'Connexion biométrique';
+
+  @override
+  String get sec_biometric_reason =>
+      'Confirmez votre identité pour activer la biométrie';
+
+  @override
+  String get sec_biometric_unavailable =>
+      'La biométrie n\'est pas disponible sur cet appareil';
+
+  @override
+  String get sec_devices => 'Appareils connectés';
+
+  @override
+  String get sec_this_device => 'Cet appareil';
+
+  @override
+  String get sec_device_logout => 'Déconnecter';
+
+  @override
+  String get sec_logout_others => 'Déconnecter tous les autres appareils';
+
+  @override
+  String get sec_logout_others_body =>
+      'Les autres appareils devront se reconnecter.';
+
+  @override
+  String get sec_logout_done => 'Déconnecté';
+
+  @override
+  String sec_last_active(String t) {
+    return 'Actif $t';
+  }
+
+  @override
+  String get sec_devices_failed => 'Impossible de charger les appareils';
+
+  @override
+  String get common_locked => 'Verrouillé';
+
+  @override
   String get ai_title => 'Agent IA';
 
   @override

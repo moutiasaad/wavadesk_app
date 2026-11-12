@@ -373,6 +373,164 @@
   "channels_open_on_web": "يُفتح على الموقع",
   "channels_open_web_failed": "تعذّر فتح الموقع",
   "channels_meta_sub": "الواجهة الرسمية · يُفتح على الموقع",
+  "acc_title": "الحساب",
+  "acc_role_owner": "مالك",
+  "acc_role_admin": "مسؤول",
+  "acc_role_lead": "قائد فريق",
+  "acc_role_agent": "موظف دعم",
+  "acc_menu": "خيارات الحساب",
+  "acc_menu_edit": "تعديل الملف الشخصي",
+  "acc_menu_copy_id": "نسخ معرّف المستخدم",
+  "acc_id_copied": "تم نسخ المعرّف",
+  "acc_header_a11y": "{name}، {role}، {workspace}، الحالة: {status}",
+  "@acc_header_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      },
+      "workspace": {
+        "type": "String"
+      },
+      "status": {
+        "type": "String"
+      }
+    }
+  },
+  "acc_my_status": "حالتي",
+  "acc_away_open_title": "لديك {n} محادثات مفتوحة",
+  "@acc_away_open_title": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "acc_away_open_body": "ماذا تريد أن تفعل بها قبل أن تصبح غير متاح؟",
+  "acc_away_release": "إعادتها لغير المُسندة",
+  "acc_away_keep": "الإبقاء عليها",
+  "acc_presence_failed": "تعذّر تغيير الحالة",
+  "acc_released": "أُعيدت {n} محادثات لغير المُسندة",
+  "@acc_released": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "acc_sec_admin": "الإدارة",
+  "acc_sec_app": "التطبيق",
+  "acc_sec_about": "حول التطبيق",
+  "acc_wa_connected": "متصل",
+  "acc_wa_disconnected": "غير متصل",
+  "acc_wa_phone_off": "الهاتف غير متصل",
+  "acc_wa_pending": "غير مربوط",
+  "acc_wa_connecting": "جارٍ الاتصال",
+  "acc_ai_on": "مفعّل",
+  "acc_ai_off": "متوقف",
+  "acc_ai_suggest": "اقتراح فقط",
+  "acc_ai_hybrid": "هجين",
+  "acc_plan_trial": "{plan} · تجربة، متبقٍ {d} أيام",
+  "@acc_plan_trial": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      },
+      "d": {
+        "type": "int"
+      }
+    }
+  },
+  "acc_plan_trial_ended": "{plan} · انتهت التجربة",
+  "@acc_plan_trial_ended": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "acc_plan_active": "{plan} · نشط",
+  "@acc_plan_active": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "acc_plan_failed": "فشل الدفع — حدّث البطاقة",
+  "acc_plan_badge_trial": "تجربة",
+  "acc_plan_badge_active": "نشط",
+  "acc_plan_days_left": "متبقٍ {d} أيام من التجربة",
+  "@acc_plan_days_left": {
+    "placeholders": {
+      "d": {
+        "type": "int"
+      }
+    }
+  },
+  "acc_plan_seats": "المقاعد",
+  "acc_plan_ai": "ردود الذكاء الاصطناعي",
+  "acc_plan_unlimited": "غير محدود",
+  "acc_plan_manage": "إدارة الاشتراك",
+  "acc_plan_readonly": "يديره مالك مساحة العمل",
+  "acc_notif_all": "الكل",
+  "acc_notif_assigned": "المُسندة لي",
+  "acc_notif_mentions": "الإشارات فقط",
+  "acc_notif_none": "متوقفة",
+  "acc_notif_denied": "مرفوضة من الجهاز",
+  "acc_security": "الأمان",
+  "acc_terms": "الشروط وسياسة الخصوصية",
+  "acc_contact": "تواصل مع الدعم",
+  "acc_version": "الإصدار",
+  "acc_debug_copied": "تم نسخ معلومات التشخيص",
+  "acc_logout_title": "تسجيل الخروج؟",
+  "acc_logout_body": "ستتوقف إشعارات المحادثات على هذا الجهاز.",
+  "acc_logout_open": "لديك {n} محادثات مفتوحة ستبقى مُسندة لك.",
+  "@acc_logout_open": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "acc_offline": "غير متصل",
+  "acc_offline_presence": "تغيير الحالة يتطلب اتصالًا",
+  "acc_open_failed": "تعذّر فتح الصفحة",
+  "prof_title": "الملف الشخصي",
+  "prof_name": "الاسم",
+  "prof_name_error": "الاسم من 2 إلى 50 حرفًا",
+  "prof_email": "البريد الإلكتروني",
+  "prof_email_locked": "لتغيير البريد تواصل مع المسؤول",
+  "prof_photo_web": "تغيير الصورة متاح من لوحة الويب",
+  "prof_save": "حفظ",
+  "prof_saved": "تم حفظ الملف الشخصي",
+  "prof_save_failed": "تعذّر الحفظ",
+  "prof_discard": "تجاهل التغييرات؟",
+  "prof_discard_body": "لن تُحفظ التعديلات التي أجريتها.",
+  "prof_discard_ok": "تجاهل",
+  "sec_change_pw": "تغيير كلمة المرور",
+  "sec_change_pw_sub": "يُفتح على الموقع",
+  "sec_biometric": "تسجيل الدخول بالبصمة",
+  "sec_biometric_reason": "أكّد هويتك لتفعيل البصمة",
+  "sec_biometric_unavailable": "البصمة غير متاحة على هذا الجهاز",
+  "sec_devices": "الأجهزة المسجّلة",
+  "sec_this_device": "هذا الجهاز",
+  "sec_device_logout": "تسجيل الخروج",
+  "sec_logout_others": "تسجيل الخروج من كل الأجهزة الأخرى",
+  "sec_logout_others_body": "سيُطلب تسجيل الدخول مجددًا على الأجهزة الأخرى.",
+  "sec_logout_done": "تم تسجيل الخروج",
+  "sec_last_active": "آخر نشاط {t}",
+  "@sec_last_active": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "sec_devices_failed": "تعذّر تحميل الأجهزة",
+  "common_locked": "مقفل",
   "ai_title": "وكيل الذكاء الاصطناعي",
   "ai_master_switch": "تشغيل الذكاء الاصطناعي",
   "ai_state_on": "مفعّل",

@@ -1288,6 +1288,509 @@ abstract class AppLocalizations {
   /// **'الواجهة الرسمية · يُفتح على الموقع'**
   String get channels_meta_sub;
 
+  /// No description provided for @acc_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحساب'**
+  String get acc_title;
+
+  /// No description provided for @acc_role_owner.
+  ///
+  /// In ar, this message translates to:
+  /// **'مالك'**
+  String get acc_role_owner;
+
+  /// No description provided for @acc_role_admin.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسؤول'**
+  String get acc_role_admin;
+
+  /// No description provided for @acc_role_lead.
+  ///
+  /// In ar, this message translates to:
+  /// **'قائد فريق'**
+  String get acc_role_lead;
+
+  /// No description provided for @acc_role_agent.
+  ///
+  /// In ar, this message translates to:
+  /// **'موظف دعم'**
+  String get acc_role_agent;
+
+  /// No description provided for @acc_menu.
+  ///
+  /// In ar, this message translates to:
+  /// **'خيارات الحساب'**
+  String get acc_menu;
+
+  /// No description provided for @acc_menu_edit.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعديل الملف الشخصي'**
+  String get acc_menu_edit;
+
+  /// No description provided for @acc_menu_copy_id.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسخ معرّف المستخدم'**
+  String get acc_menu_copy_id;
+
+  /// No description provided for @acc_id_copied.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم نسخ المعرّف'**
+  String get acc_id_copied;
+
+  /// No description provided for @acc_header_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'{name}، {role}، {workspace}، الحالة: {status}'**
+  String acc_header_a11y(
+    String name,
+    String role,
+    String workspace,
+    String status,
+  );
+
+  /// No description provided for @acc_my_status.
+  ///
+  /// In ar, this message translates to:
+  /// **'حالتي'**
+  String get acc_my_status;
+
+  /// No description provided for @acc_away_open_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'لديك {n} محادثات مفتوحة'**
+  String acc_away_open_title(int n);
+
+  /// No description provided for @acc_away_open_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'ماذا تريد أن تفعل بها قبل أن تصبح غير متاح؟'**
+  String get acc_away_open_body;
+
+  /// No description provided for @acc_away_release.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادتها لغير المُسندة'**
+  String get acc_away_release;
+
+  /// No description provided for @acc_away_keep.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإبقاء عليها'**
+  String get acc_away_keep;
+
+  /// No description provided for @acc_presence_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تغيير الحالة'**
+  String get acc_presence_failed;
+
+  /// No description provided for @acc_released.
+  ///
+  /// In ar, this message translates to:
+  /// **'أُعيدت {n} محادثات لغير المُسندة'**
+  String acc_released(int n);
+
+  /// No description provided for @acc_sec_admin.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإدارة'**
+  String get acc_sec_admin;
+
+  /// No description provided for @acc_sec_app.
+  ///
+  /// In ar, this message translates to:
+  /// **'التطبيق'**
+  String get acc_sec_app;
+
+  /// No description provided for @acc_sec_about.
+  ///
+  /// In ar, this message translates to:
+  /// **'حول التطبيق'**
+  String get acc_sec_about;
+
+  /// No description provided for @acc_wa_connected.
+  ///
+  /// In ar, this message translates to:
+  /// **'متصل'**
+  String get acc_wa_connected;
+
+  /// No description provided for @acc_wa_disconnected.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متصل'**
+  String get acc_wa_disconnected;
+
+  /// No description provided for @acc_wa_phone_off.
+  ///
+  /// In ar, this message translates to:
+  /// **'الهاتف غير متصل'**
+  String get acc_wa_phone_off;
+
+  /// No description provided for @acc_wa_pending.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مربوط'**
+  String get acc_wa_pending;
+
+  /// No description provided for @acc_wa_connecting.
+  ///
+  /// In ar, this message translates to:
+  /// **'جارٍ الاتصال'**
+  String get acc_wa_connecting;
+
+  /// No description provided for @acc_ai_on.
+  ///
+  /// In ar, this message translates to:
+  /// **'مفعّل'**
+  String get acc_ai_on;
+
+  /// No description provided for @acc_ai_off.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوقف'**
+  String get acc_ai_off;
+
+  /// No description provided for @acc_ai_suggest.
+  ///
+  /// In ar, this message translates to:
+  /// **'اقتراح فقط'**
+  String get acc_ai_suggest;
+
+  /// No description provided for @acc_ai_hybrid.
+  ///
+  /// In ar, this message translates to:
+  /// **'هجين'**
+  String get acc_ai_hybrid;
+
+  /// No description provided for @acc_plan_trial.
+  ///
+  /// In ar, this message translates to:
+  /// **'{plan} · تجربة، متبقٍ {d} أيام'**
+  String acc_plan_trial(String plan, int d);
+
+  /// No description provided for @acc_plan_trial_ended.
+  ///
+  /// In ar, this message translates to:
+  /// **'{plan} · انتهت التجربة'**
+  String acc_plan_trial_ended(String plan);
+
+  /// No description provided for @acc_plan_active.
+  ///
+  /// In ar, this message translates to:
+  /// **'{plan} · نشط'**
+  String acc_plan_active(String plan);
+
+  /// No description provided for @acc_plan_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'فشل الدفع — حدّث البطاقة'**
+  String get acc_plan_failed;
+
+  /// No description provided for @acc_plan_badge_trial.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجربة'**
+  String get acc_plan_badge_trial;
+
+  /// No description provided for @acc_plan_badge_active.
+  ///
+  /// In ar, this message translates to:
+  /// **'نشط'**
+  String get acc_plan_badge_active;
+
+  /// No description provided for @acc_plan_days_left.
+  ///
+  /// In ar, this message translates to:
+  /// **'متبقٍ {d} أيام من التجربة'**
+  String acc_plan_days_left(int d);
+
+  /// No description provided for @acc_plan_seats.
+  ///
+  /// In ar, this message translates to:
+  /// **'المقاعد'**
+  String get acc_plan_seats;
+
+  /// No description provided for @acc_plan_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'ردود الذكاء الاصطناعي'**
+  String get acc_plan_ai;
+
+  /// No description provided for @acc_plan_unlimited.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير محدود'**
+  String get acc_plan_unlimited;
+
+  /// No description provided for @acc_plan_manage.
+  ///
+  /// In ar, this message translates to:
+  /// **'إدارة الاشتراك'**
+  String get acc_plan_manage;
+
+  /// No description provided for @acc_plan_readonly.
+  ///
+  /// In ar, this message translates to:
+  /// **'يديره مالك مساحة العمل'**
+  String get acc_plan_readonly;
+
+  /// No description provided for @acc_notif_all.
+  ///
+  /// In ar, this message translates to:
+  /// **'الكل'**
+  String get acc_notif_all;
+
+  /// No description provided for @acc_notif_assigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'المُسندة لي'**
+  String get acc_notif_assigned;
+
+  /// No description provided for @acc_notif_mentions.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإشارات فقط'**
+  String get acc_notif_mentions;
+
+  /// No description provided for @acc_notif_none.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوقفة'**
+  String get acc_notif_none;
+
+  /// No description provided for @acc_notif_denied.
+  ///
+  /// In ar, this message translates to:
+  /// **'مرفوضة من الجهاز'**
+  String get acc_notif_denied;
+
+  /// No description provided for @acc_security.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأمان'**
+  String get acc_security;
+
+  /// No description provided for @acc_terms.
+  ///
+  /// In ar, this message translates to:
+  /// **'الشروط وسياسة الخصوصية'**
+  String get acc_terms;
+
+  /// No description provided for @acc_contact.
+  ///
+  /// In ar, this message translates to:
+  /// **'تواصل مع الدعم'**
+  String get acc_contact;
+
+  /// No description provided for @acc_version.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإصدار'**
+  String get acc_version;
+
+  /// No description provided for @acc_debug_copied.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم نسخ معلومات التشخيص'**
+  String get acc_debug_copied;
+
+  /// No description provided for @acc_logout_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج؟'**
+  String get acc_logout_title;
+
+  /// No description provided for @acc_logout_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستتوقف إشعارات المحادثات على هذا الجهاز.'**
+  String get acc_logout_body;
+
+  /// No description provided for @acc_logout_open.
+  ///
+  /// In ar, this message translates to:
+  /// **'لديك {n} محادثات مفتوحة ستبقى مُسندة لك.'**
+  String acc_logout_open(int n);
+
+  /// No description provided for @acc_offline.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متصل'**
+  String get acc_offline;
+
+  /// No description provided for @acc_offline_presence.
+  ///
+  /// In ar, this message translates to:
+  /// **'تغيير الحالة يتطلب اتصالًا'**
+  String get acc_offline_presence;
+
+  /// No description provided for @acc_open_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر فتح الصفحة'**
+  String get acc_open_failed;
+
+  /// No description provided for @prof_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'الملف الشخصي'**
+  String get prof_title;
+
+  /// No description provided for @prof_name.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم'**
+  String get prof_name;
+
+  /// No description provided for @prof_name_error.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم من 2 إلى 50 حرفًا'**
+  String get prof_name_error;
+
+  /// No description provided for @prof_email.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
+  String get prof_email;
+
+  /// No description provided for @prof_email_locked.
+  ///
+  /// In ar, this message translates to:
+  /// **'لتغيير البريد تواصل مع المسؤول'**
+  String get prof_email_locked;
+
+  /// No description provided for @prof_photo_web.
+  ///
+  /// In ar, this message translates to:
+  /// **'تغيير الصورة متاح من لوحة الويب'**
+  String get prof_photo_web;
+
+  /// No description provided for @prof_save.
+  ///
+  /// In ar, this message translates to:
+  /// **'حفظ'**
+  String get prof_save;
+
+  /// No description provided for @prof_saved.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم حفظ الملف الشخصي'**
+  String get prof_saved;
+
+  /// No description provided for @prof_save_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر الحفظ'**
+  String get prof_save_failed;
+
+  /// No description provided for @prof_discard.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجاهل التغييرات؟'**
+  String get prof_discard;
+
+  /// No description provided for @prof_discard_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'لن تُحفظ التعديلات التي أجريتها.'**
+  String get prof_discard_body;
+
+  /// No description provided for @prof_discard_ok.
+  ///
+  /// In ar, this message translates to:
+  /// **'تجاهل'**
+  String get prof_discard_ok;
+
+  /// No description provided for @sec_change_pw.
+  ///
+  /// In ar, this message translates to:
+  /// **'تغيير كلمة المرور'**
+  String get sec_change_pw;
+
+  /// No description provided for @sec_change_pw_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'يُفتح على الموقع'**
+  String get sec_change_pw_sub;
+
+  /// No description provided for @sec_biometric.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الدخول بالبصمة'**
+  String get sec_biometric;
+
+  /// No description provided for @sec_biometric_reason.
+  ///
+  /// In ar, this message translates to:
+  /// **'أكّد هويتك لتفعيل البصمة'**
+  String get sec_biometric_reason;
+
+  /// No description provided for @sec_biometric_unavailable.
+  ///
+  /// In ar, this message translates to:
+  /// **'البصمة غير متاحة على هذا الجهاز'**
+  String get sec_biometric_unavailable;
+
+  /// No description provided for @sec_devices.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأجهزة المسجّلة'**
+  String get sec_devices;
+
+  /// No description provided for @sec_this_device.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الجهاز'**
+  String get sec_this_device;
+
+  /// No description provided for @sec_device_logout.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج'**
+  String get sec_device_logout;
+
+  /// No description provided for @sec_logout_others.
+  ///
+  /// In ar, this message translates to:
+  /// **'تسجيل الخروج من كل الأجهزة الأخرى'**
+  String get sec_logout_others;
+
+  /// No description provided for @sec_logout_others_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'سيُطلب تسجيل الدخول مجددًا على الأجهزة الأخرى.'**
+  String get sec_logout_others_body;
+
+  /// No description provided for @sec_logout_done.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم تسجيل الخروج'**
+  String get sec_logout_done;
+
+  /// No description provided for @sec_last_active.
+  ///
+  /// In ar, this message translates to:
+  /// **'آخر نشاط {t}'**
+  String sec_last_active(String t);
+
+  /// No description provided for @sec_devices_failed.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تحميل الأجهزة'**
+  String get sec_devices_failed;
+
+  /// No description provided for @common_locked.
+  ///
+  /// In ar, this message translates to:
+  /// **'مقفل'**
+  String get common_locked;
+
   /// No description provided for @ai_title.
   ///
   /// In ar, this message translates to:

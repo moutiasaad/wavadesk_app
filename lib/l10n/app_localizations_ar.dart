@@ -703,6 +703,280 @@ class AppLocalizationsAr extends AppLocalizations {
   String get channels_meta_sub => 'الواجهة الرسمية · يُفتح على الموقع';
 
   @override
+  String get acc_title => 'الحساب';
+
+  @override
+  String get acc_role_owner => 'مالك';
+
+  @override
+  String get acc_role_admin => 'مسؤول';
+
+  @override
+  String get acc_role_lead => 'قائد فريق';
+
+  @override
+  String get acc_role_agent => 'موظف دعم';
+
+  @override
+  String get acc_menu => 'خيارات الحساب';
+
+  @override
+  String get acc_menu_edit => 'تعديل الملف الشخصي';
+
+  @override
+  String get acc_menu_copy_id => 'نسخ معرّف المستخدم';
+
+  @override
+  String get acc_id_copied => 'تم نسخ المعرّف';
+
+  @override
+  String acc_header_a11y(
+    String name,
+    String role,
+    String workspace,
+    String status,
+  ) {
+    return '$name، $role، $workspace، الحالة: $status';
+  }
+
+  @override
+  String get acc_my_status => 'حالتي';
+
+  @override
+  String acc_away_open_title(int n) {
+    return 'لديك $n محادثات مفتوحة';
+  }
+
+  @override
+  String get acc_away_open_body =>
+      'ماذا تريد أن تفعل بها قبل أن تصبح غير متاح؟';
+
+  @override
+  String get acc_away_release => 'إعادتها لغير المُسندة';
+
+  @override
+  String get acc_away_keep => 'الإبقاء عليها';
+
+  @override
+  String get acc_presence_failed => 'تعذّر تغيير الحالة';
+
+  @override
+  String acc_released(int n) {
+    return 'أُعيدت $n محادثات لغير المُسندة';
+  }
+
+  @override
+  String get acc_sec_admin => 'الإدارة';
+
+  @override
+  String get acc_sec_app => 'التطبيق';
+
+  @override
+  String get acc_sec_about => 'حول التطبيق';
+
+  @override
+  String get acc_wa_connected => 'متصل';
+
+  @override
+  String get acc_wa_disconnected => 'غير متصل';
+
+  @override
+  String get acc_wa_phone_off => 'الهاتف غير متصل';
+
+  @override
+  String get acc_wa_pending => 'غير مربوط';
+
+  @override
+  String get acc_wa_connecting => 'جارٍ الاتصال';
+
+  @override
+  String get acc_ai_on => 'مفعّل';
+
+  @override
+  String get acc_ai_off => 'متوقف';
+
+  @override
+  String get acc_ai_suggest => 'اقتراح فقط';
+
+  @override
+  String get acc_ai_hybrid => 'هجين';
+
+  @override
+  String acc_plan_trial(String plan, int d) {
+    return '$plan · تجربة، متبقٍ $d أيام';
+  }
+
+  @override
+  String acc_plan_trial_ended(String plan) {
+    return '$plan · انتهت التجربة';
+  }
+
+  @override
+  String acc_plan_active(String plan) {
+    return '$plan · نشط';
+  }
+
+  @override
+  String get acc_plan_failed => 'فشل الدفع — حدّث البطاقة';
+
+  @override
+  String get acc_plan_badge_trial => 'تجربة';
+
+  @override
+  String get acc_plan_badge_active => 'نشط';
+
+  @override
+  String acc_plan_days_left(int d) {
+    return 'متبقٍ $d أيام من التجربة';
+  }
+
+  @override
+  String get acc_plan_seats => 'المقاعد';
+
+  @override
+  String get acc_plan_ai => 'ردود الذكاء الاصطناعي';
+
+  @override
+  String get acc_plan_unlimited => 'غير محدود';
+
+  @override
+  String get acc_plan_manage => 'إدارة الاشتراك';
+
+  @override
+  String get acc_plan_readonly => 'يديره مالك مساحة العمل';
+
+  @override
+  String get acc_notif_all => 'الكل';
+
+  @override
+  String get acc_notif_assigned => 'المُسندة لي';
+
+  @override
+  String get acc_notif_mentions => 'الإشارات فقط';
+
+  @override
+  String get acc_notif_none => 'متوقفة';
+
+  @override
+  String get acc_notif_denied => 'مرفوضة من الجهاز';
+
+  @override
+  String get acc_security => 'الأمان';
+
+  @override
+  String get acc_terms => 'الشروط وسياسة الخصوصية';
+
+  @override
+  String get acc_contact => 'تواصل مع الدعم';
+
+  @override
+  String get acc_version => 'الإصدار';
+
+  @override
+  String get acc_debug_copied => 'تم نسخ معلومات التشخيص';
+
+  @override
+  String get acc_logout_title => 'تسجيل الخروج؟';
+
+  @override
+  String get acc_logout_body => 'ستتوقف إشعارات المحادثات على هذا الجهاز.';
+
+  @override
+  String acc_logout_open(int n) {
+    return 'لديك $n محادثات مفتوحة ستبقى مُسندة لك.';
+  }
+
+  @override
+  String get acc_offline => 'غير متصل';
+
+  @override
+  String get acc_offline_presence => 'تغيير الحالة يتطلب اتصالًا';
+
+  @override
+  String get acc_open_failed => 'تعذّر فتح الصفحة';
+
+  @override
+  String get prof_title => 'الملف الشخصي';
+
+  @override
+  String get prof_name => 'الاسم';
+
+  @override
+  String get prof_name_error => 'الاسم من 2 إلى 50 حرفًا';
+
+  @override
+  String get prof_email => 'البريد الإلكتروني';
+
+  @override
+  String get prof_email_locked => 'لتغيير البريد تواصل مع المسؤول';
+
+  @override
+  String get prof_photo_web => 'تغيير الصورة متاح من لوحة الويب';
+
+  @override
+  String get prof_save => 'حفظ';
+
+  @override
+  String get prof_saved => 'تم حفظ الملف الشخصي';
+
+  @override
+  String get prof_save_failed => 'تعذّر الحفظ';
+
+  @override
+  String get prof_discard => 'تجاهل التغييرات؟';
+
+  @override
+  String get prof_discard_body => 'لن تُحفظ التعديلات التي أجريتها.';
+
+  @override
+  String get prof_discard_ok => 'تجاهل';
+
+  @override
+  String get sec_change_pw => 'تغيير كلمة المرور';
+
+  @override
+  String get sec_change_pw_sub => 'يُفتح على الموقع';
+
+  @override
+  String get sec_biometric => 'تسجيل الدخول بالبصمة';
+
+  @override
+  String get sec_biometric_reason => 'أكّد هويتك لتفعيل البصمة';
+
+  @override
+  String get sec_biometric_unavailable => 'البصمة غير متاحة على هذا الجهاز';
+
+  @override
+  String get sec_devices => 'الأجهزة المسجّلة';
+
+  @override
+  String get sec_this_device => 'هذا الجهاز';
+
+  @override
+  String get sec_device_logout => 'تسجيل الخروج';
+
+  @override
+  String get sec_logout_others => 'تسجيل الخروج من كل الأجهزة الأخرى';
+
+  @override
+  String get sec_logout_others_body =>
+      'سيُطلب تسجيل الدخول مجددًا على الأجهزة الأخرى.';
+
+  @override
+  String get sec_logout_done => 'تم تسجيل الخروج';
+
+  @override
+  String sec_last_active(String t) {
+    return 'آخر نشاط $t';
+  }
+
+  @override
+  String get sec_devices_failed => 'تعذّر تحميل الأجهزة';
+
+  @override
+  String get common_locked => 'مقفل';
+
+  @override
   String get ai_title => 'وكيل الذكاء الاصطناعي';
 
   @override

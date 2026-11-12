@@ -701,6 +701,281 @@ class AppLocalizationsEn extends AppLocalizations {
   String get channels_meta_sub => 'Official API · opens on the website';
 
   @override
+  String get acc_title => 'Account';
+
+  @override
+  String get acc_role_owner => 'Owner';
+
+  @override
+  String get acc_role_admin => 'Admin';
+
+  @override
+  String get acc_role_lead => 'Team lead';
+
+  @override
+  String get acc_role_agent => 'Agent';
+
+  @override
+  String get acc_menu => 'Account options';
+
+  @override
+  String get acc_menu_edit => 'Edit profile';
+
+  @override
+  String get acc_menu_copy_id => 'Copy user ID';
+
+  @override
+  String get acc_id_copied => 'ID copied';
+
+  @override
+  String acc_header_a11y(
+    String name,
+    String role,
+    String workspace,
+    String status,
+  ) {
+    return '$name, $role, $workspace, status: $status';
+  }
+
+  @override
+  String get acc_my_status => 'My status';
+
+  @override
+  String acc_away_open_title(int n) {
+    return 'You have $n open chats';
+  }
+
+  @override
+  String get acc_away_open_body =>
+      'What should happen to them while you are away?';
+
+  @override
+  String get acc_away_release => 'Return them to unassigned';
+
+  @override
+  String get acc_away_keep => 'Keep them';
+
+  @override
+  String get acc_presence_failed => 'Couldn\'t change status';
+
+  @override
+  String acc_released(int n) {
+    return '$n chats returned to unassigned';
+  }
+
+  @override
+  String get acc_sec_admin => 'Management';
+
+  @override
+  String get acc_sec_app => 'App';
+
+  @override
+  String get acc_sec_about => 'About';
+
+  @override
+  String get acc_wa_connected => 'Connected';
+
+  @override
+  String get acc_wa_disconnected => 'Disconnected';
+
+  @override
+  String get acc_wa_phone_off => 'Phone offline';
+
+  @override
+  String get acc_wa_pending => 'Not linked';
+
+  @override
+  String get acc_wa_connecting => 'Connecting';
+
+  @override
+  String get acc_ai_on => 'On';
+
+  @override
+  String get acc_ai_off => 'Off';
+
+  @override
+  String get acc_ai_suggest => 'Suggest only';
+
+  @override
+  String get acc_ai_hybrid => 'Hybrid';
+
+  @override
+  String acc_plan_trial(String plan, int d) {
+    return '$plan · Trial, $d days left';
+  }
+
+  @override
+  String acc_plan_trial_ended(String plan) {
+    return '$plan · Trial ended';
+  }
+
+  @override
+  String acc_plan_active(String plan) {
+    return '$plan · Active';
+  }
+
+  @override
+  String get acc_plan_failed => 'Payment failed — update card';
+
+  @override
+  String get acc_plan_badge_trial => 'Trial';
+
+  @override
+  String get acc_plan_badge_active => 'Active';
+
+  @override
+  String acc_plan_days_left(int d) {
+    return '$d trial days left';
+  }
+
+  @override
+  String get acc_plan_seats => 'Seats';
+
+  @override
+  String get acc_plan_ai => 'AI replies';
+
+  @override
+  String get acc_plan_unlimited => 'Unlimited';
+
+  @override
+  String get acc_plan_manage => 'Manage subscription';
+
+  @override
+  String get acc_plan_readonly => 'Managed by the workspace owner';
+
+  @override
+  String get acc_notif_all => 'All';
+
+  @override
+  String get acc_notif_assigned => 'Assigned to me';
+
+  @override
+  String get acc_notif_mentions => 'Mentions only';
+
+  @override
+  String get acc_notif_none => 'Off';
+
+  @override
+  String get acc_notif_denied => 'Blocked on device';
+
+  @override
+  String get acc_security => 'Security';
+
+  @override
+  String get acc_terms => 'Terms & privacy';
+
+  @override
+  String get acc_contact => 'Contact support';
+
+  @override
+  String get acc_version => 'Version';
+
+  @override
+  String get acc_debug_copied => 'Debug info copied';
+
+  @override
+  String get acc_logout_title => 'Sign out?';
+
+  @override
+  String get acc_logout_body => 'Chat notifications will stop on this device.';
+
+  @override
+  String acc_logout_open(int n) {
+    return '$n open chats will stay assigned to you.';
+  }
+
+  @override
+  String get acc_offline => 'Offline';
+
+  @override
+  String get acc_offline_presence => 'Changing status needs a connection';
+
+  @override
+  String get acc_open_failed => 'Couldn\'t open the page';
+
+  @override
+  String get prof_title => 'Profile';
+
+  @override
+  String get prof_name => 'Name';
+
+  @override
+  String get prof_name_error => 'Name must be 2–50 characters';
+
+  @override
+  String get prof_email => 'Email';
+
+  @override
+  String get prof_email_locked => 'Contact an admin to change email';
+
+  @override
+  String get prof_photo_web => 'Change your photo from the web panel';
+
+  @override
+  String get prof_save => 'Save';
+
+  @override
+  String get prof_saved => 'Profile saved';
+
+  @override
+  String get prof_save_failed => 'Couldn\'t save';
+
+  @override
+  String get prof_discard => 'Discard changes?';
+
+  @override
+  String get prof_discard_body => 'Your edits won\'t be saved.';
+
+  @override
+  String get prof_discard_ok => 'Discard';
+
+  @override
+  String get sec_change_pw => 'Change password';
+
+  @override
+  String get sec_change_pw_sub => 'Opens on the website';
+
+  @override
+  String get sec_biometric => 'Sign in with biometrics';
+
+  @override
+  String get sec_biometric_reason => 'Confirm it’s you to turn on biometrics';
+
+  @override
+  String get sec_biometric_unavailable =>
+      'Biometrics are not available on this device';
+
+  @override
+  String get sec_devices => 'Signed-in devices';
+
+  @override
+  String get sec_this_device => 'This device';
+
+  @override
+  String get sec_device_logout => 'Sign out';
+
+  @override
+  String get sec_logout_others => 'Sign out of all other devices';
+
+  @override
+  String get sec_logout_others_body =>
+      'Other devices will need to sign in again.';
+
+  @override
+  String get sec_logout_done => 'Signed out';
+
+  @override
+  String sec_last_active(String t) {
+    return 'Last active $t';
+  }
+
+  @override
+  String get sec_devices_failed => 'Couldn\'t load devices';
+
+  @override
+  String get common_locked => 'Locked';
+
+  @override
   String get ai_title => 'AI agent';
 
   @override

@@ -6,7 +6,7 @@ import '../utils/l10n.dart';
 import 'channel_badge.dart';
 
 /// `xxs` (16) is the inline assignee chip in inbox row tags (Inbox spec §4.5.3).
-enum AppAvatarSize { xxs, xs, sm, md, lg, xl }
+enum AppAvatarSize { xxs, xs, sm, md, lg, xl, xxl }
 
 extension on AppAvatarSize {
   double get dp => switch (this) {
@@ -16,6 +16,7 @@ extension on AppAvatarSize {
     AppAvatarSize.md => 40,
     AppAvatarSize.lg => 50,
     AppAvatarSize.xl => 76,
+    AppAvatarSize.xxl => 88,
   };
   double get font => switch (this) {
     AppAvatarSize.xxs => 9,
@@ -24,6 +25,7 @@ extension on AppAvatarSize {
     AppAvatarSize.md => 15,
     AppAvatarSize.lg => 18,
     AppAvatarSize.xl => 28,
+    AppAvatarSize.xxl => 32,
   };
   double get presenceDot => switch (this) {
     AppAvatarSize.xxs => 6,
@@ -32,6 +34,7 @@ extension on AppAvatarSize {
     AppAvatarSize.md => 12,
     AppAvatarSize.lg => 13,
     AppAvatarSize.xl => 16,
+    AppAvatarSize.xxl => 18,
   };
 }
 

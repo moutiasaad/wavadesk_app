@@ -59,7 +59,12 @@ class DashboardTealHeader extends ConsumerWidget {
               constraints: const BoxConstraints(minHeight: 52),
               child: Row(
                 children: [
-                  _MeAvatar(name: me.name, url: me.avatarUrl, presence: presence, onTap: () => context.go(Routes.account)),
+                  TealMeAvatar(
+                    name: me.name,
+                    url: me.avatarUrl,
+                    presence: presence,
+                    onTap: () => context.go(Routes.account),
+                  ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
@@ -72,7 +77,12 @@ class DashboardTealHeader extends ConsumerWidget {
                             greeting,
                             maxLines: big ? 2 : 1,
                             overflow: TextOverflow.ellipsis,
-                            style: t.h5.copyWith(fontSize: 17, fontWeight: FontWeight.w800, height: 1.35, color: Colors.white),
+                            style: t.h5.copyWith(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w800,
+                              height: 1.35,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         Semantics(
@@ -86,7 +96,11 @@ class DashboardTealHeader extends ConsumerWidget {
                               subline,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: t.caption.copyWith(fontSize: 12.5, fontWeight: FontWeight.w600, color: Colors.white.withValues(alpha: 0.88)),
+                              style: t.caption.copyWith(
+                                fontSize: 12.5,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white.withValues(alpha: 0.88),
+                              ),
                             ),
                           ),
                         ),
@@ -107,15 +121,32 @@ class DashboardTealHeader extends ConsumerWidget {
   }
 }
 
-/// 40 avatar with a 2dp white-35% ring and a 10dp presence dot ringed in
-/// the header teal. Tap → Account tab.
-class _MeAvatar extends StatelessWidget {
-  const _MeAvatar({required this.name, required this.url, required this.presence, required this.onTap});
+/// My avatar on the teal header (Dashboard 40 / Account 56): 2dp white-35%
+/// ring, initials in white, presence dot ringed in the header teal at the
+/// bottom on the leading side. Colors cross-fade 200ms on a status change.
+class TealMeAvatar extends StatelessWidget {
+  const TealMeAvatar({
+    super.key,
+    required this.name,
+    required this.url,
+    required this.presence,
+    required this.onTap,
+    this.size = 40,
+    this.dot = 10,
+    this.initialsSize = 15,
+    this.semanticLabel,
+  });
 
   final String name;
   final String? url;
   final Presence presence;
   final VoidCallback onTap;
+  final double size;
+
+  /// Dot diameter without its 2dp ring.
+  final double dot;
+  final double initialsSize;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -128,12 +159,12 @@ class _MeAvatar extends StatelessWidget {
     };
     return Semantics(
       button: true,
-      label: name,
+      label: semanticLabel ?? name,
       excludeSemantics: true,
       child: GestureDetector(
         onTap: onTap,
         child: SizedBox.square(
-          dimension: 40,
+          dimension: size,
           child: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -142,22 +173,30 @@ class _MeAvatar extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Colors.white.withValues(alpha: 0.18),
                   border: Border.all(color: Colors.white.withValues(alpha: 0.35), width: 2),
-                  image: url == null || url!.isEmpty ? null : DecorationImage(image: NetworkImage(url!), fit: BoxFit.cover),
+                  image: url == null || url!.isEmpty
+                      ? null
+                      : DecorationImage(image: NetworkImage(url!), fit: BoxFit.cover),
                 ),
                 alignment: Alignment.center,
                 child: url == null || url!.isEmpty
                     ? Text(
                         initials,
-                        style: context.text.bodyMedium.copyWith(fontSize: 15, fontWeight: FontWeight.w800, color: Colors.white, height: 1),
+                        style: context.text.bodyMedium.copyWith(
+                          fontSize: initialsSize,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                          height: 1,
+                        ),
                       )
                     : null,
               ),
               PositionedDirectional(
                 bottom: -1,
                 end: -1,
-                child: Container(
-                  width: 14,
-                  height: 14,
+                child: AnimatedContainer(
+                  duration: AppMotion.reduced(context) ? Duration.zero : const Duration(milliseconds: 200),
+                  width: this.dot + 4,
+                  height: this.dot + 4,
                   decoration: BoxDecoration(
                     color: dot,
                     shape: BoxShape.circle,
@@ -238,10 +277,30 @@ class DashboardCollapsedBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final c = context.colors;
     final unread = ref.watch(notificationsUnreadCountProvider);
+    return TealCollapsedBar(
+      title: context.l10n.dash_title,
+      trailing: DashBellButton(unread: unread, onBrand: false),
+    );
+  }
+}
+
+/// Shared compact bar for the teal-header tabs (Dashboard, Account): white,
+/// 52dp, centered title Cairo 16/800, optional end action, 1dp bottom
+/// border, dark status-bar icons.
+class TealCollapsedBar extends StatelessWidget {
+  const TealCollapsedBar({super.key, required this.title, this.trailing});
+
+  final String title;
+  final Widget? trailing;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: (c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark).copyWith(statusBarColor: Colors.transparent),
+      value: (c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark).copyWith(
+        statusBarColor: Colors.transparent,
+      ),
       child: Container(
         padding: EdgeInsets.only(top: MediaQuery.viewPaddingOf(context).top),
         decoration: BoxDecoration(
@@ -256,11 +315,11 @@ class DashboardCollapsedBar extends ConsumerWidget {
               Semantics(
                 header: true,
                 child: Text(
-                  context.l10n.dash_title,
+                  title,
                   style: context.text.h5.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: c.textPrimary),
                 ),
               ),
-              PositionedDirectional(end: 4, child: DashBellButton(unread: unread, onBrand: false)),
+              if (trailing != null) PositionedDirectional(end: 4, child: trailing!),
             ],
           ),
         ),

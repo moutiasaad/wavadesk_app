@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/account/edit_profile_screen.dart';
+import '../../features/account/security_screen.dart';
 import '../../features/account/account_screen.dart';
 import '../../features/account/channels_screen.dart';
 import '../../features/account/help_screen.dart';
@@ -97,6 +99,8 @@ abstract final class Routes {
   static const subscription = '/account/subscription';
   static const notificationSettings = '/account/notifications';
   static const help = '/account/help';
+  static const profile = '/account/profile';
+  static const security = '/account/security';
 
   /// `?messageId=` scrolls to + highlights a message; `compose=note` opens
   /// the composer in note mode (Chat spec §2).
@@ -306,6 +310,8 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, _) => const NotificationSettingsScreen(),
       ),
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.help, builder: (_, _) => const HelpScreen()),
+      GoRoute(parentNavigatorKey: _rootKey, path: Routes.profile, builder: (_, _) => const EditProfileScreen()),
+      GoRoute(parentNavigatorKey: _rootKey, path: Routes.security, builder: (_, _) => const SecurityScreen()),
       // Knowledge Base sub-screens. Kept last so '/knowledge/new' and the
       // fixed segments win over '/knowledge/:id'.
       GoRoute(parentNavigatorKey: _rootKey, path: Routes.knowledgeUnanswered, builder: (_, _) => const KbUnansweredScreen()),
