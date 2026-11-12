@@ -304,22 +304,28 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
       final slot = d == null ? null : BottomSlotResolver.resolve(d, readOnlyRoute: widget.readOnly);
       return slot != null && slot.allowsNotes ? _openNoteComposer : null;
     }(),
-    onResolved: (undo) {
-      // Pop to the inbox, then "تم حلّ المحادثة" + تراجع (5s).
-      final l = context.l10n;
-      AppSnackbar.show(
-        context,
-        message: l.chat_resolved_toast,
-        kind: SnackKind.success,
-        actionLabel: l.chat_undo,
-        onAction: () {
-          Analytics.log('inbox_undo', {'action': 'resolve'});
-          undo();
-        },
-      );
-      if (context.canPop()) context.pop();
-    },
+    onResolved: _onResolved,
   );
+
+  /// Header ✕: same close card + resolve as the ⋮ sheet.
+  void _closeConversation() =>
+      closeConversationFlow(context, ref, conversationId: _id, onResolved: _onResolved);
+
+  void _onResolved(Future<void> Function() undo) {
+    // Pop to the inbox, then "تم حلّ المحادثة" + تراجع (5s).
+    final l = context.l10n;
+    AppSnackbar.show(
+      context,
+      message: l.chat_resolved_toast,
+      kind: SnackKind.success,
+      actionLabel: l.chat_undo,
+      onAction: () {
+        Analytics.log('inbox_undo', {'action': 'resolve'});
+        undo();
+      },
+    );
+    if (context.canPop()) context.pop();
+  }
 
   void _requestTransfer(ConversationDetail d) {
     final l = context.l10n;
@@ -456,7 +462,12 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
         if (searching)
           InConversationSearchBar(conversationId: _id)
         else
-          ChatAppBar(detail: d, onProfile: _openProfile, onMore: _openActions),
+          ChatAppBar(
+            detail: d,
+            onProfile: _openProfile,
+            onMore: _openActions,
+            onClose: d.isOpen && d.permissions.canResolve && !widget.readOnly ? _closeConversation : null,
+          ),
         ContextStrip(detail: d),
         if (!widget.readOnly)
           ChatBanner(

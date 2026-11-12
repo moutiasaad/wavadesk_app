@@ -84,11 +84,7 @@ Future<void> showConversationActionsSheet(
 
   switch (picked) {
     case _Action.resolve:
-      // The close card: AI title, editable, then close.
-      final title = await showCloseConversationSheet(context, ref, conversationId);
-      if (title == null || !context.mounted) return;
-      HapticFeedback.lightImpact();
-      onResolved(actions.resolve(title: title));
+      await closeConversationFlow(context, ref, conversationId: conversationId, onResolved: onResolved);
     case _Action.assign:
       if (onOpenAssign != null) {
         onOpenAssign();
@@ -112,6 +108,21 @@ Future<void> showConversationActionsSheet(
     case _Action.search:
       onSearch?.call();
   }
+}
+
+/// Close (resolve) flow shared by the ⋮ sheet and the chat header's ✕:
+/// the close card (AI title, editable), then resolve; [onResolved] pops the
+/// chat and offers Undo.
+Future<void> closeConversationFlow(
+  BuildContext context,
+  WidgetRef ref, {
+  required String conversationId,
+  required void Function(Future<void> Function() undo) onResolved,
+}) async {
+  final title = await showCloseConversationSheet(context, ref, conversationId);
+  if (title == null || !context.mounted) return;
+  HapticFeedback.lightImpact();
+  onResolved(ref.read(chatActionsProvider(conversationId)).resolve(title: title));
 }
 
 enum _Action { note, resolve, assign, unassign, snooze, priority, tag, search }

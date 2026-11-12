@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/data/data.dart';
 import '../../../../core/models/models.dart';
@@ -19,12 +18,17 @@ class ChatAppBar extends ConsumerWidget {
     required this.detail,
     required this.onProfile,
     required this.onMore,
+    this.onClose,
     this.showBack = true,
   });
 
   final ConversationDetail detail;
   final VoidCallback onProfile;
   final VoidCallback onMore;
+
+  /// ✕ closes (resolves) the conversation; null hides it (closed already,
+  /// or no permission).
+  final VoidCallback? onClose;
 
   /// Hidden in the tablet two-pane layout.
   final bool showBack;
@@ -45,7 +49,6 @@ class ChatAppBar extends ConsumerWidget {
     );
 
     final largeText = MediaQuery.textScalerOf(context).scale(10) > 16;
-    final canCall = detail.channel.supportsCall && contact.phone != null;
 
     Widget? subline;
     if (!largeText) {
@@ -152,49 +155,13 @@ class ChatAppBar extends ConsumerWidget {
                 ),
               ),
             ),
-            if (canCall)
-              AppIconButton(
-                icon: AppIcons.call,
-                iconSize: 18,
-                semanticLabel: l.chatbar_call,
-                onPressed: () => _callSheet(context, contact),
-              ),
+            if (onClose != null)
+              AppIconButton(icon: AppIcons.close, iconSize: 18, semanticLabel: l.close_title, onPressed: onClose),
             AppIconButton(icon: AppIcons.more, iconSize: 18, semanticLabel: l.chatbar_more, onPressed: onMore),
           ],
         ),
         ),
       ),
     );
-  }
-
-  Future<void> _callSheet(BuildContext context, Customer contact) async {
-    final l = context.l10n;
-    final phone = contact.phone!;
-    final digits = phone.replaceAll(RegExp(r'[^0-9+]'), '');
-    final uri = await AppBottomSheet.show<Uri>(
-      context,
-      title: l.chatbar_call,
-      subtitle: ltr(phone),
-      builder: (ctx) => Column(
-        children: [
-          SheetActionRow(
-            icon: AppIcons.phoneCall,
-            label: l.chatbar_call_phone,
-            onTap: () => Navigator.pop(ctx, Uri(scheme: 'tel', path: digits)),
-          ),
-          SheetActionRow(
-            icon: AppIcons.whatsapp,
-            label: l.chatbar_call_whatsapp,
-            onTap: () => Navigator.pop(ctx, Uri.parse('https://wa.me/${digits.replaceAll('+', '')}')),
-          ),
-        ],
-      ),
-    );
-    if (uri == null) return;
-    try {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    } catch (_) {
-      if (context.mounted) AppSnackbar.show(context, message: l.chatbar_call_failed, kind: SnackKind.error);
-    }
   }
 }
