@@ -87,7 +87,7 @@ class _AiTestChatScreenState extends ConsumerState<AiTestChatScreen> {
         actions: [
           PopupMenuButton<String>(
             tooltip: l.common_more,
-            icon: AppIcon(AppIcons.more, dp: 12, color: context.colors.textPrimary),
+            icon: AppIcon(AppIcons.more, dp: 18, color: context.colors.textPrimary),
             onSelected: (v) => v == 'reset' ? ctrl.reset() : _pickChannel(),
             itemBuilder: (_) => [
               PopupMenuItem(value: 'reset', child: Text(l.ai_test_reset)),

@@ -66,7 +66,14 @@ class AppIcon extends StatelessWidget {
       if (WdSvgIcons.flips(icon, Directionality.of(context))) {
         svg = Transform.flip(flipX: true, child: svg);
       }
-      return Semantics(label: semanticLabel, excludeSemantics: true, child: svg);
+      // Keep the glyph at [px] even when the parent forces a bigger box (a
+      // 40dp button, a 44dp send circle): centred like a font [Icon] instead
+      // of stretched to fill it.
+      return Semantics(
+        label: semanticLabel,
+        excludeSemantics: true,
+        child: Align(widthFactor: 1, heightFactor: 1, child: SizedBox.square(dimension: px, child: svg)),
+      );
     }
     final glyph = Icon(icon, size: px, color: tint, semanticLabel: semanticLabel);
     return semanticLabel == null ? ExcludeSemantics(child: glyph) : glyph;

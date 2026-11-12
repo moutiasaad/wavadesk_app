@@ -9,7 +9,7 @@ enum AppIconButtonVariant { plain, filled, outlined, primary }
 /// 48dp hit area. Every instance needs a [semanticLabel] (§11).
 class AppIconButton extends StatelessWidget {
   /// Glyph size for every icon button on a brand header (app bars).
-  static const double headerIconSize = 12;
+  static const double headerIconSize = 18;
 
   const AppIconButton({
     super.key,

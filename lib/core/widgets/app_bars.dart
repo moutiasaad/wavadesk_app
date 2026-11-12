@@ -270,7 +270,7 @@ class _GlassBackButton extends StatelessWidget {
         onTap: onTap,
         child: SizedBox.square(
           dimension: 34,
-          child: AppIcon(AppIcons.back, dp: 12, color: c.textPrimary), // = AppIconButton.headerIconSize
+          child: AppIcon(AppIcons.back, dp: 18, color: c.textPrimary), // = AppIconButton.headerIconSize
         ),
       ),
     );
