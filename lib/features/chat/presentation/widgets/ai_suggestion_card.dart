@@ -46,7 +46,6 @@ class AiSuggestionCard extends ConsumerWidget {
         onSwipeDown: () => ctrl.collapse(),
         child: _CardBody(
           state: s,
-          onClose: () => ctrl.collapse(),
           onSend: ctrl.send,
           onEdit: () {
             final text = ctrl.edit();
@@ -107,7 +106,7 @@ class _CardShell extends StatelessWidget {
             },
       child: Container(
         margin: const EdgeInsets.fromLTRB(10, 0, 10, AppSpacing.sm),
-        padding: const EdgeInsets.fromLTRB(14, 10, 14, 12),
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
         decoration: BoxDecoration(
           color: c.isDark ? c.surfaceElevated : c.surface,
           borderRadius: BorderRadius.circular(AppRadius.xxl),
@@ -126,10 +125,9 @@ class _CardShell extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({this.source, this.onClose, this.onSource});
+  const _Header({this.source, this.onSource});
 
   final String? source;
-  final VoidCallback? onClose;
   final VoidCallback? onSource;
 
   @override
@@ -146,7 +144,7 @@ class _Header extends StatelessWidget {
             header: true,
             child: Text(
               l.chat_ai_suggestion,
-              style: t.caption.copyWith(fontWeight: FontWeight.w800, color: c.onPrimaryContainer),
+              style: t.bodySmall.copyWith(fontWeight: FontWeight.w800, color: c.textPrimary),
               maxLines: 1,
             ),
           ),
@@ -159,24 +157,15 @@ class _Header extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.xs),
               onTap: onSource,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.sm),
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs, vertical: AppSpacing.xs),
                 child: Text(
                   l.chat_ai_source(source!),
-                  style: t.overline.copyWith(color: c.textTertiary),
+                  style: t.caption.copyWith(fontWeight: FontWeight.w500, color: c.textTertiary),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
-          ),
-        if (onClose != null)
-          AppIconButton(
-            icon: AppIcons.close,
-            size: 28,
-            iconSize: 16,
-            iconColor: c.textTertiary,
-            semanticLabel: l.aicard_close,
-            onPressed: onClose,
           ),
       ],
     );
@@ -186,7 +175,6 @@ class _Header extends StatelessWidget {
 class _CardBody extends StatelessWidget {
   const _CardBody({
     required this.state,
-    required this.onClose,
     required this.onSend,
     required this.onEdit,
     required this.onRegenerate,
@@ -196,7 +184,6 @@ class _CardBody extends StatelessWidget {
 
   final AiSuggestionState state;
   final VoidCallback onSource;
-  final VoidCallback onClose;
   final VoidCallback onSend;
   final VoidCallback onEdit;
   final VoidCallback onRegenerate;
@@ -208,7 +195,7 @@ class _CardBody extends StatelessWidget {
     final t = context.text;
     final l = context.l10n;
     final s = state.suggestion!;
-    final bodyStyle = t.chatMessage.copyWith(height: 1.65);
+    final bodyStyle = t.chatMessage.copyWith(height: 1.65, color: c.textPrimary);
 
     return Semantics(
       container: true,
@@ -217,8 +204,8 @@ class _CardBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          _Header(source: s.source, onClose: onClose, onSource: onSource),
-          const SizedBox(height: 2),
+          _Header(source: s.source, onSource: onSource),
+          const SizedBox(height: 6),
           LayoutBuilder(
             builder: (context, box) {
               final overflows = (TextPainter(
@@ -260,26 +247,16 @@ class _CardBody extends StatelessWidget {
               ],
             ),
           ],
-          const SizedBox(height: 10),
+          const SizedBox(height: 12),
           Row(
             children: [
               Expanded(
-                child: AppButton(label: l.chat_ai_send, icon: AppIcons.send, expand: true, onPressed: onSend),
+                child: _CardAction(label: l.chat_ai_send, icon: AppIcons.send, filled: true, onTap: onSend),
               ),
               const SizedBox(width: AppSpacing.sm),
-              AppButton(
-                label: l.chat_ai_edit,
-                icon: AppIcons.edit,
-                variant: AppButtonVariant.secondary,
-                onPressed: onEdit,
-              ),
-              const SizedBox(width: AppSpacing.xs),
-              AppIconButton(
-                icon: AppIcons.regenerate,
-                variant: AppIconButtonVariant.outlined,
-                semanticLabel: l.aicard_regenerate,
-                onPressed: onRegenerate,
-              ),
+              _CardAction(label: l.chat_ai_edit, icon: AppIcons.edit, onTap: onEdit),
+              const SizedBox(width: AppSpacing.sm),
+              _CardAction(icon: AppIcons.regenerate, semanticLabel: l.aicard_regenerate, onTap: onRegenerate),
             ],
           ),
         ],
@@ -323,6 +300,59 @@ class _LoadingBody extends StatelessWidget {
             child: Text(l.chat_ai_writing, style: context.text.caption.copyWith(color: c.textSecondary)),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// 40dp card button: teal filled (send) or white outlined (edit); with no
+/// [label] it is a 40×40 rounded square (regenerate).
+class _CardAction extends StatelessWidget {
+  const _CardAction({required this.icon, required this.onTap, this.label, this.semanticLabel, this.filled = false});
+
+  final IconData icon;
+  final String? label;
+  final String? semanticLabel;
+  final bool filled;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final fg = filled ? c.onPrimary : c.textPrimary;
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(AppRadius.md),
+      side: filled ? BorderSide.none : BorderSide(color: c.border),
+    );
+    return Semantics(
+      button: true,
+      label: label ?? semanticLabel,
+      excludeSemantics: true,
+      child: Material(
+        color: filled ? c.primary : c.surface,
+        shape: shape,
+        child: InkWell(
+          customBorder: shape,
+          onTap: onTap,
+          child: SizedBox(
+            height: 40,
+            width: label == null ? 40 : null,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: label == null ? 0 : 14),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AppIcon(icon, dp: 16, color: fg),
+                  if (label != null) ...[
+                    const SizedBox(width: 6),
+                    Text(label!, style: context.text.buttonMedium.copyWith(color: fg)),
+                  ],
+                ],
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
