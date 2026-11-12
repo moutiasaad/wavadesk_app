@@ -31,6 +31,7 @@ import 'widgets/ai_suggestion_card.dart';
 import 'widgets/chat_app_bar.dart';
 import 'widgets/chat_banner.dart';
 import 'widgets/claim_bar.dart';
+import 'widgets/taken_bar.dart';
 import 'widgets/composer/message_composer.dart';
 import 'widgets/context_strip.dart';
 import 'widgets/jump_to_latest_button.dart';
@@ -241,9 +242,9 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
     final l = context.l10n;
     switch (r.phase) {
       case ClaimPhase.success:
-        // Bar → composer, field focused (keyboard opens), AI card 150ms later.
+        // Bar cross-fades into the composer; the keyboard is NOT opened
+        // (Claim v2 §4.4). The AI card follows 150ms later.
         _holdAi();
-        WidgetsBinding.instance.addPostFrameCallback((_) => _composerFocus.requestFocus());
       case ClaimPhase.conflict:
         final m = l.claim_conflict(r.claimedBy ?? '');
         setState(() => _shake++);
@@ -330,7 +331,7 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
   void _requestTransfer(ConversationDetail d) {
     final l = context.l10n;
     _actions.requestTransfer(l.chatscreen_transfer_note(d.assignee?.name ?? ''));
-    AppSnackbar.show(context, message: l.chatscreen_transfer_sent(d.assignee?.name ?? ''), kind: SnackKind.success);
+    AppSnackbar.show(context, message: l.taken_request_sent(d.assignee?.name ?? ''), kind: SnackKind.success);
   }
 
   Future<void> _adminTakeOver(ConversationDetail d) async {
@@ -374,14 +375,25 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
       );
     }
     return switch (slot) {
-      BottomSlot.claim => ClaimBar(
-        key: const ValueKey('claim'),
+      BottomSlot.claim || BottomSlot.readOnlyTeam => ClaimBar(
+        key: ValueKey('claim-${slot.name}'),
         detail: d,
+        canClaim: slot == BottomSlot.claim,
         onResult: _onClaimResult,
         pulse: widget.source == 'push',
         autoClaim: widget.autoClaim,
         source: widget.source == 'push' ? 'push' : 'chat',
         onAssign: () => showAssignSheet(context, ref, conversationIds: [_id], source: AssignSource.claimBar),
+        onNote: _openNoteComposer,
+      ),
+      BottomSlot.readOnlyColleague => TakenBar(
+        key: const ValueKey('taken'),
+        detail: d,
+        onRequest: () => _requestTransfer(d),
+        onReassign: d.permissions.canAssign && (d.permissions.isAdmin || ref.read(currentAgentProvider).canManage)
+            ? () => showAssignSheet(context, ref, conversationIds: [_id], source: AssignSource.claimBar)
+            : null,
+        onNote: _openNoteComposer,
       ),
       _ => ReadOnlyBar(
         key: ValueKey('ro-${slot.name}'),
@@ -452,6 +464,11 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
         'viewers_count': d.conversation.viewers.length,
         'wait_seconds': d.waitingSince == null ? 0 : DateTime.now().difference(d.waitingSince!).inSeconds,
         'handoff_reason': ?handoff?.systemEvent?.value,
+      });
+      // Claim v2 §8: say why there is no composer.
+      final msg = l.claim_a11y_unassigned;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _announce(msg);
       });
     }
     final wide = _wide(context);

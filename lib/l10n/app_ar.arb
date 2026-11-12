@@ -1970,7 +1970,7 @@
   "claim_assign_colleague": "إسناد لزميل",
   "claim_ai_takeover": "تولَّ الذكاء الاصطناعي الرد",
   "claim_ai_takeover_done": "أُسندت المحادثة إلى الذكاء الاصطناعي",
-  "claim_waiting": "بانتظار الاستلام",
+  "claim_waiting": "بانتظار من يستلمها",
   "claim_viewer_one_f": "{name} تشاهد هذه المحادثة الآن",
   "@claim_viewer_one_f": {
     "placeholders": {
@@ -2088,7 +2088,7 @@
       }
     }
   },
-  "claim_taken_live": "استلم {name} هذه المحادثة",
+  "claim_taken_live": "استلمها {name}",
   "@claim_taken_live": {
     "placeholders": {
       "name": {
@@ -2104,7 +2104,7 @@
       }
     }
   },
-  "claim_resolved_live": "حلّ {name} المحادثة",
+  "claim_resolved_live": "أغلق {name} المحادثة",
   "@claim_resolved_live": {
     "placeholders": {
       "name": {
@@ -2172,7 +2172,7 @@
   "claim_reason_payment": "موضوع دفع",
   "claim_reason_human": "طلب التحدث مع موظف",
   "claim_reason_complaint": "شكوى",
-  "claim_reason_no_answer": "سؤال بلا إجابة",
+  "claim_reason_no_answer": "لم يجد إجابة",
   "claim_reason_refund": "طلب استرجاع",
   "claim_reason_other": "أخرى",
   "claim_push_title": "محادثة جديدة بانتظار الاستلام",
@@ -2194,6 +2194,49 @@
       }
     }
   },
+  "claim_wait_now": "الآن",
+  "claim_wait_hr": "{n} س",
+  "@claim_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_btn_ai": "استلم من الذكاء الاصطناعي",
+  "claim_ai_replying": "الذكاء الاصطناعي يرد على هذا العميل",
+  "claim_sub_unassigned": "غير مُسندة",
+  "claim_sub_with": "مع {name}",
+  "@claim_sub_with": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_sub_with_you": "معك",
+  "claim_sub_ai": "يتولاها الذكاء الاصطناعي",
+  "taken_since": "استلمها منذ {t}",
+  "@taken_since": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_request": "طلب الاستلام",
+  "taken_request_sent": "تم إرسال الطلب لـ{name}",
+  "@taken_request_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_reassign": "إعادة إسناد",
+  "claim_reason_low_conf": "ثقة منخفضة",
+  "claim_reason_keyword": "كلمة محددة",
+  "claim_a11y_unassigned": "المحادثة غير مُسندة. استلمها للرد",
   "conversations_segment_mine": "لي",
   "conversations_segment_unassigned": "غير مُسندة",
   "conversations_segment_all": "الكل",

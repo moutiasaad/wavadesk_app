@@ -3461,7 +3461,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String claim_taken_live(String name) {
-    return '$name claimed this conversation';
+    return '$name claimed it';
   }
 
   @override
@@ -3471,7 +3471,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String claim_resolved_live(String name) {
-    return '$name resolved the conversation';
+    return '$name closed the conversation';
   }
 
   @override
@@ -3553,7 +3553,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get claim_reason_complaint => 'Complaint';
 
   @override
-  String get claim_reason_no_answer => 'Unanswered question';
+  String get claim_reason_no_answer => 'No answer found';
 
   @override
   String get claim_reason_refund => 'Refund request';
@@ -3579,6 +3579,60 @@ class AppLocalizationsEn extends AppLocalizations {
   String claim_a11y_wait_span(String t) {
     return 'Waiting for $t';
   }
+
+  @override
+  String get claim_wait_now => 'now';
+
+  @override
+  String claim_wait_hr(int n) {
+    return '${n}h';
+  }
+
+  @override
+  String get claim_btn_ai => 'Take over from AI';
+
+  @override
+  String get claim_ai_replying => 'The AI is replying to this customer';
+
+  @override
+  String get claim_sub_unassigned => 'Unassigned';
+
+  @override
+  String claim_sub_with(String name) {
+    return 'With $name';
+  }
+
+  @override
+  String get claim_sub_with_you => 'With you';
+
+  @override
+  String get claim_sub_ai => 'AI is handling';
+
+  @override
+  String taken_since(String t) {
+    return 'Claimed $t ago';
+  }
+
+  @override
+  String get taken_request => 'Request to take over';
+
+  @override
+  String taken_request_sent(String name) {
+    return 'Request sent to $name';
+  }
+
+  @override
+  String get taken_reassign => 'Reassign';
+
+  @override
+  String get claim_reason_low_conf => 'Low confidence';
+
+  @override
+  String get claim_reason_keyword => 'Keyword';
+
+  @override
+  String get claim_a11y_unassigned =>
+      'This conversation is unassigned. Claim it to reply';
 
   @override
   String get conversations_segment_mine => 'Mine';

@@ -20,7 +20,10 @@ extension BottomSlotX on BottomSlot {
   /// Colleague / AI read-only bars still allow internal notes (§4.10).
   /// Claim state too: "إضافة ملاحظة داخلية" from ⋮ (Claim spec §5.3).
   bool get allowsNotes =>
-      this == BottomSlot.readOnlyColleague || this == BottomSlot.readOnlyAi || this == BottomSlot.claim;
+      this == BottomSlot.readOnlyColleague ||
+      this == BottomSlot.readOnlyAi ||
+      this == BottomSlot.claim ||
+      this == BottomSlot.readOnlyTeam;
 }
 
 abstract final class BottomSlotResolver {
@@ -28,7 +31,7 @@ abstract final class BottomSlotResolver {
     if (readOnlyRoute) return BottomSlot.readOnlyPast;
     if (d.blocked) return BottomSlot.readOnlyBlocked;
     if (d.isClosed) return BottomSlot.readOnlyResolved;
-    if (d.assignee == null && d.handledByAi && d.aiAutoMode) return BottomSlot.readOnlyAi;
+    // Unassigned, including the AI-handled variant (Claim v2 §2, §4.5).
     if (d.assignee == null || d.isUnassigned) {
       return d.permissions.canClaim ? BottomSlot.claim : BottomSlot.readOnlyTeam;
     }

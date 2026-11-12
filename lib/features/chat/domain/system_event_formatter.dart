@@ -52,6 +52,8 @@ abstract final class SystemEventFormatter {
     'complaint' => l.claim_reason_complaint,
     'no_answer' => l.claim_reason_no_answer,
     'refund' => l.claim_reason_refund,
+    'low_confidence' => l.claim_reason_low_conf,
+    'keyword' => l.claim_reason_keyword,
     'other' => l.claim_reason_other,
     _ => value,
   };

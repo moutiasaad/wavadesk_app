@@ -6024,7 +6024,7 @@ abstract class AppLocalizations {
   /// No description provided for @claim_waiting.
   ///
   /// In ar, this message translates to:
-  /// **'بانتظار الاستلام'**
+  /// **'بانتظار من يستلمها'**
   String get claim_waiting;
 
   /// No description provided for @claim_viewer_one_f.
@@ -6114,7 +6114,7 @@ abstract class AppLocalizations {
   /// No description provided for @claim_taken_live.
   ///
   /// In ar, this message translates to:
-  /// **'استلم {name} هذه المحادثة'**
+  /// **'استلمها {name}'**
   String claim_taken_live(String name);
 
   /// No description provided for @claim_assigned_to_you.
@@ -6126,7 +6126,7 @@ abstract class AppLocalizations {
   /// No description provided for @claim_resolved_live.
   ///
   /// In ar, this message translates to:
-  /// **'حلّ {name} المحادثة'**
+  /// **'أغلق {name} المحادثة'**
   String claim_resolved_live(String name);
 
   /// No description provided for @claim_network_error.
@@ -6264,7 +6264,7 @@ abstract class AppLocalizations {
   /// No description provided for @claim_reason_no_answer.
   ///
   /// In ar, this message translates to:
-  /// **'سؤال بلا إجابة'**
+  /// **'لم يجد إجابة'**
   String get claim_reason_no_answer;
 
   /// No description provided for @claim_reason_refund.
@@ -6308,6 +6308,96 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ينتظر منذ {t}'**
   String claim_a11y_wait_span(String t);
+
+  /// No description provided for @claim_wait_now.
+  ///
+  /// In ar, this message translates to:
+  /// **'الآن'**
+  String get claim_wait_now;
+
+  /// No description provided for @claim_wait_hr.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} س'**
+  String claim_wait_hr(int n);
+
+  /// No description provided for @claim_btn_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'استلم من الذكاء الاصطناعي'**
+  String get claim_btn_ai;
+
+  /// No description provided for @claim_ai_replying.
+  ///
+  /// In ar, this message translates to:
+  /// **'الذكاء الاصطناعي يرد على هذا العميل'**
+  String get claim_ai_replying;
+
+  /// No description provided for @claim_sub_unassigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مُسندة'**
+  String get claim_sub_unassigned;
+
+  /// No description provided for @claim_sub_with.
+  ///
+  /// In ar, this message translates to:
+  /// **'مع {name}'**
+  String claim_sub_with(String name);
+
+  /// No description provided for @claim_sub_with_you.
+  ///
+  /// In ar, this message translates to:
+  /// **'معك'**
+  String get claim_sub_with_you;
+
+  /// No description provided for @claim_sub_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'يتولاها الذكاء الاصطناعي'**
+  String get claim_sub_ai;
+
+  /// No description provided for @taken_since.
+  ///
+  /// In ar, this message translates to:
+  /// **'استلمها منذ {t}'**
+  String taken_since(String t);
+
+  /// No description provided for @taken_request.
+  ///
+  /// In ar, this message translates to:
+  /// **'طلب الاستلام'**
+  String get taken_request;
+
+  /// No description provided for @taken_request_sent.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إرسال الطلب لـ{name}'**
+  String taken_request_sent(String name);
+
+  /// No description provided for @taken_reassign.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة إسناد'**
+  String get taken_reassign;
+
+  /// No description provided for @claim_reason_low_conf.
+  ///
+  /// In ar, this message translates to:
+  /// **'ثقة منخفضة'**
+  String get claim_reason_low_conf;
+
+  /// No description provided for @claim_reason_keyword.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة محددة'**
+  String get claim_reason_keyword;
+
+  /// No description provided for @claim_a11y_unassigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحادثة غير مُسندة. استلمها للرد'**
+  String get claim_a11y_unassigned;
 
   /// No description provided for @conversations_segment_mine.
   ///

@@ -3519,7 +3519,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String claim_taken_live(String name) {
-    return '$name a pris en charge cette conversation';
+    return '$name l’a prise';
   }
 
   @override
@@ -3529,7 +3529,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String claim_resolved_live(String name) {
-    return '$name a résolu la conversation';
+    return '$name a clôturé la conversation';
   }
 
   @override
@@ -3615,7 +3615,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get claim_reason_complaint => 'Réclamation';
 
   @override
-  String get claim_reason_no_answer => 'Question sans réponse';
+  String get claim_reason_no_answer => 'Aucune réponse trouvée';
 
   @override
   String get claim_reason_refund => 'Demande de remboursement';
@@ -3641,6 +3641,60 @@ class AppLocalizationsFr extends AppLocalizations {
   String claim_a11y_wait_span(String t) {
     return 'En attente depuis $t';
   }
+
+  @override
+  String get claim_wait_now => 'maint.';
+
+  @override
+  String claim_wait_hr(int n) {
+    return '$n h';
+  }
+
+  @override
+  String get claim_btn_ai => 'Reprendre à l\'IA';
+
+  @override
+  String get claim_ai_replying => 'L\'IA répond à ce client';
+
+  @override
+  String get claim_sub_unassigned => 'Non assignée';
+
+  @override
+  String claim_sub_with(String name) {
+    return 'Avec $name';
+  }
+
+  @override
+  String get claim_sub_with_you => 'Avec vous';
+
+  @override
+  String get claim_sub_ai => 'L\'IA s\'en occupe';
+
+  @override
+  String taken_since(String t) {
+    return 'Prise il y a $t';
+  }
+
+  @override
+  String get taken_request => 'Demander la reprise';
+
+  @override
+  String taken_request_sent(String name) {
+    return 'Demande envoyée à $name';
+  }
+
+  @override
+  String get taken_reassign => 'Réassigner';
+
+  @override
+  String get claim_reason_low_conf => 'Confiance faible';
+
+  @override
+  String get claim_reason_keyword => 'Mot-clé';
+
+  @override
+  String get claim_a11y_unassigned =>
+      'Conversation non assignée. Prenez-la pour répondre';
 
   @override
   String get conversations_segment_mine => 'Les miennes';

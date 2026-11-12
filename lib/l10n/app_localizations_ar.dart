@@ -3370,7 +3370,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get claim_ai_takeover_done => 'أُسندت المحادثة إلى الذكاء الاصطناعي';
 
   @override
-  String get claim_waiting => 'بانتظار الاستلام';
+  String get claim_waiting => 'بانتظار من يستلمها';
 
   @override
   String claim_viewer_one_f(String name) {
@@ -3465,7 +3465,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String claim_taken_live(String name) {
-    return 'استلم $name هذه المحادثة';
+    return 'استلمها $name';
   }
 
   @override
@@ -3475,7 +3475,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String claim_resolved_live(String name) {
-    return 'حلّ $name المحادثة';
+    return 'أغلق $name المحادثة';
   }
 
   @override
@@ -3556,7 +3556,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get claim_reason_complaint => 'شكوى';
 
   @override
-  String get claim_reason_no_answer => 'سؤال بلا إجابة';
+  String get claim_reason_no_answer => 'لم يجد إجابة';
 
   @override
   String get claim_reason_refund => 'طلب استرجاع';
@@ -3582,6 +3582,59 @@ class AppLocalizationsAr extends AppLocalizations {
   String claim_a11y_wait_span(String t) {
     return 'ينتظر منذ $t';
   }
+
+  @override
+  String get claim_wait_now => 'الآن';
+
+  @override
+  String claim_wait_hr(int n) {
+    return '$n س';
+  }
+
+  @override
+  String get claim_btn_ai => 'استلم من الذكاء الاصطناعي';
+
+  @override
+  String get claim_ai_replying => 'الذكاء الاصطناعي يرد على هذا العميل';
+
+  @override
+  String get claim_sub_unassigned => 'غير مُسندة';
+
+  @override
+  String claim_sub_with(String name) {
+    return 'مع $name';
+  }
+
+  @override
+  String get claim_sub_with_you => 'معك';
+
+  @override
+  String get claim_sub_ai => 'يتولاها الذكاء الاصطناعي';
+
+  @override
+  String taken_since(String t) {
+    return 'استلمها منذ $t';
+  }
+
+  @override
+  String get taken_request => 'طلب الاستلام';
+
+  @override
+  String taken_request_sent(String name) {
+    return 'تم إرسال الطلب لـ$name';
+  }
+
+  @override
+  String get taken_reassign => 'إعادة إسناد';
+
+  @override
+  String get claim_reason_low_conf => 'ثقة منخفضة';
+
+  @override
+  String get claim_reason_keyword => 'كلمة محددة';
+
+  @override
+  String get claim_a11y_unassigned => 'المحادثة غير مُسندة. استلمها للرد';
 
   @override
   String get conversations_segment_mine => 'لي';

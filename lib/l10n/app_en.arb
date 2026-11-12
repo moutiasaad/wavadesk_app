@@ -2006,7 +2006,7 @@
       }
     }
   },
-  "claim_taken_live": "{name} claimed this conversation",
+  "claim_taken_live": "{name} claimed it",
   "@claim_taken_live": {
     "placeholders": {
       "name": {
@@ -2022,7 +2022,7 @@
       }
     }
   },
-  "claim_resolved_live": "{name} resolved the conversation",
+  "claim_resolved_live": "{name} closed the conversation",
   "@claim_resolved_live": {
     "placeholders": {
       "name": {
@@ -2090,7 +2090,7 @@
   "claim_reason_payment": "Payment issue",
   "claim_reason_human": "Asked for a human",
   "claim_reason_complaint": "Complaint",
-  "claim_reason_no_answer": "Unanswered question",
+  "claim_reason_no_answer": "No answer found",
   "claim_reason_refund": "Refund request",
   "claim_reason_other": "Other",
   "claim_push_title": "New conversation waiting",
@@ -2112,6 +2112,49 @@
       }
     }
   },
+  "claim_wait_now": "now",
+  "claim_wait_hr": "{n}h",
+  "@claim_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_btn_ai": "Take over from AI",
+  "claim_ai_replying": "The AI is replying to this customer",
+  "claim_sub_unassigned": "Unassigned",
+  "claim_sub_with": "With {name}",
+  "@claim_sub_with": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_sub_with_you": "With you",
+  "claim_sub_ai": "AI is handling",
+  "taken_since": "Claimed {t} ago",
+  "@taken_since": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_request": "Request to take over",
+  "taken_request_sent": "Request sent to {name}",
+  "@taken_request_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_reassign": "Reassign",
+  "claim_reason_low_conf": "Low confidence",
+  "claim_reason_keyword": "Keyword",
+  "claim_a11y_unassigned": "This conversation is unassigned. Claim it to reply",
   "conversations_segment_mine": "Mine",
   "conversations_segment_unassigned": "Unassigned",
   "conversations_segment_all": "All",

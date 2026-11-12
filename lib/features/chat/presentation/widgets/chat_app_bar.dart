@@ -6,7 +6,6 @@ import '../../../../core/models/models.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
-import '../../../conversations/domain/relative_time_formatter.dart';
 import '../../domain/conversation_detail.dart';
 
 /// Chat header (Chat spec §4.1) on the brand header: white name, light
@@ -59,31 +58,57 @@ class ChatAppBar extends ConsumerWidget {
           maxLines: 1,
         );
       } else {
+        // Ownership subline (Claim v2 §4.1): channel dot + channel · state.
+        final dark = c.isDark;
+        final amber = dark ? const Color(0xFFFBBF24) : const Color(0xFFB45309);
+        final green = dark ? const Color(0xFF4ADE80) : const Color(0xFF15803D);
+        final base = t.caption.copyWith(fontSize: 12, fontWeight: FontWeight.w400, color: c.textSecondary);
+        final channel = detail.channel.label(l);
+        InlineSpan? state;
+        IconData? stateIcon;
+        if (!detail.isClosed) {
+          if (detail.isMine) {
+            state = TextSpan(text: l.claim_sub_with_you, style: base.copyWith(color: green, fontWeight: FontWeight.w700));
+          } else if (detail.assignee != null) {
+            state = TextSpan(text: l.claim_sub_with(detail.assignee!.name.split(' ').first));
+          } else if (detail.handledByAi && detail.aiAutoMode) {
+            stateIcon = AppIcons.ai;
+            state = TextSpan(text: l.claim_sub_ai);
+          } else {
+            state = TextSpan(text: l.claim_sub_unassigned, style: base.copyWith(color: amber, fontWeight: FontWeight.w700));
+          }
+        }
         final presence = conv.browsingPage != null
             ? l.chatbar_browsing(conv.browsingPage!)
             : conv.customerOnline
             ? l.chat_online
-            : conv.lastSeen != null
-            ? l.chat_last_seen(RelativeTimeFormatter.clock12(conv.lastSeen!, l))
             : null;
+        final dot = detail.channel == Channel.whatsapp ? const Color(0xFF25D366) : c.textTertiary;
         subline = Row(
           children: [
-            if (conv.customerOnline && conv.browsingPage == null) ...[
-              Container(
-                width: 7,
-                height: 7,
-                decoration: BoxDecoration(
-                  color: c.presenceOnline,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: c.background, width: 1),
-                ),
-              ),
-              const SizedBox(width: 5),
-            ],
+            Container(width: 7, height: 7, decoration: BoxDecoration(color: dot, shape: BoxShape.circle)),
+            const SizedBox(width: 5),
             Flexible(
-              child: Text(
-                presence == null ? detail.channel.label(l) : '${detail.channel.label(l)} · $presence',
-                style: t.caption.copyWith(color: c.textSecondary),
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: channel),
+                    if (state != null) ...[
+                      const TextSpan(text: ' · '),
+                      if (stateIcon != null)
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.only(end: 3),
+                            child: AppIcon(stateIcon, dp: 12, color: c.primary),
+                          ),
+                        ),
+                      state,
+                    ] else if (presence != null)
+                      TextSpan(text: ' · $presence'),
+                  ],
+                ),
+                style: base,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

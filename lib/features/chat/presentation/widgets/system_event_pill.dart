@@ -30,17 +30,57 @@ class SystemEventPill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
+    final dark = c.isDark;
+    final e = message.systemEvent;
+    // Claim v2 §4.2 / §4.4: the AI handoff pill (teal, spark) and the
+    // "you claimed it" pill (green, check); everything else stays neutral.
+    final handoff = e?.kind == SystemEventKind.aiHandoff;
+    final claimedByMe = e?.kind == SystemEventKind.claimed && (e?.actorId == null || e?.actorId == meId);
+    final Color bg;
+    final Color fg;
+    Color? border;
+    IconData? icon;
+    if (handoff) {
+      bg = dark ? const Color(0xFF0F2E2D) : const Color(0xFFECF7F6);
+      border = dark ? const Color(0xFF1D4744) : const Color(0xFFD6EFED);
+      fg = dark ? const Color(0xFF5EEAD4) : const Color(0xFF0A5E5B);
+      icon = AppIcons.ai;
+    } else if (claimedByMe) {
+      bg = dark ? const Color(0xFF0F2A1A) : const Color(0xFFE9F9EF);
+      fg = dark ? const Color(0xFF4ADE80) : const Color(0xFF15803D);
+      icon = AppIcons.check;
+    } else {
+      bg = c.bubbleSystem;
+      fg = c.textSecondary;
+    }
+    final styled = handoff || claimedByMe;
     return LayoutBuilder(
       builder: (context, box) => Center(
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: box.maxWidth * 0.85),
+          constraints: BoxConstraints(maxWidth: box.maxWidth * (styled ? 0.9 : 0.85)),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 5),
-            decoration: BoxDecoration(color: c.bubbleSystem, borderRadius: BorderRadius.circular(AppRadius.full)),
-            child: Text(
-              text(context, message, meId),
-              style: context.text.caption.copyWith(color: c.textSecondary),
-              textAlign: TextAlign.center,
+            padding: EdgeInsets.symmetric(horizontal: styled ? 12 : AppSpacing.md, vertical: styled ? 6 : 5),
+            decoration: BoxDecoration(
+              color: bg,
+              borderRadius: BorderRadius.circular(AppRadius.full),
+              border: border == null ? null : Border.all(color: border),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (icon != null) ...[AppIcon(icon, dp: 12, color: styled && handoff ? c.primary : fg), const SizedBox(width: 5)],
+                Flexible(
+                  child: Text(
+                    text(context, message, meId),
+                    style: context.text.caption.copyWith(
+                      fontSize: styled ? 12 : null,
+                      fontWeight: styled ? FontWeight.w600 : null,
+                      color: fg,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

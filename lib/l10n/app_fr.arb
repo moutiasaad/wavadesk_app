@@ -2006,7 +2006,7 @@
       }
     }
   },
-  "claim_taken_live": "{name} a pris en charge cette conversation",
+  "claim_taken_live": "{name} l’a prise",
   "@claim_taken_live": {
     "placeholders": {
       "name": {
@@ -2022,7 +2022,7 @@
       }
     }
   },
-  "claim_resolved_live": "{name} a résolu la conversation",
+  "claim_resolved_live": "{name} a clôturé la conversation",
   "@claim_resolved_live": {
     "placeholders": {
       "name": {
@@ -2090,7 +2090,7 @@
   "claim_reason_payment": "Problème de paiement",
   "claim_reason_human": "A demandé un humain",
   "claim_reason_complaint": "Réclamation",
-  "claim_reason_no_answer": "Question sans réponse",
+  "claim_reason_no_answer": "Aucune réponse trouvée",
   "claim_reason_refund": "Demande de remboursement",
   "claim_reason_other": "Autre",
   "claim_push_title": "Nouvelle conversation en attente",
@@ -2112,6 +2112,49 @@
       }
     }
   },
+  "claim_wait_now": "maint.",
+  "claim_wait_hr": "{n} h",
+  "@claim_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "claim_btn_ai": "Reprendre à l'IA",
+  "claim_ai_replying": "L'IA répond à ce client",
+  "claim_sub_unassigned": "Non assignée",
+  "claim_sub_with": "Avec {name}",
+  "@claim_sub_with": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "claim_sub_with_you": "Avec vous",
+  "claim_sub_ai": "L'IA s'en occupe",
+  "taken_since": "Prise il y a {t}",
+  "@taken_since": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_request": "Demander la reprise",
+  "taken_request_sent": "Demande envoyée à {name}",
+  "@taken_request_sent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "taken_reassign": "Réassigner",
+  "claim_reason_low_conf": "Confiance faible",
+  "claim_reason_keyword": "Mot-clé",
+  "claim_a11y_unassigned": "Conversation non assignée. Prenez-la pour répondre",
   "conversations_segment_mine": "Les miennes",
   "conversations_segment_unassigned": "Non attribuées",
   "conversations_segment_all": "Toutes",
