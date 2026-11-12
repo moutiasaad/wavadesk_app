@@ -9,10 +9,7 @@ import '../../../core/utils/analytics.dart';
 import '../../../core/utils/l10n.dart';
 import '../../../core/widgets/widgets.dart';
 import '../application/ai_agent_controller.dart';
-import '../domain/ai_agent_config.dart';
 import '../domain/readiness.dart';
-import 'ai_save_feedback.dart';
-import 'sheets/ai_confirm_sheets.dart';
 import 'widgets/ai_advanced_group.dart';
 import 'widgets/ai_mode_group.dart';
 import 'widgets/ai_performance_group.dart';
@@ -41,35 +38,6 @@ class _AiAgentScreenState extends ConsumerState<AiAgentScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted && ref.read(aiAgentControllerProvider).config != null) ref.read(aiAgentControllerProvider.notifier).load();
     });
-  }
-
-  /// Master switch (§4.1, §6.1, §6.2).
-  Future<void> _toggle(AiAgentConfig c, bool on) async {
-    final l = context.l10n;
-    if (!on) {
-      if (!await showAiOffConfirm(context, handling: c.handlingNow) || !mounted) return;
-      Analytics.log('ai_toggle', {'enabled': false, 'handling_now': c.handlingNow});
-      await saveAiChange(context, ref, (cfg) => cfg.copyWith(enabled: false), successMessage: l.ai_hero_off);
-      return;
-    }
-    if (!Readiness.of(c).kbReady) {
-      final choice = await showReadinessBlocker(context);
-      if (!mounted) return;
-      switch (choice) {
-        case ReadinessBlockerChoice.addAnswers:
-          context.go(Routes.knowledge);
-          return;
-        case ReadinessBlockerChoice.enableSuggest:
-          Analytics.log('ai_toggle', {'enabled': true, 'handling_now': c.handlingNow});
-          await saveAiChange(context, ref, (cfg) => cfg.copyWith(enabled: true, mode: AiMode.suggest));
-          return;
-        case null:
-          return;
-      }
-    }
-    if (!mounted) return;
-    Analytics.log('ai_toggle', {'enabled': true, 'handling_now': c.handlingNow});
-    await saveAiChange(context, ref, (cfg) => cfg.copyWith(enabled: true));
   }
 
   @override
@@ -135,21 +103,6 @@ class _AiAgentScreenState extends ConsumerState<AiAgentScreen> {
       appBar: AppBarStandard(
         title: l.ai_title,
         background: c.backgroundMuted,
-        actions: [
-          if (cfg != null)
-            Padding(
-              padding: const EdgeInsetsDirectional.only(end: AppSpacing.sm),
-              child: Semantics(
-                label: l.ai_master_switch,
-                value: cfg.enabled ? l.ai_state_on : l.ai_state_off,
-                child: AppSwitch(
-                  value: cfg.enabled,
-                  semanticLabel: l.ai_master_switch,
-                  onChanged: editable ? (v) => _toggle(cfg, v) : null,
-                ),
-              ),
-            ),
-        ],
       ),
       body: SafeArea(
         top: false,
