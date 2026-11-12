@@ -295,5 +295,93 @@
         "type": "String"
       }
     }
+  },
+  "dash_afternoon": "Bon après-midi, {name}",
+  "@dash_afternoon": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_period_7d": "7 jours",
+  "dash_period_30d": "30 jours",
+  "dash_nothing_waiting": "Rien en attente",
+  "dash_unit_sec": "s",
+  "dash_unit_hr": "h",
+  "dash_ai_off": "Désactivé",
+  "dash_empty": "Aucune conversation pour l’instant",
+  "dash_connect_wa": "Connecter WhatsApp",
+  "dash_wa_down": "WhatsApp déconnecté",
+  "dash_offline": "Hors ligne · mis à jour {t}",
+  "@dash_offline": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_error": "Impossible de charger les données",
+  "dash_bar_tip": "{n} conversations · {slot}",
+  "@dash_bar_tip": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_bell_a11y": "Notifications, {n} non lues",
+  "@dash_bell_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_kpi_a11y": "{label} : {value}, {meta}",
+  "@dash_kpi_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "meta": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_faster": "{p} % plus rapide",
+  "@dash_faster": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_slower": "{p} % plus lent",
+  "@dash_slower": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_vs_previous": "par rapport à la période précédente",
+  "dash_breakdown_you": "Vous",
+  "dash_breakdown_team": "Équipe",
+  "dash_breakdown_ai": "IA",
+  "dash_ai_instant": "Instantané",
+  "dash_more_team": "{n} de plus",
+  "@dash_more_team": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -2566,6 +2566,94 @@
       }
     }
   },
+  "dash_afternoon": "Good afternoon, {name}",
+  "@dash_afternoon": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_period_7d": "7 days",
+  "dash_period_30d": "30 days",
+  "dash_nothing_waiting": "Nothing waiting",
+  "dash_unit_sec": "sec",
+  "dash_unit_hr": "hr",
+  "dash_ai_off": "Off",
+  "dash_empty": "No conversations yet",
+  "dash_connect_wa": "Connect WhatsApp",
+  "dash_wa_down": "WhatsApp disconnected",
+  "dash_offline": "Offline · updated {t}",
+  "@dash_offline": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_error": "Couldn't load data",
+  "dash_bar_tip": "{n} conversations · {slot}",
+  "@dash_bar_tip": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_bell_a11y": "Notifications, {n} unread",
+  "@dash_bell_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_kpi_a11y": "{label}: {value}, {meta}",
+  "@dash_kpi_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "meta": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_faster": "{p}% faster",
+  "@dash_faster": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_slower": "{p}% slower",
+  "@dash_slower": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_vs_previous": "vs the previous period",
+  "dash_breakdown_you": "You",
+  "dash_breakdown_team": "Team",
+  "dash_breakdown_ai": "AI",
+  "dash_ai_instant": "Instant",
+  "dash_more_team": "{n} more",
+  "@dash_more_team": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
   "inbox_title": "Conversations",
   "inbox_seg_mine": "Mine",
   "inbox_seg_unassigned": "Unassigned",

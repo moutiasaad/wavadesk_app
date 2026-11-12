@@ -1,9 +1,14 @@
-/// Time-of-day greeting (Dashboard spec §4.1): morning 05:00–11:59,
-/// evening 12:00–04:59, in the user's timezone.
-enum GreetingPart { morning, evening }
+/// Time-of-day greeting (Dashboard v2 §4.1.1), local time:
+/// 04:00–11:59 morning, 12:00–17:59 afternoon, otherwise evening.
+enum GreetingPart { morning, afternoon, evening }
 
 abstract final class Greeting {
-  static GreetingPart partOf(DateTime local) => local.hour >= 5 && local.hour < 12 ? GreetingPart.morning : GreetingPart.evening;
+  static GreetingPart partOf(DateTime local) {
+    final h = local.hour;
+    if (h >= 4 && h < 12) return GreetingPart.morning;
+    if (h >= 12 && h < 18) return GreetingPart.afternoon;
+    return GreetingPart.evening;
+  }
 
   /// `user.gender` → feminine labels (متاحة / مشغولة). Unknown → masculine.
   static bool isFeminine(String? gender) => const {'f', 'female', 'woman', 'أنثى'}.contains(gender?.trim().toLowerCase());

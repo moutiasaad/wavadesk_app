@@ -121,8 +121,11 @@ class DashboardController extends Notifier<DashboardState> {
   @override
   DashboardState build() {
     final prefs = ref.read(sharedPrefsProvider);
-    final range = DashboardRange.parse(prefs.getString(_kRange));
-    final scope = DashboardScope.parse(prefs.getString(_kScope));
+    // v2 offers today / 7 days / 30 days only, always for "me" (the KPIs
+    // read "بانتظار ردّك"); an old "yesterday" choice falls back to today.
+    final saved = DashboardRange.parse(prefs.getString(_kRange));
+    final range = saved == DashboardRange.yesterday ? DashboardRange.today : saved;
+    const scope = DashboardScope.me;
 
     final sub = ref.read(conversationsRepositoryProvider).changes.listen((_) => _scheduleLive());
     ref.onDispose(() {

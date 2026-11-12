@@ -2279,7 +2279,7 @@
       }
     }
   },
-  "dash_evening": "مساء الخير، {name}",
+  "dash_evening": "مساء النور، {name}",
   "@dash_evening": {
     "placeholders": {
       "name": {
@@ -2562,6 +2562,94 @@
   "@dash_a11y_presence": {
     "placeholders": {
       "status": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_afternoon": "مساء الخير، {name}",
+  "@dash_afternoon": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_period_7d": "7 أيام",
+  "dash_period_30d": "30 يومًا",
+  "dash_nothing_waiting": "لا شيء بانتظارك",
+  "dash_unit_sec": "ثانية",
+  "dash_unit_hr": "ساعة",
+  "dash_ai_off": "متوقف",
+  "dash_empty": "لا توجد محادثات بعد",
+  "dash_connect_wa": "اربط واتساب",
+  "dash_wa_down": "انقطع اتصال واتساب",
+  "dash_offline": "غير متصل · آخر تحديث {t}",
+  "@dash_offline": {
+    "placeholders": {
+      "t": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_error": "تعذّر تحميل البيانات",
+  "dash_bar_tip": "{n} محادثة · {slot}",
+  "@dash_bar_tip": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      },
+      "slot": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_bell_a11y": "الإشعارات، {n} غير مقروءة",
+  "@dash_bell_a11y": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_kpi_a11y": "{label}: {value}، {meta}",
+  "@dash_kpi_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "value": {
+        "type": "String"
+      },
+      "meta": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_faster": "أسرع بـ {p}%",
+  "@dash_faster": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_slower": "أبطأ بـ {p}%",
+  "@dash_slower": {
+    "placeholders": {
+      "p": {
+        "type": "String"
+      }
+    }
+  },
+  "dash_vs_previous": "مقارنة بالفترة السابقة",
+  "dash_breakdown_you": "أنت",
+  "dash_breakdown_team": "الفريق",
+  "dash_breakdown_ai": "الذكاء",
+  "dash_ai_instant": "فوري",
+  "dash_more_team": "{n} آخرون",
+  "@dash_more_team": {
+    "placeholders": {
+      "n": {
         "type": "String"
       }
     }

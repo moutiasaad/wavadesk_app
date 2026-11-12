@@ -4190,6 +4190,91 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
+  String dash_afternoon(String name) {
+    return 'Bon après-midi, $name';
+  }
+
+  @override
+  String get dash_period_7d => '7 jours';
+
+  @override
+  String get dash_period_30d => '30 jours';
+
+  @override
+  String get dash_nothing_waiting => 'Rien en attente';
+
+  @override
+  String get dash_unit_sec => 's';
+
+  @override
+  String get dash_unit_hr => 'h';
+
+  @override
+  String get dash_ai_off => 'Désactivé';
+
+  @override
+  String get dash_empty => 'Aucune conversation pour l’instant';
+
+  @override
+  String get dash_connect_wa => 'Connecter WhatsApp';
+
+  @override
+  String get dash_wa_down => 'WhatsApp déconnecté';
+
+  @override
+  String dash_offline(String t) {
+    return 'Hors ligne · mis à jour $t';
+  }
+
+  @override
+  String get dash_error => 'Impossible de charger les données';
+
+  @override
+  String dash_bar_tip(String n, String slot) {
+    return '$n conversations · $slot';
+  }
+
+  @override
+  String dash_bell_a11y(String n) {
+    return 'Notifications, $n non lues';
+  }
+
+  @override
+  String dash_kpi_a11y(String label, String value, String meta) {
+    return '$label : $value, $meta';
+  }
+
+  @override
+  String dash_faster(String p) {
+    return '$p % plus rapide';
+  }
+
+  @override
+  String dash_slower(String p) {
+    return '$p % plus lent';
+  }
+
+  @override
+  String get dash_vs_previous => 'par rapport à la période précédente';
+
+  @override
+  String get dash_breakdown_you => 'Vous';
+
+  @override
+  String get dash_breakdown_team => 'Équipe';
+
+  @override
+  String get dash_breakdown_ai => 'IA';
+
+  @override
+  String get dash_ai_instant => 'Instantané';
+
+  @override
+  String dash_more_team(String n) {
+    return '$n de plus';
+  }
+
+  @override
   String get inbox_title => 'Conversations';
 
   @override

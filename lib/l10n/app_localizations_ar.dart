@@ -3807,7 +3807,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String dash_evening(String name) {
-    return 'مساء الخير، $name';
+    return 'مساء النور، $name';
   }
 
   @override
@@ -4138,6 +4138,91 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String dash_a11y_presence(String status) {
     return 'حالتك: $status. اضغط للتغيير';
+  }
+
+  @override
+  String dash_afternoon(String name) {
+    return 'مساء الخير، $name';
+  }
+
+  @override
+  String get dash_period_7d => '7 أيام';
+
+  @override
+  String get dash_period_30d => '30 يومًا';
+
+  @override
+  String get dash_nothing_waiting => 'لا شيء بانتظارك';
+
+  @override
+  String get dash_unit_sec => 'ثانية';
+
+  @override
+  String get dash_unit_hr => 'ساعة';
+
+  @override
+  String get dash_ai_off => 'متوقف';
+
+  @override
+  String get dash_empty => 'لا توجد محادثات بعد';
+
+  @override
+  String get dash_connect_wa => 'اربط واتساب';
+
+  @override
+  String get dash_wa_down => 'انقطع اتصال واتساب';
+
+  @override
+  String dash_offline(String t) {
+    return 'غير متصل · آخر تحديث $t';
+  }
+
+  @override
+  String get dash_error => 'تعذّر تحميل البيانات';
+
+  @override
+  String dash_bar_tip(String n, String slot) {
+    return '$n محادثة · $slot';
+  }
+
+  @override
+  String dash_bell_a11y(String n) {
+    return 'الإشعارات، $n غير مقروءة';
+  }
+
+  @override
+  String dash_kpi_a11y(String label, String value, String meta) {
+    return '$label: $value، $meta';
+  }
+
+  @override
+  String dash_faster(String p) {
+    return 'أسرع بـ $p%';
+  }
+
+  @override
+  String dash_slower(String p) {
+    return 'أبطأ بـ $p%';
+  }
+
+  @override
+  String get dash_vs_previous => 'مقارنة بالفترة السابقة';
+
+  @override
+  String get dash_breakdown_you => 'أنت';
+
+  @override
+  String get dash_breakdown_team => 'الفريق';
+
+  @override
+  String get dash_breakdown_ai => 'الذكاء';
+
+  @override
+  String get dash_ai_instant => 'فوري';
+
+  @override
+  String dash_more_team(String n) {
+    return '$n آخرون';
   }
 
   @override

@@ -6619,7 +6619,7 @@ abstract class AppLocalizations {
   /// No description provided for @dash_evening.
   ///
   /// In ar, this message translates to:
-  /// **'مساء الخير، {name}'**
+  /// **'مساء النور، {name}'**
   String dash_evening(String name);
 
   /// No description provided for @dash_presence_online_m.
@@ -7191,6 +7191,144 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'حالتك: {status}. اضغط للتغيير'**
   String dash_a11y_presence(String status);
+
+  /// No description provided for @dash_afternoon.
+  ///
+  /// In ar, this message translates to:
+  /// **'مساء الخير، {name}'**
+  String dash_afternoon(String name);
+
+  /// No description provided for @dash_period_7d.
+  ///
+  /// In ar, this message translates to:
+  /// **'7 أيام'**
+  String get dash_period_7d;
+
+  /// No description provided for @dash_period_30d.
+  ///
+  /// In ar, this message translates to:
+  /// **'30 يومًا'**
+  String get dash_period_30d;
+
+  /// No description provided for @dash_nothing_waiting.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا شيء بانتظارك'**
+  String get dash_nothing_waiting;
+
+  /// No description provided for @dash_unit_sec.
+  ///
+  /// In ar, this message translates to:
+  /// **'ثانية'**
+  String get dash_unit_sec;
+
+  /// No description provided for @dash_unit_hr.
+  ///
+  /// In ar, this message translates to:
+  /// **'ساعة'**
+  String get dash_unit_hr;
+
+  /// No description provided for @dash_ai_off.
+  ///
+  /// In ar, this message translates to:
+  /// **'متوقف'**
+  String get dash_ai_off;
+
+  /// No description provided for @dash_empty.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محادثات بعد'**
+  String get dash_empty;
+
+  /// No description provided for @dash_connect_wa.
+  ///
+  /// In ar, this message translates to:
+  /// **'اربط واتساب'**
+  String get dash_connect_wa;
+
+  /// No description provided for @dash_wa_down.
+  ///
+  /// In ar, this message translates to:
+  /// **'انقطع اتصال واتساب'**
+  String get dash_wa_down;
+
+  /// No description provided for @dash_offline.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متصل · آخر تحديث {t}'**
+  String dash_offline(String t);
+
+  /// No description provided for @dash_error.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تحميل البيانات'**
+  String get dash_error;
+
+  /// No description provided for @dash_bar_tip.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} محادثة · {slot}'**
+  String dash_bar_tip(String n, String slot);
+
+  /// No description provided for @dash_bell_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'الإشعارات، {n} غير مقروءة'**
+  String dash_bell_a11y(String n);
+
+  /// No description provided for @dash_kpi_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'{label}: {value}، {meta}'**
+  String dash_kpi_a11y(String label, String value, String meta);
+
+  /// No description provided for @dash_faster.
+  ///
+  /// In ar, this message translates to:
+  /// **'أسرع بـ {p}%'**
+  String dash_faster(String p);
+
+  /// No description provided for @dash_slower.
+  ///
+  /// In ar, this message translates to:
+  /// **'أبطأ بـ {p}%'**
+  String dash_slower(String p);
+
+  /// No description provided for @dash_vs_previous.
+  ///
+  /// In ar, this message translates to:
+  /// **'مقارنة بالفترة السابقة'**
+  String get dash_vs_previous;
+
+  /// No description provided for @dash_breakdown_you.
+  ///
+  /// In ar, this message translates to:
+  /// **'أنت'**
+  String get dash_breakdown_you;
+
+  /// No description provided for @dash_breakdown_team.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفريق'**
+  String get dash_breakdown_team;
+
+  /// No description provided for @dash_breakdown_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'الذكاء'**
+  String get dash_breakdown_ai;
+
+  /// No description provided for @dash_ai_instant.
+  ///
+  /// In ar, this message translates to:
+  /// **'فوري'**
+  String get dash_ai_instant;
+
+  /// No description provided for @dash_more_team.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} آخرون'**
+  String dash_more_team(String n);
 
   /// No description provided for @inbox_title.
   ///

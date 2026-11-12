@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/data/data.dart';
 import '../../../../core/models/models.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
-import '../../../../core/utils/analytics.dart';
 import '../../../../core/utils/l10n.dart';
+import '../../../../core/widgets/widgets.dart';
 import '../../domain/dashboard_snapshot.dart';
 import '../../domain/greeting.dart';
-import '../../domain/metric_formatters.dart';
-import '../../../../core/widgets/widgets.dart';
-import 'team_member_sheet.dart';
+import '../dash_palette.dart';
+import '../sheets/agent_quick_sheet.dart';
 
-/// Gendered presence label (Dashboard spec §4.1 / §4.6).
+/// Gendered presence label (متاح / مشغول / غير متاح).
 String teamPresenceLabel(BuildContext context, TeamPresence p, String? gender) {
   final l = context.l10n;
   final f = Greeting.isFeminine(gender);
@@ -24,36 +24,145 @@ String teamPresenceLabel(BuildContext context, TeamPresence p, String? gender) {
   };
 }
 
-/// Core [Presence] for the avatar dot.
-Presence teamPresenceDot(TeamPresence p) => switch (p) {
-      TeamPresence.online => Presence.online,
-      TeamPresence.busy => Presence.busy,
-      TeamPresence.away => Presence.away,
+Color teamPresenceColor(TeamPresence p) => switch (p) {
+      TeamPresence.online => DashPalette.online,
+      TeamPresence.busy => DashPalette.busy,
+      TeamPresence.away => DashPalette.away,
     };
 
-/// "الفريق الآن" (Dashboard spec §4.6).
+/// Person avatar (40 / 50) with the spec presence dot ringed in [ring].
+class TeamAvatar extends StatelessWidget {
+  const TeamAvatar({super.key, required this.member, this.size = 40, required this.ring});
+
+  final TeamMember member;
+  final double size;
+  final Color ring;
+
+  @override
+  Widget build(BuildContext context) {
+    final dot = size >= 50 ? 12.0 : 10.0;
+    return SizedBox.square(
+      dimension: size,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          AppAvatar(
+            name: member.name,
+            id: member.id,
+            imageUrl: member.avatarUrl,
+            size: size >= 50 ? AppAvatarSize.lg : AppAvatarSize.md,
+          ),
+          PositionedDirectional(
+            bottom: -1,
+            end: -1,
+            child: Container(
+              width: dot + 4,
+              height: dot + 4,
+              decoration: BoxDecoration(
+                color: teamPresenceColor(member.presence),
+                shape: BoxShape.circle,
+                border: Border.all(color: ring, width: 2),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// "الفريق الآن" (Dashboard v2 §4.4): horizontal people row ordered
+/// available → busy → away (by open chats), max 8 then "+n", AI last.
 class TeamNowCard extends ConsumerWidget {
   const TeamNowCard({super.key, required this.snapshot});
 
   final DashboardSnapshot snapshot;
+
+  static const _maxPeople = 8;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final t = context.text;
     final l = context.l10n;
-    final members = snapshot.teamNow;
-    final solo = members.length <= 1;
-    final rings = snapshot.permissions.canRedistribute;
-    final big = MediaQuery.textScalerOf(context).scale(1) >= 1.5;
+    final p = DashPalette.of(context);
+    final lead = ref.watch(currentAgentProvider).role != AgentRole.agent;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: AppSpacing.md),
-      decoration: BoxDecoration(
-        color: c.surface,
-        borderRadius: BorderRadius.circular(AppRadius.xl),
-        border: Border.all(color: c.border),
-      ),
+    final people = [...snapshot.teamNow]..sort((a, b) {
+        final byPresence = a.presence.index.compareTo(b.presence.index);
+        return byPresence != 0 ? byPresence : b.open.compareTo(a.open);
+      });
+    final shown = people.take(_maxPeople).toList();
+    final extra = people.length - shown.length;
+    final ai = snapshot.aiEnabled ? snapshot.aiHandling : null;
+
+    final nameStyle = t.caption.copyWith(fontSize: 11.5, fontWeight: FontWeight.w700, color: c.textPrimary);
+    final countStyle = t.caption.copyWith(fontSize: 11.5, fontWeight: FontWeight.w600, color: c.textSecondary);
+
+    Widget item({required Widget avatar, required String name, required String count, String? a11y, VoidCallback? onTap}) => Semantics(
+          button: onTap != null,
+          label: a11y ?? '$name، $count',
+          excludeSemantics: true,
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppRadius.md),
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(minWidth: 48),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  avatar,
+                  const SizedBox(height: 3),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 64),
+                    child: Text(name, style: nameStyle, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  ),
+                  const SizedBox(height: 3),
+                  Text(count, style: countStyle),
+                ],
+              ),
+            ),
+          ),
+        );
+
+    final items = <Widget>[
+      for (final m in shown)
+        item(
+          avatar: TeamAvatar(member: m, ring: p.card),
+          name: m.firstName,
+          count: m.presence == TeamPresence.away ? '—' : '${m.open}',
+          a11y: l.dash_a11y_team(m.name, teamPresenceLabel(context, m.presence, m.gender), '${m.open}'),
+          onTap: () => showAgentQuickSheet(context, ref, m, canViewChats: lead),
+        ),
+      if (extra > 0)
+        item(
+          avatar: Container(
+            width: 40,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: c.surfaceVariant, shape: BoxShape.circle),
+            child: Text('+$extra', style: t.bodySmall.copyWith(fontWeight: FontWeight.w800, color: c.textSecondary)),
+          ),
+          name: l.dash_more_team('$extra'),
+          count: '',
+          onTap: lead ? () => context.push(Routes.team) : null,
+        ),
+      if (ai != null)
+        item(
+          avatar: Container(
+            width: 40,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: p.aiBg, shape: BoxShape.circle),
+            child: AppIcon(AppIcons.ai, dp: 20, color: c.primary),
+          ),
+          name: l.dash_ai_name,
+          count: '$ai',
+        ),
+    ];
+
+    return DashCard(
+      padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -65,184 +174,36 @@ class TeamNowCard extends ConsumerWidget {
                   child: Text(l.dash_team_now, style: t.h6.copyWith(fontSize: 14.5, fontWeight: FontWeight.w800)),
                 ),
               ),
-              AppButton(
-                label: l.dash_see_all,
-                variant: AppButtonVariant.text,
-                size: AppButtonSize.small,
-                onPressed: () => context.push(Routes.team),
-              ),
+              if (lead)
+                InkWell(
+                  onTap: () => context.push(Routes.team),
+                  borderRadius: BorderRadius.circular(AppRadius.xs),
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(minHeight: 32),
+                    child: Center(
+                      child: Text(l.dash_see_all, style: t.bodySmall.copyWith(fontSize: 12.5, fontWeight: FontWeight.w700, color: c.primary)),
+                    ),
+                  ),
+                ),
             ],
           ),
-          const SizedBox(height: AppSpacing.sm),
-          if (solo)
-            Row(
-              children: [
-                Expanded(child: Text(l.dash_solo, style: t.bodySmall.copyWith(color: c.textSecondary))),
-                AppButton(
-                  label: l.dash_invite,
-                  variant: AppButtonVariant.text,
-                  size: AppButtonSize.small,
-                  onPressed: () => context.push(Routes.team),
-                ),
-              ],
-            )
-          else
-            SingleChildScrollView(
+          const SizedBox(height: 10),
+          ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  for (final m in members) ...[
-                    _MemberItem(
-                      member: m,
-                      ring: rings,
-                      twoLines: big,
-                      onTap: () {
-                        Analytics.log('dash_team_tap', {'is_ai': false, 'presence': m.presence.name});
-                        showTeamMemberSheet(context, ref, m, canRedistribute: rings);
-                      },
-                    ),
-                    const SizedBox(width: 14),
+                  for (var i = 0; i < items.length; i++) ...[
+                    if (i > 0) const SizedBox(width: 14),
+                    items[i],
                   ],
-                  if (snapshot.aiHandling != null)
-                    _AiItem(
-                      count: snapshot.aiHandling!,
-                      twoLines: big,
-                      onTap: () {
-                        Analytics.log('dash_team_tap', {'is_ai': true, 'presence': null});
-                        context.push(Routes.aiAgent);
-                      },
-                    ),
                 ],
               ),
             ),
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class _MemberItem extends StatelessWidget {
-  const _MemberItem({required this.member, required this.ring, required this.twoLines, required this.onTap});
-
-  final TeamMember member;
-  final bool ring;
-  final bool twoLines;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final c = context.colors;
-    final t = context.text;
-    final l = context.l10n;
-    final m = member;
-    final away = m.presence == TeamPresence.away;
-    final load = m.load;
-    final ringColor = !ring || load == null
-        ? null
-        : load >= 0.9
-            ? c.error
-            : load >= 0.6
-                ? c.warning
-                : c.success;
-
-    Widget avatar = AppAvatar(
-      name: m.name,
-      id: m.id,
-      imageUrl: m.avatarUrl,
-      presence: teamPresenceDot(m.presence),
-      ringColor: c.surface,
-    );
-    avatar = Container(
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: ringColor ?? Colors.transparent, width: 2),
-      ),
-      child: avatar,
-    );
-
-    return Semantics(
-      button: true,
-      label: l.dash_a11y_team(m.firstName, teamPresenceLabel(context, m.presence, m.gender), MetricFormat.grouped(m.open)),
-      excludeSemantics: true,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.md),
-        child: SizedBox(
-          width: 56,
-          child: Column(
-            children: [
-              avatar,
-              const SizedBox(height: 3),
-              Text(
-                m.firstName,
-                style: t.caption.copyWith(fontSize: 11.5, fontWeight: FontWeight.w700),
-                maxLines: twoLines ? 2 : 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 3),
-              Text(
-                away ? '—' : MetricFormat.grouped(m.open),
-                style: t.caption.copyWith(color: c.textSecondary, fontFeatures: const [FontFeature.tabularFigures()]),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _AiItem extends StatelessWidget {
-  const _AiItem({required this.count, required this.twoLines, required this.onTap});
-
-  final int count;
-  final bool twoLines;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final c = context.colors;
-    final t = context.text;
-    final l = context.l10n;
-    return Semantics(
-      button: true,
-      label: '${l.dash_ai_name}، ${l.dash_ai_handling(MetricFormat.grouped(count))}',
-      excludeSemantics: true,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppRadius.md),
-        child: SizedBox(
-          width: 56,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(color: c.primaryContainer, shape: BoxShape.circle),
-                  child: AppIcon(AppIcons.ai, dp: 18, color: c.primary),
-                ),
-              ),
-              const SizedBox(height: 3),
-              Text(
-                l.dash_ai_name,
-                style: t.caption.copyWith(fontSize: 11.5, fontWeight: FontWeight.w700),
-                maxLines: twoLines ? 2 : 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 3),
-              Text(
-                MetricFormat.grouped(count),
-                style: t.caption.copyWith(color: c.textSecondary, fontFeatures: const [FontFeature.tabularFigures()]),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
