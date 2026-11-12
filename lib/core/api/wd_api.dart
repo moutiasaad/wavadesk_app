@@ -12,7 +12,7 @@ import 'package:uuid/uuid.dart';
 /// Build-time configuration (`--dart-define=…`), see
 /// whatsapp-saas/docs/mobile/FLUTTER_CLIENT_NOTES.md §1.
 ///
-/// `WAVADESK_API_URL` is the origin only (e.g. `http://10.0.2.2:8000`);
+/// `WAVADESK_API_URL` is the origin only (e.g. `https://app.wavadesk.com`);
 /// `/mobile/v1` is appended per call. A `--dart-define` wins; otherwise
 /// [loadApiConfig] reads the bundled `assets/config/api.json`, so the app
 /// works whichever IDE run configuration launched it.
