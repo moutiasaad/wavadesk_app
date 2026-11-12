@@ -236,7 +236,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
             background: Colors.white,
             iconColor: c.primary,
             size: 40,
-            iconSize: 20,
+            iconSize: 18,
             semanticLabel: l.kb_add_title,
             onPressed: _add,
           ),

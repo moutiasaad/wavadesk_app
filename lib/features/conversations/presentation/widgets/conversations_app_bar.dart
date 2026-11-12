@@ -66,7 +66,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
               children: [
                 AppIconButton(
                   icon: AppIcons.close,
-                  iconSize: 24,
+                  iconSize: 18,
                   semanticLabel: l.inbox_exit_selection,
                   onPressed: onExitSelection,
                 ),

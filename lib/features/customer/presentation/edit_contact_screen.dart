@@ -325,7 +325,7 @@ class _EditContactScreenState extends ConsumerState<EditContactScreen> {
           title: l.edit_title,
           leading: AppIconButton(
             icon: AppIcons.close,
-            iconSize: 24,
+            iconSize: 18,
             semanticLabel: l.common_close,
             onPressed: () => Navigator.of(context).maybePop(),
           ),

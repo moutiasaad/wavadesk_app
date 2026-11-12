@@ -515,7 +515,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                     AppIconButton(
                       icon: AppIcons.add,
                       size: 44,
-                      iconSize: 20,
+                      iconSize: 18,
                       semanticLabel: l.composer_attach,
                       onPressed: _recorder.recording ? null : _attach,
                     ),

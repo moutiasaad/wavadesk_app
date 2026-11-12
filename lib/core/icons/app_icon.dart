@@ -13,7 +13,7 @@ enum AppIconSize {
   sm(16),
 
   /// Default: app bar actions, composer, settings, buttons.
-  md(20),
+  md(18),
 
   /// Tab bar, primary FAB, hero tiles.
   lg(24),

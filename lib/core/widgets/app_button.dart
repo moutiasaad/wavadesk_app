@@ -52,7 +52,7 @@ class _AppButtonState extends State<AppButton> {
   ({double height, double radius, double padding, double icon, TextStyle style}) _metrics(BuildContext context) {
     final t = context.text;
     return switch (widget.size) {
-      AppButtonSize.large => (height: 52, radius: AppRadius.lg, padding: 20, icon: 20, style: t.buttonLarge),
+      AppButtonSize.large => (height: 52, radius: AppRadius.lg, padding: 20, icon: 18, style: t.buttonLarge),
       AppButtonSize.medium => (height: 44, radius: AppRadius.md, padding: 16, icon: 18, style: t.buttonMedium),
       AppButtonSize.small => (height: 34, radius: 10, padding: 12, icon: 16, style: t.buttonSmall),
     };

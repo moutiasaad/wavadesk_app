@@ -48,7 +48,7 @@ class _InConversationSearchBarState extends ConsumerState<InConversationSearchBa
             children: [
               AppIconButton(
                 icon: AppIcons.back,
-                iconSize: 22,
+                iconSize: 20,
                 variant: AppIconButtonVariant.filled,
                 semanticLabel: l.search_in_conv_close,
                 onPressed: _ctrl.close,

@@ -440,7 +440,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
                   error: _passwordErrorText(l, s.passwordError),
                   suffix: AppIconButton(
                     icon: _obscure ? AppIcons.preview : AppIcons.hidePassword,
-                    iconSize: 20,
+                    iconSize: 18,
                     iconColor: c.textTertiary,
                     semanticLabel: _obscure ? l.login_password_show : l.login_password_hide,
                     onPressed: () => setState(() => _obscure = !_obscure),
