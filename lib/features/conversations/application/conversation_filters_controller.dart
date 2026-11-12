@@ -62,6 +62,16 @@ class ConversationFiltersController extends Notifier<InboxQuery> {
     _persist();
   }
 
+  /// Inbox v2 pill: segment + chip in one state change (one reload).
+  void setPill(InboxPill pill) {
+    if (InboxPill.of(state) == pill && state.segment == pill.segment && state.chip == pill.chip) return;
+    Analytics.log('inbox_filter_change', {'pill': pill.name, 'advanced': state.advanced.activeCount});
+    final segmentChanged = state.segment != pill.segment;
+    state = state.copyWith(segment: pill.segment, chip: pill.chip);
+    if (segmentChanged) ref.read(inboxProvider.notifier).setSegment(pill.segment); // persists lastSegment
+    _persist();
+  }
+
   void setChip(QuickChip chip) {
     if (chip == state.chip) return;
     state = state.copyWith(chip: chip);

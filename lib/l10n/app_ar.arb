@@ -2856,7 +2856,7 @@
   "inbox_you_prefix": "أنت:",
   "inbox_draft_prefix": "مسودة:",
   "inbox_note_prefix": "ملاحظة:",
-  "inbox_typing": "يكتب الآن…",
+  "inbox_typing": "يكتب…",
   "inbox_image": "صورة",
   "inbox_voice": "رسالة صوتية · {d}",
   "@inbox_voice": {
@@ -3089,6 +3089,115 @@
   "inbox_filters_sort_newest": "الأحدث",
   "inbox_filters_sort_oldest": "الأقدم",
   "inbox_filters_sort_waiting": "الأطول انتظارًا",
+  "inbox_sub": "جميع محادثات عملائك في مكان واحد",
+  "inbox_matching": "{n} محادثة مطابقة",
+  "@inbox_matching": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_pills_a11y": "تصفية سريعة",
+  "inbox_pill_a11y": "{label}، {n}",
+  "@inbox_pill_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_wait_min": "{n, plural, =1{ينتظر دقيقة} =2{ينتظر دقيقتين} few{ينتظر {n} دقائق} other{ينتظر {n} دقيقة}}",
+  "@inbox_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_wait_hr": "ينتظر {n} س",
+  "@inbox_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_act_claim": "استلام",
+  "inbox_act_assign": "إسناد",
+  "inbox_act_close": "إغلاق",
+  "inbox_act_reopen": "إعادة فتح",
+  "inbox_act_read": "مقروءة",
+  "inbox_act_unread": "غير مقروءة",
+  "inbox_sel_count": "{n} محددة",
+  "@inbox_sel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_msgs": "{n, plural, =1{رسالة جديدة} =2{رسالتان جديدتان} few{{n} رسائل جديدة} other{{n} رسالة جديدة}}",
+  "@inbox_new_msgs": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_offline_bar": "غير متصل · يتم عرض آخر نسخة محفوظة",
+  "inbox_flt_title": "تصفية المحادثات",
+  "inbox_flt_reset": "إعادة تعيين",
+  "inbox_flt_status": "الحالة",
+  "inbox_st_open": "مفتوحة",
+  "inbox_st_pending": "قيد الانتظار",
+  "inbox_st_snoozed": "مؤجلة",
+  "inbox_st_closed": "مغلقة",
+  "inbox_flt_assignee": "المسؤول",
+  "inbox_flt_ai": "ردّ الذكاء",
+  "inbox_ai_handled": "تولّاها الذكاء",
+  "inbox_ai_escalated": "حوّلها للفريق",
+  "inbox_ai_untouched": "لم يتدخل",
+  "inbox_sort_newest": "الأحدث أولًا",
+  "inbox_sort_oldest": "الأقدم انتظارًا أولًا",
+  "inbox_sort_priority": "الأولوية",
+  "inbox_e_none_title": "لا توجد محادثات بعد",
+  "inbox_e_none_body": "ستظهر هنا رسائل عملائك فور وصولها",
+  "inbox_e_connect": "اربط واتساب",
+  "inbox_e_mine_title": "لا محادثات مُسندة لك",
+  "inbox_e_mine_body": "أحسنت! كل شيء تحت السيطرة",
+  "inbox_e_mine_action": "عرض غير المُسندة",
+  "inbox_e_unread": "قرأت كل الرسائل",
+  "inbox_e_unassigned": "لا محادثات بانتظار الاستلام",
+  "inbox_e_waiting": "لا أحد ينتظر ردك",
+  "inbox_e_ai": "لا محادثات يتولاها الذكاء الآن",
+  "inbox_e_closed": "لا محادثات مغلقة",
+  "inbox_e_filtered_title": "لا نتائج مطابقة",
+  "inbox_e_filtered_body": "جرّب تغيير الفلاتر",
+  "inbox_e_filtered_action": "مسح الفلاتر",
+  "inbox_e_load": "تعذّر تحميل المحادثات",
+  "inbox_e_retry": "إعادة المحاولة",
+  "inbox_wa_down": "انقطع اتصال واتساب — لن تصل رسائل جديدة",
+  "inbox_wa_reconnect": "إعادة الربط",
+  "inbox_reopened_n": "{n, plural, =1{أُعيد فتح المحادثة} =2{أُعيد فتح محادثتين} few{أُعيد فتح {n} محادثات} other{أُعيد فتح {n} محادثة}}",
+  "@inbox_reopened_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_claimed_n": "{n, plural, =1{استلمت المحادثة} =2{استلمت محادثتين} few{استلمت {n} محادثات} other{استلمت {n} محادثة}}",
+  "@inbox_claimed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "kbe_new": "سؤال جديد",
   "kbe_edit": "تعديل الإجابة",
   "kbe_review": "مراجعة مقترح",

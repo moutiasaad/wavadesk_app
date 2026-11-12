@@ -7,7 +7,43 @@ import 'conversation_summary.dart';
 enum QuickChip { all, unread, awaiting, ai, snoozed, closed }
 
 /// Sort override from the Filters sheet (§7). `smart` = per-segment default.
-enum InboxSort { smart, newest, oldest, waiting }
+enum InboxSort { smart, newest, oldest, waiting, priority }
+
+/// Inbox v2 §4.2.1: the single row of quick filter pills. Each maps onto
+/// the segment + quick chip pair the data layer already understands.
+enum InboxPill {
+  all(InboxSegment.all, QuickChip.all),
+  mine(InboxSegment.mine, QuickChip.all),
+  unread(InboxSegment.all, QuickChip.unread),
+  unassigned(InboxSegment.unassigned, QuickChip.all),
+  waiting(InboxSegment.all, QuickChip.awaiting),
+  ai(InboxSegment.all, QuickChip.ai),
+  closed(InboxSegment.all, QuickChip.closed);
+
+  const InboxPill(this.segment, this.chip);
+
+  final InboxSegment segment;
+  final QuickChip chip;
+
+  /// The pill a query shows as selected (older saved combos fold in).
+  static InboxPill of(InboxQuery q) => switch (q.chip) {
+    QuickChip.unread => InboxPill.unread,
+    QuickChip.awaiting => InboxPill.waiting,
+    QuickChip.ai => InboxPill.ai,
+    QuickChip.closed => InboxPill.closed,
+    QuickChip.all || QuickChip.snoozed => switch (q.segment) {
+      InboxSegment.mine => InboxPill.mine,
+      InboxSegment.unassigned => InboxPill.unassigned,
+      InboxSegment.all => InboxPill.all,
+    },
+  };
+}
+
+/// Advanced filters › الحالة (multi-select). Empty = the pill decides.
+enum StatusFilter { open, pending, snoozed, closed }
+
+/// Advanced filters › ردّ الذكاء (single choice on the server).
+enum AiFilter { any, handled, escalated, untouched }
 
 @immutable
 class AdvancedFilters {
@@ -22,6 +58,8 @@ class AdvancedFilters {
     this.from,
     this.to,
     this.sort = InboxSort.smart,
+    this.statuses = const {},
+    this.ai = AiFilter.any,
   });
 
   final Set<Channel> channels;
@@ -39,6 +77,8 @@ class AdvancedFilters {
   final DateTime? from;
   final DateTime? to;
   final InboxSort sort;
+  final Set<StatusFilter> statuses;
+  final AiFilter ai;
 
   static const empty = AdvancedFilters();
 
@@ -49,7 +89,9 @@ class AdvancedFilters {
       teamIds.isNotEmpty ||
       tags.isNotEmpty ||
       date != DateRangeFilter.any ||
-      assignee != AssigneeFilter.all;
+      assignee != AssigneeFilter.all ||
+      statuses.isNotEmpty ||
+      ai != AiFilter.any;
 
   int get activeCount =>
       channels.length +
@@ -58,7 +100,9 @@ class AdvancedFilters {
       tags.length +
       (date == DateRangeFilter.any ? 0 : 1) +
       (assignee == AssigneeFilter.all ? 0 : 1) +
-      (sort == InboxSort.smart ? 0 : 1);
+      statuses.length +
+      (ai == AiFilter.any ? 0 : 1) +
+      (sort == InboxSort.smart || sort == InboxSort.newest ? 0 : 1);
 
   AdvancedFilters copyWith({
     Set<Channel>? channels,
@@ -73,6 +117,8 @@ class AdvancedFilters {
     DateTime? to,
     bool clearRange = false,
     InboxSort? sort,
+    Set<StatusFilter>? statuses,
+    AiFilter? ai,
   }) => AdvancedFilters(
     channels: channels ?? this.channels,
     priorities: priorities ?? this.priorities,
@@ -84,6 +130,8 @@ class AdvancedFilters {
     from: clearRange ? null : (from ?? this.from),
     to: clearRange ? null : (to ?? this.to),
     sort: sort ?? this.sort,
+    statuses: statuses ?? this.statuses,
+    ai: ai ?? this.ai,
   );
 
   Map<String, Object?> toJson() => {
@@ -97,6 +145,8 @@ class AdvancedFilters {
     'from': from?.toIso8601String(),
     'to': to?.toIso8601String(),
     'sort': sort.name,
+    'statuses': [for (final s in statuses) s.name],
+    'ai': ai.name,
   };
 
   factory AdvancedFilters.fromJson(Map<String, dynamic> j) {
@@ -118,6 +168,8 @@ class AdvancedFilters {
       from: DateTime.tryParse(j['from'] as String? ?? ''),
       to: DateTime.tryParse(j['to'] as String? ?? ''),
       sort: pick(InboxSort.values, j['sort'], InboxSort.smart),
+      statuses: set(StatusFilter.values, j['statuses']),
+      ai: pick(AiFilter.values, j['ai'], AiFilter.any),
     );
   }
 }
@@ -161,6 +213,8 @@ class InboxQuery {
       if (segment == InboxSegment.all && a.assignee != AssigneeFilter.all) 'assignee': a.assignee.name,
       if (a.colleagueId != null) 'assignee_id': a.colleagueId!,
       'sort': a.sort.name,
+      if (a.statuses.isNotEmpty) 'statuses': (a.statuses.map((s) => s.name).toList()..sort()).join(','),
+      if (a.ai != AiFilter.any) 'ai': a.ai.name,
     };
   }
 }
@@ -185,6 +239,7 @@ abstract final class InboxRules {
         final at = c.closedAt ?? c.lastActivityAt;
         return c.isClosed && now.difference(at).inDays <= 30;
       default:
+        if (q.advanced.statuses.isNotEmpty) return true; // advancedMatches decides
         return q.segment == InboxSegment.all || c.isActive;
     }
   }
@@ -203,6 +258,22 @@ abstract final class InboxRules {
     if (a.priorities.isNotEmpty && !a.priorities.contains(c.priority ?? Priority.low)) return false;
     if (a.teamIds.isNotEmpty && !c.teamIds.any(a.teamIds.contains)) return false;
     if (a.tags.isNotEmpty && !c.tags.any(a.tags.contains)) return false;
+    if (a.statuses.isNotEmpty && q.chip != QuickChip.closed) {
+      final s = switch (c.status) {
+        ConversationStatus.snoozed => StatusFilter.snoozed,
+        ConversationStatus.resolved || ConversationStatus.closed => StatusFilter.closed,
+        _ => c.assignee == null ? StatusFilter.pending : StatusFilter.open,
+      };
+      if (!a.statuses.contains(s) && !(s == StatusFilter.pending && a.statuses.contains(StatusFilter.open))) return false;
+    }
+    switch (a.ai) {
+      case AiFilter.handled when !c.handledByAi:
+      case AiFilter.escalated when !c.escalated:
+      case AiFilter.untouched when c.handledByAi || c.escalated:
+        return false;
+      default:
+        break;
+    }
     if (q.segment == InboxSegment.all) {
       final ok = switch (a.assignee) {
         AssigneeFilter.all => true,
@@ -241,6 +312,18 @@ abstract final class InboxRules {
     final sort = q.advanced.sort;
     if (sort == InboxSort.newest) return list..sort(byActivityDesc);
     if (sort == InboxSort.oldest) return list..sort((a, b) => a.lastActivityAt.compareTo(b.lastActivityAt));
+    if (sort == InboxSort.priority) {
+      int rank(ConversationSummary c) => switch (c.priority) {
+        Priority.urgent => 3,
+        Priority.high => 2,
+        Priority.medium || null => 1,
+        Priority.low => 0,
+      };
+      return list..sort((a, b) {
+        final r = rank(b).compareTo(rank(a));
+        return r != 0 ? r : byActivityDesc(a, b);
+      });
+    }
     if (sort == InboxSort.waiting) {
       return list..sort((a, b) {
         if (a.waitingSince == null && b.waitingSince == null) return byActivityDesc(a, b);

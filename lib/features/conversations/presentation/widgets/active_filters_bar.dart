@@ -7,9 +7,10 @@ import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../domain/conversation_filters.dart';
 import 'filters_sheet.dart';
+import 'inbox_palette.dart';
 
-/// Dismissible tonal chips for applied advanced filters + "مسح الكل"
-/// (Inbox spec §4.4). Padding H16, bottom 8, scrolls horizontally.
+/// Applied advanced filters as removable chips under the pills (Inbox v2
+/// §6.1): h30, `#ECF7F6` / `#0A5E5B`, `x.svg` 12, then "مسح الكل".
 class ActiveFiltersBar extends ConsumerWidget {
   const ActiveFiltersBar({super.key, required this.filters, required this.onChanged, required this.onClearAll});
 
@@ -25,6 +26,9 @@ class ActiveFiltersBar extends ConsumerWidget {
     final colleagues = ref.watch(colleaguesProvider);
 
     final chips = <(String, VoidCallback)>[
+      for (final st in f.statuses)
+        (statusLabel(l, st), () => onChanged(f.copyWith(statuses: {...f.statuses}..remove(st)))),
+      if (f.ai != AiFilter.any) (aiLabel(l, f.ai), () => onChanged(f.copyWith(ai: AiFilter.any))),
       for (final ch in f.channels) (ch.label(l), () => onChanged(f.copyWith(channels: {...f.channels}..remove(ch)))),
       for (final p in f.priorities) (p.label(l), () => onChanged(f.copyWith(priorities: {...f.priorities}..remove(p)))),
       if (f.assignee != AssigneeFilter.all)
@@ -42,8 +46,9 @@ class ActiveFiltersBar extends ConsumerWidget {
         (dateLabel(context, f), () => onChanged(f.copyWith(date: DateRangeFilter.any, clearRange: true))),
     ];
 
-    return SizedBox(
+    return Container(
       height: 44,
+      color: InboxPalette.of(context).filterBar,
       child: ScrollConfiguration(
         behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
         child: ListView(
@@ -78,7 +83,7 @@ class _RemovableTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
+    final p = InboxPalette.of(context);
     return Center(
       child: Semantics(
         button: true,
@@ -88,15 +93,15 @@ class _RemovableTag extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppRadius.full),
           onTap: onRemove,
           child: Container(
-            height: 28,
-            padding: const EdgeInsetsDirectional.only(start: 10, end: AppSpacing.sm),
-            decoration: BoxDecoration(color: c.primaryContainer, borderRadius: BorderRadius.circular(AppRadius.full)),
+            height: 30,
+            padding: const EdgeInsetsDirectional.only(start: 12, end: 9),
+            decoration: BoxDecoration(color: p.applied, borderRadius: BorderRadius.circular(AppRadius.full)),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(label, style: context.text.tagLabel.copyWith(color: c.onPrimaryContainer)),
-                const SizedBox(width: AppSpacing.xs),
-                AppIcon(AppIcons.close, size: AppIconSize.sm, color: c.onPrimaryContainer),
+                Text(label, style: context.text.tagLabel.copyWith(fontSize: 12, fontWeight: FontWeight.w700, color: p.appliedText)),
+                const SizedBox(width: 5),
+                AppIcon(AppIcons.close, dp: 12, color: p.appliedText),
               ],
             ),
           ),

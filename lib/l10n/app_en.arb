@@ -3007,6 +3007,115 @@
   "inbox_filters_sort_newest": "Newest",
   "inbox_filters_sort_oldest": "Oldest",
   "inbox_filters_sort_waiting": "Longest waiting",
+  "inbox_sub": "All your customer chats in one place",
+  "inbox_matching": "{n} matching chats",
+  "@inbox_matching": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_pills_a11y": "Quick filters",
+  "inbox_pill_a11y": "{label}, {n}",
+  "@inbox_pill_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_wait_min": "{n, plural, =1{Waiting 1 min} other{Waiting {n} min}}",
+  "@inbox_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_wait_hr": "Waiting {n}h",
+  "@inbox_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_act_claim": "Claim",
+  "inbox_act_assign": "Assign",
+  "inbox_act_close": "Close",
+  "inbox_act_reopen": "Reopen",
+  "inbox_act_read": "Read",
+  "inbox_act_unread": "Unread",
+  "inbox_sel_count": "{n} selected",
+  "@inbox_sel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_msgs": "{n, plural, =1{1 new message} other{{n} new messages}}",
+  "@inbox_new_msgs": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_offline_bar": "Offline · showing saved copy",
+  "inbox_flt_title": "Filter conversations",
+  "inbox_flt_reset": "Reset",
+  "inbox_flt_status": "Status",
+  "inbox_st_open": "Open",
+  "inbox_st_pending": "Pending",
+  "inbox_st_snoozed": "Snoozed",
+  "inbox_st_closed": "Closed",
+  "inbox_flt_assignee": "Assignee",
+  "inbox_flt_ai": "AI",
+  "inbox_ai_handled": "Handled by AI",
+  "inbox_ai_escalated": "Handed to the team",
+  "inbox_ai_untouched": "No AI",
+  "inbox_sort_newest": "Newest first",
+  "inbox_sort_oldest": "Longest waiting first",
+  "inbox_sort_priority": "Priority",
+  "inbox_e_none_title": "No conversations yet",
+  "inbox_e_none_body": "Customer messages will appear here",
+  "inbox_e_connect": "Connect WhatsApp",
+  "inbox_e_mine_title": "Nothing assigned to you",
+  "inbox_e_mine_body": "Nice! All under control",
+  "inbox_e_mine_action": "Show unassigned",
+  "inbox_e_unread": "You've read everything",
+  "inbox_e_unassigned": "Nothing waiting to be claimed",
+  "inbox_e_waiting": "No one is waiting for you",
+  "inbox_e_ai": "The AI is not handling any chat",
+  "inbox_e_closed": "No closed conversations",
+  "inbox_e_filtered_title": "No matches",
+  "inbox_e_filtered_body": "Try changing filters",
+  "inbox_e_filtered_action": "Clear filters",
+  "inbox_e_load": "Couldn't load conversations",
+  "inbox_e_retry": "Retry",
+  "inbox_wa_down": "WhatsApp disconnected — new messages won't arrive",
+  "inbox_wa_reconnect": "Reconnect",
+  "inbox_reopened_n": "{n, plural, =1{Conversation reopened} other{{n} conversations reopened}}",
+  "@inbox_reopened_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_claimed_n": "{n, plural, =1{Conversation claimed} other{{n} conversations claimed}}",
+  "@inbox_claimed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "kbe_new": "New question",
   "kbe_edit": "Edit answer",
   "kbe_review": "Review suggestion",

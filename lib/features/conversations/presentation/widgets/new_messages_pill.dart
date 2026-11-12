@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 
-/// "▲ {n} محادثات جديدة" (Inbox spec §5): ink pill, h36, radius full, top
-/// center below the chips. Slides down 12dp + fades in 200ms.
+/// "{n} رسائل جديدة ↑" (Inbox v2 §5.2): teal pill, h34, radius full,
+/// white Cairo 13/700, under the filter bar. Slides down + fades 200ms.
 class NewMessagesPill extends StatelessWidget {
   const NewMessagesPill({super.key, required this.count, required this.onTap});
 
@@ -13,38 +13,34 @@ class NewMessagesPill extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
     final visible = count > 0;
     final reduced = AppMotion.reduced(context);
+    final text = context.l10n.inbox_new_msgs(count);
     final pill = Semantics(
       button: true,
       liveRegion: true,
-      label: context.l10n.inbox_new_pill(count),
+      label: text,
       excludeSemantics: true,
       child: Material(
-        color: c.secondary,
+        color: const Color(0xFF0F7E7A),
         shape: const StadiumBorder(),
-        elevation: 0,
+        elevation: 4,
+        shadowColor: const Color(0x660F172A),
         child: InkWell(
           customBorder: const StadiumBorder(),
           onTap: onTap,
-          child: Container(
-            height: 36,
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppRadius.full),
-              boxShadow: context.shadows.medium,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AppIcon(AppIcons.arrowUp, size: AppIconSize.sm, color: c.onSecondary),
-                const SizedBox(width: 6),
-                Text(
-                  context.l10n.inbox_new_pill(count),
-                  style: context.text.buttonSmall.copyWith(color: c.onSecondary),
-                ),
-              ],
+          child: SizedBox(
+            height: 34,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(text, style: context.text.bodySmall.copyWith(fontSize: 13, fontWeight: FontWeight.w700, color: Colors.white)),
+                  const SizedBox(width: 6),
+                  const AppIcon(AppIcons.arrowUp, dp: 14, color: Colors.white),
+                ],
+              ),
             ),
           ),
         ),
@@ -56,7 +52,7 @@ class NewMessagesPill extends StatelessWidget {
         opacity: visible ? 1 : 0,
         duration: AppMotion.normal,
         child: AnimatedSlide(
-          offset: visible || reduced ? Offset.zero : const Offset(0, -12 / 36),
+          offset: visible || reduced ? Offset.zero : const Offset(0, -0.35),
           duration: AppMotion.normal,
           curve: AppMotion.standard,
           child: pill,

@@ -5048,6 +5048,198 @@ class AppLocalizationsFr extends AppLocalizations {
       'En attente depuis le plus longtemps';
 
   @override
+  String get inbox_sub => 'Toutes vos conversations clients au même endroit';
+
+  @override
+  String inbox_matching(int n) {
+    return '$n conversations correspondantes';
+  }
+
+  @override
+  String get inbox_pills_a11y => 'Filtres rapides';
+
+  @override
+  String inbox_pill_a11y(String label, String n) {
+    return '$label, $n';
+  }
+
+  @override
+  String inbox_wait_min(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'En attente $n min',
+      one: 'En attente 1 min',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inbox_wait_hr(int n) {
+    return 'En attente $n h';
+  }
+
+  @override
+  String get inbox_act_claim => 'Prendre';
+
+  @override
+  String get inbox_act_assign => 'Assigner';
+
+  @override
+  String get inbox_act_close => 'Fermer';
+
+  @override
+  String get inbox_act_reopen => 'Rouvrir';
+
+  @override
+  String get inbox_act_read => 'Lue';
+
+  @override
+  String get inbox_act_unread => 'Non lue';
+
+  @override
+  String inbox_sel_count(int n) {
+    return '$n sélectionnée(s)';
+  }
+
+  @override
+  String inbox_new_msgs(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n nouveaux messages',
+      one: '1 nouveau message',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inbox_offline_bar => 'Hors ligne · copie enregistrée affichée';
+
+  @override
+  String get inbox_flt_title => 'Filtrer les conversations';
+
+  @override
+  String get inbox_flt_reset => 'Réinitialiser';
+
+  @override
+  String get inbox_flt_status => 'Statut';
+
+  @override
+  String get inbox_st_open => 'Ouvertes';
+
+  @override
+  String get inbox_st_pending => 'En attente';
+
+  @override
+  String get inbox_st_snoozed => 'Reportées';
+
+  @override
+  String get inbox_st_closed => 'Fermées';
+
+  @override
+  String get inbox_flt_assignee => 'Responsable';
+
+  @override
+  String get inbox_flt_ai => 'IA';
+
+  @override
+  String get inbox_ai_handled => 'Gérées par l\'IA';
+
+  @override
+  String get inbox_ai_escalated => 'Transférées à l\'équipe';
+
+  @override
+  String get inbox_ai_untouched => 'Sans IA';
+
+  @override
+  String get inbox_sort_newest => 'Plus récentes d\'abord';
+
+  @override
+  String get inbox_sort_oldest => 'Attente la plus longue';
+
+  @override
+  String get inbox_sort_priority => 'Priorité';
+
+  @override
+  String get inbox_e_none_title => 'Aucune conversation pour le moment';
+
+  @override
+  String get inbox_e_none_body =>
+      'Les messages de vos clients apparaîtront ici';
+
+  @override
+  String get inbox_e_connect => 'Connecter WhatsApp';
+
+  @override
+  String get inbox_e_mine_title => 'Rien ne vous est assigné';
+
+  @override
+  String get inbox_e_mine_body => 'Bravo ! Tout est sous contrôle';
+
+  @override
+  String get inbox_e_mine_action => 'Voir les non assignées';
+
+  @override
+  String get inbox_e_unread => 'Vous avez tout lu';
+
+  @override
+  String get inbox_e_unassigned => 'Rien en attente de prise en charge';
+
+  @override
+  String get inbox_e_waiting => 'Personne ne vous attend';
+
+  @override
+  String get inbox_e_ai => 'L\'IA ne gère aucune conversation';
+
+  @override
+  String get inbox_e_closed => 'Aucune conversation fermée';
+
+  @override
+  String get inbox_e_filtered_title => 'Aucun résultat';
+
+  @override
+  String get inbox_e_filtered_body => 'Essayez de modifier les filtres';
+
+  @override
+  String get inbox_e_filtered_action => 'Effacer les filtres';
+
+  @override
+  String get inbox_e_load => 'Impossible de charger les conversations';
+
+  @override
+  String get inbox_e_retry => 'Réessayer';
+
+  @override
+  String get inbox_wa_down =>
+      'WhatsApp déconnecté — les nouveaux messages n\'arriveront pas';
+
+  @override
+  String get inbox_wa_reconnect => 'Reconnecter';
+
+  @override
+  String inbox_reopened_n(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n conversations rouvertes',
+      one: 'Conversation rouverte',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inbox_claimed_n(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n conversations prises',
+      one: 'Conversation prise',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get kbe_new => 'Nouvelle question';
 
   @override

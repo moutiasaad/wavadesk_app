@@ -4,8 +4,10 @@ import '../../../../core/models/models.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../domain/preview_formatter.dart';
+import 'inbox_palette.dart';
 
-/// Preview line under the name (Inbox spec §4.5.2). One line, ellipsis.
+/// Preview line under the name (Inbox v2 §4.3): Cairo 13.5/400 grey (unread:
+/// dark 600), one line with ellipsis, optional 12dp leading icon.
 class ConversationPreviewText extends StatelessWidget {
   const ConversationPreviewText({super.key, required this.preview, required this.unread, this.highlight});
 
@@ -35,9 +37,12 @@ class ConversationPreviewText extends StatelessWidget {
     final c = context.colors;
     final t = context.text;
     final l = context.l10n;
-    final base = t.listSubtitle.copyWith(
-      color: unread ? c.textPrimary : c.textSecondary,
-      fontWeight: unread ? FontWeight.w600 : FontWeight.w500,
+    final p = InboxPalette.of(context);
+    final base = t.bodySmall.copyWith(
+      fontSize: 13.5,
+      height: 1.45,
+      color: unread ? p.name : p.preview,
+      fontWeight: unread ? FontWeight.w600 : FontWeight.w400,
     );
 
     if (preview.kind == PreviewKind.typing) {
@@ -46,7 +51,7 @@ class ConversationPreviewText extends StatelessWidget {
           Flexible(
             child: Text(
               l.inbox_typing,
-              style: base.copyWith(color: c.primary, fontWeight: FontWeight.w600),
+              style: base.copyWith(color: p.unread, fontWeight: FontWeight.w600),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -61,7 +66,7 @@ class ConversationPreviewText extends StatelessWidget {
       alignment: PlaceholderAlignment.middle,
       child: Padding(
         padding: const EdgeInsetsDirectional.only(end: AppSpacing.xs),
-        child: AppIcon(data, size: AppIconSize.xs, color: color ?? c.textSecondary),
+        child: AppIcon(data, dp: 12, color: color ?? p.preview),
       ),
     );
 
@@ -79,14 +84,9 @@ class ConversationPreviewText extends StatelessWidget {
         body(preview.text);
       case PreviewKind.note:
         spans
-          ..add(icon(AppIcons.note))
-          ..add(
-            TextSpan(
-              text: '${l.inbox_note_prefix} ',
-              style: base.copyWith(color: c.textSecondary),
-            ),
-          );
-        body(preview.text, style: base.copyWith(color: c.textSecondary));
+          ..add(icon(AppIcons.note, color: p.note))
+          ..add(TextSpan(text: '${l.inbox_note_prefix} ', style: base.copyWith(color: p.note)));
+        body(preview.text, style: base.copyWith(color: p.note));
       case PreviewKind.mine:
         spans
           ..add(
@@ -104,14 +104,14 @@ class ConversationPreviewText extends StatelessWidget {
         spans.add(TextSpan(text: '${preview.senderFirstName}: '));
         body(preview.text);
       case PreviewKind.ai:
-        spans.add(icon(AppIcons.ai, color: c.primary));
+        spans.add(icon(AppIcons.ai, color: p.unread));
         body(preview.text);
       case PreviewKind.image:
         spans.add(icon(AppIcons.image));
         body(preview.text.isEmpty ? l.inbox_image : preview.text);
       case PreviewKind.voice:
         spans
-          ..add(icon(AppIcons.mic, color: c.primary))
+          ..add(icon(AppIcons.mic, color: p.unread))
           ..add(TextSpan(text: l.inbox_voice(AppFormat.clock(preview.duration ?? Duration.zero))));
       case PreviewKind.file:
         spans.add(icon(AppIcons.file));
@@ -181,7 +181,7 @@ class DeliveryTicks extends StatelessWidget {
       DeliveryState.sending => (AppIcons.pending, c.textTertiary),
       DeliveryState.sent => (AppIcons.check, c.textTertiary),
       DeliveryState.delivered => (AppIcons.read, c.textTertiary),
-      DeliveryState.read => (AppIcons.read, c.accent),
+      DeliveryState.read => (AppIcons.read, InboxPalette.readTicks),
       DeliveryState.failed => (AppIcons.error, c.error),
     };
     return AppIcon(icon, dp: size, color: color);

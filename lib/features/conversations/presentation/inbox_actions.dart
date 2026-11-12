@@ -54,6 +54,22 @@ abstract final class InboxActions {
     );
   }
 
+  static Future<void> reopen(BuildContext context, WidgetRef ref, Set<String> ids) async {
+    HapticFeedback.lightImpact();
+    final r = await _ctrl(ref).reopen(ids);
+    if (!context.mounted) return;
+    _result(context, r, message: context.l10n.inbox_reopened_n(ids.length), action: 'reopen');
+  }
+
+  /// Selection bar "استلام" (one id goes through the single claim flow).
+  static Future<void> claimMany(BuildContext context, WidgetRef ref, Set<String> ids) async {
+    if (ids.length == 1) return claim(context, ref, ids.first);
+    HapticFeedback.lightImpact();
+    final r = await _ctrl(ref).claimMany(ids);
+    if (!context.mounted) return;
+    _result(context, r, message: context.l10n.inbox_claimed_n(ids.length), action: 'claim');
+  }
+
   static Future<void> snooze(
     BuildContext context,
     WidgetRef ref,

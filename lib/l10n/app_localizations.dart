@@ -8058,7 +8058,7 @@ abstract class AppLocalizations {
   /// No description provided for @inbox_typing.
   ///
   /// In ar, this message translates to:
-  /// **'يكتب الآن…'**
+  /// **'يكتب…'**
   String get inbox_typing;
 
   /// No description provided for @inbox_image.
@@ -8612,6 +8612,306 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الأطول انتظارًا'**
   String get inbox_filters_sort_waiting;
+
+  /// No description provided for @inbox_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'جميع محادثات عملائك في مكان واحد'**
+  String get inbox_sub;
+
+  /// No description provided for @inbox_matching.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} محادثة مطابقة'**
+  String inbox_matching(int n);
+
+  /// No description provided for @inbox_pills_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'تصفية سريعة'**
+  String get inbox_pills_a11y;
+
+  /// No description provided for @inbox_pill_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'{label}، {n}'**
+  String inbox_pill_a11y(String label, String n);
+
+  /// No description provided for @inbox_wait_min.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{ينتظر دقيقة} =2{ينتظر دقيقتين} few{ينتظر {n} دقائق} other{ينتظر {n} دقيقة}}'**
+  String inbox_wait_min(int n);
+
+  /// No description provided for @inbox_wait_hr.
+  ///
+  /// In ar, this message translates to:
+  /// **'ينتظر {n} س'**
+  String inbox_wait_hr(int n);
+
+  /// No description provided for @inbox_act_claim.
+  ///
+  /// In ar, this message translates to:
+  /// **'استلام'**
+  String get inbox_act_claim;
+
+  /// No description provided for @inbox_act_assign.
+  ///
+  /// In ar, this message translates to:
+  /// **'إسناد'**
+  String get inbox_act_assign;
+
+  /// No description provided for @inbox_act_close.
+  ///
+  /// In ar, this message translates to:
+  /// **'إغلاق'**
+  String get inbox_act_close;
+
+  /// No description provided for @inbox_act_reopen.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة فتح'**
+  String get inbox_act_reopen;
+
+  /// No description provided for @inbox_act_read.
+  ///
+  /// In ar, this message translates to:
+  /// **'مقروءة'**
+  String get inbox_act_read;
+
+  /// No description provided for @inbox_act_unread.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير مقروءة'**
+  String get inbox_act_unread;
+
+  /// No description provided for @inbox_sel_count.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n} محددة'**
+  String inbox_sel_count(int n);
+
+  /// No description provided for @inbox_new_msgs.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{رسالة جديدة} =2{رسالتان جديدتان} few{{n} رسائل جديدة} other{{n} رسالة جديدة}}'**
+  String inbox_new_msgs(int n);
+
+  /// No description provided for @inbox_offline_bar.
+  ///
+  /// In ar, this message translates to:
+  /// **'غير متصل · يتم عرض آخر نسخة محفوظة'**
+  String get inbox_offline_bar;
+
+  /// No description provided for @inbox_flt_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'تصفية المحادثات'**
+  String get inbox_flt_title;
+
+  /// No description provided for @inbox_flt_reset.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة تعيين'**
+  String get inbox_flt_reset;
+
+  /// No description provided for @inbox_flt_status.
+  ///
+  /// In ar, this message translates to:
+  /// **'الحالة'**
+  String get inbox_flt_status;
+
+  /// No description provided for @inbox_st_open.
+  ///
+  /// In ar, this message translates to:
+  /// **'مفتوحة'**
+  String get inbox_st_open;
+
+  /// No description provided for @inbox_st_pending.
+  ///
+  /// In ar, this message translates to:
+  /// **'قيد الانتظار'**
+  String get inbox_st_pending;
+
+  /// No description provided for @inbox_st_snoozed.
+  ///
+  /// In ar, this message translates to:
+  /// **'مؤجلة'**
+  String get inbox_st_snoozed;
+
+  /// No description provided for @inbox_st_closed.
+  ///
+  /// In ar, this message translates to:
+  /// **'مغلقة'**
+  String get inbox_st_closed;
+
+  /// No description provided for @inbox_flt_assignee.
+  ///
+  /// In ar, this message translates to:
+  /// **'المسؤول'**
+  String get inbox_flt_assignee;
+
+  /// No description provided for @inbox_flt_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'ردّ الذكاء'**
+  String get inbox_flt_ai;
+
+  /// No description provided for @inbox_ai_handled.
+  ///
+  /// In ar, this message translates to:
+  /// **'تولّاها الذكاء'**
+  String get inbox_ai_handled;
+
+  /// No description provided for @inbox_ai_escalated.
+  ///
+  /// In ar, this message translates to:
+  /// **'حوّلها للفريق'**
+  String get inbox_ai_escalated;
+
+  /// No description provided for @inbox_ai_untouched.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتدخل'**
+  String get inbox_ai_untouched;
+
+  /// No description provided for @inbox_sort_newest.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأحدث أولًا'**
+  String get inbox_sort_newest;
+
+  /// No description provided for @inbox_sort_oldest.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأقدم انتظارًا أولًا'**
+  String get inbox_sort_oldest;
+
+  /// No description provided for @inbox_sort_priority.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأولوية'**
+  String get inbox_sort_priority;
+
+  /// No description provided for @inbox_e_none_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد محادثات بعد'**
+  String get inbox_e_none_title;
+
+  /// No description provided for @inbox_e_none_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'ستظهر هنا رسائل عملائك فور وصولها'**
+  String get inbox_e_none_body;
+
+  /// No description provided for @inbox_e_connect.
+  ///
+  /// In ar, this message translates to:
+  /// **'اربط واتساب'**
+  String get inbox_e_connect;
+
+  /// No description provided for @inbox_e_mine_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا محادثات مُسندة لك'**
+  String get inbox_e_mine_title;
+
+  /// No description provided for @inbox_e_mine_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'أحسنت! كل شيء تحت السيطرة'**
+  String get inbox_e_mine_body;
+
+  /// No description provided for @inbox_e_mine_action.
+  ///
+  /// In ar, this message translates to:
+  /// **'عرض غير المُسندة'**
+  String get inbox_e_mine_action;
+
+  /// No description provided for @inbox_e_unread.
+  ///
+  /// In ar, this message translates to:
+  /// **'قرأت كل الرسائل'**
+  String get inbox_e_unread;
+
+  /// No description provided for @inbox_e_unassigned.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا محادثات بانتظار الاستلام'**
+  String get inbox_e_unassigned;
+
+  /// No description provided for @inbox_e_waiting.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا أحد ينتظر ردك'**
+  String get inbox_e_waiting;
+
+  /// No description provided for @inbox_e_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا محادثات يتولاها الذكاء الآن'**
+  String get inbox_e_ai;
+
+  /// No description provided for @inbox_e_closed.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا محادثات مغلقة'**
+  String get inbox_e_closed;
+
+  /// No description provided for @inbox_e_filtered_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا نتائج مطابقة'**
+  String get inbox_e_filtered_title;
+
+  /// No description provided for @inbox_e_filtered_body.
+  ///
+  /// In ar, this message translates to:
+  /// **'جرّب تغيير الفلاتر'**
+  String get inbox_e_filtered_body;
+
+  /// No description provided for @inbox_e_filtered_action.
+  ///
+  /// In ar, this message translates to:
+  /// **'مسح الفلاتر'**
+  String get inbox_e_filtered_action;
+
+  /// No description provided for @inbox_e_load.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر تحميل المحادثات'**
+  String get inbox_e_load;
+
+  /// No description provided for @inbox_e_retry.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة المحاولة'**
+  String get inbox_e_retry;
+
+  /// No description provided for @inbox_wa_down.
+  ///
+  /// In ar, this message translates to:
+  /// **'انقطع اتصال واتساب — لن تصل رسائل جديدة'**
+  String get inbox_wa_down;
+
+  /// No description provided for @inbox_wa_reconnect.
+  ///
+  /// In ar, this message translates to:
+  /// **'إعادة الربط'**
+  String get inbox_wa_reconnect;
+
+  /// No description provided for @inbox_reopened_n.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{أُعيد فتح المحادثة} =2{أُعيد فتح محادثتين} few{أُعيد فتح {n} محادثات} other{أُعيد فتح {n} محادثة}}'**
+  String inbox_reopened_n(int n);
+
+  /// No description provided for @inbox_claimed_n.
+  ///
+  /// In ar, this message translates to:
+  /// **'{n, plural, =1{استلمت المحادثة} =2{استلمت محادثتين} few{استلمت {n} محادثات} other{استلمت {n} محادثة}}'**
+  String inbox_claimed_n(int n);
 
   /// No description provided for @kbe_new.
   ///

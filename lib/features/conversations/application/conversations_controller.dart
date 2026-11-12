@@ -294,7 +294,36 @@ class ConversationsController extends Notifier<ConversationsState> {
     }
   }
 
-  Future<InboxActionResult> resolve(Set<String> ids) => _removing(ids, _repo.resolve);
+  /// Closing removes the rows from open lists; in "الكل" (every status)
+  /// the refresh brings them back as closed.
+  Future<InboxActionResult> resolve(Set<String> ids) async {
+    final r = await _removing(ids, _repo.resolve);
+    if (!r.failed) unawaited(_refreshWindow().catchError((Object _) {}));
+    return r;
+  }
+
+  Future<InboxActionResult> reopen(Set<String> ids) => _refreshing(ids, _repo.reopen);
+
+  Future<InboxActionResult> claimMany(Set<String> ids) => _refreshing(ids, _repo.claimBulk);
+
+  /// Server first, then re-read the window (rows move between pills).
+  Future<InboxActionResult> _refreshing(
+    Set<String> ids,
+    Future<UndoAction> Function(List<ConversationSummary> items) call,
+  ) async {
+    try {
+      final undo = await call(_pick(ids));
+      await _refreshWindow();
+      return InboxActionResult(
+        undo: () async {
+          await undo();
+          await _refreshWindow();
+        },
+      );
+    } catch (_) {
+      return const InboxActionResult(failed: true);
+    }
+  }
 
   /// Default snooze from a full swipe is 1 hour (§4.5.4).
   Future<InboxActionResult> snooze(Set<String> ids, {Duration duration = const Duration(hours: 1)}) =>
@@ -392,9 +421,9 @@ class ConversationsController extends Notifier<ConversationsState> {
   void clearSelection() => ref.read(inboxProvider.notifier).clearSelection();
 }
 
-/// Tab-bar badge: unread conversations in "لي" (DS §8.2), from the API's
-/// `counts.mine_unread`.
+/// Tab-bar badge: every unread conversation (Inbox v2 §2), from
+/// `counts.total_unread` (falls back to the older `mine_unread`).
 final inboxTabBadgeProvider = Provider<int>((ref) {
   final counts = ref.watch(conversationsControllerProvider.select((s) => s.counts));
-  return counts['mine_unread'] ?? 0;
+  return counts['total_unread'] ?? counts['mine_unread'] ?? 0;
 });

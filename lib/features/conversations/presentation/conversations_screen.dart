@@ -1,9 +1,9 @@
-import 'dart:math' as math;
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -16,27 +16,28 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/utils/analytics.dart';
 import '../../../core/utils/l10n.dart';
 import '../../../core/widgets/widgets.dart';
+import '../../channels/whatsapp/application/whatsapp_channel_controller.dart';
+import '../../channels/whatsapp/domain/wa_status.dart';
 import '../application/conversation_filters_controller.dart';
 import '../application/conversations_controller.dart';
 import '../application/relative_time_ticker.dart';
+import '../data/conversations_repository.dart';
 import '../data/conversations_socket.dart';
 import '../domain/conversation_filters.dart';
 import '../domain/conversation_summary.dart';
-import '../domain/row_tag_resolver.dart';
 import 'inbox_actions.dart';
 import 'widgets/active_filters_bar.dart';
 import 'widgets/conversation_tile.dart';
 import 'widgets/conversation_tile_skeleton.dart';
-import 'widgets/conversations_app_bar.dart';
 import 'widgets/conversations_empty_state.dart';
 import 'widgets/filters_sheet.dart';
-import 'widgets/inbox_segmented.dart';
-import 'widgets/needs_reply_section.dart';
-import 'widgets/new_message_sheet.dart';
+import 'widgets/inbox_filter_bar.dart';
+import 'widgets/inbox_header.dart';
+import 'widgets/inbox_palette.dart';
 import 'widgets/new_messages_pill.dart';
-import 'widgets/quick_filter_chips.dart';
 
-/// صندوق الوارد — implements `02 Inbox Screen.md` on the Design System.
+/// صندوق الوارد — Inbox v2: fixed teal header + fixed pill filter bar over
+/// the conversation list.
 class ConversationsScreen extends ConsumerStatefulWidget {
   const ConversationsScreen({super.key, this.segment, this.filter, this.selectedConversationId});
 
@@ -53,21 +54,24 @@ class ConversationsScreen extends ConsumerStatefulWidget {
   ConsumerState<ConversationsScreen> createState() => _ConversationsScreenState();
 }
 
-class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+class _ConversationsScreenState extends ConsumerState<ConversationsScreen> with WidgetsBindingObserver {
+  static const _maxSelected = 50;
+
   final _scroll = ScrollController();
-  late final AnimationController _fade = AnimationController(vsync: this, duration: AppMotion.fast, value: 1);
   StreamSubscription<InboxSocketEvent>? _socketSub;
 
-  bool _fabVisible = true;
   int _pill = 0;
-  bool _needsExpanded = false;
   DateTime? _lastBack;
+  int? _matching;
+
+  /// Previous pill's rows, kept dimmed until the new ones arrive (§4.2.1).
+  List<ConversationSummary>? _stale;
+  bool _switching = false;
 
   /// Rows removed since the last frame, kept briefly to animate out.
   final Map<String, ({ConversationSummary item, int index})> _leaving = {};
 
-  /// Rows that just arrived or moved up — animate in.
+  /// Rows that just arrived or moved up — slide in + highlight.
   Set<String> _appearing = {};
 
   /// Full-swipe dismissals already animated by the Slidable.
@@ -82,6 +86,7 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
       if (!mounted) return;
       ref.read(conversationFiltersProvider.notifier).applyDeepLink(segment: widget.segment, filter: widget.filter);
       _socketSub = ref.read(conversationsSocketProvider).events.listen(_onSocketEvent);
+      _refreshMatching(ref.read(conversationFiltersProvider));
     });
   }
 
@@ -98,7 +103,6 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
     WidgetsBinding.instance.removeObserver(this);
     _socketSub?.cancel();
     _scroll.dispose();
-    _fade.dispose();
     super.dispose();
   }
 
@@ -113,20 +117,9 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
   void _onScroll() {
     if (!_scroll.hasClients) return;
     final p = _scroll.position;
-    if (p.pixels >= p.maxScrollExtent * 0.8) {
-      ref.read(conversationsControllerProvider.notifier).loadMore();
-    }
+    // Next page 600dp before the end (§5.1).
+    if (p.maxScrollExtent - p.pixels < 600) ref.read(conversationsControllerProvider.notifier).loadMore();
     if (_pill > 0 && p.pixels <= 0) setState(() => _pill = 0);
-  }
-
-  bool _onScrollNotification(UserScrollNotification n) {
-    final visible = switch (n.direction) {
-      ScrollDirection.reverse => false,
-      ScrollDirection.forward => true,
-      ScrollDirection.idle => _fabVisible,
-    };
-    if (visible != _fabVisible) setState(() => _fabVisible = visible);
-    return false;
   }
 
   void _scrollToTop() {
@@ -146,7 +139,6 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
     switch (e) {
       case InboxAssignedToMe(:final conversationId, :final byName):
         final message = l.inbox_assigned_to_you(byName);
-        // Only assignments are announced to screen readers (§9).
         SemanticsService.announce(message, Directionality.of(context));
         AppSnackbar.show(
           context,
@@ -172,14 +164,31 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
   }
 
   void _onItemsChanged(ConversationsState? prev, ConversationsState next) {
-    if (prev == null || prev.query != next.query) return;
+    if (prev == null) return;
+    if (prev.query != next.query) {
+      // Pill / filter switch: keep the old rows dimmed until results arrive.
+      setState(() {
+        _stale = prev.items.isNotEmpty ? prev.items : _stale;
+        _switching = true;
+      });
+      return;
+    }
+    if (_switching && next.phase != InboxLoadPhase.loading && !next.fromCache) {
+      setState(() {
+        _switching = false;
+        _stale = null;
+      });
+    }
+
     final before = prev.items;
     final reduced = AppMotion.reduced(context);
     final nextIds = {for (final i in next.items) i.id};
 
-    // New rows while the agent is scrolled down > 1 screen → pill (§5).
-    if (next.inserted.isNotEmpty && _scroll.hasClients && _scroll.offset > _scroll.position.viewportDimension) {
+    // Scrolled down more than 2 screens: don't move the list, show the
+    // "{n} رسائل جديدة" pill instead (§5.2).
+    if (next.inserted.isNotEmpty && _scroll.hasClients && _scroll.offset > 2 * _scroll.position.viewportDimension) {
       setState(() => _pill += next.inserted.length);
+      return;
     }
     if (reduced) return;
 
@@ -191,33 +200,49 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
     };
     final leaving = <String, ({ConversationSummary item, int index})>{
       for (var i = 0; i < before.length; i++)
-        if (!nextIds.contains(before[i].id) && !_dismissed.remove(before[i].id))
-          before[i].id: (item: before[i], index: i),
+        if (!nextIds.contains(before[i].id) && !_dismissed.remove(before[i].id)) before[i].id: (item: before[i], index: i),
     };
     if (appearing.isEmpty && leaving.isEmpty) return;
     setState(() {
       _appearing = appearing;
       _leaving.addAll(leaving);
     });
-    Future<void>.delayed(AppMotion.normal, () {
+    Future<void>.delayed(const Duration(milliseconds: 250), () {
       if (!mounted) return;
       setState(() {
         for (final id in leaving.keys) {
           _leaving.remove(id);
         }
-        _appearing = {};
       });
+    });
+    Future<void>.delayed(const Duration(milliseconds: 1600), () {
+      if (mounted) setState(() => _appearing = {});
     });
   }
 
   void _onQueryChanged(InboxQuery? prev, InboxQuery next) {
     if (prev == null) return;
     if (prev.segment != next.segment || prev.chip != next.chip) {
-      // Segment / chip switch: scroll to top + list cross-fade (§4.2).
       if (_scroll.hasClients) _scroll.jumpTo(0);
       _leaving.clear();
       _pill = 0;
-      if (!AppMotion.reduced(context)) _fade.forward(from: 0);
+    }
+    if (prev.advanced != next.advanced || prev.segment != next.segment || prev.chip != next.chip) {
+      _refreshMatching(next);
+    }
+  }
+
+  /// Header subtitle "{n} محادثة مطابقة" while advanced filters are on.
+  Future<void> _refreshMatching(InboxQuery q) async {
+    if (!q.advanced.hasActive) {
+      if (_matching != null) setState(() => _matching = null);
+      return;
+    }
+    try {
+      final n = await ref.read(conversationsRepositoryProvider).count(q);
+      if (mounted && ref.read(conversationFiltersProvider) == q) setState(() => _matching = n);
+    } catch (_) {
+      // Keep the subtitle as it was.
     }
   }
 
@@ -241,56 +266,49 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
 
   // ---- Rows -----------------------------------------------------------------------
 
-  void _open(ConversationSummary s, int position, InboxQuery q, DateTime now, String meId) {
-    final tag = RowTagResolver.resolve(s, segment: q.segment, meId: meId, now: now);
-    Analytics.log('inbox_open_conversation', {
-      'segment': q.segment.name,
-      'position': position,
-      'had_tag': tag != null,
-      'channel': s.channel.name,
-    });
+  void _open(ConversationSummary s, int position, InboxPill pill) {
+    Analytics.log('inbox_open_conversation', {'pill': pill.name, 'position': position, 'channel': s.channel.name});
     ref.read(conversationsControllerProvider.notifier).markReadOptimistic(s.id);
     context.push(Routes.chat(s.id));
+  }
+
+  void _toggle(String id, Set<String> selected) {
+    if (!selected.contains(id) && selected.length >= _maxSelected) {
+      HapticFeedback.heavyImpact();
+      return;
+    }
+    ref.read(conversationsControllerProvider.notifier).toggleSelected(id);
   }
 
   Widget _tile(
     ConversationSummary s,
     int position, {
-    required InboxQuery q,
+    required InboxPill pill,
     required Set<String> selected,
-    required DateTime now,
-    required String meId,
     required bool showDivider,
   }) {
-    final ctrl = ref.read(conversationsControllerProvider.notifier);
     final selecting = selected.isNotEmpty;
     final tile = ConversationTile(
       key: ValueKey(s.id),
       summary: s,
-      segment: q.segment,
+      allPill: pill == InboxPill.all,
       showDivider: showDivider,
       selected: selected.contains(s.id) || (!selecting && widget.selectedConversationId == s.id),
       selecting: selecting,
-      onTap: () => selecting ? ctrl.toggleSelected(s.id) : _open(s, position, q, now, meId),
-      onLongPress: selecting ? null : () => ctrl.toggleSelected(s.id),
-      onResolve: ({required fullSwipe}) {
+      onTap: () => selecting ? _toggle(s.id, selected) : _open(s, position, pill),
+      onLongPress: selecting ? null : () => _toggle(s.id, selected),
+      onClaim: ({required fullSwipe}) => InboxActions.claim(context, ref, s.id),
+      onAssign: ({required fullSwipe}) => InboxActions.assign(context, ref, {s.id}),
+      onClose: ({required fullSwipe}) {
         if (fullSwipe) _dismissed.add(s.id);
         InboxActions.resolve(context, ref, {s.id}, fullSwipe: fullSwipe);
       },
-      onSnooze: ({required fullSwipe}) {
-        if (fullSwipe) _dismissed.add(s.id);
-        InboxActions.snooze(context, ref, {s.id}, fullSwipe: fullSwipe);
-      },
-      onAssign: ({required fullSwipe}) => InboxActions.assign(context, ref, {s.id}),
-      onClaim: ({required fullSwipe}) => InboxActions.claim(context, ref, s.id),
+      onReopen: ({required fullSwipe}) => InboxActions.reopen(context, ref, {s.id}),
+      onToggleRead: ({required fullSwipe}) => InboxActions.setRead(context, ref, {s.id}, read: s.isUnread),
     );
     if (AppMotion.reduced(context)) return tile;
     if (_leaving.containsKey(s.id)) {
-      return _RowTransition(
-        key: ValueKey('leave-${s.id}'),
-        leaving: true,
-        child: IgnorePointer(child: tile),
-      );
+      return _RowTransition(key: ValueKey('leave-${s.id}'), leaving: true, child: IgnorePointer(child: tile));
     }
     if (_appearing.contains(s.id)) return _RowTransition(key: ValueKey('in-${s.id}'), child: tile);
     return tile;
@@ -308,29 +326,87 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
     return list;
   }
 
-  InboxEmptyKind _emptyKind(ConversationsState s, InboxQuery q, bool anyMine) {
+  InboxEmptyKind _emptyKind(ConversationsState s, InboxQuery q) {
     if (s.phase == InboxLoadPhase.error) return InboxEmptyKind.error;
-    if (q.chip != QuickChip.all || q.advanced.hasActive) return InboxEmptyKind.noMatch;
-    return switch (q.segment) {
-      InboxSegment.mine => anyMine ? InboxEmptyKind.mineDone : InboxEmptyKind.mineNone,
-      InboxSegment.unassigned => InboxEmptyKind.unassigned,
-      InboxSegment.all => InboxEmptyKind.newWorkspace,
+    if (q.advanced.hasActive) return InboxEmptyKind.filtered;
+    return switch (InboxPill.of(q)) {
+      InboxPill.all => InboxEmptyKind.none,
+      InboxPill.mine => InboxEmptyKind.mine,
+      InboxPill.unread => InboxEmptyKind.unread,
+      InboxPill.unassigned => InboxEmptyKind.unassigned,
+      InboxPill.waiting => InboxEmptyKind.waiting,
+      InboxPill.ai => InboxEmptyKind.ai,
+      InboxPill.closed => InboxEmptyKind.closed,
     };
   }
 
   void _emptyAction(InboxEmptyKind kind) {
+    final filters = ref.read(conversationFiltersProvider.notifier);
     switch (kind) {
-      case InboxEmptyKind.mineNone:
-        ref.read(conversationFiltersProvider.notifier).setSegment(InboxSegment.unassigned);
-      case InboxEmptyKind.newWorkspace:
+      case InboxEmptyKind.mine:
+        filters.setPill(InboxPill.unassigned);
+      case InboxEmptyKind.none:
         context.push(Routes.whatsapp);
-      case InboxEmptyKind.noMatch:
-        ref.read(conversationFiltersProvider.notifier).clearAll();
+      case InboxEmptyKind.filtered:
+        filters.setAdvanced(AdvancedFilters.empty);
       case InboxEmptyKind.error:
         ref.read(conversationsControllerProvider.notifier).retry();
-      case InboxEmptyKind.mineDone || InboxEmptyKind.unassigned:
+      default:
         break;
     }
+  }
+
+  // ---- Selection ------------------------------------------------------------------
+
+  Future<void> _bulk(String action, Future<void> Function(Set<String>) run) async {
+    final ids = {...ref.read(inboxProvider).selected};
+    if (ids.isEmpty) return;
+    Analytics.log('inbox_bulk_action', {'action': action, 'count': ids.length});
+    await run(ids);
+    ref.read(conversationsControllerProvider.notifier).clearSelection();
+  }
+
+  void _moreActions() {
+    final l = context.l10n;
+    AppBottomSheet.show<void>(
+      context,
+      builder: (ctx) => Column(
+        children: [
+          SheetActionRow(
+            icon: AppIcons.snooze,
+            label: l.inbox_swipe_snooze,
+            onTap: () {
+              Navigator.pop(ctx);
+              _bulk('snooze', (s) => InboxActions.pickSnooze(context, ref, s));
+            },
+          ),
+          SheetActionRow(
+            icon: AppIcons.tag,
+            label: l.inbox_tag,
+            onTap: () {
+              Navigator.pop(ctx);
+              _bulk('tag', (s) => InboxActions.pickTag(context, ref, s));
+            },
+          ),
+          SheetActionRow(
+            icon: AppIcons.priority,
+            label: l.inbox_priority,
+            onTap: () {
+              Navigator.pop(ctx);
+              _bulk('priority', (s) => InboxActions.pickPriority(context, ref, s));
+            },
+          ),
+          SheetActionRow(
+            icon: AppIcons.archive,
+            label: l.inbox_archive,
+            onTap: () {
+              Navigator.pop(ctx);
+              _bulk('archive', (s) => InboxActions.archive(context, ref, s));
+            },
+          ),
+        ],
+      ),
+    );
   }
 
   // ---- Build ------------------------------------------------------------------------
@@ -339,226 +415,216 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen>
   Widget build(BuildContext context) {
     final c = context.colors;
     final l = context.l10n;
+    final p = InboxPalette.of(context);
     // Provider changes can land while a frame is building (e.g. a pushed
     // route updating the inbox); setState then would dirty rows mid-build
     // and corrupt the list. Run those callbacks after the frame instead.
-    ref.listen(conversationsControllerProvider, (p, n) => _afterBuild(() => _onItemsChanged(p, n)));
-    ref.listen(conversationFiltersProvider, (p, n) => _afterBuild(() => _onQueryChanged(p, n)));
+    ref.listen(conversationsControllerProvider, (a, b) => _afterBuild(() => _onItemsChanged(a, b)));
+    ref.listen(conversationFiltersProvider, (a, b) => _afterBuild(() => _onQueryChanged(a, b)));
 
     final s = ref.watch(conversationsControllerProvider);
     final q = ref.watch(conversationFiltersProvider);
+    final pill = InboxPill.of(q);
     final selected = ref.watch(inboxProvider.select((x) => x.selected));
     final selecting = selected.isNotEmpty;
-    final now = ref.watch(inboxClockProvider);
-    final meId = ref.watch(currentAgentProvider.select((a) => a.id));
     final unreadNotifications = ref.watch(unreadNotificationsProvider);
-    final anyMine = ref.watch(inboxProvider.select((x) => x.conversations.any((c) => c.ownership == Ownership.mine)));
-    final scale = MediaQuery.textScalerOf(context).scale(10) / 10;
+    final wa = ref.watch(whatsAppChannelControllerProvider.select((x) => x.channel));
+    final waDown = wa != null && wa.status == WaStatus.disconnected;
     final ctrl = ref.read(conversationsControllerProvider.notifier);
     final filters = ref.read(conversationFiltersProvider.notifier);
 
-    final bannerHeight = s.network == NetworkState.online ? 0.0 : 32 * scale.clamp(1.0, 2.0);
-    final segmentedHeight = 44 * scale.clamp(1.0, 1.6) + bannerHeight;
-    final appBarDelegate = ConversationsAppBarDelegate(
-      title: l.inbox_title,
-      onSearch: () => context.push(Routes.search),
-      onNotifications: () => context.push(Routes.notifications),
-      unreadNotifications: unreadNotifications,
-      selectedCount: selected.length,
-      onExitSelection: ctrl.clearSelection,
-      onSelectAll: ctrl.selectAll,
-      textScale: scale,
-      // The brand header paints under the status bar (no top SafeArea).
-      topInset: MediaQuery.paddingOf(context).top,
-    );
-
-    Widget disabledWhileSelecting(Widget child) => IgnorePointer(
-      ignoring: selecting,
-      child: AnimatedOpacity(opacity: selecting ? 0.4 : 1, duration: AppMotion.fast, child: child),
-    );
-
-    // Rows: pinned "needs reply" section in Mine (§4.6), then the rest.
-    final rows = _withLeaving(s.items);
-    final waiting = q.segment == InboxSegment.mine
-        ? [
-            for (final i in rows)
-              if (i.waitingOverSla(now)) i,
-          ]
-        : const <ConversationSummary>[];
-    final shownWaiting = _needsExpanded ? waiting : waiting.take(3).toList();
-    final shownWaitingIds = {for (final i in shownWaiting) i.id};
-    final rest = [
-      for (final i in rows)
-        if (!shownWaitingIds.contains(i.id)) i,
-    ];
+    // Rows: the new pill's rows, or the previous pill's (dimmed) meanwhile.
+    final fresh = s.items.isNotEmpty || s.phase != InboxLoadPhase.loading;
+    final rows = _withLeaving(fresh ? s.items : (_stale ?? const []));
+    final loadingOver = _switching && (s.phase == InboxLoadPhase.loading || s.fromCache) && rows.isNotEmpty;
 
     final content = <Widget>[];
-    if (s.phase == InboxLoadPhase.loading && s.items.isEmpty) {
+    if (waDown) {
+      content.add(SliverToBoxAdapter(child: _WhatsAppDownCard(onReconnect: () => context.push(Routes.whatsapp))));
+    }
+    if (rows.isEmpty && s.phase == InboxLoadPhase.loading) {
       content.add(SliverToBoxAdapter(child: ConversationTileSkeleton.list()));
-    } else if (s.items.isEmpty && _leaving.isEmpty) {
-      final kind = _emptyKind(s, q, anyMine);
+    } else if (rows.isEmpty && _leaving.isEmpty) {
+      final kind = _emptyKind(s, q);
       content.add(
         SliverFillRemaining(
           hasScrollBody: false,
-          child: ConversationsEmptyState(kind: kind, onAction: () => _emptyAction(kind)),
+          child: ConversationsEmptyState(
+            kind: kind,
+            canConnect: wa == null || !wa.status.isHealthy,
+            onAction: () => _emptyAction(kind),
+          ),
         ),
       );
     } else {
-      if (waiting.isNotEmpty) {
-        content.add(
-          SliverToBoxAdapter(
-            child: AnimatedSize(
-              duration: AppMotion.normal,
-              curve: AppMotion.standard,
-              alignment: AlignmentDirectional.topStart,
-              child: Column(
-                children: [
-                  NeedsReplyHeader(
-                    count: waiting.length,
-                    expanded: _needsExpanded,
-                    onToggle: () => setState(() => _needsExpanded = !_needsExpanded),
-                  ),
-                  for (var i = 0; i < shownWaiting.length; i++)
-                    _tile(shownWaiting[i], i, q: q, selected: selected, now: now, meId: meId, showDivider: i > 0),
-                  if (rest.isNotEmpty) const RestHeader(),
-                ],
-              ),
-            ),
-          ),
-        );
-      }
       content
         ..add(
           SliverList.builder(
-            itemCount: rest.length,
-            itemBuilder: (context, i) => _tile(
-              rest[i],
-              shownWaiting.length + i,
-              q: q,
-              selected: selected,
-              now: now,
-              meId: meId,
-              showDivider: i > 0,
-            ),
+            itemCount: rows.length,
+            itemBuilder: (context, i) => _tile(rows[i], i, pill: pill, selected: selected, showDivider: i > 0),
           ),
         )
-        ..add(
-          SliverToBoxAdapter(
-            child: _PaginationFooter(state: s, onRetry: ctrl.loadMore),
-          ),
-        );
+        ..add(SliverToBoxAdapter(child: _PaginationFooter(state: s, onRetry: ctrl.loadMore)));
     }
 
-    // Under `extendBody` the shell reports the real tab-bar height (labels,
-    // padding, system nav area) as bottom padding; 56 + viewPadding alone
-    // put the FAB behind the bar on phones with a gesture/nav area.
+    // Under `extendBody` the shell reports the real tab-bar height as bottom
+    // padding; keep the last row above it.
     final bottomInset = math.max(
       MediaQuery.paddingOf(context).bottom,
       AppTabBar.height + MediaQuery.viewPaddingOf(context).bottom,
     );
-    final scrollView = NotificationListener<UserScrollNotification>(
-      onNotification: _onScrollNotification,
-      child: RefreshIndicator(
-        color: c.primary,
-        backgroundColor: c.surface,
-        displacement: 24,
-        edgeOffset: appBarDelegate.minExtent + segmentedHeight,
-        onRefresh: ctrl.refresh,
-        // Opening one row's swipe actions closes the others.
-        child: SlidableAutoCloseBehavior(
+
+    final list = RefreshIndicator(
+      color: c.primary,
+      backgroundColor: c.surface,
+      displacement: 24,
+      onRefresh: ctrl.refresh,
+      // Opening one row's swipe actions closes the others.
+      child: SlidableAutoCloseBehavior(
+        child: AnimatedOpacity(
+          opacity: loadingOver ? 0.6 : 1,
+          duration: AppMotion.fast,
           child: CustomScrollView(
             controller: _scroll,
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
-              SliverPersistentHeader(pinned: true, delegate: appBarDelegate),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: PinnedHeaderDelegate(
-                  height: segmentedHeight,
-                  child: Column(
-                    children: [
-                      disabledWhileSelecting(
-                        InboxSegmented(selected: q.segment, counts: s.counts, onChanged: filters.setSegment),
-                      ),
-                      const Spacer(),
-                      if (bannerHeight > 0) ConnectionBanner(state: s.network, offlineLabel: l.inbox_offline_cached),
-                    ],
-                  ),
-                ),
-              ),
-              SliverPersistentHeader(
-                floating: true,
-                delegate: FloatingHeaderDelegate(
-                  vsync: this,
-                  height: 48 * scale.clamp(1.0, 1.6),
-                  child: disabledWhileSelecting(
-                    QuickFilterChips(
-                      selected: q.chip,
-                      unreadCount: s.counts['unread'] ?? 0,
-                      advancedCount: q.advanced.activeCount,
-                      onSelected: filters.setChip,
-                      onOpenFilters: () => showInboxFiltersSheet(context, ref),
-                    ),
-                  ),
-                ),
-              ),
-              if (q.advanced.hasActive)
-                SliverToBoxAdapter(
-                  child: disabledWhileSelecting(
-                    ActiveFiltersBar(filters: q.advanced, onChanged: filters.setAdvanced, onClearAll: filters.clearAll),
-                  ),
-                ),
-              for (final sliver in content) SliverFadeTransition(opacity: _fade, sliver: sliver),
-              SliverToBoxAdapter(child: SizedBox(height: bottomInset + 56 + AppSpacing.xxl)),
+              ...content,
+              SliverToBoxAdapter(child: SizedBox(height: bottomInset + AppSpacing.lg)),
             ],
           ),
         ),
       ),
     );
 
+    Widget disabledWhileSelecting(Widget child) => IgnorePointer(
+          ignoring: selecting,
+          child: AnimatedOpacity(opacity: selecting ? 0.4 : 1, duration: AppMotion.fast, child: child),
+        );
+
+    final anyUnread = s.items.any((i) => selected.contains(i.id) && i.isUnread);
+    final header = selecting
+        ? InboxSelectionBar(
+            key: const ValueKey('select'),
+            count: selected.length,
+            anyUnread: anyUnread,
+            onExit: ctrl.clearSelection,
+            onClaim: () => _bulk('claim', (ids) => InboxActions.claimMany(context, ref, ids)),
+            onAssign: () => _bulk('assign', (ids) => InboxActions.assign(context, ref, ids)),
+            onClose: () => _bulk('resolve', (ids) => InboxActions.resolve(context, ref, ids)),
+            onRead: () => _bulk('read', (ids) => InboxActions.setRead(context, ref, ids, read: anyUnread)),
+            onMore: _moreActions,
+          )
+        : InboxHeader(
+            key: const ValueKey('header'),
+            matching: q.advanced.hasActive ? _matching : null,
+            unreadNotifications: unreadNotifications,
+            onSearch: () => context.push(Routes.search),
+            onBell: () => context.push(Routes.notifications),
+          );
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: _onBack,
       child: Scaffold(
-        backgroundColor: c.background,
-        body: SafeArea(
-          top: false,
-          bottom: false,
-          child: Stack(
-            children: [
-              // Tablets: content max 720dp, centered (§3).
-              Center(
-                child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 720), child: scrollView),
+        backgroundColor: p.list,
+        body: Column(
+          children: [
+            AnimatedSwitcher(duration: AppMotion.fast, child: header),
+            disabledWhileSelecting(
+              InboxFilterBar(
+                pill: pill,
+                counts: s.counts,
+                advancedCount: q.advanced.activeCount,
+                onPill: filters.setPill,
+                onFilters: () => showInboxFiltersSheet(context, ref),
               ),
-              PositionedDirectional(
-                top: appBarDelegate.minExtent + segmentedHeight + AppSpacing.sm,
-                start: 0,
-                end: 0,
-                child: Center(
-                  child: NewMessagesPill(
-                    count: _pill,
-                    onTap: () {
-                      Analytics.log('inbox_new_pill_tap', {'count': _pill});
-                      setState(() => _pill = 0);
-                      _scrollToTop();
-                    },
-                  ),
+            ),
+            if (q.advanced.hasActive)
+              disabledWhileSelecting(
+                ActiveFiltersBar(filters: q.advanced, onChanged: filters.setAdvanced, onClearAll: filters.clearAll),
+              ),
+            if (s.network != NetworkState.online)
+              Container(
+                width: double.infinity,
+                color: c.warningContainer,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                child: Text(
+                  l.inbox_offline_bar,
+                  textAlign: TextAlign.center,
+                  style: context.text.caption.copyWith(fontWeight: FontWeight.w600, color: c.textWarning),
                 ),
               ),
-              if (!selecting)
-                PositionedDirectional(
-                  end: AppSpacing.lg,
-                  bottom: bottomInset + AppSpacing.lg,
-                  child: AppFab(
-                    icon: AppIcons.compose,
-                    semanticLabel: l.inbox_new_conversation,
-                    visible: _fabVisible,
-                    onPressed: () => showNewMessageSheet(context, ref),
+            Expanded(
+              child: Stack(
+                children: [
+                  // Tablets: content max 720dp, centered.
+                  Center(child: ConstrainedBox(constraints: const BoxConstraints(maxWidth: 720), child: list)),
+                  if (loadingOver)
+                    const Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: LinearProgressIndicator(minHeight: 2, color: InboxPalette.headerStart, backgroundColor: Colors.transparent),
+                    ),
+                  PositionedDirectional(
+                    top: AppSpacing.sm,
+                    start: 0,
+                    end: 0,
+                    child: Center(
+                      child: NewMessagesPill(
+                        count: _pill,
+                        onTap: () {
+                          Analytics.log('inbox_new_pill_tap', {'count': _pill});
+                          setState(() => _pill = 0);
+                          _scrollToTop();
+                        },
+                      ),
+                    ),
                   ),
-                ),
-            ],
-          ),
+                ],
+              ),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+/// Red card above the list while WhatsApp is disconnected (§7).
+class _WhatsAppDownCard extends StatelessWidget {
+  const _WhatsAppDownCard({required this.onReconnect});
+
+  final VoidCallback onReconnect;
+
+  @override
+  Widget build(BuildContext context) {
+    final l = context.l10n;
+    final p = InboxPalette.of(context);
+    return Container(
+      margin: const EdgeInsets.fromLTRB(16, 12, 16, 4),
+      padding: const EdgeInsetsDirectional.fromSTEB(14, 8, 6, 8),
+      decoration: BoxDecoration(
+        color: p.waitBg,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: p.waitFg.withValues(alpha: 0.25)),
+      ),
+      child: Row(
+        children: [
+          AppIcon(AppIcons.warning, dp: 18, color: p.waitFg),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              l.inbox_wa_down,
+              style: context.text.bodySmall.copyWith(fontWeight: FontWeight.w700, color: p.waitFg),
+            ),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: p.waitFg, textStyle: context.text.buttonSmall, minimumSize: const Size(48, 40)),
+            onPressed: onReconnect,
+            child: Text(l.inbox_wa_reconnect),
+          ),
+        ],
       ),
     );
   }
@@ -577,7 +643,7 @@ class _PaginationFooter extends StatelessWidget {
     if (state.loadingMore) {
       return const Padding(
         padding: EdgeInsets.all(AppSpacing.lg),
-        child: Center(child: AppSpinner(size: 24, delayed: false)),
+        child: Center(child: AppSpinner(size: 20, delayed: false)),
       );
     }
     if (state.pageError) {
@@ -589,21 +655,12 @@ class _PaginationFooter extends StatelessWidget {
         ),
       );
     }
-    if (!state.hasMore && state.items.length > 10) {
-      return Padding(
-        padding: const EdgeInsets.all(AppSpacing.lg),
-        child: Text(
-          l.inbox_end,
-          textAlign: TextAlign.center,
-          style: context.text.caption.copyWith(color: c.textTertiary),
-        ),
-      );
-    }
     return const SizedBox(height: AppSpacing.sm);
   }
 }
 
-/// Row insert / remove: size + fade, 200ms easeOutCubic (§11).
+/// Row insert / remove: size + fade 250ms; a new row also flashes a soft
+/// teal highlight that fades out over 1.5 s (§5.2).
 class _RowTransition extends StatefulWidget {
   const _RowTransition({super.key, required this.child, this.leaving = false});
 
@@ -614,30 +671,50 @@ class _RowTransition extends StatefulWidget {
   State<_RowTransition> createState() => _RowTransitionState();
 }
 
-class _RowTransitionState extends State<_RowTransition> with SingleTickerProviderStateMixin {
+class _RowTransitionState extends State<_RowTransition> with TickerProviderStateMixin {
   late final AnimationController _ctrl = AnimationController(
     vsync: this,
-    duration: AppMotion.normal,
+    duration: const Duration(milliseconds: 250),
     value: widget.leaving ? 1 : 0,
   );
+  late final AnimationController _glow = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500));
   late final Animation<double> _curve = CurvedAnimation(parent: _ctrl, curve: AppMotion.standard);
 
   @override
   void initState() {
     super.initState();
-    widget.leaving ? _ctrl.reverse() : _ctrl.forward();
+    if (widget.leaving) {
+      _ctrl.reverse();
+    } else {
+      _ctrl.forward();
+      _glow.forward();
+    }
   }
 
   @override
   void dispose() {
     _ctrl.dispose();
+    _glow.dispose();
     super.dispose();
   }
 
   @override
-  Widget build(BuildContext context) => SizeTransition(
-    sizeFactor: _curve,
-    axisAlignment: -1,
-    child: FadeTransition(opacity: _curve, child: widget.child),
-  );
+  Widget build(BuildContext context) {
+    final p = InboxPalette.of(context);
+    return SizeTransition(
+      sizeFactor: _curve,
+      axisAlignment: -1,
+      child: FadeTransition(
+        opacity: _curve,
+        child: AnimatedBuilder(
+          animation: _glow,
+          builder: (context, child) => ColoredBox(
+            color: widget.leaving ? Colors.transparent : Color.lerp(p.suggestBg, Colors.transparent, _glow.value)!,
+            child: child,
+          ),
+          child: widget.child,
+        ),
+      ),
+    );
+  }
 }

@@ -6,10 +6,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 import '../../../../core/data/data.dart';
+import '../../../../core/icons/wd_svg_icons.dart';
 import '../../../../core/models/models.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
-import '../../../../core/widgets/widgets.dart';
 import '../../application/relative_time_ticker.dart';
 import '../../domain/conversation_summary.dart';
 import '../../domain/preview_formatter.dart';
@@ -17,16 +17,17 @@ import '../../domain/relative_time_formatter.dart';
 import '../../domain/row_tag_resolver.dart';
 import 'conversation_preview_text.dart';
 import 'conversation_row_tag.dart';
+import 'inbox_palette.dart';
 
 /// Swipe / semantic action callbacks. `fullSwipe` is true for a dismiss.
 typedef TileAction = void Function({required bool fullSwipe});
 
-/// Inbox row (Inbox spec §4.5, DS §8.3).
+/// Inbox row (Inbox v2 §4.3–4.5).
 class ConversationTile extends ConsumerWidget {
   const ConversationTile({
     super.key,
     required this.summary,
-    this.segment = InboxSegment.all,
+    this.allPill = false,
     this.onTap,
     this.onLongPress,
     this.selected = false,
@@ -34,16 +35,17 @@ class ConversationTile extends ConsumerWidget {
     this.enableSwipe = true,
     this.highlight,
     this.showDivider = true,
-    this.onResolve,
-    this.onSnooze,
-    this.onAssign,
     this.onClaim,
+    this.onAssign,
+    this.onClose,
+    this.onReopen,
+    this.onToggleRead,
   });
 
   final ConversationSummary summary;
 
-  /// Decides the colleague tag (only in "الكل") and the claim swipe.
-  final InboxSegment segment;
+  /// Row is in the "الكل" pill (unassigned / colleague tags).
+  final bool allPill;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final bool selected;
@@ -55,10 +57,11 @@ class ConversationTile extends ConsumerWidget {
 
   /// Divider above this row (not drawn above the first item).
   final bool showDivider;
-  final TileAction? onResolve;
-  final TileAction? onSnooze;
-  final TileAction? onAssign;
   final TileAction? onClaim;
+  final TileAction? onAssign;
+  final TileAction? onClose;
+  final TileAction? onReopen;
+  final TileAction? onToggleRead;
 
   static const _actionWidth = 72.0;
 
@@ -66,19 +69,27 @@ class ConversationTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final c = context.colors;
     final l = context.l10n;
+    final p = InboxPalette.of(context);
     final now = ref.watch(inboxClockProvider);
-    final meId = ref.watch(currentAgentProvider.select((a) => a.id));
+    final me = ref.watch(currentAgentProvider);
     final draft = ref.watch(draftsProvider.select((d) => d[summary.id]));
     final s = summary;
-    final preview = PreviewFormatter.format(s, meId: meId, draft: draft);
-    final tag = RowTagResolver.resolve(s, segment: segment, meId: meId, now: now);
+    final preview = PreviewFormatter.format(s, meId: me.id, draft: draft);
+    final tag = RowTagResolver.resolve(s, meId: me.id, now: now, allPill: allPill, lead: me.canManage);
     final time = RelativeTimeFormatter.format(s.lastActivityAt, now, l, context.localeName);
     final claimable = s.assignee == null && s.isActive;
+    // Unknown customer → the phone number, isolated LTR.
+    final displayName = s.contact.name.trim().isEmpty ? ltr(s.contact.phone ?? '') : s.contact.name;
 
-    // §9: one merged node; swipe actions are reachable as semantic actions.
+    final primary = claimable ? onClaim : onAssign;
+    final primaryLabel = claimable ? l.inbox_act_claim : l.inbox_act_assign;
+    final closeAction = s.isClosed ? onReopen : onClose;
+    final closeLabel = s.isClosed ? l.inbox_act_reopen : l.inbox_act_close;
+    final readLabel = s.isUnread ? l.inbox_act_read : l.inbox_act_unread;
+
+    // §10: one merged node; swipe actions are reachable as semantic actions.
     final label = [
-      s.contact.name,
-      s.channel.label(l),
+      displayName,
       if (s.isUnread) l.inbox_a11y_unread(s.unreadCount),
       ConversationPreviewText.describe(preview, l),
       time,
@@ -92,56 +103,51 @@ class ConversationTile extends ConsumerWidget {
       label: label,
       hint: l.inbox_a11y_open_hint,
       customSemanticsActions: {
-        if (onResolve != null) CustomSemanticsAction(label: l.inbox_swipe_resolve): () => onResolve!(fullSwipe: false),
-        if (onSnooze != null) CustomSemanticsAction(label: l.inbox_swipe_snooze): () => onSnooze!(fullSwipe: false),
-        if (claimable && onClaim != null)
-          CustomSemanticsAction(label: l.inbox_swipe_claim): () => onClaim!(fullSwipe: false)
-        else if (onAssign != null)
-          CustomSemanticsAction(label: l.inbox_swipe_assign): () => onAssign!(fullSwipe: false),
+        if (primary != null) CustomSemanticsAction(label: primaryLabel): () => primary(fullSwipe: false),
+        if (closeAction != null) CustomSemanticsAction(label: closeLabel): () => closeAction(fullSwipe: false),
+        if (onToggleRead != null) CustomSemanticsAction(label: readLabel): () => onToggleRead!(fullSwipe: false),
       },
       excludeSemantics: true,
       child: Material(
         color: selected ? c.primaryContainer : Colors.transparent,
         child: Builder(
           builder: (inner) => InkWell(
-          // A tap on a row whose actions are showing just closes it — it must
-          // not open the chat by accident.
-          onTap: onTap == null
-              ? null
-              : () {
-                  final slide = Slidable.of(inner);
-                  if (slide != null && slide.ratio != 0) {
-                    slide.close();
-                    return;
-                  }
-                  onTap!();
-                },
-          onLongPress: onLongPress == null
-              ? null
-              : () {
-                  HapticFeedback.mediumImpact();
-                  onLongPress!();
-                },
-          highlightColor: c.surfaceVariant,
-          splashColor: c.surfaceVariant,
-          child: DecoratedBox(
-            decoration: const BoxDecoration(),
+            // A tap on a row whose actions are showing just closes it — it
+            // must not open the chat by accident.
+            onTap: onTap == null
+                ? null
+                : () {
+                    final slide = Slidable.of(inner);
+                    if (slide != null && slide.ratio != 0) {
+                      slide.close();
+                      return;
+                    }
+                    onTap!();
+                  },
+            onLongPress: onLongPress == null
+                ? null
+                : () {
+                    HapticFeedback.mediumImpact();
+                    onLongPress!();
+                  },
+            highlightColor: p.pressed,
+            splashColor: p.pressed,
             child: Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.md),
+                  padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(minHeight: 76 - 2 * AppSpacing.md),
+                    constraints: BoxConstraints(minHeight: (tag == null ? 72 : 78) - 22),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         RepaintBoundary(
-                          child: _Leading(summary: s, selected: selected, selecting: selecting),
+                          child: InboxAvatar(summary: s, name: displayName, checked: selecting && selected),
                         ),
-                        const SizedBox(width: AppSpacing.md),
+                        const SizedBox(width: 12),
                         Expanded(
                           child: _Content(
                             summary: s,
+                            name: displayName,
                             preview: preview,
                             tag: tag,
                             time: time,
@@ -154,16 +160,11 @@ class ConversationTile extends ConsumerWidget {
                   ),
                 ),
                 if (showDivider)
-                  PositionedDirectional(
-                    top: 0,
-                    start: 78,
-                    end: AppSpacing.lg,
-                    child: Container(height: 1, color: c.divider),
-                  ),
+                  // Starts after the avatar (80) and ends 18 from the far edge.
+                  PositionedDirectional(top: 0, start: 80, end: 18, child: Container(height: 1, color: p.divider)),
               ],
             ),
           ),
-        ),
         ),
       ),
     );
@@ -175,22 +176,44 @@ class ConversationTile extends ConsumerWidget {
     // this"). The row is always the inbox width (screen, max 720dp).
     final width = rowWidth(context);
     double ratio(int n) => (_actionWidth * n / width).clamp(0.1, 0.9);
-    final onAction = c.isDark ? c.background : Colors.white;
 
     Widget action(IconData icon, String text, Color bg, VoidCallback onPressed) => CustomSlidableAction(
-      backgroundColor: bg,
-      foregroundColor: onAction,
-      padding: EdgeInsets.zero,
-      onPressed: (_) => onPressed(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AppIcon(icon, color: onAction),
-          const SizedBox(height: AppSpacing.xs),
-          Text(text, style: context.text.caption.copyWith(color: onAction), maxLines: 1),
-        ],
-      ),
-    );
+          backgroundColor: bg,
+          foregroundColor: Colors.white,
+          padding: EdgeInsets.zero,
+          onPressed: (_) => onPressed(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppIcon(icon, dp: 20, color: Colors.white),
+              const SizedBox(height: 4),
+              Text(
+                text,
+                maxLines: 1,
+                style: context.text.caption.copyWith(fontSize: 11, fontWeight: FontWeight.w700, color: Colors.white),
+              ),
+            ],
+          ),
+        );
+
+    final endActions = [
+      if (primary != null)
+        action(
+          claimable ? AppIcons.claim : AppIcons.team,
+          primaryLabel,
+          claimable ? InboxPalette.swipeClaim : InboxPalette.swipeAssign,
+          () => primary(fullSwipe: false),
+        ),
+      if (closeAction != null)
+        action(
+          s.isClosed ? AppIcons.redo : AppIcons.check,
+          closeLabel,
+          s.isClosed ? InboxPalette.swipeReopen : InboxPalette.swipeClose,
+          () => closeAction(fullSwipe: false),
+        ),
+    ];
+    // Full swipe runs the first action.
+    final TileAction? fullSwipe = primary ?? closeAction;
 
     // A swipe needs a deliberate horizontal move (2× the default slop), so a
     // slightly diagonal scroll or a short touch never opens the row.
@@ -198,49 +221,53 @@ class ConversationTile extends ConsumerWidget {
     return MediaQuery(
       data: media.copyWith(gestureSettings: const DeviceGestureSettings(touchSlop: kTouchSlop * 2)),
       child: Slidable(
-      key: ValueKey('slide-${s.id}'),
-      groupTag: 'inbox',
-      // Swipe toward the end edge reveals Resolve on the start side.
-      startActionPane: onResolve == null
-          ? null
-          : ActionPane(
-              motion: const DrawerMotion(),
-              extentRatio: ratio(1),
-              // Thresholds are fractions of the ROW width (not of the pane):
-              // open after 60% of the buttons are revealed, close under 40%.
-              openThreshold: ratio(1) * 0.6,
-              closeThreshold: ratio(1) * 0.4,
-              dismissible: DismissiblePane(
-                dismissThreshold: 0.8,
-                resizeDuration: AppMotion.normal,
-                onDismissed: () => onResolve!(fullSwipe: true),
+        key: ValueKey('slide-${s.id}'),
+        groupTag: 'inbox',
+        // Swipe from the start → end: read / unread.
+        startActionPane: onToggleRead == null
+            ? null
+            : ActionPane(
+                motion: const DrawerMotion(),
+                extentRatio: ratio(1),
+                openThreshold: ratio(1) * 0.6,
+                closeThreshold: ratio(1) * 0.4,
+                dismissible: DismissiblePane(
+                  dismissThreshold: 0.8,
+                  confirmDismiss: () async {
+                    HapticFeedback.lightImpact();
+                    onToggleRead!(fullSwipe: true);
+                    return false; // the row stays; only its read state flips
+                  },
+                  onDismissed: () {},
+                ),
+                children: [action(AppIcons.read, readLabel, InboxPalette.swipeRead, () => onToggleRead!(fullSwipe: false))],
               ),
-              children: [action(AppIcons.claim, l.inbox_swipe_resolve, c.success, () => onResolve!(fullSwipe: false))],
-            ),
-      // Swipe toward the start edge reveals Snooze + Assign/Claim.
-      endActionPane: onSnooze == null
-          ? null
-          : ActionPane(
-              motion: const DrawerMotion(),
-              extentRatio: ratio(2),
-              // Thresholds are fractions of the ROW width (not of the pane):
-              // open after 60% of the buttons are revealed, close under 40%.
-              openThreshold: ratio(2) * 0.6,
-              closeThreshold: ratio(2) * 0.4,
-              dismissible: DismissiblePane(
-                dismissThreshold: 0.8,
-                resizeDuration: AppMotion.normal,
-                onDismissed: () => onSnooze!(fullSwipe: true),
+        // Swipe from the end → start: claim / assign + close / reopen.
+        endActionPane: endActions.isEmpty
+            ? null
+            : ActionPane(
+                motion: const DrawerMotion(),
+                extentRatio: ratio(endActions.length),
+                openThreshold: ratio(endActions.length) * 0.6,
+                closeThreshold: ratio(endActions.length) * 0.4,
+                dismissible: fullSwipe == null
+                    ? null
+                    : DismissiblePane(
+                        dismissThreshold: 0.8,
+                        resizeDuration: AppMotion.normal,
+                        confirmDismiss: () async {
+                          HapticFeedback.lightImpact();
+                          // Only closing removes the row; claim / assign
+                          // keep it and refresh in place.
+                          final removes = fullSwipe == onClose;
+                          if (!removes) fullSwipe(fullSwipe: false);
+                          return removes;
+                        },
+                        onDismissed: () => fullSwipe(fullSwipe: true),
+                      ),
+                children: endActions,
               ),
-              children: [
-                action(AppIcons.snooze, l.inbox_swipe_snooze, c.statusSnoozed, () => onSnooze!(fullSwipe: false)),
-                if (claimable && onClaim != null)
-                  action(AppIcons.claim, l.inbox_swipe_claim, c.primary, () => onClaim!(fullSwipe: false))
-                else if (onAssign != null)
-                  action(AppIcons.assign, l.inbox_swipe_assign, c.info, () => onAssign!(fullSwipe: false)),
-              ],
-            ),
-      child: tile,
+        child: tile,
       ),
     );
   }
@@ -249,37 +276,88 @@ class ConversationTile extends ConsumerWidget {
   static double rowWidth(BuildContext context) => MediaQuery.sizeOf(context).width.clamp(1.0, 720.0);
 }
 
-class _Leading extends StatelessWidget {
-  const _Leading({required this.summary, required this.selected, required this.selecting});
+/// 50dp customer avatar (§4.3): photo or first letter on a soft color from
+/// a stable hash of the customer id, channel badge (19) at the bottom-left
+/// in both directions. While selecting, a teal check circle.
+class InboxAvatar extends StatelessWidget {
+  const InboxAvatar({super.key, required this.summary, required this.name, this.checked = false});
 
   final ConversationSummary summary;
-  final bool selected;
-  final bool selecting;
+  final String name;
+  final bool checked;
+
+  static double _hue(String seed) {
+    var h = 0;
+    for (final u in seed.codeUnits) {
+      h = (h * 31 + u) & 0x7fffffff;
+    }
+    return (h % 360).toDouble();
+  }
 
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
-    if (selecting && selected) {
-      // 24 check circle inside the 50 avatar slot (§4.5).
-      return SizedBox.square(
-        dimension: 50,
-        child: Center(
-          child: Container(
-            width: 24,
-            height: 24,
-            decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
-            child: AppIcon(AppIcons.check, size: AppIconSize.sm, color: c.onPrimary),
-          ),
-        ),
+    final p = InboxPalette.of(context);
+    if (checked) {
+      return Container(
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(color: c.primary, shape: BoxShape.circle),
+        child: AppIcon(AppIcons.check, dp: 22, color: c.onPrimary),
       );
     }
-    return AppAvatar(
-      name: summary.contact.name,
-      id: summary.contact.id,
-      imageUrl: summary.contact.avatarUrl,
-      channel: summary.channel,
-      size: AppAvatarSize.lg,
-      ringColor: selected ? c.primaryContainer : c.background,
+    final s = summary;
+    final h = _hue(s.contact.id.isEmpty ? s.id : s.contact.id);
+    final dark = c.isDark;
+    final bg = HSLColor.fromAHSL(1, h, dark ? 0.30 : 0.55, dark ? 0.22 : 0.92).toColor();
+    final fg = HSLColor.fromAHSL(1, h, dark ? 0.60 : 0.45, dark ? 0.80 : 0.30).toColor();
+    final trimmed = name.trim();
+    final initial = trimmed.isEmpty ? '#' : String.fromCharCode(trimmed.runes.first);
+    final letter = Center(
+      child: Text(
+        initial.toUpperCase(),
+        textScaler: TextScaler.noScaling,
+        style: context.text.h4.copyWith(fontSize: 18, fontWeight: FontWeight.w800, height: 1, color: fg),
+      ),
+    );
+    final url = s.contact.avatarUrl;
+    final ch = s.channel;
+    final (Color badgeBg, IconData glyph) = switch (ch) {
+      Channel.whatsapp => (const Color(0xFF25D366), WdSvgIcons.whatsapp),
+      Channel.web => (const Color(0xFF2563EB), AppIcons.webChat),
+      _ => (ChannelIcon.brandOf(ch, c), ChannelIcon.glyphOf(ch)),
+    };
+    return SizedBox.square(
+      dimension: 50,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            clipBehavior: Clip.antiAlias,
+            decoration: BoxDecoration(color: bg, shape: BoxShape.circle),
+            child: url == null || url.isEmpty
+                ? letter
+                : Image.network(url, fit: BoxFit.cover, errorBuilder: (_, _, _) => letter),
+          ),
+          // Bottom −1, left −2: fixed in both directions, as in the mockup.
+          Positioned(
+            bottom: -1,
+            left: -2,
+            child: Container(
+              width: 19,
+              height: 19,
+              decoration: BoxDecoration(
+                color: badgeBg,
+                shape: BoxShape.circle,
+                border: Border.all(color: p.list, width: 2),
+              ),
+              child: AppIcon(glyph, dp: 11, color: Colors.white),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -287,6 +365,7 @@ class _Leading extends StatelessWidget {
 class _Content extends StatelessWidget {
   const _Content({
     required this.summary,
+    required this.name,
     required this.preview,
     required this.tag,
     required this.time,
@@ -295,6 +374,7 @@ class _Content extends StatelessWidget {
   });
 
   final ConversationSummary summary;
+  final String name;
   final PreviewData preview;
   final RowTag? tag;
   final String time;
@@ -303,89 +383,57 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.colors;
     final t = context.text;
+    final p = InboxPalette.of(context);
     final s = summary;
     final unread = s.isUnread;
 
-    final nameStyle = t.listTitle.copyWith(fontWeight: unread ? FontWeight.w800 : FontWeight.w700);
+    final nameStyle = t.listTitle.copyWith(fontSize: 15, fontWeight: FontWeight.w700, color: p.name);
     final timeStyle = t.listTimestamp.copyWith(
-      color: unread ? c.primary : c.textTertiary,
+      fontSize: 12,
+      color: unread ? p.unread : p.time,
       fontWeight: unread ? FontWeight.w800 : FontWeight.w600,
     );
-    final showPriority = s.priority != null && s.priority != Priority.low;
-
-    final name = _Highlighted(text: s.contact.name, style: nameStyle, query: highlight);
-    final timestamp = Text(time, style: timeStyle, maxLines: 1);
-    final priority = showPriority
-        ? Padding(
-            padding: const EdgeInsetsDirectional.only(start: 6),
-            child: PriorityIndicator(priority: s.priority!),
-          )
-        : null;
-
-    // Content width = row − horizontal padding − avatar(50) − gap. Computed
-    // instead of a LayoutBuilder (see ConversationTile.build).
-    final maxWidth = ConversationTile.rowWidth(context) - 2 * AppSpacing.lg - 50 - AppSpacing.md;
-    // 200% text: move the timestamp under the name when the name would
-    // get less than 40% of the row (§9).
-    final scaler = MediaQuery.textScalerOf(context);
-    final timeWidth = (TextPainter(
-      text: TextSpan(text: time, style: timeStyle),
-      textDirection: Directionality.of(context),
-      textScaler: scaler,
-      maxLines: 1,
-    )..layout()).width;
-    final stacked = maxWidth - timeWidth - 32 < maxWidth * 0.4;
-
-    final firstRow = stacked
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Flexible(child: name),
-                  ?priority,
-                ],
-              ),
-              timestamp,
-            ],
-          )
-        : Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Flexible(child: name),
-                    ?priority,
-                  ],
-                ),
-              ),
-              const SizedBox(width: AppSpacing.sm),
-              timestamp,
-            ],
-          );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        firstRow,
-        const SizedBox(height: 2),
         Row(
           children: [
             Expanded(
-              child: ConversationPreviewText(preview: preview, unread: unread, highlight: highlight),
+              child: _Highlighted(text: name, style: nameStyle, query: highlight),
             ),
-            if (unread) ...[const SizedBox(width: AppSpacing.sm), CountBadge(count: s.unreadCount)],
+            const SizedBox(width: 6),
+            Text(time, style: timeStyle, maxLines: 1),
+          ],
+        ),
+        const SizedBox(height: 1),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(child: ConversationPreviewText(preview: preview, unread: unread, highlight: highlight)),
+            if (unread) ...[
+              const SizedBox(width: 6),
+              Container(
+                constraints: const BoxConstraints(minWidth: 20),
+                height: 20,
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: p.unread, borderRadius: BorderRadius.circular(AppRadius.full)),
+                child: Text(
+                  s.unreadCount > 99 ? '99+' : '${s.unreadCount}',
+                  textDirection: TextDirection.ltr,
+                  style: t.caption.copyWith(fontSize: 11, fontWeight: FontWeight.w800, height: 1, color: p.unreadText),
+                ),
+              ),
+            ],
           ],
         ),
         if (tag != null)
           Padding(
             padding: const EdgeInsets.only(top: 5),
-            child: Wrap(
-              children: [ConversationRowTag(tag: tag!, now: now)],
-            ),
+            child: Wrap(children: [ConversationRowTag(tag: tag!, now: now)]),
           ),
       ],
     );
@@ -403,7 +451,9 @@ class _Highlighted extends StatelessWidget {
   Widget build(BuildContext context) {
     final q = query?.trim() ?? '';
     final i = q.isEmpty ? -1 : text.toLowerCase().indexOf(q.toLowerCase());
-    if (i < 0) return Text(text, style: style, maxLines: 1, overflow: TextOverflow.ellipsis);
+    if (i < 0) {
+      return Text(text, style: style, maxLines: 1, overflow: TextOverflow.ellipsis);
+    }
     final hl = style.copyWith(background: Paint()..color = context.colors.searchHighlight);
     return Text.rich(
       TextSpan(

@@ -84,6 +84,7 @@ class ConversationSummary {
     this.tags = const [],
     this.teamIds = const [],
     this.closedAt,
+    this.escalated = false,
   });
 
   final String id;
@@ -109,6 +110,9 @@ class ConversationSummary {
   final List<String> tags;
   final List<String> teamIds;
   final DateTime? closedAt;
+
+  /// The AI handed it to the team (list API `escalated`).
+  final bool escalated;
 
   bool get isUnread => unreadCount > 0;
   bool get isClosed => status == ConversationStatus.resolved || status == ConversationStatus.closed;
@@ -185,6 +189,7 @@ class ConversationSummary {
       tags: [for (final t in (j['tags'] as List? ?? const [])) '$t'],
       teamIds: [for (final t in (j['team_ids'] as List? ?? const [])) '$t'],
       closedAt: _date(j['closed_at']),
+      escalated: j['escalated'] == true,
     );
   }
 
@@ -227,6 +232,7 @@ class ConversationSummary {
     'wa_window_expires_at': waWindowExpiresAt?.toUtc().toIso8601String(),
     'is_typing': isTyping,
     'last_activity_at': lastActivityAt.toUtc().toIso8601String(),
+    'escalated': escalated,
     'tags': tags,
     'team_ids': teamIds,
     'closed_at': closedAt?.toUtc().toIso8601String(),

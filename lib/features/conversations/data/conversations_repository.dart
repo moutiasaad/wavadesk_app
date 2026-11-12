@@ -35,6 +35,10 @@ abstract interface class ConversationsRepository {
   Future<String?> claim(String id);
 
   Future<UndoAction> resolve(List<ConversationSummary> items);
+  Future<UndoAction> reopen(List<ConversationSummary> items);
+
+  /// Bulk claim (selection bar); undo releases them again.
+  Future<UndoAction> claimBulk(List<ConversationSummary> items);
   Future<UndoAction> snooze(List<ConversationSummary> items, DateTime until);
   Future<UndoAction> archive(List<ConversationSummary> items);
   Future<UndoAction> setReadBulk(List<ConversationSummary> items, {required bool read});
@@ -132,6 +136,18 @@ class HttpConversationsRepository implements ConversationsRepository {
   Future<UndoAction> resolve(List<ConversationSummary> items) async {
     await _api.bulk(_ids(items), 'resolve');
     return _reopenUndo(items);
+  }
+
+  @override
+  Future<UndoAction> reopen(List<ConversationSummary> items) async {
+    await _api.bulk(_ids(items), 'reopen');
+    return () => _api.bulk(_ids(items), 'resolve');
+  }
+
+  @override
+  Future<UndoAction> claimBulk(List<ConversationSummary> items) async {
+    await _api.bulk(_ids(items), 'claim');
+    return () => _api.bulk(_ids(items), 'unassign');
   }
 
   @override

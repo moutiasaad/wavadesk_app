@@ -11,6 +11,7 @@ import '../../../../core/widgets/widgets.dart';
 import '../../application/conversation_filters_controller.dart';
 import '../../data/conversations_repository.dart';
 import '../../domain/conversation_filters.dart';
+import 'inbox_palette.dart';
 
 /// Label for the assignee filter chip/row.
 String assigneeLabel(AppLocalizations l, AdvancedFilters f, List<Agent> colleagues) => switch (f.assignee) {
@@ -20,6 +21,20 @@ String assigneeLabel(AppLocalizations l, AdvancedFilters f, List<Agent> colleagu
     colleagues.where((a) => a.id == f.colleagueId).firstOrNull?.name ?? l.inbox_filters_assignee_colleague,
   AssigneeFilter.ai => l.inbox_filters_assignee_ai,
   AssigneeFilter.unassigned => l.inbox_filters_assignee_unassigned,
+};
+
+String statusLabel(AppLocalizations l, StatusFilter s) => switch (s) {
+  StatusFilter.open => l.inbox_st_open,
+  StatusFilter.pending => l.inbox_st_pending,
+  StatusFilter.snoozed => l.inbox_st_snoozed,
+  StatusFilter.closed => l.inbox_st_closed,
+};
+
+String aiLabel(AppLocalizations l, AiFilter a) => switch (a) {
+  AiFilter.any => '',
+  AiFilter.handled => l.inbox_ai_handled,
+  AiFilter.escalated => l.inbox_ai_escalated,
+  AiFilter.untouched => l.inbox_ai_untouched,
 };
 
 /// Label for the date filter chip.
@@ -37,25 +52,26 @@ String dateLabel(BuildContext context, AdvancedFilters f) {
   };
 }
 
-/// Advanced filters (Inbox spec §7). Edits a draft; nothing applies until
-/// the pinned "عرض {n} محادثة" button is pressed.
+/// Advanced filters (Inbox v2 §6.1), 90% height. Edits a draft; nothing
+/// applies until the sticky "عرض {n} محادثة" button is pressed.
 Future<void> showInboxFiltersSheet(BuildContext context, WidgetRef ref) {
   final query = ref.read(conversationFiltersProvider);
   final draft = ValueNotifier<AdvancedFilters>(query.advanced);
   return AppBottomSheet.showExpanded<void>(
     context,
-    title: context.l10n.inbox_filters_title,
-    headerTrailing: ValueListenableBuilder<AdvancedFilters>(
-      valueListenable: draft,
-      builder: (ctx, value, _) => TextButton(
+    initialSize: 0.9,
+    title: context.l10n.inbox_flt_title,
+    showClose: false,
+    headerTrailing: Builder(
+      builder: (ctx) => TextButton(
         style: TextButton.styleFrom(
-          foregroundColor: ctx.colors.primary,
+          foregroundColor: const Color(0xFFE11D48),
           textStyle: ctx.text.buttonMedium,
           minimumSize: const Size(48, 48),
         ),
         // Resets the sheet only; applying still needs the button.
         onPressed: () => draft.value = AdvancedFilters.empty,
-        child: Text(ctx.l10n.inbox_filters_clear),
+        child: Text(ctx.l10n.inbox_flt_reset),
       ),
     ),
     action: _ApplyButton(draft: draft, query: query),
@@ -91,7 +107,7 @@ class _ApplyButtonState extends ConsumerState<_ApplyButton> {
     super.dispose();
   }
 
-  /// Live count via `?count_only=1`, debounced 300ms (§7).
+  /// Live count, debounced 300ms.
   void _schedule() {
     _debounce?.cancel();
     _debounce = Timer(const Duration(milliseconds: 300), _fetch);
@@ -99,9 +115,7 @@ class _ApplyButtonState extends ConsumerState<_ApplyButton> {
 
   Future<void> _fetch() async {
     try {
-      final n = await ref
-          .read(conversationsRepositoryProvider)
-          .count(widget.query.copyWith(advanced: widget.draft.value));
+      final n = await ref.read(conversationsRepositoryProvider).count(widget.query.copyWith(advanced: widget.draft.value));
       if (mounted) setState(() => _count = n);
     } catch (_) {
       if (mounted) setState(() => _count = null);
@@ -111,14 +125,23 @@ class _ApplyButtonState extends ConsumerState<_ApplyButton> {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    return AppButton(
-      label: _count == null ? l.inbox_filters_apply : l.inbox_filters_show(_count!),
-      size: AppButtonSize.large,
-      expand: true,
-      onPressed: () {
-        ref.read(conversationFiltersProvider.notifier).setAdvanced(widget.draft.value);
-        Navigator.of(context).pop();
-      },
+    final c = context.colors;
+    return SizedBox(
+      height: 52,
+      width: double.infinity,
+      child: FilledButton(
+        style: FilledButton.styleFrom(
+          backgroundColor: c.primary,
+          foregroundColor: c.onPrimary,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          textStyle: context.text.buttonLarge,
+        ),
+        onPressed: () {
+          ref.read(conversationFiltersProvider.notifier).setAdvanced(widget.draft.value);
+          Navigator.of(context).pop();
+        },
+        child: Text(_count == null ? l.inbox_filters_apply : l.inbox_filters_show(_count!)),
+      ),
     );
   }
 }
@@ -135,7 +158,7 @@ class _FiltersBody extends ConsumerStatefulWidget {
 }
 
 class _FiltersBodyState extends ConsumerState<_FiltersBody> {
-  String _tagQuery = '';
+  bool _allTags = false;
 
   AdvancedFilters get _f => widget.draft.value;
   set _f(AdvancedFilters v) => widget.draft.value = v;
@@ -144,26 +167,43 @@ class _FiltersBodyState extends ConsumerState<_FiltersBody> {
 
   Future<void> _pickColleague() async {
     final colleagues = ref.read(colleaguesProvider);
+    var query = '';
     final picked = await AppBottomSheet.show<Agent>(
       context,
       title: context.l10n.inbox_filters_pick_colleague,
-      builder: (ctx) => Column(
-        children: [
-          for (final a in colleagues)
-            AppRadioRow(
-              label: a.name,
-              subtitle: a.presence.label(ctx.l10n),
-              selected: _f.colleagueId == a.id,
-              leading: AppAvatar(
-                name: a.name,
-                id: a.id,
-                presence: a.presence,
-                size: AppAvatarSize.md,
-                ringColor: ctx.colors.surfaceElevated,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setSheet) {
+          final shown = query.isEmpty
+              ? colleagues
+              : colleagues.where((a) => a.name.toLowerCase().contains(query.toLowerCase())).toList();
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+                child: AppSearchField(
+                  hint: ctx.l10n.common_search,
+                  showCancel: false,
+                  onChanged: (v) => setSheet(() => query = v),
+                ),
               ),
-              onTap: () => Navigator.pop(ctx, a),
-            ),
-        ],
+              const SizedBox(height: AppSpacing.sm),
+              for (final a in shown)
+                AppRadioRow(
+                  label: a.name,
+                  subtitle: a.presence.label(ctx.l10n),
+                  selected: _f.colleagueId == a.id,
+                  leading: AppAvatar(
+                    name: a.name,
+                    id: a.id,
+                    presence: a.presence,
+                    size: AppAvatarSize.md,
+                    ringColor: ctx.colors.surfaceElevated,
+                  ),
+                  onTap: () => Navigator.pop(ctx, a),
+                ),
+            ],
+          );
+        },
       ),
     );
     if (picked != null) _f = _f.copyWith(assignee: AssigneeFilter.colleague, colleagueId: picked.id);
@@ -184,122 +224,184 @@ class _FiltersBodyState extends ConsumerState<_FiltersBody> {
   Widget build(BuildContext context) {
     final l = context.l10n;
     final t = context.text;
-    final c = context.colors;
     final teams = ref.watch(teamsProvider);
     final tags = ref.watch(allTagsProvider);
     final colleagues = ref.watch(colleaguesProvider);
 
     Widget header(String text) => Padding(
-      padding: const EdgeInsets.only(top: AppSpacing.lg, bottom: AppSpacing.sm),
-      child: Semantics(header: true, child: Text(text, style: t.h6)),
-    );
-    Widget wrap(List<Widget> children) => Wrap(spacing: 6, runSpacing: 6, children: children);
+          padding: const EdgeInsets.only(top: AppSpacing.lg, bottom: AppSpacing.sm),
+          child: Semantics(header: true, child: Text(text, style: t.h6.copyWith(fontWeight: FontWeight.w800))),
+        );
+    Widget wrap(List<Widget> children) => Wrap(spacing: 8, runSpacing: 8, children: children);
 
     return ValueListenableBuilder<AdvancedFilters>(
       valueListenable: widget.draft,
       builder: (context, f, _) {
-        final visibleTags = _tagQuery.isEmpty
-            ? tags
-            : tags.where((x) => x.toLowerCase().contains(_tagQuery.toLowerCase())).toList();
+        final shownTags = _allTags || tags.length <= 12 ? tags : tags.take(12).toList();
         return ListView(
           controller: widget.controller,
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
           children: [
+            header(l.inbox_flt_status),
+            wrap([
+              for (final s in StatusFilter.values)
+                _SheetChip(
+                  label: statusLabel(l, s),
+                  selected: f.statuses.contains(s),
+                  onTap: () => _f = f.copyWith(statuses: _toggle(f.statuses, s)),
+                ),
+            ]),
             header(l.inbox_filters_channel),
             wrap([
-              for (final ch in const [
-                Channel.whatsapp,
-                Channel.web,
-                Channel.messenger,
-                Channel.instagram,
-                Channel.email,
-              ])
-                AppFilterChip(
+              for (final ch in const [Channel.whatsapp, Channel.web, Channel.instagram, Channel.messenger])
+                _SheetChip(
                   label: ch.label(l),
                   selected: f.channels.contains(ch),
-                  leading: AppIcon(ch.glyph, size: AppIconSize.sm, color: f.channels.contains(ch) ? c.onSecondary : ch.brand(c)),
                   onTap: () => _f = f.copyWith(channels: _toggle(f.channels, ch)),
                 ),
             ]),
+            if (widget.segment == InboxSegment.all) ...[
+              header(l.inbox_flt_assignee),
+              wrap([
+                for (final a in const [AssigneeFilter.all, AssigneeFilter.me, AssigneeFilter.unassigned])
+                  _SheetChip(
+                    label: assigneeLabel(l, AdvancedFilters(assignee: a), colleagues),
+                    selected: f.assignee == a,
+                    onTap: () => _f = f.copyWith(assignee: a, clearColleague: true),
+                  ),
+                _SheetChip(
+                  label: f.assignee == AssigneeFilter.colleague
+                      ? assigneeLabel(l, f, colleagues)
+                      : l.inbox_filters_assignee_colleague,
+                  selected: f.assignee == AssigneeFilter.colleague,
+                  onTap: _pickColleague,
+                ),
+              ]),
+            ],
+            if (teams.isNotEmpty) ...[
+              header(l.inbox_filters_team),
+              wrap([
+                for (final team in teams)
+                  _SheetChip(
+                    label: team.name,
+                    selected: f.teamIds.contains(team.id),
+                    onTap: () => _f = f.copyWith(teamIds: _toggle(f.teamIds, team.id)),
+                  ),
+              ]),
+            ],
+            if (tags.isNotEmpty) ...[
+              header(l.inbox_filters_tags),
+              wrap([
+                for (final tag in shownTags)
+                  _SheetChip(
+                    label: tag,
+                    selected: f.tags.contains(tag),
+                    onTap: () => _f = f.copyWith(tags: _toggle(f.tags, tag)),
+                  ),
+                if (!_allTags && tags.length > 12)
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      foregroundColor: context.colors.primary,
+                      textStyle: t.buttonSmall,
+                      minimumSize: const Size(48, 36),
+                    ),
+                    onPressed: () => setState(() => _allTags = true),
+                    child: Text(l.inbox_see_all),
+                  ),
+              ]),
+            ],
             header(l.inbox_filters_priority),
             wrap([
-              for (final p in Priority.values)
-                AppFilterChip(
+              for (final p in const [Priority.high, Priority.medium, Priority.low])
+                _SheetChip(
                   label: p.label(l),
                   selected: f.priorities.contains(p),
                   onTap: () => _f = f.copyWith(priorities: _toggle(f.priorities, p)),
                 ),
             ]),
-            if (widget.segment == InboxSegment.all) ...[
-              header(l.inbox_filters_assignee),
-              for (final a in AssigneeFilter.values)
-                AppRadioRow(
-                  label: a == AssigneeFilter.colleague
-                      ? (f.assignee == a ? assigneeLabel(l, f, colleagues) : l.inbox_filters_assignee_colleague)
-                      : assigneeLabel(l, AdvancedFilters(assignee: a), colleagues),
-                  selected: f.assignee == a,
-                  onTap: a == AssigneeFilter.colleague
-                      ? _pickColleague
-                      : () => _f = f.copyWith(assignee: a, clearColleague: true),
-                ),
-            ],
-            header(l.inbox_filters_team),
+            header(l.inbox_flt_ai),
             wrap([
-              for (final team in teams)
-                AppFilterChip(
-                  label: team.name,
-                  selected: f.teamIds.contains(team.id),
-                  onTap: () => _f = f.copyWith(teamIds: _toggle(f.teamIds, team.id)),
-                ),
-            ]),
-            header(l.inbox_filters_tags),
-            if (tags.length > 12) ...[
-              AppSearchField(
-                hint: l.inbox_filters_tags_search,
-                showCancel: false,
-                onChanged: (v) => setState(() => _tagQuery = v),
-              ),
-              const SizedBox(height: AppSpacing.sm),
-            ],
-            wrap([
-              for (final tag in visibleTags)
-                AppFilterChip(
-                  label: tag,
-                  selected: f.tags.contains(tag),
-                  onTap: () => _f = f.copyWith(tags: _toggle(f.tags, tag)),
+              // One choice: the server filters one AI state at a time.
+              for (final a in const [AiFilter.handled, AiFilter.escalated, AiFilter.untouched])
+                _SheetChip(
+                  label: aiLabel(l, a),
+                  selected: f.ai == a,
+                  onTap: () => _f = f.copyWith(ai: f.ai == a ? AiFilter.any : a),
                 ),
             ]),
             header(l.inbox_filters_date),
             wrap([
               for (final d in const [DateRangeFilter.today, DateRangeFilter.last7, DateRangeFilter.last30])
-                AppFilterChip(
+                _SheetChip(
                   label: dateLabel(context, AdvancedFilters(date: d)),
                   selected: f.date == d,
                   onTap: () => _f = f.copyWith(date: f.date == d ? DateRangeFilter.any : d, clearRange: true),
                 ),
-              AppFilterChip(
+              _SheetChip(
                 label: f.date == DateRangeFilter.custom ? dateLabel(context, f) : l.inbox_filters_date_custom,
                 selected: f.date == DateRangeFilter.custom,
-                trailingIcon: AppIcons.chevronForward,
                 onTap: _pickRange,
               ),
             ]),
             header(l.inbox_filters_sort),
-            for (final s in InboxSort.values)
+            for (final (s, label) in [
+              (InboxSort.newest, l.inbox_sort_newest),
+              (InboxSort.oldest, l.inbox_sort_oldest),
+              (InboxSort.priority, l.inbox_sort_priority),
+            ])
               AppRadioRow(
-                label: switch (s) {
-                  InboxSort.smart => l.inbox_filters_sort_smart,
-                  InboxSort.newest => l.inbox_filters_sort_newest,
-                  InboxSort.oldest => l.inbox_filters_sort_oldest,
-                  InboxSort.waiting => l.inbox_filters_sort_waiting,
-                },
-                selected: f.sort == s,
+                label: label,
+                selected: f.sort == s || (s == InboxSort.newest && (f.sort == InboxSort.smart)),
                 onTap: () => _f = f.copyWith(sort: s),
               ),
             const SizedBox(height: AppSpacing.lg),
           ],
         );
       },
+    );
+  }
+}
+
+/// Sheet chip (§6.1): h36, radius full; selected = green with a 14 check.
+class _SheetChip extends StatelessWidget {
+  const _SheetChip({required this.label, required this.selected, required this.onTap});
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = InboxPalette.of(context);
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: label,
+      excludeSemantics: true,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppRadius.full),
+        onTap: onTap,
+        child: AnimatedContainer(
+          duration: AppMotion.fast,
+          height: 36,
+          padding: const EdgeInsets.symmetric(horizontal: 14),
+          decoration: BoxDecoration(
+            color: selected ? p.pillSel : p.pill,
+            borderRadius: BorderRadius.circular(AppRadius.full),
+            border: Border.all(color: selected ? p.pillSelBorder : p.pillBorder),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (selected) ...[AppIcon(AppIcons.check, dp: 14, color: p.pillSelText), const SizedBox(width: 5)],
+              Text(
+                label,
+                style: context.text.bodySmall.copyWith(fontSize: 13, fontWeight: FontWeight.w700, color: selected ? p.pillSelText : p.pillText),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

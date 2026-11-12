@@ -24,12 +24,11 @@ abstract final class RelativeTimeFormatter {
     final age = now.difference(t);
     if (age.inSeconds < 60) return l.inbox_now;
     if (age.inMinutes < 60) return l.inbox_min(age.inMinutes);
-    if (_sameDay(t, now)) {
-      return age.inHours < 6 ? l.inbox_hour(age.inHours) : clock12(t, l);
-    }
+    // Inbox v2 §4.3: الآن · {n} د · {n} س · أمس · weekday · d/M.
+    if (_sameDay(t, now)) return l.inbox_hour(age.inHours);
     if (_sameDay(t, now.subtract(const Duration(days: 1)))) return l.inbox_yesterday;
     if (age.inDays < 7) return intl.DateFormat.EEEE(locale).format(t);
-    return dayMonth(t, now, locale);
+    return '${t.day}/${t.month}';
   }
 
   /// "مؤجلة حتى {t}": time today, otherwise weekday + time this week, else date.

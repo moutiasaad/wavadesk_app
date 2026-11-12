@@ -3,61 +3,79 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
+import 'inbox_palette.dart';
 
-/// The six inbox empty states (Inbox spec §4.10).
-enum InboxEmptyKind { mineNone, mineDone, unassigned, newWorkspace, noMatch, error }
+/// Inbox v2 §7 empty / error states.
+enum InboxEmptyKind { none, mine, unread, unassigned, waiting, ai, closed, filtered, error }
 
+/// Centered in the list area: 72 circle tile with a 32 icon, title 16/800,
+/// body 13.5 grey, optional button.
 class ConversationsEmptyState extends StatelessWidget {
-  const ConversationsEmptyState({super.key, required this.kind, required this.onAction});
+  const ConversationsEmptyState({super.key, required this.kind, required this.onAction, this.canConnect = false});
 
   final InboxEmptyKind kind;
 
-  /// Switch segment / connect WhatsApp / clear filters / retry.
+  /// Connect WhatsApp / show unassigned / clear filters / retry.
   final VoidCallback onAction;
+
+  /// "اربط واتساب" only when WhatsApp isn't connected (new workspace).
+  final bool canConnect;
 
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    return switch (kind) {
-      InboxEmptyKind.mineNone => EmptyState(
-        icon: AppIcons.resolve,
-        title: l.inbox_empty_mine_title,
-        body: l.inbox_empty_mine_body,
-        actionLabel: l.inbox_empty_mine_action,
-        onAction: onAction,
-      ),
-      InboxEmptyKind.mineDone => EmptyState(
-        icon: AppIcons.ai,
-        title: l.inbox_empty_done_title,
-        body: l.inbox_empty_done_body,
-      ),
-      InboxEmptyKind.unassigned => EmptyState(
-        icon: AppIcons.inbox,
-        title: l.inbox_empty_unassigned_title,
-        body: l.inbox_empty_unassigned_body,
-      ),
-      InboxEmptyKind.newWorkspace => EmptyState(
-        icon: AppIcons.whatsapp,
-        title: l.inbox_empty_new_title,
-        body: l.inbox_empty_new_body,
-        actionLabel: l.inbox_empty_new_action,
-        actionVariant: AppButtonVariant.primary,
-        onAction: onAction,
-      ),
-      InboxEmptyKind.noMatch => EmptyState(
-        icon: AppIcons.filterX,
-        title: l.inbox_empty_filters_title,
-        actionLabel: l.inbox_empty_filters_action,
-        onAction: onAction,
-      ),
-      InboxEmptyKind.error => EmptyState(
-        icon: AppIcons.offline,
-        title: l.inbox_empty_error_title,
-        body: l.inbox_empty_error_body,
-        actionLabel: l.common_retry,
-        actionVariant: AppButtonVariant.primary,
-        onAction: onAction,
-      ),
+    final t = context.text;
+    final c = context.colors;
+    final p = InboxPalette.of(context);
+    final (IconData icon, String title, String? body, String? action) = switch (kind) {
+      InboxEmptyKind.none => (AppIcons.conversation, l.inbox_e_none_title, l.inbox_e_none_body, canConnect ? l.inbox_e_connect : null),
+      InboxEmptyKind.mine => (AppIcons.check, l.inbox_e_mine_title, l.inbox_e_mine_body, l.inbox_e_mine_action),
+      InboxEmptyKind.unread => (AppIcons.read, l.inbox_e_unread, null, null),
+      InboxEmptyKind.unassigned => (AppIcons.team, l.inbox_e_unassigned, null, null),
+      InboxEmptyKind.waiting => (AppIcons.clock, l.inbox_e_waiting, null, null),
+      InboxEmptyKind.ai => (AppIcons.ai, l.inbox_e_ai, null, null),
+      InboxEmptyKind.closed => (AppIcons.check, l.inbox_e_closed, null, null),
+      InboxEmptyKind.filtered => (AppIcons.filter, l.inbox_e_filtered_title, l.inbox_e_filtered_body, l.inbox_e_filtered_action),
+      InboxEmptyKind.error => (AppIcons.warning, l.inbox_e_load, null, l.inbox_e_retry),
     };
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 72,
+              height: 72,
+              decoration: BoxDecoration(color: p.emptyTile, shape: BoxShape.circle),
+              child: AppIcon(icon, dp: 32, color: InboxPalette.emptyIcon),
+            ),
+            const SizedBox(height: 14),
+            Semantics(
+              header: true,
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: t.h5.copyWith(fontSize: 16, fontWeight: FontWeight.w800, color: c.textPrimary),
+              ),
+            ),
+            if (body != null) ...[
+              const SizedBox(height: 4),
+              Text(body, textAlign: TextAlign.center, style: t.bodySmall.copyWith(fontSize: 13.5, color: p.preview)),
+            ],
+            if (action != null) ...[
+              const SizedBox(height: 16),
+              AppButton(
+                label: action,
+                variant: kind == InboxEmptyKind.error || kind == InboxEmptyKind.none
+                    ? AppButtonVariant.primary
+                    : AppButtonVariant.secondary,
+                onPressed: onAction,
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -4614,7 +4614,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get inbox_note_prefix => 'ملاحظة:';
 
   @override
-  String get inbox_typing => 'يكتب الآن…';
+  String get inbox_typing => 'يكتب…';
 
   @override
   String get inbox_image => 'صورة';
@@ -4995,6 +4995,204 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get inbox_filters_sort_waiting => 'الأطول انتظارًا';
+
+  @override
+  String get inbox_sub => 'جميع محادثات عملائك في مكان واحد';
+
+  @override
+  String inbox_matching(int n) {
+    return '$n محادثة مطابقة';
+  }
+
+  @override
+  String get inbox_pills_a11y => 'تصفية سريعة';
+
+  @override
+  String inbox_pill_a11y(String label, String n) {
+    return '$label، $n';
+  }
+
+  @override
+  String inbox_wait_min(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'ينتظر $n دقيقة',
+      few: 'ينتظر $n دقائق',
+      two: 'ينتظر دقيقتين',
+      one: 'ينتظر دقيقة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inbox_wait_hr(int n) {
+    return 'ينتظر $n س';
+  }
+
+  @override
+  String get inbox_act_claim => 'استلام';
+
+  @override
+  String get inbox_act_assign => 'إسناد';
+
+  @override
+  String get inbox_act_close => 'إغلاق';
+
+  @override
+  String get inbox_act_reopen => 'إعادة فتح';
+
+  @override
+  String get inbox_act_read => 'مقروءة';
+
+  @override
+  String get inbox_act_unread => 'غير مقروءة';
+
+  @override
+  String inbox_sel_count(int n) {
+    return '$n محددة';
+  }
+
+  @override
+  String inbox_new_msgs(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: '$n رسالة جديدة',
+      few: '$n رسائل جديدة',
+      two: 'رسالتان جديدتان',
+      one: 'رسالة جديدة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get inbox_offline_bar => 'غير متصل · يتم عرض آخر نسخة محفوظة';
+
+  @override
+  String get inbox_flt_title => 'تصفية المحادثات';
+
+  @override
+  String get inbox_flt_reset => 'إعادة تعيين';
+
+  @override
+  String get inbox_flt_status => 'الحالة';
+
+  @override
+  String get inbox_st_open => 'مفتوحة';
+
+  @override
+  String get inbox_st_pending => 'قيد الانتظار';
+
+  @override
+  String get inbox_st_snoozed => 'مؤجلة';
+
+  @override
+  String get inbox_st_closed => 'مغلقة';
+
+  @override
+  String get inbox_flt_assignee => 'المسؤول';
+
+  @override
+  String get inbox_flt_ai => 'ردّ الذكاء';
+
+  @override
+  String get inbox_ai_handled => 'تولّاها الذكاء';
+
+  @override
+  String get inbox_ai_escalated => 'حوّلها للفريق';
+
+  @override
+  String get inbox_ai_untouched => 'لم يتدخل';
+
+  @override
+  String get inbox_sort_newest => 'الأحدث أولًا';
+
+  @override
+  String get inbox_sort_oldest => 'الأقدم انتظارًا أولًا';
+
+  @override
+  String get inbox_sort_priority => 'الأولوية';
+
+  @override
+  String get inbox_e_none_title => 'لا توجد محادثات بعد';
+
+  @override
+  String get inbox_e_none_body => 'ستظهر هنا رسائل عملائك فور وصولها';
+
+  @override
+  String get inbox_e_connect => 'اربط واتساب';
+
+  @override
+  String get inbox_e_mine_title => 'لا محادثات مُسندة لك';
+
+  @override
+  String get inbox_e_mine_body => 'أحسنت! كل شيء تحت السيطرة';
+
+  @override
+  String get inbox_e_mine_action => 'عرض غير المُسندة';
+
+  @override
+  String get inbox_e_unread => 'قرأت كل الرسائل';
+
+  @override
+  String get inbox_e_unassigned => 'لا محادثات بانتظار الاستلام';
+
+  @override
+  String get inbox_e_waiting => 'لا أحد ينتظر ردك';
+
+  @override
+  String get inbox_e_ai => 'لا محادثات يتولاها الذكاء الآن';
+
+  @override
+  String get inbox_e_closed => 'لا محادثات مغلقة';
+
+  @override
+  String get inbox_e_filtered_title => 'لا نتائج مطابقة';
+
+  @override
+  String get inbox_e_filtered_body => 'جرّب تغيير الفلاتر';
+
+  @override
+  String get inbox_e_filtered_action => 'مسح الفلاتر';
+
+  @override
+  String get inbox_e_load => 'تعذّر تحميل المحادثات';
+
+  @override
+  String get inbox_e_retry => 'إعادة المحاولة';
+
+  @override
+  String get inbox_wa_down => 'انقطع اتصال واتساب — لن تصل رسائل جديدة';
+
+  @override
+  String get inbox_wa_reconnect => 'إعادة الربط';
+
+  @override
+  String inbox_reopened_n(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'أُعيد فتح $n محادثة',
+      few: 'أُعيد فتح $n محادثات',
+      two: 'أُعيد فتح محادثتين',
+      one: 'أُعيد فتح المحادثة',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String inbox_claimed_n(int n) {
+    String _temp0 = intl.Intl.pluralLogic(
+      n,
+      locale: localeName,
+      other: 'استلمت $n محادثة',
+      few: 'استلمت $n محادثات',
+      two: 'استلمت محادثتين',
+      one: 'استلمت المحادثة',
+    );
+    return '$_temp0';
+  }
 
   @override
   String get kbe_new => 'سؤال جديد';

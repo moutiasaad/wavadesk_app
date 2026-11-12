@@ -130,9 +130,16 @@ class ConversationsApi {
       if (date == 'custom' && a.to != null) 'date_to': day(a.to!),
       'assignee': ?assignee,
       if (q.chip == QuickChip.unread) 'unread': 'true',
-      if (q.chip == QuickChip.ai || (q.segment == InboxSegment.all && a.assignee == AssigneeFilter.ai)) 'ai': 'true',
+      if (q.chip == QuickChip.ai ||
+          (q.segment == InboxSegment.all && a.assignee == AssigneeFilter.ai) ||
+          a.ai == AiFilter.handled)
+        'ai': 'true'
+      else if (a.ai == AiFilter.untouched)
+        'ai': 'false',
+      if (a.ai == AiFilter.escalated) 'escalated': 'true',
       'sort': switch (a.sort) {
         InboxSort.oldest || InboxSort.waiting => 'oldest',
+        InboxSort.priority => 'priority',
         InboxSort.smart || InboxSort.newest => 'recent',
       },
     };
@@ -220,24 +227,78 @@ class ConversationsApi {
       tags: [for (final t in (j['tags'] as List? ?? const [])) '$t'],
       teamIds: [if (team != null) '${team['id']}'],
       closedAt: isClosed ? _date(j['closed_at']) ?? activity : null,
+      escalated: j['escalated'] == true,
     );
   }
 
   // ---- calls ------------------------------------------------------------------
 
-  /// "الكل" tab + "الكل" chip = every conversation. The server's `all`
-  /// segment is open-only and it has no every-status list, so the app merges
-  /// the open, snoozed and resolved segments by activity ([_MergedPager]).
-  static bool isMergedAll(InboxQuery q) => q.segment == InboxSegment.all && q.chip == QuickChip.all;
+  /// Server segments a query is merged from, or null for a single list.
+  /// - "الكل" pill = every conversation: the server's `all` segment is
+  ///   open-only and it has no every-status list, so open + snoozed +
+  ///   resolved are merged by activity ([_MergedPager]).
+  /// - Advanced › الحالة: one source per picked status (open covers pending).
+  static List<String>? mergedSegments(InboxQuery q) {
+    if (q.chip == QuickChip.closed || q.chip == QuickChip.snoozed) return null;
+    final st = q.advanced.statuses;
+    if (st.isNotEmpty) {
+      return [
+        if (st.contains(StatusFilter.open)) 'all' else if (st.contains(StatusFilter.pending)) 'unassigned',
+        if (st.contains(StatusFilter.snoozed)) 'snoozed',
+        if (st.contains(StatusFilter.closed)) 'resolved',
+      ];
+    }
+    if (q.segment == InboxSegment.all && q.chip == QuickChip.all) return const ['all', 'snoozed', 'resolved'];
+    return null;
+  }
+
+  /// [_query] plus the pill's ownership when the status filter replaces the
+  /// segment ("لي" + مؤجلة → snoozed segment, assignee me).
+  static Map<String, Object?> _mergedQuery(InboxQuery q) {
+    final query = _query(q);
+    if (q.advanced.statuses.isNotEmpty && query['assignee'] == null) {
+      switch (q.segment) {
+        case InboxSegment.mine:
+          query['assignee'] = 'me';
+        case InboxSegment.unassigned:
+          query['assignee'] = 'none';
+        case InboxSegment.all:
+          break;
+      }
+    }
+    return query;
+  }
 
   _MergedPager? _merged;
 
-  Future<ConversationsPage> list(InboxQuery q, {String? cursor, int limit = 30}) =>
-      isMergedAll(q) ? _listMerged(q, cursor: cursor, limit: limit) : _listOne(q, cursor: cursor, limit: limit);
+  Future<ConversationsPage> list(InboxQuery q, {String? cursor, int limit = 30}) => mergedSegments(q) == null
+      ? _listOne(q, cursor: cursor, limit: limit)
+      : _listMerged(q, cursor: cursor, limit: limit);
+
+  /// Pill badges (Inbox v2 §4.2.1) + tab badge, independent of the
+  /// selected pill (advanced filters still apply to the pill counts).
+  Future<Map<String, int>> _pillCounts(InboxQuery q) async {
+    final base = _query(q.copyWith(
+      segment: InboxSegment.all,
+      chip: QuickChip.all,
+      advanced: q.advanced.copyWith(statuses: const {}, assignee: AssigneeFilter.all, clearColleague: true),
+    ))
+      ..remove('segment')
+      ..remove('sort')
+      ..remove('assignee');
+    final r = await Future.wait([
+      _countRaw({...base, 'segment': 'mine'}),
+      _countRaw({...base, 'segment': 'all', 'unread': 'true'}),
+      _countRaw({...base, 'segment': 'unassigned'}),
+      _countRaw({'segment': 'all', 'unread': 'true'}),
+      _countRaw({'segment': 'mine', 'unread': 'true'}),
+    ]);
+    return {'mine': r[0], 'unread': r[1], 'unassigned': r[2], 'total_unread': r[3], 'mine_unread': r[4]};
+  }
 
   Future<ConversationsPage> _listMerged(InboxQuery q, {String? cursor, required int limit}) => _guard(() async {
-        final query = _query(q);
-        final pager = cursor == null ? (_merged = _MergedPager(query, _api)) : _merged;
+        final query = _mergedQuery(q);
+        final pager = cursor == null ? (_merged = _MergedPager(query, _api, mergedSegments(q)!)) : _merged;
         // A cursor from an older pager (query changed meanwhile): nothing more.
         if (pager == null || (cursor != null && cursor != pager.token)) {
           return const ConversationsPage(items: [], nextCursor: null, counts: {});
@@ -250,12 +311,7 @@ class ConversationsApi {
           for (final e in server.entries) {
             if (e.value is num) counts[e.key] = (e.value as num).toInt();
           }
-          final extra = await Future.wait([
-            _countRaw({...query, 'unread': 'true'}),
-            _countRaw({'segment': 'mine', 'unread': 'true'}),
-          ]);
-          counts['unread'] = extra[0];
-          counts['mine_unread'] = extra[1];
+          counts.addAll(await _pillCounts(q));
         }
         return ConversationsPage(items: items, nextCursor: pager.hasMore ? pager.token : null, counts: counts);
       });
@@ -268,15 +324,8 @@ class ConversationsApi {
           for (final e in serverCounts.entries)
             if (e.value is num) e.key: (e.value as num).toInt(),
         };
-        // Extra badges only on the first page (they don't change while paging).
-        if (cursor == null) {
-          final extra = await Future.wait([
-            _countRaw({...query, 'unread': 'true'}),
-            _countRaw({'segment': 'mine', 'unread': 'true'}),
-          ]);
-          counts['unread'] = extra[0];
-          counts['mine_unread'] = extra[1];
-        }
+        // Pill badges only on the first page (they don't change while paging).
+        if (cursor == null) counts.addAll(await _pillCounts(q));
         return ConversationsPage(
           items: [for (final item in res.list) fromServer(item)],
           nextCursor: res.nextCursor,
@@ -295,6 +344,12 @@ class ConversationsApi {
 
   /// Live count for the Filters sheet button.
   Future<int> count(InboxQuery q) => _guard(() async {
+        final segs = mergedSegments(q);
+        if (segs != null) {
+          final query = _mergedQuery(q);
+          final n = await Future.wait([for (final s in segs) _countRaw({...query, 'segment': s})]);
+          return n.fold<int>(0, (a, b) => a + b);
+        }
         final r = await _api.get('conversations/count', query: _query(q));
         return (r.map['count'] as num?)?.toInt() ?? 0;
       });
@@ -334,11 +389,14 @@ class ConversationsApi {
 /// emitted once every unfinished source has a head to compare with, so the
 /// order stays exact across pages.
 class _MergedPager {
-  _MergedPager(Map<String, Object?> query, this._api)
+  _MergedPager(Map<String, Object?> query, this._api, List<String> segments)
       : _oldestFirst = query['sort'] == 'oldest',
+        _firstSegment = segments.first,
         _sources = [
-          for (final seg in const ['all', 'snoozed', 'resolved']) _Source({...query, 'segment': seg}),
+          for (final seg in segments) _Source({...query, 'segment': seg}),
         ];
+
+  final String _firstSegment;
 
   static int _seq = 0;
 
@@ -357,7 +415,7 @@ class _MergedPager {
     await Future.wait([
       for (final s in need)
         _api.get('conversations', query: {...s.query, 'limit': limit, 'cursor': ?s.cursor}).then((res) {
-          if (s.query['segment'] == 'all' && s.cursor == null) firstMeta = res.meta;
+          if (s.query['segment'] == _firstSegment && s.cursor == null) firstMeta = res.meta;
           s.buffer.addAll([for (final item in res.list) ConversationsApi.fromServer(item)]);
           s.cursor = res.nextCursor;
           s.done = res.nextCursor == null;

@@ -1,0 +1,111 @@
+{
+  "inbox_sub": "Toutes vos conversations clients au même endroit",
+  "inbox_matching": "{n} conversations correspondantes",
+  "@inbox_matching": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_pills_a11y": "Filtres rapides",
+  "inbox_pill_a11y": "{label}, {n}",
+  "@inbox_pill_a11y": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "inbox_wait_min": "{n, plural, =1{En attente 1 min} other{En attente {n} min}}",
+  "@inbox_wait_min": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_wait_hr": "En attente {n} h",
+  "@inbox_wait_hr": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_act_claim": "Prendre",
+  "inbox_act_assign": "Assigner",
+  "inbox_act_close": "Fermer",
+  "inbox_act_reopen": "Rouvrir",
+  "inbox_act_read": "Lue",
+  "inbox_act_unread": "Non lue",
+  "inbox_sel_count": "{n} sélectionnée(s)",
+  "@inbox_sel_count": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_new_msgs": "{n, plural, =1{1 nouveau message} other{{n} nouveaux messages}}",
+  "@inbox_new_msgs": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_offline_bar": "Hors ligne · copie enregistrée affichée",
+  "inbox_flt_title": "Filtrer les conversations",
+  "inbox_flt_reset": "Réinitialiser",
+  "inbox_flt_status": "Statut",
+  "inbox_st_open": "Ouvertes",
+  "inbox_st_pending": "En attente",
+  "inbox_st_snoozed": "Reportées",
+  "inbox_st_closed": "Fermées",
+  "inbox_flt_assignee": "Responsable",
+  "inbox_flt_ai": "IA",
+  "inbox_ai_handled": "Gérées par l'IA",
+  "inbox_ai_escalated": "Transférées à l'équipe",
+  "inbox_ai_untouched": "Sans IA",
+  "inbox_sort_newest": "Plus récentes d'abord",
+  "inbox_sort_oldest": "Attente la plus longue",
+  "inbox_sort_priority": "Priorité",
+  "inbox_e_none_title": "Aucune conversation pour le moment",
+  "inbox_e_none_body": "Les messages de vos clients apparaîtront ici",
+  "inbox_e_connect": "Connecter WhatsApp",
+  "inbox_e_mine_title": "Rien ne vous est assigné",
+  "inbox_e_mine_body": "Bravo ! Tout est sous contrôle",
+  "inbox_e_mine_action": "Voir les non assignées",
+  "inbox_e_unread": "Vous avez tout lu",
+  "inbox_e_unassigned": "Rien en attente de prise en charge",
+  "inbox_e_waiting": "Personne ne vous attend",
+  "inbox_e_ai": "L'IA ne gère aucune conversation",
+  "inbox_e_closed": "Aucune conversation fermée",
+  "inbox_e_filtered_title": "Aucun résultat",
+  "inbox_e_filtered_body": "Essayez de modifier les filtres",
+  "inbox_e_filtered_action": "Effacer les filtres",
+  "inbox_e_load": "Impossible de charger les conversations",
+  "inbox_e_retry": "Réessayer",
+  "inbox_wa_down": "WhatsApp déconnecté — les nouveaux messages n'arriveront pas",
+  "inbox_wa_reconnect": "Reconnecter",
+  "inbox_reopened_n": "{n, plural, =1{Conversation rouverte} other{{n} conversations rouvertes}}",
+  "@inbox_reopened_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "inbox_claimed_n": "{n, plural, =1{Conversation prise} other{{n} conversations prises}}",
+  "@inbox_claimed_n": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  }
+}

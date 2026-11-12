@@ -17,7 +17,7 @@
   "inbox_you_prefix": "أنت:",
   "inbox_draft_prefix": "مسودة:",
   "inbox_note_prefix": "ملاحظة:",
-  "inbox_typing": "يكتب الآن…",
+  "inbox_typing": "يكتب…",
   "inbox_image": "صورة",
   "inbox_voice": "رسالة صوتية · {d}",
   "@inbox_voice": {
