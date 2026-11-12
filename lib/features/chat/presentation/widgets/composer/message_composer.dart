@@ -59,6 +59,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
     onPermissionDenied: () => _toast(context.l10n.composer_mic_denied),
     onError: () => _toast(context.l10n.composer_record_failed),
   );
+
   /// Saved-replies panel opened from the field button (the `/` shortcut
   /// still works on its own).
   bool _repliesOpen = false;
@@ -122,13 +123,17 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
   }
 
   void _sendVoice(Duration d, String path) {
-    ref.read(messagesControllerProvider(_id).notifier).send(OutgoingMessage(
-          text: '',
-          kind: MessageKind.voice,
-          duration: d,
-          localPath: path,
-          localMime: VoiceRecorderController.mime,
-        ));
+    ref
+        .read(messagesControllerProvider(_id).notifier)
+        .send(
+          OutgoingMessage(
+            text: '',
+            kind: MessageKind.voice,
+            duration: d,
+            localPath: path,
+            localMime: VoiceRecorderController.mime,
+          ),
+        );
     HapticFeedback.lightImpact();
   }
 
@@ -204,9 +209,19 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
   /// is cleared on close; any other draft is kept until a reply is picked.
   void _toggleReplies() {
     final open = _repliesOpen || _composer.text.text.startsWith('/');
-    setState(() => _repliesOpen = !open);
-    if (open && _composer.text.text.startsWith('/')) _composer.text.clear();
+    if (open) {
+      _closeReplies();
+    } else {
+      setState(() => _repliesOpen = true);
+    }
     _focus.requestFocus();
+  }
+
+  /// ✕, system back, or the button again: hides the panel however it was
+  /// opened (a `/query` in the field is cleared).
+  void _closeReplies() {
+    setState(() => _repliesOpen = false);
+    if (_composer.text.text.startsWith('/')) _composer.text.clear();
   }
 
   /// Selection toolbar "حسّن بالذكاء": only the selected text is rewritten
@@ -412,101 +427,118 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                   ),
           );
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        AnimatedSize(
-          duration: AppMotion.normal,
-          child: presence == null
-              ? const SizedBox(width: double.infinity)
-              : Semantics(
-                  liveRegion: true,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
-                    child: Text(presence, style: t.caption.copyWith(color: c.textSecondary)),
+    // System back closes the saved-replies panel before leaving the chat.
+    return PopScope(
+      canPop: !repliesShown,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _closeReplies();
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AnimatedSize(
+            duration: AppMotion.normal,
+            child: presence == null
+                ? const SizedBox(width: double.infinity)
+                : Semantics(
+                    liveRegion: true,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.xs, AppSpacing.lg, AppSpacing.xs),
+                      child: Text(presence, style: t.caption.copyWith(color: c.textSecondary)),
+                    ),
                   ),
-                ),
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: c.background,
-            border: Border(top: BorderSide(color: c.divider)),
           ),
-          padding: EdgeInsets.fromLTRB(10, AppSpacing.sm, 10, AppSpacing.sm + MediaQuery.viewPaddingOf(context).bottom),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (state.showModeToggle)
-                Align(
-                  alignment: AlignmentDirectional.centerStart,
-                  child: ComposerModeToggle(
-                    mode: state.mode,
-                    onChanged: (m) {
-                      _composer.setMode(m);
+          Container(
+            decoration: BoxDecoration(
+              color: c.background,
+              border: Border(top: BorderSide(color: c.divider)),
+            ),
+            padding: EdgeInsets.fromLTRB(
+              10,
+              AppSpacing.sm,
+              10,
+              AppSpacing.sm + MediaQuery.viewPaddingOf(context).bottom,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (state.showModeToggle)
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: ComposerModeToggle(
+                      mode: state.mode,
+                      onChanged: (m) {
+                        _composer.setMode(m);
+                        _focus.requestFocus();
+                      },
+                    ),
+                  ),
+                if (repliesShown)
+                  QuickRepliesPanel(
+                    replies: ref.watch(quickRepliesProvider),
+                    query: slashQuery ?? '',
+                    onClose: _closeReplies,
+                    onPick: (r) {
+                      _repliesOpen = false;
+                      _composer.insertQuickReply(r, contactName: widget.detail.contact.name);
                       _focus.requestFocus();
                     },
                   ),
-                ),
-              if (repliesShown)
-                QuickRepliesPanel(
-                  replies: ref.watch(quickRepliesProvider),
-                  query: slashQuery ?? '',
-                  onPick: (r) {
-                    _repliesOpen = false;
-                    _composer.insertQuickReply(r, contactName: widget.detail.contact.name);
-                    _focus.requestFocus();
-                  },
-                ),
-              if (mentionMatch != null)
-                MentionPanel(
-                  agents: ref.watch(colleaguesProvider),
-                  query: mentionMatch.group(1) ?? '',
-                  onPick: (a) {
-                    _composer.insertMention(a.name.split(' ').first);
-                    _focus.requestFocus();
-                  },
-                ),
-              if (state.replyTo != null)
-                ReplyPreviewBar(
-                  message: state.replyTo!,
-                  senderName: state.replyTo!.type == MessageBubbleType.incoming
-                      ? widget.detail.contact.name
-                      : (state.replyTo!.senderName ?? l.common_you),
-                  onClose: () => _composer.setReply(null),
-                ),
-              if (state.attachments.isNotEmpty)
-                AttachmentsPreview(attachments: state.attachments, onRemove: _composer.removeAttachment, onRetry: _composer.retryAttachment),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  AppIconButton(
-                    icon: AppIcons.add,
-                    size: 44,
-                    iconSize: 24,
-                    semanticLabel: l.composer_attach,
-                    onPressed: _recorder.recording ? null : _attach,
+                if (mentionMatch != null)
+                  MentionPanel(
+                    agents: ref.watch(colleaguesProvider),
+                    query: mentionMatch.group(1) ?? '',
+                    onPick: (a) {
+                      _composer.insertMention(a.name.split(' ').first);
+                      _focus.requestFocus();
+                    },
                   ),
-                  const SizedBox(width: AppSpacing.xs),
-                  Expanded(
-                    child: FadeTransition(opacity: _applyFade, child: field),
+                if (state.replyTo != null)
+                  ReplyPreviewBar(
+                    message: state.replyTo!,
+                    senderName: state.replyTo!.type == MessageBubbleType.incoming
+                        ? widget.detail.contact.name
+                        : (state.replyTo!.senderName ?? l.common_you),
+                    onClose: () => _composer.setReply(null),
                   ),
-                  const SizedBox(width: AppSpacing.xs),
-                  AnimatedSwitcher(
-                    duration: AppMotion.fast,
-                    transitionBuilder: (child, anim) => FadeTransition(
-                      opacity: anim,
-                      child: RotationTransition(turns: Tween(begin: 0.25, end: 0.0).animate(anim), child: child),
+                if (state.attachments.isNotEmpty)
+                  AttachmentsPreview(
+                    attachments: state.attachments,
+                    onRemove: _composer.removeAttachment,
+                    onRetry: _composer.retryAttachment,
+                  ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    AppIconButton(
+                      icon: AppIcons.add,
+                      size: 44,
+                      iconSize: 24,
+                      semanticLabel: l.composer_attach,
+                      onPressed: _recorder.recording ? null : _attach,
                     ),
-                    child: trailingButton,
-                  ),
-                ],
-              ),
-            ],
+                    const SizedBox(width: AppSpacing.xs),
+                    Expanded(
+                      child: FadeTransition(opacity: _applyFade, child: field),
+                    ),
+                    const SizedBox(width: AppSpacing.xs),
+                    AnimatedSwitcher(
+                      duration: AppMotion.fast,
+                      transitionBuilder: (child, anim) => FadeTransition(
+                        opacity: anim,
+                        child: RotationTransition(turns: Tween(begin: 0.25, end: 0.0).animate(anim), child: child),
+                      ),
+                      child: trailingButton,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
