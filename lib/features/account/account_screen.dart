@@ -36,7 +36,7 @@ final _supportUri = Uri(scheme: 'mailto', path: 'support@wavadesk.com');
 final _termsUri = Uri.parse('https://wavadesk.com/legal/terms');
 
 /// الحساب والإعدادات — tab root (spec "15 Account.md"): teal header that
-/// scrolls away (white compact bar fades in), حالتي card, الإدارة (role
+/// scrolls away (white compact bar fades in), الإدارة (role
 /// rules), التطبيق, حول التطبيق, red-outline sign out.
 class AccountScreen extends ConsumerStatefulWidget {
   const AccountScreen({super.key});
@@ -286,7 +286,6 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const PresenceCard(),
                   if (adminRows.isNotEmpty) SettingsGroup(title: l.acc_sec_admin, children: adminRows),
                   SettingsGroup(
                     title: l.acc_sec_app,
