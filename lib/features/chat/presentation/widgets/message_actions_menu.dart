@@ -194,12 +194,16 @@ class _MenuOverlay extends ConsumerWidget {
 
     final screen = MediaQuery.sizeOf(context);
     final padding = MediaQuery.paddingOf(context);
-    const menuWidth = 240.0;
+    // Responsive: grows with the text size (240 → 320) but always leaves a
+    // 12dp margin on both sides of the screen.
+    final textScale = MediaQuery.textScalerOf(context).scale(1);
+    final menuWidth = (240.0 * textScale).clamp(240.0, 320.0).clamp(0.0, screen.width - 24);
     final estimatedHeight =
-        52.0 * actions.length +
-        (reactable ? 60 : 0) +
-        (m.type == MessageBubbleType.outgoingAi && !readOnly ? 52 : 0) +
-        16;
+        (52.0 * actions.length +
+            (reactable ? 60 : 0) +
+            (m.type == MessageBubbleType.outgoingAi && !readOnly ? 52 : 0) +
+            16) *
+        textScale.clamp(1.0, 2.0);
     final spaceBelow = screen.height - padding.bottom - bubbleRect.bottom;
     final below = spaceBelow > estimatedHeight + 12 || bubbleRect.top - padding.top < estimatedHeight + 12;
     final outgoing = m.isOutgoing;
@@ -434,42 +438,55 @@ class _ReactionRow extends ConsumerWidget {
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: c.divider)),
       ),
+      // Every item gets an equal share of the menu width and scales down to
+      // fit it (narrow phones, big text) instead of overflowing.
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          for (final e in _quickReactions) cell(e),
-          AppIconButton(
-            icon: AppIcons.addReaction,
-            size: 36,
-            semanticLabel: l.msgaction_more_reactions,
-            onPressed: () async {
-              final picked = await AppBottomSheet.show<String>(
-                context,
-                title: l.msgaction_pick_reaction,
-                builder: (ctx) => Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-                  child: Wrap(
-                    alignment: WrapAlignment.center,
-                    children: [
-                      for (final e in _allReactions)
-                        Semantics(
-                          button: true,
-                          label: l.msgaction_react(e),
-                          excludeSemantics: true,
-                          child: InkResponse(
-                            onTap: () => Navigator.pop(ctx, e),
-                            child: SizedBox.square(
-                              dimension: 52,
-                              child: Center(child: Text(e, style: const TextStyle(fontSize: 26))),
-                            ),
-                          ),
+          for (final e in _quickReactions)
+            Expanded(
+              child: Center(
+                child: FittedBox(fit: BoxFit.scaleDown, child: cell(e)),
+              ),
+            ),
+          Expanded(
+            child: Center(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: AppIconButton(
+                  icon: AppIcons.addReaction,
+                  size: 36,
+                  semanticLabel: l.msgaction_more_reactions,
+                  onPressed: () async {
+                    final picked = await AppBottomSheet.show<String>(
+                      context,
+                      title: l.msgaction_pick_reaction,
+                      builder: (ctx) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+                        child: Wrap(
+                          alignment: WrapAlignment.center,
+                          children: [
+                            for (final e in _allReactions)
+                              Semantics(
+                                button: true,
+                                label: l.msgaction_react(e),
+                                excludeSemantics: true,
+                                child: InkResponse(
+                                  onTap: () => Navigator.pop(ctx, e),
+                                  child: SizedBox.square(
+                                    dimension: 52,
+                                    child: Center(child: Text(e, style: const TextStyle(fontSize: 26))),
+                                  ),
+                                ),
+                              ),
+                          ],
                         ),
-                    ],
-                  ),
+                      ),
+                    );
+                    if (picked != null) react(picked);
+                  },
                 ),
-              );
-              if (picked != null) react(picked);
-            },
+              ),
+            ),
           ),
         ],
       ),
