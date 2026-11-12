@@ -238,7 +238,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
             onPressed: _add,
           ),
         PopupMenuButton<_Overflow>(
-            icon: AppIcon(AppIcons.more, dp: 16, color: c.textPrimary),
+            icon: AppIcon(AppIcons.more, dp: 14, color: c.textPrimary),
             tooltip: l.common_more,
             onSelected: _overflow,
             itemBuilder: (_) => [
