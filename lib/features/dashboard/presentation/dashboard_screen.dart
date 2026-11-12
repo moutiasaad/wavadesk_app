@@ -98,18 +98,19 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           if (waDown) ...[const _WhatsAppDownCard(), const SizedBox(height: 10)],
-          KpiGrid(snapshot: snap),
+          KpiGrid(snapshot: snap, loading: state.switching),
           const SizedBox(height: 10),
-          ConversationsChart(snapshot: snap, generation: state.generation, empty: empty),
+          // Period switch: only the chart body shimmers, the card stays.
+          if (state.switching)
+            _ChartSkeleton(range: state.range)
+          else
+            ConversationsChart(snapshot: snap, generation: state.generation, empty: empty),
           const SizedBox(height: 10),
           TeamNowCard(snapshot: snap),
         ],
       );
-      // Period switch: values cross-fade 150 ms.
-      body = AnimatedSwitcher(
-        duration: reduced ? Duration.zero : AppMotion.fast,
-        child: KeyedSubtree(key: ValueKey(state.generation), child: body),
-      );
+      // Period switch: each value cross-fades on its own (KPI tiles, chart
+      // regrow) — the page itself never swaps out.
     }
 
     final updated = state.lastUpdated == null ? '—' : intl.DateFormat('HH:mm').format(state.lastUpdated!);
@@ -207,6 +208,57 @@ class _WhatsAppDownCard extends StatelessWidget {
             style: TextButton.styleFrom(foregroundColor: c.primary, textStyle: t.buttonSmall, minimumSize: const Size(48, 40)),
             child: Text(l.dash_alert_wa_action),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Chart card while a new period loads: same card and title, shimmering
+/// bars in place of the data.
+class _ChartSkeleton extends StatelessWidget {
+  const _ChartSkeleton({required this.range});
+
+  final DashboardRange range;
+
+  static const _heights = [0.35, 0.55, 0.4, 0.7, 0.5, 0.85, 0.6, 0.45, 0.75, 0.5, 0.3, 0.4];
+
+  @override
+  Widget build(BuildContext context) {
+    final t = context.text;
+    final l = context.l10n;
+    final title = switch (range) {
+      DashboardRange.last7 => l.dash_range_7d,
+      DashboardRange.last30 => l.dash_range_30d,
+      _ => l.dash_volume_today,
+    };
+    return DashCard(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text(title, style: t.h6.copyWith(fontSize: 14.5, fontWeight: FontWeight.w800))),
+              const AppSkeleton(child: SkeletonBox(width: 64, height: 12)),
+            ],
+          ),
+          const SizedBox(height: 10),
+          AppSkeleton(
+            child: SizedBox(
+              height: 64,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  for (var i = 0; i < _heights.length; i++) ...[
+                    if (i > 0) const SizedBox(width: 5),
+                    Expanded(child: SkeletonBox(height: 64 * _heights[i], radius: 5)),
+                  ],
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 4),
+          const AppSkeleton(child: SkeletonBox(height: 10)),
         ],
       ),
     );

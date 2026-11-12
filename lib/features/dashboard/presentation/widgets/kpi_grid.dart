@@ -7,6 +7,7 @@ import '../../../../core/router/app_router.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../../core/utils/analytics.dart';
 import '../../../../core/utils/l10n.dart';
+import '../../../../core/widgets/app_skeleton.dart';
 import '../../../conversations/application/conversation_filters_controller.dart';
 import '../../../conversations/application/relative_time_ticker.dart';
 import '../../../conversations/domain/conversation_filters.dart';
@@ -18,9 +19,12 @@ import '../sheets/response_time_sheet.dart';
 
 /// 2×2 KPI grid (Dashboard v2 §4.2): gap 10; one column at 200% text.
 class KpiGrid extends ConsumerWidget {
-  const KpiGrid({super.key, required this.snapshot});
+  const KpiGrid({super.key, required this.snapshot, this.loading = false});
 
   final DashboardSnapshot snapshot;
+
+  /// New period loading: labels stay, values shimmer.
+  final bool loading;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -109,7 +113,9 @@ class KpiGrid extends ConsumerWidget {
             },
           );
 
-    final tiles = [open, waiting, first, fourth];
+    final tiles = [
+      for (final t in [open, waiting, first, fourth]) t is KpiTile && loading ? t.asLoading() : t,
+    ];
     final perRow = MediaQuery.textScalerOf(context).scale(10) >= 20 ? 1 : 2;
     return Semantics(
       container: true,
@@ -159,6 +165,7 @@ class KpiTile extends StatelessWidget {
     this.background,
     this.border,
     required this.onTap,
+    this.loading = false,
   });
 
   final String label;
@@ -172,6 +179,24 @@ class KpiTile extends StatelessWidget {
   final Color? background;
   final Color? border;
   final VoidCallback onTap;
+
+  /// Value + meta replaced by shimmer bars (period switch).
+  final bool loading;
+
+  KpiTile asLoading() => KpiTile(
+        label: label,
+        value: value,
+        meta: meta,
+        labelIcon: labelIcon,
+        labelColor: labelColor,
+        valueColor: valueColor,
+        metaColor: metaColor,
+        metaBold: metaBold,
+        background: background,
+        border: border,
+        onTap: onTap,
+        loading: true,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +234,22 @@ class KpiTile extends StatelessWidget {
             const SizedBox(height: 4),
             AnimatedSwitcher(
               duration: reduced ? Duration.zero : AppMotion.fast,
-              child: Wrap(
+              child: loading
+                  ? const AppSkeleton(
+                      key: ValueKey('loading'),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 6, bottom: 4),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            SkeletonBox(width: 46, height: 24, radius: 6),
+                            SizedBox(width: 6),
+                            SkeletonBox(width: 40, height: 10),
+                          ],
+                        ),
+                      ),
+                    )
+                  : Wrap(
                 key: ValueKey('$value|$meta'),
                 crossAxisAlignment: WrapCrossAlignment.end,
                 spacing: 6,

@@ -30,6 +30,7 @@ class DashboardState {
     this.generation = 0,
     this.firstLoad = true,
     this.flashed = const {},
+    this.switching = false,
   });
 
   final DashboardRange range;
@@ -59,6 +60,10 @@ class DashboardState {
   /// Metric keys changed by the last live update ('open', 'awaiting') → 300ms flash.
   final Set<String> flashed;
 
+  /// Period changed and the new numbers are on their way: the cards stay
+  /// and only their values / bars shimmer ([snapshot] is the old period's).
+  final bool switching;
+
   bool get fullError => snapshot == null && error != null;
   bool get skeleton => snapshot == null && error == null;
 
@@ -78,6 +83,7 @@ class DashboardState {
     int? generation,
     bool? firstLoad,
     Set<String>? flashed,
+    bool? switching,
   }) =>
       DashboardState(
         range: range ?? this.range,
@@ -92,6 +98,7 @@ class DashboardState {
         generation: generation ?? this.generation,
         firstLoad: firstLoad ?? this.firstLoad,
         flashed: flashed ?? this.flashed,
+        switching: switching ?? this.switching,
       );
 }
 
@@ -159,7 +166,7 @@ class DashboardController extends Notifier<DashboardState> {
       if (req != _req) return;
       _lastFetch = DateTime.now();
       if (r.notModified && state.snapshot != null) {
-        state = state.copyWith(loading: false, clearError: true, offline: false, fromCache: false, lastUpdated: DateTime.now());
+        state = state.copyWith(loading: false, switching: false, clearError: true, offline: false, fromCache: false, lastUpdated: DateTime.now());
         return;
       }
       final snap = r.snapshot!;
@@ -170,6 +177,7 @@ class DashboardController extends Notifier<DashboardState> {
         snapshot: snap,
         scope: scope,
         loading: false,
+        switching: false,
         clearError: true,
         offline: false,
         fromCache: false,
@@ -188,10 +196,10 @@ class DashboardController extends Notifier<DashboardState> {
         state = state.copyWith(scope: DashboardScope.me, clearTeam: true);
         return refresh(silent: silent);
       }
-      state = state.copyWith(loading: false, error: e, offline: e.isNetwork);
+      state = state.copyWith(loading: false, error: e, offline: e.isNetwork, clearSnapshot: state.switching, switching: false);
     } catch (e) {
       if (req != _req) return;
-      state = state.copyWith(loading: false, error: e, offline: false);
+      state = state.copyWith(loading: false, error: e, offline: false, clearSnapshot: state.switching, switching: false);
     }
   }
 
@@ -243,14 +251,16 @@ class DashboardController extends Notifier<DashboardState> {
   void _switch(DashboardState next) {
     final cached = _readCache(next.range, next.scope);
     _etag = null;
+    // No cached copy for the new period: keep the current cards on screen
+    // (values shimmer) instead of swapping the whole page for a skeleton.
     state = next.copyWith(
       snapshot: cached?.$1,
-      clearSnapshot: cached == null,
       lastUpdated: cached?.$2,
       fromCache: cached != null,
       clearError: true,
       generation: next.generation + 1,
       firstLoad: true,
+      switching: cached == null && next.snapshot != null,
     );
     refresh();
   }
