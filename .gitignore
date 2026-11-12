@@ -47,3 +47,5 @@ app.*.map.json
 # API settings bundled into the app (secrets, per environment)
 assets/config/api.json
 dart_defines/production.json
+dart_defines/phone.json
+dart_defines/local.json
