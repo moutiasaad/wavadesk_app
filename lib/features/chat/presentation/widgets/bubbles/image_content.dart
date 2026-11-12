@@ -50,6 +50,94 @@ class MediaPlaceholder extends StatelessWidget {
   }
 }
 
+/// Loading skeleton for a photo bubble: light surface with diagonal stripes
+/// drifting slowly (still under reduced motion) and a centered label.
+class ImageSkeleton extends StatefulWidget {
+  const ImageSkeleton({super.key, required this.label});
+
+  final String label;
+
+  @override
+  State<ImageSkeleton> createState() => _ImageSkeletonState();
+}
+
+class _ImageSkeletonState extends State<ImageSkeleton> with SingleTickerProviderStateMixin {
+  late final AnimationController _drift = AnimationController(vsync: this, duration: const Duration(milliseconds: 1400));
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (AppMotion.reduced(context)) {
+      _drift.stop();
+    } else if (!_drift.isAnimating) {
+      _drift.repeat();
+    }
+  }
+
+  @override
+  void dispose() {
+    _drift.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final c = context.colors;
+    final t = context.text;
+    return Semantics(
+      label: widget.label,
+      child: CustomPaint(
+        painter: _StripesPainter(
+          drift: _drift,
+          background: c.surfaceVariant,
+          stripe: c.border.withValues(alpha: c.isDark ? 0.5 : 0.55),
+        ),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+            child: Text(
+              widget.label,
+              textAlign: TextAlign.center,
+              style: t.bodySmall.copyWith(color: c.textSecondary, fontWeight: FontWeight.w700),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StripesPainter extends CustomPainter {
+  _StripesPainter({required this.drift, required this.background, required this.stripe}) : super(repaint: drift);
+
+  final Animation<double> drift;
+  final Color background;
+  final Color stripe;
+
+  static const _period = 22.0; // stripe + gap, measured along the x axis
+  static const _band = 11.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.drawRect(Offset.zero & size, Paint()..color = background);
+    final paint = Paint()..color = stripe;
+    final shift = drift.value * _period;
+    // 45° bands: each is a parallelogram leaning by the box height.
+    for (var x = -size.height - _period + shift; x < size.width; x += _period) {
+      final path = Path()
+        ..moveTo(x, size.height)
+        ..lineTo(x + _band, size.height)
+        ..lineTo(x + _band + size.height, 0)
+        ..lineTo(x + size.height, 0)
+        ..close();
+      canvas.drawPath(path, paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_StripesPainter old) => old.background != background || old.stripe != stripe;
+}
+
 /// Single image (Chat spec §4.4): 4dp padding, radius 14, aspect kept,
 /// max 240×320, caption below; tap → full-screen viewer (with save). Own
 /// images show from memory at once; others load from the signed media
@@ -164,6 +252,12 @@ class _ImageContentState extends ConsumerState<ImageContent> {
           ),
         );
 
+    Widget skeleton() => SizedBox(
+          width: _width,
+          height: 180,
+          child: ImageSkeleton(label: fetching ? l.bubble_photo_fetching : l.media_image),
+        );
+
     final Widget picture;
     if (provider != null) {
       picture = ConstrainedBox(
@@ -173,7 +267,7 @@ class _ImageContentState extends ConsumerState<ImageContent> {
           width: _width,
           fit: BoxFit.cover,
           gaplessPlayback: true,
-          frameBuilder: (_, child, frame, sync) => sync || frame != null ? child : placeholder(),
+          frameBuilder: (_, child, frame, sync) => sync || frame != null ? child : skeleton(),
           errorBuilder: (_, _, _) {
             // A refused / expired link: get a fresh one.
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -188,7 +282,7 @@ class _ImageContentState extends ConsumerState<ImageContent> {
     } else if (failed) {
       picture = placeholder(icon: AppIcons.retry, label: l.bubble_tap_retry);
     } else {
-      picture = placeholder(label: fetching ? l.bubble_photo_fetching : null);
+      picture = skeleton();
     }
 
     return Padding(
