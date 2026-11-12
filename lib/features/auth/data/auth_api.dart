@@ -25,12 +25,12 @@ class DeviceInfo {
 
   /// `device` object of `POST auth/login` (device_id must equal X-Device-Id).
   Map<String, Object?> toJson() => {
-        'device_id': id,
-        'name': model,
-        'model': model,
-        'os_version': platform,
-        'app_version': appVersion,
-      };
+    'device_id': id,
+    'name': model,
+    'model': model,
+    'os_version': platform,
+    'app_version': appVersion,
+  };
 }
 
 @immutable
@@ -60,17 +60,17 @@ class Session {
   bool get isValid => expiresAt.isAfter(DateTime.now());
 
   factory Session.fromResponse(Map<String, dynamic> json) => Session(
-        accessToken: json['access_token'] as String,
-        refreshToken: json['refresh_token'] as String,
-        expiresAt: json.containsKey('access_expires_at')
-            ? WdApi.expiryOf(json)
-            : DateTime.now().add(Duration(seconds: (json['expires_in'] as num?)?.toInt() ?? 3600)),
-        user: Map<String, dynamic>.from(json['user'] as Map? ?? const {}),
-        workspace: Map<String, dynamic>.from(json['workspace'] as Map? ?? const {}),
-        signingSecret: json['device_signing_secret'] as String?,
-        sessionId: json['session_id'] as String?,
-        permissions: Map<String, dynamic>.from(json['permissions'] as Map? ?? const {}),
-      );
+    accessToken: json['access_token'] as String,
+    refreshToken: json['refresh_token'] as String,
+    expiresAt: json.containsKey('access_expires_at')
+        ? WdApi.expiryOf(json)
+        : DateTime.now().add(Duration(seconds: (json['expires_in'] as num?)?.toInt() ?? 3600)),
+    user: Map<String, dynamic>.from(json['user'] as Map? ?? const {}),
+    workspace: Map<String, dynamic>.from(json['workspace'] as Map? ?? const {}),
+    signingSecret: json['device_signing_secret'] as String?,
+    sessionId: json['session_id'] as String?,
+    permissions: Map<String, dynamic>.from(json['permissions'] as Map? ?? const {}),
+  );
 }
 
 /// Result of a login call that reached the server and returned 200.
@@ -129,13 +129,18 @@ class HttpAuthApi implements AuthApi {
     } on WdApiException catch (e) {
       throw switch (e.code) {
         'network' => const AuthFailure(LoginErrorCode.network),
-        'invalid_credentials' || 'invalid_refresh_token' || 'token_reused' || 'validation_failed' =>
-          const AuthFailure(LoginErrorCode.invalidCredentials),
+        'invalid_credentials' ||
+        'invalid_refresh_token' ||
+        'token_reused' ||
+        'validation_failed' => const AuthFailure(LoginErrorCode.invalidCredentials),
         'workspace_unavailable' => const AuthFailure(LoginErrorCode.workspaceSuspended),
-        'account_disabled' || 'account_archived' || 'role_forbidden' =>
-          const AuthFailure(LoginErrorCode.accountDisabled),
-        'too_many_attempts' || 'rate_limited' =>
-          AuthFailure(LoginErrorCode.tooManyAttempts, retryAfter: e.retryAfter ?? const Duration(seconds: 60)),
+        'account_disabled' ||
+        'account_archived' ||
+        'role_forbidden' => const AuthFailure(LoginErrorCode.accountDisabled),
+        'too_many_attempts' || 'rate_limited' => AuthFailure(
+          LoginErrorCode.tooManyAttempts,
+          retryAfter: e.retryAfter ?? const Duration(seconds: 60),
+        ),
         _ => const AuthFailure(LoginErrorCode.server),
       };
     }
@@ -148,11 +153,11 @@ class HttpAuthApi implements AuthApi {
     required DeviceInfo device,
     required String locale,
   }) async {
-    final json = await _post(
-      'auth/login',
-      {'identifier': identifier, 'password': password, 'device': device.toJson()},
-      locale,
-    );
+    final json = await _post('auth/login', {
+      'identifier': identifier,
+      'password': password,
+      'device': device.toJson(),
+    }, locale);
     if (json['requires_2fa'] == true) {
       return LoginNeeds2fa((json['challenge_token'] ?? '') as String);
     }
@@ -166,4 +171,3 @@ class HttpAuthApi implements AuthApi {
     return Session.fromResponse(json);
   }
 }
-

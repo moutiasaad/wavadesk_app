@@ -16,9 +16,9 @@ class _AuthPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBarStandard(title: title),
-        body: EmptyState(icon: icon, title: context.l10n.auth_coming_soon_title, body: body),
-      );
+    appBar: AppBarStandard(title: title),
+    body: EmptyState(icon: icon, title: context.l10n.auth_coming_soon_title, body: body),
+  );
 }
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -44,10 +44,10 @@ class TwoFactorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _AuthPlaceholder(
-        title: context.l10n.auth_2fa_title,
-        icon: AppIcons.security,
-        body: context.l10n.auth_2fa_placeholder,
-      );
+    title: context.l10n.auth_2fa_title,
+    icon: AppIcons.security,
+    body: context.l10n.auth_2fa_placeholder,
+  );
 }
 
 class WorkspacePickerScreen extends StatelessWidget {
@@ -55,8 +55,8 @@ class WorkspacePickerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _AuthPlaceholder(
-        title: context.l10n.auth_workspace_title,
-        icon: AppIcons.team,
-        body: context.l10n.auth_workspace_placeholder,
-      );
+    title: context.l10n.auth_workspace_title,
+    icon: AppIcons.team,
+    body: context.l10n.auth_workspace_placeholder,
+  );
 }

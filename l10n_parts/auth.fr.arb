@@ -1,6 +1,6 @@
 {
-  "login_title": "Content de vous revoir",
-  "login_subtitle": "Connectez-vous pour suivre les conversations de vos clients, où que vous soyez.",
+  "login_title": "Connexion",
+  "login_subtitle": "Bon retour, connectez-vous pour continuer",
   "login_identifier_label": "E-mail ou téléphone",
   "login_identifier_hint": "name@company.com",
   "login_password_label": "Mot de passe",
@@ -16,36 +16,53 @@
   "login_no_account": "Vous n'avez pas de compte ?",
   "login_start_trial": "Commencer un essai gratuit de 7 jours",
   "login_offline": "Aucune connexion internet",
-
-  "login_err_invalid": "E-mail ou mot de passe incorrect.",
-  "login_err_disabled": "Ce compte est désactivé. Contactez l'administrateur de votre espace de travail.",
+  "login_err_invalid": "E-mail ou mot de passe incorrect",
+  "login_err_disabled": "Votre compte est désactivé. Contactez l'administrateur de l'espace de travail",
   "login_err_suspended": "L'abonnement de l'espace de travail est suspendu.",
   "login_manage_subscription": "Gérer l'abonnement",
-  "login_err_locked": "Trop de tentatives. Réessayez dans {time}.",
-  "@login_err_locked": {"placeholders": {"time": {"type": "String"}}},
+  "login_err_locked": "Trop de tentatives. Réessayez dans {time}",
+  "@login_err_locked": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "login_err_network": "Connexion impossible. Vérifiez votre connexion internet et réessayez.",
-  "login_err_server": "Un problème est survenu de notre côté. Réessayez dans quelques instants.",
+  "login_err_server": "Une erreur s'est produite, réessayez",
   "login_retry": "Réessayer",
-
   "login_val_identifier_required": "Saisissez votre e-mail ou téléphone",
   "login_val_email_invalid": "Format d'e-mail invalide",
   "login_val_phone_invalid": "Numéro de téléphone invalide",
   "login_val_password_required": "Saisissez votre mot de passe",
   "login_val_password_short": "Au moins 8 caractères",
-
   "login_bio_sheet_title": "Connectez-vous plus vite la prochaine fois",
   "login_bio_sheet_body": "Utilisez Face ID au lieu de votre mot de passe.",
   "login_bio_sheet_body_finger": "Utilisez votre empreinte digitale au lieu de votre mot de passe.",
   "login_bio_sheet_enable": "Activer Face ID",
   "login_bio_sheet_enable_finger": "Activer l'empreinte digitale",
   "login_bio_sheet_later": "Plus tard",
-
   "auth_coming_soon_title": "Bientôt disponible",
   "auth_forgot_placeholder": "La récupération de mot de passe arrivera dans une prochaine mise à jour.",
   "auth_forgot_placeholder_for": "La récupération de mot de passe pour {identifier} arrivera dans une prochaine mise à jour.",
-  "@auth_forgot_placeholder_for": {"placeholders": {"identifier": {"type": "String"}}},
+  "@auth_forgot_placeholder_for": {
+    "placeholders": {
+      "identifier": {
+        "type": "String"
+      }
+    }
+  },
   "auth_2fa_title": "Code de vérification",
   "auth_2fa_placeholder": "La saisie du code de validation en deux étapes arrivera dans une prochaine mise à jour.",
   "auth_workspace_title": "Choisir un espace de travail",
-  "auth_workspace_placeholder": "Votre compte appartient à plusieurs espaces de travail. La sélection arrivera dans une prochaine mise à jour."
+  "auth_workspace_placeholder": "Votre compte appartient à plusieurs espaces de travail. La sélection arrivera dans une prochaine mise à jour.",
+  "login_email": "E-mail",
+  "login_register": "Créer un nouveau compte",
+  "login_lang_title": "Langue",
+  "login_lang_a11y": "Langue : {lang}, modifier",
+  "login_err_email_empty": "Saisissez votre e-mail",
+  "login_err_email_format": "Vérifiez le format de l'e-mail",
+  "login_err_pw_empty": "Saisissez votre mot de passe",
+  "login_err_offline": "Aucune connexion internet",
+  "login_session_expired": "Votre session a expiré, reconnectez-vous"
 }

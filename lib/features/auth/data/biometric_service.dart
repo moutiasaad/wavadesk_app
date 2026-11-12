@@ -34,14 +34,11 @@ class BiometricService {
       return ok ? BiometricResult.success : BiometricResult.cancelled;
     } on LocalAuthException catch (e) {
       return switch (e.code) {
-        LocalAuthExceptionCode.temporaryLockout ||
-        LocalAuthExceptionCode.biometricLockout =>
-          BiometricResult.lockedOut,
+        LocalAuthExceptionCode.temporaryLockout || LocalAuthExceptionCode.biometricLockout => BiometricResult.lockedOut,
         LocalAuthExceptionCode.noBiometricHardware ||
         LocalAuthExceptionCode.noBiometricsEnrolled ||
         LocalAuthExceptionCode.noCredentialsSet ||
-        LocalAuthExceptionCode.biometricHardwareTemporarilyUnavailable =>
-          BiometricResult.unavailable,
+        LocalAuthExceptionCode.biometricHardwareTemporarilyUnavailable => BiometricResult.unavailable,
         _ => BiometricResult.cancelled,
       };
     } catch (_) {

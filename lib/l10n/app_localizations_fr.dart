@@ -1933,11 +1933,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get as_load_error => 'Impossible de charger les coéquipiers';
 
   @override
-  String get login_title => 'Content de vous revoir';
+  String get login_title => 'Connexion';
 
   @override
-  String get login_subtitle =>
-      'Connectez-vous pour suivre les conversations de vos clients, où que vous soyez.';
+  String get login_subtitle => 'Bon retour, connectez-vous pour continuer';
 
   @override
   String get login_identifier_label => 'E-mail ou téléphone';
@@ -1987,11 +1986,11 @@ class AppLocalizationsFr extends AppLocalizations {
   String get login_offline => 'Aucune connexion internet';
 
   @override
-  String get login_err_invalid => 'E-mail ou mot de passe incorrect.';
+  String get login_err_invalid => 'E-mail ou mot de passe incorrect';
 
   @override
   String get login_err_disabled =>
-      'Ce compte est désactivé. Contactez l\'administrateur de votre espace de travail.';
+      'Votre compte est désactivé. Contactez l\'administrateur de l\'espace de travail';
 
   @override
   String get login_err_suspended =>
@@ -2002,7 +2001,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String login_err_locked(String time) {
-    return 'Trop de tentatives. Réessayez dans $time.';
+    return 'Trop de tentatives. Réessayez dans $time';
   }
 
   @override
@@ -2010,8 +2009,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Connexion impossible. Vérifiez votre connexion internet et réessayez.';
 
   @override
-  String get login_err_server =>
-      'Un problème est survenu de notre côté. Réessayez dans quelques instants.';
+  String get login_err_server => 'Une erreur s\'est produite, réessayez';
 
   @override
   String get login_retry => 'Réessayer';
@@ -2078,6 +2076,36 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get auth_workspace_placeholder =>
       'Votre compte appartient à plusieurs espaces de travail. La sélection arrivera dans une prochaine mise à jour.';
+
+  @override
+  String get login_email => 'E-mail';
+
+  @override
+  String get login_register => 'Créer un nouveau compte';
+
+  @override
+  String get login_lang_title => 'Langue';
+
+  @override
+  String login_lang_a11y(String lang) {
+    return 'Langue : $lang, modifier';
+  }
+
+  @override
+  String get login_err_email_empty => 'Saisissez votre e-mail';
+
+  @override
+  String get login_err_email_format => 'Vérifiez le format de l\'e-mail';
+
+  @override
+  String get login_err_pw_empty => 'Saisissez votre mot de passe';
+
+  @override
+  String get login_err_offline => 'Aucune connexion internet';
+
+  @override
+  String get login_session_expired =>
+      'Votre session a expiré, reconnectez-vous';
 
   @override
   String get chat_ai_suggestion => 'Suggestion IA';

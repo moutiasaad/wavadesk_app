@@ -1902,10 +1902,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get as_load_error => 'تعذّر تحميل الزملاء';
 
   @override
-  String get login_title => 'أهلًا بعودتك';
+  String get login_title => 'تسجيل الدخول';
 
   @override
-  String get login_subtitle => 'سجّل دخولك لمتابعة محادثات عملائك من أي مكان.';
+  String get login_subtitle => 'أهلًا بعودتك، سجّل دخولك للمتابعة';
 
   @override
   String get login_identifier_label => 'البريد الإلكتروني أو الجوال';
@@ -1954,11 +1954,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login_offline => 'غير متصل بالإنترنت';
 
   @override
-  String get login_err_invalid => 'البريد أو كلمة المرور غير صحيحة.';
+  String get login_err_invalid => 'البريد الإلكتروني أو كلمة المرور غير صحيحة';
 
   @override
-  String get login_err_disabled =>
-      'تم إيقاف هذا الحساب. تواصل مع مدير مساحة العمل.';
+  String get login_err_disabled => 'تم إيقاف حسابك. تواصل مع مسؤول مساحة العمل';
 
   @override
   String get login_err_suspended => 'اشتراك مساحة العمل متوقف.';
@@ -1968,7 +1967,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String login_err_locked(String time) {
-    return 'محاولات كثيرة. حاول بعد $time.';
+    return 'محاولات كثيرة. حاول مجددًا بعد $time';
   }
 
   @override
@@ -1976,7 +1975,7 @@ class AppLocalizationsAr extends AppLocalizations {
       'تعذّر الاتصال. تحقّق من الإنترنت وحاول مجددًا.';
 
   @override
-  String get login_err_server => 'حدث خطأ من جهتنا. حاول مجددًا بعد قليل.';
+  String get login_err_server => 'حدث خطأ، حاول مجددًا';
 
   @override
   String get login_retry => 'إعادة المحاولة';
@@ -2041,6 +2040,35 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get auth_workspace_placeholder =>
       'حسابك مرتبط بأكثر من مساحة عمل. اختيار المساحة سيتوفر في تحديث قادم.';
+
+  @override
+  String get login_email => 'البريد الإلكتروني';
+
+  @override
+  String get login_register => 'إنشاء حساب جديد';
+
+  @override
+  String get login_lang_title => 'اللغة';
+
+  @override
+  String login_lang_a11y(String lang) {
+    return 'اللغة: $lang، تغيير';
+  }
+
+  @override
+  String get login_err_email_empty => 'أدخل بريدك الإلكتروني';
+
+  @override
+  String get login_err_email_format => 'تحقق من صيغة البريد الإلكتروني';
+
+  @override
+  String get login_err_pw_empty => 'أدخل كلمة المرور';
+
+  @override
+  String get login_err_offline => 'لا يوجد اتصال بالإنترنت';
+
+  @override
+  String get login_session_expired => 'انتهت جلستك، سجّل الدخول مجددًا';
 
   @override
   String get chat_ai_suggestion => 'اقتراح الذكاء الاصطناعي';

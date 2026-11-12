@@ -14,7 +14,7 @@ import 'auth_api.dart';
 /// §7 Storage). Tokens and passwords are never logged.
 class AuthRepository implements WdSessionStore {
   AuthRepository({required this.api, FlutterSecureStorage? storage})
-      : _storage = storage ?? const FlutterSecureStorage();
+    : _storage = storage ?? const FlutterSecureStorage();
 
   final AuthApi api;
   final FlutterSecureStorage _storage;
@@ -192,7 +192,17 @@ class AuthRepository implements WdSessionStore {
     _signingSecret = null;
     biometricEnabled = false;
     await Future.wait([
-      for (final k in [_kAccess, _kRefresh, _kExpires, _kUser, _kWorkspace, _kBiometricEnabled, _kSigning, _kSessionId, _kPermissions])
+      for (final k in [
+        _kAccess,
+        _kRefresh,
+        _kExpires,
+        _kUser,
+        _kWorkspace,
+        _kBiometricEnabled,
+        _kSigning,
+        _kSessionId,
+        _kPermissions,
+      ])
         _storage.delete(key: k),
     ]);
   }

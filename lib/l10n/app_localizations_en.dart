@@ -1903,11 +1903,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get as_load_error => 'Couldn\'t load teammates';
 
   @override
-  String get login_title => 'Welcome back';
+  String get login_title => 'Sign in';
 
   @override
-  String get login_subtitle =>
-      'Sign in to follow your customer conversations from anywhere.';
+  String get login_subtitle => 'Welcome back, sign in to continue';
 
   @override
   String get login_identifier_label => 'Email or phone';
@@ -1956,11 +1955,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login_offline => 'No internet connection';
 
   @override
-  String get login_err_invalid => 'Incorrect email or password.';
+  String get login_err_invalid => 'Incorrect email or password';
 
   @override
   String get login_err_disabled =>
-      'This account is disabled. Contact your workspace admin.';
+      'Your account is disabled. Contact your workspace admin';
 
   @override
   String get login_err_suspended => 'Workspace subscription is suspended.';
@@ -1970,7 +1969,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String login_err_locked(String time) {
-    return 'Too many attempts. Try again in $time.';
+    return 'Too many attempts. Try again in $time';
   }
 
   @override
@@ -1978,8 +1977,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Couldn\'t connect. Check your internet and try again.';
 
   @override
-  String get login_err_server =>
-      'Something went wrong on our side. Try again shortly.';
+  String get login_err_server => 'Something went wrong, try again';
 
   @override
   String get login_retry => 'Retry';
@@ -2043,6 +2041,35 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get auth_workspace_placeholder =>
       'Your account belongs to more than one workspace. Picking one is coming in a future update.';
+
+  @override
+  String get login_email => 'Email';
+
+  @override
+  String get login_register => 'Create a new account';
+
+  @override
+  String get login_lang_title => 'Language';
+
+  @override
+  String login_lang_a11y(String lang) {
+    return 'Language: $lang, change';
+  }
+
+  @override
+  String get login_err_email_empty => 'Enter your email';
+
+  @override
+  String get login_err_email_format => 'Check the email format';
+
+  @override
+  String get login_err_pw_empty => 'Enter your password';
+
+  @override
+  String get login_err_offline => 'No internet connection';
+
+  @override
+  String get login_session_expired => 'Your session expired, sign in again';
 
   @override
   String get chat_ai_suggestion => 'AI suggestion';

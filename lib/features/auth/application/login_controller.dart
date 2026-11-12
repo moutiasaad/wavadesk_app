@@ -30,8 +30,7 @@ class LoginNextRoute extends LoginNext {
   final LoginNextStep step;
 }
 
-final loginControllerProvider =
-    NotifierProvider.autoDispose<LoginController, LoginState>(LoginController.new);
+final loginControllerProvider = NotifierProvider.autoDispose<LoginController, LoginState>(LoginController.new);
 
 class LoginController extends AutoDisposeNotifier<LoginState> {
   Timer? _lockTicker;
@@ -48,13 +47,28 @@ class LoginController extends AutoDisposeNotifier<LoginState> {
 
   String get _locale => ref.read(settingsProvider).locale.languageCode;
 
-  /// Validates on submit only (§5), calls the API, and maps failures to the
-  /// banner states. Returns null when the screen should stay put.
+  /// Login v2 §5.1: email only (the server rejects phone numbers), trimmed
+  /// and lower-cased; the password just has to be filled in.
+  static IdentifierError? emailError(String raw) {
+    final v = raw.trim();
+    if (v.isEmpty) return IdentifierError.required;
+    final parsed = Identifier.parse(v.toLowerCase());
+    return parsed.identifier?.type == IdentifierType.email ? null : IdentifierError.invalidEmail;
+  }
+
+  static PasswordError? passwordError(String password) => password.isEmpty ? PasswordError.required : null;
+
+  /// Validates on submit (then live, see [onIdentifierEdited]), calls the API,
+  /// and maps failures to the banner states. Returns null when the screen
+  /// should stay put.
   Future<LoginNext?> submit(String identifierRaw, String password) async {
     if (state.submitting || state.cooldown || state.locked) return null;
 
-    final parsed = Identifier.parse(identifierRaw);
-    final pwError = validatePassword(password);
+    final emailErr = emailError(identifierRaw);
+    final parsed = emailErr == null
+        ? Identifier.parse(identifierRaw.trim().toLowerCase())
+        : (identifier: null, error: emailErr);
+    final pwError = passwordError(password);
     if (parsed.error != null || pwError != null) {
       // Fresh state: drops any banner, keeps the shake counter and cooldown.
       state = LoginState(
@@ -69,12 +83,7 @@ class LoginController extends AutoDisposeNotifier<LoginState> {
 
     Analytics.log('login_submit', {'identifier_type': identifier.type.name});
     final started = clock.now();
-    state = state.copyWith(
-      status: LoginStatus.submitting,
-      clearError: true,
-      clearFieldErrors: true,
-      cooldown: true,
-    );
+    state = state.copyWith(status: LoginStatus.submitting, clearError: true, clearFieldErrors: true, cooldown: true);
     _cooldown?.cancel();
     _cooldown = Timer(const Duration(seconds: 1), () => state = state.copyWith(cooldown: false));
 
@@ -138,22 +147,27 @@ class LoginController extends AutoDisposeNotifier<LoginState> {
     });
   }
 
-  /// Any edit hides the banner (§4.12) — except while locked, where the
-  /// countdown must stay visible — and clears that field's error.
-  void onIdentifierEdited() {
+  /// Any edit hides the banner (§5.3) — except while locked, where the
+  /// countdown must stay visible. A field error shown after a submit is
+  /// re-checked live and clears once the value is valid (§5.1).
+  void onIdentifierEdited(String value) {
+    final err = state.identifierError == null ? null : emailError(value);
     if (state.identifierError != null || (state.showBanner && !state.locked)) {
       state = state.copyWith(
-        clearIdentifierError: true,
+        identifierError: err,
+        clearIdentifierError: err == null,
         clearError: !state.locked,
         status: state.locked ? null : LoginStatus.idle,
       );
     }
   }
 
-  void onPasswordEdited() {
+  void onPasswordEdited(String value) {
+    final err = state.passwordError == null ? null : passwordError(value);
     if (state.passwordError != null || (state.showBanner && !state.locked)) {
       state = state.copyWith(
-        clearPasswordError: true,
+        passwordError: err,
+        clearPasswordError: err == null,
         clearError: !state.locked,
         status: state.locked ? null : LoginStatus.idle,
       );

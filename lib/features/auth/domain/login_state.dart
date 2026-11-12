@@ -4,14 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'identifier.dart';
 
 /// Server / transport failures shown in the ErrorBanner (Login spec §7).
-enum LoginErrorCode {
-  invalidCredentials,
-  accountDisabled,
-  workspaceSuspended,
-  tooManyAttempts,
-  server,
-  network,
-}
+enum LoginErrorCode { invalidCredentials, accountDisabled, workspaceSuspended, tooManyAttempts, server, network }
 
 enum LoginStatus { idle, submitting, error, success }
 
@@ -62,17 +55,13 @@ class LoginState {
     bool clearPasswordError = false,
     bool? cooldown,
     int? errorSeq,
-  }) =>
-      LoginState(
-        status: status ?? this.status,
-        errorCode: clearError ? null : (errorCode ?? this.errorCode),
-        lockedUntil: clearLock ? null : (lockedUntil ?? this.lockedUntil),
-        identifierError: clearFieldErrors || clearIdentifierError
-            ? null
-            : (identifierError ?? this.identifierError),
-        passwordError:
-            clearFieldErrors || clearPasswordError ? null : (passwordError ?? this.passwordError),
-        cooldown: cooldown ?? this.cooldown,
-        errorSeq: errorSeq ?? this.errorSeq,
-      );
+  }) => LoginState(
+    status: status ?? this.status,
+    errorCode: clearError ? null : (errorCode ?? this.errorCode),
+    lockedUntil: clearLock ? null : (lockedUntil ?? this.lockedUntil),
+    identifierError: clearFieldErrors || clearIdentifierError ? null : (identifierError ?? this.identifierError),
+    passwordError: clearFieldErrors || clearPasswordError ? null : (passwordError ?? this.passwordError),
+    cooldown: cooldown ?? this.cooldown,
+    errorSeq: errorSeq ?? this.errorSeq,
+  );
 }

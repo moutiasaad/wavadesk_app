@@ -3487,13 +3487,13 @@ abstract class AppLocalizations {
   /// No description provided for @login_title.
   ///
   /// In ar, this message translates to:
-  /// **'أهلًا بعودتك'**
+  /// **'تسجيل الدخول'**
   String get login_title;
 
   /// No description provided for @login_subtitle.
   ///
   /// In ar, this message translates to:
-  /// **'سجّل دخولك لمتابعة محادثات عملائك من أي مكان.'**
+  /// **'أهلًا بعودتك، سجّل دخولك للمتابعة'**
   String get login_subtitle;
 
   /// No description provided for @login_identifier_label.
@@ -3589,13 +3589,13 @@ abstract class AppLocalizations {
   /// No description provided for @login_err_invalid.
   ///
   /// In ar, this message translates to:
-  /// **'البريد أو كلمة المرور غير صحيحة.'**
+  /// **'البريد الإلكتروني أو كلمة المرور غير صحيحة'**
   String get login_err_invalid;
 
   /// No description provided for @login_err_disabled.
   ///
   /// In ar, this message translates to:
-  /// **'تم إيقاف هذا الحساب. تواصل مع مدير مساحة العمل.'**
+  /// **'تم إيقاف حسابك. تواصل مع مسؤول مساحة العمل'**
   String get login_err_disabled;
 
   /// No description provided for @login_err_suspended.
@@ -3613,7 +3613,7 @@ abstract class AppLocalizations {
   /// No description provided for @login_err_locked.
   ///
   /// In ar, this message translates to:
-  /// **'محاولات كثيرة. حاول بعد {time}.'**
+  /// **'محاولات كثيرة. حاول مجددًا بعد {time}'**
   String login_err_locked(String time);
 
   /// No description provided for @login_err_network.
@@ -3625,7 +3625,7 @@ abstract class AppLocalizations {
   /// No description provided for @login_err_server.
   ///
   /// In ar, this message translates to:
-  /// **'حدث خطأ من جهتنا. حاول مجددًا بعد قليل.'**
+  /// **'حدث خطأ، حاول مجددًا'**
   String get login_err_server;
 
   /// No description provided for @login_retry.
@@ -3741,6 +3741,60 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'حسابك مرتبط بأكثر من مساحة عمل. اختيار المساحة سيتوفر في تحديث قادم.'**
   String get auth_workspace_placeholder;
+
+  /// No description provided for @login_email.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
+  String get login_email;
+
+  /// No description provided for @login_register.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء حساب جديد'**
+  String get login_register;
+
+  /// No description provided for @login_lang_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'اللغة'**
+  String get login_lang_title;
+
+  /// No description provided for @login_lang_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'اللغة: {lang}، تغيير'**
+  String login_lang_a11y(String lang);
+
+  /// No description provided for @login_err_email_empty.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل بريدك الإلكتروني'**
+  String get login_err_email_empty;
+
+  /// No description provided for @login_err_email_format.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقق من صيغة البريد الإلكتروني'**
+  String get login_err_email_format;
+
+  /// No description provided for @login_err_pw_empty.
+  ///
+  /// In ar, this message translates to:
+  /// **'أدخل كلمة المرور'**
+  String get login_err_pw_empty;
+
+  /// No description provided for @login_err_offline.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا يوجد اتصال بالإنترنت'**
+  String get login_err_offline;
+
+  /// No description provided for @login_session_expired.
+  ///
+  /// In ar, this message translates to:
+  /// **'انتهت جلستك، سجّل الدخول مجددًا'**
+  String get login_session_expired;
 
   /// No description provided for @chat_ai_suggestion.
   ///

@@ -1,6 +1,6 @@
 {
-  "login_title": "أهلًا بعودتك",
-  "login_subtitle": "سجّل دخولك لمتابعة محادثات عملائك من أي مكان.",
+  "login_title": "تسجيل الدخول",
+  "login_subtitle": "أهلًا بعودتك، سجّل دخولك للمتابعة",
   "login_identifier_label": "البريد الإلكتروني أو الجوال",
   "login_identifier_hint": "name@company.com",
   "login_password_label": "كلمة المرور",
@@ -16,36 +16,60 @@
   "login_no_account": "ليس لديك حساب؟",
   "login_start_trial": "ابدأ تجربة 7 أيام مجانًا",
   "login_offline": "غير متصل بالإنترنت",
-
-  "login_err_invalid": "البريد أو كلمة المرور غير صحيحة.",
-  "login_err_disabled": "تم إيقاف هذا الحساب. تواصل مع مدير مساحة العمل.",
+  "login_err_invalid": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+  "login_err_disabled": "تم إيقاف حسابك. تواصل مع مسؤول مساحة العمل",
   "login_err_suspended": "اشتراك مساحة العمل متوقف.",
   "login_manage_subscription": "إدارة الاشتراك",
-  "login_err_locked": "محاولات كثيرة. حاول بعد {time}.",
-  "@login_err_locked": {"placeholders": {"time": {"type": "String"}}},
+  "login_err_locked": "محاولات كثيرة. حاول مجددًا بعد {time}",
+  "@login_err_locked": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
   "login_err_network": "تعذّر الاتصال. تحقّق من الإنترنت وحاول مجددًا.",
-  "login_err_server": "حدث خطأ من جهتنا. حاول مجددًا بعد قليل.",
+  "login_err_server": "حدث خطأ، حاول مجددًا",
   "login_retry": "إعادة المحاولة",
-
   "login_val_identifier_required": "أدخل بريدك الإلكتروني أو رقم جوالك",
   "login_val_email_invalid": "صيغة البريد غير صحيحة",
   "login_val_phone_invalid": "رقم الجوال غير صحيح",
   "login_val_password_required": "أدخل كلمة المرور",
   "login_val_password_short": "كلمة المرور 8 أحرف على الأقل",
-
   "login_bio_sheet_title": "سجّل دخولك أسرع في المرة القادمة",
   "login_bio_sheet_body": "استخدم بصمة الوجه بدل كلمة المرور.",
   "login_bio_sheet_body_finger": "استخدم بصمة الإصبع بدل كلمة المرور.",
   "login_bio_sheet_enable": "تفعيل بصمة الوجه",
   "login_bio_sheet_enable_finger": "تفعيل البصمة",
   "login_bio_sheet_later": "ليس الآن",
-
   "auth_coming_soon_title": "قريبًا",
   "auth_forgot_placeholder": "استعادة كلمة المرور ستتوفر في تحديث قادم.",
   "auth_forgot_placeholder_for": "استعادة كلمة المرور لـ {identifier} ستتوفر في تحديث قادم.",
-  "@auth_forgot_placeholder_for": {"placeholders": {"identifier": {"type": "String"}}},
+  "@auth_forgot_placeholder_for": {
+    "placeholders": {
+      "identifier": {
+        "type": "String"
+      }
+    }
+  },
   "auth_2fa_title": "رمز التحقق",
   "auth_2fa_placeholder": "إدخال رمز التحقق الثنائي سيتوفر في تحديث قادم.",
   "auth_workspace_title": "اختر مساحة العمل",
-  "auth_workspace_placeholder": "حسابك مرتبط بأكثر من مساحة عمل. اختيار المساحة سيتوفر في تحديث قادم."
+  "auth_workspace_placeholder": "حسابك مرتبط بأكثر من مساحة عمل. اختيار المساحة سيتوفر في تحديث قادم.",
+  "login_email": "البريد الإلكتروني",
+  "login_register": "إنشاء حساب جديد",
+  "login_lang_title": "اللغة",
+  "login_lang_a11y": "اللغة: {lang}، تغيير",
+  "@login_lang_a11y": {
+    "placeholders": {
+      "lang": {
+        "type": "String"
+      }
+    }
+  },
+  "login_err_email_empty": "أدخل بريدك الإلكتروني",
+  "login_err_email_format": "تحقق من صيغة البريد الإلكتروني",
+  "login_err_pw_empty": "أدخل كلمة المرور",
+  "login_err_offline": "لا يوجد اتصال بالإنترنت",
+  "login_session_expired": "انتهت جلستك، سجّل الدخول مجددًا"
 }

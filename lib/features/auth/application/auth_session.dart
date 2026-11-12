@@ -9,9 +9,15 @@ import '../data/biometric_service.dart';
 
 /// Overridden in `main()` with a repository whose [AuthRepository.load] has
 /// completed, so routing can decide synchronously on the first frame.
-final authRepositoryProvider = Provider<AuthRepository>((ref) => throw UnimplementedError('authRepositoryProvider must be overridden'));
+final authRepositoryProvider = Provider<AuthRepository>(
+  (ref) => throw UnimplementedError('authRepositoryProvider must be overridden'),
+);
 
 final biometricServiceProvider = Provider<BiometricService>((ref) => BiometricService());
+
+/// Set when the server ended the session (not a manual logout): the login
+/// screen shows "انتهت جلستك" once (Login v2 §5.3). Cleared on next sign-in.
+final sessionExpiredProvider = StateProvider<bool>((ref) => false);
 
 /// True while a valid session exists. Drives the router's login redirect.
 final authProvider = NotifierProvider<AuthController, bool>(AuthController.new);
@@ -22,7 +28,10 @@ class AuthController extends Notifier<bool> {
   @override
   bool build() {
     // The server ended the session (refresh token reused, device revoked…).
-    final sub = ref.read(wdApiProvider)?.sessionEnded.listen((_) => signOut());
+    final sub = ref.read(wdApiProvider)?.sessionEnded.listen((_) {
+      ref.read(sessionExpiredProvider.notifier).state = true;
+      signOut();
+    });
     ref.onDispose(() => sub?.cancel());
     final repo = ref.read(authRepositoryProvider);
     // An expired access token is fine while the refresh token is still valid:
@@ -35,6 +44,7 @@ class AuthController extends Notifier<bool> {
   /// the app into the signed-in state; the router then replaces the stack.
   Future<void> establish(Session session, {String? identifier}) async {
     await _repo.saveSession(session, identifier: identifier);
+    ref.read(sessionExpiredProvider.notifier).state = false;
     state = true;
   }
 
