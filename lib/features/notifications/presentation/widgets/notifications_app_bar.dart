@@ -49,18 +49,17 @@ class NotificationsAppBar extends StatelessWidget {
           Expanded(
             child: Semantics(
               header: true,
-              child: Text(l.ntf_title, style: t.h4.copyWith(fontWeight: FontWeight.w800, color: Colors.white), maxLines: 1),
+              child: Text(l.ntf_title, style: t.h5.copyWith(fontWeight: FontWeight.w800, color: c.textPrimary), maxLines: 1),
             ),
           ),
-          // Light pill on the brand header.
           AppBarTextAction(label: l.ntf_read_all, onPressed: canReadAll ? onReadAll : null),
           PopupMenuButton<String>(
             tooltip: l.ntf_more,
             icon: Badge(
               isLabelVisible: filter != NotificationFilter.all,
               smallSize: 7,
-              backgroundColor: Colors.white,
-              child: const AppIcon(AppIcons.filter, dp: 16, color: Colors.white),
+              backgroundColor: c.primary,
+              child: AppIcon(AppIcons.filter, dp: 16, color: c.textPrimary),
             ),
             color: c.surfaceElevated,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),

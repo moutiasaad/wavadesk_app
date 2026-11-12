@@ -73,13 +73,13 @@ class _InConversationSearchBarState extends ConsumerState<InConversationSearchBa
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm, vertical: 2),
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.16),
+                    color: context.colors.surfaceVariant,
                     borderRadius: BorderRadius.circular(AppRadius.full),
                   ),
                   child: Text(
                     l.search_in_conv_count(i, n),
                     style: t.caption.copyWith(
-                      color: Colors.white.withValues(alpha: n == 0 ? 0.7 : 1),
+                      color: n == 0 ? context.colors.textTertiary : context.colors.textPrimary,
                       fontWeight: FontWeight.w700,
                       fontFeatures: const [FontFeature.tabularFigures()],
                     ),

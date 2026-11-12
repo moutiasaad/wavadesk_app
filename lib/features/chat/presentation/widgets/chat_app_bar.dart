@@ -52,7 +52,7 @@ class ChatAppBar extends ConsumerWidget {
       if (conv.customerTyping) {
         subline = Text(
           l.chat_typing,
-          style: t.caption.copyWith(color: Colors.white, fontWeight: FontWeight.w700),
+          style: t.caption.copyWith(color: c.primary, fontWeight: FontWeight.w700),
           maxLines: 1,
         );
       } else {
@@ -72,7 +72,7 @@ class ChatAppBar extends ConsumerWidget {
                 decoration: BoxDecoration(
                   color: c.presenceOnline,
                   shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 1),
+                  border: Border.all(color: c.background, width: 1),
                 ),
               ),
               const SizedBox(width: 5),
@@ -80,7 +80,7 @@ class ChatAppBar extends ConsumerWidget {
             Flexible(
               child: Text(
                 presence == null ? detail.channel.label(l) : '${detail.channel.label(l)} · $presence',
-                style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
+                style: t.caption.copyWith(color: c.textSecondary),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -138,7 +138,7 @@ class ChatAppBar extends ConsumerWidget {
                             children: [
                               Text(
                                 contact.name,
-                                style: t.h5.copyWith(color: Colors.white),
+                                style: t.h5.copyWith(color: c.textPrimary),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),

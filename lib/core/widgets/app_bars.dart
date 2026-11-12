@@ -5,10 +5,10 @@ import '../theme/app_theme.dart';
 import '../utils/l10n.dart';
 import 'brand_surface.dart';
 
-/// The app's header surface (every screen's top bar): teal brand gradient,
-/// rounded bottom corners, soft shadow (stronger when [elevated]), light
-/// status-bar icons. [child] sits below the status bar on a [BrandSurface]
-/// with white icons / text, so shared buttons and switches turn light.
+/// The app's header surface (every screen's top bar), like the design:
+/// the page color, dark bold title, a hairline under it once content
+/// scrolls beneath ([elevated]), dark status-bar icons. [child] sits on a
+/// [BrandSurface] so header icon buttons share one glyph size.
 class BrandHeader extends StatelessWidget {
   const BrandHeader({
     super.key,
@@ -27,30 +27,21 @@ class BrandHeader extends StatelessWidget {
   /// Pad for the status bar (false inside a sliver that already does).
   final bool safeTop;
 
-  static const radius = Radius.circular(24);
-
-  /// Light / dark gradient stops.
-  static List<Color> colorsOf(BuildContext context) => context.colors.isDark
-      ? const [Color(0xFF0B5552), Color(0xFF0E6E69)]
-      : const [Color(0xFF0F7E7A), Color(0xFF169C94)];
+  /// Header fill (both stops equal): the page color. Avatar rings and the
+  /// status-bar bleed use it to blend in.
+  static List<Color> colorsOf(BuildContext context) => [context.colors.background, context.colors.background];
 
   @override
   Widget build(BuildContext context) {
-    final colors = colorsOf(context);
+    final c = context.colors;
+    final overlay = c.isDark ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent),
+      value: overlay.copyWith(statusBarColor: Colors.transparent),
       child: AnimatedContainer(
         duration: AppMotion.fast,
         decoration: BoxDecoration(
-          gradient: LinearGradient(begin: AlignmentDirectional.topStart, end: AlignmentDirectional.bottomEnd, colors: colors),
-          borderRadius: const BorderRadius.only(bottomLeft: radius, bottomRight: radius),
-          boxShadow: [
-            BoxShadow(
-              color: colors.first.withValues(alpha: elevated ? 0.35 : 0.16),
-              blurRadius: elevated ? 18 : 10,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          color: c.background,
+          border: Border(bottom: BorderSide(color: elevated ? c.divider : c.background)),
         ),
         child: SafeArea(
           top: safeTop,
@@ -59,8 +50,8 @@ class BrandHeader extends StatelessWidget {
             padding: padding,
             child: BrandSurface(
               child: IconTheme.merge(
-                data: const IconThemeData(color: Colors.white),
-                child: DefaultTextStyle.merge(style: const TextStyle(color: Colors.white), child: child),
+                data: IconThemeData(color: c.textPrimary),
+                child: DefaultTextStyle.merge(style: TextStyle(color: c.textPrimary), child: child),
               ),
             ),
           ),
@@ -71,8 +62,8 @@ class BrandHeader extends StatelessWidget {
 }
 
 /// For a [BrandHeader] placed inside a screen's top SafeArea (chat,
-/// search, notifications, editor): paints the brand gradient into the
-/// status-bar strip above it, which would otherwise keep the page color.
+/// search, notifications, editor): paints the header color into the
+/// status-bar strip above it.
 /// No-op without a status bar or outside a SafeArea.
 class BrandStatusBarBleed extends StatelessWidget {
   const BrandStatusBarBleed({super.key, required this.child});
@@ -141,7 +132,7 @@ class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {
                   header: true,
                   child: Text(
                     title,
-                    style: t.h2.copyWith(color: Colors.white),
+                    style: t.h3.copyWith(color: context.colors.textPrimary, fontWeight: FontWeight.w800),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -149,7 +140,7 @@ class AppBarLarge extends StatelessWidget implements PreferredSizeWidget {
                 if (subtitle != null)
                   Text(
                     subtitle!,
-                    style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
+                    style: t.caption.copyWith(color: context.colors.textSecondary),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -210,7 +201,7 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
           header: true,
           child: Text(
             title,
-            style: t.h4.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
+            style: t.h5.copyWith(color: context.colors.textPrimary, fontWeight: FontWeight.w800),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -218,7 +209,7 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
         if (subtitle != null)
           Text(
             subtitle!,
-            style: t.caption.copyWith(color: Colors.white.withValues(alpha: 0.78)),
+            style: t.caption.copyWith(color: context.colors.textSecondary),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -262,7 +253,7 @@ class AppBarStandard extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-/// 40 dp round back button, white on a translucent white disc.
+/// 34 dp round back button: light disc, hairline border, dark chevron.
 class _GlassBackButton extends StatelessWidget {
   const _GlassBackButton({required this.onTap});
 
@@ -270,15 +261,16 @@ class _GlassBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = context.colors;
     return Material(
-      color: Colors.white.withValues(alpha: 0.16),
-      shape: CircleBorder(side: BorderSide(color: Colors.white.withValues(alpha: 0.22))),
+      color: c.surface,
+      shape: CircleBorder(side: BorderSide(color: c.border)),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: const SizedBox.square(
-          dimension: 40,
-          child: AppIcon(AppIcons.back, dp: 16, color: Colors.white), // = AppIconButton.headerIconSize
+        child: SizedBox.square(
+          dimension: 34,
+          child: AppIcon(AppIcons.back, dp: 16, color: c.textPrimary), // = AppIconButton.headerIconSize
         ),
       ),
     );
@@ -295,22 +287,17 @@ class AppBarTextAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (BrandSurface.of(context)) {
-      // On the brand header: a light pill.
-      return Padding(
-        padding: const EdgeInsetsDirectional.only(start: AppSpacing.xs),
-        child: TextButton(
-          style: TextButton.styleFrom(
-            foregroundColor: Colors.white,
-            disabledForegroundColor: Colors.white.withValues(alpha: 0.5),
-            backgroundColor: Colors.white.withValues(alpha: onPressed == null ? 0.08 : 0.18),
-            textStyle: context.text.buttonMedium,
-            shape: const StadiumBorder(),
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-            minimumSize: const Size(48, 38),
-          ),
-          onPressed: onPressed,
-          child: Text(label),
+      // In the header: small teal text, no pill (design "قراءة الكل").
+      return TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: context.colors.primary,
+          disabledForegroundColor: context.colors.textTertiary,
+          textStyle: context.text.buttonSmall,
+          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+          minimumSize: const Size(48, 40),
         ),
+        onPressed: onPressed,
+        child: Text(label),
       );
     }
     return TextButton(

@@ -76,7 +76,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
                     liveRegion: true,
                     child: Text(
                       l.inbox_selected(selectedCount),
-                      style: t.h4.copyWith(color: Colors.white),
+                      style: t.h4.copyWith(color: context.colors.textPrimary),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -92,7 +92,7 @@ class ConversationsAppBarDelegate extends SliverPersistentHeaderDelegate {
     // 0 = expanded, 1 = collapsed.
     final range = maxExtent - minExtent;
     final p = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
-    final titleStyle = TextStyle.lerp(t.h1, t.h4, p)!.copyWith(color: Colors.white, fontWeight: FontWeight.w800);
+    final titleStyle = TextStyle.lerp(t.h1, t.h4, p)!.copyWith(color: context.colors.textPrimary, fontWeight: FontWeight.w800);
 
     return SizedBox.expand(
       child: BrandHeader(

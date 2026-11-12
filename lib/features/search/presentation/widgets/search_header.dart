@@ -79,7 +79,7 @@ class _SearchHeaderState extends State<SearchHeader> {
           color: c.surface,
           borderRadius: BorderRadius.circular(AppRadius.lg),
           border: Border.all(color: focused ? c.primary : Colors.transparent, width: 1.5),
-          boxShadow: focused ? [BoxShadow(color: Colors.white.withValues(alpha: 0.35), spreadRadius: 3)] : null,
+          boxShadow: focused ? [BoxShadow(color: c.primary.withValues(alpha: 0.15), spreadRadius: 3)] : null,
         ),
         padding: const EdgeInsetsDirectional.only(start: 12, end: 6),
         child: Row(
@@ -136,7 +136,7 @@ class _SearchHeaderState extends State<SearchHeader> {
             TextButton(
               onPressed: widget.onCancel,
               style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
+                foregroundColor: context.colors.primary,
                 textStyle: t.buttonMedium,
                 minimumSize: const Size(48, 48),
                 padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),

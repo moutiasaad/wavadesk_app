@@ -44,12 +44,11 @@ class AppIconButton extends StatelessWidget {
     final d = size ?? (variant == AppIconButtonVariant.primary ? 44.0 : 40.0);
     final brand = BrandSurface.of(context);
     final (Color bg, Color fg, Border? border) = switch (variant) {
-      AppIconButtonVariant.plain => (Colors.transparent, brand ? Colors.white : c.textPrimary, null),
-      AppIconButtonVariant.filled =>
-        brand ? (Colors.white.withValues(alpha: 0.16), Colors.white, null) : (c.surfaceVariant, c.textPrimary, null),
+      AppIconButtonVariant.plain => (Colors.transparent, c.textPrimary, null),
+      // In the header: the light disc with a hairline, like the back button.
+      AppIconButtonVariant.filled => brand ? (c.surface, c.textPrimary, Border.all(color: c.border)) : (c.surfaceVariant, c.textPrimary, null),
       AppIconButtonVariant.outlined => (c.surface, c.textPrimary, Border.all(color: c.border)),
-      // On the brand header the solid button flips: white disc, teal icon.
-      AppIconButtonVariant.primary => brand ? (Colors.white, c.primary, null) : (c.primary, c.onPrimary, null),
+      AppIconButtonVariant.primary => (c.primary, c.onPrimary, null),
     };
     final hit = d < AppSpacing.minTouch ? AppSpacing.minTouch : d;
 

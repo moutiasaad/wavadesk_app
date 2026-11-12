@@ -54,7 +54,7 @@ class EditorAppBar extends StatelessWidget {
                   header: true,
                   child: Text(
                     title,
-                    style: t.h4.copyWith(color: Colors.white, fontWeight: FontWeight.w800),
+                    style: t.h5.copyWith(color: context.colors.textPrimary, fontWeight: FontWeight.w800),
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

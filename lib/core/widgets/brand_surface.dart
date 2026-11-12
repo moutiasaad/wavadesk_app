@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-/// Marks a subtree drawn on the teal brand header ([AppBarStandard]).
-/// Icon buttons, text actions, switches and spinners inside switch to
-/// light colors so header actions stay readable.
+/// Marks a subtree drawn in the app header ([BrandHeader]).
+/// Header icon buttons use one glyph size and text actions turn into
+/// small teal links.
 class BrandSurface extends InheritedWidget {
   const BrandSurface({super.key, required super.child});
 

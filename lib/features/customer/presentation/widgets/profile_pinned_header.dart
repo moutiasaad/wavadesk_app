@@ -37,7 +37,7 @@ class ProfilePinnedHeader extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Expanded(
-            child: Text(name, style: context.text.h5.copyWith(color: Colors.white), maxLines: 1, overflow: TextOverflow.ellipsis),
+            child: Text(name, style: context.text.h5.copyWith(color: context.colors.textPrimary), maxLines: 1, overflow: TextOverflow.ellipsis),
           ),
           if (onOpenPage != null)
             AppIconButton(

@@ -193,7 +193,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
                     elevated: true,
                     padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
                     child: Center(
-                      child: Text(l.dash_title, style: t.h6.copyWith(fontWeight: FontWeight.w800, color: Colors.white)),
+                      child: Text(l.dash_title, style: t.h6.copyWith(fontWeight: FontWeight.w800, color: context.colors.textPrimary)),
                     ),
                   ),
                 ),

@@ -45,13 +45,13 @@ class DashboardHeader extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(date, style: t.caption.copyWith(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white.withValues(alpha: 0.8))),
+                Text(date, style: t.caption.copyWith(fontSize: 13, fontWeight: FontWeight.w600, color: context.colors.textSecondary)),
                 const SizedBox(height: 2),
                 Semantics(
                   header: true,
                   child: Text(
                     greeting,
-                    style: t.h2.copyWith(fontSize: 24, fontWeight: FontWeight.w800, color: Colors.white),
+                    style: t.h2.copyWith(fontSize: 24, fontWeight: FontWeight.w800, color: context.colors.textPrimary),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -61,9 +61,8 @@ class DashboardHeader extends ConsumerWidget {
                     padding: const EdgeInsets.only(top: 2),
                     child: Text(
                       l.dash_last_updated(updated),
-                      // Light amber reads on the teal header.
                       style: t.caption.copyWith(
-                        color: state.offline ? const Color(0xFFFFE08A) : Colors.white.withValues(alpha: 0.7),
+                        color: state.offline ? context.colors.textWarning : context.colors.textTertiary,
                       ),
                     ),
                   ),

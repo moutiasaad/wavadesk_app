@@ -229,19 +229,16 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
       topInset: MediaQuery.paddingOf(context).top,
       actions: [
         if (perms.canEdit)
-          // White disc with a teal + on the teal header.
           AppIconButton(
             icon: AppIcons.add,
             variant: AppIconButtonVariant.primary,
-            background: Colors.white,
-            iconColor: c.primary,
-            size: 40,
+            size: 36,
             iconSize: 18,
             semanticLabel: l.kb_add_title,
             onPressed: _add,
           ),
         PopupMenuButton<_Overflow>(
-            icon: const AppIcon(AppIcons.more, color: Colors.white),
+            icon: AppIcon(AppIcons.more, dp: 16, color: c.textPrimary),
             tooltip: l.common_more,
             onSelected: _overflow,
             itemBuilder: (_) => [
@@ -424,7 +421,7 @@ class _KbAppBarDelegate extends SliverPersistentHeaderDelegate {
                 header: true,
                 child: Text(
                   title,
-                  style: TextStyle.lerp(t.h1, t.h4, p)!.copyWith(fontWeight: FontWeight.w800, color: Colors.white),
+                  style: TextStyle.lerp(t.h1, t.h4, p)!.copyWith(fontWeight: FontWeight.w800, color: context.colors.textPrimary),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
