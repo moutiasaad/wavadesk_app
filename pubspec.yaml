@@ -53,6 +53,7 @@ flutter:
   assets:
     - assets/brand/
     - assets/config/
+    - assets/icons/
 
   fonts:
     - family: Cairo

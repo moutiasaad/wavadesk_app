@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../theme/app_colors.dart';
+import 'wd_svg_icons.dart';
 
 /// Icon size tokens (Icon Library §2.1).
 enum AppIconSize {
@@ -51,12 +53,22 @@ class AppIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>();
-    final glyph = Icon(
-      icon,
-      size: dp ?? size.dp,
-      color: color ?? colors?.textPrimary ?? IconTheme.of(context).color,
-      semanticLabel: semanticLabel,
-    );
+    final px = dp ?? size.dp;
+    final tint = color ?? colors?.textPrimary ?? IconTheme.of(context).color;
+    final icon = this.icon;
+    if (icon != null && WdSvgIcons.isSvg(icon)) {
+      Widget svg = SvgPicture.asset(
+        WdSvgIcons.assetOf(icon),
+        width: px,
+        height: px,
+        colorFilter: tint == null ? null : ColorFilter.mode(tint, BlendMode.srcIn),
+      );
+      if (WdSvgIcons.flips(icon, Directionality.of(context))) {
+        svg = Transform.flip(flipX: true, child: svg);
+      }
+      return Semantics(label: semanticLabel, excludeSemantics: true, child: svg);
+    }
+    final glyph = Icon(icon, size: px, color: tint, semanticLabel: semanticLabel);
     return semanticLabel == null ? ExcludeSemantics(child: glyph) : glyph;
   }
 }
