@@ -34,6 +34,7 @@ import 'widgets/filters_sheet.dart';
 import 'widgets/inbox_filter_bar.dart';
 import 'widgets/inbox_header.dart';
 import 'widgets/inbox_palette.dart';
+import 'widgets/new_message_sheet.dart';
 import 'widgets/new_messages_pill.dart';
 
 /// صندوق الوارد — Inbox v2: fixed teal header + fixed pill filter bar over
@@ -565,6 +566,16 @@ class _ConversationsScreenState extends ConsumerState<ConversationsScreen> with 
                       left: 0,
                       right: 0,
                       child: LinearProgressIndicator(minHeight: 2, color: InboxPalette.headerStart, backgroundColor: Colors.transparent),
+                    ),
+                  if (!selecting)
+                    PositionedDirectional(
+                      end: AppSpacing.lg,
+                      bottom: bottomInset + AppSpacing.lg,
+                      child: AppFab(
+                        icon: AppIcons.compose,
+                        semanticLabel: l.inbox_new_conversation,
+                        onPressed: () => showNewMessageSheet(context, ref),
+                      ),
                     ),
                   PositionedDirectional(
                     top: AppSpacing.sm,

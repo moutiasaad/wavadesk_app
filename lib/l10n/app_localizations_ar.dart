@@ -3802,7 +3802,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get newmsg_phone_hint => '+966 5x xxx xxxx';
 
   @override
-  String get newmsg_phone_error => 'أدخل رقم جوال صحيح مع رمز الدولة';
+  String get newmsg_phone_error => 'رقم الجوال غير صحيح لهذا البلد';
 
   @override
   String get newmsg_template => 'القالب';
@@ -3812,6 +3812,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get newmsg_send => 'إرسال القالب';
+
+  @override
+  String get newmsg_country => 'الدولة';
+
+  @override
+  String get newmsg_country_search => 'ابحث باسم الدولة أو الرمز';
+
+  @override
+  String get newmsg_country_none => 'لا توجد دولة مطابقة';
+
+  @override
+  String newmsg_country_a11y(String name, String code) {
+    return 'الدولة: $name، $code، تغيير';
+  }
 
   @override
   String get app_name => 'Wavadesk';

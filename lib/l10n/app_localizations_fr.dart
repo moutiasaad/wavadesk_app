@@ -3859,7 +3859,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get newmsg_phone_error =>
-      'Entrez un numéro de mobile valide avec l\'indicatif du pays';
+      'Ce numéro n\'est pas valide pour le pays choisi';
 
   @override
   String get newmsg_template => 'Modèle';
@@ -3869,6 +3869,20 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get newmsg_send => 'Envoyer le modèle';
+
+  @override
+  String get newmsg_country => 'Pays';
+
+  @override
+  String get newmsg_country_search => 'Rechercher un pays ou un indicatif';
+
+  @override
+  String get newmsg_country_none => 'Aucun pays ne correspond';
+
+  @override
+  String newmsg_country_a11y(String name, String code) {
+    return 'Pays : $name, $code, modifier';
+  }
 
   @override
   String get app_name => 'Wavadesk';

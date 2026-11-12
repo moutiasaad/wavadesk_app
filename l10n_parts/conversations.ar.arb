@@ -97,8 +97,22 @@
   "newmsg_name_hint": "اختياري",
   "newmsg_phone": "رقم الجوال",
   "newmsg_phone_hint": "+966 5x xxx xxxx",
-  "newmsg_phone_error": "أدخل رقم جوال صحيح مع رمز الدولة",
+  "newmsg_phone_error": "رقم الجوال غير صحيح لهذا البلد",
   "newmsg_template": "القالب",
   "newmsg_template_error": "اختر قالبًا معتمدًا للإرسال",
-  "newmsg_send": "إرسال القالب"
+  "newmsg_send": "إرسال القالب",
+  "newmsg_country": "الدولة",
+  "newmsg_country_search": "ابحث باسم الدولة أو الرمز",
+  "newmsg_country_none": "لا توجد دولة مطابقة",
+  "newmsg_country_a11y": "الدولة: {name}، {code}، تغيير",
+  "@newmsg_country_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  }
 }

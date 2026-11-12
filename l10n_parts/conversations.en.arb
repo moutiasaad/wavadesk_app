@@ -97,8 +97,22 @@
   "newmsg_name_hint": "Optional",
   "newmsg_phone": "Mobile number",
   "newmsg_phone_hint": "+966 5x xxx xxxx",
-  "newmsg_phone_error": "Enter a valid mobile number with country code",
+  "newmsg_phone_error": "This number isn't valid for the selected country",
   "newmsg_template": "Template",
   "newmsg_template_error": "Choose an approved template to send",
-  "newmsg_send": "Send template"
+  "newmsg_send": "Send template",
+  "newmsg_country": "Country",
+  "newmsg_country_search": "Search by country or code",
+  "newmsg_country_none": "No matching country",
+  "newmsg_country_a11y": "Country: {name}, {code}, change",
+  "@newmsg_country_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  }
 }

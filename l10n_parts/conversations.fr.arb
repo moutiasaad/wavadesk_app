@@ -97,8 +97,22 @@
   "newmsg_name_hint": "Facultatif",
   "newmsg_phone": "Numéro de mobile",
   "newmsg_phone_hint": "+966 5x xxx xxxx",
-  "newmsg_phone_error": "Entrez un numéro de mobile valide avec l'indicatif du pays",
+  "newmsg_phone_error": "Ce numéro n'est pas valide pour le pays choisi",
   "newmsg_template": "Modèle",
   "newmsg_template_error": "Choisissez un modèle approuvé à envoyer",
-  "newmsg_send": "Envoyer le modèle"
+  "newmsg_send": "Envoyer le modèle",
+  "newmsg_country": "Pays",
+  "newmsg_country_search": "Rechercher un pays ou un indicatif",
+  "newmsg_country_none": "Aucun pays ne correspond",
+  "newmsg_country_a11y": "Pays : {name}, {code}, modifier",
+  "@newmsg_country_a11y": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "code": {
+        "type": "String"
+      }
+    }
+  }
 }

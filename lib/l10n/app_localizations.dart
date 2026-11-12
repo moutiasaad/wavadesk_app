@@ -6672,7 +6672,7 @@ abstract class AppLocalizations {
   /// No description provided for @newmsg_phone_error.
   ///
   /// In ar, this message translates to:
-  /// **'أدخل رقم جوال صحيح مع رمز الدولة'**
+  /// **'رقم الجوال غير صحيح لهذا البلد'**
   String get newmsg_phone_error;
 
   /// No description provided for @newmsg_template.
@@ -6692,6 +6692,30 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'إرسال القالب'**
   String get newmsg_send;
+
+  /// No description provided for @newmsg_country.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدولة'**
+  String get newmsg_country;
+
+  /// No description provided for @newmsg_country_search.
+  ///
+  /// In ar, this message translates to:
+  /// **'ابحث باسم الدولة أو الرمز'**
+  String get newmsg_country_search;
+
+  /// No description provided for @newmsg_country_none.
+  ///
+  /// In ar, this message translates to:
+  /// **'لا توجد دولة مطابقة'**
+  String get newmsg_country_none;
+
+  /// No description provided for @newmsg_country_a11y.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدولة: {name}، {code}، تغيير'**
+  String newmsg_country_a11y(String name, String code);
 
   /// No description provided for @app_name.
   ///

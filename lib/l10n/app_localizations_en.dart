@@ -3797,7 +3797,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newmsg_phone_error =>
-      'Enter a valid mobile number with country code';
+      'This number isn\'t valid for the selected country';
 
   @override
   String get newmsg_template => 'Template';
@@ -3807,6 +3807,20 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get newmsg_send => 'Send template';
+
+  @override
+  String get newmsg_country => 'Country';
+
+  @override
+  String get newmsg_country_search => 'Search by country or code';
+
+  @override
+  String get newmsg_country_none => 'No matching country';
+
+  @override
+  String newmsg_country_a11y(String name, String code) {
+    return 'Country: $name, $code, change';
+  }
 
   @override
   String get app_name => 'Wavadesk';
