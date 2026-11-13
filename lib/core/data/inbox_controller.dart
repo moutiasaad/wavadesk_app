@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/models.dart';
 import 'app_controllers.dart' show currentAgentProvider;
 import 'settings_controller.dart';
+import '../../features/auth/application/auth_session.dart';
 
 /// Advanced filters from the Filters sheet (§9.4).
 @immutable
@@ -170,7 +171,10 @@ class InboxController extends Notifier<InboxState> {
 
   @override
   InboxState build() {
-    ref.onDispose(_events.close);
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    // Not closed on dispose: build() runs again on this object after a
+    // sign-in, and screens keep their subscription to [events].
     // Conversations arrive via upsertFromApi.
     return InboxState(conversations: const [], segment: ref.read(settingsProvider).lastSegment, loading: false);
   }

@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/api/wd_api_provider.dart';
 import '../data/ai_agent_api.dart';
 import '../domain/ai_agent_config.dart';
+import '../../auth/application/auth_session.dart';
 
 final aiAgentApiProvider = Provider<AiAgentApi>((ref) => HttpAiAgentApi(ref.watch(wdApiRequiredProvider)));
 
@@ -67,6 +68,10 @@ class AiAgentController extends Notifier<AiAgentState> {
 
   @override
   AiAgentState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    _confirmed = null;
+    _loadedAt = null;
     scheduleMicrotask(load);
     return const AiAgentState(loading: true);
   }

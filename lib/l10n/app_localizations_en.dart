@@ -513,6 +513,117 @@ class AppLocalizationsEn extends AppLocalizations {
   String get team_invite_sent => 'Invite link sent';
 
   @override
+  String get team_add => 'Add';
+
+  @override
+  String get team_add_user => 'Add user';
+
+  @override
+  String get team_add_user_sub => 'A new account in this workspace';
+
+  @override
+  String get team_add_team => 'Create team';
+
+  @override
+  String get team_add_team_sub => 'Group agents to route conversations';
+
+  @override
+  String get team_f_name => 'Name';
+
+  @override
+  String get team_f_email => 'Email';
+
+  @override
+  String get team_f_role => 'Role';
+
+  @override
+  String get team_f_password => 'Temporary password (optional)';
+
+  @override
+  String get team_f_password_short => 'Password';
+
+  @override
+  String get team_f_password_help =>
+      'Leave empty to generate one and email it. The user changes it at first sign-in.';
+
+  @override
+  String get team_f_teams => 'Teams';
+
+  @override
+  String get team_f_team_name => 'Team name';
+
+  @override
+  String get team_f_description => 'Description (optional)';
+
+  @override
+  String get team_f_pool => 'Receives new conversations';
+
+  @override
+  String get team_f_pool_help =>
+      'Unassigned conversations show to this team\'s members.';
+
+  @override
+  String get team_f_members => 'Members';
+
+  @override
+  String get team_create_user_btn => 'Add user';
+
+  @override
+  String get team_create_team_btn => 'Create team';
+
+  @override
+  String team_user_created(String name) {
+    return '$name\'s account was created';
+  }
+
+  @override
+  String get team_user_created_pw =>
+      'Share these sign-in details. The password won\'t be shown again.';
+
+  @override
+  String get team_user_created_emailed => 'They were also emailed to the user.';
+
+  @override
+  String get team_copy_credentials => 'Copy sign-in details';
+
+  @override
+  String get team_copied => 'Copied';
+
+  @override
+  String team_team_created(String name) {
+    return 'Team $name created';
+  }
+
+  @override
+  String get team_err_limit =>
+      'You\'ve reached your plan\'s user limit. Upgrade your plan to add more.';
+
+  @override
+  String get team_err_generic => 'Couldn\'t save. Try again.';
+
+  @override
+  String get team_err_required => 'This field is required';
+
+  @override
+  String team_seats(int used, int max) {
+    return '$used of $max users';
+  }
+
+  @override
+  String team_seats_full(int max) {
+    return 'Your plan\'s limit is reached ($max users)';
+  }
+
+  @override
+  String get team_teams_not_in_plan => 'Teams aren\'t included in your plan';
+
+  @override
+  String get team_limit_title => 'Upgrade your plan';
+
+  @override
+  String get team_upgrade => 'Upgrade plan';
+
+  @override
   String team_section_members(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -2272,7 +2383,49 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login_err_suspended => 'Workspace subscription is suspended.';
 
   @override
+  String get login_err_blocked =>
+      'This workspace has been suspended. Contact Wavadesk support.';
+
+  @override
   String get login_manage_subscription => 'Manage subscription';
+
+  @override
+  String get ws_title_trial => 'Your free trial has ended';
+
+  @override
+  String get ws_title_expired => 'Your subscription has expired';
+
+  @override
+  String get ws_title_inactive => 'Your subscription isn\'t active';
+
+  @override
+  String get ws_title_no_plan => 'No plan selected';
+
+  @override
+  String get ws_title_blocked => 'This workspace is suspended';
+
+  @override
+  String get ws_title_archived => 'This workspace was archived';
+
+  @override
+  String get ws_body_admin =>
+      'Choose a plan on the Wavadesk website to keep working. Your conversations and data are kept.';
+
+  @override
+  String get ws_body_member =>
+      'Ask your workspace admin to choose a plan. Your conversations and data are kept.';
+
+  @override
+  String get ws_body_support => 'Contact Wavadesk support for details.';
+
+  @override
+  String get ws_choose_plan => 'Choose a plan';
+
+  @override
+  String get ws_check_again => 'Check again';
+
+  @override
+  String get ws_still_closed => 'The workspace is still unavailable.';
 
   @override
   String login_err_locked(String time) {
@@ -2437,6 +2590,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chat_attach_quick => 'Quick replies';
+
+  @override
+  String get chat_attach_ai => 'Generate with AI';
+
+  @override
+  String get chat_ai_gen_off =>
+      'The AI agent is turned off for this workspace.';
+
+  @override
+  String get chat_ai_gen_wrong_mode =>
+      'Generating replies is only available when the AI mode is “Suggestion”.';
 
   @override
   String get chat_attach_template => 'WhatsApp template';
@@ -5745,6 +5909,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kb_tags => 'Tags';
+
+  @override
+  String get kb_type => 'Type';
+
+  @override
+  String get kb_type_all => 'All types';
 
   @override
   String kb_used_n(int n) {

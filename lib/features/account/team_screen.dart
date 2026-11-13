@@ -3,10 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/data/data.dart';
 import '../../core/data/team_directory.dart';
+import '../../core/models/models.dart';
 import '../../core/state/load_state.dart';
 import '../../core/theme/app_theme.dart';
 import '../../core/utils/l10n.dart';
 import '../../core/widgets/widgets.dart';
+import 'team_create_sheets.dart';
 
 class TeamScreen extends ConsumerStatefulWidget {
   const TeamScreen({super.key});
@@ -49,11 +51,13 @@ class _TeamScreenState extends ConsumerState<TeamScreen> {
           scrolledUnder: under,
           background: c.backgroundMuted,
           actions: [
-            AppIconButton(
-              icon: AppIcons.assign,
-              semanticLabel: l.team_invite,
-              onPressed: () => AppSnackbar.show(context, message: l.team_invite_sent),
-            ),
+            // Admins only, like the web Users / Teams pages.
+            if (me.role == AgentRole.admin)
+              AppIconButton(
+                icon: AppIcons.add,
+                semanticLabel: l.team_add,
+                onPressed: () => showTeamAddMenu(context),
+              ),
           ],
         ),
         body: LoadSwitcher(

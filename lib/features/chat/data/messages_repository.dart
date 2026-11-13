@@ -14,6 +14,7 @@ import '../domain/message.dart';
 import 'chat_api.dart';
 import 'local_media.dart';
 import 'uploads_api.dart';
+import '../../auth/application/auth_session.dart';
 
 /// What the composer hands to the send queue.
 class OutgoingMessage {
@@ -105,6 +106,8 @@ abstract interface class MessagesRepository {
 }
 
 final messagesRepositoryProvider = Provider<MessagesRepository>((ref) {
+  // A new sign-in starts over: never show the previous account's data.
+  ref.watch(authProvider);
   final chat = ref.watch(chatApiProvider);
   final wd = ref.watch(wdApiRequiredProvider);
   final repo = HttpMessagesRepository(chat, HttpUploadsApi(wd), ref.read(sharedPrefsProvider));

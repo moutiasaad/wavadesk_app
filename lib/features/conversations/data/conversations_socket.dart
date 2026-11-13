@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/models.dart';
+import '../../auth/application/auth_session.dart';
 
 /// Real-time events the inbox reacts to (Inbox spec §5).
 sealed class InboxSocketEvent {
@@ -50,6 +51,8 @@ abstract interface class ConversationsSocket {
 }
 
 final conversationsSocketProvider = Provider<ConversationsSocket>((ref) {
+  // A new sign-in starts over: never show the previous account's data.
+  ref.watch(authProvider);
   final socket = PollingConversationsSocket();
   ref.onDispose(socket.dispose);
   return socket;

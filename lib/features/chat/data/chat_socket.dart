@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/models.dart';
+import '../../auth/application/auth_session.dart';
 
 /// Per-conversation real-time events (Chat spec §7). Channels
 /// `conversation.{id}` + `presence-conversation.{id}`.
@@ -34,6 +35,8 @@ abstract interface class ChatSocket {
 }
 
 final chatSocketProvider = Provider<ChatSocket>((ref) {
+  // A new sign-in starts over: never show the previous account's data.
+  ref.watch(authProvider);
   final s = PollingChatSocket();
   ref.onDispose(s.dispose);
   return s;

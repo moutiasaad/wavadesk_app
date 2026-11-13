@@ -507,10 +507,6 @@ class _ChatScreenState extends ConsumerState<ChatScreen> with WidgetsBindingObse
                   preClaim: slot == BottomSlot.claim || slot == BottomSlot.readOnlyTeam,
                   // The AI card overlaps the list; keep the last bubble clear.
                   bottomPadding: (showAiCard && !searching ? _cardHeight : 0) + AppSpacing.sm,
-                  onReply: (m) {
-                    ref.read(composerControllerProvider(_id).notifier).setReply(m);
-                    _composerFocus.requestFocus();
-                  },
                   onJumpStateChanged: (show, count) {
                     if (show != _showJump || count != _newCount) {
                       setState(() {

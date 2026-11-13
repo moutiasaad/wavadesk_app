@@ -133,7 +133,10 @@ class HttpAuthApi implements AuthApi {
         'invalid_refresh_token' ||
         'token_reused' ||
         'validation_failed' => const AuthFailure(LoginErrorCode.invalidCredentials),
-        'workspace_unavailable' => const AuthFailure(LoginErrorCode.workspaceSuspended),
+        'workspace_unavailable' => switch (e.details['reason']) {
+          'workspace_blocked' || 'workspace_archived' => const AuthFailure(LoginErrorCode.workspaceBlocked),
+          _ => const AuthFailure(LoginErrorCode.workspaceSuspended),
+        },
         'account_disabled' ||
         'account_archived' ||
         'role_forbidden' => const AuthFailure(LoginErrorCode.accountDisabled),

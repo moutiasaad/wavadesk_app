@@ -262,6 +262,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with TickerProviderSt
     LoginErrorCode.tooManyAttempts,
     LoginErrorCode.accountDisabled,
     LoginErrorCode.workspaceSuspended,
+    LoginErrorCode.workspaceBlocked,
   };
 
   String _countdown(LoginState s) {
@@ -279,6 +280,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> with TickerProviderSt
           LoginErrorCode.tooManyAttempts => l.login_err_locked(_countdown(s)),
           LoginErrorCode.accountDisabled => l.login_err_disabled,
           LoginErrorCode.workspaceSuspended => l.login_err_suspended,
+          LoginErrorCode.workspaceBlocked => l.login_err_blocked,
           _ => l.login_err_server,
         },
         actionLabel: s.errorCode == LoginErrorCode.workspaceSuspended ? l.login_manage_subscription : null,

@@ -53,7 +53,8 @@ String dateLabel(BuildContext context, AdvancedFilters f) {
 }
 
 /// Advanced filters (Inbox v2 §6.1), 90% height. Edits a draft; nothing
-/// applies until the sticky "عرض {n} محادثة" button is pressed.
+/// applies until the sticky "عرض {n} محادثة" button is pressed; "إعادة
+/// تعيين" under it clears the draft only.
 Future<void> showInboxFiltersSheet(BuildContext context, WidgetRef ref) {
   final query = ref.read(conversationFiltersProvider);
   final draft = ValueNotifier<AdvancedFilters>(query.advanced);
@@ -62,18 +63,6 @@ Future<void> showInboxFiltersSheet(BuildContext context, WidgetRef ref) {
     initialSize: 0.9,
     title: context.l10n.inbox_flt_title,
     showClose: false,
-    headerTrailing: Builder(
-      builder: (ctx) => TextButton(
-        style: TextButton.styleFrom(
-          foregroundColor: const Color(0xFFE11D48),
-          textStyle: ctx.text.buttonMedium,
-          minimumSize: const Size(48, 48),
-        ),
-        // Resets the sheet only; applying still needs the button.
-        onPressed: () => draft.value = AdvancedFilters.empty,
-        child: Text(ctx.l10n.inbox_flt_reset),
-      ),
-    ),
     action: _ApplyButton(draft: draft, query: query),
     builder: (ctx, controller) => _FiltersBody(draft: draft, segment: query.segment, controller: controller),
   ).whenComplete(draft.dispose);
@@ -126,7 +115,7 @@ class _ApplyButtonState extends ConsumerState<_ApplyButton> {
   Widget build(BuildContext context) {
     final l = context.l10n;
     final c = context.colors;
-    return SizedBox(
+    final show = SizedBox(
       height: 52,
       width: double.infinity,
       child: FilledButton(
@@ -143,6 +132,27 @@ class _ApplyButtonState extends ConsumerState<_ApplyButton> {
         child: Text(_count == null ? l.inbox_filters_apply : l.inbox_filters_show(_count!)),
       ),
     );
+    // Resets the sheet only; applying still needs the button above.
+    final reset = ValueListenableBuilder<AdvancedFilters>(
+      valueListenable: widget.draft,
+      builder: (context, f, _) => SizedBox(
+        height: 44,
+        width: double.infinity,
+        child: OutlinedButton.icon(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: c.error,
+            disabledForegroundColor: c.textTertiary,
+            side: BorderSide(color: f.activeCount > 0 ? c.error.withValues(alpha: 0.4) : c.border),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            textStyle: context.text.buttonMedium,
+          ),
+          onPressed: f.activeCount > 0 ? () => widget.draft.value = AdvancedFilters.empty : null,
+          icon: AppIcon(AppIcons.reopen, size: AppIconSize.sm, color: f.activeCount > 0 ? c.error : c.textTertiary),
+          label: Text(l.inbox_flt_reset),
+        ),
+      ),
+    );
+    return Column(mainAxisSize: MainAxisSize.min, children: [show, const SizedBox(height: AppSpacing.sm), reset]);
   }
 }
 

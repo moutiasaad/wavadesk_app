@@ -5,6 +5,7 @@ import '../../../../core/utils/analytics.dart';
 import '../../../../core/utils/l10n.dart';
 import '../../../../core/widgets/widgets.dart';
 import '../../domain/kb_entry.dart';
+import 'kb_entry_tile.dart';
 
 String kbSortLabel(AppLocalizations l, KbSort s) => switch (s) {
       KbSort.usage => l.kb_sort_usage,
@@ -14,12 +15,16 @@ String kbSortLabel(AppLocalizations l, KbSort s) => switch (s) {
       KbSort.usageAsc => l.kb_sort_least,
     };
 
-/// "{sortLabel} ▾" + optional "الوسوم ▾" (spec §4.5).
+/// "{sortLabel} ▾" · "النوع ▾" + "الوسوم ▾" (spec §4.5). The type picker
+/// replaces the old سؤال وجواب / ملفات / روابط stat cards; counts live in it.
 class KbSortHeader extends StatelessWidget {
   const KbSortHeader({
     super.key,
     required this.sort,
     required this.onSort,
+    required this.type,
+    required this.counts,
+    required this.onType,
     required this.selectedTags,
     required this.loadTags,
     required this.onTags,
@@ -27,6 +32,11 @@ class KbSortHeader extends StatelessWidget {
 
   final KbSort sort;
   final ValueChanged<KbSort> onSort;
+
+  /// null = all types.
+  final KbType? type;
+  final KbCounts counts;
+  final ValueChanged<KbType?> onType;
   final Set<String> selectedTags;
   final Future<List<KbTag>> Function() loadTags;
   final ValueChanged<Set<String>> onTags;
@@ -53,6 +63,40 @@ class KbSortHeader extends StatelessWidget {
       Analytics.log('kb_sort', {'value': picked.wire});
       onSort(picked);
     }
+  }
+
+  Future<void> _pickType(BuildContext context) async {
+    final l = context.l10n;
+    // A record so "all" (null) is a real answer, unlike a dismissed sheet.
+    final picked = await AppBottomSheet.show<(KbType?,)>(
+      context,
+      title: l.kb_type,
+      builder: (ctx) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AppRadioRow(
+            label: '${l.kb_type_all} · ${counts.total}',
+            selected: type == null,
+            onTap: () => Navigator.of(ctx).pop(const (null,)),
+          ),
+          for (final t in KbType.values)
+            AppRadioRow(
+              label: '${KbTypeVisual.label(ctx, t)} · ${counts.of(t)}',
+              subtitle: t != KbType.qa && counts.processing > 0 ? l.kb_processing : null,
+              selected: type == t,
+              leading: Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(color: KbTypeVisual.of(ctx, t).background, shape: BoxShape.circle),
+                child: AppIcon(KbTypeVisual.of(ctx, t).icon, dp: 16, color: KbTypeVisual.of(ctx, t).foreground),
+              ),
+              onTap: () => Navigator.of(ctx).pop((t,)),
+            ),
+          const SizedBox(height: AppSpacing.md),
+        ],
+      ),
+    );
+    if (picked != null && picked.$1 != type) onType(picked.$1);
   }
 
   Future<void> _pickTags(BuildContext context) async {
@@ -99,6 +143,15 @@ class KbSortHeader extends StatelessWidget {
         children: [
           Semantics(button: true, child: dropdown(kbSortLabel(l, sort), () => _pickSort(context))),
           const Spacer(),
+          Semantics(
+            button: true,
+            child: dropdown(
+              type == null ? l.kb_type : '${KbTypeVisual.label(context, type!)} · ${counts.of(type!)}',
+              () => _pickType(context),
+              active: type != null,
+            ),
+          ),
+          const SizedBox(width: AppSpacing.xs),
           Semantics(
             button: true,
             child: dropdown(

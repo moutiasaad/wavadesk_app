@@ -4,7 +4,19 @@ import 'package:flutter/foundation.dart';
 import 'identifier.dart';
 
 /// Server / transport failures shown in the ErrorBanner (Login spec §7).
-enum LoginErrorCode { invalidCredentials, accountDisabled, workspaceSuspended, tooManyAttempts, server, network }
+enum LoginErrorCode {
+  invalidCredentials,
+  accountDisabled,
+
+  /// Trial ended / subscription expired: paying on the web reopens it.
+  workspaceSuspended,
+
+  /// Blocked or archived by Wavadesk: only support can reopen it.
+  workspaceBlocked,
+  tooManyAttempts,
+  server,
+  network,
+}
 
 enum LoginStatus { idle, submitting, error, success }
 

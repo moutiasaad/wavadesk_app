@@ -514,6 +514,118 @@ class AppLocalizationsAr extends AppLocalizations {
   String get team_invite_sent => 'أرسلنا رابط الدعوة';
 
   @override
+  String get team_add => 'إضافة';
+
+  @override
+  String get team_add_user => 'إضافة مستخدم';
+
+  @override
+  String get team_add_user_sub => 'حساب جديد في مساحة العمل';
+
+  @override
+  String get team_add_team => 'إنشاء فريق';
+
+  @override
+  String get team_add_team_sub => 'جمّع الموظفين لتوزيع المحادثات';
+
+  @override
+  String get team_f_name => 'الاسم';
+
+  @override
+  String get team_f_email => 'البريد الإلكتروني';
+
+  @override
+  String get team_f_role => 'الدور';
+
+  @override
+  String get team_f_password => 'كلمة مرور مؤقتة (اختياري)';
+
+  @override
+  String get team_f_password_short => 'كلمة المرور';
+
+  @override
+  String get team_f_password_help =>
+      'اتركها فارغة لإنشاء كلمة مرور وإرسالها بالبريد. سيُطلب من المستخدم تغييرها عند أول دخول.';
+
+  @override
+  String get team_f_teams => 'الفرق';
+
+  @override
+  String get team_f_team_name => 'اسم الفريق';
+
+  @override
+  String get team_f_description => 'الوصف (اختياري)';
+
+  @override
+  String get team_f_pool => 'يستقبل المحادثات الجديدة';
+
+  @override
+  String get team_f_pool_help =>
+      'المحادثات غير المسندة تظهر لأعضاء هذا الفريق.';
+
+  @override
+  String get team_f_members => 'الأعضاء';
+
+  @override
+  String get team_create_user_btn => 'إضافة المستخدم';
+
+  @override
+  String get team_create_team_btn => 'إنشاء الفريق';
+
+  @override
+  String team_user_created(String name) {
+    return 'تم إنشاء حساب $name';
+  }
+
+  @override
+  String get team_user_created_pw =>
+      'شارك بيانات الدخول هذه. لن تظهر كلمة المرور مرة أخرى.';
+
+  @override
+  String get team_user_created_emailed =>
+      'أُرسلت بيانات الدخول إلى بريده أيضًا.';
+
+  @override
+  String get team_copy_credentials => 'نسخ بيانات الدخول';
+
+  @override
+  String get team_copied => 'تم النسخ';
+
+  @override
+  String team_team_created(String name) {
+    return 'تم إنشاء فريق $name';
+  }
+
+  @override
+  String get team_err_limit =>
+      'وصلت إلى حد المستخدمين في باقتك. قم بترقية الباقة لإضافة المزيد.';
+
+  @override
+  String get team_err_generic => 'تعذّر الحفظ. حاول مرة أخرى.';
+
+  @override
+  String get team_err_required => 'هذا الحقل مطلوب';
+
+  @override
+  String team_seats(int used, int max) {
+    return '$used من $max مستخدمين';
+  }
+
+  @override
+  String team_seats_full(int max) {
+    return 'وصلت إلى حد باقتك ($max مستخدمين)';
+  }
+
+  @override
+  String get team_teams_not_in_plan => 'الفرق غير متاحة في باقتك';
+
+  @override
+  String get team_limit_title => 'قم بترقية باقتك';
+
+  @override
+  String get team_upgrade => 'ترقية الباقة';
+
+  @override
   String team_section_members(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -2269,7 +2381,49 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login_err_suspended => 'اشتراك مساحة العمل متوقف.';
 
   @override
+  String get login_err_blocked =>
+      'تم إيقاف مساحة العمل هذه. تواصل مع دعم Wavadesk.';
+
+  @override
   String get login_manage_subscription => 'إدارة الاشتراك';
+
+  @override
+  String get ws_title_trial => 'انتهت الفترة التجريبية';
+
+  @override
+  String get ws_title_expired => 'انتهى الاشتراك';
+
+  @override
+  String get ws_title_inactive => 'الاشتراك غير نشط';
+
+  @override
+  String get ws_title_no_plan => 'لم يتم اختيار باقة';
+
+  @override
+  String get ws_title_blocked => 'مساحة العمل موقوفة';
+
+  @override
+  String get ws_title_archived => 'مساحة العمل مؤرشفة';
+
+  @override
+  String get ws_body_admin =>
+      'اختر باقة على موقع Wavadesk لمواصلة العمل. محادثاتك وبياناتك محفوظة.';
+
+  @override
+  String get ws_body_member =>
+      'اطلب من مدير مساحة العمل اختيار باقة. محادثاتك وبياناتك محفوظة.';
+
+  @override
+  String get ws_body_support => 'تواصل مع دعم Wavadesk لمعرفة التفاصيل.';
+
+  @override
+  String get ws_choose_plan => 'اختيار باقة';
+
+  @override
+  String get ws_check_again => 'تحقّق مرة أخرى';
+
+  @override
+  String get ws_still_closed => 'ما زالت مساحة العمل غير متاحة.';
 
   @override
   String login_err_locked(String time) {
@@ -2434,6 +2588,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get chat_attach_quick => 'ردود سريعة';
+
+  @override
+  String get chat_attach_ai => 'توليد بالذكاء الاصطناعي';
+
+  @override
+  String get chat_ai_gen_off =>
+      'وكيل الذكاء الاصطناعي متوقف في مساحة العمل هذه.';
+
+  @override
+  String get chat_ai_gen_wrong_mode =>
+      'توليد الردود متاح فقط عندما يكون وضع الذكاء الاصطناعي «اقتراح».';
 
   @override
   String get chat_attach_template => 'قالب واتساب';
@@ -5774,6 +5939,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kb_tags => 'الوسوم';
+
+  @override
+  String get kb_type => 'النوع';
+
+  @override
+  String get kb_type_all => 'كل الأنواع';
 
   @override
   String kb_used_n(int n) {

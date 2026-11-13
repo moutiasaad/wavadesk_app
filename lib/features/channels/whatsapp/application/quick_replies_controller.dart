@@ -7,6 +7,7 @@ import '../../../../core/utils/analytics.dart';
 import '../data/quick_replies_api.dart';
 import '../data/whatsapp_api.dart' show WaApiException;
 import 'whatsapp_channel_controller.dart';
+import '../../../auth/application/auth_session.dart';
 
 final quickRepliesApiProvider = Provider<QuickRepliesApi>((ref) => HttpQuickRepliesApi(ref.watch(wdApiRequiredProvider)));
 
@@ -38,6 +39,8 @@ class QuickRepliesController extends Notifier<QuickRepliesState> {
 
   @override
   QuickRepliesState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     scheduleMicrotask(load);
     return const QuickRepliesState(loading: true);
   }

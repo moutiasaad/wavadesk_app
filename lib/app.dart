@@ -10,6 +10,8 @@ import 'core/notifications/push_service.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/l10n.dart';
+import 'features/auth/application/workspace_block.dart';
+import 'features/auth/presentation/workspace_blocked_screen.dart';
 
 class WavadeskApp extends ConsumerWidget {
   const WavadeskApp({super.key});
@@ -22,6 +24,9 @@ class WavadeskApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     // Starts FCM (permission state, token sync, taps, foreground banner).
     ref.watch(pushServiceProvider);
+    // Trial ended / subscription expired while signed in: one clear screen
+    // instead of every request failing with 403 workspace_unavailable.
+    final blocked = ref.watch(workspaceBlockProvider);
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
@@ -44,7 +49,13 @@ class WavadeskApp extends ConsumerWidget {
         return MediaQuery(
           data: mq.copyWith(textScaler: mq.textScaler.clamp(maxScaleFactor: 2.0)),
           // Foreground notification banners (Notifications spec §9.2).
-          child: InAppBannerHost(child: child!),
+          child: Stack(
+            children: [
+              // Kept mounted under the notice so navigation survives a re-check.
+              InAppBannerHost(child: child!),
+              if (blocked != null) Positioned.fill(child: WorkspaceBlockedScreen(reason: blocked)),
+            ],
+          ),
         );
       },
     );

@@ -21,7 +21,6 @@ import 'attachments_preview.dart';
 import 'composer_mode_toggle.dart';
 import 'mention_panel.dart';
 import 'quick_replies_panel.dart';
-import 'reply_preview_bar.dart';
 import 'voice_recorder.dart';
 
 /// Message input bar (Chat spec §4.7, DS §8.6).
@@ -150,6 +149,7 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
       windowClosed: widget.detail.windowClosed(now),
       // Files go out on WhatsApp and website chat; not Messenger/Instagram yet.
       media: channel == Channel.whatsapp || channel == Channel.web,
+      aiEnabled: ref.read(aiSettingsProvider).suggestReplies,
     );
     if (opt == null || !mounted) return;
     final l = context.l10n;
@@ -170,6 +170,16 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
         final t = _composer.text;
         t.value = const TextEditingValue(text: '/', selection: TextSelection.collapsed(offset: 1));
         _focus.requestFocus();
+      case AttachOption.aiReply:
+        // Web panel: only the "Suggestion" mode drafts replies for agents.
+        final ai = ref.read(aiSettingsProvider);
+        if (!ai.enabled) {
+          AppSnackbar.show(context, message: l.chat_ai_gen_off);
+        } else if (!ai.suggestReplies) {
+          AppSnackbar.show(context, message: l.chat_ai_gen_wrong_mode);
+        } else {
+          ref.read(aiSuggestionControllerProvider(_id).notifier).request();
+        }
       case AttachOption.template:
         widget.onOpenTemplates?.call();
       case AttachOption.product:
@@ -494,14 +504,6 @@ class _MessageComposerState extends ConsumerState<MessageComposer> with SingleTi
                       _composer.insertMention(a.name.split(' ').first);
                       _focus.requestFocus();
                     },
-                  ),
-                if (state.replyTo != null)
-                  ReplyPreviewBar(
-                    message: state.replyTo!,
-                    senderName: state.replyTo!.type == MessageBubbleType.incoming
-                        ? widget.detail.contact.name
-                        : (state.replyTo!.senderName ?? l.common_you),
-                    onClose: () => _composer.setReply(null),
                   ),
                 if (state.attachments.isNotEmpty)
                   AttachmentsPreview(

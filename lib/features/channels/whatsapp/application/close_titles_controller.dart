@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/api/wd_api_provider.dart';
 import '../../../../core/utils/analytics.dart';
 import '../data/close_titles_api.dart';
+import '../../../auth/application/auth_session.dart';
 import '../data/whatsapp_api.dart' show WaApiException;
 
 final closeTitlesApiProvider = Provider<CloseTitlesApi>((ref) => CloseTitlesApi(ref.watch(wdApiRequiredProvider)));
@@ -75,6 +76,8 @@ class CloseTitlesController extends Notifier<CloseTitlesState> {
 
   @override
   CloseTitlesState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     scheduleMicrotask(load);
     return const CloseTitlesState(loading: true);
   }

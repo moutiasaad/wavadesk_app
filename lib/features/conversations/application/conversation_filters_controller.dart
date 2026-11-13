@@ -22,6 +22,8 @@ class ConversationFiltersController extends Notifier<InboxQuery> {
 
   @override
   InboxQuery build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     // Other screens (login, dashboard) move the segment through the inbox
     // controller; follow them.
     ref.listen(inboxProvider.select((s) => s.segment), (_, next) {

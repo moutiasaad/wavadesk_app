@@ -26,12 +26,11 @@ import 'widgets/kb_drafts_section.dart';
 import 'widgets/kb_empty_state.dart';
 import 'widgets/kb_entry_tile.dart';
 import 'widgets/kb_skeleton.dart';
+import 'widgets/kb_quick_actions.dart';
 import 'widgets/kb_sort_header.dart';
-import 'widgets/kb_type_stats_row.dart';
 import 'widgets/kb_search_entry.dart';
 import 'widgets/kb_unanswered_banner.dart';
 
-enum _Overflow { aiSettings, tags, import }
 
 enum _RowAction { edit, copy, toggle, delete }
 
@@ -160,14 +159,14 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
     }
   }
 
-  Future<void> _overflow(_Overflow o) async {
+  Future<void> _quickAction(KbQuickAction o) async {
     switch (o) {
-      case _Overflow.aiSettings:
+      case KbQuickAction.aiSettings:
         context.push(Routes.aiAgent);
-      case _Overflow.import:
+      case KbQuickAction.import:
         // JSON import works in the app now (same as the web panel).
         await startKbJsonImport(context, ref);
-      case _Overflow.tags:
+      case KbQuickAction.tags:
         // Tag management lives on the web dashboard (spec §1).
         final uri = Uri.parse('$apiBaseUrl/knowledge');
         if (await launchUrl(uri, mode: LaunchMode.externalApplication)) return;
@@ -228,16 +227,6 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
             semanticLabel: l.kb_add_title,
             onPressed: _add,
           ),
-        PopupMenuButton<_Overflow>(
-            icon: AppIcon(AppIcons.more, dp: 18, color: c.textPrimary),
-            tooltip: l.common_more,
-            onSelected: _overflow,
-            itemBuilder: (_) => [
-              PopupMenuItem(value: _Overflow.aiSettings, child: Text(l.kb_menu_ai_settings)),
-              if (perms.canEdit) PopupMenuItem(value: _Overflow.tags, child: Text(l.kb_menu_tags)),
-              if (perms.canEdit) PopupMenuItem(value: _Overflow.import, child: Text(l.kb_menu_import)),
-            ],
-          ),
       ],
     );
     final header = SliverPersistentHeader(pinned: true, delegate: kbHeader);
@@ -266,6 +255,7 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
       if (s.unansweredCount > 0) {
         slivers.add(SliverToBoxAdapter(child: KbUnansweredBanner(count: s.unansweredCount, onReview: () => context.push('/knowledge/unanswered'))));
       }
+      slivers.add(SliverToBoxAdapter(child: KbQuickActions(canEdit: perms.canEdit, onAction: _quickAction)));
       slivers.add(SliverFillRemaining(
         hasScrollBody: false,
         child: KbEmptyState(
@@ -276,23 +266,19 @@ class _KnowledgeScreenState extends ConsumerState<KnowledgeScreen> {
     } else {
       slivers.addAll([
         SliverToBoxAdapter(child: KbSearchEntry(total: s.counts.total)),
-        SliverToBoxAdapter(
-          child: KbTypeStatsRow(
-            counts: s.counts,
-            selected: s.type,
-            processing: s.counts.processing,
-            onSelect: (t) {
-              Analytics.log('kb_filter_type', {'value': t?.name ?? 'all'});
-              _ctrl.setType(t);
-            },
-          ),
-        ),
+        SliverToBoxAdapter(child: KbQuickActions(canEdit: perms.canEdit, onAction: _quickAction)),
         if (s.unansweredCount > 0)
           SliverToBoxAdapter(child: KbUnansweredBanner(count: s.unansweredCount, onReview: () => context.push('/knowledge/unanswered'))),
         SliverToBoxAdapter(
           child: KbSortHeader(
             sort: s.sort,
             onSort: _ctrl.setSort,
+            type: s.type,
+            counts: s.counts,
+            onType: (t) {
+              Analytics.log('kb_filter_type', {'value': t?.name ?? 'all'});
+              _ctrl.setType(t);
+            },
             selectedTags: s.tags,
             loadTags: () => ref.read(kbApiProvider).tags(),
             onTags: _ctrl.setTags,

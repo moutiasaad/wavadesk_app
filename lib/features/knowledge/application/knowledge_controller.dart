@@ -8,13 +8,18 @@ import '../data/kb_api.dart';
 import '../data/kb_repository.dart';
 import '../domain/kb_entry.dart';
 import '../domain/stale_rule.dart';
+import '../../auth/application/auth_session.dart';
 
 final kbApiProvider = Provider<KbApi>((ref) {
   return HttpKbApi(ref.watch(wdApiRequiredProvider));
 });
 
 final kbRepositoryProvider = Provider<KbRepository>(
-  (ref) => KbRepository(ref.watch(kbApiProvider), cacheKey: 'kb_list_cache_v1_api'),
+  (ref) {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    return KbRepository(ref.watch(kbApiProvider), cacheKey: 'kb_list_cache_v1_api');
+  },
 );
 
 @immutable
@@ -117,11 +122,15 @@ class KbListController extends Notifier<KnowledgeState> {
 
   @override
   KnowledgeState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     ref.onDispose(() {
       _poll?.cancel();
+      _poll = null;
       for (final p in _pendingDeletes.values) {
         p.$1.cancel();
       }
+      _pendingDeletes.clear();
     });
     Future.microtask(_boot);
     return const KnowledgeState(loading: true);

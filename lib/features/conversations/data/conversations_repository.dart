@@ -47,6 +47,8 @@ abstract interface class ConversationsRepository {
 }
 
 final conversationsRepositoryProvider = Provider<ConversationsRepository>((ref) {
+  // A new sign-in starts over: never show the previous account's data.
+  ref.watch(authProvider);
   final auth = ref.read(authRepositoryProvider);
   final repo = HttpConversationsRepository(
     ConversationsApi(ref.read(wdApiRequiredProvider)),

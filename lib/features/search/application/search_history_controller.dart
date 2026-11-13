@@ -7,6 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../../core/data/data.dart';
 import '../../../core/utils/analytics.dart';
+import '../../auth/application/auth_session.dart';
 
 @immutable
 class SearchHistory {
@@ -41,6 +42,8 @@ class SearchHistoryController extends Notifier<SearchHistory> {
 
   @override
   SearchHistory build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     final opened = ref.read(sharedPrefsProvider).getStringList(_openedKey) ?? const [];
     scheduleMicrotask(_load);
     return SearchHistory(openedConversations: opened);

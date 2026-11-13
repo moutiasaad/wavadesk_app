@@ -126,7 +126,11 @@ final remoteChatPermissionsProvider =
 
 class RemoteChatPermissions extends Notifier<Map<String, RemoteConversation>> {
   @override
-  Map<String, RemoteConversation> build() => const {};
+  Map<String, RemoteConversation> build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    return const {};
+  }
 
   void put(RemoteConversation r) => state = {...state, r.conversation.id: r};
 }
@@ -139,7 +143,11 @@ final chatDetailLoadProvider = NotifierProvider<ChatDetailLoadStatus, Map<String
 
 class ChatDetailLoadStatus extends Notifier<Map<String, ChatDetailLoad>> {
   @override
-  Map<String, ChatDetailLoad> build() => const {};
+  Map<String, ChatDetailLoad> build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    return const {};
+  }
 
   void put(String id, ChatDetailLoad s) {
     if (state[id] != s) state = {...state, id: s};

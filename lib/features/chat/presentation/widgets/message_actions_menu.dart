@@ -30,7 +30,6 @@ Future<void> showMessageActionsMenu(
   required String conversationId,
   required Message message,
   required Rect bubbleRect,
-  required void Function(Message m) onReply,
   bool readOnly = false,
   bool allowTranscribe = false,
 }) {
@@ -46,7 +45,6 @@ Future<void> showMessageActionsMenu(
       conversationId: conversationId,
       message: message,
       bubbleRect: bubbleRect,
-      onReply: onReply,
       readOnly: readOnly,
       allowTranscribe: allowTranscribe,
       hostContext: context,
@@ -66,7 +64,6 @@ class _MenuOverlay extends ConsumerWidget {
     required this.conversationId,
     required this.message,
     required this.bubbleRect,
-    required this.onReply,
     required this.readOnly,
     this.allowTranscribe = false,
     required this.hostContext,
@@ -75,7 +72,6 @@ class _MenuOverlay extends ConsumerWidget {
   final String conversationId;
   final Message message;
   final Rect bubbleRect;
-  final void Function(Message m) onReply;
   final bool readOnly;
   final bool allowTranscribe;
 
@@ -104,16 +100,6 @@ class _MenuOverlay extends ConsumerWidget {
     void close() => Navigator.of(context).pop();
 
     final actions = <(IconData, String, VoidCallback, bool)>[
-      if (!readOnly && m.type != MessageBubbleType.internalNote && m.kind != MessageKind.deleted)
-        (
-          AppIcons.reply,
-          l.msgaction_reply,
-          () {
-            close();
-            onReply(m);
-          },
-          false,
-        ),
       if (hasText)
         (
           AppIcons.copy,
@@ -235,11 +221,16 @@ class _MenuOverlay extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
                   child: DecoratedBox(
                     decoration: BoxDecoration(boxShadow: context.shadows.medium),
-                    child: MessageBubble(
-                      conversationId: conversationId,
-                      message: m,
-                      detail: detail,
-                      maxWidth: bubbleRect.width,
+                    // The dialog route has no Material; bubbles with ink
+                    // buttons (voice play, speed chip, links) need one.
+                    child: Material(
+                      type: MaterialType.transparency,
+                      child: MessageBubble(
+                        conversationId: conversationId,
+                        message: m,
+                        detail: detail,
+                        maxWidth: bubbleRect.width,
+                      ),
                     ),
                   ),
                 ),

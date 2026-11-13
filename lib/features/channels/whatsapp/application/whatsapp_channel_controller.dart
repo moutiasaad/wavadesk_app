@@ -8,6 +8,7 @@ import '../../../../core/models/models.dart';
 import '../data/whatsapp_api.dart';
 import '../domain/wa_channel.dart';
 import '../domain/wa_status.dart';
+import '../../../auth/application/auth_session.dart';
 
 final whatsAppApiProvider = Provider<WhatsAppApi>((ref) => HttpWhatsAppApi(ref.watch(wdApiRequiredProvider)));
 
@@ -63,7 +64,13 @@ class WhatsAppChannelController extends Notifier<WaChannelState> {
 
   @override
   WaChannelState build() {
-    ref.onDispose(() => _poll?.cancel());
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    _confirmed = null;
+    ref.onDispose(() {
+      _poll?.cancel();
+      _poll = null;
+    });
     scheduleMicrotask(load);
     return const WaChannelState(loading: true);
   }

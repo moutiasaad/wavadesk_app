@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../domain/kb_entry.dart';
 import 'knowledge_controller.dart';
+import '../../auth/application/auth_session.dart';
 
 enum UnansweredSort {
   frequency('frequency'),
@@ -63,10 +64,13 @@ class UnansweredController extends Notifier<UnansweredState> {
 
   @override
   UnansweredState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     ref.onDispose(() {
       for (final p in _pendingDismiss.values) {
         p.$1.cancel();
       }
+      _pendingDismiss.clear();
     });
     Future.microtask(refresh);
     return const UnansweredState(loading: true);

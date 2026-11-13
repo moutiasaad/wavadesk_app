@@ -18,6 +18,9 @@ class TeamDirectoryState {
     this.teams = const [],
     this.meId,
     this.teamsEnabled = true,
+    this.seatsUsed = 0,
+    this.seatsMax,
+    this.canAddUser = true,
     this.phase = LoadPhase.loading,
     this.error,
   });
@@ -27,6 +30,13 @@ class TeamDirectoryState {
   final List<Team> teams;
   final String? meId;
   final bool teamsEnabled;
+
+  /// Plan seats (`meta.limits.users`): accounts in the workspace vs the
+  /// plan's max (+ bought seats). [seatsMax] null = unlimited.
+  final int seatsUsed;
+  final int? seatsMax;
+  final bool canAddUser;
+
   final LoadPhase phase;
 
   /// Last failure (kept alongside data after a failed refresh).
@@ -39,6 +49,9 @@ class TeamDirectoryState {
         teams: teams,
         meId: meId,
         teamsEnabled: teamsEnabled,
+        seatsUsed: seatsUsed,
+        seatsMax: seatsMax,
+        canAddUser: canAddUser,
         phase: phase ?? this.phase,
         error: clearError ? null : error ?? this.error,
       );
@@ -111,11 +124,18 @@ class TeamDirectoryController extends Notifier<TeamDirectoryState> {
       for (final t in (d['teams'] as List? ?? const []))
         if (t is Map) Team(id: '${t['id']}', name: '${t['name'] ?? ''}', memberCount: (t['member_ids'] as List?)?.length ?? 0),
     ];
+    final limits = r.meta['limits'];
+    final users = limits is Map ? limits['users'] : null;
+    final teamsAllowed = limits is Map && limits['teams'] is Map ? limits['teams']['allowed'] : null;
     return TeamDirectoryState(
       members: members,
       teams: teams,
       meId: meId,
-      teamsEnabled: r.meta['teams_enabled'] != false,
+      teamsEnabled: teamsAllowed is bool ? teamsAllowed : r.meta['teams_enabled'] != false,
+      seatsUsed: users is Map ? (users['used'] as num?)?.toInt() ?? members.length : members.length,
+      seatsMax: users is Map ? (users['max'] as num?)?.toInt() : null,
+      // Older servers send no limits: let the server decide on submit.
+      canAddUser: users is Map ? users['can_create'] != false : true,
       phase: LoadPhase.ready,
     );
   }

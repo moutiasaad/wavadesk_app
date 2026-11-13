@@ -157,10 +157,18 @@ class _SignOutBodyState extends ConsumerState<_SignOutBody> {
 /// "إدارة الاشتراك" → the web billing page. Admins who can't manage billing
 /// see it read-only.
 Future<void> showPlanSheet(BuildContext context, {required SubscriptionInfo info, required bool canManage}) {
+  // Usage moves with every AI reply and new user: re-read on each open. The
+  // last values ([info]) show at once and are replaced when the fresh ones land.
+  ProviderScope.containerOf(context).invalidate(subscriptionInfoProvider);
   return AppBottomSheet.show<void>(
     context,
     title: context.l10n.account_subscription,
-    builder: (ctx) => _PlanBody(info: info, canManage: canManage),
+    builder: (ctx) => Consumer(
+      builder: (ctx, ref, _) => _PlanBody(
+        info: ref.watch(subscriptionInfoProvider).valueOrNull ?? info,
+        canManage: canManage,
+      ),
+    ),
   );
 }
 

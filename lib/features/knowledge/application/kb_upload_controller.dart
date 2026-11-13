@@ -7,6 +7,7 @@ import '../../../core/utils/analytics.dart';
 import '../data/kb_api.dart';
 import '../domain/kb_entry.dart';
 import 'knowledge_controller.dart';
+import '../../auth/application/auth_session.dart';
 
 enum KbUploadPhase { uploading, processing, ready, failed }
 
@@ -77,10 +78,13 @@ class KbUploadController extends Notifier<KbUploadState> {
 
   @override
   KbUploadState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     ref.onDispose(() {
       for (final t in _polls.values) {
         t.cancel();
       }
+      _polls.clear();
     });
     return const KbUploadState();
   }

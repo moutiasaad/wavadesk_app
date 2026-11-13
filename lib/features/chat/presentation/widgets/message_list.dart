@@ -27,7 +27,6 @@ class MessageList extends ConsumerStatefulWidget {
     required this.conversationId,
     required this.controller,
     required this.bottomPadding,
-    required this.onReply,
     required this.onJumpStateChanged,
     this.readOnly = false,
     this.preClaim = false,
@@ -38,7 +37,6 @@ class MessageList extends ConsumerStatefulWidget {
 
   /// Space reserved under the last bubble (AI card height + 8).
   final double bottomPadding;
-  final void Function(Message message) onReply;
 
   /// show = scrolled more than one screen up; newCount = messages that
   /// arrived meanwhile.
@@ -300,7 +298,6 @@ class _MessageListState extends ConsumerState<MessageList> with WidgetsBindingOb
                   animateIn: _animate.remove(item.message.id),
                   readOnly: widget.readOnly || widget.preClaim,
                   allowTranscribe: widget.preClaim,
-                  onReply: widget.onReply,
                   onQuoteTap: messages.highlight,
                 ),
               ),

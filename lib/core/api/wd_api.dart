@@ -139,6 +139,12 @@ class WdApi {
   final _sessionEnded = StreamController<String>.broadcast();
   Stream<String> get sessionEnded => _sessionEnded.stream;
 
+  /// Emits `details.reason` of a `403 workspace_unavailable` (trial ended,
+  /// subscription expired, workspace blocked…). The app shows a full-screen
+  /// notice instead of failing every screen.
+  final _workspaceBlocked = StreamController<String>.broadcast();
+  Stream<String> get workspaceBlocked => _workspaceBlocked.stream;
+
   static const _uuid = Uuid();
   static const _timeout = Duration(seconds: 20);
   /// Endpoints that need no access token.
@@ -373,7 +379,11 @@ class WdApi {
   WdResponse _decode(http.Response res) {
     final etag = res.headers['etag'];
     if (res.statusCode == 304) return WdResponse(304, null, const {}, etag: etag);
-    if (res.statusCode >= 300) throw _error(res);
+    if (res.statusCode >= 300) {
+      final e = _error(res);
+      if (e.code == 'workspace_unavailable') _workspaceBlocked.add('${e.details['reason'] ?? ''}');
+      throw e;
+    }
     if (res.statusCode == 204 || res.bodyBytes.isEmpty) return WdResponse(res.statusCode, null, const {}, etag: etag);
     final json = jsonDecode(utf8.decode(res.bodyBytes));
     if (json is Map) {

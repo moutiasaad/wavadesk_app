@@ -12,6 +12,7 @@ import '../domain/contact.dart';
 import '../domain/contact_attribute.dart';
 import '../domain/contact_note.dart';
 import 'contacts_api.dart';
+import '../../auth/application/auth_session.dart';
 
 /// A row in "المحادثات السابقة" (Profile spec §5.9).
 enum PastConversationState { closedBy, aiReplied, openNow }
@@ -92,6 +93,8 @@ abstract interface class ContactsRepository {
 }
 
 final contactsRepositoryProvider = Provider<ContactsRepository>((ref) {
+  // A new sign-in starts over: never show the previous account's data.
+  ref.watch(authProvider);
   final repo = HttpContactsRepository(ContactsApi(ref.read(wdApiRequiredProvider)), ref.read(sharedPrefsProvider));
   ref.onDispose(repo.dispose);
   return repo;

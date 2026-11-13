@@ -11,6 +11,7 @@ import '../../../core/utils/analytics.dart';
 import '../../conversations/data/conversations_repository.dart';
 import '../data/dashboard_api.dart';
 import '../domain/dashboard_snapshot.dart';
+import '../../auth/application/auth_session.dart';
 
 final dashboardApiProvider = Provider<DashboardApi>((ref) => HttpDashboardApi(ref.watch(wdApiRequiredProvider)));
 
@@ -127,6 +128,10 @@ class DashboardController extends Notifier<DashboardState> {
 
   @override
   DashboardState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    _etag = null;
+    _lastFetch = null;
     final prefs = ref.read(sharedPrefsProvider);
     // v2 offers today / 7 days / 30 days only, always for "me" (the KPIs
     // read "بانتظار ردّك"); an old "yesterday" choice falls back to today.
@@ -140,6 +145,7 @@ class DashboardController extends Notifier<DashboardState> {
       _timer?.cancel();
       _liveTimer?.cancel();
       _flashTimer?.cancel();
+      _timer = _liveTimer = _flashTimer = null;
     });
 
     final cached = _readCache(range, scope);

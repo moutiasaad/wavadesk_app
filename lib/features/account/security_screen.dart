@@ -117,7 +117,8 @@ class _SecurityScreenState extends ConsumerState<SecurityScreen> {
       backgroundColor: c.backgroundMuted,
       appBar: AppBarStandard(title: l.acc_security),
       body: ListView(
-        padding: const EdgeInsets.only(bottom: 32),
+        // The first group has no title, so it needs its own gap under the app bar.
+        padding: EdgeInsets.only(top: AppSpacing.lg, bottom: AppSpacing.xxl + MediaQuery.viewPaddingOf(context).bottom),
         children: [
           SettingsGroup(
             children: [

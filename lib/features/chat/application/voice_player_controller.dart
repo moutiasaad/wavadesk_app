@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 
+import '../../auth/application/auth_session.dart';
 import '../data/chat_api.dart';
 
 @immutable
@@ -76,11 +78,17 @@ class VoicePlayerController extends Notifier<VoicePlayerState> {
 
   @override
   VoicePlayerState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     ref.onDispose(() {
       for (final s in _subs) {
         s.cancel();
       }
+      _subs.clear();
       _player?.dispose();
+      // build() runs again on the same object after a sign-in: start clean.
+      _player = null;
+      _loadedId = null;
     });
     return const VoicePlayerState();
   }
@@ -90,6 +98,13 @@ class VoicePlayerController extends Notifier<VoicePlayerState> {
   AudioPlayer _create() {
     final p = AudioPlayer();
     _subs
+      // The real length, once the player knows it. Incoming WhatsApp voice
+      // notes carry no duration, so the bubble's value is only a guess.
+      ..add(p.durationStream.listen((d) {
+        if (d != null && d > Duration.zero && _loadedId != null && state.isActive(_loadedId!)) {
+          state = state.copyWith(duration: d);
+        }
+      }))
       ..add(p.positionStream.listen((pos) {
         if (_loadedId != null && state.isActive(_loadedId!)) state = state.copyWith(position: pos);
       }))
@@ -125,6 +140,7 @@ class VoicePlayerController extends Notifier<VoicePlayerState> {
     if (!canPlay(messageId)) return;
     if (_loadedId == messageId) {
       state = state.copyWith(played: {...state.played, messageId});
+      await _configureSession();
       unawaited(_p.play());
       return;
     }
@@ -139,17 +155,40 @@ class VoicePlayerController extends Notifier<VoicePlayerState> {
     );
     try {
       await _p.stop();
+      await _configureSession();
       final url = await ref.read(chatApiProvider).mediaUrl(messageId);
       if (!state.isActive(messageId)) return; // another message was tapped meanwhile
-      final real = await _p.setUrl(url);
-      await _p.setSpeed(state.speed);
       _loadedId = messageId;
-      state = state.copyWith(duration: real ?? duration, loading: false);
+      final real = await _p.setUrl(url);
+      if (!state.isActive(messageId)) return;
+      await _p.setSpeed(state.speed);
+      state = state.copyWith(duration: real != null && real > Duration.zero ? real : null, loading: false);
       unawaited(_p.play());
     } catch (_) {
+      if (_loadedId == messageId) _loadedId = null;
       if (state.isActive(messageId)) {
         state = state.copyWith(loading: false, playing: false, failed: {...state.failed, messageId});
       }
+    }
+  }
+
+  /// iOS: the default "solo ambient" category is muted by the silent
+  /// switch, and the recorder leaves the session in play-and-record (earpiece).
+  /// Re-applied before every play, like WhatsApp: speaker, ignores the switch.
+  Future<void> _configureSession() async {
+    try {
+      final session = await AudioSession.instance;
+      await session.configure(const AudioSessionConfiguration(
+        avAudioSessionCategory: AVAudioSessionCategory.playback,
+        avAudioSessionMode: AVAudioSessionMode.spokenAudio,
+        androidAudioAttributes: AndroidAudioAttributes(
+          contentType: AndroidAudioContentType.speech,
+          usage: AndroidAudioUsage.media,
+        ),
+        androidAudioFocusGainType: AndroidAudioFocusGainType.gainTransientMayDuck,
+      ));
+    } catch (_) {
+      // Playback still works with the default session.
     }
   }
 

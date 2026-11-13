@@ -13,6 +13,7 @@ import '../data/conversations_socket.dart';
 import '../domain/conversation_filters.dart';
 import '../domain/conversation_summary.dart';
 import 'conversation_filters_controller.dart';
+import '../../auth/application/auth_session.dart';
 
 enum InboxLoadPhase { loading, ready, error }
 
@@ -102,6 +103,8 @@ class ConversationsController extends Notifier<ConversationsState> {
 
   @override
   ConversationsState build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
     final query = ref.watch(conversationFiltersProvider);
     final socket = ref.read(conversationsSocketProvider);
     final repo = ref.read(conversationsRepositoryProvider);

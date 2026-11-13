@@ -976,6 +976,204 @@ abstract class AppLocalizations {
   /// **'أرسلنا رابط الدعوة'**
   String get team_invite_sent;
 
+  /// No description provided for @team_add.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة'**
+  String get team_add;
+
+  /// No description provided for @team_add_user.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة مستخدم'**
+  String get team_add_user;
+
+  /// No description provided for @team_add_user_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'حساب جديد في مساحة العمل'**
+  String get team_add_user_sub;
+
+  /// No description provided for @team_add_team.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء فريق'**
+  String get team_add_team;
+
+  /// No description provided for @team_add_team_sub.
+  ///
+  /// In ar, this message translates to:
+  /// **'جمّع الموظفين لتوزيع المحادثات'**
+  String get team_add_team_sub;
+
+  /// No description provided for @team_f_name.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاسم'**
+  String get team_f_name;
+
+  /// No description provided for @team_f_email.
+  ///
+  /// In ar, this message translates to:
+  /// **'البريد الإلكتروني'**
+  String get team_f_email;
+
+  /// No description provided for @team_f_role.
+  ///
+  /// In ar, this message translates to:
+  /// **'الدور'**
+  String get team_f_role;
+
+  /// No description provided for @team_f_password.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة مرور مؤقتة (اختياري)'**
+  String get team_f_password;
+
+  /// No description provided for @team_f_password_short.
+  ///
+  /// In ar, this message translates to:
+  /// **'كلمة المرور'**
+  String get team_f_password_short;
+
+  /// No description provided for @team_f_password_help.
+  ///
+  /// In ar, this message translates to:
+  /// **'اتركها فارغة لإنشاء كلمة مرور وإرسالها بالبريد. سيُطلب من المستخدم تغييرها عند أول دخول.'**
+  String get team_f_password_help;
+
+  /// No description provided for @team_f_teams.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفرق'**
+  String get team_f_teams;
+
+  /// No description provided for @team_f_team_name.
+  ///
+  /// In ar, this message translates to:
+  /// **'اسم الفريق'**
+  String get team_f_team_name;
+
+  /// No description provided for @team_f_description.
+  ///
+  /// In ar, this message translates to:
+  /// **'الوصف (اختياري)'**
+  String get team_f_description;
+
+  /// No description provided for @team_f_pool.
+  ///
+  /// In ar, this message translates to:
+  /// **'يستقبل المحادثات الجديدة'**
+  String get team_f_pool;
+
+  /// No description provided for @team_f_pool_help.
+  ///
+  /// In ar, this message translates to:
+  /// **'المحادثات غير المسندة تظهر لأعضاء هذا الفريق.'**
+  String get team_f_pool_help;
+
+  /// No description provided for @team_f_members.
+  ///
+  /// In ar, this message translates to:
+  /// **'الأعضاء'**
+  String get team_f_members;
+
+  /// No description provided for @team_create_user_btn.
+  ///
+  /// In ar, this message translates to:
+  /// **'إضافة المستخدم'**
+  String get team_create_user_btn;
+
+  /// No description provided for @team_create_team_btn.
+  ///
+  /// In ar, this message translates to:
+  /// **'إنشاء الفريق'**
+  String get team_create_team_btn;
+
+  /// No description provided for @team_user_created.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إنشاء حساب {name}'**
+  String team_user_created(String name);
+
+  /// No description provided for @team_user_created_pw.
+  ///
+  /// In ar, this message translates to:
+  /// **'شارك بيانات الدخول هذه. لن تظهر كلمة المرور مرة أخرى.'**
+  String get team_user_created_pw;
+
+  /// No description provided for @team_user_created_emailed.
+  ///
+  /// In ar, this message translates to:
+  /// **'أُرسلت بيانات الدخول إلى بريده أيضًا.'**
+  String get team_user_created_emailed;
+
+  /// No description provided for @team_copy_credentials.
+  ///
+  /// In ar, this message translates to:
+  /// **'نسخ بيانات الدخول'**
+  String get team_copy_credentials;
+
+  /// No description provided for @team_copied.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم النسخ'**
+  String get team_copied;
+
+  /// No description provided for @team_team_created.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إنشاء فريق {name}'**
+  String team_team_created(String name);
+
+  /// No description provided for @team_err_limit.
+  ///
+  /// In ar, this message translates to:
+  /// **'وصلت إلى حد المستخدمين في باقتك. قم بترقية الباقة لإضافة المزيد.'**
+  String get team_err_limit;
+
+  /// No description provided for @team_err_generic.
+  ///
+  /// In ar, this message translates to:
+  /// **'تعذّر الحفظ. حاول مرة أخرى.'**
+  String get team_err_generic;
+
+  /// No description provided for @team_err_required.
+  ///
+  /// In ar, this message translates to:
+  /// **'هذا الحقل مطلوب'**
+  String get team_err_required;
+
+  /// No description provided for @team_seats.
+  ///
+  /// In ar, this message translates to:
+  /// **'{used} من {max} مستخدمين'**
+  String team_seats(int used, int max);
+
+  /// No description provided for @team_seats_full.
+  ///
+  /// In ar, this message translates to:
+  /// **'وصلت إلى حد باقتك ({max} مستخدمين)'**
+  String team_seats_full(int max);
+
+  /// No description provided for @team_teams_not_in_plan.
+  ///
+  /// In ar, this message translates to:
+  /// **'الفرق غير متاحة في باقتك'**
+  String get team_teams_not_in_plan;
+
+  /// No description provided for @team_limit_title.
+  ///
+  /// In ar, this message translates to:
+  /// **'قم بترقية باقتك'**
+  String get team_limit_title;
+
+  /// No description provided for @team_upgrade.
+  ///
+  /// In ar, this message translates to:
+  /// **'ترقية الباقة'**
+  String get team_upgrade;
+
   /// No description provided for @team_section_members.
   ///
   /// In ar, this message translates to:
@@ -4167,11 +4365,89 @@ abstract class AppLocalizations {
   /// **'اشتراك مساحة العمل متوقف.'**
   String get login_err_suspended;
 
+  /// No description provided for @login_err_blocked.
+  ///
+  /// In ar, this message translates to:
+  /// **'تم إيقاف مساحة العمل هذه. تواصل مع دعم Wavadesk.'**
+  String get login_err_blocked;
+
   /// No description provided for @login_manage_subscription.
   ///
   /// In ar, this message translates to:
   /// **'إدارة الاشتراك'**
   String get login_manage_subscription;
+
+  /// No description provided for @ws_title_trial.
+  ///
+  /// In ar, this message translates to:
+  /// **'انتهت الفترة التجريبية'**
+  String get ws_title_trial;
+
+  /// No description provided for @ws_title_expired.
+  ///
+  /// In ar, this message translates to:
+  /// **'انتهى الاشتراك'**
+  String get ws_title_expired;
+
+  /// No description provided for @ws_title_inactive.
+  ///
+  /// In ar, this message translates to:
+  /// **'الاشتراك غير نشط'**
+  String get ws_title_inactive;
+
+  /// No description provided for @ws_title_no_plan.
+  ///
+  /// In ar, this message translates to:
+  /// **'لم يتم اختيار باقة'**
+  String get ws_title_no_plan;
+
+  /// No description provided for @ws_title_blocked.
+  ///
+  /// In ar, this message translates to:
+  /// **'مساحة العمل موقوفة'**
+  String get ws_title_blocked;
+
+  /// No description provided for @ws_title_archived.
+  ///
+  /// In ar, this message translates to:
+  /// **'مساحة العمل مؤرشفة'**
+  String get ws_title_archived;
+
+  /// No description provided for @ws_body_admin.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختر باقة على موقع Wavadesk لمواصلة العمل. محادثاتك وبياناتك محفوظة.'**
+  String get ws_body_admin;
+
+  /// No description provided for @ws_body_member.
+  ///
+  /// In ar, this message translates to:
+  /// **'اطلب من مدير مساحة العمل اختيار باقة. محادثاتك وبياناتك محفوظة.'**
+  String get ws_body_member;
+
+  /// No description provided for @ws_body_support.
+  ///
+  /// In ar, this message translates to:
+  /// **'تواصل مع دعم Wavadesk لمعرفة التفاصيل.'**
+  String get ws_body_support;
+
+  /// No description provided for @ws_choose_plan.
+  ///
+  /// In ar, this message translates to:
+  /// **'اختيار باقة'**
+  String get ws_choose_plan;
+
+  /// No description provided for @ws_check_again.
+  ///
+  /// In ar, this message translates to:
+  /// **'تحقّق مرة أخرى'**
+  String get ws_check_again;
+
+  /// No description provided for @ws_still_closed.
+  ///
+  /// In ar, this message translates to:
+  /// **'ما زالت مساحة العمل غير متاحة.'**
+  String get ws_still_closed;
 
   /// No description provided for @login_err_locked.
   ///
@@ -4472,6 +4748,24 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'ردود سريعة'**
   String get chat_attach_quick;
+
+  /// No description provided for @chat_attach_ai.
+  ///
+  /// In ar, this message translates to:
+  /// **'توليد بالذكاء الاصطناعي'**
+  String get chat_attach_ai;
+
+  /// No description provided for @chat_ai_gen_off.
+  ///
+  /// In ar, this message translates to:
+  /// **'وكيل الذكاء الاصطناعي متوقف في مساحة العمل هذه.'**
+  String get chat_ai_gen_off;
+
+  /// No description provided for @chat_ai_gen_wrong_mode.
+  ///
+  /// In ar, this message translates to:
+  /// **'توليد الردود متاح فقط عندما يكون وضع الذكاء الاصطناعي «اقتراح».'**
+  String get chat_ai_gen_wrong_mode;
 
   /// No description provided for @chat_attach_template.
   ///
@@ -9974,6 +10268,18 @@ abstract class AppLocalizations {
   /// In ar, this message translates to:
   /// **'الوسوم'**
   String get kb_tags;
+
+  /// No description provided for @kb_type.
+  ///
+  /// In ar, this message translates to:
+  /// **'النوع'**
+  String get kb_type;
+
+  /// No description provided for @kb_type_all.
+  ///
+  /// In ar, this message translates to:
+  /// **'كل الأنواع'**
+  String get kb_type_all;
 
   /// No description provided for @kb_used_n.
   ///

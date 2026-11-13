@@ -25,7 +25,6 @@ class MessageRow extends ConsumerStatefulWidget {
     required this.item,
     required this.detail,
     required this.maxWidth,
-    required this.onReply,
     required this.onQuoteTap,
     this.highlighted = false,
     this.animateIn = false,
@@ -37,7 +36,6 @@ class MessageRow extends ConsumerStatefulWidget {
   final MessageItem item;
   final ConversationDetail detail;
   final double maxWidth;
-  final void Function(Message m) onReply;
   final void Function(String messageId) onQuoteTap;
   final bool highlighted;
   final bool animateIn;
@@ -51,9 +49,6 @@ class MessageRow extends ConsumerStatefulWidget {
 }
 
 class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStateMixin {
-  static const _replyThreshold = 56.0;
-  static const _maxDrag = 76.0;
-
   final _bubbleKey = GlobalKey();
   late final AnimationController _enter = AnimationController(
     vsync: this,
@@ -73,17 +68,9 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
   Timer? _staticHighlight;
   bool _staticOn = false;
 
-  double _drag = 0;
   bool _pressed = false;
-  bool _armed = false;
 
   Message get _m => widget.item.message;
-
-  bool get _swipeable =>
-      !widget.readOnly &&
-      _m.type != MessageBubbleType.system &&
-      _m.type != MessageBubbleType.internalNote &&
-      _m.kind != MessageKind.deleted;
 
   @override
   void initState() {
@@ -120,9 +107,6 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
     }
   }
 
-  /// +1 when "toward center" is the positive x direction.
-  double get _towardCenter => _m.isOutgoing ? -1 : 1; // own messages sit on the right in every language
-
   void _openMenu() {
     final box = _bubbleKey.currentContext?.findRenderObject() as RenderBox?;
     if (box == null || !box.attached) return;
@@ -133,7 +117,6 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
       conversationId: widget.conversationId,
       message: _m,
       bubbleRect: rect,
-      onReply: widget.onReply,
       readOnly: widget.readOnly,
       allowTranscribe: widget.allowTranscribe,
     );
@@ -200,59 +183,9 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
           duration: const Duration(milliseconds: 100),
           child: GestureDetector(
             onLongPress: _openMenu,
-            onHorizontalDragUpdate: _swipeable
-                ? (u) {
-                    final next = (_drag + u.delta.dx * _towardCenter).clamp(0.0, _maxDrag);
-                    if (!_armed && next >= _replyThreshold) {
-                      _armed = true;
-                      HapticFeedback.lightImpact();
-                    } else if (_armed && next < _replyThreshold) {
-                      _armed = false;
-                    }
-                    setState(() => _drag = next);
-                  }
-                : null,
-            onHorizontalDragEnd: _swipeable
-                ? (_) {
-                    if (_drag >= _replyThreshold) widget.onReply(_m);
-                    setState(() {
-                      _drag = 0;
-                      _armed = false;
-                      _pressed = false;
-                    });
-                  }
-                : null,
-            onHorizontalDragCancel: () => setState(() => _drag = 0),
             child: bubble,
           ),
         ),
-      );
-    }
-
-    // Reply icon revealed behind the bubble, on the side it moves away from.
-    if (_swipeable) {
-      final progress = (_drag / _replyThreshold).clamp(0.0, 1.0);
-      bubble = Stack(
-        children: [
-          Positioned.fill(
-            child: Align(
-              alignment: _m.isOutgoing ? Alignment.centerRight : Alignment.centerLeft,
-              child: Opacity(
-                opacity: progress,
-                child: Transform.scale(
-                  scale: 0.6 + 0.4 * progress,
-                  child: Container(
-                    width: 32,
-                    height: 32,
-                    decoration: BoxDecoration(color: c.surfaceVariant, shape: BoxShape.circle),
-                    child: AppIcon(AppIcons.reply, size: AppIconSize.sm, color: c.primary),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Transform.translate(offset: Offset(_drag * _towardCenter, 0), child: bubble),
-        ],
       );
     }
 
@@ -263,7 +196,6 @@ class _MessageRowState extends ConsumerState<MessageRow> with TickerProviderStat
         label: MessageBubble.describe(context, _m, d),
         excludeSemantics: _m.type != MessageBubbleType.system,
         customSemanticsActions: {
-          if (_swipeable) CustomSemanticsAction(label: l.msgaction_reply): () => widget.onReply(_m),
           if (_m.text.trim().isNotEmpty)
             CustomSemanticsAction(label: l.msgaction_copy): () {
               Clipboard.setData(ClipboardData(text: _m.text));

@@ -516,6 +516,120 @@ class AppLocalizationsFr extends AppLocalizations {
   String get team_invite_sent => 'Lien d\'invitation envoyé';
 
   @override
+  String get team_add => 'Ajouter';
+
+  @override
+  String get team_add_user => 'Ajouter un utilisateur';
+
+  @override
+  String get team_add_user_sub => 'Un nouveau compte dans cet espace';
+
+  @override
+  String get team_add_team => 'Créer une équipe';
+
+  @override
+  String get team_add_team_sub =>
+      'Regroupez des agents pour répartir les conversations';
+
+  @override
+  String get team_f_name => 'Nom';
+
+  @override
+  String get team_f_email => 'E-mail';
+
+  @override
+  String get team_f_role => 'Rôle';
+
+  @override
+  String get team_f_password => 'Mot de passe temporaire (facultatif)';
+
+  @override
+  String get team_f_password_short => 'Mot de passe';
+
+  @override
+  String get team_f_password_help =>
+      'Laissez vide pour en générer un et l\'envoyer par e-mail. L\'utilisateur le change à la première connexion.';
+
+  @override
+  String get team_f_teams => 'Équipes';
+
+  @override
+  String get team_f_team_name => 'Nom de l\'équipe';
+
+  @override
+  String get team_f_description => 'Description (facultatif)';
+
+  @override
+  String get team_f_pool => 'Reçoit les nouvelles conversations';
+
+  @override
+  String get team_f_pool_help =>
+      'Les conversations non assignées s\'affichent pour les membres de cette équipe.';
+
+  @override
+  String get team_f_members => 'Membres';
+
+  @override
+  String get team_create_user_btn => 'Ajouter l\'utilisateur';
+
+  @override
+  String get team_create_team_btn => 'Créer l\'équipe';
+
+  @override
+  String team_user_created(String name) {
+    return 'Le compte de $name a été créé';
+  }
+
+  @override
+  String get team_user_created_pw =>
+      'Partagez ces identifiants. Le mot de passe ne sera plus affiché.';
+
+  @override
+  String get team_user_created_emailed =>
+      'Ils ont aussi été envoyés par e-mail.';
+
+  @override
+  String get team_copy_credentials => 'Copier les identifiants';
+
+  @override
+  String get team_copied => 'Copié';
+
+  @override
+  String team_team_created(String name) {
+    return 'Équipe $name créée';
+  }
+
+  @override
+  String get team_err_limit =>
+      'Vous avez atteint la limite d\'utilisateurs de votre forfait. Passez à un forfait supérieur pour en ajouter.';
+
+  @override
+  String get team_err_generic => 'Échec de l\'enregistrement. Réessayez.';
+
+  @override
+  String get team_err_required => 'Ce champ est obligatoire';
+
+  @override
+  String team_seats(int used, int max) {
+    return '$used sur $max utilisateurs';
+  }
+
+  @override
+  String team_seats_full(int max) {
+    return 'Limite de votre forfait atteinte ($max utilisateurs)';
+  }
+
+  @override
+  String get team_teams_not_in_plan =>
+      'Les équipes ne sont pas incluses dans votre forfait';
+
+  @override
+  String get team_limit_title => 'Passez à un forfait supérieur';
+
+  @override
+  String get team_upgrade => 'Changer de forfait';
+
+  @override
   String team_section_members(int count) {
     String _temp0 = intl.Intl.pluralLogic(
       count,
@@ -2309,7 +2423,51 @@ class AppLocalizationsFr extends AppLocalizations {
       'L\'abonnement de l\'espace de travail est suspendu.';
 
   @override
+  String get login_err_blocked =>
+      'Cet espace de travail a été suspendu. Contactez le support Wavadesk.';
+
+  @override
   String get login_manage_subscription => 'Gérer l\'abonnement';
+
+  @override
+  String get ws_title_trial => 'Votre essai gratuit est terminé';
+
+  @override
+  String get ws_title_expired => 'Votre abonnement a expiré';
+
+  @override
+  String get ws_title_inactive => 'Votre abonnement n\'est pas actif';
+
+  @override
+  String get ws_title_no_plan => 'Aucun forfait choisi';
+
+  @override
+  String get ws_title_blocked => 'Cet espace de travail est suspendu';
+
+  @override
+  String get ws_title_archived => 'Cet espace de travail a été archivé';
+
+  @override
+  String get ws_body_admin =>
+      'Choisissez un forfait sur le site Wavadesk pour continuer. Vos conversations et données sont conservées.';
+
+  @override
+  String get ws_body_member =>
+      'Demandez à l\'administrateur de votre espace de choisir un forfait. Vos conversations et données sont conservées.';
+
+  @override
+  String get ws_body_support =>
+      'Contactez le support Wavadesk pour plus de détails.';
+
+  @override
+  String get ws_choose_plan => 'Choisir un forfait';
+
+  @override
+  String get ws_check_again => 'Vérifier à nouveau';
+
+  @override
+  String get ws_still_closed =>
+      'L\'espace de travail est toujours indisponible.';
 
   @override
   String login_err_locked(String time) {
@@ -2479,6 +2637,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get chat_attach_quick => 'Réponses rapides';
+
+  @override
+  String get chat_attach_ai => 'Générer avec l\'IA';
+
+  @override
+  String get chat_ai_gen_off =>
+      'L\'agent IA est désactivé pour cet espace de travail.';
+
+  @override
+  String get chat_ai_gen_wrong_mode =>
+      'La génération de réponses n\'est disponible qu\'en mode IA « Suggestion ».';
 
   @override
   String get chat_attach_template => 'Modèle WhatsApp';
@@ -5830,6 +5999,12 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get kb_tags => 'Étiquettes';
+
+  @override
+  String get kb_type => 'Type';
+
+  @override
+  String get kb_type_all => 'Tous les types';
 
   @override
   String kb_used_n(int n) {

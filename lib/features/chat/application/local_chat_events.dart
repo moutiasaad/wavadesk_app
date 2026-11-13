@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/models.dart';
+import '../../auth/application/auth_session.dart';
 
 /// System pills the real API doesn't return in the message list (it has no
 /// ownership events), kept for this app session and merged into the thread
@@ -12,7 +13,11 @@ class LocalChatEvents extends Notifier<Map<String, List<Message>>> {
   int _seq = 0;
 
   @override
-  Map<String, List<Message>> build() => const {};
+  Map<String, List<Message>> build() {
+    // A new sign-in starts over: never show the previous account's data.
+    ref.watch(authProvider);
+    return const {};
+  }
 
   void add(String conversationId, SystemEvent event) {
     final m = Message(

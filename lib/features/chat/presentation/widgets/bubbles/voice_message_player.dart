@@ -61,7 +61,9 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
     final t = context.text;
     final l = context.l10n;
     final m = widget.message;
-    final duration = m.mediaDuration ?? const Duration(seconds: 1);
+    // Incoming WhatsApp voice notes carry no duration; the player reports
+    // the real one once loaded (zero = unknown, the waveform stays empty).
+    final duration = m.mediaDuration ?? Duration.zero;
     final player = ref.watch(voicePlayerProvider);
     final ctrl = ref.read(voicePlayerProvider.notifier);
     final active = player.isActive(m.id);
@@ -73,7 +75,8 @@ class _VoiceMessagePlayerState extends ConsumerState<VoiceMessagePlayer> {
     final progress = player.progressOf(m.id);
     final played = widget.onPrimary ? Colors.white : c.primary;
     final unplayed = widget.onPrimary ? Colors.white.withValues(alpha: 0.4) : c.borderStrong;
-    final shown = active && player.position > Duration.zero ? player.position : duration;
+    final total = active && player.duration > Duration.zero ? player.duration : duration;
+    final shown = active && player.position > Duration.zero ? player.position : total;
     final heights = _heights;
 
     final playButton = Semantics(
