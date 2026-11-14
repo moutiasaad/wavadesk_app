@@ -100,7 +100,8 @@ abstract final class AppTheme {
         builders: {
           // One plain slide everywhere (no fade / zoom).
           TargetPlatform.android: SimpleSlidePageTransitionsBuilder(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+          // Use default iOS transitions (slide from right)
+          TargetPlatform.iOS: SimpleSlidePageTransitionsBuilder(),
         },
       ),
     );

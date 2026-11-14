@@ -91,6 +91,8 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
   void _tapVersion(PackageInfo? info) {
     if (++_versionTaps < 7) return;
     _versionTaps = 0;
+    // Cycle network state (demo affordance)
+    ref.read(inboxProvider.notifier).cycleNetwork();
     final me = ref.read(currentAgentProvider);
     final debug = [
       'Wavadesk ${info?.version ?? '?'} (${info?.buildNumber ?? '?'})',
